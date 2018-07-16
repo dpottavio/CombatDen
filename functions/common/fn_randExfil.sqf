@@ -2,31 +2,31 @@
     Author: Ottavio
 
     Description:
-    
+
     Setup a random exfil position on the map.  This function
     selects a random position on the map based on the function
-    parameters.  A marker is placed on this position and an 
+    parameters.  A marker is placed on this position and an
     optional trigger than can be created on an event variable.
 
     Parameter(s):
-    
+
     0: ARRAY - A center position on the map.
-    
+
     1: (Optional) NUMBER - The minimum distance from the center position to place
     the exfil position.  Defaults to 0.
-    
+
     2: (Optional) NUMBER - The maximum distance from the center position to place
     the exfil postion.  If not defined or -1 the worlds largest distance is used.
 
     Returns: ARRAY - position of the exfil, empty array on error.
-    
+
     Example:
 
     _centerPos = [1,2,3];
     _min = 100;
     _max = 400;
     [_centerPos, _min, _max, "killedTarget"] call den_fnc_randExfil;
-    
+
 */
 params ["_pos", "_min", "_max"];
 

@@ -2,22 +2,22 @@
     Author: Ottavio
 
     Description:
-    
+
     Mission logic to run locally on each host.
-    
+
     Parameter(s):
 
     0: STRING - AO name
 
     1: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
-    
+
     Returns: true on success, false on error
 */
 params ["_ao", "_faction"];
 
 _ao      = _this param [0, "", [""]];
-_faction = _this param [1, "", [""]]; 
+_faction = _this param [1, "", [""]];
 
 if (_ao == "") exitWith {
     ["ao parameter cannot be empty"] call BIS_fnc_error;

@@ -15,9 +15,9 @@
 
     1: (Optional) ARRAY - An array of string sthat are location
     names.  Any AO location selected will not be in this list.
-    
+
     2: (Optional) NUMBER - Minimum size of the AO.
-    
+
     Returns: ARRAY - [STRING, ARRAY, AREA]
 
     0: name of the location

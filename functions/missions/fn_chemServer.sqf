@@ -29,7 +29,7 @@ _faction   = _this param [1, "CSAT", [""]];
 _minInsert = _this param [2, 500, [0]];
 _maxInsert = _this param [3, 550, [0]];
 _minExfil  = _this param [4, 200, [0]];
-_maxExfil  = _this param [5, 250, [0]]; 
+_maxExfil  = _this param [5, 250, [0]];
 _blacklist = _this param [6, [], [[]]];
 
 if (isNull _group) exitWith {

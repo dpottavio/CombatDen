@@ -5,7 +5,7 @@
 
     Spawn a hostage.  The hostage wil be handcuffed.  If the hostage
     dies, the public variable "den_hostageDead" will be set.  If a blufor
-    forces come into contact with the hostage the public variable 
+    forces come into contact with the hostage the public variable
     "den_hostageFound" will be set.  If the hostage is unhandcuffed the
     public variable "den_hostageFree" will be set.
 
