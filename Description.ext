@@ -1,0 +1,146 @@
+respawnOnStart = -1;
+respawnTemplates[] = {"Spectator", "MenuPosition", "Tickets"};
+
+class CfgFunctions
+{
+	class den
+	{
+		class common
+		{
+            file = "functions\common";
+            class exfilTrigger {};
+            class motorPatrol {};
+            class heloExfil {};
+            class hostage {};
+            class patrol {};
+            class publicBool {};
+            class randAo {};
+            class randBunker {};
+            class randExfil {};
+            class randFireTeam {};
+            class randInsert {};
+            class randTime {};
+            class randWeather {};
+            class reinforce {};
+            class sling {};
+            class taskFsm {};
+		};
+        class mission
+        {
+            file = "functions\missions";
+            class clearLocal {};
+            class clearServer {};
+            class chemLocal {};
+            class chemServer {};
+            class hostageLocal {};
+            class hostageServer {};
+        };
+	};
+};
+
+class Params
+{
+    class Faction
+    {
+        title = "Enemy Faction";
+        texts[] = {"Random", "CSAT", "Guerrilla"};
+        values[] = {-1,0,1};
+        default = -1;
+    };
+    class Mission
+    {
+        title = "Mission";
+        texts[] = {"Random", "Container Extraction", "Clear Area", "Hostage Rescue"};
+        values[] = {-1,0,1,2};
+        default = -1;
+    };
+    class RespawnTickets
+    {
+        title = "Respawn Tickets";
+        texts[] = {"4","8","16","Unlimited"};
+        values[] = {4,8,16,0};
+        default = 4;
+        function = "BIS_fnc_paramRespawnTickets";
+        isGlobal = 0;
+    };
+    class TimeOfDay
+    {
+        title = "Time of Day";
+        texts[] = {"Random","Morning","Day","Evening","Night"};
+        values[] = {-1,6,12,18,0};
+        default = -1;
+    };
+};
+
+class CfgDebriefing
+{
+    class HostageDead
+    {
+        title = "Mission Failed";
+        subtitle = "Hostage Died";
+        description = "You failed to extract the hostage alive.";
+    };
+    class PlayersDead
+    {
+        title = "Mission Failed";
+        subtitle = "All Players Dead";
+        description = "";
+    };
+    class ExfilHeloDead
+    {
+        title = "Mission Failed";
+        subtitle = "Exfil Failure";
+        description = "The helicopter transport was destroyed before it could make it to the exfil position.";
+    };
+    class SlingDead
+    {
+        title = "Mission Failed";
+        subtitle = "Container Extraction Failure";
+        description = "The helicopter transport was destroyed before it could extract the container.";
+    };
+    class ContainerDead
+    {
+        title = "Mission Failed";
+        subtitle = "Container Destroyed";
+        description = "The chemical weapon container was destroyed.";
+    };
+};
+
+class CfgTaskDescriptions
+{
+    class FindHostage
+    {
+        title       = "Reach the Hostage";
+        description = "Go to the hostage.  He is being held at an enemy camp.";
+    };
+    class FreeHostage
+    {
+        title       = "Free Hostage";
+        description = "Remove the hostage's hand restraints. Use the ACE interactive menu to perform this task.";
+    };
+    class Exfil
+    {
+        title       = "Go to the Exfil";
+        description = "";
+    };
+    class ExfilHostage
+    {
+        title       = "Exfil Hostage";
+        description = "Bring the hostage to the exfil and wait for the helo transport. Have the hostage board the helo when it arrives.";
+    };
+    class ClearAo
+    {
+        title       = "Clear the AO";
+        description = "Clear the AO of enemy units.";
+    };
+    class SecureContainer
+    {
+        title       = "Secure Container";
+        description = "Secure chemical weapon container.";
+    };
+    class ContainerExtract
+    {
+        title       = "Container Extraction";
+        description = "Wait for container extraction.";
+    };
+};
