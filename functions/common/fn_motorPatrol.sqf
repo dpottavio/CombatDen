@@ -21,11 +21,12 @@ params ["_pos", "_radius", "_faction"];
 _pos     = _this param [0, [], [[]], [2,3]];
 _radius  = _this param [1, 0, [0]];
 _faction = _this param [2, "CSAT", [""]];
-_min     = 0;
-_objDist = 10;
-_maxGrad = 0.1;
 
-_unitCfg = "";
+private _min     = 0;
+private _objDist = 10;
+private _maxGrad = 0.1;
+
+private _unitCfg = "";
 switch (_faction) do {
     case "CSAT": {
         _unitCfg = "O_MRAP_02_hmg_F";
@@ -39,7 +40,7 @@ if (_unitCfg == "") exitWith {
     grpNull;
 };
 
-_patrolPos = [
+private _patrolPos = [
     _pos,     // center pos
     0,        // min distance
     _radius,  // max distance
@@ -56,8 +57,8 @@ if (_patrolPos isEqualTo [0,0,0]) exitWith {
     grpNull;
 };
 
-_vehicle = [_patrolPos, 180, _unitCfg, opfor] call BIS_fnc_spawnvehicle;
-_patrolGroup  = _vehicle select 2;
+private _vehicle = [_patrolPos, 180, _unitCfg, opfor] call BIS_fnc_spawnvehicle;
+private _patrolGroup  = _vehicle select 2;
 
 [_patrolGroup, _pos, _radius, 5, "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [30,60,120]] call CBA_fnc_taskPatrol;
 

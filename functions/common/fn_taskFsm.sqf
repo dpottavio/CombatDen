@@ -47,14 +47,14 @@ params ["_taskQueue", "_failQueue"];
 _taskQueue = _this param[0, [], [[]]];
 _failQueue = _this param[1, [], [[]]];
 
-_ok   = true;
-_head = 0;
-_end  = (count _taskQueue);
+private _ok   = true;
+private _head = 0;
+private _end  = (count _taskQueue);
 
 while {_head < _end && _ok}  do {
-    _task      = _taskQueue select _head;
-    _taskArgs  = _task select 0;
-    _taskEvent = _task select 1;
+    private _task      = _taskQueue select _head;
+    private _taskArgs  = _task select 0;
+    private _taskEvent = _task select 1;
 
     _taskArgs call BIS_fnc_taskCreate;
 
@@ -67,8 +67,8 @@ while {_head < _end && _ok}  do {
         };
 
         {
-            _debrief   = _x select 0;
-            _failEvent = _x select 1;
+            private _debrief   = _x select 0;
+            private _failEvent = _x select 1;
             if (!isNil _failEvent) exitWith {
                 _ok = false;
                 [_debrief, false] call BIS_fnc_endMission;

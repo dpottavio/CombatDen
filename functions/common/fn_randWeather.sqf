@@ -22,7 +22,7 @@ if (_month < 0) then {
     _month = _now select 1;
 };
 
-_overcast = 0;
+private _overcast = 0;
 switch(_month) do {
     case 1:  {_overcast = random[0.0, 0.7, 1.0]};
     case 2:  {_overcast = random[0.0, 0.6, 1.0]};

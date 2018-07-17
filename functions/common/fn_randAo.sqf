@@ -30,29 +30,29 @@ _types     = _this param [0, [], [[]]];
 _blacklist = _this param [1, [], [[]]];
 _minSize   = _this param [2, 500, [0]];
 
-_defaultTypes = ["NameCity", "NameCityCapital", "NameMarine", "NameVillage", "NameLocal", "Hill", "Mount", "Airport"];
+private _defaultTypes = ["NameCity", "NameCityCapital", "NameMarine", "NameVillage", "NameLocal", "Hill", "Mount", "Airport"];
 if (_types isEqualTo []) then {
     _types = _defaultTypes;
 };
 
-_location = configNull;
+private _location = configNull;
 
 while {true} do {
-    _locationList = "getText (_x >> 'type') in _types" configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
+    private _locationList = "getText (_x >> 'type') in _types" configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
     _location = selectRandom _locationList;
-    _name = getText (_location >> "name");
+    private _name = getText (_location >> "name");
     if (!(_name in _blacklist)) exitWith {};
 };
 
-_pos = getArray (_location >> "position");
-_name = getText (_location >> "name");
+private _pos = getArray (_location >> "position");
+private _name = getText (_location >> "name");
 if (_name == "") then {
     _name = "Sector X";
 };
 
-_a = _minSize max (getNumber (_location >> "radiusA"));
-_b = _minSize max (getNumber (_location >> "radiusB"));
-_area = [
+private _a = _minSize max (getNumber (_location >> "radiusA"));
+private _b = _minSize max (getNumber (_location >> "radiusB"));
+private _area = [
     _a,
     _b,
     0,      // rotation
@@ -60,7 +60,7 @@ _area = [
     -1      // c
 ];
 
-_ao = [_name, _pos, _area];
+private _ao = [_name, _pos, _area];
 
 createMarker ["aoMarker", _pos];
 "aoMarker" setMarkerShape "ELLIPSE";

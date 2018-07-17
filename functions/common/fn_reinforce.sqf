@@ -47,8 +47,9 @@ _deployMin     = _this param [1, 0, [0]];
 _deployMax     = _this param [2, -1,[0]];
 _faction       = _this param [3, "CSAT", [""]];
 _aoArea        = _this param [4, "", [""]];
-_deployMaxGrad = 0.1;
-_deployObjDist = 30;
+
+private _deployMaxGrad = 0.1;
+private _deployObjDist = 30;
 
 if (_pos isEqualTo []) exitWith {
     ["position param cannot be empty"] call BIS_fnc_error;
@@ -70,33 +71,33 @@ if (_faction != "CSAT" && _faction != "Guerrilla") exitWith {
 
 if (_aoArea != "") exitWith {
     _stmt = format["[%1,%2,%3,""%4""] call den_fnc_reinforce", _pos, _deployMin, _deployMax, _faction];
-    _t = [objNull, _aoArea] call BIS_fnc_triggerToMarker;
+    private _t = [objNull, _aoArea] call BIS_fnc_triggerToMarker;
     _t setTriggerActivation ["WEST SEIZED", "PRESENT", false];
     _t setTriggerStatements ["this", _stmt, ""];
     true;
 };
 
-_deployPos = [_pos, _deployMin, _deployMax, _deployObjDist, 0, _deployMaxGrad, 0, [], [[0,0,0]]] call BIS_fnc_findSafePos;
-if (_deployPos isEqualTo [0,0,0]) exitWith {false};
+private _deployPos = [_pos, _deployMin, _deployMax, _deployObjDist, 0, _deployMaxGrad, 0, [], [[0,0,0]]] call BIS_fnc_findSafePos;
+if (_deployPos isEqualTo [0,0,0]) exitWith {
+    false
+};
 
-_vehicleType = "";
-_squadGroup = objNull;
+private _squadGroup = objNull;
 
 if (_faction == "CSAT") then {
     /*
      * helicopter
      */
-    _vehicleType = "helo";
-    _lzDir = _deployPos getDir _pos;
-    _lz = "Land_HelipadEmpty_F" createVehicle _deployPos;
-    _heloDist = 3000;
-    _heloZ = 300;
-    _heloDir = _lzDir - 180;
-    _heloPos = _deployPos getPos [_heloDist, _heloDir];
-    _helo = [_heloPos, _heloPos getDir _pos, "O_Heli_Light_02_dynamicLoadout_F", opfor] call BIS_fnc_spawnvehicle;
-    _heloObj = _helo select 0;
-    _heloGroup = _helo select 2;
-    _heloCleanup =  "deleteVehicle vehicle this; { deleteVehicle _x } forEach thisList;";
+    private _lzDir = _deployPos getDir _pos;
+    private _lz = "Land_HelipadEmpty_F" createVehicle _deployPos;
+    private _heloDist = 3000;
+    private _heloZ = 300;
+    private _heloDir = _lzDir - 180;
+    private _heloPos = _deployPos getPos [_heloDist, _heloDir];
+    private _helo = [_heloPos, _heloPos getDir _pos, "O_Heli_Light_02_dynamicLoadout_F", opfor] call BIS_fnc_spawnvehicle;
+    private _heloObj     = _helo select 0;
+    private _heloGroup   = _helo select 2;
+    private _heloCleanup =  "deleteVehicle vehicle this; { deleteVehicle _x } forEach thisList;";
 
     [_heloGroup, _lz, 0, "TR UNLOAD", "AWARE"] call CBA_fnc_addWaypoint;
     [_heloGroup, _heloPos, 0, "MOVE", "AWARE", "YELLOW", "NORMAL", "WEDGE",_heloCleanup] call CBA_fnc_addWaypoint;
@@ -108,28 +109,26 @@ if (_faction == "CSAT") then {
     /*
      * squad
      */
-    _squadPos = _heloPos getPos [20, 0];
-    _squadCfg = configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfSquad";
+    private _squadPos = _heloPos getPos [20, 0];
+    private _squadCfg = configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfSquad";
     _squadGroup = [_squadPos, opfor, _squadCfg] call BIS_fnc_spawnGroup;
     {
         _x moveInCargo _heloObj;
     } forEach units _squadGroup;
 } else {
-    _vehicleType = "truck";
-    _truckMinDist =  _deployMinDist + 300;
-    _truckMaxDist =  _deployMaxDist + 350;
-    _truckObjDist = 10;
-    _truckMaxGrad = 0.1;
-    _truckPos = [_pos, _truckMinDist, _truckMaxDist, _truckObjDist, 0, _truckMaxGrad, 0, [], [[0,0,0]]] call BIS_fnc_findSafePos;
-    if (isNil "_truckPos" || _truckPos isEqualTo[0,0,0]) exitWith {};
-    _truckPos = [_truckPos select 0, _truckPos select 1, 0];
+    private _truckMinDist =  _deployMinDist;
+    private _truckMaxDist =  _deployMaxDist;
+    private _truckObjDist = 10;
+    private _truckMaxGrad = 0.1;
+    private _truckPos = [_pos, _truckMinDist, _truckMaxDist, _truckObjDist, 0, _truckMaxGrad, 0, [], [[0,0,0]]] call BIS_fnc_findSafePos;
+    if (_truckPos isEqualTo [0,0,0]) exitWith {};
     _truck = "C_Van_01_transport_F" createVehicle _truckPos;
 
     /*
      * squad
      */
-    _squadPos = _truckPos getPos [10, 0];
-    _squadCfg = configfile >> "CfgGroups" >> "East" >> "OPF_G_F" >> "Infantry" >> "O_G_InfSquad_Assault";
+    private _squadPos = _truckPos getPos [10, 0];
+    private _squadCfg = configfile >> "CfgGroups" >> "East" >> "OPF_G_F" >> "Infantry" >> "O_G_InfSquad_Assault";
     _squadGroup = [_squadPos, opfor, _squadCfg] call BIS_fnc_spawnGroup;
     {
         if (_x != (leader _squadGroup)) then {

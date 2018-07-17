@@ -22,7 +22,7 @@ _pos     = _this param [0, [], [[]], [2,3]];
 _radius  = _this param [1, 0, [0]];
 _faction = _this param [2, "CSAT", [""]];
 
-_group = [_pos, _radius, _faction] call den_fnc_randFireTeam;
+private _group = [_pos, _radius, _faction] call den_fnc_randFireTeam;
 if (!isNull _group) then {
     [_group, _pos, _radius, 5, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [30,60,120] ] call CBA_fnc_taskPatrol;
 };

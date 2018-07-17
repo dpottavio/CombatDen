@@ -33,15 +33,16 @@ params ["_pos", "_min", "_max"];
 _pos       = _this param [0, [], [[]], [2,3]];
 _min       = _this param [1, 0, [0]];
 _max       = _this param [2, -1, [0]];
-_objDist   = 15;
-_maxGrad   = 0.1;
+
+private _objDist   = 15;
+private _maxGrad   = 0.1;
 
 if (_pos isEqualTo []) exitWith {
     ["position param cannot be empty"] call BIS_fnc_error;
     [];
 };
 
-_exfilPos = [
+private _exfilPos = [
     _pos,     // center position
     _min,     // min distance from center
     _max,     // max distance from center

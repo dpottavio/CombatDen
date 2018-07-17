@@ -2,14 +2,6 @@
 if (isServer) then {
     _islandLocations = ["Atsalis", "Cape Makrinos", "Pyrgi", "Fournos", "Savri", "Polemistia", "Makrynisi", "Savri", "Chelonisi", "Monisi"];
 
-    // min and max insert distance from AO
-    _minInsert = 500;
-    _maxInsert = 550;
-
-    // min and max exfil distance from AO
-    _minExfil = 200;
-    _maxExfil = 400;
-
     alphaGroup setGroupIdGlobal ["Alpha"];
 
     _missionParam = -1;
@@ -44,7 +36,7 @@ if (isServer) then {
     if (_factionParam < 0) then {
         den_faction = selectRandom _factions;
     } else {
-        den_faction = _factions select _faction;
+        den_faction = _factions select _factionParam;
     };
     publicVariable "den_faction";
 
@@ -64,7 +56,7 @@ if (isServer) then {
     den_overcast = [_hour] call den_fnc_randWeather;
     publicVariable "den_overcast";
 
-    _missionArgs = [alphaGroup, den_faction, _minInsert, _maxInsert, _minExfil, _maxExfil, _islandLocations];
+    _missionArgs = [alphaGroup, den_faction, _islandLocations];
     switch (den_mission) do {
         case 0: {
             den_ao = _missionArgs call den_fnc_clearServer;

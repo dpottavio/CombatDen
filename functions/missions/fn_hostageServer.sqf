@@ -12,46 +12,41 @@
     1: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
-    2: NUMBER - Minimum distance to insert the players from the
-    radius of the AO.
-
-    3: NUMBER - Maximum distance to insert the players from the
-    radius of the AO.
-
-    4: ARRAY of STRINGS - A location name blacklist.
+    2: ARRAY of STRINGS - A location name blacklist.
 
     Returns: STRING - AO location name, empty string on error.
 */
-params ["_group", "_faction", "_minInsert", "_maxInsert", "_minExfil", "_maxExfil", "_blacklist"];
+params ["_group", "_faction", "_blacklist"];
 
 _group     = _this param [0, grpNull, [grpNull]];
 _faction   = _this param [1, "CSAT", [""]];
-_minInsert = _this param [2, 500, [0]];
-_maxInsert = _this param [3, 550, [0]];
-_minExfil  = _this param [4, 200, [0]];
-_maxExfil  = _this param [5, 250, [0]];
-_blacklist = _this param [6, [], [[]]];
+_blacklist = _this param [2, [], [[]]];
+
+private _minInsert = 500;
+private _maxInsert = 550;
+private _minExfil  = 200;
+private _maxExfil  = 250;
 
 // HACK: For some reason _group looses it's reference to the caller's
 // _group parameter.  When passing it to den_fnc_hostage it's a garbage
 // group.  Putting this assignment alias in place until I can figure
 // out what is wrong.
-_rescueGroup = _group;
+//_rescueGroup = _group;
 
-_ao = [
+private _ao = [
     ["NameCity", "NameVillage", "NameLocal"],
     _blacklist
 ] call den_fnc_randAo;
 
-_aoName    = _ao select 0;
-_aoPos    = _ao select 1;
-_aoArea   = _ao select 2;
-_aoRadius = _aoArea select 0;
+private _aoName   = _ao select 0;
+private _aoPos    = _ao select 1;
+private _aoArea   = _ao select 2;
+private _aoRadius = _aoArea select 0;
 
 /*
  * insert
  */
-_insert = [
+private _insert = [
     _aoPos,
     _minInsert + _aoRadius,
     _maxInsert + _aoRadius,
@@ -65,7 +60,7 @@ if (_insert isEqualTo []) exitWith {
 /*
  * exfil
  */
-_exfilPos = [
+private _exfilPos = [
     _aoPos,
     _minExfil + _aoRadius,
     _maxExfil + _aoRadius
@@ -90,7 +85,7 @@ if (_exfilPos isEqualTo []) exitWith {
 /*
  * hostage
  */
-_hostagePos = [
+private _hostagePos = [
     _aoPos,           // center pos
     0,                // min dist
     _aoRadius * 0.25, // max dist
@@ -109,7 +104,7 @@ if (_hostagePos isEqualTo [0,0,0]) exitWith {
 
 "CamoNet_OPFOR_open_F" createVehicle _hostagePos;
 
-[_hostagePos, _rescueGroup, "B_Heli_Transport_01_camo_F"] call den_fnc_hostage;
+[_hostagePos, _group, "B_Heli_Transport_01_camo_F"] call den_fnc_hostage;
 
 createMarker ["hostageMarker", _hostagePos];
 "hostageMarker" setMarkerType "mil_dot";
@@ -119,7 +114,7 @@ createMarker ["hostageMarker", _hostagePos];
 /*
  * guards
  */
-_guardGroup = [
+private _guardGroup = [
     _hostagePos,
     30,          // radius
     _faction

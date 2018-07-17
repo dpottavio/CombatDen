@@ -35,12 +35,13 @@ _faction = _this param [2, "CSAT", [""]];
 _count   = _this param [3, 1, [0]];
 _type    = _this param [4, "Land_BagBunker_Large_F", [""]];
 _markers = _this param [5, false, [false]];
-_min     = 0;
-_objDist = 10;
-_maxGrad = 0.1;
-_posList = [];
 
-_unitCfg = configNull;
+private _min     = 0;
+private _objDist = 10;
+private _maxGrad = 0.1;
+private _posList = [];
+
+private _unitCfg = configNull;
 switch (_faction) do {
     case "CSAT": {
         _unitCfg = configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam";
@@ -54,9 +55,9 @@ if (isNull _unitCfg) exitWith {
     false;
 };
 
-_blacklist = [];
+private _blacklist = [];
 for [{_x = 1}, {_x <= _count}, {_x = _x + 1}] do {
-    _bunkerPos = [
+    private _bunkerPos = [
         _pos,       // center pos
         _min,       // min distance
         _radius,    // max distance
@@ -73,14 +74,14 @@ for [{_x = 1}, {_x <= _count}, {_x = _x + 1}] do {
     _bunkerPos = [_bunkerPos select 0, _bunkerPos select 1, 0];
     _posList pushBack _bunkerPos;
 
-    _area = [_bunkerPos, [100, 100, true]];
+    private _area = [_bunkerPos, [100, 100, true]];
     _blacklist pushBack _area;
 
     _bunker = _type createVehicle _bunkerPos;
     _bunker setDir (_bunkerPos getDir _pos);
 
-    _group = [_bunkerPos, opfor, _unitCfg] call BIS_fnc_spawnGroup;
-    _wp = [_group, _bunkerPos, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
+    private _group = [_bunkerPos, opfor, _unitCfg] call BIS_fnc_spawnGroup;
+    private _wp = [_group, _bunkerPos, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
     _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 
     if (_markers) then {

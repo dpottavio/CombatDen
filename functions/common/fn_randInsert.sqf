@@ -34,15 +34,16 @@ _pos     = _this param [0, [], [[]], [2,3]];
 _min     = _this param [1, 0, [0]];
 _max     = _this param [2, -1, [0]];
 _group   = _this param [3, grpNull, [grpNull]];
-_objDist = 5;
-_maxGrad = -1;
+
+private _objDist = 5;
+private _maxGrad = -1;
 
 if (_pos isEqualTo []) exitWith {
     ["position param cannot be empty"] call BIS_fnc_error;
     [];
 };
 
-_insertPos = [
+private _insertPos = [
     _pos,     // center position
     _min,     // min distance from center
     _max,     // max distance from center
@@ -69,9 +70,10 @@ if (isMultiplayer) then {
 };
 
 if (!isNull _group) then {
-    _offset = 0;
+    private _offset = 0;
     {
         [_x, _insertPos, _offset] spawn {
+            params ["_unit", "_pos", "_off"];
             _unit = _this select 0;
             _pos  = _this select 1;
             _off  = _this select 2;

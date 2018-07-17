@@ -12,45 +12,40 @@
     1: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
-    2: NUMBER - Minimum distance to insert the players from the
-    radius of the AO.
-
-    3: NUMBER - Maximum distance to insert the players from the
-    radius of the AO.
-
-    4: ARRAY of STRINGS - A location name blacklist.
+    2: ARRAY of STRINGS - A location name blacklist.
 
     Returns: STRING - AO location name, empty string on error.
 */
-params ["_group", "_faction", "_minInsert", "_maxInsert", "_minExfil", "_maxExfil", "_blacklist"];
+params ["_group", "_faction", "_blacklist"];
 
 _group     = _this param [0, grpNull, [grpNull]];
 _faction   = _this param [1, "CSAT", [""]];
-_minInsert = _this param [2, 500, [0]];
-_maxInsert = _this param [3, 550, [0]];
-_minExfil  = _this param [4, 200, [0]];
-_maxExfil  = _this param [5, 250, [0]];
-_blacklist = _this param [6, [], [[]]];
+_blacklist = _this param [2, [], [[]]];
+
+private _minInsert = 500;
+private _maxInsert = 550;
+private _minExfil  = 200;
+private _maxExfil  = 250;
 
 if (isNull _group) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
     "";
 };
 
-_ao = [
+private _ao = [
     ["NameCity", "NameVillage", "NameLocal"],
     _blacklist
 ] call den_fnc_randAo;
 
-_aoName   = _ao select 0;
-_aoPos    = _ao select 1;
-_aoArea   = _ao select 2;
-_aoRadius = _aoArea select 0;
+private _aoName   = _ao select 0;
+private _aoPos    = _ao select 1;
+private _aoArea   = _ao select 2;
+private _aoRadius = _aoArea select 0;
 
 /*
  * insert
  */
-_insert = [
+private _insert = [
     _aoPos,
     _minInsert + _aoRadius,
     _maxInsert + _aoRadius,
@@ -64,7 +59,7 @@ if (_insert isEqualTo []) exitWith {
 /*
  * exfil
  */
-_exfil = [
+private _exfil = [
     _aoPos,
     _minExfil + _aoRadius,
     _maxExfil + _aoRadius,
@@ -78,7 +73,7 @@ if (_exfil isEqualTo [0,0,0]) exitWith {
 /*
  * container
  */
-_containerPos = [
+private _containerPos = [
     _aoPos,           // position
     0,                // min position
     _aoRadius * 0.5,  // max position
@@ -106,23 +101,24 @@ createMarker ["containerMarker", _containerPos];
 "containerMarker" setMarkerColor "colorOPFOR";
 "containerMarker" setMarkerText  "container";
 
-_secureActivation = "[""den_containerSecure""] call den_fnc_publicBool;[container,3000] call den_fnc_sling";
-_secureTrigger = createTrigger      ["EmptyDetector", _containerPos, false];
-_secureTrigger setTriggerArea       [10, 10, 0, false, 10];
-_secureTrigger setTriggerActivation ["WEST SEIZED", "PRESENT", false];
-_secureTrigger setTriggerStatements ["this", _secureActivation, ""];
+private _secureActivation = "[""den_containerSecure""] call den_fnc_publicBool;[container,3000] call den_fnc_sling";
+private _secureTrigger = createTrigger ["EmptyDetector", _containerPos, false];
+_secureTrigger setTriggerArea          [10, 10, 0, false, 10];
+_secureTrigger setTriggerActivation    ["WEST SEIZED", "PRESENT", false];
+_secureTrigger setTriggerStatements    ["this", _secureActivation, ""];
 
-_extractActivation = "[""den_containerExtract""] call den_fnc_publicBool;";
-_extractTrigger = createTrigger      ["EmptyDetector", _aoPos, false];
-_extractTrigger setTriggerArea       _aoArea;
-_extractTrigger setTriggerActivation ["LOGIC", "PRESENT", false];
-_extractTrigger setTriggerStatements ["!(container inArea thisTrigger)", _extractActivation, ""];
+private _extractActivation = "[""den_containerExtract""] call den_fnc_publicBool;";
+private _extractTrigger = createTrigger ["EmptyDetector", _aoPos, false];
+_extractTrigger setTriggerArea          _aoArea;
+_extractTrigger setTriggerActivation    ["LOGIC", "PRESENT", false];
+_extractTrigger setTriggerStatements    ["!(container inArea thisTrigger)", _extractActivation, ""];
 
 /*
  * guard
  */
 createGuardedPoint [east, [0,0], -1, container];
-_guardGroup = [
+
+private _guardGroup = [
     _containerPos, // position
     100,           // radius
     _faction
@@ -141,6 +137,7 @@ if (!isNull _guardGroup) then {
 /*
  * reinforcements
  */
+
 [
     _containerPos,
     _aoRadius,

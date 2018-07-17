@@ -21,11 +21,12 @@ params ["_pos", "_radius", "_faction"];
 _pos     = _this param [0, [], [[]], [2,3]];
 _radius  = _this param [1, 0, [0]];
 _faction = _this param [2, "CSAT", [""]];
-_min     = 0;
-_objDist = 5;
-_maxGrad = -1;
 
-_type = configNull;
+private _min     = 0;
+private _objDist = 5;
+private _maxGrad = -1;
+
+private _type = configNull;
 switch (_faction) do {
     case "CSAT": {
         _type = configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam";
@@ -39,12 +40,12 @@ if (isNull _type) exitWith {
     grpNull;
 };
 
-_groupPos = [_pos, 0, _radius, _objDist, 0, _maxGrad, 0, [], [[0,0,0]]] call BIS_fnc_findSafePos;
+private _groupPos = [_pos, 0, _radius, _objDist, 0, _maxGrad, 0, [], [[0,0,0]]] call BIS_fnc_findSafePos;
 if (_groupPos isEqualTo [0,0,0]) exitWith {
     ["faild to find position"] call BIS_fnc_error;
     grpNull;
 };
 
-_group = [_groupPos, opfor, _type] call BIS_fnc_spawnGroup;
+private _group = [_groupPos, opfor, _type] call BIS_fnc_spawnGroup;
 
 _group;

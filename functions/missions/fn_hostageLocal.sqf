@@ -51,13 +51,13 @@ _situationText = format["A NATO pilot was downed and taken hostage by %1 forces.
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 
-_taskQueue = [
+private _taskQueue = [
     [[blufor, "hostageFindTask", "FindHostage",  "hostageMarker", "CREATED",1,true,"move"], "den_hostageFound"],
     [[blufor, "hostageFreeTask", "FreeHostage",  objNull,         "CREATED",1,true,"help"], "den_hostageFree"],
     [[blufor, "exfilTask",       "ExfilHostage", "exfilMarker",   "CREATED",1,true,"move"], "den_hostageTransport"]
 ];
 
-_failQueue = [
+private _failQueue = [
     ["HostageDead",   "den_hostageDead"],
     ["ExfilHeloDead", "den_exfilHeloDead"]
 ];

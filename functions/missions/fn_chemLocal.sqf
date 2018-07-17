@@ -47,17 +47,17 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-_situationText = format["%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> at position <marker name='aoMarker'>%2</marker>. NATO forces are to extract this asset via helo.", _faction, _ao];
+private _situationText = format["%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> at position <marker name='aoMarker'>%2</marker>. NATO forces are to extract this asset via helo.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 
-_taskQueue = [
+private _taskQueue = [
     [[blufor, "secureContainer",  "SecureContainer",  objNull, "CREATED", 1, true, "move"],     "den_containerSecure"],
     [[blufor, "containerExtract", "ContainerExtract", objNull, "CREATED", 1, true, "container"],"den_containerExtract"],
     [[blufor, "exfil",            "exfil",            objNull, "CREATED", 1, true, "move"],     "den_atExfil"]
 ];
 
-_failQueue = [
+private _failQueue = [
     ["SlingDead",     "den_slingDead"],
     ["ContainerDead", "den_containerDead"]
 ];
