@@ -8,6 +8,8 @@ if (isServer) then {
     _factionParam = -1;
     _hourParam    = -1;
 
+    _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
+
     if (isMultiplayer) then {
         enableSaving [FALSE, FALSE];
 
@@ -26,7 +28,8 @@ if (isServer) then {
     };
 
     if (_missionParam < 0) then {
-        den_mission = [0, 2] call BIS_fnc_randomInt;
+        den_mission = [1, _missionCount] call BIS_fnc_randomInt;
+        den_mission = den_mission - 1;
     } else {
         den_mission = _missionParam;
     };

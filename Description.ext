@@ -54,6 +54,9 @@ class Params
         texts[] = {"Random", "Container Extraction", "Clear Area", "Hostage Rescue"};
         values[] = {-1,0,1,2};
         default = -1;
+
+        // This must be incremented for each new mission.
+        count = 3;
     };
     class RespawnTickets
     {
