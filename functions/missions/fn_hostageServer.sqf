@@ -129,11 +129,11 @@ if (!isNull _guardGroup) then {
  * reinforcements
  */
  [
-    _hostagePos,
+    _aoPos,
+    _aoArea,
     _aoRadius,
     _aoRadius + 50,
-    _faction,
-    "aoMarker"
-] call den_fnc_reinforce;
+    _faction
+] call den_fnc_reinforceTrigger;
 
 _aoName;

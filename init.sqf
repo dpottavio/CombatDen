@@ -57,6 +57,7 @@ if (isServer) then {
     publicVariable "den_overcast";
 
     _missionArgs = [alphaGroup, den_faction, _islandLocations];
+    den_ao = "";
     switch (den_mission) do {
         case 0: {
             den_ao = _missionArgs call den_fnc_clearServer;
@@ -83,13 +84,13 @@ if !(isDedicated) then {
         sleep 2;
         titleCut ["", "BLACK IN", 1];
 
-        if (den_ao == "") then {
+        if (isNil "den_ao" || den_ao == "") then {
             ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
         };
     };
 };
 
-if (den_ao == "") exitWith {
+if (isNil "den_ao" || den_ao == "") exitWith {
     player createDiaryRecord ["Diary", ["Error", "There was an error generating the AO.  Please restart the mission."]];
 };
 
