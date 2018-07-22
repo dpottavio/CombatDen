@@ -45,30 +45,36 @@ private _aoRadius = _aoArea select 0;
 /*
  * insert
  */
-private _insert = [
+private _insertPos = [
     _aoPos,
     _minInsert + _aoRadius,
     _maxInsert + _aoRadius,
     _group
 ] call den_fnc_randInsert;
 
-if (_insert isEqualTo []) exitWith {
+if (_insertPos isEqualTo []) exitWith {
     "";
 };
 
 /*
  * exfil
  */
-private _exfil = [
+private _exfilPos = [
     _aoPos,
     _minExfil + _aoRadius,
     _maxExfil + _aoRadius,
     "den_containerExtract"
 ] call den_fnc_randExfil;
 
-if (_exfil isEqualTo [0,0,0]) exitWith {
+if (_exfilPos isEqualTo [0,0,0]) exitWith {
     "";
 };
+
+[
+    _exfilPos,
+    (_exfilPos getDir _aoPos) - 180, // helicopter direction
+    "den_containerExtract"
+] call den_fnc_exfilTrigger;
 
 /*
  * container
