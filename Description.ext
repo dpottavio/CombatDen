@@ -8,10 +8,12 @@ class CfgFunctions
 		class common
 		{
             file = "functions\common";
+            class composition {};
+            class enemyGroup {};
             class exfilTrigger {};
-            class motorPatrol {};
             class heloExfil {};
             class hostage {};
+            class motorPatrol {};
             class patrol {};
             class publicBool {};
             class randAo {};
@@ -29,6 +31,8 @@ class CfgFunctions
         class mission
         {
             file = "functions\missions";
+            class campLocal {};
+            class campServer {};
             class clearLocal {};
             class clearServer {};
             class chemLocal {};
@@ -146,5 +150,47 @@ class CfgTaskDescriptions
     {
         title       = "Container Extraction";
         description = "Wait for container extraction.";
+    };
+    class RaidCamp
+    {
+        title = "Raid Camp";
+        description = "Raid the enemy recon camp.";
+    };
+    class SearchCamp
+    {
+        title = "Search Camp";
+        description = "Search the camp for intel.  Check equipment and enemy bodies.";
+    };
+};
+
+class CfgGroups
+{
+    class Guerrilla
+    {
+        class Infantry
+        {
+            class ReconSentry
+            {
+                faction = "OPF_G_F";
+                name = "Recon Sentry";
+                side = 0;
+
+                class Unit0
+                {
+                    position[] = {0,0,0};
+                    rank = "SERGEANT";
+                    vehicle = "O_G_soldier_M_F";
+                    side = 0;
+                };
+
+                class Unit1
+                {
+                    position[] = {5,-5,0};
+                    rank = "PRIVATE";
+                    vehicle = "O_G_soldier_F";
+                    side = 0;
+                };
+            };
+        };
     };
 };

@@ -22,53 +22,44 @@ _group     = _this param [0, grpNull, [grpNull]];
 _faction   = _this param [1, "CSAT", [""]];
 _blacklist = _this param [2, [], [[]]];
 
-private _minInsert = 500;
-private _maxInsert = 550;
-private _minExfil  = 200;
-private _maxExfil  = 250;
-
 if (isNull _group) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
     "";
 };
 
+private _aoRadius  = 500;
+private _minInsert = _aoRadius + 500;
+private _maxInsert = _aoRadius + 550;
+private _minExfil  = _aoRadius + 200;
+private _maxExfil  = _aoRadius + 250;
+private _minContainer = 0;
+private _maxContainer = _aoRadius * 0.5;
+
+private _safePosParams = [
+    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
+    [_minExfil,     _maxExfil,     15, 0.1], // exfil safe position
+    [_minContainer, _maxContainer, 15, 0.1]  // container safe position
+];
+
 private _ao = [
     ["NameCity", "NameVillage", "NameLocal"],
-    _blacklist
+    _blacklist,
+    _aoRadius,
+    _safePosParams
 ] call den_fnc_randAo;
 
-private _aoName   = _ao select 0;
-private _aoPos    = _ao select 1;
-private _aoArea   = _ao select 2;
-private _aoRadius = _aoArea select 0;
+private _aoName        = _ao select 0;
+private _aoPos         = _ao select 1;
+private _aoArea        = _ao select 2;
+private _aoRadius      = _aoArea select 0;
+private _aoSafePosList = _ao select 3;
+private _insertPos     = _aoSafePosList select 0;
+private _exfilPos      = _aoSafePosList select 1;
+private _containerPos  = _aoSafePosList select 2;
 
-/*
- * insert
- */
-private _insertPos = [
-    _aoPos,
-    _minInsert + _aoRadius,
-    _maxInsert + _aoRadius,
-    _group
-] call den_fnc_randInsert;
+[_insertPos, _group] call den_fnc_randInsert;
 
-if (_insertPos isEqualTo []) exitWith {
-    "";
-};
-
-/*
- * exfil
- */
-private _exfilPos = [
-    _aoPos,
-    _minExfil + _aoRadius,
-    _maxExfil + _aoRadius,
-    "den_containerExtract"
-] call den_fnc_randExfil;
-
-if (_exfilPos isEqualTo [0,0,0]) exitWith {
-    "";
-};
+[_exfilPos] call den_fnc_randExfil;
 
 [
     _exfilPos,
@@ -79,23 +70,6 @@ if (_exfilPos isEqualTo [0,0,0]) exitWith {
 /*
  * container
  */
-private _containerPos = [
-    _aoPos,           // position
-    0,                // min position
-    _aoRadius * 0.5,  // max position
-    15,               // obj distance
-    0,                // water mode
-    0.1,              // gradient
-    0,                // shore mode
-    [],               // blacklist
-    [[0,0,0]]         // default pos
-] call BIS_fnc_findSafePos;
-
-if (_containerPos isEqualTo [0,0,0]) exitWith {
-    ["failed to find a safe container position"] call BIS_fnc_error;
-    "";
-};
-
 container = "Land_Pod_Heli_Transport_04_fuel_F" createVehicle _containerPos;
 
 container addEventHandler ["killed", {
@@ -122,17 +96,17 @@ _extractTrigger setTriggerStatements    ["!(container inArea thisTrigger)", _ext
 /*
  * guard
  */
-createGuardedPoint [east, [0,0], -1, container];
-
 private _guardGroup = [
-    _containerPos, // position
-    100,           // radius
-    _faction
-] call den_fnc_randFireTeam;
+   _containerPos getPos[10, 0], // 10m offset from container
+   _faction,
+   "fire"
+] call den_fnc_enemyGroup;
 
-if (!isNull _guardGroup) then {
-    [_guardGroup, _containerPos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
+if (isNull _guardGroup) exitWith {
+    ""
 };
+createGuardedPoint [east, [0,0], -1, container];
+[_guardGroup, _containerPos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 /*
  * patrol
@@ -144,10 +118,10 @@ if (!isNull _guardGroup) then {
  * reinforcements
  */
 [
-    _aoPos,
+    _containerPos,
     _aoArea,
-    _aoRadius,
-    _aoRadius + 50,
+    _aoRadius,      // min distance
+    _aoRadius + 50, // max distance
     _faction
 ] call den_fnc_reinforceTrigger;
 

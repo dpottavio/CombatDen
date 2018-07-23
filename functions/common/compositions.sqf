@@ -1,0 +1,38 @@
+/*
+ * A collection of compositions in the array format suitable for BIS_fnc_objectsMapper.
+ */
+private _camp01 = [
+	["CamoNet_OPFOR_open_F",[0,0,-0.00535774],359.947,1,0,[],"net","",true,false],
+	["ACE_medicalSupplyCrate",[-2.76758,0.470703,9.53674e-005],267.83,1,0,[],"","",true,false],
+	["O_supplyCrate_F",[-3.58203,0.289063,0.0156441],86.5154,1,0.010181,[],"","",true,false],
+	["Land_TentDome_F",[0.214844,8.18359,-0.0135384],359.992,1,0,[],"","",true,false],
+	["Land_TentDome_F",[3.42773,8.14453,-0.0684013],359.953,1,0,[],"","",true,false],
+	["Land_TentDome_F",[-3.03516,8.18359,-0.0134754],359.992,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[-0.900391,-11.5977,-0.0875206],179.051,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[2.00781,-11.5273,0.104704],179.127,1,0,[],"","",true,false],
+	["Land_TentDome_F",[0.427734,12.0195,-0.0499802],359.98,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[-3.78516,-11.6348,-0.103802],179.052,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[-6.32031,-10.9492,0.024971],51.8953,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[4.76563,-11.4922,0.133354],179.128,1,0,[],"","",true,false],
+	["Land_TentDome_F",[-3.12695,11.9316,0.00492668],359.95,1,0,[],"","",true,false],
+	["Land_TentDome_F",[3.55273,12.0195,-0.0670738],359.818,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[7.37891,-10.7559,-0.00103951],295.357,1,0,[],"","",true,false],
+	["O_HMG_01_high_F",[12.9551,1.02148,-0.110174],95.4887,1,0,[],"","",true,false],
+	["O_HMG_01_high_F",[-12.8047,1.19141,-0.0345402],273.799,1,0,[],"","",true,false],
+	["Land_BagBunker_Small_F",[13.9395,1.08398,-0.0363102],266.953,1,0,[],"","",true,false],
+	["Land_BagBunker_Small_F",[-14.4121,0.578125,0.0286312],85.5738,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[14.748,-4.85352,0.0133152],323.607,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[-15.0527,-5.53516,0.0545559],24.6187,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[15.543,-2.29102,0.265713],90.9961,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[-15.8066,-2.89063,-0.0789776],269.696,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[15.3887,4.53516,-0.0772667],90.6131,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[14.6934,7.23633,0.0155544],206.214,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[1.19727,16.2305,0.0767746],359.98,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[-1.67773,16.2305,0.0995693],359.98,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[-15.4863,6.51758,-0.0319691],141.854,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[-16.1641,3.95703,0.0714035],269.533,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[6.64453,15.5293,-0.0259075],231.535,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[4.0957,16.2559,0.028923],0.21356,1,0,[],"","",true,false],
+	["Land_BagFence_Long_F",[-4.41016,16.2305,0.0436611],359.98,1,0,[],"","",true,false],
+	["Land_BagFence_Round_F",[-7.02734,15.5371,0.101843],115.778,1,0,[],"","",true,false]
+];

@@ -36,32 +36,29 @@ player createDiaryRecord ["Diary", ["Execution",
 "
 1. Start from <marker name='insertMarker'>insert</marker>.
 <br/>
-2. Secure chemical weapon <marker name='containerMarker'>container</marker> for extraction.
+2. Raid enemy <marker name='campMarker'>camp</marker> for intel.
+<br/>
+3. Collect intel.
 <br/>
 3. Go to the <marker name='exfilMarker'>exfil</marker>.
 "
 ]];
 
 player createDiaryRecord ["Diary", ["Mission",
-"Extract chemical weapon <marker name='containerMarker'>container</marker>.
+"Gain enemy intel.
 "
 ]];
 
-private _situationText = format["%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> at position <marker name='aoMarker'>%2</marker>. NATO forces are to extract this asset via helo.", _faction, _ao];
+private _situationText = format["%1 forces have a recon <marker name='campMarker'>camp</marker> at position <marker name='aoMarker'>%2</marker>. NATO forces are to raid this camp and gather intel.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 
 private _taskQueue = [
-    [[blufor, "secureContainer",  "SecureContainer", "containerMarker","CREATED", 1,true,"move"],     "den_containerSecure"],
-    [[blufor, "containerExtract", "ContainerExtract","containerMarker","CREATED", 1,true,"container"],"den_containerExtract"],
-    [[blufor, "exfil",            "exfil",           "exfilMarker",    "CREATED", 1,true,"move"],     "den_atExfil"]
+    [[blufor, "raidCamp",   "RaidCamp",   "campMarker",  "CREATED", 1, true, "attack"], "den_campSeized"],
+    [[blufor, "searchCamp", "SearchCamp", objNull,       "CREATED", 1, true, "search"], "den_intelFound"],
+    [[blufor, "exfil",      "exfil",      "exfilMarker", "CREATED", 1, true, "move"],   "den_atExfil"]
 ];
 
-private _failQueue = [
-    ["SlingDead",     "den_slingDead"],
-    ["ContainerDead", "den_containerDead"]
-];
-
-[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
+[_taskQueue] spawn den_fnc_taskFsm;
 
 true;

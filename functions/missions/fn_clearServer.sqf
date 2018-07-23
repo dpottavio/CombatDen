@@ -22,18 +22,32 @@ _group     = _this param [0, grpNull, [grpNull]];
 _faction   = _this param [1, "CSAT", [""]];
 _blacklist = _this param [2, [], [[]]];
 
-private _minInsert = 500;
-private _maxInsert = 550;
+if (isNull _group) exitWith {
+    ["group parameter must not be null"] call BIS_fnc_error;
+    "";
+};
+
+private _aoRadius  = 500;
+private _minInsert = _aoRadius + 500;
+private _maxInsert = _aoRadius + 550;
+
+private _safePosParams = [
+    [_minInsert, _maxInsert, 15, 0.1] // insert safe position
+];
 
 private _ao = [
     ["NameCity", "NameVillage", "NameLocal"],
-    _blacklist
+    _blacklist,
+    _aoRadius,
+    _safePosParams
 ] call den_fnc_randAo;
 
-private _aoName   = _ao select 0;
-private _aoPos    = _ao select 1;
-private _aoArea   = _ao select 2;
-private _aoRadius = _aoArea select 0;
+private _aoName        = _ao select 0;
+private _aoPos         = _ao select 1;
+private _aoArea        = _ao select 2;
+private _aoRadius      = _aoArea select 0;
+private _aoSafePosList = _ao select 3;
+private _insertPos     = _aoSafePosList select 0;
 
 private _aoActivation = "missionNamespace setVariable [""aoClear"", TRUE, TRUE];";
 private _aoTrigger = createTrigger ["EmptyDetector", _aoPos, false];
@@ -41,19 +55,7 @@ _aoTrigger setTriggerArea          [_aoRadius, _aoRadius, 0, false];
 _aoTrigger setTriggerActivation    ["EAST", "NOT PRESENT", false];
 _aoTrigger setTriggerStatements    ["this", _aoActivation, ""];
 
-/*
- * insert
- */
-private _insert = [
-    _aoPos,
-    _minInsert + _aoRadius,
-    _maxInsert + _aoRadius,
-    _group
-] call den_fnc_randInsert;
-
-if (_insert isEqualTo []) exitWith {
-    "";
-};
+[_insertPos, _group] call den_fnc_randInsert;
 
 /*
  * bunkers

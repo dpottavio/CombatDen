@@ -22,53 +22,44 @@ _group     = _this param [0, grpNull, [grpNull]];
 _faction   = _this param [1, "CSAT", [""]];
 _blacklist = _this param [2, [], [[]]];
 
-private _minInsert = 500;
-private _maxInsert = 550;
-private _minExfil  = 200;
-private _maxExfil  = 250;
+if (isNull _group) exitWith {
+    ["group parameter must not be null"] call BIS_fnc_error;
+    "";
+};
 
-// HACK: For some reason _group looses it's reference to the caller's
-// _group parameter.  When passing it to den_fnc_hostage it's a garbage
-// group.  Putting this assignment alias in place until I can figure
-// out what is wrong.
-//_rescueGroup = _group;
+private _aoRadius   = 500;
+private _minInsert  = _aoRadius + 500;
+private _maxInsert  = _aoRadius + 550;
+private _minExfil   = _aoRadius + 200;
+private _maxExfil   = _aoRadius + 250;
+private _minHostage = 0;
+private _maxHostage = _aoRadius * 0.25;
+
+private _safePosParams = [
+    [_minInsert,  _maxInsert,  15, 0.1], // insert safe position
+    [_minExfil,   _maxExfil,   15, 0.1], // exfil safe position
+    [_minHostage, _maxHostage, 10, 0.1]  // hostage safe position
+];
 
 private _ao = [
     ["NameCity", "NameVillage", "NameLocal"],
-    _blacklist
+    _blacklist,
+    _aoRadius,
+    _safePosParams
 ] call den_fnc_randAo;
 
-private _aoName   = _ao select 0;
-private _aoPos    = _ao select 1;
-private _aoArea   = _ao select 2;
-private _aoRadius = _aoArea select 0;
+private _aoName        = _ao select 0;
+private _aoPos         = _ao select 1;
+private _aoArea        = _ao select 2;
+private _aoRadius      = _aoArea select 0;
+private _aoSafePosList = _ao select 3;
+private _insertPos     = _aoSafePosList select 0;
+private _exfilPos      = _aoSafePosList select 1;
+private _hostagePos    = _aoSafePosList select 2;
 
-/*
- * insert
- */
-private _insert = [
-    _aoPos,
-    _minInsert + _aoRadius,
-    _maxInsert + _aoRadius,
-    _group
-] call den_fnc_randInsert;
+[_insertPos, _group] call den_fnc_randInsert;
 
-if (_insert isEqualTo []) exitWith {
-    "";
-};
-
-/*
- * exfil
- */
-private _exfilPos = [
-    _aoPos,
-    _minExfil + _aoRadius,
-    _maxExfil + _aoRadius
-] call den_fnc_randExfil;
-
-if (_exfilPos isEqualTo []) exitWith {
-    "";
-};
+[_exfilPos] call den_fnc_randExfil;
 
 [
     _exfilPos,
@@ -85,23 +76,6 @@ if (_exfilPos isEqualTo []) exitWith {
 /*
  * hostage
  */
-private _hostagePos = [
-    _aoPos,           // center pos
-    0,                // min dist
-    _aoRadius * 0.25, // max dist
-    10,               // object dist
-    0,                // water mode
-    0.1,              // max gradient
-    0,                // shore mode
-    [],               // backlist
-    [[0,0,0]]         // default
-] call BIS_fnc_findSafePos;
-
-if (_hostagePos isEqualTo [0,0,0]) exitWith {
-    ["could not find safe hostage position"] call BIS_fnc_error;
-    "";
-};
-
 "CamoNet_OPFOR_open_F" createVehicle _hostagePos;
 
 [_hostagePos, _group, "B_Heli_Transport_01_camo_F"] call den_fnc_hostage;
@@ -115,10 +89,10 @@ createMarker ["hostageMarker", _hostagePos];
  * guards
  */
 private _guardGroup = [
-    _hostagePos,
-    30,          // radius
-    _faction
-] call den_fnc_randFireTeam;
+    _hostagePos getPos [10, 0],
+    _faction,
+    "fire"
+] call den_fnc_enemyGroup;
 
 if (!isNull _guardGroup) then {
     createGuardedPoint [east, _hostagePos, -1, objNull];
@@ -129,10 +103,10 @@ if (!isNull _guardGroup) then {
  * reinforcements
  */
  [
-    _aoPos,
+    _hostagePos,
     _aoArea,
-    _aoRadius,
-    _aoRadius + 50,
+    _aoRadius,      // min distance
+    _aoRadius + 50, // max distance
     _faction
 ] call den_fnc_reinforceTrigger;
 

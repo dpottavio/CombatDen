@@ -1,6 +1,10 @@
 
 if (isServer) then {
-    _islandLocations = ["Atsalis", "Cape Makrinos", "Pyrgi", "Fournos", "Savri", "Polemistia", "Makrynisi", "Savri", "Chelonisi", "Monisi"];
+    _islandLocations = [
+        "Atsalis",   "Cape Makrinos", "Pyrgi",     "Fournos",
+        "Savri",     "Polemistia",    "Makrynisi", "Savri",
+        "Chelonisi", "Monisi"
+    ];
 
     alphaGroup setGroupIdGlobal ["Alpha"];
 
@@ -63,12 +67,15 @@ if (isServer) then {
     den_ao = "";
     switch (den_mission) do {
         case 0: {
-            den_ao = _missionArgs call den_fnc_clearServer;
+            den_ao = _missionArgs call den_fnc_campServer;
         };
         case 1: {
-            den_ao = _missionArgs call den_fnc_chemServer;
+            den_ao = _missionArgs call den_fnc_clearServer;
         };
         case 2: {
+            den_ao = _missionArgs call den_fnc_chemServer;
+        };
+        case 3: {
             den_ao = _missionArgs call den_fnc_hostageServer;
         };
     };
@@ -102,12 +109,15 @@ if (isNil "den_ao" || den_ao == "") exitWith {
 _missionArgs = [den_ao, den_faction];
 switch (den_mission) do {
     case 0: {
-         _missionArgs call den_fnc_clearLocal;
+        _missionArgs call den_fnc_campLocal;
     };
     case 1: {
-        _missionArgs call den_fnc_chemLocal;
+         _missionArgs call den_fnc_clearLocal;
     };
     case 2: {
+        _missionArgs call den_fnc_chemLocal;
+    };
+    case 3: {
         _missionArgs call den_fnc_hostageLocal;
     };
 };

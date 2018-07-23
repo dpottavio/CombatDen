@@ -47,7 +47,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-_situationText = format["A NATO pilot was downed and taken hostage by %1 forces. He is currently being held in a camp located at <marker name='aoMarker'>%2</marker>.", _faction, _ao];
+_situationText = format["A NATO pilot was downed and taken hostage by %1 forces. He is currently being held in a camp located at position <marker name='aoMarker'>%2</marker>.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

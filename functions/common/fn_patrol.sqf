@@ -14,15 +14,31 @@
     2: (Optional) STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
-    Returns: GROUP on success, grpNull if a suitable position could not be found.
+    3: (Optional) STRING - Unit type. See den_fnc_enemyGroup for supported unit types.
+
+    Returns: GROUP on success, grpNull on error.
 */
-params ["_pos", "_radius", "_faction"];
+params ["_pos", "_radius", "_faction", "_type"];
 
 _pos     = _this param [0, [], [[]], [2,3]];
 _radius  = _this param [1, 0, [0]];
 _faction = _this param [2, "CSAT", [""]];
+_type    = _this param [3, "", [""]];
 
-private _group = [_pos, _radius, _faction] call den_fnc_randFireTeam;
+private _groupPos = [
+    _pos,     // center position
+    0,        // min distance
+    _radius,  // max distance
+    1,        // min object distance
+    0,        // water mode
+    -1,       // max gradient
+    0,        // shore mode
+    [],       // blacklist
+    [_pos]    // default position
+] call BIS_fnc_findSafePos;
+
+private _group = [_groupPos, _faction, _type] call den_fnc_enemyGroup;
+
 if (!isNull _group) then {
     [_group, _pos, _radius, 5, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [30,60,120] ] call CBA_fnc_taskPatrol;
 };
