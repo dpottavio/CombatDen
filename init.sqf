@@ -70,10 +70,10 @@ if (isServer) then {
             den_ao = _missionArgs call den_fnc_campServer;
         };
         case 1: {
-            den_ao = _missionArgs call den_fnc_clearServer;
+            den_ao = _missionArgs call den_fnc_chemServer;
         };
         case 2: {
-            den_ao = _missionArgs call den_fnc_chemServer;
+            den_ao = _missionArgs call den_fnc_clearServer;
         };
         case 3: {
             den_ao = _missionArgs call den_fnc_hostageServer;
@@ -112,10 +112,10 @@ switch (den_mission) do {
         _missionArgs call den_fnc_campLocal;
     };
     case 1: {
-         _missionArgs call den_fnc_clearLocal;
+        _missionArgs call den_fnc_chemLocal;
     };
     case 2: {
-        _missionArgs call den_fnc_chemLocal;
+       _missionArgs call den_fnc_clearLocal;
     };
     case 3: {
         _missionArgs call den_fnc_hostageLocal;

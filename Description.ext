@@ -10,17 +10,16 @@ class CfgFunctions
             file = "functions\common";
             class composition {};
             class enemyGroup {};
+            class exfil {};
             class exfilTrigger {};
             class heloExfil {};
             class hostage {};
+            class insert {};
             class motorPatrol {};
             class patrol {};
             class publicBool {};
             class randAo {};
             class randBunker {};
-            class randExfil {};
-            class randFireTeam {};
-            class randInsert {};
             class randTime {};
             class randWeather {};
             class reinforce {};
@@ -55,12 +54,12 @@ class Params
     class Mission
     {
         title = "Mission";
-        texts[] = {"Random", "Container Extraction", "Clear Area", "Hostage Rescue"};
-        values[] = {-1,0,1,2};
+        texts[] = {"Random", "Camp Raid", "Container Extraction", "Clear Area", "Hostage Rescue"};
+        values[] = {-1,0,1,2,3};
         default = -1;
 
         // This must be incremented for each new mission.
-        count = 3;
+        count = 4;
     };
     class RespawnTickets
     {

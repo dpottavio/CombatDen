@@ -55,7 +55,7 @@ _aoTrigger setTriggerArea          [_aoRadius, _aoRadius, 0, false];
 _aoTrigger setTriggerActivation    ["EAST", "NOT PRESENT", false];
 _aoTrigger setTriggerStatements    ["this", _aoActivation, ""];
 
-[_insertPos, _group] call den_fnc_randInsert;
+[_insertPos, _group] call den_fnc_insert;
 
 /*
  * bunkers

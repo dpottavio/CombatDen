@@ -62,9 +62,9 @@ private _insertPos     = _aoSafePosList select 0;
 private _exfilPos      = _aoSafePosList select 1;
 private _campPos       = _aoSafePosList select 2;
 
-[_insertPos, _group] call den_fnc_randInsert;
+[_insertPos, _group] call den_fnc_insert;
 
-[_exfilPos] call den_fnc_randExfil;
+[_exfilPos] call den_fnc_exfil;
 
 [
     _exfilPos,
