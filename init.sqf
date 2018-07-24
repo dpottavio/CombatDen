@@ -60,7 +60,7 @@ if (isServer) then {
     };
     setDate [2030, _month, 1, _hour, 0];
 
-    den_overcast = [_hour] call den_fnc_randWeather;
+    den_overcast = [_month] call den_fnc_randWeather;
     publicVariable "den_overcast";
 
     _missionArgs = [alphaGroup, den_faction, _islandLocations];

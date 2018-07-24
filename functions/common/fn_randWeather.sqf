@@ -18,7 +18,7 @@ params ["_month"];
 _month = _this param [0, -1, [0]];
 
 if (_month < 0) then {
-    _now = date;
+    private _now = date;
     _month = _now select 1;
 };
 
