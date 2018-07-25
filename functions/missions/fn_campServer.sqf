@@ -142,8 +142,8 @@ _trigger setTriggerStatements    ["this", _activation, ""];
  [
     _campPos,
     _aoArea,
-    _aoRadius,      // min distance
-    _aoRadius + 50, // max distance
+    _minExfil,
+    _maxExfil,
     _faction
 ] call den_fnc_reinforceTrigger;
 

@@ -105,8 +105,8 @@ if (!isNull _guardGroup) then {
  [
     _hostagePos,
     _aoArea,
-    _aoRadius,      // min distance
-    _aoRadius + 50, // max distance
+    _minExfil,
+    _maxExfil,
     _faction
 ] call den_fnc_reinforceTrigger;
 

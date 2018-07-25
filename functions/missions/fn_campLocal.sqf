@@ -40,7 +40,7 @@ player createDiaryRecord ["Diary", ["Execution",
 <br/>
 3. Collect intel.
 <br/>
-3. Go to the <marker name='exfilMarker'>exfil</marker>.
+4. Go to the <marker name='exfilMarker'>exfil</marker>.
 "
 ]];
 

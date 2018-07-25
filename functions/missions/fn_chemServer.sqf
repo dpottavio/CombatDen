@@ -120,8 +120,8 @@ createGuardedPoint [east, [0,0], -1, container];
 [
     _containerPos,
     _aoArea,
-    _aoRadius,      // min distance
-    _aoRadius + 50, // max distance
+    _minExfil,
+    _maxExfil,
     _faction
 ] call den_fnc_reinforceTrigger;
 
