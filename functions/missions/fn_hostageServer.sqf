@@ -70,8 +70,8 @@ private _hostagePos    = _aoSafePosList select 2;
 /*
  * patrol
  */
-[_aoPos, _aoRadius * 0.5,  _faction] call den_fnc_patrol;
-[_aoPos, _aoRadius * 0.75, _faction] call den_fnc_motorPatrol;
+[_aoPos, _aoRadius * 0.5,  _faction, "FireTeam"] call den_fnc_patrol;
+[_aoPos, _aoRadius * 0.75, _faction, "MotorizedHmg"] call den_fnc_patrol;
 
 /*
  * hostage
@@ -91,7 +91,7 @@ createMarker ["hostageMarker", _hostagePos];
 private _guardGroup = [
     _hostagePos getPos [10, 0],
     _faction,
-    "fire"
+    "FireTeam"
 ] call den_fnc_enemyGroup;
 
 if (!isNull _guardGroup) then {

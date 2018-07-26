@@ -72,6 +72,6 @@ _aoTrigger setTriggerStatements    ["this", _aoActivation, ""];
 /*
  * patrol
  */
-[_aoPos, _aoRadius * 0.75, _faction] call den_fnc_motorPatrol;
+[_aoPos, _aoRadius * 0.75, _faction, "MotorizedHmg"] call den_fnc_patrol;
 
 _aoName;

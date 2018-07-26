@@ -82,7 +82,7 @@ createMarker ["campMarker", _campPos];
 "campMarker" setMarkerColor "colorOPFOR";
 "campMarker" setMarkerText  "camp";
 
-private _campGroup = [_campPos, _faction, "reconSquad"] call den_fnc_enemyGroup;
+private _campGroup = [_campPos, _faction, "ReconSquad"] call den_fnc_enemyGroup;
 
 [_campGroup, _campPos, 0, "HOLD", "SAFE"] call CBA_fnc_addWaypoint;
 
@@ -134,7 +134,7 @@ _trigger setTriggerStatements    ["this", _activation, ""];
 /*
  * patrol
  */
-[_campPos, _aoRadius * 0.75, _faction, "reconSentry"] call den_fnc_patrol;
+[_campPos, _aoRadius * 0.75, _faction, "ReconSentry"] call den_fnc_patrol;
 
 /*
  * reinforcements

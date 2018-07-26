@@ -58,7 +58,7 @@ if (_deployPos isEqualTo [0,0,0]) exitWith {
     false
 };
 
-private _group = [_deployPos, _faction, "fire"] call den_fnc_enemyGroup;
+private _group = [_deployPos, _faction, "FireTeam"] call den_fnc_enemyGroup;
 
 [_group, _pos] call BIS_fnc_taskAttack;
 

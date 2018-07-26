@@ -31,4 +31,3 @@ if (_hour < 0) then {
 setDate [date select 0, _month, date select 2, _hour, 0];
 
 [_hour, _month];
-

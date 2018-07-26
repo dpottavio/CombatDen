@@ -97,9 +97,9 @@ _extractTrigger setTriggerStatements    ["!(container inArea thisTrigger)", _ext
  * guard
  */
 private _guardGroup = [
-   _containerPos getPos[10, 0], // 10m offset from container
-   _faction,
-   "fire"
+    _containerPos getPos[10, 0], // 10m offset from container
+    _faction,
+    "FireTeam"
 ] call den_fnc_enemyGroup;
 
 if (isNull _guardGroup) exitWith {
@@ -111,8 +111,8 @@ createGuardedPoint [east, [0,0], -1, container];
 /*
  * patrol
  */
-[_aoPos, _aoRadius * 0.5,  _faction] call den_fnc_motorPatrol;
-[_aoPos, _aoRadius * 0.75, _faction] call den_fnc_patrol;
+[_aoPos, _aoRadius * 0.5,  _faction, "MotorizedHmg"] call den_fnc_patrol;
+[_aoPos, _aoRadius * 0.75, _faction, "FireTeam"] call den_fnc_patrol;
 
 /*
  * reinforcements

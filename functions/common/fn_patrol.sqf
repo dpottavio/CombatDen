@@ -25,16 +25,23 @@ _radius  = _this param [1, 0, [0]];
 _faction = _this param [2, "CSAT", [""]];
 _type    = _this param [3, "", [""]];
 
+private _maxGrad    = -1;
+private _minObjDist = 2;
+if (_type == "MotorizedHmg") then {
+    _maxGrad    = 0.1;
+    _minObjDist = 10;
+};
+
 private _groupPos = [
-    _pos,     // center position
-    0,        // min distance
-    _radius,  // max distance
-    1,        // min object distance
-    0,        // water mode
-    -1,       // max gradient
-    0,        // shore mode
-    [],       // blacklist
-    [_pos]    // default position
+    _pos,        // center position
+    0,           // min distance
+    _radius,     // max distance
+    _minObjDist, // min object distance
+    0,           // water mode
+    _maxGrad,    // max gradient
+    0,           // shore mode
+    [],          // blacklist
+    [_pos]       // default position
 ] call BIS_fnc_findSafePos;
 
 private _group = [_groupPos, _faction, _type] call den_fnc_enemyGroup;
