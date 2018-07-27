@@ -29,9 +29,23 @@ if (_name == "") exitWith {
 
 private _objs = [];
 
-switch (_name) do {
-    case "camp01": {
-        _objs = _camp01;
+if (worldName == "Tanoa") then {
+    switch (_name) do {
+        case "camp01": {
+            _objs = _camp01Tropic;
+        };
+        case "camp02": {
+            _objs = _camp02Tropic;
+        };
+    };
+} else {
+    switch (_name) do {
+        case "camp01": {
+            _objs = _camp01;
+        };
+        case "camp02": {
+            _objs = _camp02;
+        };
     };
 };
 

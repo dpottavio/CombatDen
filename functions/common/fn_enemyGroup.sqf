@@ -31,7 +31,17 @@ if (_type == "") then {
     _type = "FireTeam";
 };
 
-private _cfgType = missionConfigFile >> "CfgGroups" >> _faction >> _type;
+private _cfgGroups = "";
+switch (worldName) do {
+    case "Tanoa": {
+        _cfgGroups = "CfgGroupsTropic";
+    };
+    default { // Altis, Malden, Stratis
+        _cfgGroups = "CfgGroups";
+    };
+};
+
+private _cfgType = missionConfigFile >> _cfgGroups >> _faction >> _type;
 if (isNil "_cfgType") exitWith {
     ["invalid config parameters"] call BIS_fnc_error;
     grpNull;

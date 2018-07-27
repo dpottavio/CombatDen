@@ -76,7 +76,7 @@ private _hostagePos    = _aoSafePosList select 2;
 /*
  * hostage
  */
-"CamoNet_OPFOR_open_F" createVehicle _hostagePos;
+[_hostagePos, "camp02"] call den_fnc_composition;
 
 [_hostagePos, _group, "B_Heli_Transport_01_camo_F"] call den_fnc_hostage;
 

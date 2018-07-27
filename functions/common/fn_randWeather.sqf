@@ -23,19 +23,39 @@ if (_month < 0) then {
 };
 
 private _overcast = 0;
-switch(_month) do {
-    case 1:  {_overcast = random[0.0, 0.7, 1.0]};
-    case 2:  {_overcast = random[0.0, 0.6, 1.0]};
-    case 3:  {_overcast = random[0.0, 0.5, 1.0]};
-    case 4:  {_overcast = random[0.0, 0.4, 1.0]};
-    case 5:  {_overcast = random[0.0, 0.35, 1.0]};
-    case 6:  {_overcast = random[0.0, 0.25, 1.0]};
-    case 7:  {_overcast = random[0.0, 0.1, 1.0]};
-    case 8:  {_overcast = random[0.0, 0.1, 1.0]};
-    case 9:  {_overcast = random[0.0, 0.15, 1.0]};
-    case 10: {_overcast = random[0.0, 0.4, 1.0]};
-    case 11: {_overcast = random[0.0, 0.7, 1.0]};
-    case 12: {_overcast = random[0.0, 0.8, 1.0]};
+switch (worldName) do {
+    case "Tanoa": {
+        switch(_month) do {
+            case 1:  {_overcast = random[0.0, 0.05, 1.0]};
+            case 2:  {_overcast = random[0.0, 0.15, 1.0]};
+            case 3:  {_overcast = random[0.0, 0.25, 1.0]};
+            case 4:  {_overcast = random[0.0, 0.5, 1.0]};
+            case 5:  {_overcast = random[0.0, 0.75, 1.0]};
+            case 6:  {_overcast = random[0.0, 0.95, 1.0]};
+            case 7:  {_overcast = random[0.0, 0.99, 1.0]};
+            case 8:  {_overcast = random[0.0, 0.99, 1.0]};
+            case 9:  {_overcast = random[0.0, 0.8, 1.0]};
+            case 10: {_overcast = random[0.0, 0.5, 1.0]};
+            case 11: {_overcast = random[0.0, 0.3, 1.0]};
+            case 12: {_overcast = random[0.0, 0.15, 1.0]};
+        };
+    };
+    default { // Altis, Malden, Stratis
+        switch(_month) do {
+            case 1:  {_overcast = random[0.0, 0.7, 1.0]};
+            case 2:  {_overcast = random[0.0, 0.6, 1.0]};
+            case 3:  {_overcast = random[0.0, 0.5, 1.0]};
+            case 4:  {_overcast = random[0.0, 0.4, 1.0]};
+            case 5:  {_overcast = random[0.0, 0.35, 1.0]};
+            case 6:  {_overcast = random[0.0, 0.25, 1.0]};
+            case 7:  {_overcast = random[0.0, 0.1, 1.0]};
+            case 8:  {_overcast = random[0.0, 0.1, 1.0]};
+            case 9:  {_overcast = random[0.0, 0.15, 1.0]};
+            case 10: {_overcast = random[0.0, 0.4, 1.0]};
+            case 11: {_overcast = random[0.0, 0.7, 1.0]};
+            case 12: {_overcast = random[0.0, 0.8, 1.0]};
+        };
+    };
 };
 
 _overcast;

@@ -70,7 +70,7 @@ private _containerPos  = _aoSafePosList select 2;
 /*
  * container
  */
-container = "Land_Pod_Heli_Transport_04_fuel_F" createVehicle _containerPos;
+container = "B_Slingload_01_Fuel_F" createVehicle _containerPos;
 
 container addEventHandler ["killed", {
     ["den_containerDead"] call den_fnc_publicBool;

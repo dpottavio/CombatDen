@@ -1,10 +1,22 @@
 
 if (isServer) then {
-    _islandLocations = [
-        "Atsalis",   "Cape Makrinos", "Pyrgi",     "Fournos",
-        "Savri",     "Polemistia",    "Makrynisi", "Savri",
-        "Chelonisi", "Monisi"
-    ];
+    _islandLocations = [];
+    switch (worldName) do {
+        case "Altis": {
+            _islandLocations = [
+                "Atsalis",   "Cape Makrinos", "Pyrgi",     "Fournos",
+                "Savri",     "Polemistia",    "Makrynisi", "Savri",
+                "Chelonisi", "Monisi"
+            ];
+        };
+        case "Tanoa": {
+            _islandLocation = [
+                "Imuri Island",   "Ile Douen",        "Ile Sainte-Marie",
+                "Ravi-ta Island", "Ile Saint-George", "Tuadua Island",
+                "Sosovu Island",  "Yasa Island"
+            ];
+        };
+    };
 
     alphaGroup setGroupIdGlobal ["Alpha"];
 
