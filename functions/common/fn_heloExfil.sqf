@@ -40,13 +40,6 @@ _heloObj addEventHandler ["killed", {
 
 [_heloGroup, _lzPos, 0, "TR UNLOAD", "AWARE"] call CBA_fnc_addWaypoint;
 
-/*
- * hq message to players
- */
-if (!isNil "hq") then {
-    [] spawn {
-        [hq, "Alpha, extraction helo is en route to the exfil."] remoteExec ["sideChat"];
-    };
-};
+[[blufor, "Base"], "Alpha, extraction helo is en route to the exfil."] remoteExec ["commandChat"];
 
 _heloObj;
