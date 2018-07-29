@@ -57,13 +57,13 @@ for [{_x = 1}, {_x <= _count}, {_x = _x + 1}] do {
 
     if (_bunkerPos isEqualTo [0,0,0]) exitWith {};
 
-    _bunkerPos = [_bunkerPos select 0, _bunkerPos select 1, 0];
+    private _bunkerPos = [_bunkerPos select 0, _bunkerPos select 1, 0];
     _posList pushBack _bunkerPos;
 
     private _area = [_bunkerPos, [100, 100, true]];
     _blacklist pushBack _area;
 
-    _bunker = _type createVehicle _bunkerPos;
+    private _bunker = _type createVehicle _bunkerPos;
     _bunker setDir (_bunkerPos getDir _pos);
 
     private _group = [_bunkerPos, _faction, "FireTeam"] call den_fnc_enemyGroup;
