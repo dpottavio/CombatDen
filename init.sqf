@@ -63,15 +63,6 @@ if (isServer) then {
     _hour  = _hourMonth select 0;
     _month = _hourMonth select 1;
 
-    if (_hour < 7 || _hour > 17) then {
-        // loadout update for nighttime
-        {
-            _x linkItem "ACE_NVG_Wide";
-            _x addPrimaryWeaponItem "ACE_acc_pointer_green";
-        } forEach units alphaGroup;
-    };
-    setDate [2030, _month, 1, _hour, 0];
-
     den_overcast = [_month] call den_fnc_randWeather;
     publicVariable "den_overcast";
 
@@ -99,16 +90,16 @@ if (isServer) then {
     waitUntil {!isNil "den_initDone"};
 };
 
-if !(isDedicated) then {
-    titleCut ["", "BLACK FADED", 100];
-    [] spawn {
-        waitUntil {!visibleMap};
-        sleep 2;
-        titleCut ["", "BLACK IN", 1];
+if (isDedicated) exitWith {};
 
-        if (isNil "den_ao" || den_ao == "") then {
-            ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
-        };
+titleCut ["", "BLACK FADED", 100];
+[] spawn {
+    waitUntil {!visibleMap};
+    sleep 2;
+    titleCut ["", "BLACK IN", 1];
+
+    if (isNil "den_ao" || den_ao == "") then {
+        ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
     };
 };
 
