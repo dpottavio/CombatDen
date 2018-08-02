@@ -157,7 +157,7 @@ class CfgTaskDescriptions
     class SearchCamp
     {
         title = "Search Camp";
-        description = "Search enemy bodies for intel.";
+        description = "Search camp for intel.";
     };
 };
 

@@ -101,18 +101,25 @@ private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
  * Attach a search action to a random camp unit to
  * trigger "den_intelFound".
  */
-den_searchUnit = selectRandom (units _campGroup);
-publicVariable "den_searchUnit";
+private _searchItems = nearestObjects [_campPos, ["Thing"], 10];
+if (_searchItems isEqualTo []) exitWith {
+    "";
+};
 
-den_searchUnit addEventHandler ["killed", {
-    removeAllActions den_searchUnit;
+den_searchItem = selectRandom (_searchItems);
+publicVariable "den_searchItem";
+
+[] spawn {
+    while {isNil "den_campSeized"} do {
+        sleep 1;
+    };
     [
-        den_searchUnit,                                     // Object the action is attached to
+        den_searchItem,                                     // Object the action is attached to
         "Search Intel",                                     // Title of the action
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",  // Idle icon shown on screen
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",  // Progress icon shown on screen
-        "(_this distance _target) < 2",                     // Condition for the action to be shown
-        "(_caller distance _target) < 2",                   // Condition for the action to progress
+        "(_this distance _target) < 4",                     // Condition for the action to be shown
+        "(_caller distance _target) < 4",                   // Condition for the action to progress
         {},                                                 // Code executed when action starts
         {},                                                 // Code executed on every progress tick
         { ["den_intelFound"] call den_fnc_publicBool; },    // Code executed on completion
@@ -123,7 +130,7 @@ den_searchUnit addEventHandler ["killed", {
         true,                                               // Remove on completion
         false                                               // Show in unconscious state
     ] remoteExec ["BIS_fnc_holdActionAdd"];
-}];
+};
 
 private _activation = "[""den_campSeized""] call den_fnc_publicBool";
 private _trigger = createTrigger ["EmptyDetector", _campPos];
