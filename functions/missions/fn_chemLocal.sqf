@@ -29,6 +29,21 @@ if (_faction == "") exitWith {
     false;
 };
 
+private _taskQueue = [
+    [[blufor, "secureContainer",  "SecureContainer", "containerMarker","CREATED", 1,true,"move"],     "den_containerSecure"],
+    [[blufor, "containerExtract", "ContainerExtract","containerMarker","CREATED", 1,true,"container"],"den_containerExtract"],
+    [[blufor, "exfil",            "exfil",           "exfilMarker",    "CREATED", 1,true,"move"],     "den_atExfil"]
+];
+
+private _failQueue = [
+    ["SlingDead",     "den_slingDead"],
+    ["ContainerDead", "den_containerDead"]
+];
+
+[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
+
+if (isDedicated) exitWith {true};
+
 /*
  * briefing notes
  */
@@ -50,18 +65,5 @@ player createDiaryRecord ["Diary", ["Mission",
 private _situationText = format["%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> at position <marker name='aoMarker'>%2</marker>. NATO forces are to extract this asset via helo.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
-
-private _taskQueue = [
-    [[blufor, "secureContainer",  "SecureContainer", "containerMarker","CREATED", 1,true,"move"],     "den_containerSecure"],
-    [[blufor, "containerExtract", "ContainerExtract","containerMarker","CREATED", 1,true,"container"],"den_containerExtract"],
-    [[blufor, "exfil",            "exfil",           "exfilMarker",    "CREATED", 1,true,"move"],     "den_atExfil"]
-];
-
-private _failQueue = [
-    ["SlingDead",     "den_slingDead"],
-    ["ContainerDead", "den_containerDead"]
-];
-
-[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
 
 true;

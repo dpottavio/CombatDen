@@ -41,6 +41,8 @@ if (isServer) then {
         _factionParam = (paramsArray select 0);
         _missionParam = (paramsArray select 1);
         _hourParam    = (paramsArray select 3);
+
+        [] spawn den_fnc_mpEndMission;
     };
 
     if (_missionParam < 0) then {
@@ -90,21 +92,21 @@ if (isServer) then {
     waitUntil {!isNil "den_initDone"};
 };
 
-if (isDedicated) exitWith {};
+if (!isDedicated) then  {
+    titleCut ["", "BLACK FADED", 100];
+    [] spawn {
+        waitUntil {!visibleMap};
+        sleep 2;
+        titleCut ["", "BLACK IN", 1];
 
-titleCut ["", "BLACK FADED", 100];
-[] spawn {
-    waitUntil {!visibleMap};
-    sleep 2;
-    titleCut ["", "BLACK IN", 1];
+        if (isNil "den_ao" || den_ao == "") then {
+            ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
+        };
 
-    if (isNil "den_ao" || den_ao == "") then {
-        ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
+        if (isNil "den_ao" || den_ao == "") exitWith {
+            player createDiaryRecord ["Diary", ["Error", "There was an error generating the AO.  Please restart the mission."]];
+        };
     };
-};
-
-if (isNil "den_ao" || den_ao == "") exitWith {
-    player createDiaryRecord ["Diary", ["Error", "There was an error generating the AO.  Please restart the mission."]];
 };
 
 0 setOvercast den_overcast;

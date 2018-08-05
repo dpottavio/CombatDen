@@ -29,6 +29,16 @@ if (_faction == "") exitWith {
     false;
 };
 
+private _taskQueue = [
+    [[blufor, "raidCamp",   "RaidCamp",   "campMarker",  "CREATED", 1, true, "attack"], "den_campSeized"],
+    [[blufor, "searchCamp", "SearchCamp", objNull,       "CREATED", 1, true, "search"], "den_intelFound"],
+    [[blufor, "exfil",      "exfil",      "exfilMarker", "CREATED", 1, true, "move"],   "den_atExfil"]
+];
+
+[_taskQueue] spawn den_fnc_taskFsm;
+
+if (isDedicated) exitWith {true};
+
 /*
  * briefing notes
  */
@@ -52,13 +62,5 @@ player createDiaryRecord ["Diary", ["Mission",
 private _situationText = format["%1 forces have a recon <marker name='campMarker'>camp</marker> at position <marker name='aoMarker'>%2</marker>. NATO forces are to raid this camp and gather intel.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
-
-private _taskQueue = [
-    [[blufor, "raidCamp",   "RaidCamp",   "campMarker",  "CREATED", 1, true, "attack"], "den_campSeized"],
-    [[blufor, "searchCamp", "SearchCamp", objNull,       "CREATED", 1, true, "search"], "den_intelFound"],
-    [[blufor, "exfil",      "exfil",      "exfilMarker", "CREATED", 1, true, "move"],   "den_atExfil"]
-];
-
-[_taskQueue] spawn den_fnc_taskFsm;
 
 true;

@@ -1,5 +1,4 @@
 respawnOnStart = -1;
-respawnTemplates[] = {"Spectator", "MenuPosition", "Tickets"};
 
 class CfgFunctions
 {
@@ -15,6 +14,7 @@ class CfgFunctions
             class heloExfil {};
             class hostage {};
             class insert {};
+            class mpEndMission {};
             class patrol {};
             class publicBool {};
             class randAo {};
@@ -63,8 +63,8 @@ class Params
     class RespawnTickets
     {
         title = "Respawn Tickets";
-        texts[] = {"4","8","16","Unlimited"};
-        values[] = {4,8,16,0};
+        texts[] = {"1","4","8","16","Unlimited"};
+        values[] = {1,4,8,16,0};
         default = 4;
         function = "BIS_fnc_paramRespawnTickets";
         isGlobal = 0;

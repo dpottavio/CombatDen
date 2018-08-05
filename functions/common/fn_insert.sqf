@@ -18,13 +18,13 @@ params ["_pos", "_min", "_max", "_group"];
 _pos   = _this param [0, [], [[]], [2,3]];
 _group = _this param [1, grpNull, [grpNull]];
 
-createMarker ["insertMarker", _insertPos];
+createMarker ["insertMarker", _pos];
 "insertMarker" setMarkerType "mil_start";
 "insertMarker" setMarkerColor "colorBLUFOR";
 "insertMarker" setMarkerText "insert";
 
 if (isMultiplayer) then {
-    [blufor, _insertPos, "insert"] call BIS_fnc_addRespawnPosition;
+    [blufor, _pos getPos [0,0], "insert"] call BIS_fnc_addRespawnPosition;
 };
 
 if (!isNull _group) then {
@@ -43,7 +43,9 @@ if (!isNull _group) then {
             };
             _unit allowDamage TRUE;
         };
-        [blufor, _x] call BIS_fnc_addRespawnPosition;
+        if (isMultiplayer) then {
+            [blufor, _x] call BIS_fnc_addRespawnPosition;
+        };
         _offset = _offset + 3;
     } forEach units _group;
 };

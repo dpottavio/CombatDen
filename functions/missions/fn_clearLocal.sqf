@@ -29,6 +29,14 @@ if (_faction == "") exitWith {
     false;
 };
 
+private _taskQueue = [
+    [[blufor, "clearAoTask", "ClearAo", objNull, "CREATED", 1, true, "attack"], "aoClear"]
+];
+
+[_taskQueue] spawn den_fnc_taskFsm;
+
+if (isDedicated) exitWith {true};
+
 /*
  * briefing notes
  */
@@ -49,8 +57,4 @@ private _situationText = format["%1 forces are fortifying at position <marker na
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 
-private _taskQueue = [
-    [[blufor, "clearAoTask", "ClearAo", objNull, "CREATED", 1, true, "attack"], "aoClear"]
-];
-
-[_taskQueue] spawn den_fnc_taskFsm;
+true;
