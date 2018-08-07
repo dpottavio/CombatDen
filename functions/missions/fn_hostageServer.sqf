@@ -92,7 +92,7 @@ private _guardGroup = [
     _hostagePos getPos [10, 0],
     _faction,
     "FireTeam"
-] call den_fnc_enemyGroup;
+] call den_fnc_spawnGroup;
 
 if (!isNull _guardGroup) then {
     createGuardedPoint [east, _hostagePos, -1, objNull];

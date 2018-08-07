@@ -92,7 +92,7 @@ private _i = 0;
     _v setDamage 0.80;
 
     private _gpos = _vpos getPos [5, _convoyDir + 90];
-    private _g = [_gpos, "NATO", "TruckCrew"] call den_fnc_enemyGroup;
+    private _g = [_gpos, "NATO", "TruckCrew"] call den_fnc_spawnGroup;
     if (!isNull _g) then {
         private _wp = [_g, _vpos, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
         _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
@@ -109,7 +109,7 @@ createMarker ["convoyMarker", _convoyPos];
 /*
  * assault wave 1
  */
-private _assaultGroup1 = [_assaultPos1, _faction, "AssaultSquad"] call den_fnc_enemyGroup;
+private _assaultGroup1 = [_assaultPos1, _faction, "AssaultSquad"] call den_fnc_spawnGroup;
 [_assaultGroup1, _assaultPos1, 0, "HOLD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 // wait N-seconds before attacking
@@ -149,8 +149,8 @@ createMarker ["assaultArrowMarker",  _assaultPos1 getPos [_arrowDist, (_assaultP
 
     [_pos, "Motorized"] call den_fnc_reinforceMsg;
 
-    private _assaultGroup2 = [_pos, _faction, "MotorizedHmg"] call den_fnc_enemyGroup;
-    private _assaultGroup3 = [_pos getPos [5, 0], _faction, "FireTeam"] call den_fnc_enemyGroup;
+    private _assaultGroup2 = [_pos, _faction, "MotorizedHmg"] call den_fnc_spawnGroup;
+    private _assaultGroup3 = [_pos getPos [5, 0], _faction, "FireTeam"] call den_fnc_spawnGroup;
     (units _assaultGroup3) join _assaultGroup2;
 
     [_assaultGroup2, _targetPos] call BIS_fnc_taskAttack;

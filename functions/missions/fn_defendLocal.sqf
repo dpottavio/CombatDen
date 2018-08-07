@@ -31,7 +31,7 @@ if (_faction == "") exitWith {
 
 
 private _taskQueue = [
-    [[blufor, "defendConvoy", "DefendCamp", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
+    [[blufor, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
 
 [_taskQueue] spawn den_fnc_taskFsm;

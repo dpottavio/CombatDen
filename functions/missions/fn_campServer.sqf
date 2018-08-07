@@ -82,7 +82,7 @@ createMarker ["campMarker", _campPos];
 "campMarker" setMarkerColor "colorOPFOR";
 "campMarker" setMarkerText  "camp";
 
-private _campGroup = [_campPos, _faction, "ReconSquad"] call den_fnc_enemyGroup;
+private _campGroup = [_campPos, _faction, "ReconSquad"] call den_fnc_spawnGroup;
 
 [_campGroup, _campPos, 0, "HOLD", "SAFE"] call CBA_fnc_addWaypoint;
 

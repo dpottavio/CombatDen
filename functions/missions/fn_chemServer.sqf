@@ -100,7 +100,7 @@ private _guardGroup = [
     _containerPos getPos[10, 0], // 10m offset from container
     _faction,
     "FireTeam"
-] call den_fnc_enemyGroup;
+] call den_fnc_spawnGroup;
 
 if (isNull _guardGroup) exitWith {
     ""

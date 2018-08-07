@@ -9,7 +9,6 @@ class CfgFunctions
             file = "functions\common";
             class commandChat {};
             class composition {};
-            class enemyGroup {};
             class exfil {};
             class exfilTrigger {};
             class heloExfil {};
@@ -26,6 +25,7 @@ class CfgFunctions
             class reinforceMsg {};
             class reinforceTrigger{};
             class sling {};
+            class spawnGroup {};
             class taskFsm {};
 		};
         class mission

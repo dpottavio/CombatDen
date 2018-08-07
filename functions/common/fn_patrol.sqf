@@ -14,7 +14,7 @@
     2: (Optional) STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
-    3: (Optional) STRING - Unit type. See den_fnc_enemyGroup for supported unit types.
+    3: (Optional) STRING - Unit type. See den_fnc_spawnGroup for supported unit types.
 
     Returns: GROUP on success, grpNull on error.
 */
@@ -44,7 +44,7 @@ private _groupPos = [
     [_pos]       // default position
 ] call BIS_fnc_findSafePos;
 
-private _group = [_groupPos, _faction, _type] call den_fnc_enemyGroup;
+private _group = [_groupPos, _faction, _type] call den_fnc_spawnGroup;
 
 if (!isNull _group) then {
     [_group, _pos, _radius, 5, "MOVE", "SAFE", "YELLOW", "LIMITED", "STAG COLUMN", "", [30,60,120] ] call CBA_fnc_taskPatrol;

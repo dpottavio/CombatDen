@@ -66,7 +66,7 @@ for [{_x = 1}, {_x <= _count}, {_x = _x + 1}] do {
     private _bunker = _type createVehicle _bunkerPos;
     _bunker setDir (_bunkerPos getDir _pos);
 
-    private _group = [_bunkerPos, _faction, "FireTeam"] call den_fnc_enemyGroup;
+    private _group = [_bunkerPos, _faction, "FireTeam"] call den_fnc_spawnGroup;
     if (!isNull _group) then {
         private _wp = [_group, _bunkerPos, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
         _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
