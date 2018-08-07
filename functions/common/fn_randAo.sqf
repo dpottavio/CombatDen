@@ -105,6 +105,18 @@ private _safePosList = [];
             ] call BIS_fnc_findSafePos;
         };
 
+        // Determine of the position is blocked by water
+        private _distance = (_pos distance2D _safePos);
+        private _interval = _distance / 200;
+        private _posI = _safePos;
+        for [{_x = _interval}, {_x < _distance}, {_x = _x + _interval}] do {
+            private _posI = _posI getPos [_x, _safePos getDir _pos];
+            if (surfaceIsWater _posI) exitWith {
+                // Reset the position if it is blocked by water.
+                _safePos = [];
+            };
+        };
+
         if (_safePos isEqualTo [])      exitWith {};
         if (_safePos isEqualTo [0,0,0]) exitWith {};
 
