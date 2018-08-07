@@ -3,21 +3,28 @@
 
     Description:
 
-    Spawn an enemy unit.
+    Spawn a group.
 
     Parameter(s):
 
     0: ARRAY - Position
 
-    1: (Optional) STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    1: (Optional) STRING - Faction name.  Must equal either
+    "CSAT", "Guerrilla", or "NATO".  Defaults to "CSAT".
 
     2: (Optional) STRING - Unit type. The following are supported:
 
-        "FireTeam" (default)
+    Supported CSAT and Guerrilla types:
+
+        "AssaultSquad"
+        "FireTeam"     (default)
         "MotorizedHmg"
         "ReconSentry"
         "ReconSquad"
+
+    Supported NATO types:
+
+        "TruckCrew"
 
     Returns: GROUP on success, grpNull on error.
 */
@@ -47,6 +54,11 @@ if (isNil "_cfgType") exitWith {
     grpNull;
 };
 
-private _group = [_pos, opfor, _cfgType] call BIS_fnc_spawnGroup;
+private _side = opfor;
+if (_faction == "NATO") then {
+    _side = blufor;
+};
+
+private _group = [_pos, _side, _cfgType] call BIS_fnc_spawnGroup;
 
 _group;

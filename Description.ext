@@ -7,6 +7,7 @@ class CfgFunctions
 		class common
 		{
             file = "functions\common";
+            class commandChat {};
             class composition {};
             class enemyGroup {};
             class exfil {};
@@ -22,6 +23,7 @@ class CfgFunctions
             class randTime {};
             class randWeather {};
             class reinforce {};
+            class reinforceMsg {};
             class reinforceTrigger{};
             class sling {};
             class taskFsm {};
@@ -29,6 +31,8 @@ class CfgFunctions
         class mission
         {
             file = "functions\missions";
+            class defendLocal {};
+            class defendServer {};
             class campLocal {};
             class campServer {};
             class clearLocal {};
@@ -53,12 +57,12 @@ class Params
     class Mission
     {
         title = "Mission";
-        texts[] = {"Random", "Camp Raid", "Container Extraction", "Clear Area", "Hostage Rescue"};
-        values[] = {-1,0,1,2,3};
+        texts[] = {"Random", "Defend Convoy", "Camp Raid", "Container Extraction", "Clear Area", "Hostage Rescue"};
+        values[] = {-1,0,1,2,3,4};
         default = -1;
 
         // This must be incremented for each new mission.
-        count = 4;
+        count = 5;
     };
     class RespawnTickets
     {
@@ -158,6 +162,11 @@ class CfgTaskDescriptions
     {
         title = "Search Camp";
         description = "Search camp for intel.";
+    };
+    class DefendConvoy
+    {
+        title = "Defend the Convoy";
+        description = "Defend the convoy from enemy assault.";
     };
 };
 

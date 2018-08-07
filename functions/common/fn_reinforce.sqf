@@ -29,12 +29,13 @@
     [_pos, _deployMin, _deployMax, myFaction] call den_fnc_reinforce;
 
 */
-params ["_pos", "_deployMin", "_deployMax", "_faction"];
+params ["_pos", "_deployMin", "_deployMax", "_faction", "_type"];
 
 _pos       = _this param [0, [], [[]], [2,3]];
 _deployMin = _this param [1, 0, [0]];
 _deployMax = _this param [2, -1, [0]];
 _faction   = _this param [3, "CSAT", [""]];
+_type      = _this param [4, "FireTeam", [""]];
 
 if (_faction != "CSAT" && _faction != "Guerrilla") exitWith {
      ["faction name must be either 'CSAT' or 'Guerrilla'"] call BIS_fnc_error;
@@ -58,8 +59,10 @@ if (_deployPos isEqualTo [0,0,0]) exitWith {
     false
 };
 
-private _group = [_deployPos, _faction, "FireTeam"] call den_fnc_enemyGroup;
+private _group = [_deployPos, _faction, _type] call den_fnc_enemyGroup;
 
 [_group, _pos] call BIS_fnc_taskAttack;
+
+[_deployPos, _type] call den_fnc_reinforceMsg;
 
 true;

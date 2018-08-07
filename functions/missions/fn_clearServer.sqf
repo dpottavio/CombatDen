@@ -49,7 +49,7 @@ private _aoRadius      = _aoArea select 0;
 private _aoSafePosList = _ao select 3;
 private _insertPos     = _aoSafePosList select 0;
 
-private _aoActivation = "missionNamespace setVariable [""aoClear"", TRUE, TRUE];";
+private _aoActivation = "missionNamespace setVariable [""den_aoClear"", TRUE, TRUE];";
 private _aoTrigger = createTrigger ["EmptyDetector", _aoPos, false];
 _aoTrigger setTriggerArea          [_aoRadius, _aoRadius, 0, false];
 _aoTrigger setTriggerActivation    ["EAST", "NOT PRESENT", false];

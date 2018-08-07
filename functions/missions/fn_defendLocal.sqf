@@ -29,8 +29,9 @@ if (_faction == "") exitWith {
     false;
 };
 
+
 private _taskQueue = [
-    [[blufor, "clearAoTask", "ClearAo", objNull, "CREATED", 1, true, "attack"], "den_aoClear"]
+    [[blufor, "defendConvoy", "DefendCamp", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
 
 [_taskQueue] spawn den_fnc_taskFsm;
@@ -44,16 +45,17 @@ player createDiaryRecord ["Diary", ["Execution",
 "
 1. Start from <marker name='insertMarker'>insert</marker>.
 <br/>
-2. Search and clear markers in the <marker name='aoMarker'>AO</marker>.
+2. Defend <marker name='convoyMarker'>convoy</marker> from enemy forces.
+<br/>
 "
 ]];
 
 player createDiaryRecord ["Diary", ["Mission",
-"Clear <marker name='aoMarker'>AO</marker> of enemy units.
+"Defend the <marker name='convoyMarker'>convoy</marker>.
 "
 ]];
 
-private _situationText = format["%1 forces are fortifying at position <marker name='aoMarker'>%2</marker>.  This area must be clear of any enemy units ASAP.", _faction, _ao];
+private _situationText = format["A NATO <marker name='convoyMarker'>convoy</marker> was ambushed and is currently disabled near position %2. <marker name='assaultMarker'>%1</marker> forces have launched a second attack to seize the convoy.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

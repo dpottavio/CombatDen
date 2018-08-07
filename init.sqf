@@ -72,15 +72,18 @@ if (isServer) then {
     den_ao = "";
     switch (den_mission) do {
         case 0: {
-            den_ao = _missionArgs call den_fnc_campServer;
+            den_ao = _missionArgs call den_fnc_defendServer;
         };
         case 1: {
-            den_ao = _missionArgs call den_fnc_chemServer;
+            den_ao = _missionArgs call den_fnc_campServer;
         };
         case 2: {
-            den_ao = _missionArgs call den_fnc_clearServer;
+            den_ao = _missionArgs call den_fnc_chemServer;
         };
         case 3: {
+            den_ao = _missionArgs call den_fnc_clearServer;
+        };
+        case 4: {
             den_ao = _missionArgs call den_fnc_hostageServer;
         };
     };
@@ -102,10 +105,9 @@ if (!isDedicated) then  {
         if (isNil "den_ao" || den_ao == "") then {
             ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
         };
-
-        if (isNil "den_ao" || den_ao == "") exitWith {
-            player createDiaryRecord ["Diary", ["Error", "There was an error generating the AO.  Please restart the mission."]];
-        };
+    };
+    if (isNil "den_ao" || den_ao == "") exitWith {
+        player createDiaryRecord ["Diary", ["Error", "There was an error generating the AO.  Please restart the mission."]];
     };
 };
 
@@ -114,15 +116,18 @@ if (!isDedicated) then  {
 _missionArgs = [den_ao, den_faction];
 switch (den_mission) do {
     case 0: {
-        _missionArgs call den_fnc_campLocal;
+        _missionArgs call den_fnc_defendLocal;
     };
     case 1: {
-        _missionArgs call den_fnc_chemLocal;
+        _missionArgs call den_fnc_campLocal;
     };
     case 2: {
-       _missionArgs call den_fnc_clearLocal;
+        _missionArgs call den_fnc_chemLocal;
     };
     case 3: {
+       _missionArgs call den_fnc_clearLocal;
+    };
+    case 4: {
         _missionArgs call den_fnc_hostageLocal;
     };
 };

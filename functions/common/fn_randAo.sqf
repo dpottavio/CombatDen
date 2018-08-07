@@ -35,6 +35,9 @@
     1: NUMBER - max position
     2: NUMBER - min obj distance (default 1)
     3: NUMBER - max gradient (default ANY gradient)
+    4: NUMBER - road mode:
+        0 - anywhere  (default)
+        1 - on a rode
 
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
@@ -80,20 +83,31 @@ private _safePosList = [];
         private _maxPos     = _x param [1, 0,  [0]];
         private _minObjDist = _x param [2, 1,  [0]];
         private _maxGrad    = _x param [3, -1, [0]];
+        private _road       = _x param [4, 0,  [0]];
+        private _safePos    = [];
 
-        private _safePos = [
-            _pos,          // center position
-            _minPos,       // min position
-            _maxPos,       // max position
-            _minObjDist,   // obj distance
-            0,             // water mode
-            _maxGrad,      // gradient
-            0,             // shore mode
-            [],            // blacklist
-            [[0,0,0]]      // default pos
-        ] call BIS_fnc_findSafePos;
+        if  (_road == 1) then {
+            private _roads = _pos nearRoads _maxPos;
+            if ((count _roads) > 0) then {
+                _safePos = getPos (_roads select 0);
+            };
+        } else {
+            _safePos = [
+                _pos,          // center position
+                _minPos,       // min position
+                _maxPos,       // max position
+                _minObjDist,   // obj distance
+                0,             // water mode
+                _maxGrad,      // gradient
+                0,             // shore mode
+                [],            // blacklist
+                [[0,0,0]]      // default pos
+            ] call BIS_fnc_findSafePos;
+        };
 
+        if (_safePos isEqualTo [])      exitWith {};
         if (_safePos isEqualTo [0,0,0]) exitWith {};
+
         _safePosList pushBack _safePos;
     } forEach _safePosParams;
 

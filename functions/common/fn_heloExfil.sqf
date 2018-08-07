@@ -40,6 +40,7 @@ _heloObj addEventHandler ["killed", {
 
 [_heloGroup, _lzPos, 0, "TR UNLOAD", "AWARE"] call CBA_fnc_addWaypoint;
 
-[[blufor, "Base"], "Alpha, extraction helo is en route to the exfil."] remoteExec ["commandChat"];
+private _msg = format["Alpha be advised, extraction helo is at grid %1 - en route to exfil.", mapGridPosition _heloPos];
+[_msg] call den_fnc_commandChat;
 
 _heloObj;
