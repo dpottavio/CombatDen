@@ -36,6 +36,7 @@ private _taskQueue = [
 ];
 
 private _failQueue = [
+    ["PlayersDead",   "den_playersDead"],
     ["SlingDead",     "den_slingDead"],
     ["ContainerDead", "den_containerDead"]
 ];

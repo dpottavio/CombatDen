@@ -34,7 +34,11 @@ private _taskQueue = [
     [[blufor, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
 
-[_taskQueue] spawn den_fnc_taskFsm;
+private _failQueue = [
+    ["PlayersDead", "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
 
 if (isDedicated) exitWith {true};
 

@@ -3,8 +3,8 @@
 
     Description:
 
-    End a MP mission if all players are dead and there are no more
-    spawn tickets.
+    Signals to end a MP mission if all players are dead and there are no more
+    spawn tickets. When this happens the public boolean 'den_playersDead' is broadcast.
 
     This must be called with spawn on the server.  This script assumes
     all players are blufor.
@@ -23,7 +23,7 @@ while {true} do {
     private _alive = { alive _x } count allPlayers;
 
     if ((_tickets == 0) && (_alive == 0)) exitWith {
-        ["PlayersDead", false] remoteExec ["BIS_fnc_endMission"];
+        ["den_playersDead"] call den_fnc_publicBool;
     };
     sleep 2;
 };

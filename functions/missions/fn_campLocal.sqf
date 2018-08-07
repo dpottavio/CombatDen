@@ -35,7 +35,11 @@ private _taskQueue = [
     [[blufor, "exfil",      "exfil",      "exfilMarker", "CREATED", 1, true, "move"],   "den_atExfil"]
 ];
 
-[_taskQueue] spawn den_fnc_taskFsm;
+private _failQueue = [
+    ["PlayersDead", "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
 
 if (isDedicated) exitWith {true};
 

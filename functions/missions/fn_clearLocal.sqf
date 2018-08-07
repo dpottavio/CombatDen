@@ -33,7 +33,11 @@ private _taskQueue = [
     [[blufor, "clearAoTask", "ClearAo", objNull, "CREATED", 1, true, "attack"], "den_aoClear"]
 ];
 
-[_taskQueue] spawn den_fnc_taskFsm;
+private _failQueue = [
+    ["PlayersDead", "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
 
 if (isDedicated) exitWith {true};
 
