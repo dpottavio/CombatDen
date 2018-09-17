@@ -16,7 +16,9 @@
 
     0: GROUP - player group
 
-    1: STRING - Enemy faction to populate each bunker, must be either
+    1: OBJECT - Transport helicopter to take players to AO.
+
+    2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
     Returns: STRING - AO location name, empty string on error.
@@ -32,7 +34,6 @@ if (isNull _playerGroup) exitWith {
     "";
 };
 
-
 if (isNull _helo) exitWith {
     ["helo parameter must not be null"] call BIS_fnc_error;
     "";
@@ -41,72 +42,64 @@ if (isNull _helo) exitWith {
 private _aoRadius       = 500;
 private _minLz          = _aoRadius + 500;
 private _maxLz          = _aoRadius + 550;
-private _maxBunker      = _aoRadius * 0.8;
+private _minReinforce   = _minLz;
+private _maxReinforce   = _maxLz;
+private _maxCamp        = _aoRadius * 0.25;
 private _maxInfPatrol   = _aoRadius * 0.75;
 private _maxMotorPatrol = _aoRadius * 0.75;
-private _minReinforce   = _aoRadius + 300;
-private _maxReinforce   = _aoRadius + 325;
 
 private _safePosParams = [
     [_minLz,        _maxLz,          15, 0.1], // lz safe position
-    [0,             _maxBunker,      10, 0.1], // bunker 1 safe position
-    [0,             _maxBunker,      10, 0.1], // bunker 2 safe position
-    [0,             _maxBunker,      10, 0.1], // bunker 3 safe position
-    [0,             _maxInfPatrol,    5,  -1], // inf patrol safe position
-    [0,             _maxMotorPatrol, 10, 0.1], // inf patrol safe position
-    [_minReinforce, _maxReinforce,    5,  -1]  // reinforce safe position
+    [_minReinforce, _maxReinforce,    5,  -1], // reinforce safe position
+    [0,             _maxCamp,        10, 0.1], // camp safe position
+    [0,             _maxInfPatrol,    5,  -1], // patrol safe position
+    [0,             _maxMotorPatrol, 10, 0.1]  // motor patrol safe position
 ];
 
 private _ao = [
-    ["NameCity", "NameVillage", "NameLocal"],
+    ["NameCity", "NameCityCapital"],
     _aoRadius,
     _safePosParams,
     true
 ] call den_fnc_randAo;
 
-private _aoName        = _ao select 0;
-private _aoArea        = _ao select 1;
-private _aoPos         = _aoArea select 0;
-private _aoRadius      = _aoArea select 1;
-private _aoSafePosList = _ao select 2;
-private _lzPos         = _aoSafePosList select 0;
-private _bunkerPosList = [
-    _aoSafePosList select 1,
-    _aoSafePosList select 2,
-    _aoSafePosList select 3
-];
-private _infPatrolPos   = _aoSafePosList select 4;
-private _motorPatrolPos = _aoSafePosList select 5;
-private _reinforcePos   = _aoSafePosList select 6;
+if (_ao isEqualTo []) exitWith {
+    "";
+};
 
-private _aoActivation = "missionNamespace setVariable [""den_aoClear"", TRUE, TRUE];";
+private _aoName         = _ao select 0;
+private _aoArea         = _ao select 1;
+private _aoPos          = _aoArea select 0;
+private _aoRadius       = _aoArea select 1;
+private _aoSafePosList  = _ao select 2;
+private _lzPos          = _aoSafePosList select 0;
+private _reinforcePos   = _aoSafePosList select 1;
+private _campPos        = _aoSafePosList select 2;
+private _infPatrolPos   = _aoSafePosList select 3;
+private _motorPatrolPos = _aoSafePosList select 4;
+
+/*
+ * lz
+ */
+[_lzPos, _playerGroup, _helo, _aoArea] call den_fnc_insert;
+
+/*
+ * clear trigger
+ */
+private _aoActivation = "[""den_aoClear""] call den_fnc_publicBool;";
 private _aoTrigger = createTrigger ["EmptyDetector", _aoPos, false];
 _aoTrigger setTriggerArea          [_aoRadius, _aoRadius, 0, false];
 _aoTrigger setTriggerActivation    ["EAST", "NOT PRESENT", false];
 _aoTrigger setTriggerStatements    ["this", _aoActivation, ""];
 
-[_lzPos, _playerGroup, _helo, _aoArea] call den_fnc_insert;
+/*
+ * camp
+ */
+createGuardedPoint [opfor, _campPos, -1, objNull];
 
-private _i = 1;
-{
-    [_x, "bunker01"] call den_fnc_composition;
-
-    private _group = [_x, _faction, "FireTeam"] call den_fnc_spawnGroup;
-
-    private _wp = [_group, _x, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
-    _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
-
-    private _marker = createMarker [format["bunkerMarker-%1", _i], _x];
-    _marker setMarkerType  "loc_Bunker";
-    _marker setMarkerColor "colorOPFOR";
-    _marker setMarkerText  format["%1", _i];
-    _marker setMarkerSize  [2,2];
-
-    _i = _i + 1;
-} forEach _bunkerPosList;
-
-private _guardPos = selectRandom _bunkerPosList;
-createGuardedPoint [east, _guardPos, -1, objNull];
+private _campGroup = [_campPos, _faction, "MotorizedAssault"] call den_fnc_spawnGroup;
+[
+_campGroup, _campPos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 /*
  * patrol

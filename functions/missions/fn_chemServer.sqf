@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -9,63 +16,68 @@
 
     0: GROUP - player group
 
-    1: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    1: OBJECT - Transport helicopter to take players to AO.
 
-    2: ARRAY of STRINGS - A location name blacklist.
+    2: STRING - Enemy faction to populate each bunker, must be either
+    "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
     Returns: STRING - AO location name, empty string on error.
 */
-params ["_group", "_faction", "_blacklist"];
+params ["_playerGroup", "_helo", "_faction"];
 
-_group     = _this param [0, grpNull, [grpNull]];
-_faction   = _this param [1, "CSAT", [""]];
-_blacklist = _this param [2, [], [[]]];
+_playerGroup = _this param [0, grpNull, [grpNull]];
+_helo        = _this param [1, objNull, [objNull]];
+_faction     = _this param [2, "CSAT", [""]];
 
-if (isNull _group) exitWith {
+if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
     "";
 };
 
-private _aoRadius  = 500;
-private _minInsert = _aoRadius + 500;
-private _maxInsert = _aoRadius + 550;
-private _minExfil  = _aoRadius + 200;
-private _maxExfil  = _aoRadius + 250;
-private _minContainer = 0;
-private _maxContainer = _aoRadius * 0.5;
+if (isNull _helo) exitWith {
+    ["helo parameter must not be null"] call BIS_fnc_error;
+    "";
+};
+
+private _aoRadius       = 500;
+private _minLz          = _aoRadius + 500;
+private _maxLz          = _aoRadius + 550;
+private _minReinforce   = _minLz;
+private _maxReinforce   = _maxLz;
+private _maxContainer   = _aoRadius * 0.5;
+private _maxInfPatrol   = _aoRadius * 0.75;
+private _maxMotorPatrol = _aoRadius * 0.75;
 
 private _safePosParams = [
-    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
-    [_minExfil,     _maxExfil,     15, 0.1], // exfil safe position
-    [_minContainer, _maxContainer, 15, 0.1]  // container safe position
+    [_minLz,        _maxLz,          15, 0.1], // lz safe position
+    [_minReinforce, _maxReinforce,    5,  -1], // reinforce safe position
+    [0,             _maxContainer,   15, 0.1], // container safe position
+    [0,             _maxInfPatrol,    5,  -1], // infantry patrol safe position
+    [0,             _maxMotorPatrol, 10, 0.1] // motor patrol safe position
 ];
 
 private _ao = [
     ["NameCity", "NameVillage", "NameLocal"],
-    _blacklist,
     _aoRadius,
     _safePosParams
 ] call den_fnc_randAo;
 
-private _aoName        = _ao select 0;
-private _aoPos         = _ao select 1;
-private _aoArea        = _ao select 2;
-private _aoRadius      = _aoArea select 0;
-private _aoSafePosList = _ao select 3;
-private _insertPos     = _aoSafePosList select 0;
-private _exfilPos      = _aoSafePosList select 1;
-private _containerPos  = _aoSafePosList select 2;
+private _aoName         = _ao select 0;
+private _aoArea         = _ao select 1;
+private _aoPos          = _aoArea select 0;
+private _aoRadius       = _aoArea select 1;
+private _aoSafePosList  = _ao select 2;
+private _lzPos          = _aoSafePosList select 0;
+private _reinforcePos   = _aoSafePosList select 1;
+private _containerPos   = _aoSafePosList select 2;
+private _infPatrolPos   = _aoSafePosList select 3;
+private _motorPatrolPos = _aoSafePosList select 4;
 
-[_insertPos, _group] call den_fnc_insert;
-
-[_exfilPos] call den_fnc_exfil;
-
-[
-    _exfilPos,
-    (_exfilPos getDir _aoPos) - 180, // helicopter direction
-    "den_containerExtract"
-] call den_fnc_exfilTrigger;
+/*
+ * lz
+ */
+[_lzPos, _playerGroup, _helo, _aoArea] call den_fnc_insert;
+[_lzPos, _playerGroup, "den_containerExtract"] call den_fnc_extract;
 
 /*
  * container
@@ -76,53 +88,60 @@ container addEventHandler ["killed", {
     ["den_containerDead"] call den_fnc_publicBool;
 }];
 
-createMarker ["containerMarker", _containerPos];
-"containerMarker" setMarkerType  "mil_dot";
-"containerMarker" setMarkerColor "colorOPFOR";
-"containerMarker" setMarkerText  "container";
-
 private _secureActivation = "[""den_containerSecure""] call den_fnc_publicBool;[container,3000] call den_fnc_sling";
 private _secureTrigger = createTrigger ["EmptyDetector", _containerPos, false];
 _secureTrigger setTriggerArea          [10, 10, 0, false, 10];
 _secureTrigger setTriggerActivation    ["WEST SEIZED", "PRESENT", false];
 _secureTrigger setTriggerStatements    ["this", _secureActivation, ""];
 
+private _extractTrigArea = [
+    _aoArea select 1,
+    _aoArea select 2,
+    _aoArea select 3,
+    _aoArea select 4,
+    _aoArea param [5, -1]
+];
 private _extractActivation = "[""den_containerExtract""] call den_fnc_publicBool;";
 private _extractTrigger = createTrigger ["EmptyDetector", _aoPos, false];
-_extractTrigger setTriggerArea          _aoArea;
+_extractTrigger setTriggerArea          _extractTrigArea;
 _extractTrigger setTriggerActivation    ["LOGIC", "PRESENT", false];
 _extractTrigger setTriggerStatements    ["!(container inArea thisTrigger)", _extractActivation, ""];
 
-/*
- * guard
- */
-private _guardGroup = [
-    _containerPos getPos[10, 0], // 10m offset from container
-    _faction,
-    "FireTeam"
-] call den_fnc_spawnGroup;
+createMarker ["containerMarker", _containerPos];
+"containerMarker" setMarkerType "mil_objective";
+"containerMarker" setMarkerColor "colorOPFOR";
+"containerMarker" setMarkerText "container";
+"containerMarker" setMarkerSize [0.75, 0.75];
 
-if (isNull _guardGroup) exitWith {
-    ""
-};
 createGuardedPoint [east, [0,0], -1, container];
+
+/*
+ * enemy units
+ */
+private _guardGroup = [_containerPos getPos[10, 0], _faction, "FireTeam"] call den_fnc_spawnGroup;
+
 [_guardGroup, _containerPos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-/*
- * patrol
- */
-[_aoPos, _aoRadius * 0.5,  _faction, "MotorizedHmg"] call den_fnc_patrol;
-[_aoPos, _aoRadius * 0.75, _faction, "FireTeam"] call den_fnc_patrol;
+private _motorGroup = [_motorPatrolPos, _faction, "MotorizedHmg"] call den_fnc_spawnGroup;
+
+[_motorGroup, _motorPatrolPos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
+
+private _infGroup = [_infPatrolPos, _faction, "FireTeam"] call den_fnc_spawnGroup;
+
+[_infGroup, _lzPos, "den_insertUnload"] call den_fnc_attack;
 
 /*
  * reinforcements
  */
-[
-    _containerPos,
-    _aoArea,
-    _minExfil,
-    _maxExfil,
-    _faction
-] call den_fnc_reinforceTrigger;
+[_aoArea, [[_reinforcePos, "AssaultSquad"]], _faction] call den_fnc_wave;
+
+/*
+ * markers
+ */
+private _infMarkerPos   = _aoPos getPos [100, (_containerPos getDir _lzPos)];
+private _motorMarkerPos = _aoPos getPos [150, (_containerPos getDir _lzPos)];
+
+["infMarker",   _infMarkerPos,   _faction, "FireTeam"] call den_fnc_groupMarker;
+["motorMarker", _motorMarkerPos, _faction, "MotorizedHmg"] call den_fnc_groupMarker;
 
 _aoName;

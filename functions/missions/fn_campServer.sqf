@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -9,42 +16,46 @@
 
     0: GROUP - player group
 
-    1: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    1: OBJECT - Transport helicopter to take players to AO.
 
-    2: ARRAY of STRINGS - A location name blacklist.
+    2: STRING - Enemy faction to populate each bunker, must be either
+    "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
     Returns: STRING - AO location name, empty string on error.
 */
-params ["_group", "_faction", "_blacklist"];
+params ["_playerGroup", "_helo", "_faction"];
 
-_group     = _this param [0, grpNull, [grpNull]];
-_faction   = _this param [1, "CSAT", [""]];
-_blacklist = _this param [2, [], [[]]];
+_playerGroup = _this param [0, grpNull, [grpNull]];
+_helo        = _this param [1, objNull, [objNull]];
+_faction     = _this param [2, "CSAT", [""]];
 
-if (isNull _group) exitWith {
+if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
     "";
 };
 
-_blacklist pushBack "military";
-private _aoRadius  = 500;
-private _minInsert = _aoRadius + 200;
-private _maxInsert = _aoRadius + 250;
-private _minExfil  = _aoRadius + 200;
-private _maxExfil  = _aoRadius + 250;
-private _minCamp   = 0;
-private _maxCamp   = _aoRadius * 0.5;
+if (isNull _helo) exitWith {
+    ["helo parameter must not be null"] call BIS_fnc_error;
+    "";
+};
+
+private _aoRadius       = 500;
+private _minLz          = _aoRadius + 500;
+private _maxLz          = _aoRadius + 550;
+private _minReinforce   = _minLz;
+private _maxReinforce   = _maxLz;
+private _maxCamp        = _aoRadius * 0.5;
+private _maxInfPatrol   = _aoRadius * 0.75;
 
 private _safePosParams = [
-    [_minInsert, _maxInsert, 15, 0.1], // insert safe position
-    [_minExfil,  _maxExfil,  15, 0.1], // exfil safe position
-    [_minCamp,   _maxCamp,   20, 0.1]  // camp safe position
+    [_minLz,        _maxLz,        15, 0.1], // lz safe position
+    [_minReinforce, _maxReinforce,  5,  -1], // reinforce safe position
+    [0,             _maxCamp,      20, 0.1], // camp safe position
+    [0,             _maxInfPatrol,  5,  -1]  // patrol safe position
 ];
 
 private _ao = [
     ["NameLocal", "Mount"],
-    _blacklist,
     _aoRadius,
     _safePosParams
 ] call den_fnc_randAo;
@@ -53,38 +64,31 @@ if (_ao isEqualTo []) exitWith {
     "";
 };
 
-private _aoName        = _ao select 0;
-private _aoPos         = _ao select 1;
-private _aoArea        = _ao select 2;
-private _aoRadius      = _aoArea select 0;
-private _aoSafePosList = _ao select 3;
-private _insertPos     = _aoSafePosList select 0;
-private _exfilPos      = _aoSafePosList select 1;
-private _campPos       = _aoSafePosList select 2;
+private _aoName         = _ao select 0;
+private _aoArea         = _ao select 1;
+private _aoRadius       = _aoArea select 1;
+private _aoSafePosList  = _ao select 2;
+private _lzPos          = _aoSafePosList select 0;
+private _reinforcePos   = _aoSafePosList select 1;
+private _campPos        = _aoSafePosList select 2;
+private _infPatrolPos   = _aoSafePosList select 3;
 
-[_insertPos, _group] call den_fnc_insert;
-
-[_exfilPos] call den_fnc_exfil;
-
-[
-    _exfilPos,
-    (_exfilPos getDir _aoPos) - 180, // helicopter direction
-    "den_intelFound"
-] call den_fnc_exfilTrigger;
+/*
+ * lz
+ */
+[_lzPos, _playerGroup, _helo, _aoArea] call den_fnc_insert;
+[_lzPos, _playerGroup, "den_intelFound", _aoArea] call den_fnc_extract;
 
 /*
  * camp
  */
 [_campPos, "camp01"] call den_fnc_composition;
 
-createMarker ["campMarker", _campPos];
-"campMarker" setMarkerType  "mil_dot";
-"campMarker" setMarkerColor "colorOPFOR";
-"campMarker" setMarkerText  "camp";
+createGuardedPoint [opfor, _campPos, -1, objNull];
 
 private _campGroup = [_campPos, _faction, "ReconSquad"] call den_fnc_spawnGroup;
 
-[_campGroup, _campPos, 0, "HOLD", "SAFE"] call CBA_fnc_addWaypoint;
+[_campGroup, _campPos, 0, "GUARD", "SAFE"] call CBA_fnc_addWaypoint;
 
 // board near by static weapons
 private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
@@ -96,6 +100,12 @@ private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
         _x assignAsGunner (_hmgs call BIS_fnc_arrayPop);
     };
 } forEach units _campGroup;
+
+createMarker ["campMarker", _campPos];
+"campMarker" setMarkerType "mil_objective";
+"campMarker" setMarkerColor "colorOPFOR";
+"campMarker" setMarkerText "camp";
+"campMarker" setMarkerSize [0.75, 0.75];
 
 /*
  * Attach a search action to a random camp unit to
@@ -141,17 +151,19 @@ _trigger setTriggerStatements    ["this", _activation, ""];
 /*
  * patrol
  */
-[_campPos, _aoRadius * 0.75, _faction, "ReconSentry"] call den_fnc_patrol;
+private _patrolGroup = [_infPatrolPos, _faction, "ReconTeam"] call den_fnc_spawnGroup;
+
+[_patrolGroup, _lzPos, "den_insertUnload"] call den_fnc_attack;
 
 /*
  * reinforcements
  */
- [
-    _campPos,
+[
     _aoArea,
-    _minExfil,
-    _maxExfil,
+    [[_reinforcePos, "FireTeam"]],
     _faction
-] call den_fnc_reinforceTrigger;
+] call den_fnc_wave;
+
+["reconMarker", _campPos getPos [100, (_campPos getDir _lzPos)], _faction, "ReconSquad"] call den_fnc_groupMarker;
 
 _aoName;

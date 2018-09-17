@@ -71,7 +71,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-private _situationText = format["%1 forces are fortifying at position <marker name='aoMarker'>%2</marker>.  This area must be clear of any enemy units ASAP.", _faction, _ao];
+private _situationText = format["%1 forces occupy position <marker name='aoMarker'>%2</marker>.  This position must be recovered by NATO forces.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

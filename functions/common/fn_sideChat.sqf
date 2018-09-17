@@ -10,23 +10,27 @@
 
     Description:
 
-    Broadcast a public boolean variable to true.
+    Broadcast a message to all clients over sideChat.
 
     Parameter(s):
 
-    0: STRING - variable name
+    0: STRING - Chat message to send,
+
+    1: OBJECT - Unit sending message.
 
     Returns: true on success, false on error
 */
-params ["_var"];
+params ["_unit", "_message"];
 
-_var = _this param [0, "", [""]];
+_unit    = _this param [0, objNull, [objNull]];
+_message = _this param [1, "", [""]];
 
-if (_var == "") exitWith {
-    ["variable cannot be an empty string"] call BIS_fnc_err;
+
+if (isNull _unit) exitWith {
+    ["unit parameter is null"] call BIS_fnc_error;
     false;
 };
 
-missionNamespace setVariable [_var, true, true];
+[_unit, _message] remoteExec ["sideChat"];
 
 true;

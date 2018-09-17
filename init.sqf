@@ -1,24 +1,16 @@
+/*
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
+*/
 
 if (isServer) then {
-    _islandLocations = [];
-    switch (worldName) do {
-        case "Altis": {
-            _islandLocations = [
-                "Atsalis",   "Cape Makrinos", "Pyrgi",     "Fournos",
-                "Savri",     "Polemistia",    "Makrynisi", "Savri",
-                "Chelonisi", "Monisi"
-            ];
-        };
-        case "Tanoa": {
-            _islandLocation = [
-                "Imuri Island",   "Ile Douen",        "Ile Sainte-Marie",
-                "Ravi-ta Island", "Ile Saint-George", "Tuadua Island",
-                "Sosovu Island",  "Yasa Island"
-            ];
-        };
-    };
-
-    alphaGroup setGroupIdGlobal ["Alpha"];
+    den_alpha  setGroupIdGlobal ["Alpha"];
 
     _missionParam = -1;
     _factionParam = -1;
@@ -68,7 +60,7 @@ if (isServer) then {
     den_overcast = [_month] call den_fnc_randWeather;
     publicVariable "den_overcast";
 
-    _missionArgs = [alphaGroup, den_faction, _islandLocations];
+    _missionArgs = [den_alpha, den_falcon, den_faction];
     den_ao = "";
     switch (den_mission) do {
         case 0: {
@@ -86,6 +78,9 @@ if (isServer) then {
         case 4: {
             den_ao = _missionArgs call den_fnc_hostageServer;
         };
+        case 5: {
+            den_ao = _missionArgs call den_fnc_urbanServer;
+        };
     };
 
     publicVariable "den_ao";
@@ -96,12 +91,10 @@ if (isServer) then {
 };
 
 if (!isDedicated) then  {
-    titleCut ["", "BLACK FADED", 100];
+    cutText ["","BLACK OUT"];
     [] spawn {
         waitUntil {!visibleMap};
-        sleep 2;
-        titleCut ["", "BLACK IN", 1];
-
+        cutText ["","BLACK IN", 5];
         if (isNil "den_ao" || den_ao == "") then {
             ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
         };
@@ -113,7 +106,7 @@ if (!isDedicated) then  {
 
 0 setOvercast den_overcast;
 
-_missionArgs = [den_ao, den_faction];
+_missionArgs = [den_ao, den_falcon, den_faction];
 switch (den_mission) do {
     case 0: {
         _missionArgs call den_fnc_defendLocal;
@@ -129,5 +122,8 @@ switch (den_mission) do {
     };
     case 4: {
         _missionArgs call den_fnc_hostageLocal;
+    };
+    case 5: {
+        _missionArgs call den_fnc_urbanLocal;
     };
 };

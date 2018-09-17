@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -9,18 +16,26 @@
 
     0: STRING - AO name
 
-    1: STRING - Enemy faction to populate each bunker, must be either
+    1: OBJECT - Transport helicopter to take players to AO.
+
+    2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
 
     Returns: true on success, false on error
 */
-params ["_ao", "_faction"];
+params ["_ao", "_helo", "_faction"];
 
 _ao      = _this param [0, "", [""]];
-_faction = _this param [1, "", [""]];
+_helo    = _this param [1, objNull, [objNull]];
+_faction = _this param [2, "", [""]];
 
 if (_ao == "") exitWith {
     ["ao parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
+if (isNull _helo) exitWith {
+    ["helo parameter is  empty"] call BIS_fnc_error;
     false;
 };
 
@@ -29,12 +44,13 @@ if (_faction == "") exitWith {
     false;
 };
 
-
 private _taskQueue = [
+    [[blufor, "boardInsert",  "BoardInsert",  _helo,           "CREATED", 1, true, "getin"],  "den_insert"],
     [[blufor, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
 
 private _failQueue = [
+    ["HeloDead",    "den_heloDead"],
     ["PlayersDead", "den_playersDead"]
 ];
 
@@ -47,7 +63,7 @@ if (isDedicated) exitWith {true};
  */
 player createDiaryRecord ["Diary", ["Execution",
 "
-1. Start from <marker name='insertMarker'>insert</marker>.
+1. Reach the <marker name='lzMarker'>LZ</marker>.
 <br/>
 2. Defend <marker name='convoyMarker'>convoy</marker> from enemy forces.
 <br/>
@@ -59,7 +75,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-private _situationText = format["A NATO <marker name='convoyMarker'>convoy</marker> was ambushed and is currently disabled near position %2. <marker name='assaultMarker'>%1</marker> forces have launched a second attack to seize the convoy.", _faction, _ao];
+private _situationText = format["A NATO <marker name='convoyMarker'>convoy</marker> was ambushed and is currently disabled near position <marker name='aoMarker'>%2</marker>. %1 forces are expected to launched a second attack to seize the convoy. Additional forces are needed to defend the convoy assets.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

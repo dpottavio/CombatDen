@@ -1,4 +1,15 @@
 /*
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
+*/
+
+/*
  * A collection of compositions in the array format suitable for BIS_fnc_objectsMapper.
  */
 private _camp01 = [
@@ -47,4 +58,14 @@ private _camp02Tropic = [
 	["ACE_medicalSupplyCrate",[3.2583,1.21851,9.53674e-007],360,1,0,[],"","",true,false],
 	["Land_CampingTable_F",[3.2583,-1.40649,-0.00259018],0.00117733,1,0,[],"","",true,false],
 	["Box_T_East_Ammo_F",[3.7583,0.0935059,-9.53674e-007],4.69205e-005,1,0,[],"","",true,false]
+];
+
+private _bunker01 = [
+	["ACE_medicalSupplyCrate",[0.507813,-0.730469,0.177338],91.6856,1,0,[],"","",true,false],
+	["Land_BagBunker_Large_F",[0,0,3.05176e-005],0,1,0,[],"bunker","",true,false]
+];
+
+private _bunker01Tropic = [
+	["ACE_medicalSupplyCrate",[0.508301,-0.730469,0.177338],91.6856,1,0,[],"","",true,false],
+	["Land_BagBunker_01_large_green_F",[0,0,3.05176e-005],0,1,0,[],"bunker","",true,false]
 ];

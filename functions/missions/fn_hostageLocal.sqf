@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -9,18 +16,26 @@
 
     0: STRING - AO name
 
-    1: STRING - Enemy faction to populate each bunker, must be either
+    1: OBJECT - Transport helicopter to take players to AO.
+
+    2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
 
     Returns: true on success, false on error
 */
-params ["_ao", "_faction"];
+params ["_ao", "_helo", "_faction"];
 
 _ao      = _this param [0, "", [""]];
-_faction = _this param [1, "", [""]];
+_helo    = _this param [1, objNull, [objNull]];
+_faction = _this param [2, "", [""]];
 
 if (_ao == "") exitWith {
     ["ao parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
+if (isNull _helo) exitWith {
+    ["helo parameter is  empty"] call BIS_fnc_error;
     false;
 };
 
@@ -30,15 +45,17 @@ if (_faction == "") exitWith {
 };
 
 private _taskQueue = [
-    [[blufor, "hostageFindTask", "FindHostage",  "hostageMarker", "CREATED",1,true,"move"], "den_hostageFound"],
-    [[blufor, "hostageFreeTask", "FreeHostage",  objNull,         "CREATED",1,true,"help"], "den_hostageFree"],
-    [[blufor, "exfilTask",       "ExfilHostage", "exfilMarker",   "CREATED",1,true,"move"], "den_hostageTransport"]
+    [[blufor, "boardInsert",     "BoardInsert",  _helo,           "CREATED", 1, true,  "getin"], "den_insert"],
+    [[blufor, "hostageFindTask", "FindHostage",  "hostageMarker", "CREATED", 1, true,  "move"],  "den_hostageFound"],
+    [[blufor, "hostageFreeTask", "FreeHostage",  objNull,         "CREATED", 1, true,  "help"],  "den_hostageFree"],
+    [[blufor, "lzExtract",       "LzExtract",    "lzMarker",      "CREATED",  1, true, "move"],  "den_lzExtract"],
+    [[blufor, "boardExtract",    "BoardExtract", objNull,         "CREATED",  1, true, "getin"], "den_extract"]
 ];
 
 private _failQueue = [
-    ["PlayersDead",   "den_playersDead"],
-    ["HostageDead",   "den_hostageDead"],
-    ["ExfilHeloDead", "den_exfilHeloDead"]
+    ["HeloDead",    "den_heloDead"],
+    ["PlayersDead", "den_playersDead"],
+    ["HostageDead", "den_hostageDead"]
 ];
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;
@@ -50,11 +67,11 @@ if (isDedicated) exitWith {true};
  */
 player createDiaryRecord ["Diary", ["Execution",
 "
-1. Start from <marker name='insertMarker'>insert</marker>.
+1. Reach the <marker name='lzMarker'>LZ</marker>.
 <br/>
 2. Reach the <marker name='hostageMarker'>hostage</marker>.
 <br/>
-3. Bring the hostage to the <marker name='exfilMarker'>exfil</marker>.
+3. Return to the <marker name='lzMarker'>LZ</marker> with the hostage.
 "
 ]];
 
@@ -63,7 +80,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-_situationText = format["A NATO pilot was downed and taken hostage by %1 forces. He is currently being held in a camp located at position <marker name='aoMarker'>%2</marker>.", _faction, _ao];
+_situationText = format["A NATO pilot was downed and taken hostage by %1 forces. He is currently being held in a camp located near position <marker name='aoMarker'>%2</marker>. A rescue squad will be deployed to extract the hostage.", _faction, _ao];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -33,18 +40,16 @@ private _heloObj   = _helo select 0;
 private _heloCrew  = _helo select 1;
 private _heloGroup = _helo select 2;
 
+_heloGroup setGroupIdGlobal ["Eagle"];
+
+[(leader _heloGroup), "Alpha team be advised, helo container transport is en route."] call den_fnc_sideChat;
+
 _heloObj addEventHandler ["killed", {
     ["den_slingDead"] call den_fnc_publicBool;
 }];
 
-{
-    _x disableAI "AUTOCOMBAT";
-    _x disableAI "AUTOTARGET";
-    _x disableAI "TARGET";
-} forEach _heloCrew;
-
-[_heloGroup, _objPos, 0, "MOVE", "AWARE"] call CBA_fnc_addWaypoint;
-private _hookWp = [_heloGroup, _objPos, 0, "HOOK", "AWARE"] call CBA_fnc_addWaypoint;
+[_heloGroup, _objPos, 0, "MOVE", "AWARE", "GREEN", "FULL"] call CBA_fnc_addWaypoint;
+private _hookWp = [_heloGroup, _objPos, 0, "HOOK", "AWARE", "GREEN", "FULL"] call CBA_fnc_addWaypoint;
 _hookWp waypointAttachVehicle _obj;
 
 private _heloCleanup =  "deleteVehicle getSlingLoad vehicle this; deleteVehicle vehicle this; { deleteVehicle _x } forEach thisList;";

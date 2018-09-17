@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -38,17 +45,9 @@ if (_type == "") then {
     _type = "FireTeam";
 };
 
-private _cfgGroups = "";
-switch (worldName) do {
-    case "Tanoa": {
-        _cfgGroups = "CfgGroupsTropic";
-    };
-    default { // Altis, Malden, Stratis
-        _cfgGroups = "CfgGroups";
-    };
-};
+private _cfgClimate = [] call den_fnc_worldToClimate;
 
-private _cfgType = missionConfigFile >> _cfgGroups >> _faction >> _type;
+private _cfgType = missionConfigFile >> "CfgGroups" >> _faction >> _cfgClimate >> _type;
 if (isNil "_cfgType") exitWith {
     ["invalid config parameters"] call BIS_fnc_error;
     grpNull;
@@ -60,5 +59,13 @@ if (_faction == "NATO") then {
 };
 
 private _group = [_pos, _side, _cfgType] call BIS_fnc_spawnGroup;
+
+// A hack to give Guerrilla units a flashlight.  This should be
+// done in a config file.
+if (_faction == "Guerrilla") then {
+    {
+        _x addPrimaryWeaponItem "acc_flashlight";
+    } forEach units _group;
+};
 
 _group;

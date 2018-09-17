@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -16,17 +23,12 @@
     1: (Optional) GROUP - If defined, when the hostage is unhandcuffed
     he will join this group.
 
-    2: (Optional) STRING - A vehicle type that if defined and the hostage
-    enters a vechicle matching this type, the event variable
-    "hostageTransport" will be defined.
-
     Returns: OBJECT - hostage on success
 */
-params ["_pos", "_group", "_transport"];
+params ["_pos", "_group"];
 
 _pos       = _this param [0, [], [[]], [2,3]];
 _group     = _this param [1, grpNull, [grpNull]];
-_transport = _this param [2, "", [""]];
 
 private _hostageType  = ["B_Pilot_F"];
 private _hostageGroup = [_pos, blufor, _hostageType] call BIS_fnc_spawnGroup;
@@ -80,15 +82,5 @@ private _trigger = createTrigger ["EmptyDetector", getPos den_hostage, false];
 _trigger setTriggerArea          [2, 2, 0, false, 1];
 _trigger setTriggerActivation    ["WEST", "PRESENT", false];
 _trigger setTriggerStatements    ["this", _activation, ""];
-
-rescueTransport = _transport;
-if (rescueTransport != "") then {
-    den_hostage addEventHandler ["GetInMan", {
-        private _vehicle = _this select 2;
-        if (typeOf _vehicle == rescueTransport) then {
-            ["den_hostageTransport"] call den_fnc_publicBool;
-        };
-    }];
-};
 
 den_hostage;

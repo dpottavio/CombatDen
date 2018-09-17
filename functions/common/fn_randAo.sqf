@@ -1,5 +1,12 @@
 /*
-    Author: Ottavio
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 
     Description:
 
@@ -7,18 +14,18 @@
     returning an AO, this function creates a marker defined
     as "aoMarker".
 
+    A location blacklist is defined in CfgBlacklist for each world.
+    Locations from this list are not used.
+
     Parameter(s):
 
     0: (Optional) ARRAY - An array of strings that are location
     types.  If this parameter is empty all types are used by
     default.
 
-    1: (Optional) ARRAY - An array of string sthat are location
-    names.  Any AO location selected will not be in this list.
+    1: (Optional) NUMBER - AO radius. Defaults to 500.
 
-    2: (Optional) NUMBER - AO radius. Defaults to 500.
-
-    3: (Optional) ARRAY - A list of safe position parameters.
+    2: (Optional) ARRAY - A list of safe position parameters.
     If this array is non-empty, an AO location will only be
     selected if it can find a safe position for each of the
     parameters in this list.  Each parameter will serve as
@@ -28,39 +35,43 @@
     If a location cannot be found to have enough safe positions,
     an empty array is returned.
 
-    [[params], ...]
+        [[params], ...]
 
-    params:
-    0: NUMBER - min position
-    1: NUMBER - max position
-    2: NUMBER - min obj distance (default 1)
-    3: NUMBER - max gradient (default ANY gradient)
-    4: NUMBER - road mode:
-        0 - anywhere  (default)
-        1 - on a rode
+        params:
+        0: NUMBER - min position
+        1: NUMBER - max position
+        2: NUMBER - min obj distance (default 1)
+        3: NUMBER - max gradient (default ANY gradient)
+        4: NUMBER - road mode:
+            0 - anywhere  (default)
+            1 - on a rode
+
+    3: BOOL - Area marker visibility.  If true the area marker
+    is visible.  False the area marker is not visible.
 
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
     0: name of the location
-    1: position of the AO
-    2: area of the AO
-    3: list of safe positions
+    1: area of the AO
+    2: list of safe positions
 */
-params ["_types", "_blacklist", "_radius", "_safePosParams"];
+params ["_types", "_radius", "_safePosParams", "_markerVisible"];
 
 _types         = _this param [0, [], [[]]];
-_blacklist     = _this param [1, [], [[]]];
-_radius        = _this param [2, 500, [0]];
-_safePosParams = _this param [3, [], [[]]];
+_radius        = _this param [1, 500, [0]];
+_safePosParams = _this param [2, [], [[]]];
+_markerVisible = _this param [3, false, [false]];
 
 private _defaultTypes = ["NameCity", "NameCityCapital", "NameMarine", "NameVillage", "NameLocal", "Hill", "Mount", "Airport"];
 if (_types isEqualTo []) then {
     _types = _defaultTypes;
 };
 
+_blacklist = getArray (missionConfigFile >> "CfgBlacklist" >> worldName >> "locations");
+
 private _location = configNull;
 
-private _select = "((getText (_x >> 'type') in _types) && !(getText (_x >> 'name') in _blacklist))";
+private _select = "((getText (_x >> 'type') in _types) && !(_x  in _blacklist))";
 private _locationList = _select configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
 [_locationList ,true] call CBA_fnc_shuffle;
 
@@ -136,6 +147,7 @@ if (_name == "") then {
 };
 
 private _area = [
+    _pos,
     _radius,
     _radius,
     0,      // rotation
@@ -148,8 +160,13 @@ createMarker ["aoMarker", _pos];
 "aoMarker" setMarkerSize  [_radius, _radius];
 "aoMarker" setMarkerBrush "SolidBorder";
 "aoMarker" setMarkerColor "colorOPFOR";
-"aoMarker" setMarkerAlpha 0.25;
 
-private _ao = [_name, _pos, _area, _safePosList];
+if (_markerVisible) then {
+    "aoMarker" setMarkerAlpha 0.25;
+} else {
+    "aoMarker" setMarkerAlpha 0;
+};
+
+private _ao = [_name, _area, _safePosList];
 
 _ao;

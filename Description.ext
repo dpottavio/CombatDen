@@ -1,176 +1,21 @@
+/*
+    Copyright (C) 2018 D. Ottavio
+
+    You are free to adapt (i.e. modify, rework or update)
+    and share (i.e. copy, distribute or transmit) this material
+    under the Arma Public License Share Alike (APL-SA).
+
+    You may obtain a copy of the License at:
+    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
+*/
+
 respawnOnStart = -1;
 
-class CfgFunctions
-{
-	class den
-	{
-		class common
-		{
-            file = "functions\common";
-            class commandChat {};
-            class composition {};
-            class exfil {};
-            class exfilTrigger {};
-            class heloExfil {};
-            class hostage {};
-            class insert {};
-            class mpEndMission {};
-            class patrol {};
-            class publicBool {};
-            class randAo {};
-            class randBunker {};
-            class randTime {};
-            class randWeather {};
-            class reinforce {};
-            class reinforceMsg {};
-            class reinforceTrigger{};
-            class sling {};
-            class spawnGroup {};
-            class taskFsm {};
-		};
-        class mission
-        {
-            file = "functions\missions";
-            class defendLocal {};
-            class defendServer {};
-            class campLocal {};
-            class campServer {};
-            class clearLocal {};
-            class clearServer {};
-            class chemLocal {};
-            class chemServer {};
-            class hostageLocal {};
-            class hostageServer {};
-        };
-	};
-};
-
-class Params
-{
-    class Faction
-    {
-        title = "Enemy Faction";
-        texts[] = {"Random", "CSAT", "Guerrilla"};
-        values[] = {-1,0,1};
-        default = -1;
-    };
-    class Mission
-    {
-        title = "Mission";
-        texts[] = {"Random", "Defend Convoy", "Camp Raid", "Container Extraction", "Clear Area", "Hostage Rescue"};
-        values[] = {-1,0,1,2,3,4};
-        default = -1;
-
-        // This must be incremented for each new mission.
-        count = 5;
-    };
-    class RespawnTickets
-    {
-        title = "Respawn Tickets";
-        texts[] = {"1","4","8","16","Unlimited"};
-        values[] = {1,4,8,16,0};
-        default = 4;
-        function = "BIS_fnc_paramRespawnTickets";
-        isGlobal = 0;
-    };
-    class TimeOfDay
-    {
-        title = "Time of Day";
-        texts[] = {"Random","Morning","Day","Evening","Night"};
-        values[] = {-1,6,12,18,0};
-        default = -1;
-    };
-};
-
-class CfgDebriefing
-{
-    class HostageDead
-    {
-        title = "Mission Failed";
-        subtitle = "Hostage Died";
-        description = "You failed to extract the hostage alive.";
-    };
-    class PlayersDead
-    {
-        title = "Mission Failed";
-        subtitle = "All Players Dead";
-        description = "";
-    };
-    class ExfilHeloDead
-    {
-        title = "Mission Failed";
-        subtitle = "Exfil Failure";
-        description = "The helicopter transport was destroyed before it could make it to the exfil position.";
-    };
-    class SlingDead
-    {
-        title = "Mission Failed";
-        subtitle = "Container Extraction Failure";
-        description = "The helicopter transport was destroyed before it could extract the container.";
-    };
-    class ContainerDead
-    {
-        title = "Mission Failed";
-        subtitle = "Container Destroyed";
-        description = "The chemical weapon container was destroyed.";
-    };
-};
-
-class CfgTaskDescriptions
-{
-    class FindHostage
-    {
-        title       = "Reach the Hostage";
-        description = "Go to the hostage.  He is being held at an enemy camp.";
-    };
-    class FreeHostage
-    {
-        title       = "Free Hostage";
-        description = "Remove the hostage's hand restraints. Use the ACE interactive menu to perform this task.";
-    };
-    class Exfil
-    {
-        title       = "Go to the Exfil";
-        description = "";
-    };
-    class ExfilHostage
-    {
-        title       = "Exfil Hostage";
-        description = "Bring the hostage to the exfil and wait for the helo transport. Have the hostage board the helo when it arrives.";
-    };
-    class ClearAo
-    {
-        title       = "Clear the AO";
-        description = "Clear the AO of enemy units.";
-    };
-    class SecureContainer
-    {
-        title       = "Secure Container";
-        description = "Secure chemical weapon container.";
-    };
-    class ContainerExtract
-    {
-        title       = "Container Extraction";
-        description = "Wait for container extraction.";
-    };
-    class RaidCamp
-    {
-        title = "Raid Camp";
-        description = "Raid the enemy recon camp.";
-    };
-    class SearchCamp
-    {
-        title = "Search Camp";
-        description = "Search camp for intel.";
-    };
-    class DefendConvoy
-    {
-        title = "Defend the Convoy";
-        description = "Defend the convoy from enemy assault.";
-    };
-};
-
-#include "CfgGroups.cpp"
-#include "CfgGroupsTropic.cpp"
-
-
+#include "config\CfgArsenal.cpp"
+#include "config\CfgBlacklist.cpp"
+#include "config\CfgDebriefing.cpp"
+#include "config\CfgFunctions.cpp"
+#include "config\CfgGroups.cpp"
+#include "config\CfgLoadout.cpp"
+#include "config\CfgTaskDescriptions.cpp"
+#include "config\Params.cpp"
