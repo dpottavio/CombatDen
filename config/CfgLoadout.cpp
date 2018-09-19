@@ -19,7 +19,10 @@ class CfgLoadout
         vest       = "V_PlateCarrier1_rgr";
         backpack   = "B_AssaultPack_mcamo";
         headgear   = "H_HelmetB";
-        rifleSight  = "ace_optic_hamr_2d";
+        rifleSight = "ace_optic_hamr_2d";
+        nvg        = "ACE_NVG_Wide";
+        mapLight   = "ACE_Flashlight_XL50";
+        rifleLight = "acc_flashlight";
 
         class UniformItems
         {
@@ -56,8 +59,7 @@ class CfgLoadout
                 "ACE_morphine",
                 "ACE_epinephrine",
                 "ACE_epinephrine",
-                "ACE_epinephrine",
-                "ACE_Flashlight_XL50"
+                "ACE_epinephrine"
             };
         };
         class LinkedItems
@@ -66,11 +68,48 @@ class CfgLoadout
                 "ItemMap",
                 "ItemCompass",
                 "ItemWatch",
-                "ItemRadio",
-                "ACE_NVG_Wide"
+                "ItemRadio"
             };
         };
     };
+    class RiflemenBase : LoadoutBase
+    {
+        primaryMag = "30Rnd_65x39_caseless_mag";
+
+        class UniformItems : UniformItems {};
+
+        class VestItems : VestItems
+        {
+           rifleList[] = {
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "HandGrenade",
+                "HandGrenade",
+                "SmokeShell",
+                "SmokeShell"
+            };
+        };
+
+        class BackpackItems : BackpackItems
+        {
+            grenList[] = {
+                "HandGrenade",
+                "HandGrenade",
+                "HandGrenade",
+                "HandGrenade",
+            };
+        };
+        class LinkedItems : LinkedItems {};
+    }
+
     class GrenadierBase : LoadoutBase
     {
         primaryMag   = "30Rnd_65x39_caseless_mag";
@@ -372,7 +411,7 @@ class CfgLoadout
            };
         };
         class BackpackItems : BackpackItems {};
-        class LinkedItems : LinkedItems {};
+        class LinkedItems   : LinkedItems {};
     };
     class AtMrawsBase : LoadoutBase
     {
@@ -410,6 +449,21 @@ class CfgLoadout
     };
     class Arid
     {
+        class Riflemen
+        {
+            role = "Riflemen";
+
+            class Mx : RiflemenBase
+            {
+                type       = "MX";
+                rifle      = "arifle_MX_F";
+
+                class UniformItems  : UniformItems {};
+                class VestItems     : VestItems {};
+                class BackpackItems : BackpackItems {};
+                class LinkedItems   : LinkedItems {};
+            };
+        };
         class SquadLeader
         {
             role = "Squad Leader";
@@ -576,6 +630,25 @@ class CfgLoadout
     };
     class Tropic
     {
+        class Riflemen
+        {
+            role = "Riflemen";
+
+            class Mx : RiflemenBase
+            {
+                type       = "MX";
+                uniform    = "U_B_T_Soldier_F";
+                vest       = "V_PlateCarrier1_tna_F";
+                backpack   = "B_AssaultPack_tna_F";
+                headgear   = "H_HelmetB_tna_F";
+                rifle      = "arifle_MX_Black_F";
+
+                class UniformItems  : UniformItems {};
+                class VestItems     : VestItems {};
+                class BackpackItems : BackpackItems {};
+                class LinkedItems   : LinkedItems {};
+            };
+        };
         class SquadLeader
         {
             role = "Squad Leader";

@@ -10,7 +10,15 @@
 
     Description:
 
+    Set a player loadout based on role and type defined in CfgLoadout.
+
     Parameter(s):
+
+    0: OBJECT - Unit to apply the loadout
+
+    1: STRING - Loadout role, e.g., "Riflemen".
+
+    2: STRING - Loadout type, e.g., "Mx".
 
     Returns: true on success, false on error
 */
@@ -122,5 +130,28 @@ private _linkedItems = configProperties [_loadout >> "LinkedItems"];
  * headgear
  */
 _unit addHeadgear getText (_loadout >> "headgear");
+
+/*
+ * night items
+ */
+private _nvg        = getText (_loadout >> "nvg");
+private _mapLight   = getText (_loadout >> "mapLight");
+private _rifleLight = getText (_loadout >> "rifleLight");
+
+private _sunTimes = date call BIS_fnc_sunriseSunsetTime;
+private _sunrise  = floor (_sunTimes select 0);
+private _sunset   = floor (_sunTimes select 1);
+private _time     = daytime;
+
+ _unit addItemToBackpack _mapLight;
+if ((_sunrise == -1) || ((_sunrise > _time) || (_sunset < _time))) then {
+    // night time - equip the items
+    _unit linkItem _nvg;
+    _unit addPrimaryWeaponItem _rifleLight;
+} else {
+    // day time - place items in backpack
+    _unit addItemToBackpack _nvg;
+    _unit addItemToBackpack _rifleLight;
+};
 
 true;

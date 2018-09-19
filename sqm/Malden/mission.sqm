@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=32;
+		nextID=34;
 	};
 	class Camera
 	{
@@ -16588,21 +16588,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8460.5,7.8021154,508.67499};
+						position[]={8460.5,7.8025255,508.67499};
 						angles[]={0,3.1260941,0};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""SquadLeader"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""SquadLeader"", ""Mx""]];" \n "}";
 						name="alpha1";
 						description="Squad Leader";
 						isPlayer=1;
 					};
 					id=70;
 					type="B_Soldier_F";
-					atlOffset=81.04258;
+					atlOffset=0.00040960312;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -16651,21 +16651,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8463.5,7.8021145,508.17499};
+						position[]={8463.5,7.8017321,508.17499};
 						angles[]={0,3.0235908,0};
 					};
 					side="West";
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Autoriflemen"", ""Ng7""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Autoriflemen"", ""Ng7""]];" \n "}";
 						name="alpha2";
 						description="Autoriflemen (Medium)";
 						isPlayable=1;
 					};
 					id=71;
 					type="B_Soldier_F";
-					atlOffset=81.013382;
+					atlOffset=81.013;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -16721,7 +16721,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Autoriflemen"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Autoriflemen"", ""Mx""]];" \n "}";
 						name="alpha3";
 						description="Autoriflemen (Light)";
 						isPlayable=1;
@@ -16777,21 +16777,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8469.875,7.7848101,507.04999};
+						position[]={8469.875,7.7847414,507.04999};
 						angles[]={0,3.4540241,0};
 					};
 					side="West";
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Grenadier"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Grenadier"", ""Mx""]];" \n "}";
 						name="alpha4";
 						description="Grenadier";
 						isPlayable=1;
 					};
 					id=73;
 					type="B_Soldier_F";
-					atlOffset=78.887695;
+					atlOffset=78.887627;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -16840,21 +16840,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8473.875,7.7592211,507.04999};
+						position[]={8473.875,7.7593355,507.04999};
 						angles[]={0,3.202173,0};
 					};
 					side="West";
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""At"", ""Nlaw""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""Nlaw""]];" \n "}";
 						name="alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
 					};
 					id=74;
 					type="B_Soldier_F";
-					atlOffset=80.906883;
+					atlOffset=80.906998;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -16910,7 +16910,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""At"", ""Nlaw""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""Nlaw""]];" \n "}";
 						name="alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -16973,7 +16973,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Marksmen"", ""Mk14""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Marksmen"", ""Mk14""]];" \n "}";
 						name="alpha7";
 						description="Marksmen";
 						isPlayable=1;
@@ -17029,21 +17029,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8473.0361,7.7433367,510.44696};
+						position[]={8473.0361,7.7436876,510.44699};
 						angles[]={0,3.2472723,0};
 					};
 					side="West";
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Medic"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Medic"", ""Mx""]];" \n "}";
 						name="alpha8";
 						description="Medic";
 						isPlayable=1;
 					};
 					id=77;
 					type="B_medic_F";
-					atlOffset=79.648331;
+					atlOffset=79.648705;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -17093,7 +17093,7 @@ class Mission
 				name="den_alpha";
 			};
 			id=69;
-			atlOffset=81.04258;
+			atlOffset=0.00040960312;
 			class CustomAttributes
 			{
 				class Attribute0

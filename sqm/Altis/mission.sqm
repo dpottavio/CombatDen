@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=129;
+		nextID=132;
 	};
 	class Camera
 	{
-		pos[]={12671.128,8.9758148,3414.4043};
-		dir[]={0.005450937,-0.23058321,0.97307849};
-		up[]={0.0012917492,0.97304225,0.23058972};
-		aside[]={1.0000302,-9.8641635e-008,-0.0056012673};
+		pos[]={12671.131,8.9758148,3415.8994};
+		dir[]={-0.12324183,-0.15506308,-0.98023605};
+		up[]={-0.019345356,0.98789436,-0.15386786};
+		aside[]={-0.99224651,1.4086254e-008,0.12475111};
 	};
 };
 binarizationWanted=0;
@@ -16962,7 +16962,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""SquadLeader"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""SquadLeader"", ""Mx""]];" \n "}";
 						name="alpha1";
 						description="Squad Leader";
 						isPlayer=1;
@@ -17025,7 +17025,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Autoriflemen"", ""Ng7""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Autoriflemen"", ""Ng7""]];" \n "}";
 						name="alpha2";
 						description="Autoriflemen (Medium)";
 						isPlayable=1;
@@ -17088,7 +17088,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Autoriflemen"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Autoriflemen"", ""Mx""]];" \n "}";
 						name="alpha3";
 						description="Autoriflemen (Light)";
 						isPlayable=1;
@@ -17151,7 +17151,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Grenadier"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Grenadier"", ""Mx""]];" \n "}";
 						name="alpha4";
 						description="Grenadier";
 						isPlayable=1;
@@ -17214,7 +17214,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""At"", ""Nlaw""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""Nlaw""]];" \n "}";
 						name="alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -17277,7 +17277,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""At"", ""Nlaw""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""Nlaw""]];" \n "}";
 						name="alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -17340,7 +17340,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Marksmen"", ""Mk14""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Marksmen"", ""Mk14""]];" \n "}";
 						name="alpha7";
 						description="Marksmen";
 						isPlayable=1;
@@ -17403,7 +17403,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "[this, ""Medic"", ""Mx""] call den_fnc_loadout;}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""Medic"", ""Mx""]];" \n "}";
 						name="alpha8";
 						description="Medic";
 						isPlayable=1;
