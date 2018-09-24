@@ -57,7 +57,7 @@ private _safePosParams = [
 ];
 
 private _ao = [
-    ["NameCity", "NameCityCapital"],
+    ["NameCity", "NameVillage"],
     _aoRadius,
     _safePosParams,
     true

@@ -82,6 +82,9 @@
         ["den_heloDead"] call den_fnc_publicBool;
     }];
 
+    _heloObj lockTurret [[1], true];
+    _heloObj lockTurret [[2], true];
+
     [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
 
     [

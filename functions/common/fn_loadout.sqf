@@ -20,13 +20,17 @@
 
     2: STRING - Loadout type, e.g., "Mx".
 
+    3: (Optional) BOOL - Low daylight. If true unit
+    will be equip with night time items. Defaults to false.
+
     Returns: true on success, false on error
 */
-params ["_unit", "_role", "_type"];
+params ["_unit", "_role", "_type", "_lowDaylight"];
 
-_unit = _this param [0, objNull, [objNull]];
-_role = _this param [1, "", [""]];
-_type = _this param [2, "", [""]];
+_unit        = _this param [0, objNull, [objNull]];
+_role        = _this param [1, "", [""]];
+_type        = _this param [2, "", [""]];
+_lowDaylight = _this param [3, false, [false]];
 
 if !(local _unit) exitWith {};
 
@@ -138,13 +142,9 @@ private _nvg        = getText (_loadout >> "nvg");
 private _mapLight   = getText (_loadout >> "mapLight");
 private _rifleLight = getText (_loadout >> "rifleLight");
 
-private _sunTimes = date call BIS_fnc_sunriseSunsetTime;
-private _sunrise  = floor (_sunTimes select 0);
-private _sunset   = floor (_sunTimes select 1);
-private _time     = daytime;
+_unit addItemToBackpack _mapLight;
 
- _unit addItemToBackpack _mapLight;
-if ((_sunrise == -1) || ((_sunrise > _time) || (_sunset < _time))) then {
+if (_lowDaylight) then {
     // night time - equip the items
     _unit linkItem _nvg;
     _unit addPrimaryWeaponItem _rifleLight;

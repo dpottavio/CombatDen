@@ -57,11 +57,13 @@ if (isServer) then {
     _hour  = _hourMonth select 0;
     _month = _hourMonth select 1;
 
+    _lowDaylight = [] call den_fnc_lowDaylight;
+
     {
         private _defaultLoadout = _x getVariable ["den_defaultLoadout", ["Riflemen", "Mx"]];
         private _role = _defaultLoadout select 0;
         private _type = _defaultLoadout select 1;
-        [_x, _role, _type] remoteExecCall ["den_fnc_loadout", _x, true];
+        [_x, _role, _type, _lowDaylight] remoteExecCall ["den_fnc_loadout", _x, true];
     } forEach units den_alpha;
 
     den_overcast = [_month] call den_fnc_randWeather;

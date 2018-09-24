@@ -16,6 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
+<<<<<<< HEAD:sqm/Tanoa/mission.sqm
 		nextID=44;
 	};
 	class Camera
@@ -24,6 +25,16 @@ class EditorData
 		dir[]={0.65981948,-0.010297455,-0.75137955};
 		up[]={0.0068038427,0.99994063,-0.007747713};
 		aside[]={-0.75141668,1.0247459e-007,-0.65985286};
+=======
+		nextID=45;
+	};
+	class Camera
+	{
+		pos[]={7622.3179,10.405019,1915.3318};
+		dir[]={-0.11699671,-0.27636212,0.95392251};
+		up[]={-0.03364427,0.96104574,0.27431345};
+		aside[]={0.99257708,5.2939868e-008,0.12173767};
+>>>>>>> 2.x.0:missions/Tanoa/mission.sqm
 	};
 };
 binarizationWanted=0;
@@ -423,7 +434,6 @@ class Mission
 							flags=6;
 							class Attributes
 							{
-								name="den_falcon";
 							};
 							id=364;
 							type="B_Helipilot_F";
@@ -498,11 +508,52 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								name="falconHeloG";
 							};
 							id=366;
 							type="B_helicrew_F";
 							atlOffset=0.00023698807;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male01ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0.98000002;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 						class Item3
 						{
@@ -790,7 +841,8 @@ class Mission
 					flags=6;
 					class Attributes
 					{
-						name="falconHelo";
+						init="call{this lockTurret [[1], true]; " \n "this lockTurret [[2], true];}";
+						name="den_falcon";
 						textures="Green";
 					};
 					id=363;

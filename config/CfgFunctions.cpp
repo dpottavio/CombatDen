@@ -27,6 +27,7 @@ class CfgFunctions
             class insert {};
             class loadout {};
             class loadoutMenu {};
+            class lowDaylight {};
             class mpEndMission {};
             class publicBool {};
             class randAo {};

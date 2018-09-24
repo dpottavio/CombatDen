@@ -105,6 +105,9 @@ if (isMultiplayer) then {
     clearItemCargoGlobal     den_heloDeployObj;
     clearBackpackCargoGlobal den_heloDeployObj;
 
+    den_heloDeployObj lockTurret [[1], true];
+    den_heloDeployObj lockTurret [[2], true];
+
     publicVariable "den_heloDeployObj";
 
     _heloDeployGroup setGroupIdGlobal ["Falcon"];
