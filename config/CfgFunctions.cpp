@@ -22,6 +22,7 @@ class CfgFunctions
             class commandChat {};
             class composition {};
             class extract {};
+            class friendlyFire {};
             class groupMarker {};
             class hostage {};
             class insert {};

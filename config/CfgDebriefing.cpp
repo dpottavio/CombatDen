@@ -41,4 +41,10 @@ class CfgDebriefing
         subtitle = "Container Destroyed";
         description = "The chemical weapon container was destroyed.";
     };
+    class FobFriendlyFire
+    {
+        title = "Mission Failed";
+        subtitle = "Friendly Fire at FOB";
+        description = "Tragic friendly fire incident occurred.  Perpetrators will be prosecuted to the fullest extent."
+    };
 };

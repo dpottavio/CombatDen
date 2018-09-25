@@ -48,7 +48,8 @@ private _taskQueue = [
 ];
 
 private _failQueue = [
-    ["PlayersDead", "den_playersDead"]
+    ["PlayersDead",     "den_playersDead"],
+    ["FobFriendlyFire", "den_fobFriendlyFire"]
 ];
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;

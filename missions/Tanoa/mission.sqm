@@ -16,17 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-<<<<<<< HEAD:sqm/Tanoa/mission.sqm
-		nextID=44;
-	};
-	class Camera
-	{
-		pos[]={7623.8965,9.8261566,1900.5558};
-		dir[]={0.65981948,-0.010297455,-0.75137955};
-		up[]={0.0068038427,0.99994063,-0.007747713};
-		aside[]={-0.75141668,1.0247459e-007,-0.65985286};
-=======
-		nextID=45;
+		nextID=47;
 	};
 	class Camera
 	{
@@ -34,7 +24,6 @@ class EditorData
 		dir[]={-0.11699671,-0.27636212,0.95392251};
 		up[]={-0.03364427,0.96104574,0.27431345};
 		aside[]={0.99257708,5.2939868e-008,0.12173767};
->>>>>>> 2.x.0:missions/Tanoa/mission.sqm
 	};
 };
 binarizationWanted=0;
@@ -434,6 +423,7 @@ class Mission
 							flags=6;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=364;
 							type="B_Helipilot_F";
@@ -492,10 +482,53 @@ class Mission
 							flags=4;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=365;
 							type="B_Helipilot_F";
 							atlOffset=0.00023698807;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male06ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=1.03;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 						class Item2
 						{
@@ -508,6 +541,7 @@ class Mission
 							flags=4;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=366;
 							type="B_helicrew_F";
@@ -566,10 +600,53 @@ class Mission
 							flags=4;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=367;
 							type="B_helicrew_F";
 							atlOffset=0.00023698807;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male11ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=1.04;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 					};
 					class Attributes
@@ -725,6 +802,7 @@ class Mission
 							flags=3;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 								stance="Middle";
 								class Inventory
 								{
@@ -910,10 +988,53 @@ class Mission
 							flags=6;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=383;
 							type="B_Fighter_Pilot_F";
 							atlOffset=0.00031089783;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male01ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0.95999998;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 					};
 					class Attributes
@@ -1001,6 +1122,7 @@ class Mission
 							flags=7;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 								stance="Up";
 								class Inventory
 								{

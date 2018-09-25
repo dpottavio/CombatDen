@@ -16,18 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-<<<<<<< HEAD:sqm/Altis/mission.sqm
-		nextID=136;
-=======
-		nextID=134;
->>>>>>> 2.x.0:missions/Altis/mission.sqm
+		nextID=135;
 	};
 	class Camera
 	{
 		pos[]={12671.131,8.9758148,3415.8994};
-		dir[]={-0.23616141,-0.17625329,-0.95565134};
-		up[]={-0.042287789,0.98433465,-0.17112114};
-		aside[]={-0.9708612,1.2070814e-008,0.23991986};
+		dir[]={-0.18689974,-0.10815766,-0.97645968};
+		up[]={-0.020336563,0.99412411,-0.10624833};
+		aside[]={-0.98223108,5.7552825e-008,0.18800347};
 	};
 };
 binarizationWanted=0;
@@ -16386,11 +16382,53 @@ class Mission
 							flags=6;
 							class Attributes
 							{
-								name="den_falconD";
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2700;
 							type="B_Helipilot_F";
 							atlOffset=0.0003285408;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male09ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=1.02;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 						class Item1
 						{
@@ -16403,10 +16441,53 @@ class Mission
 							flags=4;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2701;
 							type="B_Helipilot_F";
 							atlOffset=0.0003285408;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male04ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0.94999999;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 						class Item2
 						{
@@ -16419,10 +16500,53 @@ class Mission
 							flags=4;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2703;
 							type="B_helicrew_F";
 							atlOffset=0.0003285408;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male04ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0.99000001;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 						class Item3
 						{
@@ -16435,11 +16559,53 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								name="den_falconG";
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2702;
 							type="B_helicrew_F";
 							atlOffset=0.0003285408;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male02ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0.95999998;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 					};
 					class Attributes
@@ -16587,13 +16753,14 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={12658.375,6.9586544,3367.425};
+								position[]={12658.375,6.9582109,3367.425};
 								angles[]={0,0.73729688,0};
 							};
 							side="West";
 							flags=3;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 								stance="Middle";
 								class Inventory
 								{
@@ -16625,7 +16792,7 @@ class Mission
 							};
 							id=2708;
 							type="B_Deck_Crew_F";
-							atlOffset=165.73544;
+							atlOffset=165.735;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -16674,7 +16841,7 @@ class Mission
 					{
 					};
 					id=2707;
-					atlOffset=165.73544;
+					atlOffset=165.735;
 				};
 				class Item9
 				{
@@ -16749,16 +16916,60 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={12426.875,22.172012,3427.05};
+								position[]={12426.875,22.172306,3427.05};
 								angles[]={0,0.11470304,0};
 							};
 							side="West";
 							flags=6;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2711;
 							type="B_Fighter_Pilot_F";
+							atlOffset=0.00029373169;
+							class CustomAttributes
+							{
+								class Attribute0
+								{
+									property="speaker";
+									expression="_this setspeaker _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="Male04ENG";
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="pitch";
+									expression="_this setpitch _value;";
+									class Value
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=1.05;
+										};
+									};
+								};
+								nAttributes=2;
+							};
 						};
 					};
 					class Attributes
@@ -16815,13 +17026,14 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={12681.625,6.9593382,3389.425};
+								position[]={12681.625,6.9588823,3389.425};
 								angles[]={0,4.1891046,0};
 							};
 							side="West";
 							flags=3;
 							class Attributes
 							{
+								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 								stance="Up";
 								class Inventory
 								{
@@ -16853,7 +17065,7 @@ class Mission
 							};
 							id=2714;
 							type="B_Deck_Crew_F";
-							atlOffset=166.98846;
+							atlOffset=166.98801;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -16902,7 +17114,7 @@ class Mission
 					{
 					};
 					id=2713;
-					atlOffset=166.98846;
+					atlOffset=166.98801;
 				};
 				class Item13
 				{
@@ -16946,7 +17158,7 @@ class Mission
 				};
 			};
 			id=2694;
-			atlOffset=164.72722;
+			atlOffset=164.7271;
 		};
 		class Item1
 		{
