@@ -143,7 +143,19 @@ class CfgArsenal
             "Titan_AA",
             "Titan_AP",
             "Titan_AT",
-            "MRAWS_HE_F"
+            "MRAWS_HE_F",
+            "30Rnd_556x45_Stanag_green",
+            "30Rnd_556x45_Stanag_red",
+            "30Rnd_556x45_Stanag",
+            "30Rnd_556x45_Stanag_Tracer_Green",
+            "30Rnd_556x45_Stanag_Tracer_Red",
+            "30Rnd_556x45_Stanag_Tracer_Yellow",
+            "ACE_30Rnd_556x45_Stanag_M995_AP_mag",
+            "ACE_30Rnd_556x45_Stanag_Mk262_mag",
+            "ACE_30Rnd_556x45_Stanag_Mk318_mag",
+            "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
+            "150Rnd_556x45_Drum_Mag_F",
+            "150Rnd_556x45_Drum_Mag_Tracer_F"
         };
         weapons[] = {
             "LMG_Zafir_F",

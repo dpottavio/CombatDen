@@ -34,10 +34,6 @@ _lowDaylight = _this param [3, false, [false]];
 
 if !(local _unit) exitWith {};
 
-if (isNull _obj) exitWith {
-    ["object parameter is null"] call BIS_fnc_error;
-};
-
 if (_role == "") exitWith {
     ["role is empty"] call BIS_fnc_error;
 };
@@ -54,23 +50,10 @@ removeAllWeapons _unit;
 removeAllItems _unit;
 removeAllAssignedItems _unit;
 removeUniform _unit;
-removeVest _uint;
+removeVest _unit;
 removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
-
-/*
- * weapons
- */
-_unit addMagazine getText (_loadout >> "primaryMag");
-_unit addMagazine getText (_loadout >> "secondaryMag");
-
-_unit addWeapon getText (_loadout >> "rifle");
-_unit addWeapon getText (_loadout >> "handgun");
-_unit addWeapon getText (_loadout >> "binoculars");
-_unit addWeapon getText (_loadout >> "launcher");
-_unit addPrimaryWeaponItem getText (_loadout >> "rifleSight");
-_unit addPrimaryWeaponItem getText (_loadout >> "rifleBipod");
 
 /*
  * uniform
@@ -116,6 +99,19 @@ private _backpackItems = configProperties [_loadout >> "BackpackItems"];
         } forEach _list;
     };
 } forEach _backpackItems;
+
+/*
+ * weapons
+ */
+_unit addMagazine getText (_loadout >> "primaryMag");
+_unit addMagazine getText (_loadout >> "secondaryMag");
+
+_unit addWeapon getText (_loadout >> "rifle");
+_unit addWeapon getText (_loadout >> "handgun");
+_unit addWeapon getText (_loadout >> "binoculars");
+_unit addWeapon getText (_loadout >> "launcher");
+_unit addPrimaryWeaponItem getText (_loadout >> "rifleSight");
+_unit addPrimaryWeaponItem getText (_loadout >> "rifleBipod");
 
 /*
  * linked

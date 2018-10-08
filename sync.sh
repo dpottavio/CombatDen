@@ -5,7 +5,7 @@
 #
 set -e
 
-MISSIONS="Altis Malden Tanoa"
+MISSIONS="Altis Malden Stratis Tanoa"
 
 if [ -z "$MISSION_PATH" ]; then
     echo "error - MISSION_PATH is not defined"
@@ -14,7 +14,7 @@ fi
 
 for i in $MISSIONS; do
     [ -d "${MISSION_PATH}/CombatDen.${i}" ] || mkdir "${MISSION_PATH}/CombatDen.${i}"
-    cp -ur Description.ext functions/ config/ init.sqf ${MISSION_PATH}/CombatDen.${i}/
+    cp -ur Description.ext functions/ config/ *.sqf ${MISSION_PATH}/CombatDen.${i}/
     cp -u missions/${i}/title.jpg ${MISSION_PATH}/CombatDen.${i}
 
     if [ -f "${MISSION_PATH}/CombatDen.${i}/mission.sqm" ]; then

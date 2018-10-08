@@ -17,7 +17,6 @@ class CfgFunctions
         {
             file = "functions\common";
             class arsenal {};
-            class arsenalAiMenu {};
             class attack {};
             class commandChat {};
             class composition {};
@@ -25,9 +24,9 @@ class CfgFunctions
             class friendlyFire {};
             class groupMarker {};
             class hostage {};
+            class initSinglePlayer {};
             class insert {};
             class loadout {};
-            class loadoutMenu {};
             class lowDaylight {};
             class mpEndMission {};
             class publicBool {};
@@ -56,6 +55,17 @@ class CfgFunctions
             class hostageServer {};
             class urbanLocal {};
             class urbanServer{};
+        };
+        class ui
+        {
+            file = "functions\ui";
+            class uiLoadoutArsenalAction {};
+            class uiLoadoutApplyAction {};
+            class uiLoadoutDiag {};
+            class uiLoadoutGetUnit {};
+            class uiLoadoutOkAction {};
+            class uiParamDiag {};
+            class uiParamOkAction {};
         };
     };
 };

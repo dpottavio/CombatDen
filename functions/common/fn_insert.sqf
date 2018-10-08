@@ -137,10 +137,14 @@ if (isMultiplayer) then {
         "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
     ] call CBA_fnc_addWaypoint;
 
-    // Move the AI units in the load dummy helo.
+    // Move remaining units in the dummy helo.
     {
-        [_x, _heloDummy] remoteExecCall ["moveInCargo", _x];
-        [_x, "MOVE"]     remoteExecCall ["enableAI", _x];
+        if ((_heloDummy getCargoIndex _x) == -1) then {
+            [_x, _heloDummy] remoteExecCall ["moveInCargo", _x];
+
+            // Re-enable AI units for any that exist.
+            [_x, "MOVE"] remoteExecCall ["enableAI", _x];
+        };
     } forEach units _cargoGroup;
 
     /*

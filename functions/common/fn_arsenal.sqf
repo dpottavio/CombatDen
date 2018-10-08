@@ -40,8 +40,22 @@ private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _
 
 [_obj, _items] call ace_arsenal_fnc_initBox;
 
-[_obj, ["ACE_MainActions"]] call den_fnc_loadoutMenu;
+private _loadoutAction = [
+    "den_loadoutMenu",
+    "Mission Loadouts",
+    "",
+    {
+        params ["_target", "_player", "_params"];
 
-[_obj, ["ACE_MainActions"], _group] call den_fnc_arsenalAiMenu;
+        private _obj = _params select 0;
+
+        [_obj] call den_fnc_uiLoadoutDiag;
+    },
+    {true},
+    {},
+    [_obj]
+] call ace_interact_menu_fnc_createAction;
+
+[_obj, 0, ["ACE_MainActions"], _loadoutAction] call ace_interact_menu_fnc_addActionToObject;
 
 true;

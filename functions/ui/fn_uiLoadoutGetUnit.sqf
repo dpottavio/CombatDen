@@ -9,4 +9,9 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-den_alpha setGroupId ["Alpha"];
+private _unitListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "UnitListBox" >> "idc");
+private _unitNumber = parseNumber lbData [_unitListBoxId, lbCurSel _unitListBoxId];
+
+private _unit = (units group player) select (_unitNumber - 1);
+
+_unit

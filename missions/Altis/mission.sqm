@@ -8,7 +8,7 @@ class EditorData
 	toggles=5;
 	class ItemIDProvider
 	{
-		nextID=2784;
+		nextID=2787;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=135;
+		nextID=150;
 	};
 	class Camera
 	{
-		pos[]={12671.131,8.9758148,3415.8994};
-		dir[]={-0.18689974,-0.10815766,-0.97645968};
-		up[]={-0.020336563,0.99412411,-0.10624833};
-		aside[]={-0.98223108,5.7552825e-008,0.18800347};
+		pos[]={12668.268,8.5816231,3403.8867};
+		dir[]={0.29134923,0.0072389413,0.95666885};
+		up[]={-0.0020976102,0.99995911,-0.0068853428};
+		aside[]={0.95670837,5.7913803e-007,-0.2913574};
 	};
 };
 binarizationWanted=0;
@@ -34,9 +34,9 @@ addons[]=
 	"A3_Supplies_F_Heli_CargoNets",
 	"A3_Ui_F",
 	"A3_Characters_F",
-	"A3_Air_F_Jets_Plane_Fighter_01",
 	"A3_Air_F_Heli_Heli_Transport_03",
 	"ace_realisticnames",
+	"A3_Air_F_Jets_Plane_Fighter_01",
 	"A3_Characters_F_Jets",
 	"A3_Weapons_F",
 	"ace_hearing",
@@ -88,15 +88,15 @@ class AddonsMetaData
 		};
 		class Item5
 		{
-			className="A3_Air_F_Jets";
-			name="Arma 3 Jets - Aircraft";
+			className="A3_Air_F_Heli";
+			name="Arma 3 Helicopters - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
 		class Item6
 		{
-			className="A3_Air_F_Heli";
-			name="Arma 3 Helicopters - Aircraft";
+			className="A3_Air_F_Jets";
+			name="Arma 3 Jets - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -16256,7 +16256,7 @@ class Mission
 			name="Naval FOB";
 			class Entities
 			{
-				items=14;
+				items=12;
 				class Item0
 				{
 					dataType="Object";
@@ -16325,7 +16325,7 @@ class Mission
 					class Attributes
 					{
 						init="call{[this, den_alpha] call den_fnc_arsenal;}";
-						name="box1";
+						name="den_arsenal";
 					};
 					id=2697;
 					type="B_CargoNet_01_ammo_F";
@@ -16382,7 +16382,6 @@ class Mission
 							flags=6;
 							class Attributes
 							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2700;
 							type="B_Helipilot_F";
@@ -16441,7 +16440,6 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2701;
 							type="B_Helipilot_F";
@@ -16500,7 +16498,6 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2703;
 							type="B_helicrew_F";
@@ -16559,7 +16556,6 @@ class Mission
 							flags=4;
 							class Attributes
 							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 							};
 							id=2702;
 							type="B_helicrew_F";
@@ -16697,23 +16693,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12426.766,24.651562,3427.2451};
-						angles[]={0,0.11470304,0};
-					};
-					side="West";
-					flags=6;
-					class Attributes
-					{
-						init="call{_x = [this] spawn {" \n "    private _plane = _this select 0;" \n "    sleep 20;" \n "    [_plane] call BIS_fnc_AircraftCatapultLaunch;" \n "};}";
-					};
-					id=2704;
-					type="B_Plane_Fighter_01_F";
-				};
-				class Item6
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={12476.719,25.579502,3381.0596};
 						angles[]={0,0.13704032,0};
 					};
@@ -16726,7 +16705,7 @@ class Mission
 					id=2705;
 					type="B_Heli_Transport_03_unarmed_F";
 				};
-				class Item7
+				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
@@ -16741,7 +16720,7 @@ class Mission
 					id=2706;
 					type="B_Plane_Fighter_01_F";
 				};
-				class Item8
+				class Item7
 				{
 					dataType="Group";
 					side="West";
@@ -16760,7 +16739,6 @@ class Mission
 							flags=3;
 							class Attributes
 							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 								stance="Middle";
 								class Inventory
 								{
@@ -16843,7 +16821,7 @@ class Mission
 					id=2707;
 					atlOffset=165.735;
 				};
-				class Item9
+				class Item8
 				{
 					dataType="Object";
 					class PositionInfo
@@ -16904,101 +16882,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item10
-				{
-					dataType="Group";
-					side="West";
-					class Entities
-					{
-						items=1;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={12426.875,22.172306,3427.05};
-								angles[]={0,0.11470304,0};
-							};
-							side="West";
-							flags=6;
-							class Attributes
-							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
-							};
-							id=2711;
-							type="B_Fighter_Pilot_F";
-							atlOffset=0.00029373169;
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male04ENG";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.05;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-					};
-					class Attributes
-					{
-					};
-					class CrewLinks
-					{
-						class LinkIDProvider
-						{
-							nextID=1;
-						};
-						class Links
-						{
-							items=1;
-							class Item0
-							{
-								linkID=0;
-								item0=2711;
-								item1=2704;
-								class CustomData
-								{
-									role=1;
-								};
-							};
-						};
-					};
-					id=2710;
-				};
-				class Item11
+				class Item9
 				{
 					dataType="Object";
 					class PositionInfo
@@ -17014,7 +16898,7 @@ class Mission
 					id=2712;
 					type="B_Heli_Transport_03_F";
 				};
-				class Item12
+				class Item10
 				{
 					dataType="Group";
 					side="West";
@@ -17033,7 +16917,6 @@ class Mission
 							flags=3;
 							class Attributes
 							{
-								init="call{[this, ""den_fobFriendlyFire""] call den_fnc_friendlyFire;" \n "}";
 								stance="Up";
 								class Inventory
 								{
@@ -17116,7 +16999,7 @@ class Mission
 					id=2713;
 					atlOffset=166.98801;
 				};
-				class Item13
+				class Item11
 				{
 					dataType="Object";
 					class PositionInfo
@@ -17158,7 +17041,7 @@ class Mission
 				};
 			};
 			id=2694;
-			atlOffset=164.7271;
+			atlOffset=164.91695;
 		};
 		class Item1
 		{
@@ -17431,7 +17314,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""Nlaw""]];" \n "}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""NlawMx""]];" \n "}";
 						name="alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -17494,7 +17377,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""Nlaw""]];" \n "}";
+						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_defaultLoadout"", [""At"", ""NlawMx""]];" \n "}";
 						name="alpha6";
 						description="Anti-Tank";
 						isPlayable=1;

@@ -9,4 +9,8 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-den_alpha setGroupId ["Alpha"];
+[] call den_fnc_uiLoadoutApplyAction;
+
+closeDialog 1;
+
+true;

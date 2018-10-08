@@ -9,7 +9,21 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
+respawn = "BASE";
+respawnDelay = 30;
+respawnDialog = 0;
 respawnOnStart = -1;
+respawnTemplates[] = {"MenuPosition", "Tickets", "Spectator"};
+respawnButton = 1;
+
+briefing = 0;
+
+class Header
+{
+	gameType   = COOP;
+	minPlayers = 1;
+	maxPlayers = 8;
+};
 
 #include "config\CfgArsenal.cpp"
 #include "config\CfgBlacklist.cpp"
@@ -19,3 +33,4 @@ respawnOnStart = -1;
 #include "config\CfgLoadout.cpp"
 #include "config\CfgTaskDescriptions.cpp"
 #include "config\Params.cpp"
+#include "config\CfgUi.cpp"
