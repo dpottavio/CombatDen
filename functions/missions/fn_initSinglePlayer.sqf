@@ -7,6 +7,10 @@
 
     You may obtain a copy of the License at:
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
+
+    Description:
+
+    Mission setup for single player only.
 */
 
 if (isMultiPlayer) exitWith {};
@@ -59,37 +63,13 @@ den_overcast = [_month] call den_fnc_randWeather;
 
 private _missionArgs = [den_alpha, den_falcon, den_faction];
 
-den_ao = "";
-switch (den_mission) do {
-    case 0: {
-        den_ao = _missionArgs call den_fnc_defendServer;
-        [den_ao, den_falcon, den_faction] call den_fnc_defendLocal;
-    };
-    case 1: {
-        den_ao = _missionArgs call den_fnc_campServer;
-        [den_ao, den_falcon, den_faction] call den_fnc_campLocal;
-    };
-    case 2: {
-        den_ao = _missionArgs call den_fnc_chemServer;
-        [den_ao, den_falcon, den_faction] call den_fnc_chemLocal;
-    };
-    case 3: {
-        den_ao = _missionArgs call den_fnc_clearServer;
-        [den_ao, den_falcon, den_faction] call den_fnc_clearLocal;
-    };
-    case 4: {
-        den_ao = _missionArgs call den_fnc_hostageServer;
-        [den_ao, den_falcon, den_faction] call den_fnc_hostageLocal
-    };
-    case 5: {
-        den_ao = _missionArgs call den_fnc_urbanServer;
-        [den_ao, den_falcon, den_faction] call den_fnc_urbanLocal;
-    };
-};
+den_ao = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
 
 if (isNil "den_ao" || den_ao == "") exitWith {
     ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
 };
+
+[den_mission, den_ao, den_falcon, den_faction] call den_fnc_initMissionLocal;
 
 0 setOvercast den_overcast;
 

@@ -24,7 +24,6 @@ class CfgFunctions
             class friendlyFire {};
             class groupMarker {};
             class hostage {};
-            class initSinglePlayer {};
             class insert {};
             class loadout {};
             class lowDaylight {};
@@ -53,6 +52,9 @@ class CfgFunctions
             class chemServer {};
             class hostageLocal {};
             class hostageServer {};
+            class initMissionLocal {};
+            class initMissionServer {};
+            class initSinglePlayer {};
             class urbanLocal {};
             class urbanServer{};
         };

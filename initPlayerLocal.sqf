@@ -30,24 +30,6 @@ if (isNil "den_ao" || den_ao == "") exitWith {
 
 0 setOvercast den_overcast;
 
-private _missionArgs = [den_ao, den_falcon, den_faction];
-switch (den_mission) do {
-    case 0: {
-        _missionArgs call den_fnc_defendLocal;
-    };
-    case 1: {
-        _missionArgs call den_fnc_campLocal;
-    };
-    case 2: {
-        _missionArgs call den_fnc_chemLocal;
-    };
-    case 3: {
-       _missionArgs call den_fnc_clearLocal;
-    };
-    case 4: {
-        _missionArgs call den_fnc_hostageLocal;
-    };
-    case 5: {
-        _missionArgs call den_fnc_urbanLocal;
-    };
-};
+[den_mission, den_ao, den_falcon, den_faction] call den_fnc_initMissionLocal;
+
+true;

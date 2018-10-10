@@ -60,29 +60,14 @@ private _lowDaylight = [] call den_fnc_lowDaylight;
 den_overcast = [_month] call den_fnc_randWeather;
 publicVariable "den_overcast";
 
-private _missionArgs = [den_alpha, den_falcon, den_faction];
-den_ao = "";
-switch (den_mission) do {
-    case 0: {
-        den_ao = _missionArgs call den_fnc_defendServer;
-    };
-    case 1: {
-        den_ao = _missionArgs call den_fnc_campServer;
-    };
-    case 2: {
-        den_ao = _missionArgs call den_fnc_chemServer;
-    };
-    case 3: {
-        den_ao = _missionArgs call den_fnc_clearServer;
-    };
-    case 4: {
-        den_ao = _missionArgs call den_fnc_hostageServer;
-    };
-    case 5: {
-        den_ao = _missionArgs call den_fnc_urbanServer;
-    };
-};
+den_ao = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
 
 publicVariable "den_ao";
 
 ["den_initServerDone"] call den_fnc_publicBool;
+
+if (isDedicated) then {
+    [den_mission, den_ao, den_falcon, den_faction] call den_fnc_initMissionLocal;
+};
+
+true;
