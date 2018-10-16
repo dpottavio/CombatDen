@@ -14,21 +14,21 @@
 
     Parameter(s):
 
-    0: STRING - AO name
+    0: STRING - zone name
 
     1: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
 
     Returns: true on success, false on error
 */
-params ["_ao", "_helo", "_faction"];
+params ["_zone", "_helo", "_faction"];
 
-_ao      = _this param [0, "", [""]];
+_zone    = _this param [0, "", [""]];
 _helo    = _this param [1, objNull, [objNull]];
 _faction = _this param [2, "", [""]];
 
-if (_ao == "") exitWith {
-    ["ao parameter cannot be empty"] call BIS_fnc_error;
+if (_zone == "") exitWith {
+    ["zone parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
 
@@ -80,7 +80,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-private _situationText = format["%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> near position <marker name='aoMarker'>%2</marker>. NATO forces are to seize and extract this asset via helicopter.", _faction, _ao];
+private _situationText = format["%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> near position <marker name='zoneMarker'>%2</marker>. NATO forces are to seize and extract this asset via helicopter.", _faction, _zone];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

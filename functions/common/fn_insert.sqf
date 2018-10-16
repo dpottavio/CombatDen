@@ -118,7 +118,7 @@ if (isMultiplayer) then {
         0,
         "TR UNLOAD",
         "AWARE",
-        "GREEN",
+        "YELLOW",
         "FULL",
         "COLUMN",
         "den_insertUnload = true",
@@ -131,7 +131,7 @@ if (isMultiplayer) then {
         0,
         "MOVE",
         "AWARE",
-        "GREEN",
+        "YELLOW",
         "FULL",
         "COLUMN",
         "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"

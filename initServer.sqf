@@ -9,6 +9,8 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
+den_alpha setGroupIdGlobal ["Alpha"];
+
 if (!isMultiplayer) exitWith {};
 
 _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
@@ -60,14 +62,14 @@ private _lowDaylight = [] call den_fnc_lowDaylight;
 den_overcast = [_month] call den_fnc_randWeather;
 publicVariable "den_overcast";
 
-den_ao = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
+den_zone = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
 
-publicVariable "den_ao";
+publicVariable "den_zone";
 
 ["den_initServerDone"] call den_fnc_publicBool;
 
 if (isDedicated) then {
-    [den_mission, den_ao, den_falcon, den_faction] call den_fnc_initMissionLocal;
+    [den_mission, den_zone, den_falcon, den_faction] call den_fnc_initMissionLocal;
 };
 
 true;

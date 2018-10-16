@@ -14,6 +14,7 @@ class CfgBlacklist
     class Altis
     {
         locations[] = {
+            "Almyra",
             "AtsalisIsland",
             "CapMakrinos",
             "ChelonisiIsland",

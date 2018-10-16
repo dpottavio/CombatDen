@@ -18,6 +18,7 @@ class CfgFunctions
             file = "functions\common";
             class arsenal {};
             class attack {};
+            class buildingOccupy {};
             class commandChat {};
             class composition {};
             class extract {};
@@ -29,7 +30,6 @@ class CfgFunctions
             class lowDaylight {};
             class mpEndMission {};
             class publicBool {};
-            class randAo {};
             class randTime {};
             class randWeather {};
             class sideChat {};
@@ -38,6 +38,7 @@ class CfgFunctions
             class taskFsm {};
             class wave {};
             class worldToClimate {};
+            class zone {};
         };
         class mission
         {

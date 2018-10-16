@@ -20,16 +20,16 @@ cutText ["","BLACK OUT"];
 [] spawn {
     waitUntil {!visibleMap};
     cutText ["","BLACK IN", 5];
-    if (isNil "den_ao" || den_ao == "") then {
-        ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
+    if (isNil "den_zone" || den_zone == "") then {
+        ["There was an error generating the zone. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
     };
 };
-if (isNil "den_ao" || den_ao == "") exitWith {
-    player createDiaryRecord ["Diary", ["Error", "There was an error generating the AO.  Please restart the mission."]];
+if (isNil "den_zone" || den_zone == "") exitWith {
+    player createDiaryRecord ["Diary", ["Error", "There was an error generating the zone.  Please restart the mission."]];
 };
 
 0 setOvercast den_overcast;
 
-[den_mission, den_ao, den_falcon, den_faction] call den_fnc_initMissionLocal;
+[den_mission, den_zone, den_falcon, den_faction] call den_fnc_initMissionLocal;
 
 true;

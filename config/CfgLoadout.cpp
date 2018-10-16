@@ -598,54 +598,55 @@ class CfgLoadout
         class BackpackItems : BackpackItems {};
         class LinkedItems   : LinkedItems {};
     };
-    class AtMraws65Base : Rifle65Base
+    class AtMaaws65Base : Rifle65Base
     {
-        secondaryMag = "MRAWS_HE_F";
+        secondaryMag = "MRAWS_HEAT_F";
 
         class UniformItems : UniformItems {};
 
         class VestItems : VestItems
         {
-           atMrawsList[] = {
+           atMaawsList[] = {
                "HandGrenade",
                "HandGrenade",
                "SmokeShell",
                "SmokeShell"
            };
         };
-        class BackpackItems : BackpackItems
+        // HACK: For some reason we cannot derive the backpack items
+        // from base class and add the mags from base class and
+        // add the MRAWS_HEAT_F rocket.  But we can do this
+        // explicitly in this class.
+        class BackpackItems
         {
-            atMrawsList[] = {
-                "HandGrenade",
-                "HandGrenade",
-                "HandGrenade",
-                "MRAWS_HE_F"
+            atMaawsList[] = {
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "MRAWS_HEAT_F"
             };
         };
         class LinkedItems : LinkedItems {};
     };
-    class AtMraws556Base : Rifle556Base
+    class AtMaaws556Base : Rifle556Base
     {
-        secondaryMag = "MRAWS_HE_F";
+        secondaryMag = "MRAWS_HEAT_F";
 
         class UniformItems : UniformItems {};
 
         class VestItems : VestItems
         {
-           atMrawsList[] = {
+           atMaawsList[] = {
                "HandGrenade",
                "HandGrenade",
                "SmokeShell",
-               "SmokeShell"
+               "SmokeShell",
            };
         };
         class BackpackItems : BackpackItems
         {
-            atMrawsList[] = {
-                "HandGrenade",
-                "HandGrenade",
-                "HandGrenade",
-                "MRAWS_HE_F"
+            atMaawsList[] = {
+                "MRAWS_HEAT_F"
             };
         };
         class LinkedItems : LinkedItems {};
@@ -858,22 +859,22 @@ class CfgLoadout
         {
             role = "Anti-Tank";
 
-            class MrawsMx : AtMraws65Base
+            class MaawsMx : AtMaaws65Base
             {
-                type     = "MRAWS / MX";
+                type     = "MAAWS / MX";
                 rifle    = "arifle_MX_F";
-                launcher = "launch_MRAWS_sand_F";
+                launcher = "launch_MRAWS_olive_F";
 
                 class UniformItems  : UniformItems {};
                 class VestItems     : VestItems {};
                 class BackpackItems : BackpackItems {};
                 class LinkedItems   : LinkedItems {};
             };
-            class MrawsHk : AtMraws556Base
+            class MaawsHk : AtMaaws556Base
             {
-                type     = "MRAWS / HK416 11";
+                type     = "MAAWS / HK416 11";
                 rifle    = "arifle_SPAR_01_snd_F";
-                launcher = "launch_MRAWS_sand_F";
+                launcher = "launch_MRAWS_olive_F";
 
                 class UniformItems  : UniformItems {};
                 class VestItems     : VestItems {};
@@ -1174,9 +1175,9 @@ class CfgLoadout
         {
             role = "Anti-Tank";
 
-            class MrawsMx : AtMraws65Base
+            class MaawsMx : AtMaaws65Base
             {
-                type     = "MRAWS / MX";
+                type     = "MAAWS / MX";
                 uniform  = "U_B_T_Soldier_F";
                 vest     = "V_PlateCarrier1_tna_F";
                 backpack = "B_AssaultPack_tna_F";
@@ -1189,9 +1190,9 @@ class CfgLoadout
                 class BackpackItems : BackpackItems {};
                 class LinkedItems   : LinkedItems {};
             };
-            class MrawsHk : AtMraws556Base
+            class MaawsHk : AtMaaws556Base
             {
-                type     = "MRAWS / HK416 11";
+                type     = "MAAWS / HK416 11";
                 uniform  = "U_B_T_Soldier_F";
                 vest     = "V_PlateCarrier1_tna_F";
                 backpack = "B_AssaultPack_tna_F";

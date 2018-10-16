@@ -16,14 +16,14 @@
 
     0: GROUP - player group
 
-    1: OBJECT - Transport helicopter to take players to AO.
+    1: OBJECT - Transport helicopter to take players to the zone.
 
     2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
     3: ARRAY of STRINGS - A location name blacklist.
 
-    Returns: STRING - AO location name, empty string on error.
+    Returns: STRING - zone location name, empty string on error.
 */
 params ["_playerGroup", "_helo", "_faction"];
 
@@ -41,14 +41,14 @@ if (isNull _helo) exitWith {
     "";
 };
 
-private _aoRadius       = 500;
-private _minLz          = _aoRadius + 500;
-private _maxLz          = _aoRadius + 550;
+private _zoneRadius     = 500;
+private _minLz          = _zoneRadius + 500;
+private _maxLz          = _zoneRadius + 550;
 private _minReinforce   = _minLz;
 private _maxReinforce   = _maxLz;
-private _maxHostage     = _aoRadius * 0.25;
-private _maxInfPatrol   = _aoRadius * 0.75;
-private _maxMotorPatrol = _aoRadius * 0.75;
+private _maxHostage     = _zoneRadius * 0.25;
+private _maxInfPatrol   = _zoneRadius * 0.75;
+private _maxMotorPatrol = _zoneRadius * 0.75;
 
 private _safePosParams = [
     [_minLz,        _maxLz,          15, 0.1], // lz safe position
@@ -58,27 +58,27 @@ private _safePosParams = [
     [0,             _maxMotorPatrol, 10,  -1]  // motor patrol safe position
 ];
 
-private _ao = [
+private _zone = [
     ["NameCity", "NameVillage", "NameLocal"],
-    _aoRadius,
+    _zoneRadius,
     _safePosParams
-] call den_fnc_randAo;
+] call den_fnc_zone;
 
-private _aoName         = _ao select 0;
-private _aoArea         = _ao select 1;
-private _aoPos          = _aoArea select 0;
-private _aoRadius       = _aoArea select 1;
-private _aoSafePosList  = _ao select 2;
-private _lzPos          = _aoSafePosList select 0;
-private _reinforcePos   = _aoSafePosList select 1;
-private _hostagePos     = _aoSafePosList select 2;
-private _infPatrolPos   = _aoSafePosList select 3;
-private _motorPatrolPos = _aoSafePosList select 4;
+private _zoneName        = _zone select 0;
+private _zoneArea        = _zone select 1;
+private _zonePos         = _zoneArea select 0;
+private _zoneRadius      = _zoneArea select 1;
+private _zoneSafePosList = _zone select 2;
+private _lzPos           = _zoneSafePosList select 0;
+private _reinforcePos    = _zoneSafePosList select 1;
+private _hostagePos      = _zoneSafePosList select 2;
+private _infPatrolPos    = _zoneSafePosList select 3;
+private _motorPatrolPos  = _zoneSafePosList select 4;
 
 /*
  * lz
  */
-[_lzPos, _playerGroup, _helo, _aoArea] call den_fnc_insert;
+[_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
 [_lzPos, _playerGroup, "den_hostageFound"] call den_fnc_extract;
 
 /*
@@ -118,11 +118,13 @@ private _guardGroup = [
 
 [_guardGroup, _hostagePos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
 
+[_zonePos, _zoneRadius * 0.75, _faction, 4] call den_fnc_buildingOccupy;
+
 /*
  * reinforcements
  */
 [
-    _aoArea,
+    _zoneArea,
     [[_reinforcePos, "AssaultTeam"]],
     _faction
 ] call den_fnc_wave;
@@ -137,4 +139,4 @@ private _motorMarkerPos = _hostagePos getPos [150, (_hostagePos getDir _lzPos)];
 ["motorMarker", _motorMarkerPos, _faction, "MotorizedHmg"] call den_fnc_groupMarker;
 
 
-_aoName;
+_zoneName;

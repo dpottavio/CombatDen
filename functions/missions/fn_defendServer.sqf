@@ -16,14 +16,14 @@
 
     0: GROUP - player group
 
-    1: OBJECT - Transport helicopter to take players to AO.
+    1: OBJECT - Transport helicopter to take players to the zone.
 
     2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".  Defaults to "CSAT".
 
     3: ARRAY of STRINGS - A location name blacklist.
 
-    Returns: STRING - AO location name, empty string on error.
+    Returns: STRING - zone location name, empty string on error.
 */
 params ["_playerGroup", "_helo", "_faction"];
 
@@ -41,14 +41,14 @@ if (isNull _helo) exitWith {
     false;
 };
 
-private _aoRadius    = 500;
-private _minLz       = _aoRadius + 400;
-private _maxLz       = _aoRadius + 450;
-private _maxConvoy   = _aoRadius * 0.5;
-private _minAssault1 = _aoRadius * 0.75;
-private _maxAssault1 = _aoRadius * 0.8;
-private _minAssault2 = _aoRadius + 50;
-private _maxAssault2 = _aoRadius + 100;
+private _zoneRadius  = 500;
+private _minLz       = _zoneRadius + 400;
+private _maxLz       = _zoneRadius + 450;
+private _maxConvoy   = _zoneRadius * 0.5;
+private _minAssault1 = _zoneRadius * 0.75;
+private _maxAssault1 = _zoneRadius * 0.8;
+private _minAssault2 = _zoneRadius + 50;
+private _maxAssault2 = _zoneRadius + 100;
 
 private _safePosParams = [
     [_minLz,       _maxLz,       15, 0.1, 0], // insert safe position
@@ -56,23 +56,23 @@ private _safePosParams = [
     [_minAssault2, _maxAssault2, 10, 0.1, 0]  // assault1 safe position
 ];
 
-private _ao = [
+private _zone = [
     ["NameCity", "NameVillage", "NameLocal"],
-    _aoRadius,
+    _zoneRadius,
     _safePosParams
-] call den_fnc_randAo;
+] call den_fnc_zone;
 
-if (_ao isEqualTo []) exitWith {
+if (_zone isEqualTo []) exitWith {
     "";
 };
 
-private _aoName        = _ao select 0;
-private _aoArea        = _ao select 1;
-private _aoPos         = _aoArea select 0;
-private _aoRadius      = _aoArea select 1;
-private _aoSafePosList = _ao select 2;
-private _lzPos         = _aoSafePosList select 0;
-private _convoyRoads   = _aoPos nearRoads (_maxConvoy);
+private _zoneName        = _zone select 0;
+private _zoneArea        = _zone select 1;
+private _zonePos         = _zoneArea select 0;
+private _zoneRadius      = _zoneArea select 1;
+private _zoneSafePosList = _zone select 2;
+private _lzPos           = _zoneSafePosList select 0;
+private _convoyRoads     = _zonePos nearRoads (_maxConvoy);
 if (_convoyRoads isEqualTo []) exitWith {
     ["failed to find road for convoy"] call BIS_fnc_error;
     "";
@@ -85,10 +85,10 @@ if !(_convoyConnList isEqualTo []) then {
     _convoyDir  = _convoyRoad getDir _convoyConnRoad;
 };
 private _convoyPos  = getPos _convoyRoad;
-private _assaultPos1 = _aoSafePosList select 1;
-private _assaultPos2 = _aoSafePosList select 2;
+private _assaultPos1 = _zoneSafePosList select 1;
+private _assaultPos2 = _zoneSafePosList select 2;
 
-[_lzPos, _playerGroup, _helo, _aoArea] call den_fnc_insert;
+[_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
 
 /*
  * convoy
@@ -122,10 +122,10 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
 /*
  * assault waves
  */
-[_assaultPos1, _assaultPos2, _aoArea, _convoyPos, _faction] spawn {
+[_assaultPos1, _assaultPos2, _zoneArea, _convoyPos, _faction] spawn {
     private _assaultPos1 = _this select 0;
     private _assaultPos2 = _this select 1;
-    private _aoArea      = _this select 2;
+    private _zoneArea    = _this select 2;
     private _convoyPos   = _this select 3;
     private _faction     = _this select 4;
 
@@ -138,17 +138,17 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
     };
 
     [
-        _aoArea,
+        _zoneArea,
         [[_assaultPos1, "MotorizedAssault"], [_assaultPos2, "AssaultSquad"]],
         _faction,
         {den_spawnDone = true}
     ] call den_fnc_wave;
 
-    // wait for the AO to clear before mission complete
+    // wait for the zone to clear before mission complete
     private _enemyCount = -1;
     while {true} do {
         if (!isNil "den_spawnDone") then {
-            _enemyCount = {((side _x) == opfor) && ((getPos _x) inArea _aoArea) && (!fleeing _x)} count allUnits;
+            _enemyCount = {((side _x) == opfor) && ((getPos _x) inArea _zoneArea) && (!fleeing _x)} count allUnits;
         };
         if (_enemyCount == 0) exitWith {};
         sleep 1;
@@ -157,4 +157,4 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
     ["den_convoyDefended"] call den_fnc_publicBool;
 };
 
-_aoName;
+_zoneName;

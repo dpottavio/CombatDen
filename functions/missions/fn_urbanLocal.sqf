@@ -14,21 +14,21 @@
 
     Parameter(s):
 
-    0: STRING - AO name
+    0: STRING - zone name
 
     1: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
 
     Returns: true on success, false on error
 */
-params ["_ao", "_helo", "_faction"];
+params ["_zone", "_helo", "_faction"];
 
-_ao      = _this param [0, "", [""]];
+_zone    = _this param [0, "", [""]];
 _helo    = _this param [1, objNull, [objNull]];
 _faction = _this param [2, "", [""]];
 
-if (_ao == "") exitWith {
-    ["ao parameter cannot be empty"] call BIS_fnc_error;
+if (_zone == "") exitWith {
+    ["zone parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
 
@@ -43,8 +43,8 @@ if (_faction == "") exitWith {
 };
 
 private _taskQueue = [
-    [[blufor, "boardInsert", "BoardInsert", _helo,   "CREATED", 1, true, "getin"],  "den_insert"],
-    [[blufor, "clearAoTask", "ClearAo",     objNull, "CREATED", 1, true, "attack"], "den_aoClear"]
+    [[blufor, "boardInsert",   "BoardInsert", _helo,   "CREATED", 1, true, "getin"],  "den_insert"],
+    [[blufor, "clearZoneTask", "ClearZone",   objNull, "CREATED", 1, true, "attack"], "den_zoneClear"]
 ];
 
 private _failQueue = [
@@ -63,16 +63,16 @@ player createDiaryRecord ["Diary", ["Execution",
 "
 1. Reach the <marker name='lzMarker'>LZ</marker>.
 <br/>
-2. Search and clear the <marker name='aoMarker'>area</marker> of enemy forces.
+2. Search and clear the <marker name='zoneMarker'>area</marker> of enemy forces.
 "
 ]];
 
 player createDiaryRecord ["Diary", ["Mission",
-"Clear <marker name='aoMarker'>area</marker> of enemy units.
+"Clear <marker name='zoneMarker'>area</marker> of enemy units.
 "
 ]];
 
-private _situationText = format["%1 forces occupy position <marker name='aoMarker'>%2</marker>.  This position must be recovered by NATO forces.", _faction, _ao];
+private _situationText = format["%1 forces occupy position <marker name='zoneMarker'>%2</marker>.  This position must be recovered by NATO forces.", _faction, _zone];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

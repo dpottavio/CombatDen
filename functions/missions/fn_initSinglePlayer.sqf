@@ -63,13 +63,13 @@ den_overcast = [_month] call den_fnc_randWeather;
 
 private _missionArgs = [den_alpha, den_falcon, den_faction];
 
-den_ao = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
+den_zone = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
 
-if (isNil "den_ao" || den_ao == "") exitWith {
-    ["There was an error generating the AO. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
+if (isNil "den_zone" || den_zone == "") exitWith {
+    ["There was an error generating the zone. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
 };
 
-[den_mission, den_ao, den_falcon, den_faction] call den_fnc_initMissionLocal;
+[den_mission, den_zone, den_falcon, den_faction] call den_fnc_initMissionLocal;
 
 0 setOvercast den_overcast;
 

@@ -26,7 +26,7 @@ class CfgTaskDescriptions
         title       = "Go to LZ";
         description = "Go to the LZ for helicopter extraction. All units are required for extraction.";
     };
-    class ClearAo
+    class ClearZone
     {
         title       = "Clear Area";
         description = "Clear the red highlighted area of enemy units.";

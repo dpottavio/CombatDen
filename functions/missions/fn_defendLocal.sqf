@@ -14,23 +14,23 @@
 
     Parameter(s):
 
-    0: STRING - AO name
+    0: STRING - zone name
 
-    1: OBJECT - Transport helicopter to take players to AO.
+    1: OBJECT - Transport helicopter to take players to the zone.
 
     2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
 
     Returns: true on success, false on error
 */
-params ["_ao", "_helo", "_faction"];
+params ["_zone", "_helo", "_faction"];
 
-_ao      = _this param [0, "", [""]];
+_zone    = _this param [0, "", [""]];
 _helo    = _this param [1, objNull, [objNull]];
 _faction = _this param [2, "", [""]];
 
-if (_ao == "") exitWith {
-    ["ao parameter cannot be empty"] call BIS_fnc_error;
+if (_zone == "") exitWith {
+    ["zone parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
 
@@ -76,7 +76,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-private _situationText = format["A NATO <marker name='convoyMarker'>convoy</marker> was ambushed and is currently disabled near position <marker name='aoMarker'>%2</marker>. %1 forces are expected to launched a second attack to seize the convoy. Additional forces are needed to defend the convoy assets.", _faction, _ao];
+private _situationText = format["A NATO <marker name='convoyMarker'>convoy</marker> was ambushed and is currently disabled near position <marker name='zoneMarker'>%2</marker>. %1 forces are expected to launched a second attack to seize the convoy. Additional forces are needed to defend the convoy assets.", _faction, _zone];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

@@ -135,6 +135,19 @@ class CfgGroups
     {
         class Arid
         {
+            class Sentry : SentryBase
+            {
+                type = "infantry";
+                marker = "o_inf";
+                class Unit0 : Unit0
+                {
+                    vehicle = "O_soldier_TL_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "O_soldier_F";
+                };
+            }
             class FireTeam : FireTeamBase
             {
                 type = "infantry";
@@ -282,6 +295,19 @@ class CfgGroups
         };
         class Tropic
         {
+            class Sentry : SentryBase
+            {
+                type = "infantry";
+                marker = "o_inf";
+                class Unit0 : Unit0
+                {
+                    vehicle = "O_T_Soldier_TL_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "O_T_Soldier_F";
+                };
+            }
             class FireTeam : FireTeamBase
             {
                 type = "infantry";
@@ -433,6 +459,19 @@ class CfgGroups
     {
         class Arid
         {
+            class Sentry : SentryBase
+            {
+                type = "infantry";
+                marker = "o_inf";
+                class Unit0 : Unit0
+                {
+                    vehicle = "O_G_soldier_TL_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "O_G_soldier_F";
+                };
+            }
             class FireTeam : FireTeamBase
             {
                 type = "infantry";
@@ -568,6 +607,19 @@ class CfgGroups
         };
         class Tropic
         {
+            class Sentry : SentryBase
+            {
+                type = "infantry";
+                marker = "o_inf";
+                class Unit0 : Unit0
+                {
+                    vehicle = "I_C_Soldier_Para_2_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "I_C_Soldier_Para_1_F";
+                };
+            }
             class FireTeam : FireTeamBase
             {
                 type = "infantry";

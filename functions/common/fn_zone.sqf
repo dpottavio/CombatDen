@@ -10,9 +10,8 @@
 
     Description:
 
-    Return a random AO from world locations. In addition to
-    returning an AO, this function creates a marker defined
-    as "aoMarker".
+    Generate and return an enemy zone.  This function creates a marker
+    defined as "zoneMarker".
 
     A location blacklist is defined in CfgBlacklist for each world.
     Locations from this list are not used.
@@ -23,10 +22,10 @@
     types.  If this parameter is empty all types are used by
     default.
 
-    1: (Optional) NUMBER - AO radius. Defaults to 500.
+    1: (Optional) NUMBER - Zone radius. Defaults to 500.
 
     2: (Optional) ARRAY - A list of safe position parameters.
-    If this array is non-empty, an AO location will only be
+    If this array is non-empty, a zone location will only be
     selected if it can find a safe position for each of the
     parameters in this list.  Each parameter will serve as
     parameters to BIS_fnc_findSafePos.  By default this array
@@ -52,7 +51,7 @@
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
     0: name of the location
-    1: area of the AO
+    1: area of the zone
     2: list of safe positions
 */
 params ["_types", "_radius", "_safePosParams", "_markerVisible"];
@@ -155,18 +154,18 @@ private _area = [
     -1      // c
 ];
 
-createMarker ["aoMarker", _pos];
-"aoMarker" setMarkerShape "ELLIPSE";
-"aoMarker" setMarkerSize  [_radius, _radius];
-"aoMarker" setMarkerBrush "SolidBorder";
-"aoMarker" setMarkerColor "colorOPFOR";
+createMarker ["zoneMarker", _pos];
+"zoneMarker" setMarkerShape "ELLIPSE";
+"zoneMarker" setMarkerSize  [_radius, _radius];
+"zoneMarker" setMarkerBrush "SolidBorder";
+"zoneMarker" setMarkerColor "colorOPFOR";
 
 if (_markerVisible) then {
-    "aoMarker" setMarkerAlpha 0.25;
+    "zoneMarker" setMarkerAlpha 0.25;
 } else {
-    "aoMarker" setMarkerAlpha 0;
+    "zoneMarker" setMarkerAlpha 0;
 };
 
-private _ao = [_name, _area, _safePosList];
+private _zone = [_name, _area, _safePosList];
 
-_ao;
+_zone;
