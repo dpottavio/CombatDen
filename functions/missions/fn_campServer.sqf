@@ -18,16 +18,18 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    2: STRING - BLUFOR faction. See CfgFactions.
+
+    3: STRING - OPFOR faction. See CfgFactions.
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_faction"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
 
-_playerGroup = _this param [0, grpNull, [grpNull]];
-_helo        = _this param [1, objNull, [objNull]];
-_faction     = _this param [2, "CSAT", [""]];
+_playerGroup   = _this param [0, grpNull, [grpNull]];
+_helo          = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
+_opforFaction  = _this param [3, "", [""]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -36,6 +38,16 @@ if (isNull _playerGroup) exitWith {
 
 if (isNull _helo) exitWith {
     ["helo parameter must not be null"] call BIS_fnc_error;
+    "";
+};
+
+if (_bluforFaction == "") exitWith {
+    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    "";
+};
+
+if (_opforFaction == "") exitWith {
+    ["opfor faction cannot be empty"] call BIS_fnc_error;
     "";
 };
 
@@ -77,7 +89,7 @@ private _infPatrolPos    = _zoneSafePosList select 3;
  * lz
  */
 [_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
-[_lzPos, _playerGroup, "den_intelFound", _zoneArea] call den_fnc_extract;
+[_lzPos, _playerGroup, _bluforFaction, "den_intelFound", _zoneArea] call den_fnc_extract;
 
 /*
  * camp
@@ -86,7 +98,7 @@ private _infPatrolPos    = _zoneSafePosList select 3;
 
 createGuardedPoint [opfor, _campPos, -1, objNull];
 
-private _campGroup = [_campPos, _faction, "ReconSquad"] call den_fnc_spawnGroup;
+private _campGroup = [_campPos, _opforFaction, "ReconSquad"] call den_fnc_spawnGroup;
 
 [_campGroup, _campPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
 
@@ -119,9 +131,9 @@ if (_searchItems isEqualTo []) exitWith {
 den_searchItem = selectRandom (_searchItems);
 publicVariable "den_searchItem";
 
-[_lzPos, _faction] spawn {
+[_lzPos, _opforFaction] spawn {
     private _lzPos   = _this select 0;
-    private _faction = _this select 1;
+    private _opforFaction = _this select 1;
 
     while {isNil "den_campSeized"} do {
         sleep 1;
@@ -144,7 +156,7 @@ publicVariable "den_searchItem";
         false                                               // Show in unconscious state
     ] remoteExec ["BIS_fnc_holdActionAdd"];
 
-    [_lzPos, _faction, "ReconTeam"] call den_fnc_spawnGroup;
+    [_lzPos, _opforFaction, "ReconTeam"] call den_fnc_spawnGroup;
 };
 
 private _activation = "[""den_campSeized""] call den_fnc_publicBool";
@@ -156,9 +168,8 @@ _trigger setTriggerStatements    ["this", _activation, ""];
 /*
  * patrol
  */
-private _patrolGroup = [_infPatrolPos, _faction, "ReconTeam"] call den_fnc_spawnGroup;
-
-[_patrolGroup, _lzPos, "den_insertUnload"] call den_fnc_attack;
+private _patrolGroup = [_infPatrolPos, _opforFaction, "ReconTeam"] call den_fnc_spawnGroup;
+[_patrolGroup, _infPatrolPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
 
 /*
  * reinforcements
@@ -166,9 +177,12 @@ private _patrolGroup = [_infPatrolPos, _faction, "ReconTeam"] call den_fnc_spawn
 [
     _zoneArea,
     [[_reinforcePos, "AssaultSquad"]],
-    _faction
+    _opforFaction
 ] call den_fnc_wave;
 
-["reconMarker", _campPos getPos [100, (_campPos getDir _lzPos)], _faction, "ReconSquad"] call den_fnc_groupMarker;
+private _infMarkerPos = _campPos getPos [100, (_campPos getDir _lzPos)];
+
+private _marker = createMarker ["opforInfMarker", _infMarkerPos];
+_marker setMarkerType "o_recon";
 
 _zoneName;

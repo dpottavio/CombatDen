@@ -47,6 +47,9 @@ switch (worldName) do {
             case 12: {_overcast = random[0.0, 0.15, 1.0]};
         };
     };
+    case "takistan": {
+        _overcast = 0;
+    };
     default { // Altis, Malden, Stratis
         switch(_month) do {
             case 1:  {_overcast = random[0.0, 0.7, 1.0]};

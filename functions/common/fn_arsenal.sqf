@@ -24,6 +24,8 @@ params ["_obj", "_group"];
 _obj   = _this param [0, objNull, [objNull]];
 _group = _this param [1, grpNull, [grpNull]];
 
+private _faction = [] call den_fnc_bluforFaction;
+
 if (isNull _obj) exitWith {
     ["object parameter is null"] call BIS_fnc_error;
 };
@@ -31,7 +33,7 @@ if (isNull _obj) exitWith {
 private _cfgClimate = [] call den_fnc_worldToClimate;
 
 private _items = [];
-private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _cfgClimate];
+private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _faction >> _cfgClimate];
 {
     if (isArray _x) then {
         _items = _items + (getArray _x);

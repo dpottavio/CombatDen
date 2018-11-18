@@ -10,6 +10,15 @@ Combat Den is a work-in-progress project to provide randomized missions using AC
 [*] Configurable mission parameters.
 [*] 6 randomized mission types complete with briefing.
 [*] Multi terrain support.  See Combat Den collection for full list.
+[*] Support for RHSAFRF, RHSUSAF, and ProjectOPFOR.
+[/list]
+
+[h1]RHS Support[/h1]
+Loading RHS based mods will replace default factions.  It is recommend to install RHSAFRF, RHSUSAF, and ProjectOPFOR together.  However, this is not necessary.
+[list]
+[*] RHSAFRF loaded will replace CSAT forces with Russia.
+[*] RHSUSAF loaded will replace NATO forces with USMC.
+[*] ProjectOPFOR loaded will add various enemy factions depending on the terrian.
 [/list]
 
 [h1]How can I play?[/h1]

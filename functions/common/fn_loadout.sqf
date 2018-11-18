@@ -23,14 +23,17 @@
     3: (Optional) BOOL - Low daylight. If true unit
     will be equip with night time items. Defaults to false.
 
+    4: (Optional) STRING - faction name. Defaults to "NATO".
+
     Returns: true on success, false on error
 */
-params ["_unit", "_role", "_type", "_lowDaylight"];
+params ["_unit", "_role", "_type", "_lowDaylight", "_faction"];
 
 _unit        = _this param [0, objNull, [objNull]];
 _role        = _this param [1, "", [""]];
 _type        = _this param [2, "", [""]];
 _lowDaylight = _this param [3, false, [false]];
+_faction     = _this param [4, "NATO", [""]];
 
 if !(local _unit) exitWith {};
 
@@ -38,13 +41,19 @@ if (_role == "") exitWith {
     ["role is empty"] call BIS_fnc_error;
 };
 
-if (_type == "") exitWith {
-    ["type is empty"] call BIS_fnc_error;
-};
-
 private _cfgClimate = [] call den_fnc_worldToClimate;
 
-private _loadout = missionConfigFile >> "CfgLoadout" >> _cfgClimate >> _role >> _type;
+private _loadout = configNull;
+if (_type != "") then {
+    _loadout = missionConfigFile >> "CfgLoadout" >> _faction >> _cfgClimate >> _role >> _type;
+} else {
+    private _loadouts = "getNumber(_x >> ""default"") == 1" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _cfgClimate >> _role);
+    if (_loadouts isEqualTo []) exitWith {
+        ["no default loadouts"] call BIS_fnc_error;
+        false;
+    };
+   _loadout = _loadouts select 0;
+};
 
 removeAllWeapons _unit;
 removeAllItems _unit;
@@ -103,8 +112,19 @@ private _backpackItems = configProperties [_loadout >> "BackpackItems"];
 /*
  * weapons
  */
-_unit addMagazine getText (_loadout >> "primaryMag");
-_unit addMagazine getText (_loadout >> "secondaryMag");
+private _primaryMag      = getText   (_loadout >> "primaryMag");
+private _primaryMagCount = getNumber (_loadout >> "primaryMagCount");
+
+for [{_x = 0}, {_x < _primaryMagCount}, {_x = _x + 1}] do {
+    _unit addMagazine _primaryMag;
+};
+
+private _secondaryMag      = getText   (_loadout >> "secondaryMag");
+private _secondaryMagCount = getNumber (_loadout >> "secondaryMagCount");
+
+for [{_x = 0}, {_x < _secondaryMagCount}, {_x = _x + 1}] do {
+    _unit addMagazine _secondaryMag;
+};
 
 _unit addWeapon getText (_loadout >> "rifle");
 _unit addWeapon getText (_loadout >> "handgun");

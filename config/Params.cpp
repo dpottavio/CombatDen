@@ -11,13 +11,6 @@
 
 class Params
 {
-    class Faction
-    {
-        title = "Enemy Faction";
-        texts[] = {"Random", "CSAT", "Guerrilla"};
-        values[] = {-1,0,1};
-        default = -1;
-    };
     class Mission
     {
         title = "Mission";

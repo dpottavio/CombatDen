@@ -18,18 +18,18 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    2: STRING - BLUFOR faction. See CfgFactions.
 
-    3: ARRAY of STRINGS - A location name blacklist.
+    3: STRING - OPFOR faction. See CfgFactions.
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_faction"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
 
-_playerGroup = _this param [0, grpNull, [grpNull]];
-_helo        = _this param [1, objNull, [objNull]];
-_faction     = _this param [2, "CSAT", [""]];
+_playerGroup   = _this param [0, grpNull, [grpNull]];
+_helo          = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
+_opforFaction  = _this param [3, "", [""]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -37,8 +37,18 @@ if (isNull _playerGroup) exitWith {
 };
 
 if (isNull _helo) exitWith {
-    ["helo parameter is  empty"] call BIS_fnc_error;
+    ["helo parameter cannot be empty"] call BIS_fnc_error;
     false;
+};
+
+if (_bluforFaction == "") exitWith {
+    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    "";
+};
+
+if (_opforFaction == "") exitWith {
+    ["opfor faction cannot be empty"] call BIS_fnc_error;
+    "";
 };
 
 private _zoneRadius  = 500;
@@ -93,16 +103,18 @@ private _assaultPos2 = _zoneSafePosList select 2;
 /*
  * convoy
  */
-private _convoyVehicles = ["B_Truck_01_ammo_F", "B_Truck_01_box_F", "B_Truck_01_fuel_F"];
+private _convoyVehicles = ["supplyTruck", "supplyTruckAmmo", "supplyTruckFuel"];
+private _climate = [] call den_fnc_worldToClimate;
 private _i = 0;
 {
     private _vpos = _convoyPos getPos [_i * 15, _convoyDir];
-    private _v = _x createVehicle _vpos;
+    private _type = getText (missionConfigFile >> "CfgVehicles" >> _bluforFaction >> _climate >> _x);
+    private _v = _type createVehicle _vpos;
     _v setDir _convoyDir;
     _v setDamage 0.80;
 
     private _gpos = _vpos getPos [5, _convoyDir + 90];
-    private _g = [_gpos, "NATO", "TruckCrew"] call den_fnc_spawnGroup;
+    private _g = [_gpos, _bluforFaction, "TruckCrew"] call den_fnc_spawnGroup;
     if (!isNull _g) then {
         private _wp = [_g, _vpos, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
         _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
@@ -122,12 +134,12 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
 /*
  * assault waves
  */
-[_assaultPos1, _assaultPos2, _zoneArea, _convoyPos, _faction] spawn {
-    private _assaultPos1 = _this select 0;
-    private _assaultPos2 = _this select 1;
-    private _zoneArea    = _this select 2;
-    private _convoyPos   = _this select 3;
-    private _faction     = _this select 4;
+[_assaultPos1, _assaultPos2, _zoneArea, _convoyPos, _opforFaction] spawn {
+    private _assaultPos1  = _this select 0;
+    private _assaultPos2  = _this select 1;
+    private _zoneArea     = _this select 2;
+    private _convoyPos    = _this select 3;
+    private _opforFaction = _this select 4;
 
     // wait for player insert before staring wave attacks
     while {true} do {
@@ -140,7 +152,7 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
     [
         _zoneArea,
         [[_assaultPos1, "MotorizedAssault"], [_assaultPos2, "AssaultSquad"]],
-        _faction,
+        _opforFaction,
         {den_spawnDone = true}
     ] call den_fnc_wave;
 

@@ -17,7 +17,7 @@ class CfgFunctions
         {
             file = "functions\common";
             class arsenal {};
-            class attack {};
+            class bluforFaction {};
             class buildingOccupy {};
             class commandChat {};
             class composition {};
@@ -29,12 +29,15 @@ class CfgFunctions
             class loadout {};
             class lowDaylight {};
             class mpEndMission {};
+            class opforFactions {};
             class publicBool {};
             class randTime {};
             class randWeather {};
             class sideChat {};
             class sling {};
             class spawnGroup {};
+            class spawnHeloTransport {};
+            class spawnVehicle {};
             class taskFsm {};
             class wave {};
             class worldToClimate {};

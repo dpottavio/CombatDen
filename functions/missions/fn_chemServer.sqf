@@ -18,16 +18,18 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    2: STRING - BLUFOR faction. See CfgFactions.
+
+    3: STRING - OPFOR faction. See CfgFactions.
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_faction"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
 
-_playerGroup = _this param [0, grpNull, [grpNull]];
-_helo        = _this param [1, objNull, [objNull]];
-_faction     = _this param [2, "CSAT", [""]];
+_playerGroup   = _this param [0, grpNull, [grpNull]];
+_helo          = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
+_opforFaction  = _this param [3, "", [""]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -36,6 +38,16 @@ if (isNull _playerGroup) exitWith {
 
 if (isNull _helo) exitWith {
     ["helo parameter must not be null"] call BIS_fnc_error;
+    "";
+};
+
+if (_bluforFaction == "") exitWith {
+    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    "";
+};
+
+if (_opforFaction == "") exitWith {
+    ["opfor faction cannot be empty"] call BIS_fnc_error;
     "";
 };
 
@@ -77,18 +89,20 @@ private _motorPatrolPos  = _zoneSafePosList select 4;
  * lz
  */
 [_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
-[_lzPos, _playerGroup, "den_containerExtract"] call den_fnc_extract;
+[_lzPos, _playerGroup,  _bluforFaction, "den_containerExtract", _zoneArea] call den_fnc_extract;
 
 /*
  * container
  */
-container = "B_Slingload_01_Fuel_F" createVehicle _containerPos;
+den_container = "B_Slingload_01_Fuel_F" createVehicle _containerPos;
 
-container addEventHandler ["killed", {
+den_container addEventHandler ["killed", {
     ["den_containerDead"] call den_fnc_publicBool;
 }];
 
-private _secureActivation = "[""den_containerSecure""] call den_fnc_publicBool;[container,3000] call den_fnc_sling";
+private _secureActivation =
+format["[""den_containerSecure""] call den_fnc_publicBool;[den_container,""%1"",3000] call den_fnc_sling",_bluforFaction];
+
 private _secureTrigger = createTrigger ["EmptyDetector", _containerPos, false];
 _secureTrigger setTriggerArea          [10, 10, 0, false, 10];
 _secureTrigger setTriggerActivation    ["WEST SEIZED", "PRESENT", false];
@@ -105,7 +119,7 @@ private _extractActivation = "[""den_containerExtract""] call den_fnc_publicBool
 private _extractTrigger = createTrigger ["EmptyDetector", _zonePos, false];
 _extractTrigger setTriggerArea          _extractTrigArea;
 _extractTrigger setTriggerActivation    ["LOGIC", "PRESENT", false];
-_extractTrigger setTriggerStatements    ["!(container inArea thisTrigger)", _extractActivation, ""];
+_extractTrigger setTriggerStatements    ["!(den_container inArea thisTrigger)", _extractActivation, ""];
 
 createMarker ["containerMarker", _containerPos];
 "containerMarker" setMarkerType "mil_objective";
@@ -113,29 +127,34 @@ createMarker ["containerMarker", _containerPos];
 "containerMarker" setMarkerText "container";
 "containerMarker" setMarkerSize [0.75, 0.75];
 
-createGuardedPoint [east, [0,0], -1, container];
+createGuardedPoint [east, [0,0], -1, den_container];
 
 /*
  * enemy units
  */
-private _guardGroup = [_containerPos getPos[10, 0], _faction, "FireTeam"] call den_fnc_spawnGroup;
+private _guardGroup = [_containerPos getPos[10, 0], _opforFaction, "FireTeam"] call den_fnc_spawnGroup;
 
 [_guardGroup, _containerPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-private _motorGroup = [_motorPatrolPos, _faction, "MotorizedHmg"] call den_fnc_spawnGroup;
+private _motorGroup = [_motorPatrolPos, _opforFaction, "MotorizedHmg"] call den_fnc_spawnGroup;
 
 [_motorGroup, _motorPatrolPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-private _infGroup = [_infPatrolPos, _faction, "FireTeam"] call den_fnc_spawnGroup;
+private _infGroup = [_infPatrolPos, _opforFaction, "FireTeam"] call den_fnc_spawnGroup;
 
-[_infGroup, _lzPos, "den_insertUnload"] call den_fnc_attack;
+/*
+ * Send unit to GUARD the lz position once players have inserted.
+ */
+private _waitWp = [_infGroup, _infPatrolPos, 0, "MOVE", "AWARE"] call CBA_fnc_addWaypoint;
+_waitWp setWaypointStatements ["!isNil ""den_insertUnload""", ""];
+[_infGroup, _lzPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
 
-[_zonePos, _zoneRadius * 0.75, _faction, 4] call den_fnc_buildingOccupy;
+[_zonePos, _zoneRadius * 0.75, _opforFaction, 4] call den_fnc_buildingOccupy;
 
 /*
  * reinforcements
  */
-[_zoneArea, [[_reinforcePos, "AssaultSquad"]], _faction] call den_fnc_wave;
+[_zoneArea, [[_reinforcePos, "AssaultSquad"]], _opforFaction] call den_fnc_wave;
 
 /*
  * markers
@@ -143,7 +162,10 @@ private _infGroup = [_infPatrolPos, _faction, "FireTeam"] call den_fnc_spawnGrou
 private _infMarkerPos   = _zonePos getPos [100, (_containerPos getDir _lzPos)];
 private _motorMarkerPos = _zonePos getPos [150, (_containerPos getDir _lzPos)];
 
-["infMarker",   _infMarkerPos,   _faction, "FireTeam"] call den_fnc_groupMarker;
-["motorMarker", _motorMarkerPos, _faction, "MotorizedHmg"] call den_fnc_groupMarker;
+private _marker = createMarker ["opforInfMarker", _infMarkerPos];
+_marker setMarkerType "o_inf";
+
+_marker = createMarker ["opforMotorMarker", _motorMarkerPos];
+_marker setMarkerType "o_motor_inf";
 
 _zoneName;

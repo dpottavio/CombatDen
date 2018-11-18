@@ -20,10 +20,10 @@
 
 private _factionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "FactionCombo" >> "idc");
 private _missionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "MissionCombo" >> "idc");
-private _timeComboId = getNumber (missionConfigFile >> "ParamDialog" >> "TimeCombo" >> "idc");
+private _timeComboId    = getNumber (missionConfigFile >> "ParamDialog" >> "TimeCombo"    >> "idc");
 
 den_diagParams = [
-    parseNumber (lbData [_factionComboId, lbCurSel _factionComboId]),
+    lbText [_factionComboId, lbCurSel _factionComboId],
     parseNumber (lbData [_missionComboId, lbCurSel _missionComboId]),
     parseNumber (lbData [_timeComboId,    lbCurSel _timeComboId])
 ];

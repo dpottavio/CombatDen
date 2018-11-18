@@ -9,6 +9,7 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
+private _faction          = [] call den_fnc_bluforFaction;
 private _unitListBoxId    = getNumber (missionConfigFile >> "LoadoutDialog" >> "UnitListBox"    >> "idc");
 private _roleListBoxId    = getNumber (missionConfigFile >> "LoadoutDialog" >> "RoleListBox"    >> "idc");
 private _loadoutListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "LoadoutListBox" >> "idc");
@@ -18,8 +19,6 @@ private _role     = lbData [_roleListBoxId, lbCurSel _roleListBoxId];
 private _loadout  = lbData [_loadoutListBoxId, lbCurSel _loadoutListBoxId];
 
 if ((_unitName == "") || (_role == "") || (_loadout == "")) exitWith {};
-
-private _playerGroup = group player;
 
 /*
  * determine unit
@@ -32,6 +31,6 @@ if (isNull _unit) exitWith {
 
 private _lowDaylight = [] call den_fnc_lowDaylight;
 
-[_unit, _role, _loadout, _lowDaylight] call den_fnc_loadout;
+[_unit, _role, _loadout, _lowDaylight, _faction] call den_fnc_loadout;
 
 true;

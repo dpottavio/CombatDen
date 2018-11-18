@@ -18,18 +18,18 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    2: STRING - BLUFOR faction. See CfgFactions.
 
-    3: ARRAY of STRINGS - A location name blacklist.
+    3: STRING - OPFOR faction. See CfgFactions.
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_faction"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
 
-_playerGroup = _this param [0, grpNull, [grpNull]];
-_helo        = _this param [1, objNull, [objNull]];
-_faction     = _this param [2, "CSAT", [""]];
+_playerGroup   = _this param [0, grpNull, [grpNull]];
+_helo          = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
+_opforFaction  = _this param [3, "", [""]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -38,6 +38,16 @@ if (isNull _playerGroup) exitWith {
 
 if (isNull _helo) exitWith {
     ["helo parameter must not be null"] call BIS_fnc_error;
+    "";
+};
+
+if (_bluforFaction == "") exitWith {
+    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    "";
+};
+
+if (_opforFaction == "") exitWith {
+    ["opfor faction cannot be empty"] call BIS_fnc_error;
     "";
 };
 
@@ -79,19 +89,23 @@ private _motorPatrolPos  = _zoneSafePosList select 4;
  * lz
  */
 [_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
-[_lzPos, _playerGroup, "den_hostageFound"] call den_fnc_extract;
+[_lzPos, _playerGroup, _bluforFaction, "den_hostageFound", _zoneArea] call den_fnc_extract;
 
 /*
  * patrol
  */
-private _motorGroup = [_motorPatrolPos, _faction, "MotorizedHmg"] call den_fnc_spawnGroup;
+private _motorGroup = [_motorPatrolPos, _opforFaction, "MotorizedHmg"] call den_fnc_spawnGroup;
 
 [_motorGroup, _motorPatrolPos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-private _infGroup = [_infPatrolPos, _faction, "FireTeam"] call den_fnc_spawnGroup;
+private _infGroup = [_infPatrolPos, _opforFaction, "FireTeam"] call den_fnc_spawnGroup;
 
-[_infGroup, _lzPos, "den_insertUnload"] call den_fnc_attack;
-
+/*
+ * Send unit to GUARD the lz position once players have inserted.
+ */
+private _waitWp = [_infGroup, _infPatrolPos, 0, "MOVE", "AWARE"] call CBA_fnc_addWaypoint;
+_waitWp setWaypointStatements ["!isNil ""den_insertUnload""", ""];
+[_infGroup, _lzPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
 
 /*
  * hostage
@@ -112,21 +126,21 @@ createGuardedPoint [east, _hostagePos, -1, objNull];
 
 private _guardGroup = [
     _hostagePos getPos [10, 0],
-    _faction,
+    _opforFaction,
     "FireTeam"
 ] call den_fnc_spawnGroup;
 
 [_guardGroup, _hostagePos, 0, "GUARD", "SAFE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-[_zonePos, _zoneRadius * 0.75, _faction, 4] call den_fnc_buildingOccupy;
+[_zonePos, _zoneRadius * 0.75, _opforFaction, 4] call den_fnc_buildingOccupy;
 
 /*
  * reinforcements
  */
 [
     _zoneArea,
-    [[_reinforcePos, "AssaultTeam"]],
-    _faction
+    [[_reinforcePos, "AssaultSquad"]],
+    _opforFaction
 ] call den_fnc_wave;
 
 /*
@@ -135,8 +149,10 @@ private _guardGroup = [
 private _infMarkerPos   = _hostagePos getPos [100, (_hostagePos getDir _lzPos)];
 private _motorMarkerPos = _hostagePos getPos [150, (_hostagePos getDir _lzPos)];
 
-["infMarker",   _infMarkerPos,   _faction, "FireTeam"] call den_fnc_groupMarker;
-["motorMarker", _motorMarkerPos, _faction, "MotorizedHmg"] call den_fnc_groupMarker;
+private _marker = createMarker ["opforInfMarker", _infMarkerPos];
+_marker setMarkerType "o_inf";
 
+_marker = createMarker ["opforMotorMarker", _motorMarkerPos];
+_marker setMarkerType "o_motor_inf";
 
 _zoneName;

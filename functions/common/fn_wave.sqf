@@ -28,7 +28,7 @@
     in the area, the spawn point is used to spawn units.  Once the end of the list
     is reached, spawning stops.
 
-    2: (Optional) STRING - Faction name. Defauts to CSAT.
+    2: STRING - OPFOR faction name. See CfgFactions.
 
     3: (Optional) CODE - code to execute when spawning has stopped.
 
@@ -46,7 +46,7 @@
     _args      = _this select 0;
     _area      = _args param [0, [], [[], objNull], [5,6]];
     _spawnList = _args param [1, [], [[]]];
-    _faction   = _args param [2, "CSAT", [""]];
+    _faction   = _args param [2, "", [""]];
     _code      = _args param [3, nil, [{}]];
     _threshold = _args param [4, 0.25, [0]];
     _cooldown  = _args param [5, 60, [0]];
@@ -72,9 +72,7 @@
 
         [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-        private _cfgType = getText (missionConfigFile >> "CfgGroups" >> _faction >> "Arid" >> _groupType >> "type");
-
-        private _msg = format["Alpha be advised, enemy %1 reinforcements at grid %2.", _cfgType, mapGridPosition _pos];
+        private _msg = format["Alpha be advised, enemy reinforcements at grid %1.", mapGridPosition _pos];
         [_msg] call den_fnc_commandChat;
 
         private _marker = createMarker [format["waveMarker-%1", time], _pos];

@@ -16,7 +16,6 @@ private _camp01 = [
 	["CamoNet_OPFOR_open_F",[0,0,-0.0306931],0,1,0,[],"net","",true,false],
 	["ACE_medicalSupplyCrate",[-2.7677,0.477783,9.53674e-007],267.776,1,0,[],"","",true,false],
 	["Land_CampingTable_F",[-2.8418,-1.99316,-0.00259209],0.000323219,1,0,[],"","",true,false],
-	["O_supplyCrate_F",[-3.63098,0.263916,0],86.2901,1,0,[],"","",true,false],
 	["Land_BagFence_Long_F",[2.86877,8.61255,-0.000999451],179.26,1,0,[],"","",true,false],
 	["Land_BagFence_Long_F",[-3.40308,8.71118,-0.000999451],179.26,1,0,[],"","",true,false],
 	["Land_BagFence_Long_F",[2.34985,-9.90112,-0.000999451],179.26,1,0,[],"","",true,false],
@@ -31,7 +30,6 @@ private _camp01Tropic = [
     ["Land_CampingTable_F",[-2.23474,1.76855,-0.00259018],175.075,1,0,[],"","",true,false],
 	["ACE_medicalSupplyCrate",[-0.848999,-0.387451,0],267.777,1,0,[],"","",true,false],
 	["CamoNet_ghex_open_F",[0,0,0],0,1,0,[],"NET","",true,false],
-	["Box_CSAT_Equip_F",[-1.724,-0.512451,0],175.844,1,0,[],"","",true,false],
 	["Box_T_East_Wps_F",[-2.599,-0.762451,0],265.222,1,0,[],"","",true,false],
 	["Box_T_East_WpsSpecial_F",[-3.474,-0.637451,-3.8147e-006],265.649,1,0.0147186,[],"","",true,false],
 	["Land_BagFence_01_long_green_F",[3.5437,7.75659,-0.0010004],0,1,0,[],"","",true,false],
@@ -46,7 +44,6 @@ private _camp01Tropic = [
 
 private _camp02 = [
 	["CamoNet_OPFOR_open_F",[0,0,0],0,1,0,[],"center","",true,false],
-	["Box_East_Ammo_F",[2.88379,0.0935059,-9.53674e-007],359.995,1,0.0707915,[],"","",true,false],
 	["ACE_medicalSupplyCrate",[3.25879,1.21851,0],0.000140753,1,0,[],"","",true,false],
 	["Land_CampingTable_F",[3.25879,-1.40649,-0.00259113],2.96483e-006,1,0,[],"","",true,false],
 	["Box_East_Wps_F",[3.75879,-0.0314941,0],86.1334,1,0,[],"","",true,false]
@@ -54,7 +51,6 @@ private _camp02 = [
 
 private _camp02Tropic = [
 	["CamoNet_ghex_open_F",[0,0,0],0,1,0,[],"net","",true,false],
-	["Box_T_East_Wps_F",[2.7583,0.218506,0],0.000133393,1,0,[],"","",true,false],
 	["ACE_medicalSupplyCrate",[3.2583,1.21851,9.53674e-007],360,1,0,[],"","",true,false],
 	["Land_CampingTable_F",[3.2583,-1.40649,-0.00259018],0.00117733,1,0,[],"","",true,false],
 	["Box_T_East_Ammo_F",[3.7583,0.0935059,-9.53674e-007],4.69205e-005,1,0,[],"","",true,false]

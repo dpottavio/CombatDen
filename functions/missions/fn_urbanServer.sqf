@@ -18,16 +18,18 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    2: STRING - BLUFOR faction. See CfgFactions.
+
+    3: STRING - OPFOR faction. See CfgFactions.
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_faction"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
 
-_playerGroup = _this param [0, grpNull, [grpNull]];
-_helo        = _this param [1, objNull, [objNull]];
-_faction     = _this param [2, "CSAT", [""]];
+_playerGroup   = _this param [0, grpNull, [grpNull]];
+_helo          = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
+_opforFaction  = _this param [3, "", [""]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -39,16 +41,26 @@ if (isNull _helo) exitWith {
     "";
 };
 
-private _zoneRadius     = 350;
-private _minLz          = _zoneRadius + 450;
-private _maxLz          = _zoneRadius + 500;
-private _maxCamp        = _zoneRadius * 0.25;
-private _maxInfPatrol   = _zoneRadius * 0.75;
+if (_bluforFaction == "") exitWith {
+    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    "";
+};
+
+if (_opforFaction == "") exitWith {
+    ["opfor faction cannot be empty"] call BIS_fnc_error;
+    "";
+};
+
+private _zoneRadius   = 350;
+private _minLz        = _zoneRadius + 450;
+private _maxLz        = _zoneRadius + 500;
+private _maxCamp      = _zoneRadius * 0.25;
+private _maxInfPatrol = _zoneRadius * 0.75;
 
 private _safePosParams = [
-    [_minLz,        _maxLz,          15, 0.1], // lz safe position
-    [0,             _maxCamp,        10, 0.1], // camp safe position
-    [0,             _maxInfPatrol,    5,  -1]  // patrol safe position
+    [_minLz, _maxLz,        15, 0.1], // lz safe position
+    [0,      _maxCamp,      10, 0.1], // camp safe position
+    [0,      _maxInfPatrol,  5,  -1]  // patrol safe position
 ];
 
 private _zone = [
@@ -90,18 +102,18 @@ _zoneTrigger setTriggerStatements    ["this", _zoneActivation, ""];
  */
 createGuardedPoint [opfor, _campPos, -1, objNull];
 
-private _campGroup = [_campPos, _faction, "MotorizedAssault"] call den_fnc_spawnGroup;
+private _campGroup = [_campPos, _opforFaction, "MotorizedAssault"] call den_fnc_spawnGroup;
 
 [_campGroup, _campPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 /*
  * patrol
  */
-private _infGroup = [_infPatrolPos, _faction, "FireTeam"] call den_fnc_spawnGroup;
+private _infGroup = [_infPatrolPos, _opforFaction, "FireTeam"] call den_fnc_spawnGroup;
 
 [_infGroup, _infPatrolPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-[_zonePos, _zoneRadius * 0.25, _faction, 4] call den_fnc_buildingOccupy;
+[_zonePos, _zoneRadius * 0.25, _opforFaction, 4] call den_fnc_buildingOccupy;
 
 /*
  * enemy unit markers
@@ -109,7 +121,10 @@ private _infGroup = [_infPatrolPos, _faction, "FireTeam"] call den_fnc_spawnGrou
 private _infMarkerPos   = _zonePos getPos [100, (_zonePos getDir _lzPos)];
 private _motorMarkerPos = _zonePos getPos [150, (_zonePos getDir _lzPos)];
 
-["infMarker",   _infMarkerPos,   _faction, "FireTeam"] call den_fnc_groupMarker;
-["motorMarker", _motorMarkerPos, _faction, "MotorizedHmg"] call den_fnc_groupMarker;
+private _marker = createMarker ["opforInfMarker", _infMarkerPos];
+_marker setMarkerType "o_inf";
+
+_marker = createMarker ["opforMotorMarker", _motorMarkerPos];
+_marker setMarkerType "o_motor_inf";
 
 _zoneName;

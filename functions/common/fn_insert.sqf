@@ -11,9 +11,9 @@
     Description:
 
     Register a LZ insert.  This creates an LZ and a loading point
-    for a cargo group.  The loading point is a dummy helicopter.
-    Once the cargo units enter the dummy helicopter they are
-    "teleported" to an in-air helicopter just outside the LZ.
+    for a cargo group.  The loading point is assumed to be a helicopter.
+    Once the cargo units enter the helicopter they are "teleported"
+    just outside the LZ.
 
     Parameter(s):
 
@@ -21,19 +21,19 @@
 
     1: GROUP - Cargo group for transport.
 
-    2: OBJECT - Dummy helicopter.  Once all cargo units enter
-    the dummy helicopter, they are transported to the LZ.
+    2: OBJECT - Helicopter.  Once all cargo units enter
+    the helicopter, they are transported to the LZ.
 
     3: (Optional) AREA - Blacklist area the helicopter should
     avoid en route to LZ.
 
     Returns: true on success, false on error
 */
-params ["_lzPos", "_cargoGroup", "_heloDummy", "_blackArea"];
+params ["_lzPos", "_cargoGroup", "_helo", "_blackArea"];
 
 _lzPos      = _this param [0, [], [[]], [2,3]];
 _cargoGroup = _this param [1, grpNull, [grpNull]];
-_heloDummy  = _this param [2, objNull, [objNull]];
+_helo       = _this param [2, objNull, [objNull]];
 _blackArea  = _this param [3, [], [[]], [5,6]];
 
 if (isNull _cargoGroup) exitWith {
@@ -41,7 +41,7 @@ if (isNull _cargoGroup) exitWith {
     false;
 };
 
-if (isNull _heloDummy) exitWith {
+if (isNull _helo) exitWith {
     ["helo parameter is null"] call BIS_fnc_error;
     false;
 };
@@ -71,10 +71,10 @@ if (isMultiplayer) then {
     } forEach units _cargoGroup;
 };
 
-[_lzPos, _cargoGroup, _heloDummy, _blackArea] spawn {
+[_lzPos, _cargoGroup, _helo, _blackArea] spawn {
     private _lzPos      = _this select 0;
     private _cargoGroup = _this select 1;
-    private _heloDummy  = _this select 2;
+    private _helo       = _this select 2;
     private _blackArea  = _this select 3;
 
     private _blackPos  = _blackArea param [0, _lzPos];
@@ -82,11 +82,11 @@ if (isMultiplayer) then {
     private _deployPos = _lzPos getPos [2000, _deployDir];
     _deployPos set [2, 250];
 
-    // Wait for the cargo units to enter the dummy helo.
+    // Wait for the cargo units to enter the helo.
     while {true} do {
         private _total = { (alive _x) && (isPlayer _x) } count units _cargoGroup;
-        private _loaded = {((vehicle _x) == _heloDummy) && (isPlayer _x)} count units _cargoGroup;
-        if (_total == _loaded) exitWith {
+        private _loaded = {((vehicle _x) == _helo) && (isPlayer _x)} count units _cargoGroup;
+        if (_total > 0 && _total == _loaded) exitWith {
             ["den_insert"] call den_fnc_publicBool;
         };
         sleep 1;
@@ -94,26 +94,37 @@ if (isMultiplayer) then {
 
     "Land_HelipadEmpty_F" createVehicle _lzPos;
 
-   /*
-    * in-air helicopter
-    */
-    private _heloDeploy = [_deployPos, _deployDir, "B_Heli_Transport_01_camo_F", blufor] call BIS_fnc_spawnvehicle;
-    den_heloDeployObj         = _heloDeploy select 0;
-    private _heloDeployGroup  = _heloDeploy select 2;
-    clearMagazineCargoGlobal den_heloDeployObj;
-    clearWeaponCargoGlobal   den_heloDeployObj;
-    clearItemCargoGlobal     den_heloDeployObj;
-    clearBackpackCargoGlobal den_heloDeployObj;
+    // Move remaining units in the helo.
+    {
+        if ((_helo getCargoIndex _x) == -1) then {
+            [_x, _helo] remoteExecCall ["moveInCargo", _x];
 
-    den_heloDeployObj lockTurret [[1], true];
-    den_heloDeployObj lockTurret [[2], true];
+            // Re-enable AI units for any that exist.
+            [_x, "MOVE"] remoteExecCall ["enableAI", _x];
+        };
+    } forEach units _cargoGroup;
 
-    publicVariable "den_heloDeployObj";
+    private _crew = crew _helo;
+    private _crewGroup = group leader (_crew select 0);
 
-    _heloDeployGroup setGroupIdGlobal ["Falcon"];
+    {
+        _x disableAI "TARGET";
+        _x disableAI "AUTOTARGET";
+    } forEach units _crewGroup;
+
+    /*
+     * teleport helo
+     */
+    [["","BLACK OUT",3]] remoteExec ["cutText"];
+    sleep 6;
+
+    _helo setPos _deployPos;
+    _helo setDir _deployDir;
+
+    [["","BLACK IN",3]] remoteExec ["cutText"];
 
     [
-        _heloDeployGroup,
+        _crewGroup,
         _lzPos,
         0,
         "TR UNLOAD",
@@ -121,48 +132,33 @@ if (isMultiplayer) then {
         "YELLOW",
         "FULL",
         "COLUMN",
-        "den_insertUnload = true",
-        [5, 5, 5]
+        "den_insertUnload = true"
     ] call CBA_fnc_addWaypoint;
 
-    [
-        _heloDeployGroup,
-        _deployPos,
-        0,
-        "MOVE",
-        "AWARE",
-        "YELLOW",
-        "FULL",
-        "COLUMN",
-        "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
-    ] call CBA_fnc_addWaypoint;
+    [_crewGroup, _deployPos] spawn {
+        /*
+         * This is a hack to get RHS helo to work.  For some reason
+         * RHS helos don't execute the this MOVE waypoint properly
+         * unless it's added after the TR UNLOAD completes.
+         */
+        private _crewGroup = _this select 0;
+        private _deployPos = _this select 1;
 
-    // Move remaining units in the dummy helo.
-    {
-        if ((_heloDummy getCargoIndex _x) == -1) then {
-            [_x, _heloDummy] remoteExecCall ["moveInCargo", _x];
-
-            // Re-enable AI units for any that exist.
-            [_x, "MOVE"] remoteExecCall ["enableAI", _x];
+        while {isNil "den_insertUnload"} do {
+            sleep 2;
         };
-    } forEach units _cargoGroup;
-
-    /*
-     * teleport cargo to in-air helo
-     */
-    [["","BLACK OUT",3]] remoteExec ["cutText"];
-    sleep 6;
-
-    {
-        private _index = _heloDummy getCargoIndex _x;
-
-        _x setPos (_deployPos vectorAdd [10,10,10]);
-
-        private _id = owner _x;
-        [_x,[den_heloDeployObj, _index]] remoteExec ["moveInCargo", _id];
-    } forEach units _cargoGroup;
-
-    [["","BLACK IN",3]] remoteExec ["cutText"];
+        [
+            _crewGroup,
+            _deployPos,
+            0,
+            "MOVE",
+            "AWARE",
+            "YELLOW",
+            "FULL",
+            "COLUMN",
+            "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
+        ] call CBA_fnc_addWaypoint;
+    };
 
     /*
      * force AI out of the helicopter

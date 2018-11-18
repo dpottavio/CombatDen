@@ -55,9 +55,10 @@ lbSetCurSel [_unitListBoxId, 0];
 /*
  * role list box
  */
+private _faction = [] call den_fnc_bluforFaction;
 private _roleListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "RoleListBox" >> "idc");
 private _climate = [] call den_fnc_worldToClimate;
-private _rolesCfg = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _climate);
+private _rolesCfg = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate);
 private _i = 0;
 {
     private _nameUi  = (getText (_x >> "role"));
@@ -81,13 +82,15 @@ lbSort [_roleListBoxId, "ASC"];
     _control       = _this select 0;
     _selectedIndex = _this select 1;
 
+    private _faction = [] call den_fnc_bluforFaction;
+
     private _roleSelect = _control lbText _selectedIndex;
 
     private _loadoutListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "LoadoutListBox" >> "idc");
     lbClear _loadoutListBoxId;
 
     private _climate = [] call den_fnc_worldToClimate;
-    private _loadoutsCfg = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _climate);
+    private _loadoutsCfg = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate);
 
     {
         if (getText (_x >> "role") == _roleSelect) then {

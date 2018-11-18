@@ -23,21 +23,23 @@
 
     2: OBJECT - Transport helicopter to take players to the zone.
 
-    3: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    3: STRING - BLUFOR faction. See CfgFactions.
+
+    4: STRING - OPFOR faction. See CfgFactions.
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_type", "_playerGroup", "_helo", "_faction"];
+params ["_type", "_playerGroup", "_helo", "_bluforFaction", "_opforFaction"];
 
-_type        = _this param [0, 0, [0]];
-_playerGroup = _this param [1, grpNull, [grpNull]];
-_helo        = _this param [2, objNull, [objNull]];
-_faction     = _this param [3, "CSAT", [""]];
+_type          = _this param [0, 0, [0]];
+_playerGroup   = _this param [1, grpNull, [grpNull]];
+_helo          = _this param [2, objNull, [objNull]];
+_bluforFaction = _this param [3, "", [""]];
+_opforFaction  = _this param [4, "", [""]];
 
 if (!isServer) exitWith {};
 
-private _missionArgs = [_playerGroup, _helo, _faction];
+private _missionArgs = [_playerGroup, _helo, _bluforFaction, _opforFaction];
 private _zone = "";
 
 switch (_type) do {

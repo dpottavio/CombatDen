@@ -41,14 +41,15 @@
     Returns: true
 */
 [_this] spawn {
-    params ["_args", "_lzPos", "_cargoGroup", "_bool",  "_blackArea", "_area"];
+    params ["_args", "_lzPos", "_cargoGroup", "_bluforFaction", "_bool",  "_blackArea", "_area"];
 
-    _args       = _this select 0;
-    _lzPos      = _args param [0, [], [[]], [2,3]];
-    _cargoGroup = _args param [1, grpNull, [grpNull]];
-    _bool       = _args param [2, "", [""]];
-    _blackArea  = _args param [3, [], [[]], [5,6]];
-    _area       = _args param [4, [_lzPos, 50, 50, 0, false], [[]], [5,6]];
+    _args          = _this select 0;
+    _lzPos         = _args param [0, [], [[]], [2,3]];
+    _cargoGroup    = _args param [1, grpNull, [grpNull]];
+    _bluforFaction = _args param [2, "", [""]];
+    _bool          = _args param [3, "", [""]];
+    _blackArea     = _args param [4, [], [[]], [5,6]];
+    _area          = _args param [5, [_lzPos, 50, 50, 0, false], [[]], [5,6]];
 
     private _blackPos  = _blackArea param [0, _lzPos];
     private _deployDir = _blackPos getDir _lzPos;
@@ -68,7 +69,7 @@
 
     ["den_lzExtract"] call den_fnc_publicBool;
 
-    private _helo = [_deployPos, _deployDir, "B_Heli_Transport_01_camo_F", blufor] call BIS_fnc_spawnvehicle;
+    private _helo = [_deployPos, _deployDir, "heloTransport", _bluforFaction] call den_fnc_spawnvehicle;
     private _heloObj   = _helo select 0;
     private _heloGroup = _helo select 2;
     clearMagazineCargoGlobal _heloObj;
@@ -81,9 +82,6 @@
     _heloObj addEventHandler ["killed", {
         ["den_heloDead"] call den_fnc_publicBool;
     }];
-
-    _heloObj lockTurret [[1], true];
-    _heloObj lockTurret [[2], true];
 
     [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
 

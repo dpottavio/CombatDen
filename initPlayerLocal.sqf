@@ -30,6 +30,6 @@ if (isNil "den_zone" || den_zone == "") exitWith {
 
 0 setOvercast den_overcast;
 
-[den_mission, den_zone, den_falcon, den_faction] call den_fnc_initMissionLocal;
+[den_mission, den_zone, den_falcon, den_opforFaction] call den_fnc_initMissionLocal;
 
 true;

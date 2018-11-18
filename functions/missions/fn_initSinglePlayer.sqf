@@ -18,14 +18,14 @@ if (isMultiPlayer) exitWith {};
 [] call den_fnc_uiParamDiag;
 waitUntil { !dialog };
 
-private _factionParam = -1;
+private _factionParam = "Random";
 private _missionParam = -1;
 private _hourParam    = -1;
 
 if (!isNil "den_diagParams") then {
     _factionParam = (den_diagParams select 0);
     _missionParam = (den_diagParams select 1);
-    _hourParam = (den_diagParams select 2);
+    _hourParam    = (den_diagParams select 2);
 };
 
 private _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
@@ -37,39 +37,39 @@ if (_missionParam < 0) then {
     den_mission = _missionParam;
 };
 
-private _factions = ["CSAT", "Guerrilla"];
+den_opforFaction = "";
 
-den_faction = "";
-
-if (_factionParam < 0) then {
-    den_faction = selectRandom _factions;
+if (_factionParam == "Random") then {
+    private _factions = [] call den_fnc_opforFactions;
+    den_opforFaction = selectRandom _factions;
 } else {
-    den_faction = _factions select _factionParam;
+    den_opforFaction = _factionParam;
 };
 
-private _hourMonth = [_hourParam] call den_fnc_randTime;
-private _hour  = _hourMonth select 0;
-private _month = _hourMonth select 1;
+private _hourMonth   = [_hourParam] call den_fnc_randTime;
+private _hour        = _hourMonth select 0;
+private _month       = _hourMonth select 1;
 private _lowDaylight = [] call den_fnc_lowDaylight;
-
 {
-    private _defaultLoadout = _x getVariable ["den_defaultLoadout", ["Riflemen", "Mx"]];
-    private _role = _defaultLoadout select 0;
-    private _type = _defaultLoadout select 1;
-    [_x, _role, _type, _lowDaylight] remoteExecCall ["den_fnc_loadout", _x, true];
+    private _role = _x getVariable ["den_role", "Riflemen"];
+    [_x, _role, "", _lowDaylight, den_bluforFaction] call den_fnc_loadout;
 } forEach units den_alpha;
 
 den_overcast = [_month] call den_fnc_randWeather;
 
-private _missionArgs = [den_alpha, den_falcon, den_faction];
-
-den_zone = [den_mission, den_alpha, den_falcon, den_faction] call den_fnc_initMissionServer;
+den_zone = [
+    den_mission,
+    den_alpha,
+    den_falcon,
+    den_bluforFaction,
+    den_opforFaction
+] call den_fnc_initMissionServer;
 
 if (isNil "den_zone" || den_zone == "") exitWith {
     ["There was an error generating the zone. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
 };
 
-[den_mission, den_zone, den_falcon, den_faction] call den_fnc_initMissionLocal;
+[den_mission, den_zone, den_falcon, den_opforFaction] call den_fnc_initMissionLocal;
 
 0 setOvercast den_overcast;
 

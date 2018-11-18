@@ -22,17 +22,15 @@ disableSerialization;
 createDialog "ParamDialog";
 
 /*
- * faction combo
+ * opfor faction combo
  */
 private _factionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "FactionCombo" >> "idc");
-private _factionNames    = getArray (missionConfigFile >> "Params" >> "Faction" >> "texts");
-private _factionValues   = getArray (missionConfigFile >> "Params" >> "Faction" >> "values");
+private _factionNames   = [] call den_fnc_opforFactions;
 
-private _i = 0;
+_factionNames sort true;
+_factionNames = ["Random"] + _factionNames;
 {
     lbAdd [_factionComboId, _x];
-    lbSetData [_factionComboId, _i, format["%1", _factionValues select _i]];
-    _i = _i + 1;
 } forEach _factionNames;
 
 lbSetCurSel [_factionComboId, 0];
@@ -44,7 +42,7 @@ private _missionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "Miss
 private _missionNames   = getArray (missionConfigFile >> "Params" >> "Mission" >> "texts");
 private _missionValues  = getArray (missionConfigFile >> "Params" >> "Mission" >> "values");
 
-_i = 0;
+private _i = 0;
 {
     lbAdd [_missionComboId, _x];
     lbSetData [_missionComboId, _i, format["%1", _missionValues select _i]];
