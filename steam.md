@@ -28,3 +28,5 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 There are a fix set of mission types that have static objectives.  However, the location and enemy parameters are chosen randomly.  The design is somewhere inbetween mbrdmn's [url=https://steamcommunity.com/workshop/filedetails/?id=722652837]Dynamic Recon Ops[/url] and BI's [url=https://community.bistudio.com/wiki/MP_Combat_Patrol]Combat Patrol[/url].
 
 If you find a bug, have questions, or want to give feedback, please post on this workshop page.  Enjoy!
+
+This work is licensed under the [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]Public License Share Alike[/url].

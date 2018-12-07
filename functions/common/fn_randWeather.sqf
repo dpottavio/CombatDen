@@ -18,7 +18,7 @@
     0: (Optional) NUMBER - Month to base the weather on.  If empty
     the currnet month is used by calling 'date'.
 
-    Returns: NUMBER - overcast
+    Returns: true
 */
 params ["_month"];
 
@@ -29,43 +29,35 @@ if (_month < 0) then {
     _month = _now select 1;
 };
 
-private _overcast = 0;
+private _rainChance  = 0;
+private _maxOvercast = 1.0;
+
 switch (worldName) do {
     case "Tanoa": {
-        switch(_month) do {
-            case 1:  {_overcast = random[0.0, 0.05, 1.0]};
-            case 2:  {_overcast = random[0.0, 0.15, 1.0]};
-            case 3:  {_overcast = random[0.0, 0.25, 1.0]};
-            case 4:  {_overcast = random[0.0, 0.5, 1.0]};
-            case 5:  {_overcast = random[0.0, 0.75, 1.0]};
-            case 6:  {_overcast = random[0.0, 0.95, 1.0]};
-            case 7:  {_overcast = random[0.0, 0.99, 1.0]};
-            case 8:  {_overcast = random[0.0, 0.99, 1.0]};
-            case 9:  {_overcast = random[0.0, 0.8, 1.0]};
-            case 10: {_overcast = random[0.0, 0.5, 1.0]};
-            case 11: {_overcast = random[0.0, 0.3, 1.0]};
-            case 12: {_overcast = random[0.0, 0.15, 1.0]};
-        };
+        _rainChance = [1, 4] call BIS_fnc_randomInt;
     };
     case "takistan": {
-        _overcast = 0;
+        _rainChance  = 0;
+        _maxOvercast = 0.5;
     };
-    default { // Altis, Malden, Stratis
-        switch(_month) do {
-            case 1:  {_overcast = random[0.0, 0.7, 1.0]};
-            case 2:  {_overcast = random[0.0, 0.6, 1.0]};
-            case 3:  {_overcast = random[0.0, 0.5, 1.0]};
-            case 4:  {_overcast = random[0.0, 0.4, 1.0]};
-            case 5:  {_overcast = random[0.0, 0.35, 1.0]};
-            case 6:  {_overcast = random[0.0, 0.25, 1.0]};
-            case 7:  {_overcast = random[0.0, 0.1, 1.0]};
-            case 8:  {_overcast = random[0.0, 0.1, 1.0]};
-            case 9:  {_overcast = random[0.0, 0.15, 1.0]};
-            case 10: {_overcast = random[0.0, 0.4, 1.0]};
-            case 11: {_overcast = random[0.0, 0.7, 1.0]};
-            case 12: {_overcast = random[0.0, 0.8, 1.0]};
-        };
+    default { // Altis, Malden, Stratis, ...
+        _rainChance = [1, 8] call BIS_fnc_randomInt;
     };
 };
 
-_overcast;
+private _overcast = 0;
+private _rain = 0;
+
+if (_rainChance == 1) then {
+    _overcast = [0.7, _maxOvercast] call BIS_fnc_randomNum;
+    _rain     = [0.1, 1.0] call BIS_fnc_randomNum;
+} else {
+    _overcast = [0, _maxOvercast] call BIS_fnc_randomNum;
+    _rain = 0;
+};
+
+[0, _overcast] remoteExecCall ["setOvercast", 0, true];
+0 setRain _rain;
+forceWeatherChange;
+
+true;

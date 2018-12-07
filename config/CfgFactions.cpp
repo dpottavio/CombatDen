@@ -41,6 +41,21 @@ class CfgFactions
                 };
             };
         };
+        class Civilian
+        {
+            class SemiArid
+            {
+                genericName = "AfroMen";
+            };
+            class Arid
+            {
+                genericName = "AfroMen";
+            };
+            class Tropic
+            {
+                genericName = "TanoanMen";
+            };
+        };
     };
     class RHS
     {
@@ -67,6 +82,21 @@ class CfgFactions
                 factions[] = {
                     "Russia"
                 };
+            };
+        };
+        class Civilian
+        {
+            class SemiArid
+            {
+                genericName = "AfroMen";
+            };
+            class Arid
+            {
+                genericName = "AfroMen";
+            };
+            class Tropic
+            {
+                genericName = "TanoanMen";
             };
         };
     };
@@ -101,6 +131,21 @@ class CfgFactions
                     "Guerrilla",
                     "Cartel"
                 };
+            };
+        };
+        class Civilian
+        {
+            class SemiArid
+            {
+                genericName = "AfroMen";
+            };
+            class Arid
+            {
+                genericName = "TakistaniMen";
+            };
+            class Tropic
+            {
+                genericName = "TanoanMen";
             };
         };
     };

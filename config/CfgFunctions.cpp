@@ -31,10 +31,12 @@ class CfgFunctions
             class mpEndMission {};
             class opforFactions {};
             class publicBool {};
+            class randCiv {};
             class randTime {};
             class randWeather {};
             class sideChat {};
             class sling {};
+            class spawnCiv {};
             class spawnGroup {};
             class spawnHeloTransport {};
             class spawnVehicle {};

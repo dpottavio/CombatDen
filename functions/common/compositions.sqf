@@ -45,15 +45,13 @@ private _camp01Tropic = [
 private _camp02 = [
 	["CamoNet_OPFOR_open_F",[0,0,0],0,1,0,[],"center","",true,false],
 	["ACE_medicalSupplyCrate",[3.25879,1.21851,0],0.000140753,1,0,[],"","",true,false],
-	["Land_CampingTable_F",[3.25879,-1.40649,-0.00259113],2.96483e-006,1,0,[],"","",true,false],
-	["Box_East_Wps_F",[3.75879,-0.0314941,0],86.1334,1,0,[],"","",true,false]
+	["Land_CampingTable_F",[3.25879,-1.40649,-0.00259113],2.96483e-006,1,0,[],"","",true,false]
 ];
 
 private _camp02Tropic = [
 	["CamoNet_ghex_open_F",[0,0,0],0,1,0,[],"net","",true,false],
 	["ACE_medicalSupplyCrate",[3.2583,1.21851,9.53674e-007],360,1,0,[],"","",true,false],
-	["Land_CampingTable_F",[3.2583,-1.40649,-0.00259018],0.00117733,1,0,[],"","",true,false],
-	["Box_T_East_Ammo_F",[3.7583,0.0935059,-9.53674e-007],4.69205e-005,1,0,[],"","",true,false]
+	["Land_CampingTable_F",[3.2583,-1.40649,-0.00259018],0.00117733,1,0,[],"","",true,false]
 ];
 
 private _bunker01 = [

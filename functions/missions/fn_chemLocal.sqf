@@ -55,7 +55,8 @@ private _failQueue = [
     ["PlayersDead",     "den_playersDead"],
     ["SlingDead",       "den_slingDead"],
     ["ContainerDead",   "den_containerDead"],
-    ["FobFriendlyFire", "den_fobFriendlyFire"]
+    ["FobFriendlyFire", "den_fobFriendlyFire"],
+    ["CivilianDead",    "den_civDead"]
 ];
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;

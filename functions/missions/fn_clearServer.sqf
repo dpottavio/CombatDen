@@ -143,4 +143,7 @@ private _infMarkerPos   = _zonePos getPos [100, (_zonePos getDir _lzPos)];
 private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType "o_inf";
 
+// Civilians
+[] call den_fnc_randCiv;
+
 _zoneName;

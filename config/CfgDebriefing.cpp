@@ -47,4 +47,10 @@ class CfgDebriefing
         subtitle = "Friendly Fire at FOB";
         description = "Tragic friendly fire incident occurred.  Perpetrators will be prosecuted to the fullest extent."
     };
+    class CivilianDead
+    {
+        title = "Mission Failed";
+        subtitle = "Civilian Killed";
+        description = "Civilian killed by friendly forces.";
+    };
 };

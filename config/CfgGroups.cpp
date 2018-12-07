@@ -141,6 +141,13 @@ class CfgGroups
                     vehicle = "B_helicrew_F";
                 };
             };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_Pilot_F";
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -158,6 +165,10 @@ class CfgGroups
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
             };
         };
         class Tropic : SemiArid
@@ -194,6 +205,10 @@ class CfgGroups
                 {
                     vehicle = "B_T_Helicrew_F";
                 };
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
             };
         };
     };
@@ -234,6 +249,13 @@ class CfgGroups
                     vehicle = "rhsusf_usmc_marpat_wd_helicrew";
                 };
             };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "rhsusf_usmc_marpat_wd_helipilot";
+                };
+            };
         };
         class Arid
         {
@@ -270,6 +292,13 @@ class CfgGroups
                     vehicle = "rhsusf_usmc_marpat_d_helicrew";
                 };
             };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "rhsusf_usmc_marpat_d_helipilot";
+                };
+            };
         };
         class Tropic : SemiArid
         {
@@ -287,6 +316,10 @@ class CfgGroups
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
             };
         };
     };

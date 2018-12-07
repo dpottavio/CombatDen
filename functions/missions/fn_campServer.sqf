@@ -154,7 +154,7 @@ publicVariable "den_searchItem";
         999,                                                // Priority
         true,                                               // Remove on completion
         false                                               // Show in unconscious state
-    ] remoteExec ["BIS_fnc_holdActionAdd"];
+    ] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
     [_lzPos, _opforFaction, "ReconTeam"] call den_fnc_spawnGroup;
 };

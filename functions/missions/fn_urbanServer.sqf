@@ -127,4 +127,7 @@ _marker setMarkerType "o_inf";
 _marker = createMarker ["opforMotorMarker", _motorMarkerPos];
 _marker setMarkerType "o_motor_inf";
 
+// Civilians
+[] call den_fnc_randCiv;
+
 _zoneName;

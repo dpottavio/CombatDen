@@ -11,15 +11,10 @@
 
 class CfgTaskDescriptions
 {
-    class FindHostage
-    {
-        title       = "Reach the Hostage";
-        description = "Go to the hostage.  He is being held at an enemy camp.";
-    };
     class FreeHostage
     {
-        title       = "Free Hostage";
-        description = "Remove the hostage's hand restraints. Use the ACE interactive menu to perform this task.";
+        title       = "Rescue Hostage";
+        description = "Find and free the hostage.";
     };
     class LzExtract
     {
@@ -50,6 +45,11 @@ class CfgTaskDescriptions
     {
         title = "Search Camp";
         description = "Search camp for intel.";
+    };
+    class ReachConvoy
+    {
+        title = "Go to Convoy";
+        description = "Reach the disabled convoy."
     };
     class DefendConvoy
     {

@@ -85,6 +85,8 @@ private _hostagePos      = _zoneSafePosList select 2;
 private _infPatrolPos    = _zoneSafePosList select 3;
 private _motorPatrolPos  = _zoneSafePosList select 4;
 
+[_hostagePos, "camp02"] call den_fnc_composition;
+
 /*
  * lz
  */
@@ -110,8 +112,21 @@ _waitWp setWaypointStatements ["!isNil ""den_insertUnload""", ""];
 /*
  * hostage
  */
-[_hostagePos, "camp02"] call den_fnc_composition;
-[_hostagePos, _playerGroup] call den_fnc_hostage;
+private _hostageGroup = [_hostagePos, _bluforFaction, "Pilot"] call den_fnc_spawnGroup;
+den_hostage = (units _hostageGroup) select 0;
+publicVariable "den_hostage";
+
+den_hostageGroup = _playerGroup;
+publicVariable "den_hostageGroup";
+
+den_hostage addEventHandler ["killed", {
+   ["den_hostageDead"] call den_fnc_publicBool;
+}];
+
+[den_hostage, {
+    ["den_hostageFree"] call den_fnc_publicBool;
+    [den_hostage] join den_hostageGroup;
+}] call den_fnc_hostage;
 
 createMarker ["hostageMarker", _hostagePos];
 "hostageMarker" setMarkerType "mil_objective";
@@ -154,5 +169,8 @@ _marker setMarkerType "o_inf";
 
 _marker = createMarker ["opforMotorMarker", _motorMarkerPos];
 _marker setMarkerType "o_motor_inf";
+
+// Civilians
+[] call den_fnc_randCiv;
 
 _zoneName;

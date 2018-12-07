@@ -47,7 +47,6 @@ if (_factionParam == "Random") then {
 };
 
 private _hourMonth   = [_hourParam] call den_fnc_randTime;
-private _hour        = _hourMonth select 0;
 private _month       = _hourMonth select 1;
 private _lowDaylight = [] call den_fnc_lowDaylight;
 {
@@ -55,7 +54,7 @@ private _lowDaylight = [] call den_fnc_lowDaylight;
     [_x, _role, "", _lowDaylight, den_bluforFaction] call den_fnc_loadout;
 } forEach units den_alpha;
 
-den_overcast = [_month] call den_fnc_randWeather;
+[_month] call den_fnc_randWeather;
 
 den_zone = [
     den_mission,
@@ -71,7 +70,6 @@ if (isNil "den_zone" || den_zone == "") exitWith {
 
 [den_mission, den_zone, den_falcon, den_opforFaction] call den_fnc_initMissionLocal;
 
-0 setOvercast den_overcast;
 
 cutText ["","BLACK IN", 5];
 

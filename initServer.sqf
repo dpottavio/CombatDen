@@ -49,7 +49,6 @@ den_opforFaction = selectRandom ([] call den_fnc_opforFactions);
 publicVariable "den_opforFaction";
 
 private _hourMonth = [_hourParam] call den_fnc_randTime;
-private _hour      = _hourMonth select 0;
 private _month     = _hourMonth select 1;
 
 private _lowDaylight = [] call den_fnc_lowDaylight;
@@ -58,8 +57,7 @@ private _lowDaylight = [] call den_fnc_lowDaylight;
     [_x, _role, "", _lowDaylight, den_bluforFaction] remoteExecCall ["den_fnc_loadout", _x, true];
 } forEach units den_alpha;
 
-den_overcast = [_month] call den_fnc_randWeather;
-publicVariable "den_overcast";
+[_month] call den_fnc_randWeather;
 
 den_zone = [
     den_mission,

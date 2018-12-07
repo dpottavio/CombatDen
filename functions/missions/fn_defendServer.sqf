@@ -52,8 +52,8 @@ if (_opforFaction == "") exitWith {
 };
 
 private _zoneRadius  = 500;
-private _minLz       = _zoneRadius + 400;
-private _maxLz       = _zoneRadius + 450;
+private _minLz       = 100;
+private _maxLz       = 250;
 private _maxConvoy   = _zoneRadius * 0.5;
 private _minAssault1 = _zoneRadius * 0.75;
 private _maxAssault1 = _zoneRadius * 0.8;
@@ -131,6 +131,12 @@ createMarker ["convoyMarker", _convoyPos];
 
 createGuardedPoint [opfor, _convoyPos, -1, objNull];
 
+private _activation = "[""den_convoyReached""] call den_fnc_publicBool;";
+private _trigger = createTrigger ["EmptyDetector", _convoyPos, false];
+_trigger setTriggerArea          [20, 20, 0, false, 10];
+_trigger setTriggerActivation    ["WEST", "PRESENT", false];
+_trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activation, ""];
+
 /*
  * assault waves
  */
@@ -143,7 +149,7 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
 
     // wait for player insert before staring wave attacks
     while {true} do {
-        if (!isNil "den_insert") exitWith {
+        if (!isNil "den_convoyReached") exitWith {
             sleep (random [10, 15, 20]);
         };
         sleep 1;
@@ -160,7 +166,7 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
     private _enemyCount = -1;
     while {true} do {
         if (!isNil "den_spawnDone") then {
-            _enemyCount = {((side _x) == opfor) && ((getPos _x) inArea _zoneArea) && (!fleeing _x)} count allUnits;
+            _enemyCount = {((side _x) == opfor) && (!fleeing _x)} count allUnits;
         };
         if (_enemyCount == 0) exitWith {};
         sleep 1;
@@ -168,5 +174,8 @@ createGuardedPoint [opfor, _convoyPos, -1, objNull];
 
     ["den_convoyDefended"] call den_fnc_publicBool;
 };
+
+// Civilians
+[] call den_fnc_randCiv;
 
 _zoneName;

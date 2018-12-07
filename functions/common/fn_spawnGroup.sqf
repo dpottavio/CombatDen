@@ -19,19 +19,7 @@
     1: (Optional) STRING - Faction name.  Must equal either
     "CSAT", "Guerrilla", or "NATO".  Defaults to "CSAT".
 
-    2: (Optional) STRING - Unit type. The following are supported:
-
-    Supported CSAT and Guerrilla types:
-
-        "AssaultSquad"
-        "FireTeam"     (default)
-        "MotorizedHmg"
-        "ReconSentry"
-        "ReconSquad"
-
-    Supported NATO types:
-
-        "TruckCrew"
+    2: (Optional) STRING - Unit type.  See CfgGroups.
 
     Returns: GROUP on success, grpNull on error.
 */

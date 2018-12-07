@@ -45,18 +45,18 @@ if (_faction == "") exitWith {
 };
 
 private _taskQueue = [
-    [[blufor, "boardInsert",     "BoardInsert",  _helo,           "CREATED", 1, true,  "getin"], "den_insert"],
-    [[blufor, "hostageFindTask", "FindHostage",  "hostageMarker", "CREATED", 1, true,  "move"],  "den_hostageFound"],
-    [[blufor, "hostageFreeTask", "FreeHostage",  objNull,         "CREATED", 1, true,  "help"],  "den_hostageFree"],
-    [[blufor, "lzExtract",       "LzExtract",    "lzMarker",      "CREATED",  1, true, "move"],  "den_lzExtract"],
-    [[blufor, "boardExtract",    "BoardExtract", objNull,         "CREATED",  1, true, "getin"], "den_extract"]
+    [[blufor, "boardInsert",     "BoardInsert",  _helo,      "CREATED", 1, true, "getin"], "den_insert"],
+    [[blufor, "hostageFreeTask", "FreeHostage",  objNull,    "CREATED", 1, true, "help"],  "den_hostageFree"],
+    [[blufor, "lzExtract",       "LzExtract",    "lzMarker", "CREATED", 1, true, "move"],  "den_lzExtract"],
+    [[blufor, "boardExtract",    "BoardExtract", objNull,    "CREATED", 1, true, "getin"], "den_extract"]
 ];
 
 private _failQueue = [
     ["HeloDead",        "den_heloDead"],
     ["PlayersDead",     "den_playersDead"],
     ["HostageDead",     "den_hostageDead"],
-    ["FobFriendlyFire", "den_fobFriendlyFire"]
+    ["FobFriendlyFire", "den_fobFriendlyFire"],
+    ["CivilianDead",    "den_civDead"]
 ];
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;

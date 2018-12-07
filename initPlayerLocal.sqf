@@ -28,8 +28,6 @@ if (isNil "den_zone" || den_zone == "") exitWith {
     player createDiaryRecord ["Diary", ["Error", "There was an error generating the zone.  Please restart the mission."]];
 };
 
-0 setOvercast den_overcast;
-
 [den_mission, den_zone, den_falcon, den_opforFaction] call den_fnc_initMissionLocal;
 
 true;

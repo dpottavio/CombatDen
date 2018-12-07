@@ -10,77 +10,73 @@
 
     Description:
 
-    Spawn a hostage.  The hostage wil be handcuffed.  If the hostage
-    dies, the public variable "den_hostageDead" will be set.  If a blufor
-    forces come into contact with the hostage the public variable
-    "den_hostageFound" will be set.  If the hostage is unhandcuffed the
-    public variable "den_hostageFree" will be set.
+    Set a unit into a hostage state.
 
     Parameter(s):
 
-    0: ARRAY - Hostage spawn position.
+    0: OBJECT - Unit.
 
-    1: (Optional) GROUP - If defined, when the hostage is unhandcuffed
-    he will join this group.
+    1: (Optional) CODE - Code to execute when the hostage is freed.
 
-    Returns: OBJECT - hostage on success
+    Returns: true
 */
-params ["_pos", "_group"];
+params ["_hostage", "_code"];
 
-_pos       = _this param [0, [], [[]], [2,3]];
-_group     = _this param [1, grpNull, [grpNull]];
+_hostage = _this param [0, objNull, [objNull]];
+_code    = _this param [1, {}, [{}]];
 
-private _hostageType  = ["B_Pilot_F"];
-private _hostageGroup = [_pos, blufor, _hostageType] call BIS_fnc_spawnGroup;
-_hostageGroup setBehaviour "SAFE";
-den_hostage = (units _hostageGroup) select 0;
-den_hostage setCaptive true;
-
-[] spawn {
-    sleep 5;
-    [den_hostage, true] call ACE_captives_fnc_setHandcuffed;
+if (_hostage == objNull) exitWith {
+    ["hostage parameter cannot be empty"] call BIS_fnc_error;
+    false;
 };
 
-den_hostage addEventHandler ["killed", {
-   ["den_hostageDead"] call den_fnc_publicBool;
-}];
+_hostage setCaptive true;
 
-removeAllWeapons den_hostage;
-removeAllItems den_hostage;
-removeAllAssignedItems den_hostage;
-removeUniform den_hostage;
-removeVest den_hostage;
-removeBackpack den_hostage;
-removeHeadgear den_hostage;
-removeGoggles den_hostage;
-den_hostage forceAddUniform "U_B_PilotCoveralls";
-den_hostage setFace "GreekHead_A3_08";
-den_hostage setSpeaker "male05eng";
+removeAllWeapons       _hostage;
+removeBackpack         _hostage;
+removeVest             _hostage;
+removeAllAssignedItems _hostage;
+removeHeadgear         _hostage;
+removeGoggles          _hostage;
 
-["ace_captiveStatusChanged", {
-    params ["_unit", "_isCaptive", "_reason"];
-    _unit       = _this select 0;
-    _isCaptive  = _this select 1;
-    _reason     = _this select 2;
+private _animation = selectRandom [
+    ["Acts_ExecutionVictim_Loop",          "Acts_ExecutionVictim_Unbow"],
+    ["Acts_AidlPsitMstpSsurWnonDnon_loop", "Acts_AidlPsitMstpSsurWnonDnon_out"]
+];
 
-    if ((_unit == den_hostage) && !_isCaptive && (_reason == "SetHandcuffed")) then {
-        _unit setCaptive false;
-        ["den_hostageFree"] call den_fnc_publicBool;
-    };
-}] call CBA_fnc_addEventHandler;
+private _enableAnimation  = _animation select 0;
+private _disableAnimation = _animation select 1;
 
-[_group] spawn {
-    private _group = _this select 0;
-    while {isNil "den_hostageFree"} do {
-        sleep 1;
-    };
-    [den_hostage] join _group;
-};
+[_hostage, _enableAnimation] remoteExec ["switchMove"];
 
-private _activation = "[""den_hostageFound""] call den_fnc_publicBool";
-private _trigger = createTrigger ["EmptyDetector", getPos den_hostage, false];
-_trigger setTriggerArea          [2, 2, 0, false, 1];
-_trigger setTriggerActivation    ["WEST", "PRESENT", false];
-_trigger setTriggerStatements    ["this", _activation, ""];
+[
+    _hostage,                                           // Object the action is attached to
+    "Free Hostage",                                     // Title of the action
+    "\a3\ui_f\data\IGUI\Cfg\HoldActions\holdAction_unbind_ca.paa",  // Idle icon shown on screen
+    "\a3\ui_f\data\IGUI\Cfg\HoldActions\holdAction_unbind_ca.paa",  // Progress icon shown on screen
+    "(_this distance _target) < 2",                     // Condition for the action to be shown
+    "(_caller distance _target) < 2",                   // Condition for the action to progress
+    {},                                                 // Code executed when action starts
+    {},                                                 // Code executed on every progress tick
+    {
+        params ["_target", "_caller", "_actionId", "_arguments"];
+        _target    = _this      select 0;
+        _arguments = _this      select 3;
 
-den_hostage;
+        private _code      = _arguments select 0;
+        private _animation = _arguments select 1;
+
+        [_target, false]      remoteExec ["setCaptive", _target];
+        [_target, _animation] remoteExec ["playMove",   _target];
+
+        [] call _code;
+    },                                                  // Code executed on completion
+    {},                                                 // Code executed on interrupted
+    [_code, _disableAnimation],                         // Arguments passed to the scripts as _this select 3
+    10,                                                 // Action duration [s]
+    999,                                                // Priority
+    true,                                               // Remove on completion
+    false                                               // Show in unconscious state
+] remoteExec ["BIS_fnc_holdActionAdd", 0, _hostage];
+
+true;

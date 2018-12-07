@@ -14,14 +14,15 @@
 
     Parameter(s):
 
-    0: GROUP - player group
+    0: ARRAY - center position
 
-    1: OBJECT - Transport helicopter to take players to the zone.
+    1: NUMBER - radius
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".  Defaults to "CSAT".
+    2: STRING - Enemy faction. See CfgFactions.
 
-    Returns: STRING - zone location name, empty string on error.
+    3: NUMBER - Max number of 2 unit groups.
+
+    Returns: true
 */
 params ["_pos", "_radius", "_faction", "_max"];
 

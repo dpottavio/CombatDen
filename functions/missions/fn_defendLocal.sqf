@@ -46,13 +46,15 @@ if (_faction == "") exitWith {
 
 private _taskQueue = [
     [[blufor, "boardInsert",  "BoardInsert",  _helo,           "CREATED", 1, true, "getin"],  "den_insert"],
+    [[blufor, "reachConvoy",  "ReachConvoy",  "convoyMarker",  "CREATED", 1, true, "move"],   "den_convoyReached"],
     [[blufor, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
 
 private _failQueue = [
     ["HeloDead",        "den_heloDead"],
     ["PlayersDead",     "den_playersDead"],
-    ["FobFriendlyFire", "den_fobFriendlyFire"]
+    ["FobFriendlyFire", "den_fobFriendlyFire"],
+    ["CivilianDead",    "den_civDead"]
 ];
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;

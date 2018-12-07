@@ -27,8 +27,16 @@ params ["_hour", "_month"];
 _hour  = _this param [0, -1, [0]];
 _month = _this param [1, -1, [0]];
 
-if (_month < 0) then {
-    _month = [1, 12] call BIS_fnc_randomInt;
+switch (worldName) do {
+    case "chernarus": {
+        // The foliage in this terrain suggests mid Autumn.
+        _month = 10;
+    };
+    default {
+        if (_month < 0) then {
+            _month = [1, 12] call BIS_fnc_randomInt;
+        };
+    };
 };
 
 if (_hour < 0) then {
