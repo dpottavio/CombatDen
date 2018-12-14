@@ -11,6 +11,13 @@
 
 class Params
 {
+    class Difficulty
+    {
+        title = "Difficulty";
+        texts[] = {"Normal", "Hard", "Ultra"};
+        values[] = {0,1,2};
+        default = 0;
+    };
     class Mission
     {
         title = "Mission";

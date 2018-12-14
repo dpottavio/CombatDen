@@ -38,10 +38,13 @@
     5: (Optional) NUMBER - Cooldown. The min amount of time in seconds between each
     spawn wave.  Defaults to 60 seconds.
 
+    6: (Optional) BOOL - When true players are given radio warning when enemy units
+    have spawned.  Defaults to true.
+
     Returns: BOOL - true
 */
 [_this] spawn {
-    params ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown"];
+    params ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
 
     _args      = _this select 0;
     _area      = _args param [0, [], [[], objNull], [5,6]];
@@ -50,6 +53,7 @@
     _code      = _args param [3, nil, [{}]];
     _threshold = _args param [4, 0.25, [0]];
     _cooldown  = _args param [5, 60, [0]];
+    _notify    = _args param [6, true, [true]];
 
     {
         private _total = {((side _x) == opfor) && ((getPos _x) inArea _area)} count allUnits;
@@ -72,12 +76,14 @@
 
         [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-        private _msg = format["Alpha be advised, enemy reinforcements at grid %1.", mapGridPosition _pos];
-        [_msg] call den_fnc_commandChat;
+        if (_notify) then {
+            private _msg = format["Alpha be advised, enemy reinforcements at grid %1.", mapGridPosition _pos];
+            [_msg] call den_fnc_commandChat;
 
-        private _marker = createMarker [format["waveMarker-%1", time], _pos];
-        _marker setMarkerType  "hd_warning";
-        _marker setMarkerColor "colorOPFOR";
+            private _marker = createMarker [format["waveMarker-%1", time], _pos];
+            _marker setMarkerType  "hd_warning";
+            _marker setMarkerColor "colorOPFOR";
+        };
 
         sleep _cooldown;
     } forEach _spawnList;

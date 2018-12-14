@@ -22,6 +22,23 @@ disableSerialization;
 createDialog "ParamDialog";
 
 /*
+ * difficulty combo
+ */
+private _difficultyComboId = getNumber (missionConfigFile >> "ParamDialog" >> "DifficultyCombo" >> "idc");
+private _difficultyNames   = getArray (missionConfigFile >> "Params" >> "Difficulty" >> "texts");
+private _difficultyValues  = getArray (missionConfigFile >> "Params" >> "Difficulty" >> "values");
+
+private _i = 0;
+{
+    lbAdd [_difficultyComboId, _x];
+    lbSetData [_difficultyComboId, _i, format ["%1", _difficultyValues select _i]];
+    _i = _i + 1;
+} forEach _difficultyNames;
+
+
+lbSetCurSel [_difficultyComboId, 0];
+
+/*
  * opfor faction combo
  */
 private _factionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "FactionCombo" >> "idc");

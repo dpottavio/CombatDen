@@ -20,14 +20,17 @@
 
     3: STRING - OPFOR faction. See CfgFactions.
 
+    4: NUMBER - difficulty. See CfgParams.
+
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton", "_difficulty"];
 
 _playerGroup   = _this param [0, grpNull, [grpNull]];
 _helo          = _this param [1, objNull, [objNull]];
 _bluforFaction = _this param [2, "", [""]];
 _opforFaction  = _this param [3, "", [""]];
+_difficulty    = _this param [4, 0, [0]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -62,8 +65,8 @@ private _safePosParams = [
     [0,             _maxBunker,      10, 0.1], // bunker 1 safe position
     [0,             _maxBunker,      10, 0.1], // bunker 2 safe position
     [0,             _maxBunker,      10, 0.1], // bunker 3 safe position
-    [0,             _maxInfPatrol,    5,  -1], // inf patrol safe position
-    [_minReinforce, _maxReinforce,   10, 0.1]  // reinforce safe position
+    [0,             _maxInfPatrol,   15,  -1], // inf patrol safe position
+    [_minReinforce, _maxReinforce,   15, 0.1]  // reinforce safe position
 ];
 
 private _zone = [
@@ -95,11 +98,33 @@ _zoneTrigger setTriggerStatements    ["this", _zoneActivation, ""];
 
 [_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
 
+/*
+ * enemy units
+ */
+private _guardPos = selectRandom _bunkerPosList;
+createGuardedPoint [east, _guardPos, -1, objNull];
+
+private _guardType     = "FireTeam";
+private _patrolType    = "FireTeam";
+private _reinforceArgs = [[_reinforcePos, "MotorizedTeam"]];
+
+switch (_difficulty) do {
+    case 1: {
+        _patrolType = "AssaultSquad";
+        _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
+    };
+    case 2: {
+        _guardType  = "AssaultSquad";
+        _patrolType = "AssaultSquad";
+        _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
+    };
+};
+
 private _i = 1;
 {
     [_x, "bunker01"] call den_fnc_composition;
 
-    private _group = [_x, _opforFaction, "FireTeam"] call den_fnc_spawnGroup;
+    private _group = [_x, _opforFaction, _guardType] call den_fnc_spawnGroup;
 
     private _wp = [_group, _x, 0, "SCRIPTED", "AWARE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
     _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
@@ -109,31 +134,26 @@ private _i = 1;
     _marker setMarkerColor "colorOPFOR";
     _marker setMarkerText  format["%1", _i];
     _marker setMarkerSize  [2,2];
-
     _i = _i + 1;
 } forEach _bunkerPosList;
 
-private _guardPos = selectRandom _bunkerPosList;
-createGuardedPoint [east, _guardPos, -1, objNull];
-
+private _patrolGroup = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
 /*
- * patrol
+ * Select either the current patrol pos, or the LZ by random.
+ * Delay the waypoint until after the players have unloaded
+ * from the transport.
  */
-private _infGroup = [_infPatrolPos, _opforFaction, "FireTeam"] call den_fnc_spawnGroup;
-
-/*
- * Send unit to GUARD the lz position once players have inserted.
- */
-private _waitWp = [_infGroup, _infPatrolPos, 0, "MOVE", "AWARE"] call CBA_fnc_addWaypoint;
-_waitWp setWaypointStatements ["!isNil ""den_insertUnload""", ""];
-[_infGroup, _lzPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
+private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
+[_patrolGroup, _patrolWpPos] spawn {
+    private _group = _this select 0;
+    private _pos   = _this select 1;
+    while {isNil "den_insertUnload"} do { sleep 1 };
+    [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+};
 
 [_zonePos, _zoneRadius * 0.5, _opforFaction, 4] call den_fnc_buildingOccupy;
 
-/*
- * reinforcements
- */
-[_zoneArea, [[_reinforcePos, "MotorizedAssault"]], _opforFaction] call den_fnc_wave;
+[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
 
 /*
  * enemy unit markers

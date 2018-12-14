@@ -18,11 +18,13 @@
     Returns: true
 */
 
-private _factionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "FactionCombo" >> "idc");
-private _missionComboId = getNumber (missionConfigFile >> "ParamDialog" >> "MissionCombo" >> "idc");
-private _timeComboId    = getNumber (missionConfigFile >> "ParamDialog" >> "TimeCombo"    >> "idc");
+private _difficultyComboId = getNumber (missionConfigFile >> "ParamDialog" >> "DifficultyCombo" >> "idc");
+private _factionComboId    = getNumber (missionConfigFile >> "ParamDialog" >> "FactionCombo" >> "idc");
+private _missionComboId    = getNumber (missionConfigFile >> "ParamDialog" >> "MissionCombo" >> "idc");
+private _timeComboId       = getNumber (missionConfigFile >> "ParamDialog" >> "TimeCombo"    >> "idc");
 
 den_diagParams = [
+    parseNumber (lbData [_difficultyComboId, lbCurSel _difficultyComboId]),
     lbText [_factionComboId, lbCurSel _factionComboId],
     parseNumber (lbData [_missionComboId, lbCurSel _missionComboId]),
     parseNumber (lbData [_timeComboId,    lbCurSel _timeComboId])

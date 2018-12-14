@@ -10,39 +10,53 @@
 
     Description:
 
-    Execute server side mission logic based on the mission type defined
-    by Params.  This should to run only on the server during MP.  This
-    must be executed for single player as well.
-
-    Parameter(s):
-
-    0: NUMBER - Mission type defined by Params >> "Mission" >> "Values".
-    This value cannot be -1 however.
-
-    1: GROUP - player group
-
-    2: OBJECT - Transport helicopter to take players to the zone.
-
-    3: STRING - BLUFOR faction. See CfgFactions.
-
-    4: STRING - OPFOR faction. See CfgFactions.
-
-    Returns: STRING - zone location name, empty string on error.
+    Main mission setup.
 */
-params ["_type", "_playerGroup", "_helo", "_bluforFaction", "_opforFaction"];
+params ["_group", "_transport", "_bluforFaction", "_missionParam", "_hourParam", "_opforParam", "_difficulty"];
 
-_type          = _this param [0, 0, [0]];
-_playerGroup   = _this param [1, grpNull, [grpNull]];
-_helo          = _this param [2, objNull, [objNull]];
-_bluforFaction = _this param [3, "", [""]];
-_opforFaction  = _this param [4, "", [""]];
+_group         = _this param [0, grpNull, [grpNull]];
+_transport     = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
+_missionParam  = _this param [3, -1, [0]];
+_hourParam     = _this param [4, -1, [0]];
+_opforParam    = _this param [5, "Random", [""]];
+_difficulty    = _this param [6, 0, [0]];
 
 if (!isServer) exitWith {};
 
-private _missionArgs = [_playerGroup, _helo, _bluforFaction, _opforFaction];
+private _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
+private _mission      = 0;
+
+if (_missionParam < 0) then {
+    _mission = [1, _missionCount] call BIS_fnc_randomInt;
+    _mission = _mission - 1;
+} else {
+    _mission = _missionParam;
+};
+
+private _hourMonth = [_hourParam] call den_fnc_randTime;
+private _month     = _hourMonth select 1;
+
+private _lowDaylight = [] call den_fnc_lowDaylight;
+{
+    private _role = _x getVariable ["den_role", "Riflemen"];
+    [_x, _role, "", _lowDaylight, _bluforFaction] remoteExecCall ["den_fnc_loadout", _x, true];
+} forEach units _group;
+
+[_month] call den_fnc_randWeather;
+
+private _opforFaction = "";
+if (_opforParam == "Random") then {
+    private _factions = [] call den_fnc_opforFactions;
+    _opforFaction = selectRandom _factions;
+} else {
+    _opforFaction = _opforParam;
+};
+
+private _missionArgs = [_group, _transport, _bluforFaction, _opforFaction, _difficulty];
 private _zone = "";
 
-switch (_type) do {
+switch (_mission) do {
     case 0: {
         _zone = _missionArgs call den_fnc_defendServer;
     };
@@ -66,4 +80,4 @@ switch (_type) do {
     };
 };
 
-_zone;
+[_mission, _opforFaction, _zone];

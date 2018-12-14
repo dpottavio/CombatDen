@@ -30,43 +30,28 @@ _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count")
     }]
 } forEach playableUnits;
 
-private _missionParam = (paramsArray select 0);
-private _hourParam    = (paramsArray select 2);
+private _difficulty   = (paramsArray select 0);
+private _missionParam = (paramsArray select 1);
+private _hourParam    = (paramsArray select 3);
 
 [] spawn den_fnc_mpEndMission;
 
-if (_missionParam < 0) then {
-    den_mission = [1, _missionCount] call BIS_fnc_randomInt;
-    den_mission = den_mission - 1;
-} else {
-    den_mission = _missionParam;
-};
-publicVariable "den_mission";
-
-// TODO: Add opfor faction selection for MP.
-den_opforFaction = selectRandom ([] call den_fnc_opforFactions);
-
-publicVariable "den_opforFaction";
-
-private _hourMonth = [_hourParam] call den_fnc_randTime;
-private _month     = _hourMonth select 1;
-
-private _lowDaylight = [] call den_fnc_lowDaylight;
-{
-    private _role = _x getVariable ["den_role", "Riflemen"];
-    [_x, _role, "", _lowDaylight, den_bluforFaction] remoteExecCall ["den_fnc_loadout", _x, true];
-} forEach units den_alpha;
-
-[_month] call den_fnc_randWeather;
-
-den_zone = [
-    den_mission,
+private _genMissionParams = [
     den_alpha,
     den_falcon,
     den_bluforFaction,
-    den_opforFaction
+    _missionParam,
+    _hourParam,
+    "Random", // TODO: Add opfor faction selection for MP.
+    _difficulty
 ] call den_fnc_initMissionServer;
 
+den_mission      = _genMissionParams select 0;
+den_opforFaction = _genMissionParams select 1;
+den_zone         = _genMissionParams select 2;
+
+publicVariable "den_mission";
+publicVariable "den_opforFaction";
 publicVariable "den_zone";
 
 ["den_initServerDone"] call den_fnc_publicBool;

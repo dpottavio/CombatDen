@@ -137,10 +137,12 @@ class ParamDialog {
 
     controls[] = {
         ParamFrame,
+        DifficultyLabel,
         FactionLabel,
         MissionLabel,
         TimeOfDayLabel,
         OkButton,
+        DifficultyCombo,
         FactionCombo,
         MissionCombo,
         TimeCombo
@@ -149,14 +151,16 @@ class ParamDialog {
     class ParamFrame: RscFrame
     {
         idc = 1800;
+
         x = 0.388438 * safezoneW + safezoneX;
-        y = 0.347 * safezoneH + safezoneY;
+        y = 0.296 * safezoneH + safezoneY;
         w = 0.255 * safezoneW;
-        h = 0.306 * safezoneH;
+        h = 0.357 * safezoneH;
     };
     class FactionLabel: RscText
     {
-        idc = 1000;
+        idc = 1003;
+
         text = "Enemy Faction"; //--- ToDo: Localize;
         x = 0.404375 * safezoneW + safezoneX;
         y = 0.381 * safezoneH + safezoneY;
@@ -166,6 +170,7 @@ class ParamDialog {
     class MissionLabel: RscText
     {
         idc = 1001;
+
         text = "Mission"; //--- ToDo: Localize;
         x = 0.43625 * safezoneW + safezoneX;
         y = 0.449 * safezoneH + safezoneY;
@@ -175,6 +180,7 @@ class ParamDialog {
     class TimeOfDayLabel: RscText
     {
         idc = 1002;
+
         text = "Time of Day"; //--- ToDo: Localize;
         x = 0.420312 * safezoneW + safezoneX;
         y = 0.517 * safezoneH + safezoneY;
@@ -184,16 +190,18 @@ class ParamDialog {
     class OkButton: RscButton
     {
         idc = 1600;
+        action = "[] call den_fnc_uiParamOkAction";
+
         text = "OK"; //--- ToDo: Localize;
         x = 0.484062 * safezoneW + safezoneX;
         y = 0.585 * safezoneH + safezoneY;
         w = 0.06375 * safezoneW;
         h = 0.051 * safezoneH;
-        action = "[] call den_fnc_uiParamOkAction";
     };
     class FactionCombo: RscCombo
     {
         idc = 2100;
+
         x = 0.5 * safezoneW + safezoneX;
         y = 0.381 * safezoneH + safezoneY;
         w = 0.1275 * safezoneW;
@@ -202,6 +210,7 @@ class ParamDialog {
     class MissionCombo: RscCombo
     {
         idc = 2101;
+
         x = 0.5 * safezoneW + safezoneX;
         y = 0.449 * safezoneH + safezoneY;
         w = 0.1275 * safezoneW;
@@ -210,8 +219,28 @@ class ParamDialog {
     class TimeCombo: RscCombo
     {
         idc = 2102;
+
         x = 0.5 * safezoneW + safezoneX;
         y = 0.517 * safezoneH + safezoneY;
+        w = 0.1275 * safezoneW;
+        h = 0.034 * safezoneH;
+    };
+    class DifficultyLabel: RscText
+    {
+        idc = 1000;
+
+        text = "Difficulty"; //--- ToDo: Localize;
+        x = 0.428281 * safezoneW + safezoneX;
+        y = 0.313 * safezoneH + safezoneY;
+        w = 0.0517969 * safezoneW;
+        h = 0.034 * safezoneH;
+    };
+    class DifficultyCombo: RscCombo
+    {
+        idc = 2199
+
+        x = 0.5 * safezoneW + safezoneX;
+        y = 0.313 * safezoneH + safezoneY;
         w = 0.1275 * safezoneW;
         h = 0.034 * safezoneH;
     };

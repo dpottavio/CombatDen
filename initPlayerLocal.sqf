@@ -11,7 +11,7 @@
 
 if (!isMultiplayer) exitWith {
     cutText ["","BLACK", .5];
-    [] spawn den_fnc_initSinglePlayer;
+    [den_alpha, den_falcon, den_bluforFaction] spawn den_fnc_initSinglePlayer;
 };
 
 waitUntil {!isNil "den_initServerDone"};

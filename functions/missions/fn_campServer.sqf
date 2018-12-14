@@ -22,14 +22,17 @@
 
     3: STRING - OPFOR faction. See CfgFactions.
 
+    4: NUMBER - difficulty. See CfgParams.
+
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton", "_difficulty"];
 
 _playerGroup   = _this param [0, grpNull, [grpNull]];
 _helo          = _this param [1, objNull, [objNull]];
 _bluforFaction = _this param [2, "", [""]];
 _opforFaction  = _this param [3, "", [""]];
+_difficulty    = _this param [4, 0, [0]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -61,9 +64,9 @@ private _maxInfPatrol   = _zoneRadius * 0.75;
 
 private _safePosParams = [
     [_minLz,        _maxLz,        15, 0.1], // lz safe position
-    [_minReinforce, _maxReinforce,  5,  -1], // reinforce safe position
+    [_minReinforce, _maxReinforce, 15,  -1], // reinforce safe position
     [0,             _maxCamp,      20, 0.1], // camp safe position
-    [0,             _maxInfPatrol,  5,  -1]  // patrol safe position
+    [0,             _maxInfPatrol, 15,  -1]  // patrol safe position
 ];
 
 private _zone = [
@@ -96,11 +99,38 @@ private _infPatrolPos    = _zoneSafePosList select 3;
  */
 [_campPos, "camp01"] call den_fnc_composition;
 
+createMarker ["campMarker", _campPos];
+"campMarker" setMarkerType "mil_objective";
+"campMarker" setMarkerColor "colorOPFOR";
+"campMarker" setMarkerText "camp";
+"campMarker" setMarkerSize [0.75, 0.75];
+
+/*
+ * enemy units
+ */
 createGuardedPoint [opfor, _campPos, -1, objNull];
 
-private _campGroup = [_campPos, _opforFaction, "ReconSquad"] call den_fnc_spawnGroup;
+private _guardType     = "ReconSquad";
+private _patrolType    = "ReconTeam";
+private _reinforceArgs = [[_reinforcePos, "AssaultSquad"]];
 
-[_campGroup, _campPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
+switch (_difficulty) do {
+    case 1: {
+        _patrolType    = "ReconSquad";
+        _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
+    };
+    case 2: {
+        _patrolType    = "ReconSquad";
+        _reinforceArgs = [
+            [_reinforcePos, "MotorizedAssault"],
+            [_reinforcePos, "MotorizedAssault"]
+        ];
+    };
+};
+
+private _guardGroup = [_campPos, _opforFaction, _guardType] call den_fnc_spawnGroup;
+
+[_guardGroup, _campPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
 
 // board near by static weapons
 private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
@@ -111,13 +141,24 @@ private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
         [_x] orderGetIn true;
         _x assignAsGunner (_hmgs call BIS_fnc_arrayPop);
     };
-} forEach units _campGroup;
+} forEach units _guardGroup;
 
-createMarker ["campMarker", _campPos];
-"campMarker" setMarkerType "mil_objective";
-"campMarker" setMarkerColor "colorOPFOR";
-"campMarker" setMarkerText "camp";
-"campMarker" setMarkerSize [0.75, 0.75];
+private _patrolGroup = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+
+/*
+ * Select either the current patrol pos, or the LZ by random.
+ * Delay the waypoint until after the players have unloaded
+ * from the transport.
+ */
+private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
+[_patrolGroup, _patrolWpPos] spawn {
+    private _group = _this select 0;
+    private _pos   = _this select 1;
+    while {isNil "den_insertUnload"} do { sleep 1 };
+    [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+};
+
+[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
 
 /*
  * Attach a search action to a random camp unit to
@@ -164,21 +205,6 @@ private _trigger = createTrigger ["EmptyDetector", _campPos];
 _trigger setTriggerArea          [25, 25, 0, false, 10];
 _trigger setTriggerActivation    ["WEST SEIZED", "PRESENT", false];
 _trigger setTriggerStatements    ["this", _activation, ""];
-
-/*
- * patrol
- */
-private _patrolGroup = [_infPatrolPos, _opforFaction, "ReconTeam"] call den_fnc_spawnGroup;
-[_patrolGroup, _infPatrolPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
-
-/*
- * reinforcements
- */
-[
-    _zoneArea,
-    [[_reinforcePos, "AssaultSquad"]],
-    _opforFaction
-] call den_fnc_wave;
 
 private _infMarkerPos = _campPos getPos [100, (_campPos getDir _lzPos)];
 

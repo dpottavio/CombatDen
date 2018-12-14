@@ -12,64 +12,48 @@
 
     Mission setup for single player only.
 */
+params ["_group", "_transport", "_bluforFaction"];
+
+_group         = _this param [0, grpNull, [grpNull]];
+_transport     = _this param [1, objNull, [objNull]];
+_bluforFaction = _this param [2, "", [""]];
 
 if (isMultiPlayer) exitWith {};
 
 [] call den_fnc_uiParamDiag;
 waitUntil { !dialog };
 
-private _factionParam = "Random";
-private _missionParam = -1;
-private _hourParam    = -1;
+private _opforParam      = "Random";
+private _missionParam    = -1;
+private _hourParam       = -1;
+private _difficultyParam = 0;
 
 if (!isNil "den_diagParams") then {
-    _factionParam = (den_diagParams select 0);
-    _missionParam = (den_diagParams select 1);
-    _hourParam    = (den_diagParams select 2);
+    _difficultyParam = (den_diagParams select 0);
+    _opforParam      = (den_diagParams select 1);
+    _missionParam    = (den_diagParams select 2);
+    _hourParam       = (den_diagParams select 3);
 };
 
-private _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
-
-if (_missionParam < 0) then {
-    den_mission = [1, _missionCount] call BIS_fnc_randomInt;
-    den_mission = den_mission - 1;
-} else {
-    den_mission = _missionParam;
-};
-
-den_opforFaction = "";
-
-if (_factionParam == "Random") then {
-    private _factions = [] call den_fnc_opforFactions;
-    den_opforFaction = selectRandom _factions;
-} else {
-    den_opforFaction = _factionParam;
-};
-
-private _hourMonth   = [_hourParam] call den_fnc_randTime;
-private _month       = _hourMonth select 1;
-private _lowDaylight = [] call den_fnc_lowDaylight;
-{
-    private _role = _x getVariable ["den_role", "Riflemen"];
-    [_x, _role, "", _lowDaylight, den_bluforFaction] call den_fnc_loadout;
-} forEach units den_alpha;
-
-[_month] call den_fnc_randWeather;
-
-den_zone = [
-    den_mission,
-    den_alpha,
-    den_falcon,
-    den_bluforFaction,
-    den_opforFaction
+private _genMissionParams = [
+    _group,
+    _transport,
+    _bluforFaction,
+    _missionParam,
+    _hourParam,
+    _opforParam,
+    _difficultyParam
 ] call den_fnc_initMissionServer;
 
-if (isNil "den_zone" || den_zone == "") exitWith {
+private _mission      = _genMissionParams select 0;
+private _opforFaction = _genMissionParams select 1;
+private _zone         = _genMissionParams select 2;
+
+if (isNil "_zone" || _zone == "") exitWith {
     ["There was an error generating the zone. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
 };
 
-[den_mission, den_zone, den_falcon, den_opforFaction] call den_fnc_initMissionLocal;
-
+[_mission, _zone, den_falcon, _opforFaction] call den_fnc_initMissionLocal;
 
 cutText ["","BLACK IN", 5];
 

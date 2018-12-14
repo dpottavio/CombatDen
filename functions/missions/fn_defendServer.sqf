@@ -22,14 +22,17 @@
 
     3: STRING - OPFOR faction. See CfgFactions.
 
+    4: NUMBER - difficulty. See CfgParams.
+
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton"];
+params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton", "_difficulty"];
 
 _playerGroup   = _this param [0, grpNull, [grpNull]];
 _helo          = _this param [1, objNull, [objNull]];
 _bluforFaction = _this param [2, "", [""]];
 _opforFaction  = _this param [3, "", [""]];
+_difficulty    = _this param [4, 0, [0]];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -51,19 +54,17 @@ if (_opforFaction == "") exitWith {
     "";
 };
 
-private _zoneRadius  = 500;
-private _minLz       = 100;
-private _maxLz       = 250;
-private _maxConvoy   = _zoneRadius * 0.5;
-private _minAssault1 = _zoneRadius * 0.75;
-private _maxAssault1 = _zoneRadius * 0.8;
-private _minAssault2 = _zoneRadius + 50;
-private _maxAssault2 = _zoneRadius + 100;
+private _zoneRadius = 500;
+private _minLz      = 100;
+private _maxLz      = 250;
+private _maxConvoy  = _zoneRadius * 0.5;
+private _minAssault = _zoneRadius;
+private _maxAssault = _zoneRadius + 250;
 
 private _safePosParams = [
-    [_minLz,       _maxLz,       15, 0.1, 0], // insert safe position
-    [_minAssault1, _maxAssault1,  5   -1, 1], // assault1 safe position
-    [_minAssault2, _maxAssault2, 10, 0.1, 0]  // assault1 safe position
+    [_minLz,       _maxLz,     15, 0.1, 0], // insert safe position
+    [_minAssault, _maxAssault, 15, 0.1, 0], // assault1 safe position
+    [_minAssault, _maxAssault, 15, 0.1, 0]  // assault2 safe position
 ];
 
 private _zone = [
@@ -140,12 +141,13 @@ _trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activ
 /*
  * assault waves
  */
-[_assaultPos1, _assaultPos2, _zoneArea, _convoyPos, _opforFaction] spawn {
+[_assaultPos1, _assaultPos2, _zoneArea, _convoyPos, _opforFaction, _difficulty] spawn {
     private _assaultPos1  = _this select 0;
     private _assaultPos2  = _this select 1;
     private _zoneArea     = _this select 2;
     private _convoyPos    = _this select 3;
     private _opforFaction = _this select 4;
+    private _difficulty   = _this select 5;
 
     // wait for player insert before staring wave attacks
     while {true} do {
@@ -155,11 +157,39 @@ _trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activ
         sleep 1;
     };
 
+    private _reinforceArgs = [
+        [_assaultPos1, "MotorizedAssault"],
+        [_assaultPos2, "AssaultSquad"],
+        [_assaultPos1, "AssaultSquad"]
+    ];
+    switch (_difficulty) do {
+        case 1: {
+            _reinforceArgs = [
+                [_assaultPos1, "MotorizedAssault"],
+                [_assaultPos2, "AssaultSquad"],
+                [_assaultPos1, "MotorizedAssault"],
+                [_assaultPos2, "AssaultSquad"]
+            ];
+        };
+        case 2: {
+            _reinforceArgs = [
+                [_assaultPos1, "MotorizedAssault"],
+                [_assaultPos2, "AssaultSquad"],
+                [_assaultPos1, "MotorizedSquad"],
+                [_assaultPos2, "AssaultSquad"],
+                [_assaultPos2, "MotorizedSquad"],
+                [_assaultPos2, "AssaultSquad"]
+            ];
+        };
+    };
     [
         _zoneArea,
-        [[_assaultPos1, "MotorizedAssault"], [_assaultPos2, "AssaultSquad"]],
+        _reinforceArgs,
         _opforFaction,
-        {den_spawnDone = true}
+        {den_spawnDone = true},
+        0.25,                   // spawn threshold
+        60,                     // cooldown
+        false                   // notify
     ] call den_fnc_wave;
 
     // wait for the zone to clear before mission complete

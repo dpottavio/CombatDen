@@ -104,6 +104,24 @@ class CfgGroups
             rank = "SERGEANT";
         };
     };
+    class MotorBase
+    {
+        class Unit0
+        {
+            position[] = {0,0,0};
+            rank = "SERGEANT";
+        };
+        class Unit1
+        {
+            position[] = {5,-5,0};
+            rank = "CORPORAL";
+        };
+        class Unit2
+        {
+            position[] = {-5,-5,0};
+            rank = "PRIVATE";
+        };
+    }
     class NATO
     {
         class SemiArid
@@ -459,6 +477,21 @@ class CfgGroups
                     vehicle = "O_MRAP_02_hmg_F";
                 };
             };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "O_MRAP_02_hmg_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "O_soldier_F";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "O_soldier_F";
+                };
+            };
             class MotorizedAssault : AssaultSquad
             {
                 type = "motorized";
@@ -525,6 +558,12 @@ class CfgGroups
             class MotorizedHmg : MotorizedHmg
             {
                 class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
             };
             class MotorizedAssault : MotorizedAssault
             {
@@ -671,6 +710,21 @@ class CfgGroups
                      vehicle = "O_T_MRAP_02_hmg_ghex_F";
                 };
             };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "O_T_MRAP_02_hmg_ghex_F";
+                };
+                class Unit1 : Unit1
+                {
+                     vehicle = "O_T_Soldier_F";
+                };
+                class Unit2 : Unit2
+                {
+                     vehicle = "O_T_Soldier_F";
+                };
+            };
             class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
@@ -810,6 +864,21 @@ class CfgGroups
                     vehicle = "O_G_Offroad_01_armed_F";
                 };
             };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "O_G_Offroad_01_armed_F";
+                };
+                class Unit1 : Unit1
+                {
+                     vehicle = "O_G_soldier_F";
+                };
+                class Unit2 : Unit2
+                {
+                     vehicle = "O_G_soldier_F";
+                };
+            };
             class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
@@ -874,6 +943,12 @@ class CfgGroups
             class MotorizedHmg : MotorizedHmg
             {
                 class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
             };
             class MotorizedAssault : MotorizedAssault
             {
@@ -983,6 +1058,21 @@ class CfgGroups
                 class Unit0 : Unit0
                 {
                     vehicle = "I_C_Offroad_02_LMG_F";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "I_C_Offroad_02_LMG_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "I_C_Soldier_Para_1_F";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "I_C_Soldier_Para_1_F";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -1142,6 +1232,21 @@ class CfgGroups
                     vehicle = "rhs_tigr_sts_3camo_msv";
                 };
             };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "rhs_tigr_sts_3camo_msv";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "rhs_msv_emr_rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "rhs_msv_emr_rifleman";
+                };
+            };
             class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
@@ -1292,6 +1397,21 @@ class CfgGroups
                     vehicle = "rhs_tigr_sts_3camo_msv";
                 };
             };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "rhs_tigr_sts_3camo_msv";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "rhs_vdv_des_rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "rhs_vdv_des_rifleman";
+                };
+            };
             class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
@@ -1359,6 +1479,15 @@ class CfgGroups
                 {
                      vehicle = "rhs_tigr_sts_msv";
                 };
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "rhs_tigr_sts_msv";
+                };
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
             };
             class MotorizedAssault : MotorizedAssault
             {
@@ -1475,6 +1604,21 @@ class CfgGroups
                      vehicle = "LOP_AFR_OPF_Offroad_M2";
                 };
             };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_AFR_OPF_Offroad_M2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_AFR_OPF_Infantry_Rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_AFR_OPF_Infantry_Rifleman";
+                };
+            };
             class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
@@ -1539,6 +1683,12 @@ class CfgGroups
             class MotorizedHmg : MotorizedHmg
             {
                 class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
             };
             class MotorizedAssault : MotorizedAssault
             {
@@ -1647,7 +1797,22 @@ class CfgGroups
             {
                 class Unit0 : Unit0
                 {
-                     vehicle =  "LOP_IRA_Landrover_M2";
+                     vehicle = "LOP_IRA_Landrover_M2";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_IRA_Landrover_M2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_IRA_Infantry_Rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_IRA_Infantry_Rifleman";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -1714,6 +1879,12 @@ class CfgGroups
             class MotorizedHmg : MotorizedHmg
             {
                 class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
             };
             class MotorizedAssault : MotorizedAssault
             {
@@ -1822,7 +1993,22 @@ class CfgGroups
             {
                 class Unit0 : Unit0
                 {
-                     vehicle =  "LOP_ISTS_OPF_M1025_W_M2";
+                     vehicle = "LOP_ISTS_OPF_M1025_W_M2";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ISTS_OPF_M1025_W_M2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman_5";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman_5";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -1938,6 +2124,21 @@ class CfgGroups
                 class Unit0 : Unit0
                 {
                      vehicle = "LOP_TKA_UAZ_DshKM";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_TKA_UAZ_DshKM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_TKA_Infantry_Rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_TKA_Infantry_Rifleman";
                 };
             };
             class MotorizedAssault : AssaultSquad
