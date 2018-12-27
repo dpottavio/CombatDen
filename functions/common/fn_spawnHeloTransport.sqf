@@ -26,10 +26,10 @@
 
     Returns: true on success, false on error
 */
-params ["_pos", "_bluforFaction"];
-
-_pos           = _this param [0, [], [[]], [2,3]];
-_bluforFaction = _this param [1, "", [""]];
+params [
+    ["_pos",           [], [[]], [2,3]],
+    ["_bluforFaction", "", [""]]
+];
 
 if (_bluforFaction == "") exitWith {
     ["blufor faction parameter is empty"] call BIS_fnc_error;
@@ -76,4 +76,3 @@ _startHeloTrigger setTriggerActivation ["WEST", "PRESENT", false];
 _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
 
 _helo;
-

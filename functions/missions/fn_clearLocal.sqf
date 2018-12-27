@@ -16,16 +16,18 @@
 
     0: STRING - zone name
 
-    1: STRING - Enemy faction to populate each bunker, must be either
+    1: OBJECT - Transport helicopter to take players to the zone.
+
+    2: STRING - Enemy faction to populate each bunker, must be either
     "CSAT", or "Guerrilla".
 
     Returns: true on success, false on error
 */
-params ["_zone", "_helo", "_faction"];
-
-_zone    = _this param [0, "", [""]];
-_helo    = _this param [1, objNull, [objNull]];
-_faction = _this param [2, "", [""]];
+params [
+    ["_zone",    "",      [""]],
+    ["_helo",    objNull, [objNull]],
+    ["_faction", "",      [""]]
+];
 
 if (_zone == "") exitWith {
     ["zone parameter cannot be empty"] call BIS_fnc_error;

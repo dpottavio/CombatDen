@@ -14,12 +14,12 @@
 
     Returns: ARRAY - see BIS_fnc_spawnVehicle return value
 */
-params ["_pos", "_dir", "_type", "_faction"];
-
-_pos     = _this param [0, [], [[]], [2,3]];
-_dir     = _this param [1, 0, [0]];
-_type    = _this param [2, "", [""]];
-_faction = _this param [3, "NATO", [""]];
+params [
+    ["_pos",     [],     [[]], [2,3]],
+    ["_dir",     0,      [0]],
+    ["_type",    "",     [""]],
+    ["_faction", "NATO", [""]]
+];
 
 private _side = blufor;
 

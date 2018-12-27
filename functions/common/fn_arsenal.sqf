@@ -19,10 +19,10 @@
 
     Returns: true on success, false on error
 */
-params ["_obj", "_group"];
-
-_obj   = _this param [0, objNull, [objNull]];
-_group = _this param [1, grpNull, [grpNull]];
+params [
+    ["_obj",   objNull, [objNull]],
+    ["_group", grpNull, [grpNull]]
+];
 
 private _faction = [] call den_fnc_bluforFaction;
 

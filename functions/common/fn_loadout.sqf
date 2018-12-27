@@ -27,13 +27,13 @@
 
     Returns: true on success, false on error
 */
-params ["_unit", "_role", "_type", "_lowDaylight", "_faction"];
-
-_unit        = _this param [0, objNull, [objNull]];
-_role        = _this param [1, "", [""]];
-_type        = _this param [2, "", [""]];
-_lowDaylight = _this param [3, false, [false]];
-_faction     = _this param [4, "NATO", [""]];
+params [
+    ["_unit",        objNull, [objNull]],
+    ["_role",        "",      [""]],
+    ["_type",        "",      [""]],
+    ["_lowDaylight", false,   [false]],
+    ["_faction",     "NATO",  [""]]
+];
 
 if !(local _unit) exitWith {};
 

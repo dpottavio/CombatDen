@@ -36,7 +36,7 @@ switch (worldName) do {
     case "Tanoa": {
         _rainChance = [1, 4] call BIS_fnc_randomInt;
     };
-    case "takistan": {
+    case "Takistan": {
         _rainChance  = 0;
         _maxOvercast = 0.5;
     };

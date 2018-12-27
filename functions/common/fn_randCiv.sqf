@@ -18,13 +18,15 @@
 
     Returns:  true
 */
-params ["_prob"];
-
-_prob = _this param [0, 0.33, [0]];
+params [
+    ["_zonePos",    [],   [[]], [2,3]],
+    ["_zoneRadius", 0,    [0]],
+    ["_prob",       0.33, [0]]
+];
 
 private _civ = [0,1] call BIS_fnc_randomNum;
 if (_civ <= _prob) then {
-    [_zonePos, _zoneRadius * .5, 0.1] call den_fnc_spawnCiv;
+    [_zonePos, _zoneRadius, 0.1] call den_fnc_spawnCiv;
 
     [] spawn {
         while {true} do {

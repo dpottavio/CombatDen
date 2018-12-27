@@ -24,16 +24,18 @@
 
     Returns: true
 */
-params ["_pos", "_radius", "_faction", "_max"];
+params [
+    ["_pos",     [],     [[]], [2,3]],
+    ["_radius",  0,      [0]],
+    ["_faction", "CSAT", [""]],
+    ["_max",     5,      [0]]
+];
 
-_pos     = _this param [0, [], [[]], [2,3]];
-_radius  = _this param [1, 0, [0]];
-_faction = _this param [2, "CSAT", [""]];
-_max     = _this param [3, 5, [0]];
+private _buildingList = nearestObjects [_pos, ["House"], _radius];
 
-private _buildingList = _pos nearObjects ["House", _radius];
-
-if (_buildingList isEqualTo []) exitWith {};
+if (_buildingList isEqualTo []) exitWith {
+    false;
+};
 
 _buildingList call BIS_fnc_arrayShuffle;
 

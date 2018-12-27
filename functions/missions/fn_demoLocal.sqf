@@ -26,7 +26,8 @@
 params [
     ["_zone",    "",      [""]],
     ["_helo",    objNull, [objNull]],
-    ["_faction", "",      [""]]
+    ["_faction", "",      [""]],
+    ["_arsenal", objNull, [objNull]]
 ];
 
 if (_zone == "") exitWith {
@@ -44,9 +45,17 @@ if (_faction == "") exitWith {
     false;
 };
 
+if (isNull _arsenal) exitWith {
+    ["arsenal parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
 private _taskQueue = [
-    [[blufor, "boardInsert",   "BoardInsert", _helo,   "CREATED", 1, true, "getin"],  "den_insert"],
-    [[blufor, "clearZoneTask", "ClearZone",   objNull, "CREATED", 1, true, "attack"], "den_zoneClear"]
+    [[blufor, "packOrdnance",         "PackOrdnance",     _arsenal,   "CREATED", 1, true, "backpack"], "den_ordnancePacked"],
+    [[blufor, "boardInsert",          "BoardInsert",      _helo,      "CREATED", 1, true, "getin"],    "den_insert"],
+    [[blufor, "destroyOrdnancesTask", "DestroyOrdnances", _zone,      "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
+    [[blufor, "lzExtract",            "LzExtract",        "lzMarker", "CREATED", 1, true, "move"],     "den_lzExtract"],
+    [[blufor, "boardExtract",         "BoardExtract",     objNull,    "CREATED", 1, true, "getin"],    "den_extract"]
 ];
 
 private _failQueue = [
@@ -66,16 +75,21 @@ player createDiaryRecord ["Diary", ["Execution",
 "
 1. Reach the <marker name='lzMarker'>LZ</marker>.
 <br/>
-2. Search and clear the <marker name='zoneMarker'>area</marker> of enemy forces.
+2. Search <marker name='zoneMarker'>area</marker> and destroy weapon crates.
+<br/>
+3. Return to the <marker name='lzMarker'>LZ</marker> for extraction.
 "
 ]];
 
 player createDiaryRecord ["Diary", ["Mission",
-"Clear <marker name='zoneMarker'>area</marker> of enemy units.
+"Search <marker name='zoneMarker'>area</marker> and destroy enemy weapon crates.
 "
 ]];
 
-private _situationText = format["%1 forces occupy position <marker name='zoneMarker'>%2</marker>.  This position must be recovered by NATO forces.", _faction, _zone];
+private _situationText = format["\
+%1 forces have stashed weapon crates at position <marker name='zoneMarker'>%2</marker>.\
+ NATO forces are to seek and destroy these crates.<br/><br/>Intel reports there are\
+ approximately 10 crates at this position stored in and around buildings.", _faction, _zone];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

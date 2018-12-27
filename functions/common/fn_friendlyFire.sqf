@@ -22,10 +22,10 @@
 
     Returns: true on success, false on error
 */
-params ["_unit", "_event"];
-
-_unit  = _this param [0, objNull, [objNull]];
-_event = _this param [1, "", [""]];
+params [
+    ["_unit",  objNull, [objNull]],
+    ["_event", "",      [""]]
+];
 
 if !(local _unit) exitWith {};
 

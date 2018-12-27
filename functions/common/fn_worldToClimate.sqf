@@ -25,7 +25,7 @@ switch (worldName) do {
     case "Tanoa": {
         _cfgClimate = "Tropic";
     };
-    case "takistan": {
+    case "Takistan": {
         _cfgClimate = "Arid";
     };
     default { // Altis, Malden, Stratis

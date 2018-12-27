@@ -23,11 +23,11 @@
 
     Returns: true on success, false on error
 */
-params ["_zone", "_helo", "_faction"];
-
-_zone    = _this param [0, "", [""]];
-_helo    = _this param [1, objNull, [objNull]];
-_faction = _this param [2, "", [""]];
+params [
+    ["_zone",    "",      [""]],
+    ["_helo",    objNull, [objNull]],
+    ["_faction", "",      [""]]
+];
 
 if (_zone == "") exitWith {
     ["zone parameter cannot be empty"] call BIS_fnc_error;

@@ -21,11 +21,11 @@
 
     Returns: true
 */
-params ["_message", "_id", "_side"];
-
-_message = _this param [0, "", [""]];
-_id      = _this param [1, "Base", [""]];
-_side    = _this param [2, blufor, [blufor]];
+params [
+    ["_message", "",     [""]],
+    ["_id",      "Base", [""]],
+    ["_side",    blufor, [blufor]]
+];
 
 [[_side, _id], _message] remoteExec ["sideChat"];
 

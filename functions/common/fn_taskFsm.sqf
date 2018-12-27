@@ -49,10 +49,10 @@
 
     [_taskQueue] spawn den_fnc_taskFsm;
 */
-params ["_taskQueue", "_failQueue"];
-
-_taskQueue = _this param[0, [], [[]]];
-_failQueue = _this param[1, [], [[]]];
+params [
+    ["_taskQueue", [], [[]]],
+    ["_failQueue", [], [[]]]
+];
 
 private _ok   = true;
 private _head = 0;

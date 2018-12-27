@@ -45,8 +45,8 @@
             0 - anywhere  (default)
             1 - on a rode
 
-    3: BOOL - Area marker visibility.  If true the area marker
-    is visible.  False the area marker is not visible.
+    3: (Optional) BOOL - Area marker visibility.  If true the area marker
+    is visible.  False the area marker is not visible. The default is false.
 
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
@@ -54,12 +54,12 @@
     1: area of the zone
     2: list of safe positions
 */
-params ["_types", "_radius", "_safePosParams", "_markerVisible"];
-
-_types         = _this param [0, [], [[]]];
-_radius        = _this param [1, 500, [0]];
-_safePosParams = _this param [2, [], [[]]];
-_markerVisible = _this param [3, false, [false]];
+params [
+    ["_types",         [],    [[]]],
+    ["_radius",        500,   [0]],
+    ["_safePosParams", [],    [[]]],
+    ["_markerVisible", false, [false]]
+];
 
 private _defaultTypes = ["NameCity", "NameCityCapital", "NameMarine", "NameVillage", "NameLocal", "Hill", "Mount", "Airport"];
 if (_types isEqualTo []) then {

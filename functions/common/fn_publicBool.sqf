@@ -18,9 +18,9 @@
 
     Returns: true on success, false on error
 */
-params ["_var"];
-
-_var = _this param [0, "", [""]];
+params [
+    ["_var", "", [""]]
+];
 
 if (_var == "") exitWith {
     ["variable cannot be an empty string"] call BIS_fnc_err;

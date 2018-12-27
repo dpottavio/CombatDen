@@ -11,7 +11,7 @@
 
 if (!isMultiplayer) exitWith {
     cutText ["","BLACK", .5];
-    [den_alpha, den_falcon, den_bluforFaction] spawn den_fnc_initSinglePlayer;
+    [den_alpha, den_falcon, den_bluforFaction, den_arsenal] spawn den_fnc_initSinglePlayer;
 };
 
 waitUntil {!isNil "den_initServerDone"};
@@ -28,6 +28,6 @@ if (isNil "den_zone" || den_zone == "") exitWith {
     player createDiaryRecord ["Diary", ["Error", "There was an error generating the zone.  Please restart the mission."]];
 };
 
-[den_mission, den_zone, den_falcon, den_opforFaction] call den_fnc_initMissionLocal;
+[den_mission, den_zone, den_falcon, den_opforFaction, den_arsenal] call den_fnc_initMissionLocal;
 
 true;

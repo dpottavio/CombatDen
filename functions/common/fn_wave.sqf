@@ -44,7 +44,7 @@
     Returns: BOOL - true
 */
 [_this] spawn {
-    params ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
+    private ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
 
     _args      = _this select 0;
     _area      = _args param [0, [], [[], objNull], [5,6]];

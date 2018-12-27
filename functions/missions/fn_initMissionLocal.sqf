@@ -28,31 +28,35 @@
 
     Returns: true
 */
-params ["_type", "_zone", "_helo", "_faction"];
+params [
+    ["_type",    0,       [0]],
+    ["_zone",    "",      [""]],
+    ["_helo",    objNull, [objNull]],
+    ["_faction", "CSAT",  [""]],
+    ["_arsenal", objNull, [objNull]]
+];
 
-_type    = _this param [0, 0, [0]];
-_zone    = _this param [1, "", [""]];
-_helo    = _this param [2, objNull, [objNull]];
-_faction = _this param [3, "CSAT", [""]];
-
-private _missionArgs = [_zone, _helo, _faction];
+private _missionArgs = [_zone, _helo, _faction, _arsenal];
 switch (_type) do {
     case 0: {
         _missionArgs call den_fnc_defendLocal;
     };
     case 1: {
-        _missionArgs call den_fnc_campLocal;
+        _missionArgs call den_fnc_demoLocal;
     };
     case 2: {
-        _missionArgs call den_fnc_chemLocal;
+        _missionArgs call den_fnc_campLocal;
     };
     case 3: {
-       _missionArgs call den_fnc_clearLocal;
+        _missionArgs call den_fnc_chemLocal;
     };
     case 4: {
-        _missionArgs call den_fnc_hostageLocal;
+       _missionArgs call den_fnc_clearLocal;
     };
     case 5: {
+        _missionArgs call den_fnc_hostageLocal;
+    };
+    case 6: {
         _missionArgs call den_fnc_urbanLocal;
     };
     default {

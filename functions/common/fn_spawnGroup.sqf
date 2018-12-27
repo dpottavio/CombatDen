@@ -16,18 +16,17 @@
 
     0: ARRAY - Position
 
-    1: (Optional) STRING - Faction name.  Must equal either
-    "CSAT", "Guerrilla", or "NATO".  Defaults to "CSAT".
+    1: (Optional) STRING - Faction name. Defaults to CSAT. See CfgFactions.
 
     2: (Optional) STRING - Unit type.  See CfgGroups.
 
     Returns: GROUP on success, grpNull on error.
 */
-params ["_pos", "_faction", "_type"];
-
-_pos     = _this param [0, [], [[]], [2,3]];
-_faction = _this param [1, "CSAT", [""]];
-_type    = _this param [2, "FireTeam", [""]];
+params [
+    ["_pos",     [],         [[]], [2,3]],
+    ["_faction", "CSAT",     [""]],
+    ["_type",    "FireTeam", [""]]
+];
 
 if (_type == "") then {
     _type = "FireTeam";

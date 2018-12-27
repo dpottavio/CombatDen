@@ -304,6 +304,39 @@ class CfgLoadout
                };
             };
 
+            class BackpackItems : BackpackItems {};
+            class LinkedItems   : LinkedItems {};
+        };
+        class EodBase : LoadoutBase
+        {
+            primaryMagCount = RIFLEMEN_MAG_COUNT;
+
+            class UniformItems : UniformItems {};
+
+            class VestItems : VestItems
+            {
+               eodList[] = {
+                    "HandGrenade",
+                    "HandGrenade",
+                    "SmokeShell",
+                    "SmokeShell"
+                };
+            };
+            class BackpackItems : BackpackItems
+            {
+                rifleList[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14"
+                };
+            };
             class LinkedItems : LinkedItems {};
         };
         class SemiArid
@@ -589,6 +622,36 @@ class CfgLoadout
                     class LinkedItems   : LinkedItems {};
                 };
             };
+            class Eod
+            {
+                role = "EOD";
+
+                class Mx : EodBase
+                {
+                    default    = 1;
+                    type       = "MX";
+                    rifle      = "arifle_MX_F";
+                    primaryMag = "30Rnd_65x39_caseless_mag";
+                    backpack   = "B_Kitbag_mcamo";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : EodBase
+                {
+                    type       = "HK416 11";
+                    rifle      = "arifle_SPAR_01_snd_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+                    backpack   = "B_Kitbag_mcamo";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -632,6 +695,11 @@ class CfgLoadout
                 class MaawsHk : MaawsHk {};
                 class NlawMx  : NlawMx  {};
                 class NlawHk  : NlawHk  {};
+            };
+            class Eod : Eod
+            {
+                class Mx : Mx {};
+                class Hk : Hk {};
             };
         };
         class Tropic
@@ -996,6 +1064,41 @@ class CfgLoadout
                     class LinkedItems   : LinkedItems {};
                 };
             };
+            class Eod
+            {
+                role = "EOD";
+
+                class Mx : EodBase
+                {
+                    default    = 1;
+                    type       = "MX";
+                    rifle      = "arifle_MX_Black_F";
+                    uniform    = "U_B_T_Soldier_F";
+                    vest       = "V_PlateCarrier1_tna_F";
+                    backpack   = "B_Kitbag_rgr"
+                    headgear   = "H_HelmetB_tna_F";
+                    primaryMag = "30Rnd_65x39_caseless_mag";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : EodBase
+                {
+                    type       = "HK416 11";
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    uniform    = "U_B_T_Soldier_F";
+                    vest       = "V_PlateCarrier1_tna_F";
+                    backpack   = "B_Kitbag_rgr"
+                    headgear   = "H_HelmetB_tna_F";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
         };
     };
     class USMC
@@ -1259,6 +1362,39 @@ class CfgLoadout
                };
             };
 
+            class LinkedItems : LinkedItems {};
+        };
+        class EodBase : LoadoutBase
+        {
+            primaryMagCount = RIFLEMEN_MAG_COUNT;
+            backpack        = "rhsusf_assault_eagleaiii_coy"
+
+            class UniformItems : UniformItems {};
+
+            class VestItems : VestItems
+            {
+               eodList[] = {
+                    "HandGrenade",
+                    "HandGrenade",
+                    "SmokeShell",
+                    "SmokeShell"
+                };
+            };
+            class BackpackItems : BackpackItems
+            {
+                rifleList[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14"
+                };
+            };
             class LinkedItems : LinkedItems {};
         };
         class SemiArid
@@ -1605,6 +1741,52 @@ class CfgLoadout
                     class LinkedItems   : LinkedItems {};
                 };
             };
+            class Eod
+            {
+                role = "EOD";
+
+                class M4 : EodBase
+                {
+                    type    = "M4A1";
+                    rifle   = "rhs_weap_m4a1_blockII_bk";
+                    default = 1;
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : EodBase
+                {
+                    type  = "M164A";
+                    rifle = "rhs_weap_m16a4_carryhandle";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : EodBase
+                {
+                    type  = "HK416 14.5";
+                    rifle = "rhs_weap_hk416d145";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : EodBase
+                {
+                    type    = "M27 IAR";
+                    rifle   = "rhs_weap_m27iar";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -1929,6 +2111,49 @@ class CfgLoadout
                     class LinkedItems   : LinkedItems {};
                 };
             };
+            class Eod : Eod
+            {
+                class M4 : M4
+                {
+                    uniform  = "rhs_uniform_FROG01_d";
+                    headgear = "rhsusf_mich_helmet_marpatd";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    uniform  = "rhs_uniform_FROG01_d";
+                    headgear = "rhsusf_mich_helmet_marpatd";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    uniform  = "rhs_uniform_FROG01_d";
+                    headgear = "rhsusf_mich_helmet_marpatd";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    uniform  = "rhs_uniform_FROG01_d";
+                    headgear = "rhsusf_mich_helmet_marpatd";
+
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
         };
         class Tropic : SemiArid
         {
@@ -2156,6 +2381,37 @@ class CfgLoadout
                     class LinkedItems   : LinkedItems {};
                 };
                 class M136M27 : M136M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class M4 : M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
                 {
                     class UniformItems  : UniformItems {};
                     class VestItems     : VestItems {};

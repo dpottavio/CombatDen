@@ -24,12 +24,12 @@
 
     Returns: STRING - marker
 */
-params ["_name", "_pos", "_faction", "_groupType"];
-
-_name      = _this param [0, "", [""]];
-_pos       = _this param [1, [], [[]], [2,3]];
-_faction   = _this param [2, "", [""]];
-_groupType = _this param [3, "", [""]];
+params [
+    ["_name",      "", [""]],
+    ["_pos",       [], [[]], [2,3]],
+    ["_faction",   "", [""]],
+    ["_groupType", "", [""]]
+];
 
 private _markerType = getText (missionConfigFile >> "CfgGroups" >> _faction >> "Arid" >> _groupType >> "marker");
 

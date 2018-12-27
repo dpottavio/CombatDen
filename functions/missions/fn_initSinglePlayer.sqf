@@ -12,11 +12,12 @@
 
     Mission setup for single player only.
 */
-params ["_group", "_transport", "_bluforFaction"];
-
-_group         = _this param [0, grpNull, [grpNull]];
-_transport     = _this param [1, objNull, [objNull]];
-_bluforFaction = _this param [2, "", [""]];
+params [
+    ["_group",         grpNull, [grpNull]],
+    ["_transport",     objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_arsenal",       objNull, [objNull]]
+];
 
 if (isMultiPlayer) exitWith {};
 
@@ -53,7 +54,7 @@ if (isNil "_zone" || _zone == "") exitWith {
     ["There was an error generating the zone. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
 };
 
-[_mission, _zone, den_falcon, _opforFaction] call den_fnc_initMissionLocal;
+[_mission, _zone, den_falcon, _opforFaction, _arsenal] call den_fnc_initMissionLocal;
 
 cutText ["","BLACK IN", 5];
 

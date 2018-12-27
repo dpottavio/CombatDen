@@ -22,13 +22,13 @@
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_pos", "_radius", "_density"];
+params [
+    ["_pos",     [],   [[]], [2,3]],
+    ["_radius",  0,    [0]],
+    ["_density", 0.10, [0]]
+];
 
-_pos     = _this param [0, [], [[]], [2,3]];
-_radius  = _this param [1, 0, [0]];
-_density = _this param [2, 0.10, [0]];
-
-private _buildingList = _pos nearObjects ["House", _radius];
+private _buildingList = nearestObjects [_pos, ["House"], _radius];
 
 if (_buildingList isEqualTo []) exitWith {};
 
@@ -60,11 +60,19 @@ private _civList = [];
 {
     if (_max == 0) exitWith{};
 
-    private _buildingPos = _x buildingPos -1;
-    if !(_buildingPos isEqualTo []) then {
-        private _pos   = selectRandom _buildingPos;
+    private _building    = _x;
+    private _civPos      = [0,0];
+    private _buildingPos = _building buildingPos -1;
+
+    if ((count _buildingPos) > 1) then {
+        _civPos = _buildingPos select 1;
+    } else {
+        _civPos = [_building, 5, 10, 1, 0, 0.1, 0, [], [[0,0],[0,0]]] call BIS_fnc_findSafePos;
+    };
+
+    if !(_civPos isEqualTo [0,0]) then {
         private _type  = configName(selectRandom _cfgList);
-        private _group = [_pos, civilian, [_type]] call BIS_fnc_spawnGroup;
+        private _group = [_civPos, civilian, [_type]] call BIS_fnc_spawnGroup;
         {
             private _civ = _x;
 

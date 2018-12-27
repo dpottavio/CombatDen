@@ -22,10 +22,10 @@
 
     Returns: ARRAY - [hour, month]
 */
-params ["_hour", "_month"];
-
-_hour  = _this param [0, -1, [0]];
-_month = _this param [1, -1, [0]];
+params [
+    ["_hour",  -1, [0]],
+    ["_month", -1, [0]]
+];
 
 switch (worldName) do {
     case "chernarus": {

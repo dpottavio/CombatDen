@@ -21,12 +21,12 @@ class Params
     class Mission
     {
         title = "Mission";
-        texts[] = {"Random", "Defend Convoy", "Camp Raid", "Container Extraction", "Clear Bunkers", "Hostage Rescue", "Urban Combat"};
-        values[] = {-1,0,1,2,3,4,5};
+        texts[] = {"Random", "Defend Convoy", "Demolition", "Camp Raid", "Container Extraction", "Clear Bunkers", "Hostage Rescue", "Urban Combat"};
+        values[] = {-1,0,1,2,3,4,5,6};
         default = -1;
 
         // This must be incremented for each new mission.
-        count = 6;
+        count = 7;
     };
     class RespawnTickets
     {

@@ -20,11 +20,10 @@
 
     Returns: true on success, false on error
 */
-params ["_unit", "_message"];
-
-_unit    = _this param [0, objNull, [objNull]];
-_message = _this param [1, "", [""]];
-
+params [
+    ["_unit",    objNull, [objNull]],
+    ["_message", "",      [""]]
+];
 
 if (isNull _unit) exitWith {
     ["unit parameter is null"] call BIS_fnc_error;

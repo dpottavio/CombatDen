@@ -17,6 +17,7 @@ class CfgFunctions
         {
             file = "functions\common";
             class arsenal {};
+            class attackExtraction {};
             class bluforFaction {};
             class buildingOccupy {};
             class commandChat {};
@@ -50,6 +51,8 @@ class CfgFunctions
             file = "functions\missions";
             class defendLocal {};
             class defendServer {};
+            class demoLocal {};
+            class demoServer {};
             class campLocal {};
             class campServer {};
             class clearLocal {};

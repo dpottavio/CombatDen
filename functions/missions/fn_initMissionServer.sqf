@@ -12,15 +12,15 @@
 
     Main mission setup.
 */
-params ["_group", "_transport", "_bluforFaction", "_missionParam", "_hourParam", "_opforParam", "_difficulty"];
-
-_group         = _this param [0, grpNull, [grpNull]];
-_transport     = _this param [1, objNull, [objNull]];
-_bluforFaction = _this param [2, "", [""]];
-_missionParam  = _this param [3, -1, [0]];
-_hourParam     = _this param [4, -1, [0]];
-_opforParam    = _this param [5, "Random", [""]];
-_difficulty    = _this param [6, 0, [0]];
+params [
+    ["_group",         grpNull,  [grpNull]],
+    ["_transport",     objNull,  [objNull]],
+    ["_bluforFaction", "",       [""]],
+    ["_missionParam",  -1,       [0]],
+    ["_hourParam",     -1,       [0]],
+    ["_opforParam",    "Random", [""]],
+    ["_difficulty",    0,        [0]]
+];
 
 if (!isServer) exitWith {};
 
@@ -61,18 +61,21 @@ switch (_mission) do {
         _zone = _missionArgs call den_fnc_defendServer;
     };
     case 1: {
-        _zone = _missionArgs call den_fnc_campServer;
+        _zone = _missionArgs call den_fnc_demoServer;
     };
     case 2: {
-        _zone = _missionArgs call den_fnc_chemServer;
+        _zone = _missionArgs call den_fnc_campServer;
     };
     case 3: {
-        _zone = _missionArgs call den_fnc_clearServer;
+        _zone = _missionArgs call den_fnc_chemServer;
     };
     case 4: {
-        _zone = _missionArgs call den_fnc_hostageServer;
+        _zone = _missionArgs call den_fnc_clearServer;
     };
     case 5: {
+        _zone = _missionArgs call den_fnc_hostageServer;
+    };
+    case 6: {
         _zone = _missionArgs call den_fnc_urbanServer;
     };
     default {

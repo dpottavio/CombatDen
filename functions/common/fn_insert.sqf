@@ -29,12 +29,12 @@
 
     Returns: true on success, false on error
 */
-params ["_lzPos", "_cargoGroup", "_helo", "_blackArea"];
-
-_lzPos      = _this param [0, [], [[]], [2,3]];
-_cargoGroup = _this param [1, grpNull, [grpNull]];
-_helo       = _this param [2, objNull, [objNull]];
-_blackArea  = _this param [3, [], [[]], [5,6]];
+params [
+    ["_lzPos",      [],      [[]],      [2,3]],
+    ["_cargoGroup", grpNull, [grpNull]],
+    ["_helo",       objNull, [objNull]],
+    ["_blackArea",  [],      [[]],      [5,6]]
+];
 
 if (isNull _cargoGroup) exitWith {
     ["cargo parameter is null"] call BIS_fnc_error;
@@ -64,18 +64,8 @@ createMarker ["alphaArrowMarker", _arrowPos];
 "alphaArrowMarker" setMarkerDir (_arrowPos getDir _blackPos);
 "alphaArrowMarker" setMarkerColor "colorBLUFOR";
 
-if (isMultiplayer) then {
-    [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
-    {
-        [blufor, _x] call BIS_fnc_addRespawnPosition;
-    } forEach units _cargoGroup;
-};
-
 [_lzPos, _cargoGroup, _helo, _blackArea] spawn {
-    private _lzPos      = _this select 0;
-    private _cargoGroup = _this select 1;
-    private _helo       = _this select 2;
-    private _blackArea  = _this select 3;
+    params ["_lzPos", "_cargoGroup", "_helo", "_blackArea"];
 
     private _blackPos  = _blackArea param [0, _lzPos];
     private _deployDir = _blackPos getDir _lzPos;
@@ -173,6 +163,14 @@ if (isMultiplayer) then {
             [_x] remoteExec ["unassignVehicle", _x];
         } forEach units _group;
     }];
+
+    if (isMultiplayer) then {
+    [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
+    {
+        [blufor, _x] call BIS_fnc_addRespawnPosition;
+    } forEach units _cargoGroup;
+};
+
 };
 
 true;

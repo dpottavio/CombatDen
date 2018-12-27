@@ -44,15 +44,9 @@ class CfgArsenal
                 "ACE_Chemlight_Orange",
                 "ACE_Chemlight_White"
             };
-            exposives[] = {
+            explosives[] = {
                 "DemoCharge_Remote_Mag",
-                "APERSMineDispenser_Mag",
-                "ATMine_Range_Mag",
                 "SatchelCharge_Remote_Mag",
-                "ClaymoreDirectionalMine_Remote_Mag",
-                "APERSBoundingMine_Range_Mag",
-                "SLAMDirectionalMine_Wire_Mag",
-                "APERSMine_Range_Mag"
             };
             misc[] = {
                 "ACE_fieldDressing",
@@ -317,10 +311,6 @@ class CfgArsenal
                 "rhs_mag_m67",
                 "rhs_mag_m69",
                 "rhs_mag_mk3a2"
-            };
-            rhsExposives[] = {
-                "rhsusf_m112_mag",
-                "rhsusf_m112x4_mag"
             };
             mags[] = {
                 "rhs_mag_100Rnd_556x45_M855_cmag",

@@ -41,7 +41,7 @@
     Returns: true
 */
 [_this] spawn {
-    params ["_args", "_lzPos", "_cargoGroup", "_bluforFaction", "_bool",  "_blackArea", "_area"];
+    private ["_args", "_lzPos", "_cargoGroup", "_bluforFaction", "_bool",  "_blackArea", "_area"];
 
     _args          = _this select 0;
     _lzPos         = _args param [0, [], [[]], [2,3]];

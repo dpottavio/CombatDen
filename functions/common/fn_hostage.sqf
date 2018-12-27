@@ -20,10 +20,10 @@
 
     Returns: true
 */
-params ["_hostage", "_code"];
-
-_hostage = _this param [0, objNull, [objNull]];
-_code    = _this param [1, {}, [{}]];
+params [
+    ["_hostage", objNull, [objNull]],
+    ["_code",    {},      [{}]]
+];
 
 if (_hostage == objNull) exitWith {
     ["hostage parameter cannot be empty"] call BIS_fnc_error;
@@ -60,8 +60,6 @@ private _disableAnimation = _animation select 1;
     {},                                                 // Code executed on every progress tick
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
-        _target    = _this      select 0;
-        _arguments = _this      select 3;
 
         private _code      = _arguments select 0;
         private _animation = _arguments select 1;

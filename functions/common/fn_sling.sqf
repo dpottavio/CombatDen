@@ -27,12 +27,12 @@
 
     Returns: OBJECT - helicopter on success
 */
-params ["_obj", "_bluforFaction", "_distance", "_dir"];
-
-_obj           = _this param [0, objNull, [objNull]];
-_bluforFaction = _this param [1, "", [""]];
-_dir           = _this param [2, 0, [0]];
-_distance      = _this param [3, 4000, [0]];
+params [
+    ["_obj",           objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_distance",      0,       [0]],
+    ["_dir",           4000,    [0]]
+];
 
 if (_obj == objNull) exitWith {
     ["object parameter cannot be empty"] call BIS_fnc_error;

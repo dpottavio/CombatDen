@@ -22,10 +22,10 @@
 
     Returns: true
 */
-params ["_pos", "_name"];
-
-_pos  = _this param [0, [], [[]], [2,3]];
-_name = _this param [1, "", [""]];
+params [
+    ["_pos",  [], [[]], [2,3]],
+    ["_name", "", [""]]
+];
 
 if (_name == "") exitWith {
      ["name parameter cannot be empty"] call BIS_fnc_error;

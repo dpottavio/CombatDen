@@ -26,13 +26,13 @@
 
     Returns: STRING - zone location name, empty string on error.
 */
-params ["_playerGroup", "_helo", "_bluforFaction", "_opforFaciton", "_difficulty"];
-
-_playerGroup   = _this param [0, grpNull, [grpNull]];
-_helo          = _this param [1, objNull, [objNull]];
-_bluforFaction = _this param [2, "", [""]];
-_opforFaction  = _this param [3, "", [""]];
-_difficulty    = _this param [4, 0, [0]];
+params [
+    ["_playerGroup",   grpNull, [grpNull]],
+    ["_helo",          objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_opforFaciton",  "",      [""]],
+    ["_difficulty",    0,       [0]]
+];
 
 if (isNull _playerGroup) exitWith {
     ["group parameter must not be null"] call BIS_fnc_error;
@@ -67,7 +67,7 @@ private _safePosParams = [
 ];
 
 private _zone = [
-    ["NameCity", "NameVillage"],
+    ["NameCity", "NameVillage", "CityCenter"],
     _zoneRadius,
     _safePosParams,
     true
@@ -156,6 +156,6 @@ _marker = createMarker ["opforMotorMarker", _motorMarkerPos];
 _marker setMarkerType "o_motor_inf";
 
 // Civilians
-[] call den_fnc_randCiv;
+[_zonePos, _zoneRadius * 0.5] call den_fnc_randCiv;
 
 _zoneName;
