@@ -91,7 +91,7 @@ private _infPatrolPos    = _zoneSafePosList select 3;
  * lz
  */
 [_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
-[_lzPos, _playerGroup, _bluforFaction, "den_hostageFound", _zoneArea] call den_fnc_extract;
+[_lzPos, _playerGroup, _bluforFaction, "den_hostageFree", _zoneArea] call den_fnc_extract;
 
 /*
  * hostage
