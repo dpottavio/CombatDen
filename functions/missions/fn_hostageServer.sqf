@@ -123,9 +123,10 @@ createGuardedPoint [east, _hostagePos, -1, objNull];
 /*
  * enemy units
  */
-private _guardType     = "FireTeam";
-private _patrolType    = "MotorizedTeam";
-private _reinforceArgs = [[_reinforcePos, "AssaultSquad"]];
+private _guardType         = "FireTeam";
+private _patrolType        = "MotorizedTeam";
+private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
+private _extractAttackType = "FireTeam";
 
 switch (_difficulty) do {
     case 1: {
@@ -161,6 +162,9 @@ private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
 };
 
 [_zonePos, _zoneRadius * 0.75, _opforFaction, 4] call den_fnc_buildingOccupy;
+
+// extraction attack
+[_reinforcePos, _lzPos, _opforFaction, _extractAttackType] call den_fnc_attackExtraction;
 
 /*
  * enemy markers

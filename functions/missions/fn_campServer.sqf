@@ -110,9 +110,10 @@ createMarker ["campMarker", _campPos];
  */
 createGuardedPoint [opfor, _campPos, -1, objNull];
 
-private _guardType     = "ReconSquad";
-private _patrolType    = "ReconTeam";
-private _reinforceArgs = [[_reinforcePos, "AssaultSquad"]];
+private _guardType         = "ReconSquad";
+private _patrolType        = "ReconTeam";
+private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
+private _extractAttackType = "FireTeam";
 
 switch (_difficulty) do {
     case 1: {
@@ -159,6 +160,9 @@ private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
 };
 
 [_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
+
+// extraction attack
+[_reinforcePos, _lzPos, _opforFaction, _extractAttackType] call den_fnc_attackExtraction;
 
 /*
  * Attach a search action to a random camp unit to

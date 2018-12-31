@@ -38,7 +38,7 @@ params [
         sleep 2;
     };
 
-    private _group = [_lzPos, _opforFaction, _groupType] call den_fnc_spawnGroup;
+    private _group = [_pos, _opforFaction, _groupType] call den_fnc_spawnGroup;
     [_group, _lzPos, 25] call CBA_fnc_taskAttack;
 };
 

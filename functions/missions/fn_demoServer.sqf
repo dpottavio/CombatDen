@@ -101,7 +101,7 @@ den_crateCount = 0;
 den_crateDestroyCount = 0;
 
 private _maxCrates      = 10;
-private _maxGuardGroups = 4;
+private _maxGuardGroups = 6;
 private _guardType      = "SENTRY";
 private _patrolType     = "FireTeam";
 private _reinforceArgs  = [[_reinforcePos, "MotorizedTeam"]];
@@ -109,12 +109,12 @@ private _extractGroup   = "FireTeam";
 
 switch (_difficulty) do {
     case 1: {
-        _maxGuardGroup = 6;
+        _maxGuardGroup = 8;
         _patrolType = "AssaultSquad";
         _reinforceArgs  = [[_reinforcePos, "MotorizedAssault"]];
     };
     case 2: {
-        _maxGuardGroup = 10;
+        _maxGuardGroup = 12;
         _patrolType = "AssaultSquad";
         _reinforceArgs  = [
             [_reinforcePos, "MotorizedAssault"],
@@ -217,7 +217,7 @@ private _guardGroupCount = 0;
 [_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
 
 // extraction attack
-//[_reinforcePos, _lzPos, _opforFaction, _extractGroup] call den_fnc_attackExtraction;
+[_reinforcePos, _lzPos, _opforFaction, _extractGroup] call den_fnc_attackExtraction;
 
 /*
  * Players must have in their possession explosives

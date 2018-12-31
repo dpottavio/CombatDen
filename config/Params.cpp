@@ -14,7 +14,7 @@ class Params
     class Difficulty
     {
         title = "Difficulty";
-        texts[] = {"Normal", "Hard", "Ultra"};
+        texts[] = {"Normal", "High", "Ultra"};
         values[] = {0,1,2};
         default = 0;
     };

@@ -16,7 +16,7 @@
 
     Parameter(s):
 
-    0: ARRAY - An area that when the number of enemy units reaches a threashold
+    0: ARRAY - An area that when the number of enemy units reaches a threshold
     triggers additional spawned units.
 
     1: ARRAY - An array of spawn points. A spawn point contains a position where
@@ -24,7 +24,7 @@
 
     [ [<position>, "<type"], [<position>, "<type>"] ]
 
-    Each spawn point is triggered in order. Each time the threashold is reached
+    Each spawn point is triggered in order. Each time the threshold is reached
     in the area, the spawn point is used to spawn units.  Once the end of the list
     is reached, spawning stops.
 
@@ -32,7 +32,7 @@
 
     3: (Optional) CODE - code to execute when spawning has stopped.
 
-    4: (Optional) NUMBER - Threashold. When the percentage of alive units at the start
+    4: (Optional) NUMBER - Threshold. When the percentage of alive units at the start
     of each wave is equal to or lower than this value a new spawn wave is triggered.
 
     5: (Optional) NUMBER - Cooldown. The min amount of time in seconds between each
@@ -47,12 +47,12 @@
     private ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
 
     _args      = _this select 0;
-    _area      = _args param [0, [], [[], objNull], [5,6]];
-    _spawnList = _args param [1, [], [[]]];
-    _faction   = _args param [2, "", [""]];
-    _code      = _args param [3, nil, [{}]];
+    _area      = _args param [0, [],   [[], objNull], [5,6]];
+    _spawnList = _args param [1, [],   [[]]];
+    _faction   = _args param [2, "",   [""]];
+    _code      = _args param [3, nil,  [{}]];
     _threshold = _args param [4, 0.25, [0]];
-    _cooldown  = _args param [5, 60, [0]];
+    _cooldown  = _args param [5, 60,   [0]];
     _notify    = _args param [6, true, [true]];
 
     {

@@ -53,12 +53,13 @@ if (isNull _arsenal) exitWith {
 private _taskQueue = [
     [[blufor, "packOrdnance",         "PackOrdnance",     _arsenal,   "CREATED", 1, true, "backpack"], "den_ordnancePacked"],
     [[blufor, "boardInsert",          "BoardInsert",      _helo,      "CREATED", 1, true, "getin"],    "den_insert"],
-    [[blufor, "destroyOrdnancesTask", "DestroyOrdnances", _zone,      "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
+    [[blufor, "destroyOrdnancesTask", "DestroyOrdnances", objNull,    "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
     [[blufor, "lzExtract",            "LzExtract",        "lzMarker", "CREATED", 1, true, "move"],     "den_lzExtract"],
     [[blufor, "boardExtract",         "BoardExtract",     objNull,    "CREATED", 1, true, "getin"],    "den_extract"]
 ];
 
 private _failQueue = [
+    ["HeloDead",        "den_heloDead"],
     ["PlayersDead",     "den_playersDead"],
     ["FobFriendlyFire", "den_fobFriendlyFire"],
     ["CivilianDead",    "den_civDead"]

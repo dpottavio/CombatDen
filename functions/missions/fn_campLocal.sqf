@@ -45,11 +45,11 @@ if (_faction == "") exitWith {
 };
 
 private _taskQueue = [
-    [[blufor, "boardInsert",  "BoardInsert",  _helo,        "CREATED", 1, true, "getin"],  "den_insert"],
-    [[blufor, "raidCamp",     "RaidCamp",     "campMarker", "CREATED", 1, true, "attack"], "den_campSeized"],
-    [[blufor, "searchCamp",   "SearchCamp",   objNull,      "CREATED", 1, true, "search"], "den_intelFound"],
-    [[blufor, "lzExtract",    "LzExtract",    "lzMarker",   "CREATED", 1, true, "move"],   "den_lzExtract"],
-    [[blufor, "boardExtract", "BoardExtract", objNull,      "CREATED", 1, true, "getin"],  "den_extract"]
+    [[blufor, "boardInsert",    "BoardInsert",    _helo,        "CREATED", 1, true, "getin"],  "den_insert"],
+    [[blufor, "raidCamp",       "RaidCamp",       "campMarker", "CREATED", 1, true, "attack"], "den_campSeized"],
+    [[blufor, "searchCamp",     "SearchCamp",     objNull,      "CREATED", 1, true, "search"], "den_intelFound"],
+    [[blufor, "lzExtract",      "LzExtract",      "lzMarker",   "CREATED", 1, true, "move"],   "den_lzExtract"],
+    [[blufor, "boardExtract",   "BoardExtract",   objNull,      "CREATED", 1, true, "getin"],  "den_extract"]
 ];
 
 private _failQueue = [

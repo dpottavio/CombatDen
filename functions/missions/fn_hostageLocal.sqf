@@ -45,10 +45,10 @@ if (_faction == "") exitWith {
 };
 
 private _taskQueue = [
-    [[blufor, "boardInsert",     "BoardInsert",  _helo,      "CREATED", 1, true, "getin"], "den_insert"],
-    [[blufor, "hostageFreeTask", "FreeHostage",  objNull,    "CREATED", 1, true, "help"],  "den_hostageFree"],
-    [[blufor, "lzExtract",       "LzExtract",    "lzMarker", "CREATED", 1, true, "move"],  "den_lzExtract"],
-    [[blufor, "boardExtract",    "BoardExtract", objNull,    "CREATED", 1, true, "getin"], "den_extract"]
+    [[blufor, "boardInsert",     "BoardInsert",    _helo,      "CREATED", 1, true, "getin"], "den_insert"],
+    [[blufor, "hostageFreeTask", "FreeHostage",    objNull,    "CREATED", 1, true, "help"],  "den_hostageFree"],
+    [[blufor, "lzExtract",       "LzExtract",      "lzMarker", "CREATED", 1, true, "move"],  "den_lzExtract"],
+    [[blufor, "boardExtract",    "BoardExtract",   objNull,    "CREATED", 1, true, "getin"], "den_extract"]
 ];
 
 private _failQueue = [

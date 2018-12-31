@@ -33,6 +33,11 @@ class CfgTaskDescriptions
         title       = "Container Extraction";
         description = "Wait for container extraction.";
     };
+    class ContainerSecure
+    {
+        title       = "Secure Container";
+        description = "Secure chemical weapon container.";
+    };
     class DefendConvoy
     {
         title = "Defend the Convoy";
@@ -53,7 +58,7 @@ class CfgTaskDescriptions
     class LzExtract
     {
         title       = "Go to LZ";
-        description = "Go to the LZ for helicopter extraction. All units are required for extraction.";
+        description = "Go to the LZ for extraction. All units are required for extraction.";
     };
     class PackOrdnance
     {
@@ -77,10 +82,5 @@ class CfgTaskDescriptions
     {
         title = "Search Camp";
         description = "Search camp for intel.";
-    };
-    class SecureContainer
-    {
-        title       = "Secure Container";
-        description = "Secure chemical weapon container.";
     };
 };

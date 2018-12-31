@@ -56,19 +56,28 @@
     private _deployPos = _lzPos getPos [2000, _deployDir];
     _deployPos set [2, 250];
 
+    /*
+     * Wait for the bool to start the extraction sequence.
+     */
     while {true} do {
         if (!isNil _bool) exitWith {};
         sleep 1;
     };
 
+    /*
+     * Wait for players to get to the LZ
+     */
     while {true} do {
         private _inArea = { (alive _x) && ((getPos _x) inArea _area) } count units _cargoGroup;
-        if (_inArea > 0) exitWith {};
+        if (_inArea > 0) exitWith {
+            ["den_lzExtract"] call den_fnc_publicBool;
+        };
         sleep 1;
     };
 
-    ["den_lzExtract"] call den_fnc_publicBool;
-
+    /*
+     * send helo
+     */
     private _helo = [_deployPos, _deployDir, "heloTransport", _bluforFaction] call den_fnc_spawnvehicle;
     private _heloObj   = _helo select 0;
     private _heloGroup = _helo select 2;
