@@ -19,8 +19,6 @@ publicVariable "den_falcon";
 
 if (!isMultiplayer) exitWith {};
 
-_missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
-
 {
     _x addMPEventHandler ["MPRespawn", {
         _unit = _this select 0;

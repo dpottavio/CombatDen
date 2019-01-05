@@ -40,6 +40,7 @@ class CfgFactions
                     "Syndikat"
                 };
             };
+            class Wood : SemiArid {};
         };
         class Civilian
         {
@@ -54,6 +55,10 @@ class CfgFactions
             class Tropic
             {
                 genericName = "TanoanMen";
+            };
+            class Wood
+            {
+                genericName = "NATOMen";
             };
         };
     };
@@ -71,18 +76,10 @@ class CfgFactions
                     "Russia"
                 };
             };
-            class Arid
-            {
-                factions[] = {
-                    "Russia"
-                };
-            };
-            class Tropic
-            {
-                factions[] = {
-                    "Russia"
-                };
-            };
+
+            class Arid   : SemiArid {};
+            class Tropic : SemiArid {};
+            class Wood   : SemiArid {};
         };
         class Civilian
         {
@@ -97,6 +94,10 @@ class CfgFactions
             class Tropic
             {
                 genericName = "TanoanMen";
+            };
+            class Wood
+            {
+                genericName = "NATOMen";
             };
         };
     };
@@ -132,6 +133,14 @@ class CfgFactions
                     "Cartel"
                 };
             };
+            class Wood
+            {
+                factions[] = {
+                    "Russia",
+                    "ChDKZ",
+                    "Novorossiya"
+                };
+            };
         };
         class Civilian
         {
@@ -146,6 +155,10 @@ class CfgFactions
             class Tropic
             {
                 genericName = "TanoanMen";
+            };
+            class Wood
+            {
+                genericName = "NATOMen";
             };
         };
     };

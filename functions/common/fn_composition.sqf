@@ -36,7 +36,9 @@ if (_name == "") exitWith {
 
 private _objs = [];
 
-if (worldName == "Tanoa") then {
+private _climate = [] call den_fnc_worldToClimate;
+
+if (_climate == "Tropic" || _climate == "Wood") then {
     switch (_name) do {
         case "camp01": {
             _objs = _camp01Tropic;

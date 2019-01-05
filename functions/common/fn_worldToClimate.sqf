@@ -28,6 +28,12 @@ switch (worldName) do {
     case "Takistan": {
         _cfgClimate = "Arid";
     };
+    case "Chernarus": {
+        _cfgClimate = "Wood";
+    };
+    case "Woodland_ACR": { // Bystrica
+        _cfgClimate = "Wood";
+    };
     default { // Altis, Malden, Stratis
         _cfgClimate = "SemiArid";
     };

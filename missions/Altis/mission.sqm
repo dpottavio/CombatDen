@@ -8,22 +8,22 @@ class EditorData
 	toggles=1037;
 	class ItemIDProvider
 	{
-		nextID=3017;
+		nextID=3018;
 	};
 	class MarkerIDProvider
 	{
-		nextID=24;
+		nextID=25;
 	};
 	class LayerIndexProvider
 	{
-		nextID=181;
+		nextID=183;
 	};
 	class Camera
 	{
-		pos[]={12670.493,8.1925173,3414.1528};
-		dir[]={0.086689599,-0.082953647,-0.992827};
-		up[]={0.0072174398,0.99655348,-0.08265654};
-		aside[]={-0.99627709,8.7147055e-007,-0.086990334};
+		pos[]={12670.352,8.1925173,3410.2849};
+		dir[]={0.27196857,0.032023739,-0.96182775};
+		up[]={-0.008706958,0.99949092,0.030793251};
+		aside[]={-0.96233928,7.7908771e-007,-0.27211183};
 	};
 };
 binarizationWanted=0;
@@ -986,7 +986,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""SquadLeader""];" \n "}";
-						name="alpha1";
+						name="den_alpha1";
 						description="Squad Leader";
 						isPlayer=1;
 					};
@@ -1049,7 +1049,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
-						name="alpha2";
+						name="den_alpha2";
 						description="Autoriflemen";
 						isPlayable=1;
 					};
@@ -1112,7 +1112,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
-						name="alpha3";
+						name="den_alpha3";
 						description="Autoriflemen";
 						isPlayable=1;
 					};
@@ -1175,7 +1175,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Grenadier""];" \n "}";
-						name="alpha4";
+						name="den_alpha4";
 						description="Grenadier";
 						isPlayable=1;
 					};
@@ -1238,7 +1238,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""]}";
-						name="alpha5";
+						name="den_alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
 					};
@@ -1301,7 +1301,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];" \n "}";
-						name="alpha6";
+						name="den_alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
 					};
@@ -1364,7 +1364,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Marksmen""];" \n "}";
-						name="alpha7";
+						name="den_alpha7";
 						description="Marksmen";
 						isPlayable=1;
 					};
@@ -1427,7 +1427,7 @@ class Mission
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Medic""];" \n "}";
-						name="alpha8";
+						name="den_alpha8";
 						description="Medic";
 						isPlayable=1;
 					};

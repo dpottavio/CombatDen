@@ -27,6 +27,7 @@ class CfgVehicles
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};
+        class Wood   : SemiArid {};
     };
     class USMC
     {
@@ -47,5 +48,6 @@ class CfgVehicles
             supplyTruckFuel = "rhsusf_M978A4_usarmy_d";
         };
         class Tropic : SemiArid {};
+        class Wood   : SemiArid {};
     };
 };

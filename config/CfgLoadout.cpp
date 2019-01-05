@@ -1100,6 +1100,55 @@ class CfgLoadout
                 };
             };
         };
+        class Wood : SemiArid
+        {
+            class Riflemen : Riflemen
+            {
+                class Mx : Mx {};
+                class Hk : Hk {};
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Mx : Mx {};
+                class Hk : Hk {};
+            };
+            class Autoriflemen : Autoriflemen
+            {
+                class Mx    : Mx {};
+                class Hk    : Hk {};
+                class Ng7   : Ng7 {};
+                class Lwmmg : Lwmmg {};
+            };
+            class Grenadier : Grenadier
+            {
+                class Mx : Mx {};
+                class Hk : Hk {};
+            };
+            class Marksmen : Marksmen
+            {
+                class Hk   : Hk   {};
+                class Mk14 : Mk14 {};
+                class Mxm  : Mxm  {};
+                class Sig  : Sig  {};
+            };
+            class Medic : Medic
+            {
+                class Mx : Mx {};
+                class Hk : Hk {};
+            };
+            class At : At
+            {
+                class MaawsMx : MaawsMx {};
+                class MaawsHk : MaawsHk {};
+                class NlawMx  : NlawMx  {};
+                class NlawHk  : NlawHk  {};
+            };
+            class Eod : Eod
+            {
+                class Mx : Mx {};
+                class Hk : Hk {};
+            };
+        };
     };
     class USMC
     {
@@ -2156,6 +2205,271 @@ class CfgLoadout
             };
         };
         class Tropic : SemiArid
+        {
+            class Riflemen : Riflemen
+            {
+                class M4 : M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class M4 : M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autoriflemen : Autoriflemen
+            {
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M249 : M249
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class M4 : M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Marksmen : Marksmen
+            {
+                class Mk : Mk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M14 : M14
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M24 : M24
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class M4 : M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class M27a7M4 : M27a7M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27a7Hk : M27a7Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27a7M16 : M27a7M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27a7M27 : M27a7M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M136M4 : M136M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M136M16 : M136M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M136Hk : M136Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M136M27 : M136M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class M4 : M4
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+                class M27 : M27
+                {
+                    class UniformItems  : UniformItems {};
+                    class VestItems     : VestItems {};
+                    class BackpackItems : BackpackItems {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+        };
+        class Wood : SemiArid
         {
             class Riflemen : Riflemen
             {

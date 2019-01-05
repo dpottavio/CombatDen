@@ -55,4 +55,11 @@ class CfgBlacklist
              "YasaIsland01"
         };
     };
+    class Woodland_ACR
+    {
+        locations[] = {
+            "ACityC_Solnychniy",
+            "ACityC_Nizhnoye"
+        };
+    };
 };

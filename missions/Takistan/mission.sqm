@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=15;
+		nextID=16;
 	};
 	class Camera
 	{
@@ -1272,15 +1272,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1328.1484,362.53906,-2274.3618};
-						angles[]={0,6.1293283,0};
+						position[]={1328.1479,362.53903,-2274.3621};
+						angles[]={0,6.1293344,0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""SquadLeader""];" \n "}";
-						name="alpha1";
+						name="den_alpha1";
 						description="Squad Leader";
 						isPlayer=1;
 					};
@@ -1335,14 +1335,14 @@ class Mission
 					class PositionInfo
 					{
 						position[]={1331.282,362.44296,-2274.1499};
-						angles[]={0,6.0864105,0};
+						angles[]={0,6.0864172,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
-						name="alpha2";
+						name="den_alpha2";
 						description="Autoriflemen";
 						isPlayable=1;
 					};
@@ -1396,15 +1396,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1335.6497,362.29575,-2274.4524};
-						angles[]={0,6.1921391,0};
+						position[]={1335.65,362.29578,-2274.4519};
+						angles[]={0,6.192131,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
-						name="alpha3";
+						name="den_alpha3";
 						description="Autoriflemen";
 						isPlayable=1;
 					};
@@ -1458,15 +1458,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1339.5427,362.16336,-2274.7368};
-						angles[]={0,6.2285442,0};
+						position[]={1339.543,362.16336,-2274.7371};
+						angles[]={0,6.228539,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Grenadier""];" \n "}";
-						name="alpha4";
+						name="den_alpha4";
 						description="Grenadier";
 						isPlayable=1;
 					};
@@ -1520,15 +1520,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1328.5364,362.41464,-2277.386};
-						angles[]={0,6.1797423,0};
+						position[]={1328.536,362.41464,-2277.386};
+						angles[]={0,6.1797395,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];" \n "}";
-						name="alpha5";
+						name="den_alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
 					};
@@ -1582,15 +1582,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1331.8071,362.29913,-2277.7668};
-						angles[]={0,6.1885386,0};
+						position[]={1331.807,362.29916,-2277.7668};
+						angles[]={0,6.1885362,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];" \n "}";
-						name="alpha6";
+						name="den_alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
 					};
@@ -1644,15 +1644,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1335.5714,362.19977,-2277.5178};
-						angles[]={0,6.1780648,0};
+						position[]={1335.571,362.1998,-2277.5181};
+						angles[]={0,6.1780639,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Marksmen""];" \n "}";
-						name="alpha7";
+						name="den_alpha7";
 						description="Marksmen";
 						isPlayable=1;
 					};
@@ -1706,15 +1706,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1339.134,362.09387,-2277.5313};
-						angles[]={0,6.1287794,0};
+						position[]={1339.134,362.09387,-2277.531};
+						angles[]={0,6.1287761,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Medic""];" \n "}";
-						name="alpha8";
+						name="den_alpha8";
 						description="Medic";
 						isPlayable=1;
 					};

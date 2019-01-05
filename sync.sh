@@ -5,7 +5,7 @@
 #
 set -e
 
-MISSIONS="Altis Chernarus Malden Stratis Tanoa Takistan"
+MISSIONS="Altis Chernarus Malden Stratis Tanoa Takistan Woodland_ACR"
 
 if [ -z "$MISSION_PATH" ]; then
     echo "error - MISSION_PATH is not defined"

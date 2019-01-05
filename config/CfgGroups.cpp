@@ -229,6 +229,28 @@ class CfgGroups
                 class Unit0 : Unit0 {};
             };
         };
+        class Wood : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
     };
     class USMC
     {
@@ -319,6 +341,28 @@ class CfgGroups
             };
         };
         class Tropic : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Wood : SemiArid
         {
             class TruckCrew : TruckCrew
             {
@@ -743,6 +787,72 @@ class CfgGroups
                 };
             };
         };
+        class Wood : Tropic
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
     };
     class FIA
     {
@@ -898,6 +1008,72 @@ class CfgGroups
             };
         };
         class Arid : SemiArid
+        {
+            class Sentry   : Sentry
+            {
+               class Unit0 : Unit0 {};
+               class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Wood : SemiArid
         {
             class Sentry   : Sentry
             {
@@ -1431,6 +1607,83 @@ class CfgGroups
             };
         };
         class Tropic : SemiArid
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            }
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "rhs_tigr_sts_msv";
+                };
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "rhs_tigr_sts_msv";
+                };
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "rhs_tigr_sts_msv";
+                };
+            };
+        };
+        class Wood : SemiArid
         {
             class Sentry : Sentry
             {
@@ -2156,6 +2409,266 @@ class CfgGroups
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
                     vehicle = "LOP_TKA_UAZ_DshKM"
+                };
+            };
+        };
+    };
+    class ChDKZ
+    {
+        accLight = RUSSIA_ACC_LIGHT;
+
+        class Wood
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_MG";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_MG_Asst";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman_3";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_MG";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_MG";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_MG_Asst";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_MG_Asst";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman_3";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman_3";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Corpsman";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "LOP_TKA_UAZ_DshKM";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ChDKZ_UAZ_DshKM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_ChDKZ_Infantry_Rifleman";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "LOP_ChDKZ_UAZ_DshKM";
+                };
+            };
+        };
+    };
+    class Novorossiya
+    {
+        accLight = RUSSIA_ACC_LIGHT;
+
+        class Wood
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle =  "LOP_US_Infantry_Rifleman_2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle =  "LOP_US_Infantry_Rifleman_2";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_Infantry_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_US_Infantry_MG";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_US_Infantry_MG_Asst";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_4";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_Infantry_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_US_Infantry_MG";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_US_Infantry_MG";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LOP_US_Infantry_MG_Asst";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "LOP_US_Infantry_MG_Asst";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_4";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_4";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "LOP_US_Infantry_Corpsman";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "LOP_TKA_UAZ_DshKM";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_UAZ_DshKM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "LOP_US_UAZ_DshKM";
                 };
             };
         };

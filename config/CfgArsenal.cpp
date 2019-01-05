@@ -293,6 +293,7 @@ class CfgArsenal
             };
         };
         class Arid : SemiArid {};
+        class Wood : SemiArid {};
     };
     class Usmc : Nato
     {
@@ -580,5 +581,6 @@ class CfgArsenal
         class SemiArid : ArsenalBase {};
         class Arid     : ArsenalBase {};
         class Tropic   : ArsenalBase {};
+        class Wood     : ArsenalBase {};
     };
 };

@@ -24,12 +24,12 @@ params [
 
 if (!isServer) exitWith {};
 
-private _missionCount = getNumber(missionConfigFile >> "Params" >> "Mission" >> "count");
-private _mission      = 0;
+private _missionValues = getArray(missionConfigFile >> "Params" >> "Mission" >> "values");
+private _missionCount  = (count _missionValues) - 1;
+private _mission       = 0;
 
 if (_missionParam < 0) then {
-    _mission = [1, _missionCount] call BIS_fnc_randomInt;
-    _mission = _mission - 1;
+    _mission = [0, _missionCount - 1] call BIS_fnc_randomInt;
 } else {
     _mission = _missionParam;
 };

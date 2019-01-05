@@ -66,7 +66,8 @@ class CfgTaskDescriptions
 
         description = "This mission requires demolition ordnances.\
  Pack explosive charges and or incendiary grenades from the Virtual Arsenal.\
- See Mission Briefing for how many ordnances are required.";
+ See Mission Briefing for how many ordnances are required.\
+ <br/><br/>To access the Virtual Arsenal, use the ACE interact key.";
     };
     class RaidCamp
     {
