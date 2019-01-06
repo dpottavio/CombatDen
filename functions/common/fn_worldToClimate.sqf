@@ -21,17 +21,17 @@
 
 private _cfgClimate = "";
 
-switch (worldName) do {
-    case "Tanoa": {
+switch (toLower worldName) do {
+    case "tanoa": {
         _cfgClimate = "Tropic";
     };
-    case "Takistan": {
+    case "takistan": {
         _cfgClimate = "Arid";
     };
-    case "Chernarus": {
+    case "chernarus": {
         _cfgClimate = "Wood";
     };
-    case "Woodland_ACR": { // Bystrica
+    case "woodland_acr": { // Bystrica
         _cfgClimate = "Wood";
     };
     default { // Altis, Malden, Stratis

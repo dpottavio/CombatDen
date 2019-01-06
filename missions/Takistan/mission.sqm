@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=16;
+		nextID=19;
 	};
 	class Camera
 	{
-		pos[]={1316.5441,362.89514,-2307.741};
-		dir[]={0.59732097,-0.38743952,-0.70222074};
-		up[]={0.25103766,0.9218865,-0.29512337};
-		aside[]={-0.76171786,-9.6275471e-008,-0.64792943};
+		pos[]={1333.7911,369.84753,-2276.5481};
+		dir[]={-0.12279744,-0.32624012,0.93728954};
+		up[]={-0.04238186,0.94527972,0.323488};
+		aside[]={0.99154603,-1.2852979e-007,0.12990522};
 	};
 };
 binarizationWanted=0;
@@ -1084,14 +1084,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1328.0411,363.84882,-2261.0386};
-						angles[]={6.2482829,0,6.2411065};
+						position[]={1328.0406,363.84885,-2261.0388};
+						angles[]={6.2482786,0,6.2411051};
 					};
 					side="Empty";
 					flags=4;
 					class Attributes
 					{
 						init="call{[this, den_alpha] call den_fnc_arsenal;}";
+						name="den_arsenal";
 					};
 					id=233;
 					type="B_CargoNet_01_ammo_F";
