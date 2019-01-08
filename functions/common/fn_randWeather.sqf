@@ -32,11 +32,11 @@ if (_month < 0) then {
 private _rainChance  = 0;
 private _maxOvercast = 1.0;
 
-switch (worldName) do {
-    case "Tanoa": {
+switch (toLower worldName) do {
+    case "tanoa": {
         _rainChance = [1, 4] call BIS_fnc_randomInt;
     };
-    case "Takistan": {
+    case "takistan": {
         _rainChance  = 0;
         _maxOvercast = 0.5;
     };

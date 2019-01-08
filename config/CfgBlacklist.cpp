@@ -62,4 +62,10 @@ class CfgBlacklist
             "ACityC_Nizhnoye"
         };
     };
+    class Takistan
+    {
+        locations[] = {
+            "vill_Landay"
+        };
+    };
 };

@@ -27,7 +27,7 @@ params [
     ["_month", -1, [0]]
 ];
 
-switch (worldName) do {
+switch (toLower worldName) do {
     case "chernarus": {
         // The foliage in this terrain suggests mid Autumn.
         _month = 10;
