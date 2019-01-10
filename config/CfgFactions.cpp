@@ -15,7 +15,7 @@ class CfgFactions
     {
         class Blufor
         {
-            faction = "NATO"
+            faction = "NATO";
         };
         class Opfor
         {
@@ -66,7 +66,7 @@ class CfgFactions
     {
         class Blufor
         {
-            faction = "USMC"
+            faction = "USMC";
         };
         class Opfor
         {
@@ -105,7 +105,7 @@ class CfgFactions
     {
         class Blufor
         {
-            faction = "USMC"
+            faction = "USMC";
         };
         class Opfor
         {

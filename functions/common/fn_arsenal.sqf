@@ -40,6 +40,16 @@ private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _
     };
 } forEach _arsenalProps;
 
+// Check for CUP weapons
+if (isClass (configfile >> "CfgPatches" >> "CUP_Weapons_WeaponsCore")) then {
+    private _cupProps = configProperties [missionConfigFile >> "CfgArsenal" >> "Cup" >> _cfgClimate];
+    {
+        if (isArray _x) then {
+            _items = _items + (getArray _x);
+        };
+    } forEach _cupProps;
+};
+
 [_obj, _items] call ace_arsenal_fnc_initBox;
 
 private _loadoutAction = [

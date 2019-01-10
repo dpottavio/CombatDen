@@ -1075,7 +1075,7 @@ class CfgLoadout
                     rifle      = "arifle_MX_Black_F";
                     uniform    = "U_B_T_Soldier_F";
                     vest       = "V_PlateCarrier1_tna_F";
-                    backpack   = "B_Kitbag_rgr"
+                    backpack   = "B_Kitbag_rgr";
                     headgear   = "H_HelmetB_tna_F";
                     primaryMag = "30Rnd_65x39_caseless_mag";
 
@@ -1090,7 +1090,7 @@ class CfgLoadout
                     rifle      = "arifle_SPAR_01_blk_F";
                     uniform    = "U_B_T_Soldier_F";
                     vest       = "V_PlateCarrier1_tna_F";
-                    backpack   = "B_Kitbag_rgr"
+                    backpack   = "B_Kitbag_rgr";
                     headgear   = "H_HelmetB_tna_F";
 
                     class UniformItems  : UniformItems {};
@@ -1388,7 +1388,7 @@ class CfgLoadout
         };
         class AtM27a7Base : RiflemenBase
         {
-            launcher        = "rhs_weap_m72a7"
+            launcher        = "rhs_weap_m72a7";
             primaryMagCount = RHS_AT_MAG_COUNT;
 
             class UniformItems : UniformItems {};
@@ -1397,7 +1397,7 @@ class CfgLoadout
         };
         class AtM136Base : LoadoutBase
         {
-            launcher        = "rhs_weap_M136"
+            launcher        = "rhs_weap_M136";
             primaryMagCount = RHS_AT_MAG_COUNT;
 
             class UniformItems : UniformItems {};
@@ -1416,7 +1416,7 @@ class CfgLoadout
         class EodBase : LoadoutBase
         {
             primaryMagCount = RIFLEMEN_MAG_COUNT;
-            backpack        = "rhsusf_assault_eagleaiii_coy"
+            backpack        = "rhsusf_assault_eagleaiii_coy";
 
             class UniformItems : UniformItems {};
 

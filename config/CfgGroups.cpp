@@ -261,22 +261,22 @@ class CfgGroups
                 class Unit0 : Unit0
                 {
                     vehicle = "rhsusf_usmc_marpat_wd_driver";
-                }
+                };
                 class Unit1 : Unit1
                 {
                     vehicle = "rhsusf_usmc_marpat_wd_driver";
-                }
+                };
             };
             class HeloPilot : SentryBase
             {
                 class Unit0 : Unit0
                 {
                     vehicle = "rhsusf_usmc_marpat_wd_helipilot";
-                }
+                };
                 class Unit1 : Unit1
                 {
                     vehicle = "rhsusf_usmc_marpat_wd_helipilot";
-                }
+                };
             };
             class HeloCrew : SentryBase
             {
@@ -303,23 +303,23 @@ class CfgGroups
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "rhsusf_usmc_marpat_d_driver"
-                }
+                    vehicle = "rhsusf_usmc_marpat_d_driver";
+                };
                 class Unit1 : Unit1
                 {
-                    vehicle = "rhsusf_usmc_marpat_d_driver"
-                }
+                    vehicle = "rhsusf_usmc_marpat_d_driver";
+                };
             };
             class HeloPilot : SentryBase
             {
                 class Unit0 : Unit0
                 {
                     vehicle = "rhsusf_usmc_marpat_d_helipilot";
-                }
+                };
                 class Unit1 : Unit1
                 {
                     vehicle = "rhsusf_usmc_marpat_d_helipilot";
-                }
+                };
             };
             class HeloCrew : SentryBase
             {
@@ -1829,7 +1829,7 @@ class CfgGroups
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "LOP_AFR_OPF_Infantry_Corpsman"
+                    vehicle = "LOP_AFR_OPF_Infantry_Corpsman";
                 };
             };
             class ReconSquad : AssaultSquad
@@ -1896,7 +1896,7 @@ class CfgGroups
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
-            }
+            };
             class FireTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
@@ -2182,7 +2182,7 @@ class CfgGroups
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "LOP_ISTS_OPF_Infantry_GL"
+                    vehicle = "LOP_ISTS_OPF_Infantry_GL";
                 };
                 class Unit3 : Unit3
                 {
@@ -2205,15 +2205,15 @@ class CfgGroups
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "LOP_ISTS_OPF_Infantry_AR_Asst"
+                    vehicle = "LOP_ISTS_OPF_Infantry_AR_Asst";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "LOP_ISTS_OPF_Infantry_AR_Asst"
+                    vehicle = "LOP_ISTS_OPF_Infantry_AR_Asst";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "LOP_ISTS_OPF_Infantry_GL"
+                    vehicle = "LOP_ISTS_OPF_Infantry_GL";
                 };
                 class Unit6 : Unit6
                 {
@@ -2304,11 +2304,11 @@ class CfgGroups
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "LOP_TKA_Infantry_TL"
+                    vehicle = "LOP_TKA_Infantry_TL";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "LOP_TKA_Infantry_MG"
+                    vehicle = "LOP_TKA_Infantry_MG";
                 };
                 class Unit2 : Unit2
                 {
@@ -2408,7 +2408,7 @@ class CfgGroups
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "LOP_TKA_UAZ_DshKM"
+                    vehicle = "LOP_TKA_UAZ_DshKM";
                 };
             };
         };

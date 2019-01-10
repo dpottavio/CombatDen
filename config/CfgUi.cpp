@@ -74,7 +74,7 @@ class LoadoutDialog {
         y = 0.704 * safezoneH + safezoneY;
         w = 0.06375 * safezoneW;
         h = 0.0425 * safezoneH;
-        action = "[] call den_fnc_uiLoadoutOkAction"
+        action = "[] call den_fnc_uiLoadoutOkAction";
     };
     class CloseButton: RscButton
     {
@@ -85,7 +85,7 @@ class LoadoutDialog {
         y = 0.704 * safezoneH + safezoneY;
         w = 0.06375 * safezoneW;
         h = 0.0425 * safezoneH;
-        action = "closeDialog 2"
+        action = "closeDialog 2";
     };
     class ApplyButton: RscButton
     {
@@ -96,7 +96,7 @@ class LoadoutDialog {
         y = 0.704 * safezoneH + safezoneY;
         w = 0.06375 * safezoneW;
         h = 0.0425 * safezoneH;
-        action = "[] call den_fnc_uiLoadoutApplyAction"
+        action = "[] call den_fnc_uiLoadoutApplyAction";
     };
     class ArsenalButton: RscButton
     {
@@ -107,7 +107,7 @@ class LoadoutDialog {
         y = 0.704 * safezoneH + safezoneY;
         w = 0.06375 * safezoneW;
         h = 0.0425 * safezoneH;
-        action = "[] call den_fnc_uiLoadoutArsenalAction"
+        action = "[] call den_fnc_uiLoadoutArsenalAction";
     };
     class RoleLabel: RscText
     {
@@ -237,7 +237,7 @@ class ParamDialog {
     };
     class DifficultyCombo: RscCombo
     {
-        idc = 2199
+        idc = 2199;
 
         x = 0.5 * safezoneW + safezoneX;
         y = 0.313 * safezoneH + safezoneY;

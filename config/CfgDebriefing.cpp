@@ -45,7 +45,7 @@ class CfgDebriefing
     {
         title = "Mission Failed";
         subtitle = "Friendly Fire at FOB";
-        description = "Tragic friendly fire incident occurred.  Perpetrators will be prosecuted to the fullest extent."
+        description = "Tragic friendly fire incident occurred.  Perpetrators will be prosecuted to the fullest extent.";
     };
     class CivilianDead
     {

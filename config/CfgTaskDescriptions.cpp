@@ -77,7 +77,7 @@ class CfgTaskDescriptions
     class ReachConvoy
     {
         title = "Go to Convoy";
-        description = "Reach the disabled convoy."
+        description = "Reach the disabled convoy.";
     };
     class SearchCamp
     {
