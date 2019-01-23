@@ -27,8 +27,10 @@ class CfgEquipment
     {
         ammoCrate = "rhs_7ya37_1_single";
     };
-    class Guerrilla : Russia {};
-    class Cartel    : Russia {};
-    class Takistan  : Russia {};
-    class ISIS      : Russia {};
+    class Guerrilla   : Russia {};
+    class Cartel      : Russia {};
+    class Takistan    : Russia {};
+    class ISIS        : Russia {};
+    class ChDKZ       : Russia {};
+    class Novorossiya : Russia {};
 };
