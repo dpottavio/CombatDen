@@ -42,7 +42,7 @@ if (isClass (configfile >> "CfgPatches" >> "lop_main")) then {
 };
 
 private _genericName =
-    getText (missionConfigFile >> "CfgFactions" >> _metaverse >> "Civilian" >> _cfgClimate >> "genericName");
+    getText (missionConfigFile >> "CfgGroups" >> "Civilian" >> _cfgClimate >> "genericName");
 
 if (isNil "_genericName") exitWith {
     ["invalid config parameters"] call BIS_fnc_error;

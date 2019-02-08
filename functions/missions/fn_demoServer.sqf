@@ -253,9 +253,6 @@ private _guardGroupCount = 0;
     ["den_ordnancePacked"] call den_fnc_publicBool;
 };
 
-// Civilians
-[_zonePos, _zoneRadius] call den_fnc_randCiv;
-
 /*
  * enemy markers
  */

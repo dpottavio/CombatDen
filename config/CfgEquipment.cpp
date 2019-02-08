@@ -11,11 +11,11 @@
 
 class CfgEquipment
 {
-    class CSAT
+    class Csat
     {
         ammoCrate = "Box_East_Ammo_F";
     };
-    class FIA
+    class Fia
     {
         ammoCrate = "Box_IND_Ammo_F";
     };
@@ -23,14 +23,31 @@ class CfgEquipment
     {
         ammoCrate = "Box_Syndicate_Ammo_F";
     };
-    class Russia
+
+    class RhsRussia
     {
         ammoCrate = "rhs_7ya37_1_single";
     };
-    class Guerrilla   : Russia {};
-    class Cartel      : Russia {};
-    class Takistan    : Russia {};
-    class ISIS        : Russia {};
-    class ChDKZ       : Russia {};
-    class Novorossiya : Russia {};
+
+    class LopInsurgent : RhsRussia {};
+    class LopIsis      : RhsRussia {};
+    class LopNova      : RhsRussia {};
+    class LopChDkz     : RhsRussia {};
+    class LopGuerrilla : RhsRussia {};
+    class LopTakistan  : RhsRussia {};
+
+    class CupRussia
+    {
+        ammoCrate = "CUP_RUBasicAmmunitionBox";
+    };
+    class CupChDkz           : CupRussia {};
+    class CupTakistan        : CupRussia {};
+    class CupTakistanMilitia : CupRussia {};
+    class CfpAlQaeda         : CupRussia {};
+    class CfpAlShabaab       : CupRussia {};
+    class CfpBokoHaram       : CupRussia {};
+    class CfpHamas           : CupRussia {};
+    class CfpGuerrilla       : CupRussia {};
+    class CfpHezbollah       : CupRussia {};
+    class CfpIsis            : CupRussia {};
 };

@@ -24,7 +24,7 @@
 */
 params [
     ["_pos",     [],         [[]], [2,3]],
-    ["_faction", "CSAT",     [""]],
+    ["_faction", "Csat",     [""]],
     ["_type",    "FireTeam", [""]]
 ];
 
@@ -40,8 +40,9 @@ if (isNil "_cfgType") exitWith {
     grpNull;
 };
 
-private _side = opfor;
-if (_faction == "NATO" || _faction == "USMC") then {
+private _side     = opfor;
+private _sideText = getText(missionConfigFile >> "CfgFactions" >> _faction >> "side");
+if (_sideText == "WEST") then {
     _side = blufor;
 };
 

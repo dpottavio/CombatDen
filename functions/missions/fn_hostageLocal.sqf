@@ -18,15 +18,15 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".
+    2: STRING - Enemy faction. See CfgFactions.
 
     Returns: true on success, false on error
 */
 params [
-    ["_zone",    "",      [""]],
-    ["_helo",    objNull, [objNull]],
-    ["_faction", "",      [""]]
+    ["_zone",          "",      [""]],
+    ["_helo",          objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_opforFaction",  "",      [""]]
 ];
 
 if (_zone == "") exitWith {
@@ -39,7 +39,12 @@ if (isNull _helo) exitWith {
     false;
 };
 
-if (_faction == "") exitWith {
+if (_bluforFaction == "") exitWith {
+    ["faction parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
+if (_opforFaction == "") exitWith {
     ["faction parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
@@ -81,7 +86,10 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-_situationText = format["A NATO pilot was downed and taken hostage by %1 forces. He is currently being held in a camp located near position <marker name='zoneMarker'>%2</marker>. A rescue squad will be deployed to extract the hostage.", _faction, _zone];
+_situationText = format["\
+A %1 pilot was downed and taken hostage by %2 forces.  \
+He is currently being held in a camp located near position <marker name='zoneMarker'>%3</marker>.  \
+A rescue squad will be deployed to extract the hostage.", _bluforFaction, _opforFaction, _zone];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

@@ -295,7 +295,7 @@ class CfgArsenal
         class Arid : SemiArid {};
         class Wood : SemiArid {};
     };
-    class Usmc : Nato
+    class RhsUsmc : Nato
     {
         class ArsenalBase : ArsenalBase
         {
@@ -585,7 +585,7 @@ class CfgArsenal
     };
     class Cup : Nato
     {
-        class CupBase : ArsenalBase
+        class ArsenalBase : ArsenalBase
         {
             cupMags[] = {
                 "CUP_20Rnd_556x45_Stanag",
@@ -633,7 +633,9 @@ class CfgArsenal
                 "CUP_1Rnd_Smoke_M203",
                 "CUP_1Rnd_SmokeGreen_M203",
                 "CUP_1Rnd_SmokeYellow_M203",
-                "CUP_20Rnd_762x51_DMR"
+                "CUP_20Rnd_762x51_DMR",
+                "CUP_20Rnd_762x51_HK417",
+                "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"
             };
             cupsWeapons[] = {
                 "CUP_hgun_Glock17",
@@ -685,7 +687,17 @@ class CfgArsenal
                 "CUP_arifle_Mk17_STD_EGLM_black",
                 "CUP_arifle_Mk17_STD_black",
                 "CUP_srifle_M14",
-                "CUP_srifle_M14_DMR"
+                "CUP_srifle_M14_DMR",
+                "CUP_arifle_L85A2",
+                "CUP_arifle_L85A2_G",
+                "CUP_arifle_L85A2_NG",
+                "CUP_arifle_L85A2_GL",
+                "CUP_arifle_L86A2",
+                "CUP_srifle_L129A1",
+                "CUP_srifle_L129A1_HG",
+                "CUP_lmg_minimi",
+                "CUP_lmg_minimi_railed",
+                "CUP_lmg_minimipara"
             };
             cupLaunchers[] = {
                 "CUP_launch_Javelin",
@@ -722,8 +734,16 @@ class CfgArsenal
                 "cup_acc_anpeq_15",
                 "cup_acc_anpeq_2"
             };
+            cupFaceware[] = {
+                "CUP_RUS_Balaclava_blk",
+                "CUP_RUS_Balaclava_grn",
+                "CUP_PMC_Facewrap_Black",
+                "CUP_PMC_Facewrap_Ranger",
+                "CUP_PMC_Facewrap_Tan",
+                "CUP_PMC_Facewrap_Tropical"
+            };
         };
-        class SemiArid : CupBase
+        class SemiArid : ArsenalBase
         {
             cupSemiAridMags[] = {
                 "CUP_30Rnd_556x45_Stanag_Mk16",
@@ -756,10 +776,14 @@ class CfgArsenal
                 "CUP_arifle_Mk17_STD_FG",
                 "CUP_arifle_Mk17_STD_SFG",
                 "CUP_arifle_Mk17_STD_EGLM",
+                "CUP_arifle_G36A",
+                "CUP_arifle_G36C",
+                "CUP_arifle_AG36",
+                "CUP_arifle_G36K"
             };
         };
         class Arid   : SemiArid {};
-        class Tropic : CupBase
+        class Tropic : ArsenalBase
         {
             cupTropicMags[] = {
                 "CUP_30Rnd_556x45_Stanag_Mk16_woodland",
@@ -797,5 +821,41 @@ class CfgArsenal
             };
         };
         class Wood : Tropic {};
+    };
+    class CupUsmc : Cup
+    {
+        mags[]    = {};
+        weapons[] = {};
+        sights[]  = {};
+
+        class ArsenalBase : ArsenalBase {};
+        class SemiArid    : ArsenalBase {};
+        class Arid        : ArsenalBase {};
+        class Tropic      : ArsenalBase {};
+        class Wood        : ArsenalBase {};
+    };
+    class CupBaf : Cup
+    {
+        mags[]    = {};
+        weapons[] = {};
+        sights[]  = {};
+
+        class ArsenalBase : ArsenalBase {};
+        class SemiArid    : ArsenalBase {};
+        class Arid        : ArsenalBase {};
+        class Tropic      : ArsenalBase {};
+        class Wood        : ArsenalBase {};
+    };
+    class CupBundeswehr : Cup
+    {
+        mags[]    = {};
+        weapons[] = {};
+        sights[]  = {};
+
+        class ArsenalBase : ArsenalBase {};
+        class SemiArid    : ArsenalBase {};
+        class Arid        : ArsenalBase {};
+        class Tropic      : ArsenalBase {};
+        class Wood        : ArsenalBase {};
     };
 };

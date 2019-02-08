@@ -18,16 +18,16 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".
+    2: STRING - Enemy faction.  See CfgFactions.
 
     Returns: true on success, false on error
 */
 params [
-    ["_zone",    "",      [""]],
-    ["_helo",    objNull, [objNull]],
-    ["_faction", "",      [""]],
-    ["_arsenal", objNull, [objNull]]
+    ["_zone",          "",      [""]],
+    ["_helo",          objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_opforFaction",  "",      [""]],
+    ["_arsenal",       objNull, [objNull]]
 ];
 
 if (_zone == "") exitWith {
@@ -40,7 +40,12 @@ if (isNull _helo) exitWith {
     false;
 };
 
-if (_faction == "") exitWith {
+if (_bluforFaction == "") exitWith {
+    ["faction parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
+if (_opforFaction == "") exitWith {
     ["faction parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
@@ -89,8 +94,8 @@ player createDiaryRecord ["Diary", ["Mission",
 
 private _situationText = format["\
 %1 forces have stashed weapon crates at position <marker name='zoneMarker'>%2</marker>.\
- NATO forces are to seek and destroy these crates.<br/><br/>Intel reports there are\
- approximately 10 crates at this position stored in and around buildings.", _faction, _zone];
+ %3 forces are to seek and destroy these crates.<br/><br/>Intel reports there are\
+ approximately 10 crates at this position stored in and around buildings.", _opforFaction, _zone, _bluforFaction];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

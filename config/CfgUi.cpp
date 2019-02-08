@@ -138,110 +138,131 @@ class ParamDialog {
     controls[] = {
         ParamFrame,
         DifficultyLabel,
-        FactionLabel,
+        FriendlyFactionLabel,
+        EnemyFactionLabel,
         MissionLabel,
         TimeOfDayLabel,
         OkButton,
         DifficultyCombo,
-        FactionCombo,
+        FriendlyFactionCombo,
+        EnemyFactionCombo,
         MissionCombo,
-        TimeCombo
+        TimeCombo,
     };
 
-    class ParamFrame: RscFrame
-    {
-        idc = 1800;
+	class ParamFrame: RscFrame
+	{
+		idc = 1800;
 
-        x = 0.388438 * safezoneW + safezoneX;
-        y = 0.296 * safezoneH + safezoneY;
-        w = 0.255 * safezoneW;
-        h = 0.357 * safezoneH;
-    };
-    class FactionLabel: RscText
-    {
-        idc = 1003;
+		x = 0.388438 * safezoneW + safezoneX;
+		y = 0.296 * safezoneH + safezoneY;
+		w = 0.255 * safezoneW;
+		h = 0.425 * safezoneH;
+	};
+	class EnemyFactionLabel: RscText
+	{
+		idc = 1003;
 
-        text = "Enemy Faction"; //--- ToDo: Localize;
-        x = 0.404375 * safezoneW + safezoneX;
-        y = 0.381 * safezoneH + safezoneY;
-        w = 0.0796875 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class MissionLabel: RscText
-    {
-        idc = 1001;
+		text = "Enemy Faction"; //--- ToDo: Localize;
+		x = 0.404375 * safezoneW + safezoneX;
+		y = 0.449 * safezoneH + safezoneY;
+		w = 0.0796875 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class MissionLabel: RscText
+	{
+		idc = 1001;
 
-        text = "Mission"; //--- ToDo: Localize;
-        x = 0.43625 * safezoneW + safezoneX;
-        y = 0.449 * safezoneH + safezoneY;
-        w = 0.0478125 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class TimeOfDayLabel: RscText
-    {
-        idc = 1002;
+		text = "Mission"; //--- ToDo: Localize;
+		x = 0.43625 * safezoneW + safezoneX;
+		y = 0.517 * safezoneH + safezoneY;
+		w = 0.0478125 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class TimeOfDayLabel: RscText
+	{
+		idc = 1002;
 
-        text = "Time of Day"; //--- ToDo: Localize;
-        x = 0.420312 * safezoneW + safezoneX;
-        y = 0.517 * safezoneH + safezoneY;
-        w = 0.06375 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class OkButton: RscButton
-    {
-        idc = 1600;
-        action = "[] call den_fnc_uiParamOkAction";
+		text = "Time of Day"; //--- ToDo: Localize;
+		x = 0.420312 * safezoneW + safezoneX;
+		y = 0.585 * safezoneH + safezoneY;
+		w = 0.06375 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class OkButton: RscButton
+	{
+		idc = 1600;
+		action = "[] call den_fnc_uiParamOkAction";
 
-        text = "OK"; //--- ToDo: Localize;
-        x = 0.484062 * safezoneW + safezoneX;
-        y = 0.585 * safezoneH + safezoneY;
-        w = 0.06375 * safezoneW;
-        h = 0.051 * safezoneH;
-    };
-    class FactionCombo: RscCombo
-    {
-        idc = 2100;
+		text = "OK"; //--- ToDo: Localize;
+		x = 0.484062 * safezoneW + safezoneX;
+		y = 0.653 * safezoneH + safezoneY;
+		w = 0.06375 * safezoneW;
+		h = 0.051 * safezoneH;
+	};
+	class EnemyFactionCombo: RscCombo
+	{
+		idc = 2100;
 
-        x = 0.5 * safezoneW + safezoneX;
-        y = 0.381 * safezoneH + safezoneY;
-        w = 0.1275 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class MissionCombo: RscCombo
-    {
-        idc = 2101;
+		x = 0.5 * safezoneW + safezoneX;
+		y = 0.449 * safezoneH + safezoneY;
+		w = 0.1275 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class MissionCombo: RscCombo
+	{
+		idc = 2101;
 
-        x = 0.5 * safezoneW + safezoneX;
-        y = 0.449 * safezoneH + safezoneY;
-        w = 0.1275 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class TimeCombo: RscCombo
-    {
-        idc = 2102;
+		x = 0.5 * safezoneW + safezoneX;
+		y = 0.517 * safezoneH + safezoneY;
+		w = 0.1275 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class TimeCombo: RscCombo
+	{
+		idc = 2102;
 
-        x = 0.5 * safezoneW + safezoneX;
-        y = 0.517 * safezoneH + safezoneY;
-        w = 0.1275 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class DifficultyLabel: RscText
-    {
-        idc = 1000;
+		x = 0.5 * safezoneW + safezoneX;
+		y = 0.585 * safezoneH + safezoneY;
+		w = 0.1275 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class DifficultyLabel: RscText
+	{
+		idc = 1000;
 
-        text = "Difficulty"; //--- ToDo: Localize;
-        x = 0.428281 * safezoneW + safezoneX;
-        y = 0.313 * safezoneH + safezoneY;
-        w = 0.0517969 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
-    class DifficultyCombo: RscCombo
-    {
-        idc = 2199;
+		text = "Difficulty"; //--- ToDo: Localize;
+		x = 0.428281 * safezoneW + safezoneX;
+		y = 0.313 * safezoneH + safezoneY;
+		w = 0.0517969 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class DifficultyCombo: RscCombo
+	{
+		idc = 2199;
 
-        x = 0.5 * safezoneW + safezoneX;
-        y = 0.313 * safezoneH + safezoneY;
-        w = 0.1275 * safezoneW;
-        h = 0.034 * safezoneH;
-    };
+		x = 0.5 * safezoneW + safezoneX;
+		y = 0.313 * safezoneH + safezoneY;
+		w = 0.1275 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class FriendlyFactionLabel: RscText
+	{
+		idc = 1003;
+
+		text = "Friendly Faction"; //--- ToDo: Localize;
+		x = 0.396406 * safezoneW + safezoneX;
+		y = 0.381 * safezoneH + safezoneY;
+		w = 0.0876562 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
+	class FriendlyFactionCombo: RscCombo
+	{
+		idc = 2104;
+
+		x = 0.5 * safezoneW + safezoneX;
+		y = 0.381 * safezoneH + safezoneY;
+		w = 0.1275 * safezoneW;
+		h = 0.034 * safezoneH;
+	};
 };

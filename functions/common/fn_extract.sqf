@@ -41,7 +41,15 @@
     Returns: true
 */
 [_this] spawn {
-    private ["_args", "_lzPos", "_cargoGroup", "_bluforFaction", "_bool",  "_blackArea", "_area"];
+    private [
+        "_args",
+        "_lzPos",
+        "_cargoGroup",
+        "_bluforFaction",
+        "_bool",
+        "_blackArea",
+        "_area"
+    ];
 
     _args          = _this select 0;
     _lzPos         = _args param [0, [], [[]], [2,3]];
@@ -78,7 +86,11 @@
     /*
      * send helo
      */
-    private _helo = [_deployPos, _deployDir, "heloTransport", _bluforFaction] call den_fnc_spawnvehicle;
+    private _heloType = "heloTransport";
+    if (({alive _x} count units _cargoGroup) > 8) then {
+        _heloType = "heloTransportLarge";
+    };
+    private _helo = [_deployPos, _deployDir, _heloType, _bluforFaction] call den_fnc_spawnvehicle;
     private _heloObj   = _helo select 0;
     private _heloGroup = _helo select 2;
     clearMagazineCargoGlobal _heloObj;

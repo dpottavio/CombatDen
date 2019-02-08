@@ -12,37 +12,30 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=12;
+		nextID=16;
 	};
 	class Camera
 	{
-		pos[]={6633.7739,31.60713,677.66516};
-		dir[]={0.17163101,-0.39812604,0.90115106};
-		up[]={0.074487522,0.91733146,0.39109418};
-		aside[]={0.9823612,-9.7315933e-009,-0.18709989};
+		pos[]={6639.3413,9.9707298,728.9845};
+		dir[]={-0.13212149,-0.11362638,-0.98472035};
+		up[]={-0.015111535,0.9935236,-0.11262228};
+		aside[]={-0.99114299,-5.2728865e-007,0.13298453};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
 	"A3_Boat_F_Destroyer_Destroyer_01",
-	"A3_Supplies_F_Heli_CargoNets",
 	"A3_Ui_F",
-	"A3_Characters_F_Jets",
-	"A3_Weapons_F",
-	"A3_Characters_F",
-	"ace_hearing",
-	"ace_gforces",
-	"A3_Weapons_F_Items",
-	"ace_medical",
-	"A3_Characters_F_Jets_Vests",
-	"A3_Structures_F_Mil_Helipads"
+	"A3_Supplies_F_Heli_CargoNets",
+	"A3_Structures_F_Mil_Helipads",
+	"A3_Characters_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=9;
+		items=5;
 		class Item0
 		{
 			className="A3_Boat_F_Destroyer";
@@ -52,57 +45,29 @@ class AddonsMetaData
 		};
 		class Item1
 		{
-			className="A3_Supplies_F_Heli";
-			name="Arma 3 Helicopters - Ammoboxes and Supplies";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item2
-		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item2
+		{
+			className="A3_Supplies_F_Heli";
+			name="Arma 3 Helicopters - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 		class Item3
 		{
-			className="A3_Characters_F_Jets";
-			name="Arma 3 Jets - Characters and Clothing";
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
 		class Item4
 		{
-			className="A3_Weapons_F";
-			name="Arma 3 Alpha - Weapons and Accessories";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item5
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item6
-		{
-			className="ace_hearing";
-			name="ACE3 - Hearing";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item7
-		{
-			className="ace_medical";
-			name="ACE3 - Medical";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item8
-		{
-			className="A3_Structures_F_Mil";
-			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -147,25 +112,45 @@ class Mission
 			name="Naval FOB";
 			class Entities
 			{
-				items=7;
+				items=4;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={6644.7886,-0.83460397,782.11481};
+						position[]={6644.7891,-0.83421326,782.11499};
 						angles[]={0,3.2381094,0};
 					};
 					side="Empty";
 					class Attributes
 					{
+						name="den_destroyer";
 					};
 					id=40;
 					type="Land_Destroyer_01_base_F";
-					atlOffset=116.88062;
+					atlOffset=116.881;
 					class CustomAttributes
 					{
 						class Attribute0
+						{
+							property="CustomShipNameTexture0";
+							expression="([_this, 'Land_Destroyer_01_hull_05_F'] call bis_fnc_destroyer01GetShipPart) setObjectTextureGlobal [0, _value];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="";
+								};
+							};
+						};
+						class Attribute1
 						{
 							property="ShipHangarDoorState";
 							expression="[([_this, 'Land_Destroyer_01_hull_04_F'] call bis_fnc_destroyer01GetShipPart), _value, true] spawn bis_fnc_destroyer01AnimateHangarDoors;";
@@ -184,32 +169,10 @@ class Mission
 								};
 							};
 						};
-						nAttributes=1;
-					};
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={6632.8208,8.7885971,733.34796};
-						angles[]={0,0.069533914,0};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						init="call{[this, den_alpha] call den_fnc_arsenal;}";
-						name="den_arsenal";
-					};
-					id=41;
-					type="B_CargoNet_01_ammo_F";
-					class CustomAttributes
-					{
-						class Attribute0
+						class Attribute2
 						{
-							property="ammoBox";
-							expression="[_this,_value] call bis_fnc_initAmmoBox;";
+							property="CustomShipFlagTexture0";
+							expression="([_this, 'ShipFlag_US_F'] call bis_fnc_destroyer01GetShipPart) setFlagTexture _value;";
 							class Value
 							{
 								class data
@@ -221,14 +184,14 @@ class Mission
 											"STRING"
 										};
 									};
-									value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+									value="";
 								};
 							};
 						};
-						nAttributes=1;
+						nAttributes=3;
 					};
 				};
-				class Item2
+				class Item1
 				{
 					dataType="Marker";
 					position[]={6533.3613,15.578125,913.81085};
@@ -238,220 +201,22 @@ class Mission
 					id=42;
 					atlOffset=128.79021;
 				};
-				class Item3
-				{
-					dataType="Group";
-					side="West";
-					class Entities
-					{
-						items=1;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={6627.2485,7.9308443,694.42877};
-								angles[]={0,0.73729688,0};
-							};
-							side="West";
-							flags=7;
-							class Attributes
-							{
-								stance="Middle";
-								class Inventory
-								{
-									class uniform
-									{
-										typeName="U_B_HeliPilotCoveralls";
-										isBackpack=0;
-										class ItemCargo
-										{
-											items=1;
-											class Item0
-											{
-												name="FirstAidKit";
-												count=1;
-											};
-										};
-									};
-									class vest
-									{
-										typeName="V_DeckCrew_yellow_F";
-										isBackpack=0;
-									};
-									map="ItemMap";
-									compass="ItemCompass";
-									watch="ItemWatch";
-									radio="ItemRadio";
-									headgear="H_HelmetCrew_B";
-								};
-							};
-							id=51;
-							type="B_Deck_Crew_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male11ENG";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.04;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-					};
-					class Attributes
-					{
-					};
-					id=50;
-				};
-				class Item4
-				{
-					dataType="Group";
-					side="West";
-					class Entities
-					{
-						items=1;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={6650.4985,7.931529,716.42877};
-								angles[]={0,4.1891046,0};
-							};
-							side="West";
-							flags=7;
-							class Attributes
-							{
-								stance="Up";
-								class Inventory
-								{
-									class uniform
-									{
-										typeName="U_B_HeliPilotCoveralls";
-										isBackpack=0;
-										class ItemCargo
-										{
-											items=1;
-											class Item0
-											{
-												name="FirstAidKit";
-												count=1;
-											};
-										};
-									};
-									class vest
-									{
-										typeName="V_DeckCrew_yellow_F";
-										isBackpack=0;
-									};
-									map="ItemMap";
-									compass="ItemCompass";
-									watch="ItemWatch";
-									radio="ItemRadio";
-									headgear="H_HelmetCrew_B";
-								};
-							};
-							id=55;
-							type="B_Deck_Crew_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male11ENG";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.04;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-					};
-					class Attributes
-					{
-					};
-					id=54;
-				};
-				class Item5
+				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={6633.1948,8.7902145,736.59698};
+						position[]={6633.1948,8.7904205,736.59698};
 						angles[]={0,0.069533914,0};
 					};
 					side="Empty";
-					flags=4;
 					class Attributes
 					{
-						init="call{[this, den_alpha] call den_fnc_arsenal;}";
+						name="den_arsenal";
 					};
 					id=56;
 					type="B_CargoNet_01_ammo_F";
+					atlOffset=129.05299;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -476,7 +241,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item6
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -490,11 +255,11 @@ class Mission
 					};
 					id=66;
 					type="Land_HelipadEmpty_F";
-					atlOffset=0.1048336;
+					atlOffset=0.10444307;
 				};
 			};
 			id=38;
-			atlOffset=0.14350891;
+			atlOffset=128.28104;
 		};
 		class Item1
 		{
@@ -575,7 +340,7 @@ class Mission
 						angles[]={0,3.0235908,0};
 					};
 					side="West";
-					flags=5;
+					flags=1;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
@@ -585,7 +350,7 @@ class Mission
 					};
 					id=59;
 					type="B_Soldier_F";
-					atlOffset=4.5776367e-005;
+					atlOffset=128.002;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -701,7 +466,7 @@ class Mission
 						angles[]={0,3.1358156,0};
 					};
 					side="West";
-					flags=5;
+					flags=1;
 					class Attributes
 					{
 						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Grenadier""];" \n "}";
@@ -711,7 +476,7 @@ class Mission
 					};
 					id=61;
 					type="B_Soldier_F";
-					atlOffset=0.00029754639;
+					atlOffset=127.911;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -837,7 +602,7 @@ class Mission
 					};
 					id=63;
 					type="B_Soldier_F";
-					atlOffset=0.00045776367;
+					atlOffset=6.7234039e-005;
 					class CustomAttributes
 					{
 						class Attribute0

@@ -14,8 +14,7 @@
 
     Parameter(s):
 
-    0: OBJECT - An object that has been configure to have
-    a the loadout presets.
+    0: STRING - Class name of blufor faction.  See CfgFactions.
 
     1: OBJECT - A unit to apply the loadout preset.
     If this is NULL, the loadout is applied to the player using
@@ -23,9 +22,17 @@
 
     Returns: true on success, false on error
 */
-params ["_obj", "_unit"];
+params [
+    ["_bluforFaction", "",      [""]],
+    ["_unit",          objNull, [objNull]]
+];
 
-_obj   = _this param [0, objNull, [objNull]];
+if (_bluforFaciton == "") exitWith {
+    ["faction parameter is empty"] call BIS_fnc_error;
+    false;
+};
+
+den_loadoutMenuFaction = _bluforFaction;
 
 disableSerialization;
 
@@ -55,11 +62,10 @@ lbSetCurSel [_unitListBoxId, 0];
 /*
  * role list box
  */
-private _faction = [] call den_fnc_bluforFaction;
 private _roleListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "RoleListBox" >> "idc");
-private _climate = [] call den_fnc_worldToClimate;
-private _rolesCfg = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate);
-private _i = 0;
+private _climate       = [] call den_fnc_worldToClimate;
+private _rolesCfg      = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _bluforFaction >> _climate);
+private _i             = 0;
 {
     private _nameUi  = (getText (_x >> "role"));
     private _nameCfg = configName _x;
@@ -82,15 +88,14 @@ lbSort [_roleListBoxId, "ASC"];
     _control       = _this select 0;
     _selectedIndex = _this select 1;
 
-    private _faction = [] call den_fnc_bluforFaction;
-
     private _roleSelect = _control lbText _selectedIndex;
 
     private _loadoutListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "LoadoutListBox" >> "idc");
     lbClear _loadoutListBoxId;
 
     private _climate = [] call den_fnc_worldToClimate;
-    private _loadoutsCfg = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate);
+    private _loadoutsCfg =
+        "true" configClasses (missionConfigFile >> "CfgLoadout" >> den_loadoutMenuFaction >> _climate);
 
     {
         if (getText (_x >> "role") == _roleSelect) then {

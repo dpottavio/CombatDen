@@ -18,7 +18,7 @@ class CfgFunctions
             file = "functions\common";
             class arsenal {};
             class attackExtraction {};
-            class bluforFaction {};
+            class bluforFactions {};
             class buildingOccupy {};
             class commandChat {};
             class composition {};

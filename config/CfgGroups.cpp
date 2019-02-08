@@ -9,14 +9,35 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-#define CSAT_NVG   "NVGoggles_OPFOR"
-#define RUSSIA_NVG "rhs_1PN138"
+#define CSAT_NVG        "NVGoggles_OPFOR"
+#define RHS_RUSSIA_NVG  "rhs_1PN138"
+#define CUP_RUSSIA_NVG  "CUP_NVG_HMNVS"
 
-#define DEFAULT_ACC_LIGHT  "acc_flashlight"
-#define RUSSIA_ACC_LIGHT   "rhs_acc_2dpzenit"
+#define DEFAULT_ACC_LIGHT     "acc_flashlight"
+#define RHS_RUSSIA_ACC_LIGHT  "rhs_acc_2dpzenit"
+#define CUP_ACC_LIGHT         "cup_acc_flashlight"
 
 class CfgGroups
 {
+    class Civilian
+    {
+        class SemiArid
+        {
+            genericName = "AfroMen";
+        };
+        class Arid
+        {
+            genericName = "AfroMen";
+        };
+        class Tropic
+        {
+            genericName = "TanoanMen";
+        };
+        class Wood
+        {
+            genericName = "NATOMen";
+        };
+    };
     class FireTeamBase
     {
         class Unit0
@@ -122,7 +143,7 @@ class CfgGroups
             rank = "PRIVATE";
         };
     }
-    class NATO
+    class Nato
     {
         class SemiArid
         {
@@ -252,7 +273,7 @@ class CfgGroups
             };
         };
     };
-    class USMC
+    class RhsUsmc
     {
         class SemiArid
         {
@@ -385,7 +406,376 @@ class CfgGroups
             };
         };
     };
-    class CSAT
+    class CupUsmc
+    {
+        class SemiArid
+        {
+            class TruckCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Soldier_FROG_WDL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_USMC_Soldier_FROG_WDL";
+                };
+            };
+            class HeloPilot : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Pilot";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_USMC_Pilot";
+                };
+            };
+            class HeloCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Crewman_FROG_WDL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_USMC_Crewman_FROG_WDL";
+                };
+            };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Pilot";
+                };
+            };
+        };
+        class Arid
+        {
+           class TruckCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Soldier_FROG_DES";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_USMC_Soldier_FROG_DES";
+                };
+            };
+            class HeloPilot : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Pilot";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_USMC_Pilot";
+                };
+            };
+            class HeloCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Crewman_FROG_DES";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_USMC_Crewman_FROG_DES";
+                };
+            };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_USMC_Pilot";
+                };
+            };
+        };
+        class Tropic : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Wood : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+    };
+    class CupBaf
+    {
+        class SemiArid
+        {
+            class TruckCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
+                };
+            };
+            class HeloPilot : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_BAF_Soldier_Pilot_MTP";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_BAF_Soldier_Pilot_MTP";
+                };
+            };
+            class HeloCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UP_B_BAF_Soldier_Crew_MTP";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
+                };
+            };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_BAF_Soldier_Pilot_MTP";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+           class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Tropic : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Wood : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+    };
+    class CupBundeswehr
+    {
+        class SemiArid
+        {
+            class TruckCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                };
+            };
+            class HeloPilot : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                };
+            };
+            class HeloCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                };
+            };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+           class TruckCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_GER_Soldier";
+                };
+            };
+            class HeloPilot : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Soldier";
+                };
+            };
+            class HeloCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_B_GER_Soldier";
+                };
+            };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_B_GER_Soldier";
+                };
+            };
+        };
+        class Tropic : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Wood : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+    };
+    class Csat
     {
         accLight = DEFAULT_ACC_LIGHT;
 
@@ -854,7 +1244,7 @@ class CfgGroups
             };
         };
     };
-    class FIA
+    class Fia
     {
         accLight = DEFAULT_ACC_LIGHT;
 
@@ -1272,9 +1662,9 @@ class CfgGroups
             };
         };
     };
-    class Russia
+    class RhsRussia
     {
-        accLight = RUSSIA_ACC_LIGHT;
+        accLight = RHS_RUSSIA_ACC_LIGHT;
 
         class SemiArid
         {
@@ -1345,7 +1735,7 @@ class CfgGroups
             };
             class ReconSquad : SquadBase
             {
-                nvg = RUSSIA_NVG;
+                nvg = RHS_RUSSIA_NVG;
 
                 class Unit0 : Unit0
                 {
@@ -1382,7 +1772,7 @@ class CfgGroups
             };
             class ReconTeam : FireTeamBase
             {
-                nvg = RUSSIA_NVG;
+                nvg = RHS_RUSSIA_NVG;
 
                 class Unit0 : Unit0
                 {
@@ -1510,7 +1900,7 @@ class CfgGroups
             };
             class ReconSquad : SquadBase
             {
-                nvg = RUSSIA_NVG;
+                nvg = RHS_RUSSIA_NVG;
 
                 class Unit0 : Unit0
                 {
@@ -1547,7 +1937,7 @@ class CfgGroups
             };
             class ReconTeam : FireTeamBase
             {
-                nvg = RUSSIA_NVG;
+                nvg = RHS_RUSSIA_NVG;
 
                 class Unit0 : Unit0
                 {
@@ -1761,9 +2151,9 @@ class CfgGroups
             };
         };
     };
-    class Guerrilla
+    class LopGuerrilla
     {
-        accLight = RUSSIA_ACC_LIGHT;
+        accLight = RHS_RUSSIA_ACC_LIGHT;
 
         class SemiArid
         {
@@ -1957,7 +2347,7 @@ class CfgGroups
             };
         };
     };
-    class Cartel
+    class LopInsurgent
     {
         accLight = DEFAULT_ACC_LIGHT;
 
@@ -2153,9 +2543,9 @@ class CfgGroups
             };
         };
     };
-    class ISIS
+    class LopIsis
     {
-        accLight = RUSSIA_ACC_LIGHT;
+        accLight = RHS_RUSSIA_ACC_LIGHT;
 
         class Arid
         {
@@ -2283,9 +2673,9 @@ class CfgGroups
             };
         };
     };
-    class Takistan
+    class LopTakistan
     {
-        accLight = RUSSIA_ACC_LIGHT;
+        accLight = RHS_RUSSIA_ACC_LIGHT;
 
         class Arid
         {
@@ -2413,9 +2803,10 @@ class CfgGroups
             };
         };
     };
-    class ChDKZ
+    class LopChDkz
     {
-        accLight = RUSSIA_ACC_LIGHT;
+        friendly = 0;
+        accLight = RHS_RUSSIA_ACC_LIGHT;
 
         class Wood
         {
@@ -2543,9 +2934,10 @@ class CfgGroups
             };
         };
     };
-    class Novorossiya
+    class LopNovo
     {
-        accLight = RUSSIA_ACC_LIGHT;
+        friendly = 0;
+        accLight = RHS_RUSSIA_ACC_LIGHT;
 
         class Wood
         {
@@ -2669,6 +3061,2042 @@ class CfgGroups
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
                     vehicle = "LOP_US_UAZ_DshKM";
+                };
+            };
+        };
+    };
+    class CupRussia
+    {
+        accLight = CUP_ACC_LIGHT;
+
+        class SemiArid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RU_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RU_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RU_Soldier_AT";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RU_Soldier";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RU_Soldier_SL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                   vehicle = "CUP_O_RU_Soldier_AR";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RU_Soldier_GL";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_RU_Soldier_AT";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_RU_Soldier_AT";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_RU_Soldier";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_RU_Medic";
+                };
+            };
+            class ReconSquad : SquadBase
+            {
+                nvg = CUP_RUSSIA_NVG;
+
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RUS_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RUS_Soldier_GL";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RUS_Soldier_GL";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_RUS_Soldier_Marksman";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_RUS_Soldier_Marksman";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+            };
+            class ReconTeam : FireTeamBase
+            {
+                nvg = CUP_RUSSIA_NVG;
+
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RUS_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle =  "CUP_O_RUS_Soldier_GL";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RUS_Soldier_Marksman";
+                };
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_UAZ_MG_RU";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_UAZ_MG_RU";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RU_Soldier";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CUP_O_UAZ_MG_RU";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            }
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                nvg = RHS_RUSSIA_NVG;
+
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                nvg = RHS_RUSSIA_NVG;
+
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Tropic
+        {
+           class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RU_Soldier_TL_EMR";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier_EMR";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RU_Soldier_TL_EMR";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier_AR_EMR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RU_Soldier_AT_EMR";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RU_Soldier_EMR";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RU_Soldier_SL_EMR";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier_AR_EMR";
+                };
+                class Unit2 : Unit2
+                {
+                   vehicle = "CUP_O_RU_Soldier_AR_EMR";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RU_Soldier_GL_EMR";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_RU_Soldier_AT_EMR";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_RU_Soldier_AT_EMR";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_RU_Soldier_EMR";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_RU_Medic_EMR";
+                };
+            };
+            class ReconSquad : SquadBase
+            {
+                nvg = CUP_RUSSIA_NVG;
+
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RUS_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RUS_Soldier_GL";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RUS_Soldier_GL";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_RUS_Soldier_Marksman";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_RUS_Soldier_Marksman";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+            };
+            class ReconTeam : FireTeamBase
+            {
+                nvg = CUP_RUSSIA_NVG;
+
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_RUS_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle =  "CUP_O_RUS_Soldier_GL";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RUS_SpecOps";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_RUS_Soldier_Marksman";
+                };
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_UAZ_MG_RU";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_UAZ_MG_RU";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_RU_Soldier_EMR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_RU_Soldier_EMR";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CUP_O_UAZ_MG_RU";
+                };
+            };
+        };
+        class Wood : Tropic
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            }
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class CupChDKZ
+    {
+        friendly = 0;
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class Wood
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_INS_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_INS_Soldier";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = " CUP_O_INS_Soldier_GL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_INS_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_INS_Soldier_Ammo";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_INS_Soldier_AT";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_INS_Soldier_GL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_INS_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_INS_Soldier_AR";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = " CUP_O_INS_Soldier_GL";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_INS_Soldier_AT";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_INS_Soldier_AT";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_INS_Soldier";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_INS_Medic";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CUP_O_UAZ_MG_CHDKZ";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_UAZ_MG_CHDKZ";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_INS_Soldier";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_INS_Soldier";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CUP_O_UAZ_MG_CHDKZ";
+                };
+            };
+        };
+    };
+    class CupTakistan
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class Arid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_Soldier";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_Soldier_GL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_TK_Soldier_AT";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_TK_Soldier_Backpack";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_Soldier_SL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_TK_Soldier_AR";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_TK_Soldier_GL";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_TK_Soldier_AT";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_TK_Soldier_AT";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_TK_Soldier_Backpack";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_TK_Medic";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CUP_O_UAZ_MG_TKA";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_UAZ_MG_TKA";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_Soldier";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_TK_Soldier";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CUP_O_UAZ_MG_TKA";
+                };
+            };
+        };
+    };
+    class CupTakistanMilitia
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class Arid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_GL";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_AT";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_TL";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_AR";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_AR";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_GL";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_GL";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_AT";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier_AT";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CUP_O_TK_INS_Guerilla_Medic";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CUP_O_LR_MG_TKM";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_LR_MG_TKM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CUP_O_LR_MG_TKM";
+                };
+            };
+        };
+    };
+    class CfpGuerrilla
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class SemiArid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Machinegunner_PKM_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_CFRebels_Grenadier_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_CFRebels_RPG_Gunner_01";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Squad_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Machinegunner_PKM_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_CFRebels_Machinegunner_PKM_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_CFRebels_Grenadier_01";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CFP_O_CFRebels_Grenadier_01";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CFP_O_CFRebels_RPG_Gunner_01";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CFP_O_CFRebels_RPG_Gunner_01";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CFP_O_CFRebels_Surgeon_01";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CFP_O_CFRebels_Technical_PK_01";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Technical_PK_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CFP_O_CFRebels_Technical_PK_01";
+                };
+            };
+        };
+        class Tropic : SemiArid
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class CfpHezbollah
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class SemiArid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_01";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Squad_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Grenadier_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_AT_01";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Squad_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Machine_Gunner_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Grenadier_01";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Grenadier_01";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_AT_01";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_AT_01";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Medic_01";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CFP_O_HEZBOLLAH_Offroad_Armed_01";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Offroad_Armed_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_HEZBOLLAH_Militia_Rifleman_01";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CFP_O_HEZBOLLAH_Offroad_Armed_01";
+                };
+            };
+        };
+        class Tropic : SemiArid
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class CfpHamas
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class SemiArid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_01";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HAMAS_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HAMAS_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_HAMAS_Grenadier_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_AT_01";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HAMAS_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HAMAS_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_HAMAS_Machine_Gunner_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_HAMAS_Grenadier_01";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CFP_O_HAMAS_Grenadier_01";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_AT_01";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_AT_01";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CFP_O_HAMAS_Medic_01";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CFP_O_HAMAS_Technical_MG_01";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_HAMAS_Technical_MG_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_HAMAS_Rifleman_01";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CFP_O_HAMAS_Technical_MG_01";
+                };
+            };
+        };
+    };
+    class CfpIsis
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class SemiArid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_team_leader";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_autorifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "cfp_o_is_grenadier";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "cfp_o_is_at";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_squad_leader";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_autorifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "cfp_o_is_autorifleman";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "cfp_o_is_grenadier";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "cfp_o_is_grenadier";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "cfp_o_is_at";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "cfp_o_is_at";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "cfp_o_is_medic";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "cfp_o_is_hmmwv_dshkm";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_hmmwv_dshkm";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "cfp_o_is_hmmwv_dshkm";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            }
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class CfpAlQaeda
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class SemiArid
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_ALQAEDA_Grenadier_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_AT_01";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_ALQAEDA_Machine_Gunner_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_ALQAEDA_Grenadier_01";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CFP_O_ALQAEDA_Grenadier_01";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_AT_01";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_AT_01";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CFP_O_ALQAEDA_Medic_01";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CFP_O_ALQAEDA_Offroad_M2_01";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Offroad_M2_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CFP_O_ALQAEDA_Offroad_M2_01";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            }
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class CfpBokoHaram
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class Tropic
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AK74_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AK74_01";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_BH_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_BH_Machine_Gunner_PKM_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_BH_Grenadier_AK74_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AT_AK47_01";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_BH_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_BH_Machine_Gunner_PKM_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_BH_Machine_Gunner_PKM_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_BH_Grenadier_AK74_01";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CFP_O_BH_Grenadier_AK74_01";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AT_AK47_01";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AT_AK47_01";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CFP_O_BH_Medic_AK47_01";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CFP_O_BH_Landrover_M2_01";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_BH_Landrover_M2_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AK74_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_BH_Rifleman_AK74_01";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CFP_O_BH_Landrover_M2_01";
+                };
+            };
+        };
+    };
+    class CfpAlShabaab
+    {
+        accLight = CUP_RUSSIA_ACC_LIGHT;
+
+        class Tropic
+        {
+            class Sentry : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_01";
+                };
+            }
+            class FireTeam : FireTeamBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Grenadier_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_AT_01";
+                };
+            };
+            class AssaultSquad : SquadBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Team_Leader_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Machine_Gunner_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Machine_Gunner_01";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Grenadier_01";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Grenadier_01";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_AT_01";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_AT_01";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Medic_01";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                     vehicle = "CFP_O_ALSHABAAB_Offroad_Armed_01";
+                };
+            };
+            class MotorizedTeam : MotorBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Offroad_Armed_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_01";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "CFP_O_ALSHABAAB_Rifleman_01";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "CFP_O_ALSHABAAB_Offroad_Armed_01";
                 };
             };
         };

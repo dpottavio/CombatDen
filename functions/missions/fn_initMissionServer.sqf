@@ -14,11 +14,10 @@
 */
 params [
     ["_group",         grpNull,  [grpNull]],
-    ["_transport",     objNull,  [objNull]],
-    ["_bluforFaction", "",       [""]],
+    ["_bluforParam",   "",       [""]],
     ["_missionParam",  -1,       [0]],
     ["_hourParam",     -1,       [0]],
-    ["_opforParam",    "Random", [""]],
+    ["_opforParam",    "",       [""]],
     ["_difficulty",    0,        [0]]
 ];
 
@@ -38,23 +37,55 @@ private _hourMonth = [_hourParam] call den_fnc_randTime;
 private _month     = _hourMonth select 1;
 
 private _lowDaylight = [] call den_fnc_lowDaylight;
+
+[_month] call den_fnc_randWeather;
+
+/*
+ * select blufor faction
+ */
+private _bluforFaction = _bluforParam;
+if (_bluforFaction == "") then {
+    private _factions = [] call den_fnc_bluforFactions;
+    _bluforFaction = configName (selectRandom _factions);
+};
+
 {
     private _role = _x getVariable ["den_role", "Riflemen"];
     [_x, _role, "", _lowDaylight, _bluforFaction] remoteExecCall ["den_fnc_loadout", _x, true];
 } forEach units _group;
 
-[_month] call den_fnc_randWeather;
+private _voices = getArray (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "voices");
+if !(_voices isEqualTo []) then {
+    {
+        [_x, selectRandom _voices] remoteExec ["setSpeaker", 0, _x];
+    } forEach units _group;
+};
 
-private _opforFaction = "";
-if (_opforParam == "Random") then {
+private _bluforFlag = getText (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "flagTexture");
+
+if !(isNil "den_destroyer") then {
+    private _flag = [den_destroyer, "ShipFlag_US_F"] call bis_fnc_destroyer01GetShipPart;
+    _flag setFlagTexture _bluforFlag;
+};
+if !(isNil "den_flagPole") then {
+    den_flagPole setFlagTexture _bluforFlag;
+};
+
+private _transport = [getPosATL den_heloMarker, _bluforFaction] call den_fnc_spawnHeloTransport;
+
+[_bluforFaction, den_arsenal] remoteExecCall ["den_fnc_arsenal", 0, true];
+
+/*
+ * select opfor faction
+ */
+private _opforFaction = _opforParam;
+if (_opforFaction == "") then {
     private _factions = [] call den_fnc_opforFactions;
-    _opforFaction = selectRandom _factions;
-} else {
-    _opforFaction = _opforParam;
+    _opforFaction = configName (selectRandom _factions);
 };
 
 private _missionArgs = [_group, _transport, _bluforFaction, _opforFaction, _difficulty];
-private _zone = "";
+private _zone        = "";
 
 switch (_mission) do {
     case 0: {
@@ -83,4 +114,4 @@ switch (_mission) do {
     };
 };
 
-[_mission, _opforFaction, _zone];
+[_mission, _opforFaction, _zone, _transport, _bluforFaction];

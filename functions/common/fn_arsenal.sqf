@@ -15,19 +15,24 @@
 
     Parameter(s):
 
-    0: OBJECT - Object to add the arsenal
+    0: STRING - Blufor faction class name.  See CfgFactions.
+    1: OBJECT - Object to apply the arsenal
 
     Returns: true on success, false on error
 */
 params [
-    ["_obj",   objNull, [objNull]],
-    ["_group", grpNull, [grpNull]]
+    ["_bluforFaction",  "",      [""]],
+    ["_obj",            objNull, [objNull]]
 ];
 
-private _faction = [] call den_fnc_bluforFaction;
+if (_bluforFaciton == "") exitWith {
+    ["faction parameter is empty"] call BIS_fnc_error;
+    false;
+};
 
 if (isNull _obj) exitWith {
     ["object parameter is null"] call BIS_fnc_error;
+    false;
 };
 
 private _cfgClimate = [] call den_fnc_worldToClimate;
@@ -59,13 +64,14 @@ private _loadoutAction = [
     {
         params ["_target", "_player", "_params"];
 
-        private _obj = _params select 0;
+        private _bluforFaction = _params select 0;
+        private _obj           = _params select 1;
 
-        [_obj] call den_fnc_uiLoadoutDiag;
+        [_bluforFaction, _obj] call den_fnc_uiLoadoutDiag;
     },
     {true},
     {},
-    [_obj]
+    [_bluforFaction, _obj]
 ] call ace_interact_menu_fnc_createAction;
 
 [_obj, 0, ["ACE_MainActions"], _loadoutAction] call ace_interact_menu_fnc_addActionToObject;

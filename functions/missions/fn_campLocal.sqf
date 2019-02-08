@@ -18,15 +18,15 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".
+    2: STRING - Enemy faction.  See CfgFactions.
 
     Returns: true on success, false on error
 */
 params [
-    ["_zone",    "",      [""]],
-    ["_helo",    objNull, [objNull]],
-    ["_faction", "",      [""]]
+    ["_zone",          "",      [""]],
+    ["_helo",          objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_opforFaction",  "",      [""]]
 ];
 
 if (_zone == "") exitWith {
@@ -39,17 +39,22 @@ if (isNull _helo) exitWith {
     false;
 };
 
-if (_faction == "") exitWith {
+if (_bluforFaction == "") exitWith {
+    ["faction parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
+if (_opforFaction == "") exitWith {
     ["faction parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
 
 private _taskQueue = [
-    [[blufor, "boardInsert",    "BoardInsert",    _helo,        "CREATED", 1, true, "getin"],  "den_insert"],
-    [[blufor, "raidCamp",       "RaidCamp",       "campMarker", "CREATED", 1, true, "attack"], "den_campSeized"],
-    [[blufor, "searchCamp",     "SearchCamp",     objNull,      "CREATED", 1, true, "search"], "den_intelFound"],
-    [[blufor, "lzExtract",      "LzExtract",      "lzMarker",   "CREATED", 1, true, "move"],   "den_lzExtract"],
-    [[blufor, "boardExtract",   "BoardExtract",   objNull,      "CREATED", 1, true, "getin"],  "den_extract"]
+    [[blufor, "boardInsert",  "BoardInsert",  _helo,        "CREATED", 1, true, "getin"],  "den_insert"],
+    [[blufor, "raidCamp",     "RaidCamp",     "campMarker", "CREATED", 1, true, "attack"], "den_campSeized"],
+    [[blufor, "searchCamp",   "SearchCamp",   objNull,      "CREATED", 1, true, "search"], "den_intelFound"],
+    [[blufor, "lzExtract",    "LzExtract",    "lzMarker",   "CREATED", 1, true, "move"],   "den_lzExtract"],
+    [[blufor, "boardExtract", "BoardExtract", objNull,      "CREATED", 1, true, "getin"],  "den_extract"]
 ];
 
 private _failQueue = [
@@ -81,7 +86,10 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-private _situationText = format["%1 forces have a recon <marker name='campMarker'>camp</marker> near position <marker name='zoneMarker'>%2</marker>. NATO forces are to raid this camp and gather intel.", _faction, _zone];
+private _situationText = format["\
+%1 forces have a recon <marker name='campMarker'>camp</marker> near position \
+<marker name='zoneMarker'>%2</marker>. %3 forces are to raid this camp and gather intel.",
+_opforFaction, _zone, _bluforFaction];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

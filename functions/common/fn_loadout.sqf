@@ -32,22 +32,28 @@ params [
     ["_role",        "",      [""]],
     ["_type",        "",      [""]],
     ["_lowDaylight", false,   [false]],
-    ["_faction",     "NATO",  [""]]
+    ["_faction",     "",      [""]]
 ];
 
 if !(local _unit) exitWith {};
 
 if (_role == "") exitWith {
     ["role is empty"] call BIS_fnc_error;
+    false;
 };
 
-private _cfgClimate = [] call den_fnc_worldToClimate;
+if (_faction == "") exitWith {
+    ["faction is empty"] call BIS_fnc_error;
+    false;
+};
+
+private _climate = [] call den_fnc_worldToClimate;
 
 private _loadout = configNull;
 if (_type != "") then {
-    _loadout = missionConfigFile >> "CfgLoadout" >> _faction >> _cfgClimate >> _role >> _type;
+    _loadout = missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role >> _type;
 } else {
-    private _loadouts = "getNumber(_x >> ""default"") == 1" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _cfgClimate >> _role);
+    private _loadouts = "getNumber(_x >> ""default"") == 1" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role);
     if (_loadouts isEqualTo []) exitWith {
         ["no default loadouts"] call BIS_fnc_error;
         false;

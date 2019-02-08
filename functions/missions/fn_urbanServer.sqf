@@ -155,7 +155,4 @@ _marker setMarkerType "o_inf";
 _marker = createMarker ["opforMotorMarker", _motorMarkerPos];
 _marker setMarkerType "o_motor_inf";
 
-// Civilians
-[_zonePos, _zoneRadius * 0.5] call den_fnc_randCiv;
-
 _zoneName;

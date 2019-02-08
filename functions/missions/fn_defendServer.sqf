@@ -205,7 +205,4 @@ _trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activ
     ["den_convoyDefended"] call den_fnc_publicBool;
 };
 
-// Civilians
-[_zonePos, _zoneRadius * 0.5] call den_fnc_randCiv;
-
 _zoneName;

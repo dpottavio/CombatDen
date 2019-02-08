@@ -18,15 +18,15 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - Enemy faction to populate each bunker, must be either
-    "CSAT", or "Guerrilla".
+    2: STRING - Enemy faction.  See CfgFactions.
 
     Returns: true on success, false on error
 */
 params [
-    ["_zone",    "",      [""]],
-    ["_helo",    objNull, [objNull]],
-    ["_faction", "",      [""]]
+    ["_zone",          "",      [""]],
+    ["_helo",          objNull, [objNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_opforFaction",  "",      [""]]
 ];
 
 if (_zone == "") exitWith {
@@ -39,7 +39,12 @@ if (isNull _helo) exitWith {
     false;
 };
 
-if (_faction == "") exitWith {
+if (_bluforFaction == "") exitWith {
+    ["faction parameter cannot be empty"] call BIS_fnc_error;
+    false;
+};
+
+if (_opforFaction == "") exitWith {
     ["faction parameter cannot be empty"] call BIS_fnc_error;
     false;
 };
@@ -78,7 +83,11 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-private _situationText = format["A NATO <marker name='convoyMarker'>convoy</marker> was ambushed and is currently disabled near position <marker name='zoneMarker'>%2</marker>. %1 forces are expected to launched a second attack to seize the convoy. Additional forces are needed to defend the convoy assets.", _faction, _zone];
+private _situationText = format["\
+A %1 <marker name='convoyMarker'>convoy</marker> \
+was ambushed and is currently disabled near position <marker name='zoneMarker'>%2</marker>.  \
+%3 forces are expected to launched a second attack to seize the convoy. Additional forces are \
+needed to defend the convoy assets.", _bluforFaction, _zone, _opforFaction];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

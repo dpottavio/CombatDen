@@ -64,6 +64,16 @@ createMarker ["alphaArrowMarker", _arrowPos];
 "alphaArrowMarker" setMarkerDir (_arrowPos getDir _blackPos);
 "alphaArrowMarker" setMarkerColor "colorBLUFOR";
 
+/*
+ * Trigger to start the helo once players approach it.
+ */
+private _startHeloTrigger = createTrigger ["EmptyDetector", getPos _helo, false];
+_startHeloTrigger setVariable["helo", _helo];
+private _startActivation = "(thisTrigger getVariable ""helo"") engineOn true";
+_startHeloTrigger setTriggerArea       [20, 20, 0, false];
+_startHeloTrigger setTriggerActivation ["WEST", "PRESENT", false];
+_startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
+
 [_lzPos, _cargoGroup, _helo, _blackArea] spawn {
     params ["_lzPos", "_cargoGroup", "_helo", "_blackArea"];
 
@@ -101,6 +111,8 @@ createMarker ["alphaArrowMarker", _arrowPos];
         _x disableAI "TARGET";
         _x disableAI "AUTOTARGET";
     } forEach units _crewGroup;
+
+    sleep 10;
 
     /*
      * teleport helo
@@ -165,12 +177,11 @@ createMarker ["alphaArrowMarker", _arrowPos];
     }];
 
     if (isMultiplayer) then {
-    [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
-    {
-        [blufor, _x] call BIS_fnc_addRespawnPosition;
-    } forEach units _cargoGroup;
-};
-
+        [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
+        {
+            [blufor, _x] call BIS_fnc_addRespawnPosition;
+        } forEach units _cargoGroup;
+    };
 };
 
 true;

@@ -37,7 +37,7 @@ if (_bluforFaction == "") exitWith {
 };
 
 private _climate  = [] call den_fnc_worldToClimate;
-private _heloType = getText (missionConfigFile >> "CfgVehicles" >> den_bluforFaction >> _climate >> "heloTransport");
+private _heloType = getText (missionConfigFile >> "CfgVehicles" >> _bluforFaction >> _climate >> "heloTransport");
 
 private _helo = createVehicle [_heloType, _pos, [], 0, "CAN_COLLIDE"];
 
@@ -47,6 +47,7 @@ clearItemCargoGlobal     _helo;
 clearBackpackCargoGlobal _helo;
 
 private _pilotGroup = [_pos getPos [10,0], _bluforFaction, "HeloPilot"] call den_fnc_spawnGroup;
+private _pilotUnits = units _pilotGroup;
 {
     _x moveInAny _helo;
 } forEach units _pilotGroup;
@@ -64,15 +65,5 @@ if (_heloType == "B_Heli_Transport_01_camo_F") then {
 };
 
 _pilotGroup setGroupIdGlobal ["Falcon"];
-
-/*
- * Trigger to start the helo once players approach it.
- */
-private _startHeloTrigger = createTrigger ["EmptyDetector", _pos, false];
-_startHeloTrigger setVariable["helo", _helo];
-private _startActivation = "(thisTrigger getVariable ""helo"") engineOn true";
-_startHeloTrigger setTriggerArea       [10, 10, 0, false];
-_startHeloTrigger setTriggerActivation ["WEST", "PRESENT", false];
-_startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
 
 _helo;
