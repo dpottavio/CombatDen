@@ -14,8 +14,7 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [*] 7 randomized mission types complete with briefing.
 [*] Multi terrain support.  See Combat Den collection for full list.
 [*] Support for RHSAFRF, RHSUSAF, and ProjectOPFOR.
-[*] Support for CUP Weapons, Units, and Vehicles.
-[*] Support for Community Factions Project (CFP).
+[*] Support for CUP Weapons, Units, Vehicles, and the Community Factions Project.
 [/list]
 
 [h1]Virtual Arsenal[/h1]
@@ -31,15 +30,13 @@ Be sure to load the appropriate ACE compatibility mods for use with RHS addition
 [/list]
 
 [h1]CUP Support[/h1]
-Loading [url=https://steamcommunity.com/workshop/filedetails/?id=583575232]CUP[/url]based mods replaces default factions.  [u]CUP Units and CUP Vehicles must be loaded together[/u].  Be sure to load the appropriate ACE compatibility mods for use with CUP.
+Loading [url=https://steamcommunity.com/workshop/filedetails/?id=583575232]CUP[/url] based mods replaces default factions.  [u]CUP Units and CUP Vehicles must be loaded together[/u].  Be sure to load the appropriate ACE compatibility mods for use with CUP.
 [list]
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=497660133]CUP Weapons[/url] adds a variety of CUP based weapons to the Virtual Arsenal.
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=497661914]CUP Units[/url] replaces NATO with either USMC, BAF, or Bundeswehr.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=497661914]CUP Units[/url] replaces NATO with either USMC, BAF, or Bundeswehr.  CSAT is replaced with Russia, and ChDkz.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=541888371]CUP Vehicles[/url] replaces vehicles with modern variants.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1369691841]Community Factions Project[/url] adds various enemy factions depending on the terrain.
 [/list]
-
-[h1]Comminity Factions Project Support[/h1]
-Loading [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1369691841]CFP[/url] adds various enemy factions depending on the terrain.
 
 If you find a bug, have questions, or want to give feedback, please post on this workshop page.  Enjoy!
 
