@@ -38,7 +38,7 @@ if (isNull _obj) exitWith {
 private _cfgClimate = [] call den_fnc_worldToClimate;
 
 private _items = [];
-private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _faction >> _cfgClimate];
+private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _bluforFaction >> _cfgClimate];
 {
     if (isArray _x) then {
         _items = _items + (getArray _x);

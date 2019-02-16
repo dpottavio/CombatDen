@@ -12,7 +12,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=16;
+		nextID=17;
 	};
 	class Camera
 	{
@@ -246,7 +246,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={6637.48,8.0306778,707.48499};
+						position[]={6637.0386,8.4121466,702.48102};
 					};
 					side="Empty";
 					class Attributes
@@ -255,11 +255,11 @@ class Mission
 					};
 					id=66;
 					type="Land_HelipadEmpty_F";
-					atlOffset=0.10444307;
+					atlOffset=0.48463583;
 				};
 			};
 			id=38;
-			atlOffset=128.28104;
+			atlOffset=128.65602;
 		};
 		class Item1
 		{
