@@ -66,11 +66,11 @@ if (_types isEqualTo []) then {
     _types = _defaultTypes;
 };
 
-_blacklist = getArray (missionConfigFile >> "CfgBlacklist" >> worldName >> "locations");
+private _blacklist = getArray (missionConfigFile >> "CfgBlacklist" >> worldName >> "locations");
 
 private _location = configNull;
 
-private _select = "((getText (_x >> 'type') in _types) && !(_x  in _blacklist))";
+private _select = format["((getText (_x >> 'type') in _types) && !((configName _x)  in %1))", _blacklist];
 private _locationList = _select configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
 [_locationList ,true] call CBA_fnc_shuffle;
 
