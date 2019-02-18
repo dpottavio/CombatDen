@@ -92,89 +92,75 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
         sleep 1;
     };
 
-    "Land_HelipadEmpty_F" createVehicle _lzPos;
-
     // Move remaining units in the helo.
     {
         if ((_helo getCargoIndex _x) == -1) then {
             [_x, _helo] remoteExecCall ["moveInCargo", _x];
-
-            // Re-enable AI units for any that exist.
-            [_x, "MOVE"] remoteExecCall ["enableAI", _x];
         };
     } forEach units _cargoGroup;
 
+    sleep 10;
+
+    /*
+     * teleport to LZ
+     */
+    [["","BLACK OUT",3]] remoteExec ["cutText"];
+    sleep 6;
+
+    private _hpad = "Land_HelipadEmpty_F" createVehicle _lzPos;
+
+    private _delta   = 3;
+    private _a       = _delta;
+    private _b       = _delta;
+    private _i       = 0;
+    private _faceDir = _deployPos getDir _lzPos;
+
+    private _leader = leader _cargoGroup;
+
+    {
+        private _pos = [];
+        if (_x == _leader) then {
+            _pos =  _hpad modelToWorld [0, 0, 0];
+        } else {
+            if ((_i mod 2) == 0) then {
+                _pos = _hpad modelToWorld [_a, -_b, 0];
+            } else {
+                _pos = _hpad modelToWorld [-_a, -_b, 0];
+                _a   = _a + _delta;
+                _b   = _b + _delta;
+            };
+            _i = _i + 1;
+        };
+
+        [_x, _pos, _faceDir] remoteExecCall ["den_fnc_teleport", _x];
+        [_x, "MOVE"] remoteExecCall ["enableAI", _x];
+    } forEach units _cargoGroup;
+
+    _helo setPos (_hpad modelToWorld [0,0,75]);
+
+    sleep 1;
+    [["","BLACK IN",3]] remoteExec ["cutText"];
+
+    den_insertUnload = true;
+
     private _crew = crew _helo;
     private _crewGroup = group leader (_crew select 0);
-
     {
         _x disableAI "TARGET";
         _x disableAI "AUTOTARGET";
     } forEach units _crewGroup;
 
-    sleep 10;
-
-    /*
-     * teleport helo
-     */
-    [["","BLACK OUT",3]] remoteExec ["cutText"];
-    sleep 6;
-
-    _helo setPos _deployPos;
-    _helo setDir _deployDir;
-
-    [["","BLACK IN",3]] remoteExec ["cutText"];
-
     [
         _crewGroup,
-        _lzPos,
+        _deployPos,
         0,
-        "TR UNLOAD",
+        "MOVE",
         "AWARE",
         "YELLOW",
         "FULL",
         "COLUMN",
-        "den_insertUnload = true"
+        "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
     ] call CBA_fnc_addWaypoint;
-
-    [_crewGroup, _deployPos] spawn {
-        /*
-         * This is a hack to get RHS helo to work.  For some reason
-         * RHS helos don't execute the this MOVE waypoint properly
-         * unless it's added after the TR UNLOAD completes.
-         */
-        private _crewGroup = _this select 0;
-        private _deployPos = _this select 1;
-
-        while {isNil "den_insertUnload"} do {
-            sleep 2;
-        };
-        [
-            _crewGroup,
-            _deployPos,
-            0,
-            "MOVE",
-            "AWARE",
-            "YELLOW",
-            "FULL",
-            "COLUMN",
-            "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
-        ] call CBA_fnc_addWaypoint;
-    };
-
-    /*
-     * force AI out of the helicopter
-     */
-    private _playerLeader = leader _cargoGroup;
-    _playerLeader addEventHandler ["GetOutMan", {
-        params ["_unit", "_role", "_vehicle", "_turret"];
-        _unit = _this select 0;
-        private _group = group _unit;
-        {
-            [_x] remoteExec ["doGetOut", _x];
-            [_x] remoteExec ["unassignVehicle", _x];
-        } forEach units _group;
-    }];
 
     if (isMultiplayer) then {
         [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;

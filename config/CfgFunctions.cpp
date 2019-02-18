@@ -42,6 +42,7 @@ class CfgFunctions
             class spawnHeloTransport {};
             class spawnVehicle {};
             class taskFsm {};
+            class teleport {};
             class wave {};
             class worldToClimate {};
             class zone {};
