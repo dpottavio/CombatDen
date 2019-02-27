@@ -22,6 +22,8 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_zone",          "",      [""]],
     ["_helo",          objNull, [objNull]],
@@ -31,27 +33,27 @@ params [
 ];
 
 if (_zone == "") exitWith {
-    ["zone parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("zone parameter cannot be empty");
     false;
 };
 
 if (isNull _helo) exitWith {
-    ["helo parameter is  empty"] call BIS_fnc_error;
+    ERROR("helo parameter is  empty");
     false;
 };
 
 if (_bluforFaction == "") exitWith {
-    ["faction parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("faction parameter cannot be empty");
     false;
 };
 
 if (_opforFaction == "") exitWith {
-    ["faction parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("faction parameter cannot be empty");
     false;
 };
 
 if (isNull _arsenal) exitWith {
-    ["arsenal parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("arsenal parameter cannot be empty");
     false;
 };
 

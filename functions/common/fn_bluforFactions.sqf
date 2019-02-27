@@ -36,6 +36,11 @@ if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Mil
     _addons pushBack "CupBundeswehr";
 };
 
+private _has3cbVehicles = isClass (configfile >> "CfgPatches" >> "UK3CB_BAF_Vehicles");
+if (_has3cbVehicles && isClass (configfile >> "CfgPatches" >> "UK3CB_BAF_Units_MTP")) then {
+    _addons pushBack "Uk3CbBaf";
+};
+
 if (_addons isEqualTo []) then {
     _addons = ["Nato"];
 };

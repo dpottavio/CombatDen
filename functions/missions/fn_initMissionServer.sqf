@@ -12,28 +12,20 @@
 
     Main mission setup.
 */
-params [
-    ["_group",         grpNull,  [grpNull]],
-    ["_bluforParam",   "",       [""]],
-    ["_missionParam",  -1,       [0]],
-    ["_hourParam",     -1,       [0]],
-    ["_opforParam",    "",       [""]],
-    ["_difficulty",    0,        [0]]
-];
+#include "..\..\macros.hpp"
+
+params [["_group", grpNull, [grpNull]]];
 
 if (!isServer) exitWith {};
 
-private _missionValues = getArray(missionConfigFile >> "Params" >> "Mission" >> "values");
-private _missionCount  = (count _missionValues) - 1;
-private _mission       = 0;
-
-if (_missionParam < 0) then {
+private _mission = den_cba_mission;
+if (_mission < 0) then {
+    private _missionValues = getArray(missionConfigFile >> "CfgSettings" >> "Mission" >> "values");
+    private _missionCount  = (count _missionValues) - 1;
     _mission = [0, _missionCount - 1] call BIS_fnc_randomInt;
-} else {
-    _mission = _missionParam;
 };
 
-private _hourMonth = [_hourParam] call den_fnc_randTime;
+private _hourMonth = [den_cba_timeOfDay] call den_fnc_randTime;
 private _month     = _hourMonth select 1;
 
 private _lowDaylight = [] call den_fnc_lowDaylight;
@@ -43,7 +35,7 @@ private _lowDaylight = [] call den_fnc_lowDaylight;
 /*
  * select blufor faction
  */
-private _bluforFaction = _bluforParam;
+private _bluforFaction = den_cba_friendlyFaction;
 if (_bluforFaction == "") then {
     private _factions = [] call den_fnc_bluforFactions;
     _bluforFaction = configName (selectRandom _factions);
@@ -78,13 +70,17 @@ private _transport = [getPosATL den_heloMarker, _bluforFaction] call den_fnc_spa
 /*
  * select opfor faction
  */
-private _opforFaction = _opforParam;
+private _opforFaction = den_cba_enemyFaction;
 if (_opforFaction == "") then {
     private _factions = [] call den_fnc_opforFactions;
     _opforFaction = configName (selectRandom _factions);
 };
 
-private _missionArgs = [_group, _transport, _bluforFaction, _opforFaction, _difficulty];
+if (isMultiPlayer) then {
+    [den_cba_respawnTickets] call BIS_fnc_paramRespawnTickets;
+};
+
+private _missionArgs = [_group, _transport, _bluforFaction, _opforFaction, den_cba_difficulty];
 private _zone        = "";
 
 switch (_mission) do {
@@ -110,8 +106,12 @@ switch (_mission) do {
         _zone = _missionArgs call den_fnc_urbanServer;
     };
     default {
-        ["invalid mission type"] call BIS_fnc_error;
+        ERROR("invalid mission type");
     };
+};
+
+if (_zone == "") exitWith {
+    [];
 };
 
 [_mission, _opforFaction, _zone, _transport, _bluforFaction];

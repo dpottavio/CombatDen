@@ -22,13 +22,15 @@
 
     Returns: true
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_pos",  [], [[]], [2,3]],
     ["_name", "", [""]]
 ];
 
 if (_name == "") exitWith {
-     ["name parameter cannot be empty"] call BIS_fnc_error;
+     ERROR("name parameter cannot be empty");
      false;
 };
 
@@ -65,7 +67,7 @@ if (_climate == "Tropic" || _climate == "Wood") then {
 };
 
 if (_objs isEqualTo []) exitWith {
-    ["name parameter does not exists"] call BIS_fnc_error;
+    ERROR("name parameter does not exists");
     false;
 };
 

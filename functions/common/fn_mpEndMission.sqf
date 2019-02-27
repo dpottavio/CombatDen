@@ -18,10 +18,15 @@
 
     Returns: true
 */
-if (!isMultiplayer) exitWith {false};
+#include "..\..\macros.hpp"
+
+if (!isMultiplayer) exitWith {
+    WARNING("not in multi player");
+    false
+};
 
 if (!isServer) exitWith {
-    ["must be called on server"] call BIS_fnc_error;
+    ERROR("must be called on server");
     false;
 };
 

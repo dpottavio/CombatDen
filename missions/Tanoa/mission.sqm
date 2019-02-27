@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=69;
+		nextID=73;
 	};
 	class Camera
 	{
@@ -405,7 +405,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""SquadLeader""];" \n "}";
+						init="call{[this, ""SquadLeader""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha1";
 						description="Squad Leader";
 						isPlayer=1;
@@ -468,7 +468,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
+						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha2";
 						description="Autoriflemen";
 						isPlayable=1;
@@ -531,7 +531,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
+						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha3";
 						description="Autoriflemen";
 						isPlayable=1;
@@ -594,7 +594,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Grenadier""];" \n "}";
+						init="call{[this, ""Grenadier""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha4";
 						description="Grenadier";
 						isPlayable=1;
@@ -657,7 +657,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];" \n "}";
+						init="call{[this, ""At""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -720,7 +720,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];}";
+						init="call{[this, ""At""] call den_fnc_initPlayer}";
 						name="den_alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -783,7 +783,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Marksmen""];" \n "}";
+						init="call{[this, ""Marksmen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha7";
 						description="Marksmen";
 						isPlayable=1;
@@ -846,7 +846,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Medic""];" \n "}";
+						init="call{[this, ""Medic""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha8";
 						description="Medic";
 						isPlayable=1;

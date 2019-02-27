@@ -27,6 +27,8 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_unit",        objNull, [objNull]],
     ["_role",        "",      [""]],
@@ -38,12 +40,12 @@ params [
 if !(local _unit) exitWith {};
 
 if (_role == "") exitWith {
-    ["role is empty"] call BIS_fnc_error;
+    ERROR("role is empty");
     false;
 };
 
 if (_faction == "") exitWith {
-    ["faction is empty"] call BIS_fnc_error;
+    ERROR("faction is empty");
     false;
 };
 
@@ -55,7 +57,7 @@ if (_type != "") then {
 } else {
     private _loadouts = "getNumber(_x >> ""default"") == 1" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role);
     if (_loadouts isEqualTo []) exitWith {
-        ["no default loadouts"] call BIS_fnc_error;
+        ERROR("no default loadouts");
         false;
     };
    _loadout = _loadouts select 0;
@@ -121,16 +123,12 @@ private _backpackItems = configProperties [_loadout >> "BackpackItems"];
 private _primaryMag      = getText   (_loadout >> "primaryMag");
 private _primaryMagCount = getNumber (_loadout >> "primaryMagCount");
 
-for [{_x = 0}, {_x < _primaryMagCount}, {_x = _x + 1}] do {
-    _unit addMagazine _primaryMag;
-};
+_unit addMagazines [_primaryMag, _primaryMagCount];
 
 private _secondaryMag      = getText   (_loadout >> "secondaryMag");
 private _secondaryMagCount = getNumber (_loadout >> "secondaryMagCount");
 
-for [{_x = 0}, {_x < _secondaryMagCount}, {_x = _x + 1}] do {
-    _unit addMagazine _secondaryMag;
-};
+_unit addMagazines [_secondaryMag, _secondaryMagCount];
 
 _unit addWeapon getText (_loadout >> "rifle");
 _unit addWeapon getText (_loadout >> "handgun");

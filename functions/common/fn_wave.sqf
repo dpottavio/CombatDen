@@ -43,6 +43,8 @@
 
     Returns: BOOL - true
 */
+#include "..\..\macros.hpp"
+
 [_this] spawn {
     private ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
 
@@ -54,6 +56,16 @@
     _threshold = _args param [4, 0.25, [0]];
     _cooldown  = _args param [5, 60,   [0]];
     _notify    = _args param [6, true, [true]];
+
+    if (_area isEqualTo []) exitWith {
+        ERROR("empty area");
+    };
+    if (_spawnList isEqualTo []) exitWith {
+        ERROR("empty spawn list");
+    };
+    if (_faction == "") exitWith {
+        ERROR("no faction specified");
+    };
 
     {
         private _total = {((side _x) == opfor) && ((getPos _x) inArea _area)} count allUnits;

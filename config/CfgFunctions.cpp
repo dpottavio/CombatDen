@@ -22,10 +22,10 @@ class CfgFunctions
             class buildingOccupy {};
             class commandChat {};
             class composition {};
+            class diaryHelp {};
             class extract {};
-            class friendlyFire {};
-            class groupMarker {};
             class hostage {};
+            class initPlayer {};
             class insert {};
             class loadout {};
             class lowDaylight {};
@@ -68,6 +68,11 @@ class CfgFunctions
             class urbanLocal {};
             class urbanServer{};
         };
+        class settings
+        {
+            file = "functions\settings";
+            class factionOptions {};
+        };
         class ui
         {
             file = "functions\ui";
@@ -76,8 +81,6 @@ class CfgFunctions
             class uiLoadoutDiag {};
             class uiLoadoutGetUnit {};
             class uiLoadoutOkAction {};
-            class uiParamDiag {};
-            class uiParamOkAction {};
         };
     };
 };

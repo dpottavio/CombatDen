@@ -26,6 +26,8 @@
 
     Returns: STRING - zone location name, empty string on error.
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_playerGroup",   grpNull, [grpNull]],
     ["_helo",          objNull, [objNull]],
@@ -35,22 +37,22 @@ params [
 ];
 
 if (isNull _playerGroup) exitWith {
-    ["group parameter must not be null"] call BIS_fnc_error;
+    ERROR("group parameter must not be null");
     "";
 };
 
 if (isNull _helo) exitWith {
-    ["helo parameter must not be null"] call BIS_fnc_error;
+    ERROR("helo parameter cannot be empty");
     "";
 };
 
 if (_bluforFaction == "") exitWith {
-    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    ERROR("blufor faction cannot be empty");
     "";
 };
 
 if (_opforFaction == "") exitWith {
-    ["opfor faction cannot be empty"] call BIS_fnc_error;
+    ERROR("opfor faction cannot be empty");
     "";
 };
 
@@ -76,6 +78,7 @@ private _zone = [
 ] call den_fnc_zone;
 
 if (_zone isEqualTo []) exitWith {
+    ERROR("zone failure");
     "";
 };
 

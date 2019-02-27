@@ -14,6 +14,19 @@ class CfgFactions
     /*
      * base classes
      */
+    class Baf
+    {
+        side        = "WEST";
+        name        = "BAF";
+        flagTexture = "a3\data_f\flags\flag_uk_co.paa";
+        voices[]    = {
+            "Male01ENGB",
+            "Male02ENGB",
+            "Male03ENGB",
+            "Male04ENGB",
+            "Male05ENGB"
+        };
+    };
     class ChDkzBase
     {
         side = "EAST";
@@ -128,19 +141,9 @@ class CfgFactions
     /*
      * CUP factions
      */
-    class CupBaf
+    class CupBaf : Baf
     {
-        side        = "WEST";
-        name        = "BAF";
-        flagTexture = "a3\data_f\flags\flag_uk_co.paa";
-        addon       = "CUP";
-        voices[]    = {
-            "Male01ENGB",
-            "Male02ENGB",
-            "Male03ENGB",
-            "Male04ENGB",
-            "Male05ENGB"
-        };
+        addon = "CUP";
     };
     class CupBundeswehr
     {
@@ -234,6 +237,14 @@ class CfgFactions
     };
 
     /*
+     *  3CB BAF
+     */
+    class Uk3CbBaf : Baf
+    {
+        addon = "3CB";
+    };
+
+    /*
      * faction terrains
      */
     class SemiArid
@@ -243,6 +254,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class Nato          : Nato {};
         class RhsUsmc       : RhsUsmc {};
+        class Uk3CbBaf      : Uk3CbBaf {};
 
 
         class CfpAlQaeda   : CfpAlQaeda {};
@@ -263,6 +275,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class Nato          : Nato {};
         class RhsUsmc       : RhsUsmc {};
+        class Uk3CbBaf      : Uk3CbBaf {};
 
         class Csat               : Csat {};
         class CfpAlQaeda         : CfpAlQaeda {};
@@ -282,6 +295,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class Nato          : Nato {};
         class RhsUsmc       : RhsUsmc {};
+        class Uk3CbBaf      : Uk3CbBaf {};
 
         class CfpAlShabaab : CfpAlShabaab {};
         class CfpBokoHaram : CfpBokoHaram {};
@@ -300,6 +314,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class Nato          : Nato {};
         class RhsUsmc       : RhsUsmc {};
+        class Uk3CbBaf      : Uk3CbBaf {};
 
         class Csat      : Csat {};
         class CupChDkz  : CupChDkz {};

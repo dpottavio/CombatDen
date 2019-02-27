@@ -16,7 +16,7 @@
 
     Parameter(s):
 
-    0: NUMBER - Mission type defined by Params >> "Mission" >> "Values".
+    0: NUMBER - Mission type defined by "CfgSettings" >> "Mission" >> "Values".
     This value cannot be -1 however.
 
     1: STRING - enemy zone
@@ -27,6 +27,8 @@
 
     Returns: true
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_type",          0,       [0]],
     ["_zone",          "",      [""]],
@@ -39,32 +41,33 @@ params [
 private _bluforFactionName = getText (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "name");
 private _opforFactionName  = getText (missionConfigFile >> "CfgFactions" >> _opforFaction >> "name");
 
+private _success = false;
 private _missionArgs = [_zone, _helo, _bluforFactionName , _opforFactionName, _arsenal];
 switch (_type) do {
     case 0: {
-        _missionArgs call den_fnc_defendLocal;
+        _success = _missionArgs call den_fnc_defendLocal;
     };
     case 1: {
-        _missionArgs call den_fnc_demoLocal;
+        _success = _missionArgs call den_fnc_demoLocal;
     };
     case 2: {
-        _missionArgs call den_fnc_campLocal;
+        _success = _missionArgs call den_fnc_campLocal;
     };
     case 3: {
-        _missionArgs call den_fnc_chemLocal;
+        _success = _missionArgs call den_fnc_chemLocal;
     };
     case 4: {
-       _missionArgs call den_fnc_clearLocal;
+       _success = _missionArgs call den_fnc_clearLocal;
     };
     case 5: {
-        _missionArgs call den_fnc_hostageLocal;
+        _success = _missionArgs call den_fnc_hostageLocal;
     };
     case 6: {
-        _missionArgs call den_fnc_urbanLocal;
+        _success = _missionArgs call den_fnc_urbanLocal;
     };
     default {
-        ["invalid mission type"] call BIS_fnc_error;
+        ERROR("invalid mission type");
     };
 };
 
-true;
+_success;

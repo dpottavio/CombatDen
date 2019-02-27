@@ -775,6 +775,118 @@ class CfgGroups
             };
         };
     };
+    class Uk3CbBaf
+    {
+        class SemiArid
+        {
+            class TruckCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                };
+            };
+            class HeloPilot : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                };
+            };
+            class HeloCrew : SentryBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_HeliCrew_MTP_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_HeliCrew_MTP_RM";
+                };
+            };
+            class Pilot : SingleBase
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+           class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Tropic : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+        class Wood : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+        };
+    };
     class Csat
     {
         accLight = DEFAULT_ACC_LIGHT;

@@ -96,4 +96,24 @@ class CfgVehicles
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
     };
+    class Uk3CbBaf
+    {
+        class SemiArid
+        {
+            heloTransport      = "UK3CB_BAF_Wildcat_AH1_TRN_8A_MTP_RM";
+            heloTransportLarge = "UK3CB_BAF_Merlin_HC4_18_MTP_RM";
+            heloCargo          = "UK3CB_BAF_Merlin_HC4_Cargo_MTP_RM";
+            supplyTruckAmmo    = "UK3CB_BAF_MAN_HX58_Cargo_Green_B_MTP_RM";
+            supplyTruck        = "UK3CB_BAF_MAN_HX58_Cargo_Green_B_MTP_RM";
+            supplyTruckFuel    = "UK3CB_BAF_MAN_HX60_Fuel_Green_MTP_RM";
+        };
+        class Arid   : SemiArid
+        {
+            supplyTruckAmmo = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
+            supplyTruck     = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
+            supplyTruckFuel = "UK3CB_BAF_MAN_HX60_Fuel_Sand_MTP_RM";
+        };
+        class Tropic : SemiArid {};
+        class Wood   : SemiArid {};
+    };
 };

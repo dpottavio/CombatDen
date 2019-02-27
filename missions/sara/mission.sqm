@@ -1,29 +1,25 @@
 version=53;
 class EditorData
 {
-	moveGridStep=0.125;
+	moveGridStep=1;
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1037;
+	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=3513;
-	};
-	class MarkerIDProvider
-	{
-		nextID=25;
+		nextID=16;
 	};
 	class LayerIndexProvider
 	{
-		nextID=209;
+		nextID=3;
 	};
 	class Camera
 	{
-		pos[]={12674.066,9.1643982,3384.0947};
-		dir[]={-0.96553588,-0.20101587,0.16598679};
-		up[]={-0.19815062,0.97956473,0.034065131};
-		aside[]={0.16944689,1.3068347e-006,0.98566604};
+		pos[]={3571.1907,7.9249597,12564.106};
+		dir[]={0.097616412,-0.036490809,0.9945569};
+		up[]={0.0035644902,0.99933463,0.036316484};
+		aside[]={0.99522108,4.8712536e-009,-0.097681679};
 	};
 };
 binarizationWanted=0;
@@ -77,494 +73,32 @@ class AddonsMetaData
 		};
 	};
 };
-randomSeed=8535173;
+randomSeed=11574506;
 class ScenarioData
 {
 	author="ottavio";
 	overviewText="Randomized missions.";
 	overViewPicture="title.jpg";
-	respawnDialog=0;
-	respawn=3;
-	respawnDelay=30.000002;
-	class Header
-	{
-		gameType="Coop";
-		minPlayers=1;
-		maxPlayers=8;
-	};
-	wreckRemovalMaxTime=3600;
-};
-class CustomAttributes
-{
-	class Category0
-	{
-		name="ace_arsenal_DummyCategory";
-		class Attribute0
-		{
-			property="ace_arsenal_DefaultLoadoutsListAttribute";
-			expression="if (!is3DEN) then {ace_arsenal_defaultLoadoutsList= _value}";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-				};
-			};
-		};
-		nAttributes=1;
-	};
-	class Category1
-	{
-		name="Multiplayer";
-		class Attribute0
-		{
-			property="RespawnButton";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=1;
-				};
-			};
-		};
-		class Attribute1
-		{
-			property="ReviveUnconsciousStateMode";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=1;
-				};
-			};
-		};
-		class Attribute2
-		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-					class value
-					{
-						items=4;
-						class Item0
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="MenuPosition";
-							};
-						};
-						class Item1
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="Spectator";
-							};
-						};
-						class Item2
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="Tickets";
-							};
-						};
-						class Item3
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="TicketsSpawn";
-							};
-						};
-					};
-				};
-			};
-		};
-		class Attribute3
-		{
-			property="ReviveMode";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=0;
-				};
-			};
-		};
-		class Attribute4
-		{
-			property="ReviveRequiredItems";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=2;
-				};
-			};
-		};
-		nAttributes=5;
-	};
-	class Category2
-	{
-		name="Scenario";
-		class Attribute0
-		{
-			property="cba_settings_hash";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-					class value
-					{
-						items=4;
-						class Item0
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="#CBA_HASH#";
-							};
-						};
-						class Item1
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"ARRAY"
-									};
-								};
-								class value
-								{
-									items=3;
-									class Item0
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="ace_medical_enablerevive";
-										};
-									};
-									class Item1
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="ace_medical_medicsetting_basicepi";
-										};
-									};
-									class Item2
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="ace_advanced_fatigue_enabled";
-										};
-									};
-								};
-							};
-						};
-						class Item2
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"ARRAY"
-									};
-								};
-								class value
-								{
-									items=3;
-									class Item0
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"ARRAY"
-												};
-											};
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														class type
-														{
-															type[]=
-															{
-																"SCALAR"
-															};
-														};
-														value=0;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														class type
-														{
-															type[]=
-															{
-																"SCALAR"
-															};
-														};
-														value=1;
-													};
-												};
-											};
-										};
-									};
-									class Item1
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"ARRAY"
-												};
-											};
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														class type
-														{
-															type[]=
-															{
-																"SCALAR"
-															};
-														};
-														value=1;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														class type
-														{
-															type[]=
-															{
-																"SCALAR"
-															};
-														};
-														value=1;
-													};
-												};
-											};
-										};
-									};
-									class Item2
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"ARRAY"
-												};
-											};
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														class type
-														{
-															type[]=
-															{
-																"BOOL"
-															};
-														};
-														value=0;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														class type
-														{
-															type[]=
-															{
-																"SCALAR"
-															};
-														};
-														value=0;
-													};
-												};
-											};
-										};
-									};
-								};
-							};
-						};
-						class Item3
-						{
-							class data
-							{
-								nil=1;
-								class type
-								{
-									type[]=
-									{
-										"ANY"
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-		nAttributes=1;
-	};
 };
 class Mission
 {
 	class Intel
 	{
-		briefingName="Combat Den: Altis";
-		overviewText="Randomized missions.";
-		resistanceWest=0;
+		briefingName="Combat Den: Sahrani ";
 		timeOfChanges=1800.0002;
-		startWeather=0.30000001;
+		startWeather=0.1;
 		startWind=0.1;
 		startWaves=0.1;
 		forecastWeather=0.30000001;
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
-		year=2035;
+		wavesForced=1;
+		windForced=1;
+		year=2007;
 		month=6;
-		day=24;
-		hour=12;
-		minute=0;
+		day=7;
+		hour=8;
 		startFogDecay=0.014;
 		forecastFogDecay=0.014;
 	};
@@ -583,7 +117,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12675.915,-1.8065033,3455.1111};
+						position[]={3578.6572,-1.6620191,12609.767};
 						angles[]={0,3.2381094,0};
 					};
 					side="Empty";
@@ -591,9 +125,9 @@ class Mission
 					{
 						name="den_destroyer";
 					};
-					id=2696;
+					id=1;
 					type="Land_Destroyer_01_base_F";
-					atlOffset=155.15199;
+					atlOffset=37.475773;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -659,19 +193,19 @@ class Mission
 				class Item1
 				{
 					dataType="Marker";
-					position[]={12539.29,-32.411999,3663.4089};
+					position[]={3442.0322,91.231964,12818.064};
 					name="navalMarker";
 					text="Naval FOB";
 					type="b_naval";
-					id=2698;
-					atlOffset=133.08444;
+					id=2;
+					atlOffset=133.10519;
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12664.321,7.8150482,3409.5933};
+						position[]={3567.0635,7.9638252,12564.248};
 						angles[]={0,0.069533914,0};
 					};
 					side="Empty";
@@ -679,9 +213,9 @@ class Mission
 					{
 						name="den_arsenal";
 					};
-					id=2715;
+					id=3;
 					type="B_CargoNet_01_ammo_F";
-					atlOffset=164.653;
+					atlOffset=45.480209;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -711,7 +245,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12668.625,7.1037445,3380.375};
+						position[]={3571.3516,8.0240641,12535.231};
 						angles[]={0,0.099361591,0};
 					};
 					side="Empty";
@@ -719,13 +253,13 @@ class Mission
 					{
 						name="den_heloMarker";
 					};
-					id=2819;
+					id=4;
 					type="Land_HelipadEmpty_F";
-					atlOffset=0.14977407;
+					atlOffset=0.92565918;
 				};
 			};
-			id=2694;
-			atlOffset=156.86819;
+			id=0;
+			atlOffset=55.563141;
 		};
 		class Item1
 		{
@@ -739,21 +273,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12665.75,6.9953966,3422.55};
+						position[]={3568.9919,7.1400347,12576.809};
 						angles[]={0,3.1260941,0};
 					};
 					side="West";
 					flags=3;
 					class Attributes
 					{
-						init="call{[this,""SquadLeader""] call den_fnc_initPlayer" \n "}";
+						init="call{[this, ""SquadLeader""] call den_fnc_initPlayer;" \n "}";
 						name="den_alpha1";
 						description="Squad Leader";
 						isPlayer=1;
 					};
-					id=2774;
+					id=6;
 					type="B_Soldier_F";
-					atlOffset=164.286;
+					atlOffset=45.671001;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -802,11 +336,11 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12668.75,6.9950609,3422.05};
+						position[]={3570.998,7.1402826,12576.303};
 						angles[]={0,3.0235908,0};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
@@ -814,9 +348,9 @@ class Mission
 						description="Autoriflemen";
 						isPlayable=1;
 					};
-					id=2775;
+					id=7;
 					type="B_Soldier_F";
-					atlOffset=164.55901;
+					atlOffset=0.00018692017;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -865,7 +399,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12671.5,6.9956865,3421.425};
+						position[]={3573.3059,7.1403246,12576.007};
 						angles[]={0,3.1564105,0};
 					};
 					side="West";
@@ -877,9 +411,9 @@ class Mission
 						description="Autoriflemen";
 						isPlayable=1;
 					};
-					id=2776;
+					id=8;
 					type="B_Soldier_F";
-					atlOffset=7.4863434e-005;
+					atlOffset=0.00022888184;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -928,11 +462,11 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12675.125,6.9955645,3420.925};
-						angles[]={0,3.4540241,0};
+						position[]={3575.51,7.1403513,12576.095};
+						angles[]={0,3.2217207,0};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="call{[this, ""Grenadier""] call den_fnc_initPlayer" \n "}";
@@ -940,9 +474,9 @@ class Mission
 						description="Grenadier";
 						isPlayable=1;
 					};
-					id=2778;
+					id=9;
 					type="B_Soldier_F";
-					atlOffset=165.16299;
+					atlOffset=0.00025558472;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -991,7 +525,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12679.125,6.9955797,3420.925};
+						position[]={3578.2061,7.1399584,12575.729};
 						angles[]={0,3.202173,0};
 					};
 					side="West";
@@ -1003,9 +537,9 @@ class Mission
 						description="Anti-Tank";
 						isPlayable=1;
 					};
-					id=2779;
+					id=10;
 					type="B_Soldier_F";
-					atlOffset=165.53101;
+					atlOffset=45.760002;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1054,21 +588,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12675.5,6.9957018,3424.8};
+						position[]={3581.353,7.1399164,12575.476};
 						angles[]={0,3.3483794,0};
 					};
 					side="West";
-					flags=5;
+					flags=1;
 					class Attributes
 					{
-						init="call{[this, ""At""] call den_fnc_initPlayer}";
+						init="call{[this, ""At""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
 					};
-					id=2780;
+					id=11;
 					type="B_Soldier_F";
-					atlOffset=9.0122223e-005;
+					atlOffset=45.794998;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1117,7 +651,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12672.75,6.9950609,3425.05};
+						position[]={3576.084,7.1396112,12579.374};
 						angles[]={0,3.2225411,0};
 					};
 					side="West";
@@ -1129,9 +663,9 @@ class Mission
 						description="Marksmen";
 						isPlayable=1;
 					};
-					id=2781;
+					id=12;
 					type="B_Soldier_F";
-					atlOffset=164.799;
+					atlOffset=45.785004;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1180,7 +714,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12678.286,6.9957018,3424.322};
+						position[]={3580.2739,7.140172,12578.536};
 						angles[]={0,3.2472723,0};
 					};
 					side="West";
@@ -1192,9 +726,9 @@ class Mission
 						description="Medic";
 						isPlayable=1;
 					};
-					id=2783;
+					id=13;
 					type="B_medic_F";
-					atlOffset=9.0122223e-005;
+					atlOffset=7.6293945e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1243,31 +777,8 @@ class Mission
 			{
 				name="den_alpha";
 			};
-			id=2773;
-			atlOffset=164.286;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Alpha";
-						};
-					};
-				};
-				nAttributes=1;
-			};
+			id=5;
+			atlOffset=45.671001;
 		};
 	};
 };

@@ -54,6 +54,8 @@
     1: area of the zone
     2: list of safe positions
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_types",         [],    [[]]],
     ["_radius",        500,   [0]],
@@ -137,7 +139,7 @@ private _safePosList = [];
 } forEach _locationList;
 
 if ((count _safePosList) != (count _safePosParams)) exitWith {
-    ["failed to find a safe location"] call BIS_fnc_error;
+    ERROR("failed to find a safe location");
     [];
 };
 

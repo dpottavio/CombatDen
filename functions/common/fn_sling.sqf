@@ -27,6 +27,8 @@
 
     Returns: OBJECT - helicopter on success
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_obj",           objNull, [objNull]],
     ["_bluforFaction", "",      [""]],
@@ -35,12 +37,12 @@ params [
 ];
 
 if (_obj == objNull) exitWith {
-    ["object parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("object parameter cannot be empty");
     objNull;
 };
 
 if (_bluforFaction == "") exitWith {
-    ["blufor faction parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("blufor faction parameter cannot be empty");
     objNull;
 };
 

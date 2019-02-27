@@ -29,6 +29,8 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_lzPos",      [],      [[]],      [2,3]],
     ["_cargoGroup", grpNull, [grpNull]],
@@ -37,12 +39,12 @@ params [
 ];
 
 if (isNull _cargoGroup) exitWith {
-    ["cargo parameter is null"] call BIS_fnc_error;
+    ERROR("cargo parameter is null");
     false;
 };
 
 if (isNull _helo) exitWith {
-    ["helo parameter is null"] call BIS_fnc_error;
+    ERROR("helo parameter is null");
     false;
 };
 

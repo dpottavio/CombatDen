@@ -11,15 +11,115 @@
 
 class CfgArsenal
 {
+    class ArsenalBase
+    {
+        baseGrenades[] = {
+            "Chemlight_blue",
+            "Chemlight_green",
+            "Chemlight_red",
+            "Chemlight_yellow",
+            "ACE_HandFlare_Green",
+            "ACE_HandFlare_White",
+            "ACE_HandFlare_Yellow",
+            "ACE_HandFlare_Red",
+            "ACE_Chemlight_HiOrange",
+            "ACE_Chemlight_HiRed",
+            "ACE_Chemlight_HiWhite",
+            "ACE_Chemlight_HiYellow",
+            "ACE_Chemlight_IR",
+            "ACE_Chemlight_Orange",
+            "ACE_Chemlight_White"
+        };
+        baseMisc[] = {
+            "ACE_fieldDressing",
+            "ACE_elasticBandage",
+            "ACE_SpraypaintBlack",
+            "ACE_SpraypaintBlue",
+            "ACE_SpraypaintGreen",
+            "ACE_SpraypaintRed",
+            "ACE_adenosine",
+            "ACE_atropine",
+            "ACE_bloodIV",
+            "ACE_bloodIV_250",
+            "ACE_bloodIV_500",
+            "ACE_quikclot",
+            "ACE_CableTie",
+            "ACE_EarPlugs",
+            "ACE_EntrenchingTool",
+            "ACE_epinephrine",
+            "ACE_HuntIR_monitor",
+            "ACE_Flashlight_XL50",
+            "ACE_Flashlight_MX991",
+            "ACE_Flashlight_KSF1",
+            "ACE_MapTools",
+            "ACE_microDAGR",
+            "ACE_DAGR",
+            "ACE_morphine",
+            "ACE_personalAidKit",
+            "ACE_plasmaIV",
+            "ACE_plasmaIV_250",
+            "ACE_plasmaIV_500",
+            "ACE_salineIV",
+            "ACE_salineIV_250",
+            "ACE_salineIV_500",
+            "ACE_surgicalKit",
+            "ACE_tourniquet",
+            "ItemMap",
+            "ItemRadio",
+            "ItemCompass",
+            "ItemWatch"
+        };
+        baseMags[] = {
+            "ACE_30Rnd_556x45_Stanag_M995_AP_mag",
+            "ACE_30Rnd_556x45_Stanag_Mk262_mag",
+            "ACE_30Rnd_556x45_Stanag_Mk318_mag",
+            "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
+            "ACE_20Rnd_762x51_M118LR_Mag",
+            "ACE_20Rnd_762x51_M993_AP_Mag",
+            "ACE_20Rnd_762x51_Mk316_Mod_0_Mag",
+            "ACE_20Rnd_762x51_Mk319_Mod_0_Mag",
+            "ACE_20Rnd_762x51_Mag_SD",
+            "ACE_20Rnd_762x51_Mag_Tracer_Dim",
+            "ACE_20Rnd_762x51_Mag_Tracer"
+        };
+        baseExplosives[] = {
+            "DemoCharge_Remote_Mag",
+            "SatchelCharge_Remote_Mag"
+        };
+        baseNvg[] = {
+            "ACE_NVG_Wide",
+            "ACE_NVG_Gen4"
+        };
+        baseBinoculars[] = {
+            "Binocular",
+            "ACE_Vector",
+            "ACE_Yardage450"
+        };
+        baseAttachments[] = {
+            "acc_flashlight",
+            "ACE_acc_pointer_green",
+            "ACE_acc_pointer_green_IR"
+        };
+        baseFaceware[] = {
+            "G_Bandanna_beast",
+            "G_Bandanna_blk",
+            "G_Bandanna_oli",
+            "G_Combat",
+            "G_Lowprofile",
+            "G_Shades_Black",
+            "G_Shades_Blue",
+            "G_Shades_Green",
+            "G_Shades_Red",
+            "G_Tactical_Clear",
+            "G_Tactical_Black"
+        };
+    };
+
     class Nato
     {
-        class ArsenalBase
+        class Base : ArsenalBase
         {
             grenades[] = {
-                "Chemlight_blue",
-                "Chemlight_green",
-                "Chemlight_red",
-                "Chemlight_yellow",
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
@@ -32,61 +132,8 @@ class CfgArsenal
             aceGrenades[] = {
                 "ACE_M14",
                 "ACE_M84",
-                "ACE_HandFlare_Green",
-                "ACE_HandFlare_White",
-                "ACE_HandFlare_Yellow",
-                "ACE_HandFlare_Red",
-                "ACE_Chemlight_HiOrange",
-                "ACE_Chemlight_HiRed",
-                "ACE_Chemlight_HiWhite",
-                "ACE_Chemlight_HiYellow",
-                "ACE_Chemlight_IR",
-                "ACE_Chemlight_Orange",
-                "ACE_Chemlight_White"
             };
-            explosives[] = {
-                "DemoCharge_Remote_Mag",
-                "SatchelCharge_Remote_Mag",
-            };
-            misc[] = {
-                "ACE_fieldDressing",
-                "ACE_elasticBandage",
-                "ACE_SpraypaintBlack",
-                "ACE_SpraypaintBlue",
-                "ACE_SpraypaintGreen",
-                "ACE_SpraypaintRed",
-                "ACE_adenosine",
-                "ACE_atropine",
-                "ACE_bloodIV",
-                "ACE_bloodIV_250",
-                "ACE_bloodIV_500",
-                "ACE_quikclot",
-                "ACE_CableTie",
-                "ACE_EarPlugs",
-                "ACE_EntrenchingTool",
-                "ACE_epinephrine",
-                "ACE_HuntIR_monitor",
-                "ACE_Flashlight_XL50",
-                "ACE_Flashlight_MX991",
-                "ACE_Flashlight_KSF1",
-                "ACE_MapTools",
-                "ACE_microDAGR",
-                "ACE_DAGR",
-                "ACE_morphine",
-                "ACE_personalAidKit",
-                "ACE_plasmaIV",
-                "ACE_plasmaIV_250",
-                "ACE_plasmaIV_500",
-                "ACE_salineIV",
-                "ACE_salineIV_250",
-                "ACE_salineIV_500",
-                "ACE_surgicalKit",
-                "ACE_tourniquet",
-                "ItemMap",
-                "ItemRadio",
-                "ItemCompass",
-                "ItemWatch"
-            };
+
             mags[] = {
                 "30Rnd_65x39_caseless_mag",
                 "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim",
@@ -117,7 +164,6 @@ class CfgArsenal
                 "UGL_FlareRed_F",
                 "UGL_FlareWhite_F",
                 "UGL_FlareYellow_F",
-                "ACE_HuntIR_M203",
                 "1Rnd_SmokeBlue_Grenade_shell",
                 "1Rnd_SmokeGreen_Grenade_shell",
                 "1Rnd_SmokeOrange_Grenade_shell",
@@ -127,13 +173,6 @@ class CfgArsenal
                 "1Rnd_SmokeYellow_Grenade_shell",
                 "130Rnd_338_Mag",
                 "20Rnd_762x51_Mag",
-                "ACE_20Rnd_762x51_M118LR_Mag",
-                "ACE_20Rnd_762x51_M993_AP_Mag",
-                "ACE_20Rnd_762x51_Mk316_Mod_0_Mag",
-                "ACE_20Rnd_762x51_Mk319_Mod_0_Mag",
-                "ACE_20Rnd_762x51_Mag_SD",
-                "ACE_20Rnd_762x51_Mag_Tracer_Dim",
-                "ACE_20Rnd_762x51_Mag_Tracer",
                 "150Rnd_762x54_Box",
                 "150Rnd_762x54_Box_Tracer",
                 "MRAWS_HE_F",
@@ -148,10 +187,6 @@ class CfgArsenal
                 "30Rnd_556x45_Stanag_Tracer_Green",
                 "30Rnd_556x45_Stanag_Tracer_Red",
                 "30Rnd_556x45_Stanag_Tracer_Yellow",
-                "ACE_30Rnd_556x45_Stanag_M995_AP_mag",
-                "ACE_30Rnd_556x45_Stanag_Mk262_mag",
-                "ACE_30Rnd_556x45_Stanag_Mk318_mag",
-                "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
                 "150Rnd_556x45_Drum_Mag_F",
                 "150Rnd_556x45_Drum_Mag_Tracer_F"
             };
@@ -162,15 +197,6 @@ class CfgArsenal
             };
             launchers[] = {
                 "launch_NLAW_F",
-            };
-            nvg[] = {
-                "ACE_NVG_Wide",
-                "ACE_NVG_Gen4"
-            };
-            binoculars[] = {
-                "Binocular",
-                "ACE_Vector",
-                "ACE_Yardage450",
             };
             sights[] = {
                 "ACE_optic_Hamr_2D",
@@ -183,26 +209,8 @@ class CfgArsenal
                 "optic_tws_mg",
                 "optic_NVS",
             };
-            attachments[] = {
-                "acc_flashlight",
-                "ACE_acc_pointer_green",
-                "ACE_acc_pointer_green_IR"
-            };
-            faceware[] = {
-                "G_Bandanna_beast",
-                "G_Bandanna_blk",
-                "G_Bandanna_oli",
-                "G_Combat",
-                "G_Lowprofile",
-                "G_Shades_Black",
-                "G_Shades_Blue",
-                "G_Shades_Green",
-                "G_Shades_Red",
-                "G_Tactical_Clear",
-                "G_Tactical_Black"
-            };
         };
-        class SemiArid : ArsenalBase
+        class SemiArid : Base
         {
             aridSights[] = {
                 "optic_AMS_snd",
@@ -253,7 +261,7 @@ class CfgArsenal
                 "G_Bandanna_khk"
             };
         };
-        class Tropic : ArsenalBase
+        class Tropic : Base
         {
             tropicSights[] = {
                 "optic_AMS",
@@ -295,15 +303,11 @@ class CfgArsenal
         class Arid : SemiArid {};
         class Wood : SemiArid {};
     };
-    class RhsUsmc : Nato
+    class RhsUsmc
     {
-        class ArsenalBase : ArsenalBase
+        class Base : ArsenalBase
         {
             grenades[] = {
-                "Chemlight_blue",
-                "Chemlight_green",
-                "Chemlight_red",
-                "Chemlight_yellow",
                 "rhs_mag_an_m8hc",
                 "rhs_mag_m18_green",
                 "rhs_mag_m18_purple",
@@ -485,15 +489,11 @@ class CfgArsenal
                 "rhs_weap_m72a7",
                 "rhs_weap_smaw_green"
             };
-            nvg[] = {
-                "ACE_NVG_Wide",
-                "ACE_NVG_Gen4",
+            rhsNvg[] = {
                 "rhsusf_ANPVS_14",
                 "rhsusf_ANPVS_15"
             };
             binoculars[] = {
-                "ACE_Vector",
-                "ACE_Yardage450",
                 "rhsusf_bino_lerca_1200_black",
                 "rhsusf_bino_lerca_1200_tan",
                 "rhsusf_bino_m24_ARD"
@@ -560,34 +560,36 @@ class CfgArsenal
                 "rhsusf_acc_wmx_bk"
             };
             faceware[] = {
-                "G_Bandanna_beast",
-                "G_Bandanna_blk",
-                "G_Bandanna_oli",
-                "G_Combat",
-                "G_Lowprofile",
-                "G_Shades_Black",
-                "G_Shades_Blue",
-                "G_Shades_Green",
-                "G_Shades_Red",
-                "G_Tactical_Clear",
-                "G_Tactical_Black",
                 "rhs_googles_black",
                 "rhs_googles_clear",
                 "rhs_googles_yellow",
                 "rhs_googles_orange",
                 "rhs_ess_black"
             };
+            vests[] = {
+                "rhsusf_spc_iar",
+                "rhsusf_spc_light",
+                "rhsusf_spc_mg",
+                "rhsusf_spc_marksman",
+                "rhsusf_spc_rifleman",
+                "rhsusf_spc_squadleader",
+                "rhsusf_spc_teamleader"
+            };
+            backpacks[] = {
+                "rhsusf_assault_eagleaiii_coy",
+                "rhsusf_falconii_coy"
+            };
         };
-        class SemiArid : ArsenalBase {};
-        class Arid     : ArsenalBase {};
-        class Tropic   : ArsenalBase {};
-        class Wood     : ArsenalBase {};
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
     };
-    class Cup : Nato
+    class Cup
     {
-        class ArsenalBase : ArsenalBase
+        class Base : ArsenalBase
         {
-            cupMags[] = {
+            mags[] = {
                 "CUP_20Rnd_556x45_Stanag",
                 "CUP_20Rnd_556x45_Stanag_Tracer_Green",
                 "CUP_20Rnd_556x45_Stanag_Tracer_Red",
@@ -637,7 +639,7 @@ class CfgArsenal
                 "CUP_20Rnd_762x51_HK417",
                 "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"
             };
-            cupsWeapons[] = {
+            weapons[] = {
                 "CUP_hgun_Glock17",
                 "CUP_arifle_HK416_CQB_Black",
                 "CUP_arifle_HK416_CQB_M203_Black",
@@ -699,20 +701,21 @@ class CfgArsenal
                 "CUP_lmg_minimi_railed",
                 "CUP_lmg_minimipara"
             };
-            cupLaunchers[] = {
+            launchers[] = {
                 "CUP_launch_Javelin",
                 "CUP_launch_M136",
                 "CUP_launch_M72A6",
                 "CUP_launch_M72A6_Special",
-                "CUP_launch_MAAWS"
+                "CUP_launch_MAAWS",
+                "CUP_launch_NLAW"
             };
-            cupNvg[] = {
+            nvg[] = {
                 "CUP_NVG_PVS14",
                 "CUP_NVG_PVS15_black",
                 "CUP_NVG_PVS7",
                 "CUP_NVG_GPNVG_black"
             };
-            cupSights[] = {
+            sights[] = {
                 "cup_optic_compm4",
                 "cup_optic_an_pas_13c1",
                 "cup_optic_elcan",
@@ -730,11 +733,11 @@ class CfgArsenal
                 "cup_optic_trijiconrx01_black",
                 "cup_optic_leupoldmk4"
             };
-            cupAttachments[] = {
+            attachments[] = {
                 "cup_acc_anpeq_15",
                 "cup_acc_anpeq_2"
             };
-            cupFaceware[] = {
+            faceware[] = {
                 "CUP_RUS_Balaclava_blk",
                 "CUP_RUS_Balaclava_grn",
                 "CUP_PMC_Facewrap_Black",
@@ -743,15 +746,15 @@ class CfgArsenal
                 "CUP_PMC_Facewrap_Tropical"
             };
         };
-        class SemiArid : ArsenalBase
+        class SemiArid : Base
         {
-            cupSemiAridMags[] = {
+            semiAridMags[] = {
                 "CUP_30Rnd_556x45_Stanag_Mk16",
                 "CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Green",
                 "CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Red",
                 "CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Yellow"
             };
-            cupSemiAridWeapons[] = {
+            semiAridWeapons[] = {
                 "CUP_arifle_HK416_CQB_Desert",
                 "CUP_arifle_HK416_Desert",
                 "CUP_arifle_HK416_M203_Desert",
@@ -783,16 +786,16 @@ class CfgArsenal
             };
         };
         class Arid   : SemiArid {};
-        class Tropic : ArsenalBase
+        class Tropic : Base
         {
-            cupTropicMags[] = {
+            tropicMags[] = {
                 "CUP_30Rnd_556x45_Stanag_Mk16_woodland",
                 "CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Green",
                 "CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Red",
                 "CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Yellow",
                 "CUP_20Rnd_762x51_B_SCAR_wdl"
             };
-            cupTropicWeapons[] = {
+            tropicWeapons[] = {
                 "CUP_arifle_HK416_CQB_Wood",
                 "CUP_arifle_HK416_CQB_M203_Wood",
                 "CUP_arifle_HK416_Wood",
@@ -824,11 +827,23 @@ class CfgArsenal
     };
     class CupUsmc : Cup
     {
-        mags[]    = {};
-        weapons[] = {};
-        sights[]  = {};
-
-        class ArsenalBase : ArsenalBase {};
+        class ArsenalBase : ArsenalBase
+        {
+            cupUsmcBackpacks[] = {
+                "B_AssaultPack_cbr",
+                "B_Kitbag_cbr"
+            };
+            cupUsmcVests[] = {
+                "CUP_V_B_Eagle_SPC_AT",
+                "CUP_V_B_Eagle_SPC_AR",
+                "CUP_V_B_Eagle_SPC_Corpsman",
+                "CUP_V_B_Eagle_SPC_GL",
+                "CUP_V_B_Eagle_SPC_MG",
+                "CUP_V_B_Eagle_SPC_DMR",
+                "CUP_V_B_Eagle_SPC_Patrol",
+                "CUP_V_B_Eagle_SPC_Rifleman"
+            };
+        };
         class SemiArid    : ArsenalBase {};
         class Arid        : ArsenalBase {};
         class Tropic      : ArsenalBase {};
@@ -836,11 +851,20 @@ class CfgArsenal
     };
     class CupBaf : Cup
     {
-        mags[]    = {};
-        weapons[] = {};
-        sights[]  = {};
-
-        class ArsenalBase : ArsenalBase {};
+        class ArsenalBase : ArsenalBase
+        {
+            cupBafBackpacks[] = {
+                "CUP_B_Bergen_BAF",
+                "CUP_B_Motherlode_MTP",
+                "CUP_B_Predator_MTP"
+            };
+            cupBafVests[] = {
+                "CUP_V_B_BAF_MTP_Osprey_Mk4_AutomaticRifleman",
+                "CUP_V_B_BAF_MTP_Osprey_Mk4_Grenadier",
+                "CUP_V_B_BAF_MTP_Osprey_Mk4_Medic",
+                "CUP_V_B_BAF_MTP_Osprey_Mk4_Rifleman"
+            };
+        };
         class SemiArid    : ArsenalBase {};
         class Arid        : ArsenalBase {};
         class Tropic      : ArsenalBase {};
@@ -848,14 +872,197 @@ class CfgArsenal
     };
     class CupBundeswehr : Cup
     {
-        mags[]    = {};
-        weapons[] = {};
-        sights[]  = {};
-
-        class ArsenalBase : ArsenalBase {};
+        class ArsenalBase : ArsenalBase
+        {
+            cupBundesBackpacks[] = {
+                "CUP_B_GER_Pack_Flecktarn",
+                "CUP_B_GER_Medic_FLecktarn"
+            };
+        };
         class SemiArid    : ArsenalBase {};
-        class Arid        : ArsenalBase {};
+        class Arid        : ArsenalBase
+        {
+            cupBundesBackpacks[] = {
+                "CUP_B_GER_Pack_Tropentarn",
+                "CUP_B_GER_Medic_Tropentarn"
+            };
+        };
         class Tropic      : ArsenalBase {};
         class Wood        : ArsenalBase {};
+    };
+    class Uk3CbBaf
+    {
+        class Base : ArsenalBase
+        {
+            grenades[] = {
+                "Chemlight_blue",
+                "Chemlight_green",
+                "Chemlight_red",
+                "Chemlight_yellow",
+                "UK3CB_BAF_SmokeShellYellow",
+                "UK3CB_BAF_SmokeShellPurple",
+                "UK3CB_BAF_HandGrenade_Blank",
+                "UK3CB_BAF_SmokeShell",
+                "UK3CB_BAF_SmokeShellGreen",
+                "UK3CB_BAF_SmokeShellOrange",
+                "UK3CB_BAF_SmokeShellRed",
+                "UK3CB_BAF_SmokeShellBlue"
+            };
+            mags[] = {
+                "UK3CB_BAF_9_17Rnd",
+                "UK3CB_BAF_556_30Rnd",
+                "UK3CB_BAF_556_30Rnd_T",
+                "UK3CB_BAF_762_L42A1_10Rnd",
+                "UK3CB_BAF_762_L42A1_10Rnd_T",
+                "UK3CB_BAF_762_100Rnd",
+                "UK3CB_BAF_762_100Rnd_T",
+                "UK3CB_BAF_762_200Rnd",
+                "UK3CB_BAF_762_200Rnd_T",
+                "UK3CB_BAF_556_100Rnd",
+                "UK3CB_BAF_556_100Rnd_T",
+                "UK3CB_BAF_556_200Rnd",
+                "UK3CB_BAF_556_200Rnd_T",
+                "UK3CB_BAF_338_5Rnd",
+                "UK3CB_BAF_338_5Rnd_Tracer",
+                "UK3CB_BAF_1Rnd_SmokeBlue_Grenade_shell",
+                "UK3CB_BAF_UGL_FlareGreen_F",
+                "UK3CB_BAF_1Rnd_SmokeGreen_Grenade_shell",
+                "UK3CB_BAF_1Rnd_HE_Grenade_Shell",
+                "UK3CB_BAF_1Rnd_HEDP_Grenade_Shell",
+                "UK3CB_BAF_UGL_FlareCIR_F",
+                "UK3CB_BAF_1Rnd_SmokeOrange_Grenade_shell",
+                "UK3CB_BAF_1Rnd_Blank_Grenade_Shell",
+                "UK3CB_BAF_1Rnd_SmokePurple_Grenade_shell",
+                "UK3CB_BAF_UGL_FlareRed_F",
+                "UK3CB_BAF_1Rnd_SmokeRed_Grenade_shell",
+                "UK3CB_BAF_UGL_FlareWhite_F",
+                "UK3CB_BAF_1Rnd_Smoke_Grenade_shell",
+                "UK3CB_BAF_UGL_FlareYellow_F",
+                "UK3CB_BAF_1Rnd_SmokeYellow_Grenade_shell"
+            };
+            weapons[] = {
+                "UK3CB_BAF_L105A1",
+                "UK3CB_BAF_L105A2",
+                "UK3CB_BAF_L107A1",
+                "UK3CB_BAF_L117A2",
+                "UK3CB_BAF_L131A1",
+                "UK3CB_BAF_L9A1",
+                "UK3CB_BAF_L103A2",
+                "UK3CB_BAF_L110_762",
+                "UK3CB_BAF_L110A1",
+                "UK3CB_BAF_L110A2",
+                "UK3CB_BAF_L110A2RIS",
+                "UK3CB_BAF_L110A3",
+                "UK3CB_BAF_L115A3",
+                "UK3CB_BAF_L115A3_BL",
+                "UK3CB_BAF_L115A3_DE",
+                "UK3CB_BAF_L118A1_Covert",
+                "UK3CB_BAF_L118A1_Covert_BL",
+                "UK3CB_BAF_L119A1",
+                "UK3CB_BAF_L119A1_CQB",
+                "UK3CB_BAF_L119A1_UKUGL",
+                "UK3CB_BAF_L119A1_FG",
+                "UK3CB_BAF_L129A1",
+                "UK3CB_BAF_L135A1",
+                "UK3CB_BAF_L1A1",
+                "UK3CB_BAF_L1A1_Wood",
+                "UK3CB_BAF_L22",
+                "UK3CB_BAF_L22A2",
+                "UK3CB_BAF_L7A2",
+                "UK3CB_BAF_L85A2",
+                "UK3CB_BAF_L85A2_RIS_AFG",
+                "UK3CB_BAF_L85A2_EMAG",
+                "UK3CB_BAF_L85A2_RIS",
+                "UK3CB_BAF_L85A2_RIS_Green",
+                "UK3CB_BAF_L85A2_RIS_Tan",
+                "UK3CB_BAF_L85A2_UGL",
+                "UK3CB_BAF_L85A2_UGL_HWS",
+                "UK3CB_BAF_L86A2",
+                "UK3CB_BAF_L86A3",
+                "UK3CB_BAF_L91A1",
+                "UK3CB_BAF_L92A1",
+                "UK3CB_BAF_L98A2"
+            };
+            launchers[] = {
+               "UK3CB_BAF_AT4_CS_AP_Launcher",
+               "UK3CB_BAF_AT4_CS_AT_Launcher",
+               "UK3CB_BAF_NLAW_Launcher",
+               "UK3CB_BAF_Javelin_Slung_Tube"
+            };
+            nvg[] = {
+                "UK3CB_BAF_HMNVS"
+            };
+            binoculars[] = {
+               "UK3CB_BAF_Soflam_Laserdesignator",
+               "UK3CB_BAF_Javelin_CLU"
+            };
+            sights[] = {
+                "uk3cb_baf_eotech",
+                "uk3cb_baf_kite",
+                "uk3cb_baf_maxikite",
+                "rksl_optic_lds",
+                "uk3cb_baf_specterlds",
+                "rksl_optic_rmr_ms19",
+                "rksl_optic_rmr_ms19_fde",
+                "rksl_optic_pmii_312",
+                "rksl_optic_pmii_312_sunshade",
+                "rksl_optic_pmii_525",
+                "uk3cb_baf_suit",
+                "uk3cb_baf_susat",
+                "uk3cb_baf_ta31f",
+                "uk3cb_baf_ta31f_hornbill",
+                "uk3cb_baf_ta648",
+                "uk3cb_baf_ta648_308"
+            };
+            attachments[] = {
+                "uk3cb_baf_llm_flashlight_black",
+                "uk3cb_baf_llm_ir_black",
+            };
+            faceware[] = {
+                "UK3CB_BAF_G_Tactical_Black",
+                "UK3CB_BAF_G_Tactical_Clear",
+                "UK3CB_BAF_G_Tactical_Grey",
+                "UK3CB_BAF_G_Tactical_Orange",
+                "UK3CB_BAF_G_Tactical_Yellow"
+            };
+            backpacks[] = {
+                "UK3CB_BAF_B_Bergen_MTP_Medic_L_A",
+                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_A",
+                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_B",
+                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_C",
+                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_D"
+            };
+            vest[] = {
+                "UK3CB_BAF_V_Osprey_Rifleman_A",
+                "UK3CB_BAF_V_Osprey_Rifleman_B",
+                "UK3CB_BAF_V_Osprey_Rifleman_C",
+                "UK3CB_BAF_V_Osprey_Rifleman_D",
+                "UK3CB_BAF_V_Osprey_Rifleman_E",
+                "UK3CB_BAF_V_Osprey_Rifleman_F",
+                "UK3CB_BAF_V_Osprey_Grenadier_A",
+                "UK3CB_BAF_V_Osprey_Grenadier_B",
+                "UK3CB_BAF_V_Osprey_Marksman_A",
+                "UK3CB_BAF_V_Osprey_Medic_A",
+                "UK3CB_BAF_V_Osprey_Medic_B",
+                "UK3CB_BAF_V_Osprey_Medic_C",
+                "UK3CB_BAF_V_Osprey_Medic_D",
+            };
+        };
+        class SemiArid : Base {};
+        class Arid     : Base
+        {
+            aridWeapons[] = {
+                "UK3CB_BAF_L115A3_DE",
+                "UK3CB_BAF_L118A1_Covert_DE",
+            };
+            aridAttachments[] = {
+                "rksl_optic_lds_c",
+                "rksl_optic_pmii_312_des",
+                "rksl_optic_pmii_312_sunshade_des",
+                "rksl_optic_pmii_525_des"
+            };
+        };
+        class Tropic   : Base {};
+        class Wood     : Base {};
     };
 };

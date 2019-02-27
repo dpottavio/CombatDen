@@ -12,38 +12,22 @@
 
     Mission setup for single player only.
 */
+#include "..\..\macros.hpp"
+
 params [
-    ["_group",         grpNull, [grpNull]],
-    ["_arsenal",       objNull, [objNull]]
+    ["_group",   grpNull, [grpNull]],
+    ["_arsenal", objNull, [objNull]]
 ];
 
-if (isMultiPlayer) exitWith {};
-
-[] call den_fnc_uiParamDiag;
-waitUntil { !dialog };
-
-private _bluforParam     = "";
-private _opforParam      = "";
-private _missionParam    = -1;
-private _hourParam       = -1;
-private _difficultyParam = 0;
-
-if (!isNil "den_diagParams") then {
-    _difficultyParam = (den_diagParams select 0);
-    _bluforParam     = (den_diagParams select 1);
-    _opforParam      = (den_diagParams select 2);
-    _missionParam    = (den_diagParams select 3);
-    _hourParam       = (den_diagParams select 4);
+if (isMultiPlayer) exitWith {
+    WARNING("not in single player");
 };
 
-private _genMissionParams = [
-    _group,
-    _bluforParam,
-    _missionParam,
-    _hourParam,
-    _opforParam,
-    _difficultyParam
-] call den_fnc_initMissionServer;
+private _genMissionParams = [_group] call den_fnc_initMissionServer;
+
+if (_genMissionParams isEqualTo []) exitWith {
+    ERROR_MSG("Failed to initialize mission. Restart is required.");
+};
 
 private _mission       = _genMissionParams select 0;
 private _opforFaction  = _genMissionParams select 1;
@@ -51,12 +35,18 @@ private _zone          = _genMissionParams select 2;
 private _transport     = _genMissionParams select 3;
 private _bluforFaction = _genMissionParams select 4;
 
-if (isNil "_zone" || _zone == "") exitWith {
-    ["There was an error generating the zone. Please restart the mission.","Error",true,false] spawn BIS_fnc_guiMessage;
+private _success = [
+    _mission,
+    _zone,
+    _transport,
+    _bluforFaction,
+    _opforFaction,
+    _arsenal
+] call den_fnc_initMissionLocal;
+
+if (!_success) exitWith  {
+    ERROR_MSG("Failed to initialize mission tasks.");
+    false;
 };
-
-[_mission, _zone, _transport, _bluforFaction, _opforFaction, _arsenal] call den_fnc_initMissionLocal;
-
-cutText ["","BLACK IN", 5];
 
 true;

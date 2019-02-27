@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=25;
+		nextID=27;
 	};
 	class Camera
 	{
 		pos[]={7535.9722,162.81602,94.154884};
-		dir[]={-0.77962303,-0.28385702,0.55832094};
-		up[]={-0.23078643,0.95885712,0.16527602};
-		aside[]={0.5822705,-5.9371814e-009,0.81306934};
+		dir[]={-0.94333583,-0.22340815,-0.24559382};
+		up[]={-0.21621172,0.97471559,-0.056289777};
+		aside[]={-0.25196502,1.1408702e-007,0.96779901};
 	};
 };
 binarizationWanted=0;
@@ -1266,14 +1266,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7513.4727,158.88126,98.343269};
-						angles[]={0,2.7526469,0};
+						position[]={7513.4731,158.8812,98.343002};
+						angles[]={0,2.752646,0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""SquadLeader""];" \n "}";
+						init="call{[this, ""SquadLeader""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha1";
 						description="Squad Leader";
 						isPlayer=1;
@@ -1328,21 +1328,20 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7510.4741,159.11502,97.406876};
-						angles[]={0,2.7097297,0};
+						position[]={7510.4741,159.11502,97.407005};
+						angles[]={0,2.7097282,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
+						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha2";
 						description="Autoriflemen";
 						isPlayable=1;
 					};
 					id=242;
 					type="B_Soldier_F";
-					atlOffset=1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1391,14 +1390,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7512.3911,159.19875,101.1936};
-						angles[]={0,2.8030519,0};
+						position[]={7512.3911,159.19878,101.194};
+						angles[]={0,2.803051,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];" \n "}";
+						init="call{[this, ""At""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha5";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -1453,14 +1452,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7509.1211,159.49344,100.80203};
-						angles[]={0,2.8118486,0};
+						position[]={7509.1211,159.49344,100.802};
+						angles[]={0,2.8118474,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""At""];" \n "}";
+						init="call{[this, ""At""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha6";
 						description="Anti-Tank";
 						isPlayable=1;
@@ -1515,14 +1514,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7506.1558,159.49486,96.683052};
-						angles[]={0,2.8154435,0};
+						position[]={7506.1558,159.49486,96.683006};
+						angles[]={0,2.815443,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Autoriflemen""];" \n "}";
+						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha3";
 						description="Autoriflemen";
 						isPlayable=1;
@@ -1577,14 +1576,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7502.3037,159.81662,96.053543};
-						angles[]={0,2.8518515,0};
+						position[]={7502.3042,159.8166,96.054001};
+						angles[]={0,2.8518505,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Grenadier""];" \n "}";
+						init="call{[this, ""Grenadier""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha4";
 						description="Grenadier";
 						isPlayable=1;
@@ -1639,14 +1638,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7502.0503,160.0195,98.865929};
-						angles[]={0,2.7520885,0};
+						position[]={7502.0498,160.01956,98.866005};
+						angles[]={0,2.7520876,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Medic""];" \n "}";
+						init="call{[this, ""Medic""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha8";
 						description="Medic";
 						isPlayable=1;
@@ -1701,14 +1700,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7505.5186,159.752,99.683289};
-						angles[]={0,2.8013763,0};
+						position[]={7505.519,159.75194,99.683006};
+						angles[]={0,2.8013756,0};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="call{this disableAI ""MOVE"";" \n "this setVariable [""den_role"", ""Marksmen""];" \n "}";
+						init="call{[this, ""Marksmen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha7";
 						description="Marksmen";
 						isPlayable=1;

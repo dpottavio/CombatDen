@@ -20,17 +20,25 @@
 
     Returns: true
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_hostage", objNull, [objNull]],
     ["_code",    {},      [{}]]
 ];
 
 if (_hostage == objNull) exitWith {
-    ["hostage parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("hostage parameter cannot be empty");
+    false;
+};
+
+if (!local _hostage) exitWith {
+    ERROR("hostage parameter must be local");
     false;
 };
 
 _hostage setCaptive true;
+_hostage disableAI "MOVE";
 
 removeAllWeapons       _hostage;
 removeBackpack         _hostage;
@@ -47,7 +55,7 @@ private _animation = selectRandom [
 private _enableAnimation  = _animation select 0;
 private _disableAnimation = _animation select 1;
 
-[_hostage, _enableAnimation] remoteExec ["switchMove"];
+_hostage switchMove _enableAnimation;
 
 [
     _hostage,                                           // Object the action is attached to
@@ -64,8 +72,9 @@ private _disableAnimation = _animation select 1;
         private _code      = _arguments select 0;
         private _animation = _arguments select 1;
 
-        [_target, false]      remoteExec ["setCaptive", _target];
-        [_target, _animation] remoteExec ["playMove",   _target];
+        [_target, false]      remoteExecCall ["setCaptive", _target];
+        [_target, _animation] remoteExecCall ["playMove",   _target];
+        [_target, "MOVE"]     remoteExecCall ["enableAI",   _target];
 
         [] call _code;
     },                                                  // Code executed on completion

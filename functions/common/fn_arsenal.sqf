@@ -20,18 +20,20 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_bluforFaction",  "",      [""]],
     ["_obj",            objNull, [objNull]]
 ];
 
 if (_bluforFaciton == "") exitWith {
-    ["faction parameter is empty"] call BIS_fnc_error;
+    ERROR("faction parameter is empty");
     false;
 };
 
 if (isNull _obj) exitWith {
-    ["object parameter is null"] call BIS_fnc_error;
+    ERROR("object parameter is null");
     false;
 };
 

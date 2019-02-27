@@ -8,6 +8,7 @@
     You may obtain a copy of the License at:
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
+#include "macros.hpp"
 
 den_alpha setGroupIdGlobal ["Alpha"];
 
@@ -15,45 +16,53 @@ if (!isMultiplayer) exitWith {};
 
 {
     _x addMPEventHandler ["MPRespawn", {
-        _unit = _this select 0;
+        private _unit = _this select 0;
         if (!isPlayer _unit) exitWith {
             deleteVehicle _unit;
         };
     }]
 } forEach playableUnits;
 
-private _bluforParam   = "";
-private _opforParam    = "";
-private _difficulty    = (paramsArray select 0);
-private _missionParam  = (paramsArray select 1);
-private _hourParam     = (paramsArray select 3);
-
 [] spawn den_fnc_mpEndMission;
 
-private _genMissionParams = [
-    den_alpha,
-    _bluforParam,
-    _missionParam,
-    _hourParam,
-    _opforParam,
-    _difficulty
-] call den_fnc_initMissionServer;
+INFO("waiting for players...");
 
-den_mission       = _genMissionParams select 0;
-den_opforFaction  = _genMissionParams select 1;
-den_zone          = _genMissionParams select 2;
-den_falcon        = _genMissionParams select 3;
-den_bluforFaction = _genMissionParams select 4;
+while {true} do {
+    private _players     = call BIS_fnc_listPlayers;
+    private _playerCount = count _players;
+    private _readyCount  = {
+       (_x getVariable ["den_isReady", false])
+    } count _players;
 
-publicVariable "den_mission";
-publicVariable "den_opforFaction";
-publicVariable "den_zone";
-publicVariable "den_falcon";
-publicVariable "den_bluforFaction";
+    if ((_playerCount > 0) && (_playerCount == _readyCount)) exitWith {};
+    sleep 2;
+};
+
+INFO("players ready");
+
+private _genMissionParams = [den_alpha] call den_fnc_initMissionServer;
+
+if !(_genMissionParams isEqualTo []) then {
+    den_mission       = _genMissionParams select 0;
+    den_opforFaction  = _genMissionParams select 1;
+    den_zone          = _genMissionParams select 2;
+    den_falcon        = _genMissionParams select 3;
+    den_bluforFaction = _genMissionParams select 4;
+
+    publicVariable "den_mission";
+    publicVariable "den_opforFaction";
+    publicVariable "den_zone";
+    publicVariable "den_falcon";
+    publicVariable "den_bluforFaction";
+} else {
+    ["den_initServerError"] call den_fnc_publicBool;
+};
 
 ["den_initServerDone"] call den_fnc_publicBool;
 
-if (isDedicated) then {
+INFO("global initialization complete");
+
+if (isDedicated && isNil "den_initServerError") then {
     [
         den_mission,
         den_zone,
@@ -62,6 +71,7 @@ if (isDedicated) then {
         den_opforFaction,
         den_arsenal
     ] call den_fnc_initMissionLocal;
+    INFO("local initialization complete");
 };
 
 true;

@@ -26,13 +26,15 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_pos",           [], [[]], [2,3]],
     ["_bluforFaction", "", [""]]
 ];
 
 if (_bluforFaction == "") exitWith {
-    ["blufor faction parameter is empty"] call BIS_fnc_error;
+    ERROR("blufor faction parameter is empty");
     false;
 };
 

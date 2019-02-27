@@ -8,27 +8,54 @@
     You may obtain a copy of the License at:
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
+#include "macros.hpp"
 
-if (!isMultiplayer) exitWith {
-    cutText ["","BLACK", .5];
-    [den_alpha, den_arsenal] spawn den_fnc_initSinglePlayer;
+if (hasInterface) then {
+    [] call den_fnc_diaryHelp;
 };
 
-waitUntil {!isNil "den_initServerDone"};
+if (!isMultiplayer) then {
+    // Wait until the briefing has been read.
+    waitUntil { !isNull findDisplay 46 };
 
-cutText ["","BLACK OUT"];
-[] spawn {
-    waitUntil {!visibleMap};
-    cutText ["","BLACK IN", 5];
+    openMap true;
+
+    [den_alpha, den_arsenal] call den_fnc_initSinglePlayer;
+} else {
+    // Wait until the briefing has been read.
+    waitUntil {getClientStateNumber >= 10};
+
+    player setVariable ["den_isReady", true, true];
+
+    cutText ["waiting for server...", "BLACK OUT", 1];
+
+    waitUntil { !isNull findDisplay 46 };
+
+    openMap true;
+
+    sleep 3;
+
+    waitUntil {!isNil "den_initServerDone"};
+
+    cutText ["", "BLACK IN", 3];
+
+    if (!isNil "den_initServerError") exitWith {
+        ERROR_MSG("Failed to initialize mission. Restart is required.");
+    };
+
+    private _success = [
+        den_mission,
+        den_zone,
+        den_falcon,
+        den_bluforFaction,
+        den_opforFaction,
+        den_arsenal
+    ] call den_fnc_initMissionLocal;
+
+    if (!_success) exitWith {
+        ERROR_MSG("Failed to initialize mission tasks.");
+        false;
+    };
 };
-
-[
-    den_mission,
-    den_zone,
-    den_falcon,
-    den_bluforFaction,
-    den_opforFaction,
-    den_arsenal
-] call den_fnc_initMissionLocal;
 
 true;

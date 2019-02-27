@@ -9,14 +9,12 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-respawn = "BASE";
-respawnDelay = 30;
-respawnDialog = 0;
-respawnOnStart = -1;
+respawn            = "BASE";
+respawnDelay       = 30;
+respawnDialog      = 0;
+respawnOnStart     = -1;
 respawnTemplates[] = {"MenuPosition", "Tickets", "Spectator"};
-respawnButton = 1;
-
-briefing = 0;
+respawnButton      = 1;
 
 class Header
 {
@@ -32,8 +30,13 @@ class Header
 #include "config\CfgFactions.cpp"
 #include "config\CfgFunctions.cpp"
 #include "config\CfgGroups.cpp"
+#include "config\CfgHelp.cpp"
 #include "config\CfgLoadout.cpp"
 #include "config\CfgTaskDescriptions.cpp"
 #include "config\CfgVehicles.cpp"
-#include "config\Params.cpp"
+#include "config\CfgSettings.cpp"
 #include "config\CfgUi.cpp"
+
+class Extended_PreInit_EventHandlers {
+    combatDen = call compile preprocessFileLineNumbers "XEH_preInit.sqf";
+};

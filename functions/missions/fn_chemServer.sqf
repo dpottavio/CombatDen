@@ -26,6 +26,8 @@
 
     Returns: STRING - zone location name, empty string on error.
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_playerGroup",   grpNull, [grpNull]],
     ["_helo",          objNull, [objNull]],
@@ -35,22 +37,22 @@ params [
 ];
 
 if (isNull _playerGroup) exitWith {
-    ["group parameter must not be null"] call BIS_fnc_error;
+    ERROR("group parameter must not be null");
     "";
 };
 
 if (isNull _helo) exitWith {
-    ["helo parameter must not be null"] call BIS_fnc_error;
+    ERROR("helo parameter cannot be empty");
     "";
 };
 
 if (_bluforFaction == "") exitWith {
-    ["blufor faction cannot be empty"] call BIS_fnc_error;
+    ERROR("blufor faction cannot be empty");
     "";
 };
 
 if (_opforFaction == "") exitWith {
-    ["opfor faction cannot be empty"] call BIS_fnc_error;
+    ERROR("opfor faction cannot be empty");
     "";
 };
 
@@ -75,6 +77,12 @@ private _zone = [
     _zoneRadius,
     _safePosParams
 ] call den_fnc_zone;
+
+
+if (_zone isEqualTo []) exitWith {
+    ERROR("zone failure");
+    "";
+};
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
@@ -135,26 +143,31 @@ createGuardedPoint [east, [0,0], -1, den_container];
  */
 createGuardedPoint [east, [0,0], -1, den_container];
 
-private _guardType         = "FireTeam";
+private _guard1Type        = "FireTeam";
+private _guard2Type        = "FireTeam";
 private _patrolType        = "MotorizedTeam";
 private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
 private _extractAttackType = "FireTeam";
 
 switch (_difficulty) do {
     case 1: {
-        _guardType  = "AssaultSquad";
+        _guard1Type = "AssaultSquad";
         _patrolType = "MotorizedAssault";
     };
     case 2: {
-        _guardType     = "AssaultSquad";
+        _guard1Type    = "AssaultSquad";
         _patrolType    = "MotorizedAssault";
         _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
     };
 };
 
-private _guardGroup = [_containerPos getPos[10, 0], _opforFaction, _guardType] call den_fnc_spawnGroup;
+private _guard1Group = [_containerPos getPos[10, 0], _opforFaction, _guard1Type] call den_fnc_spawnGroup;
 
-[_guardGroup, _containerPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+[_guard1Group, _containerPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+
+private _guard2Group = [_containerPos getPos[10, 0], _opforFaction, _guard2Type] call den_fnc_spawnGroup;
+
+[_guard2Group, _containerPos, 0, "HOLD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _patrolGroup = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
 
