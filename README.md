@@ -25,9 +25,9 @@ The ACE Virtual Arsenal (VA) is available in the crates at the start of each mis
 
 ## Mod Support
 Combat Den supports the following list of mods to add additional units and weapons to the mission.  Be sure to check for any required ACE compatibility mods when loading anything from the list below.
-* [3CB BAF Units](url=https://steamcommunity.com/sharedfiles/filedetails/?id=893346105) replaces NATO with BAF.
+* [3CB BAF Units](https://steamcommunity.com/sharedfiles/filedetails/?id=893346105) replaces NATO with BAF.
 * [3CB BAF Vehicles](https://steamcommunity.com/sharedfiles/filedetails/?id=893349825) replaces default friendly vehicles with BAF equivalents.
-* [Community Factions Project](url=https://steamcommunity.com/sharedfiles/filedetails/?id=1369691841) adds various enemy factions depending on the terrain.
+* [Community Factions Project](https://steamcommunity.com/sharedfiles/filedetails/?id=1369691841) adds various enemy factions depending on the terrain.
 * [CUP Weapons](https://steamcommunity.com/sharedfiles/filedetails/?id=497660133) adds a variety of CUP based weapons to the Virtual Arsenal.
 * [CUP Units](https://steamcommunity.com/sharedfiles/filedetails/?id=497661914) replaces NATO with either USMC, BAF, or Bundeswehr.  CSAT is replaced with Russia, and ChDkz.
 * [CUP Vehicles](https://steamcommunity.com/sharedfiles/filedetails/?id=541888371) replaces vehicles with modern variants.
