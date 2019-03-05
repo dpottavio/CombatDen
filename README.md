@@ -1,4 +1,4 @@
-#Combat Den
+# Combat Den
 
 ## Introduction
 Combat Den is a work-in-progress project to provide simple randomized missions for single and 8 player coop.  A single mission file provides a number of re-playable missions, no two mission play throughs are the same.
