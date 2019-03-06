@@ -39,3 +39,7 @@ Combat Den supports the following list of mods to add additional units and weapo
 * [ProjectOPFOR](https://steamcommunity.com/sharedfiles/filedetails/?id=735566597) adds various enemy factions depending on the terrain.
 * [RHS AFRF](https://steamcommunity.com/sharedfiles/filedetails/?id=843425103) replaces CSAT forces with Russia.
 * [RHS USAF](https://steamcommunity.com/sharedfiles/filedetails/?id=843577117) replaces NATO forces with USMC.
+
+## Links
+* [BI Forum Page](https://forums.bohemia.net/forums/topic/219387-combat-den/)
+* [Steam Collection](https://steamcommunity.com/workshop/filedetails/?id=1491480111)
