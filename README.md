@@ -28,7 +28,7 @@ The following mods are the minimum required dependencies.  Mission files on non-
 * [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057)
 * [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997)
 
-## Mod Support
+## Optional Mods
 Combat Den supports the following list of mods to add additional units and weapons to the mission.  Be sure to check for any required ACE compatibility mods when loading anything from the list below.
 * [3CB BAF Units](https://steamcommunity.com/sharedfiles/filedetails/?id=893346105) replaces NATO with BAF.
 * [3CB BAF Vehicles](https://steamcommunity.com/sharedfiles/filedetails/?id=893349825) replaces default friendly vehicles with BAF equivalents.
