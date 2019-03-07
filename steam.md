@@ -39,11 +39,8 @@ Combat Den supports the following list of mods to add additional units and weapo
 
 If you load CUP Units, this mission requires that CUP Vehicles be loaded as well.  BAF Units also requires BAF Vehicles.
 
-[h1]Known Issues[/h1]
-[list]
-[*] AI units may get stuck at the LZ after insertion.  A fix for this is pending.  The current work-a-round is to restart the mission, though this may take a few attempts.
-[/list]
+[h1]GitHub[/h1]
+What to contribute?  Or maybe you found a bug?  Then visit the GitHub [url=https://github.com/dpottavio/CombatDen]page[/url].
 
-If you find a bug, have questions, or want to give feedback, please post on this workshop page.  Enjoy!
-
+[h1]License[/h1]
 This work is licensed under [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]APL-SA[/url].
