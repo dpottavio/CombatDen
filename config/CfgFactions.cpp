@@ -14,7 +14,7 @@ class CfgFactions
     /*
      * base classes
      */
-    class Baf
+    class BafBase
     {
         side        = "WEST";
         name        = "BAF";
@@ -141,7 +141,7 @@ class CfgFactions
     /*
      * CUP factions
      */
-    class CupBaf : Baf
+    class CupBaf : BafBase
     {
         addon = "CUP";
     };
@@ -172,7 +172,7 @@ class CfgFactions
     };
     class CupUsmc : UsmcBase
     {
-       addon = "CPU";
+       addon = "CUP";
     };
     class CupTakistan : TakistanBase
     {
@@ -239,7 +239,7 @@ class CfgFactions
     /*
      *  3CB BAF
      */
-    class Uk3CbBaf : Baf
+    class Uk3CbBaf : BafBase
     {
         addon = "3CB";
     };
