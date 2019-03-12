@@ -37,10 +37,7 @@ if (_role == "") then {
     false;
 };
 
-if ((local _unit) && (!isPlayer _unit)) then {
-    _unit disableAI "MOVE";
-};
-
+_unit disableAI "MOVE";
 _unit setVariable ["den_role", _role];
 
 true;
