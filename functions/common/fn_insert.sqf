@@ -24,8 +24,7 @@
     2: OBJECT - Helicopter.  Once all cargo units enter
     the helicopter, they are transported to the LZ.
 
-    3: (Optional) AREA - Blacklist area the helicopter should
-    avoid en route to LZ.
+    3: AREA - Zone Area. This is the objective area or AO.
 
     Returns: true on success, false on error
 */
@@ -35,7 +34,7 @@ params [
     ["_lzPos",      [],      [[]],      [2,3]],
     ["_cargoGroup", grpNull, [grpNull]],
     ["_helo",       objNull, [objNull]],
-    ["_blackArea",  [],      [[]],      [5,6]]
+    ["_zoneArea",   [],      [[]],      [5,6]]
 ];
 
 if (isNull _cargoGroup) exitWith {
@@ -48,13 +47,18 @@ if (isNull _helo) exitWith {
     false;
 };
 
+if (_zoneArea isEqualTo []) exitWith {
+    ERROR("zone parameter is empty");
+    false;
+};
+
 createMarker ["lzMarker", _lzPos];
 "lzMarker" setMarkerType "mil_pickup";
 "lzMarker" setMarkerColor "colorBLUFOR";
 "lzMarker" setMarkerText "LZ";
 
-private _blackPos       = _blackArea param [0, _lzPos];
-private _markerDir      = _blackPos getDir _lzPos;
+private _zonePos        = _zoneArea param [0, _lzPos];
+private _markerDir      = _zonePos getDir _lzPos;
 private _alphaMarkerPos = _lzPos getPos [500, _markerDir];
 private _arrowPos       = _lzPos getPos [250, _markerDir];
 
@@ -63,7 +67,7 @@ createMarker ["alphaMarker", _alphaMarkerPos];
 
 createMarker ["alphaArrowMarker", _arrowPos];
 "alphaArrowMarker" setMarkerType "mil_arrow";
-"alphaArrowMarker" setMarkerDir (_arrowPos getDir _blackPos);
+"alphaArrowMarker" setMarkerDir (_arrowPos getDir _zonePos);
 "alphaArrowMarker" setMarkerColor "colorBLUFOR";
 
 /*
@@ -76,13 +80,10 @@ _startHeloTrigger setTriggerArea       [20, 20, 0, false];
 _startHeloTrigger setTriggerActivation ["WEST", "PRESENT", false];
 _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
 
-[_lzPos, _cargoGroup, _helo, _blackArea] spawn {
-    params ["_lzPos", "_cargoGroup", "_helo", "_blackArea"];
+[_lzPos, _cargoGroup, _helo, _zonePos] spawn {
+    params ["_lzPos", "_cargoGroup", "_helo", "_zonePos"];
 
-    private _blackPos  = _blackArea param [0, _lzPos];
-    private _deployDir = _blackPos getDir _lzPos;
-    private _deployPos = _lzPos getPos [2000, _deployDir];
-    _deployPos set [2, 250];
+    private _heloType = typeOf _helo;
 
     // Wait for the cargo units to enter the helo.
     while {true} do {
@@ -94,30 +95,52 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
         sleep 1;
     };
 
+    private _cargoUnits = units _cargoGroup;
+
     // Move remaining units in the helo.
     {
         if ((_helo getCargoIndex _x) == -1) then {
             [_x, _helo] remoteExecCall ["moveInCargo", _x];
         };
-    } forEach units _cargoGroup;
-
-    sleep 10;
+    } forEach _cargoUnits;
 
     /*
-     * teleport to LZ
+     * Teleport to the LZ.
+     *
+     * This works by the following steps:
+     *
+     * 1. Delete the helo and crew the players are currently in.
+     *
+     * 2. Teleport the players via setPos to the LZ.
+     *
+     * 3. Create a clone helo above the players heading back to base.
+     *
+     * This was originally done by teleporting the players and the helo
+     * to the LZ.  However, this proved unreliable on dedicated server.
+     * For reasons unknown, a call to setPos after players are out of the
+     * vehicle did not always work.
      */
+
+    sleep 3;
     [["","BLACK OUT",3]] remoteExec ["cutText"];
     sleep 6;
 
+    private _heloGroup = group leader driver _helo;
+    _heloGroup deleteGroupWhenEmpty true;
+
+    deleteVehicle _helo;
+    {
+        deleteVehicle _x;
+    } forEach units _heloGroup;
+
     private _hpad = "Land_HelipadEmpty_F" createVehicle _lzPos;
 
-    private _delta   = 3;
+    private _delta   = 4;
     private _a       = _delta;
     private _b       = _delta;
     private _i       = 0;
-    private _faceDir = _deployPos getDir _lzPos;
-
-    private _leader = leader _cargoGroup;
+    private _zoneDir = _lzPos getDir _zonePos;
+    private _leader  = leader _cargoGroup;
 
     {
         private _pos = [];
@@ -134,27 +157,42 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
             _i = _i + 1;
         };
 
-        [_x, _pos, _faceDir] remoteExecCall ["den_fnc_teleport", _x];
+        [_x, _pos, _zoneDir] remoteExecCall ["den_fnc_teleport", _x];
         [_x, "MOVE"] remoteExecCall ["enableAI", _x];
-    } forEach units _cargoGroup;
+    } forEach _cargoUnits;
 
-    _helo setPos (_hpad modelToWorld [0,0,75]);
-
-    sleep 1;
-    [["","BLACK IN",3]] remoteExec ["cutText"];
+    if (isMultiplayer) then {
+        [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
+        {
+            [blufor, _x] call BIS_fnc_addRespawnPosition;
+        } forEach _cargoUnits;
+    };
 
     den_insertUnload = true;
 
-    private _crew = crew _helo;
-    private _crewGroup = group leader (_crew select 0);
+    /*
+     * Create the helo clone over the LZ and send it in the opposite
+     * direction of the objective.
+     */
+    private _cloneDestPos = _lzPos getPos [2000, (_zonePos getDir _lzPos)];
+    _cloneDestPos set [2, 250];
+
+    private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
+    private _heloCloneVehicle = [_heloClonePos, _zoneDir, _heloType, blufor] call BIS_fnc_spawnVehicle;
+    private _heloClone        = _heloCloneVehicle select 0;
+
+    private _cloneCrew  = crew _heloClone;
+    private _cloneGroup = group leader (_cloneCrew select 0);
+    _cloneGroup deleteGroupWhenEmpty true;
+
     {
         _x disableAI "TARGET";
         _x disableAI "AUTOTARGET";
-    } forEach units _crewGroup;
+    } forEach units _cloneGroup;
 
     [
-        _crewGroup,
-        _deployPos,
+        _cloneGroup,
+        _cloneDestPos,
         0,
         "MOVE",
         "AWARE",
@@ -164,12 +202,8 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
         "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
     ] call CBA_fnc_addWaypoint;
 
-    if (isMultiplayer) then {
-        [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
-        {
-            [blufor, _x] call BIS_fnc_addRespawnPosition;
-        } forEach units _cargoGroup;
-    };
+    sleep 2;
+    [["","BLACK IN",3]] remoteExec ["cutText"];
 };
 
 true;

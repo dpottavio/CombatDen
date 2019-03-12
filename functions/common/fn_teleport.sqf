@@ -26,6 +26,8 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_unit", objNull, [objNull]],
     ["_pos",  [],      [[]], [2,3]],
@@ -33,18 +35,18 @@ params [
 ];
 
 if (isNull _unit) exitWith {
-    ["unit parameter cannot be empty"] call BIS_fnc_error;
+    ERROR("unit parameter cannot be empty");
     false;
 };
 
 if (_pos isEqualTo []) exitWith {
-    ["position parameter is  empty"] call BIS_fnc_error;
+    ERROR("position parameter is  empty");
     false;
 };
 
-if ((vehicle _unit) != _unit) then {
-    moveOut _unit;
-    unassignVehicle _unit;
+if !(local _unit) exitWith {
+    ERROR("unit parameter is not local");
+    false;
 };
 
 _unit allowDamage false;
