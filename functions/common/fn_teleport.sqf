@@ -52,11 +52,6 @@ if !(local _unit) exitWith {
 _unit allowDamage false;
 _unit setPos _pos;
 _unit setDir _dir;
-
-[_unit] spawn {
-    params ["_unit"];
-    sleep 3;
-    _unit allowDamage true;
-};
+_unit allowDamage true;
 
 true

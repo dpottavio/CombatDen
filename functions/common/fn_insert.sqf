@@ -114,11 +114,6 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
      * 2. Teleport the players via setPos to the LZ.
      *
      * 3. Create a clone helo above the players heading back to base.
-     *
-     * This was originally done by teleporting the players and the helo
-     * to the LZ.  However, this proved unreliable on dedicated server.
-     * For reasons unknown, a call to setPos after players are out of the
-     * vehicle did not always work.
      */
 
     sleep 3;
