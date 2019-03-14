@@ -38,6 +38,30 @@ params [
     ["_arsenal",       objNull, [objNull]]
 ];
 
+/*
+ * If ACE Respawn Gear is not present in MP, then give a respawned
+ * player the same gear they had entering the transport vehicle.
+ */
+private _aceRespawnGear = missionNamespace getVariable ["ace_respawn_savePreDeathGear", false];
+if (isMultiPlayer && hasInterface && !_aceRespawnGear) then {
+    _helo addEventHandler ["GetIn", {
+        params ["_vehicle", "_role", "_unit", "_turret"];
+
+        if (local _unit) then {
+            _unit setVariable ["den_loadout", (getUnitLoadout _unit)];
+        };
+    }];
+
+    player addEventHandler ["Respawn", {
+        params ["_unit", "_corpse"];
+
+        private _loadout = _unit getVariable ["den_loadout", []];
+        if !(_loadout isEqualTo []) then {
+            _unit setUnitLoadout _loadout;
+        };
+    }];
+};
+
 private _bluforFactionName = getText (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "name");
 private _opforFactionName  = getText (missionConfigFile >> "CfgFactions" >> _opforFaction >> "name");
 
