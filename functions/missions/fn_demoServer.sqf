@@ -73,7 +73,7 @@ private _safePosParams = [
 ];
 
 private _zone = [
-    ["NameVillage"/*, "CityCenter"*/],
+    ["NameVillage", "CityCenter"],
     _zoneRadius,
     _safePosParams,
     true
