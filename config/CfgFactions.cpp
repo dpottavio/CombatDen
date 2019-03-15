@@ -135,7 +135,7 @@ class CfgFactions
     class LopTakistan : TakistanBase
     {
         flagTexture = "po_main\data\ui\flags\flag_tak_co.paa";
-        addon       = "IOP";
+        addon       = "LOP";
     };
 
     /*
