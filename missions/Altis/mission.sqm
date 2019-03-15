@@ -811,7 +811,7 @@ class Mission
 					{
 						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha2";
-						description="Autoriflemen";
+						description="Autorifleman";
 						isPlayable=1;
 					};
 					id=2775;
@@ -874,7 +874,7 @@ class Mission
 					{
 						init="call{[this, ""Autoriflemen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha3";
-						description="Autoriflemen";
+						description="Autorifleman";
 						isPlayable=1;
 					};
 					id=2776;
@@ -1126,7 +1126,7 @@ class Mission
 					{
 						init="call{[this, ""Marksmen""] call den_fnc_initPlayer" \n "}";
 						name="den_alpha7";
-						description="Marksmen";
+						description="Marksman";
 						isPlayable=1;
 					};
 					id=2781;
