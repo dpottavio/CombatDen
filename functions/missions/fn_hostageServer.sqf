@@ -57,18 +57,23 @@ if (_opforFaction == "") exitWith {
 };
 
 private _zoneRadius   = 500;
+/*
+ * max radius for AO objects
+ */
 private _minLz        = _zoneRadius + 500;
 private _maxLz        = _zoneRadius + 550;
 private _minReinforce = _minLz;
 private _maxReinforce = _maxLz;
 private _maxHostage   = _zoneRadius * 0.25;
-private _maxInfPatrol = _zoneRadius * 0.75;
+private _maxReact     = _zoneRadius * 0.5;  // reaction force
+private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 
 private _safePosParams = [
-    [_minLz,        _maxLz,        15, 0.1], // lz safe position
-    [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
-    [0,             _maxHostage,   10, 0.1], // hostage safe position
-    [0,             _maxInfPatrol, 15,  -1]  // infantry patrol safe position
+    [_minLz,        _maxLz,        15, 0.1], // lz safe pos
+    [_minReinforce, _maxReinforce, 15, 0.1], // reinforcements safe pos
+    [0,             _maxHostage,   10, 0.1], // hostage safe pos
+    [0,             _maxReact,     15, 0.1], // reaction force safe pos
+    [0,             _maxPatrol,    5,   -1]  // patrol force safe pos
 ];
 
 private _zone = [
@@ -90,7 +95,8 @@ private _zoneSafePosList = _zone select 2;
 private _lzPos           = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _hostagePos      = _zoneSafePosList select 2;
-private _infPatrolPos    = _zoneSafePosList select 3;
+private _reactPos        = _zoneSafePosList select 3;
+private _patrolPos       = _zoneSafePosList select 4;
 
 [_hostagePos, "camp02"] call den_fnc_composition;
 
@@ -132,18 +138,19 @@ createGuardedPoint [east, _hostagePos, -1, objNull];
  */
 private _guard1Type        = "FireTeam";
 private _guard2Type        = "FireTeam";
-private _patrolType        = "MotorizedTeam";
+private _reactType         = "MotorizedTeam";
+private _patrolType        = "Sentry";
 private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
 private _extractAttackType = "FireTeam";
 
 switch (_difficulty) do {
     case 1: {
         _guard1Type = "AssaultSquad";
-        _patrolType = "MotorizedAssault";
+        _reactType  = "MotorizedAssault";
     };
     case 2: {
         _guard1Type    = "AssaultSquad";
-        _patrolType    = "MotorizedAssault";
+        _reactType     = "MotorizedAssault";
         _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
     };
 };
@@ -156,24 +163,36 @@ private _guard2Group  = [_hostagePos getPos [10, 0], _opforFaction, _guard2Type]
 
 [_guard2Group, _hostagePos, 0, "HOLD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-private _patrolGroup = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
-
-[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
-
+private _reactGroup = [_reactPos, _opforFaction, _reactType] call den_fnc_spawnGroup;
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
-[_patrolGroup, _patrolWpPos] spawn {
-    private _group = _this select 0;
-    private _pos   = _this select 1;
+private _reactWpPos = selectRandom [_reactPos, _lzPos];
+[_reactGroup, _reactWpPos] spawn {
+    params ["_group", "_pos"];
+
     while {isNil "den_insertUnload"} do { sleep 1 };
     [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 };
 
+private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+[
+    _patrolGroup,
+    _hostagePos,
+    300,
+    6,
+    "MOVE",
+    "SAFE",
+    "YELLOW",
+    "LIMITED",
+    "STAG COLUMN"
+] call CBA_fnc_taskPatrol;
+
 [_zonePos, _zoneRadius * 0.75, _opforFaction, 4] call den_fnc_buildingOccupy;
+
+[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
 
 // extraction attack
 [_reinforcePos, _lzPos, _opforFaction, _extractAttackType] call den_fnc_attackExtraction;

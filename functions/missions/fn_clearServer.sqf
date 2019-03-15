@@ -53,21 +53,25 @@ if (_opforFaction == "") exitWith {
     ERROR("opfor faction cannot be empty");
     "";
 };
-
-private _zoneRadius     = 400;
-private _minLz          = _zoneRadius + 500;
-private _maxLz          = _zoneRadius + 550;
-private _maxBunker      = _zoneRadius * 0.8;
-private _maxInfPatrol   = _zoneRadius * 0.75;
-private _minReinforce   = _zoneRadius + 300;
-private _maxReinforce   = _zoneRadius + 325;
+/*
+ * max radius for AO objects
+ */
+private _zoneRadius   = 400;
+private _minLz        = _zoneRadius + 500;
+private _maxLz        = _zoneRadius + 550;
+private _maxBunker    = _zoneRadius * 0.8;
+private _maxReact     = _zoneRadius * 0.5;  // reaction force
+private _maxPatrol    = _zoneRadius * 0.75; // patrol force
+private _minReinforce = _zoneRadius + 300;  // reinforcements
+private _maxReinforce = _zoneRadius + 325;
 
 private _safePosParams = [
     [_minLz,        _maxLz,          15, 0.1], // lz safe position
     [0,             _maxBunker,      10, 0.1], // bunker 1 safe position
     [0,             _maxBunker,      10, 0.1], // bunker 2 safe position
     [0,             _maxBunker,      10, 0.1], // bunker 3 safe position
-    [0,             _maxInfPatrol,   15,  -1], // inf patrol safe position
+    [0,             _maxReact,        5,  -1], // inf patrol safe position
+    [0,             _maxPatrol,       5,  -1], // inf patrol safe position
     [_minReinforce, _maxReinforce,   15, 0.1]  // reinforce safe position
 ];
 
@@ -94,8 +98,9 @@ private _bunkerPosList = [
     _zoneSafePosList select 2,
     _zoneSafePosList select 3
 ];
-private _infPatrolPos   = _zoneSafePosList select 4;
-private _reinforcePos   = _zoneSafePosList select 5;
+private _reactPos     = _zoneSafePosList select 4;
+private _patrolPos    = _zoneSafePosList select 5;
+private _reinforcePos = _zoneSafePosList select 6;
 
 private _zoneActivation = "[""den_zoneClear""] call den_fnc_publicBool;";
 private _zoneTrigger = createTrigger ["EmptyDetector", _zonePos, false];
@@ -112,17 +117,18 @@ private _guardPos = selectRandom _bunkerPosList;
 createGuardedPoint [east, _guardPos, -1, objNull];
 
 private _guardType     = "FireTeam";
-private _patrolType    = "FireTeam";
+private _reactType     = "FireTeam";
+private _patrolType    = "Sentry";
 private _reinforceArgs = [[_reinforcePos, "MotorizedTeam"]];
 
 switch (_difficulty) do {
     case 1: {
-        _patrolType = "AssaultSquad";
+        _reactType     = "AssaultSquad";
         _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
     };
     case 2: {
-        _guardType  = "AssaultSquad";
-        _patrolType = "AssaultSquad";
+        _guardType     = "AssaultSquad";
+        _reactType     = "AssaultSquad";
         _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
     };
 };
@@ -144,19 +150,32 @@ private _i = 1;
     _i = _i + 1;
 } forEach _bunkerPosList;
 
-private _patrolGroup = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+private _reactGroup = [_reactPos, _opforFaction, _reactType] call den_fnc_spawnGroup;
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
-[_patrolGroup, _patrolWpPos] spawn {
-    private _group = _this select 0;
-    private _pos   = _this select 1;
+private _reactWpPos = selectRandom [_reactPos, _lzPos];
+[_reactGroup, _reactWpPos] spawn {
+    params ["_group", "_pos"];
+
     while {isNil "den_insertUnload"} do { sleep 1 };
     [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 };
+
+private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+[
+    _patrolGroup,
+    _zonePos,
+    300,
+    6,
+    "MOVE",
+    "SAFE",
+    "YELLOW",
+    "LIMITED",
+    "STAG COLUMN"
+] call CBA_fnc_taskPatrol;
 
 [_zonePos, _zoneRadius * 0.5, _opforFaction, 4] call den_fnc_buildingOccupy;
 

@@ -55,6 +55,9 @@ if (_opforFaction == "") exitWith {
     ERROR("opfor faction cannot be empty");
     "";
 };
+/*
+ * max radius for AO objects
+ */
 private _zoneRadius   = 250;
 private _minLz        = _zoneRadius + 400;
 private _maxLz        = _zoneRadius + 450;
@@ -130,30 +133,17 @@ switch (_difficulty) do {
 };
 
 private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
-
-private _randPatrol = [0,1] call BIS_fnc_randomInt;
-switch (_randPatrol) do {
-    case 0: {
-        [
-            _patrolGroup,
-            _zonePos,
-            _zoneRadius,
-            5,
-            "MOVE",
-            "AWARE",
-            "YELLOW",
-            "LIMITED",
-            "STAG COLUMN"
-        ] call CBA_fnc_taskPatrol;
-    };
-    case 1: {
-        [_patrolGroup, _lzPos] spawn {
-            params ["_patrolGroup", "_lzPos"];
-            while {isNil "den_insertUnload"} do { sleep 1 };
-            [_patrolGroup, _lzPos, 25] call CBA_fnc_taskAttack;
-        };
-    };
-};
+[
+    _patrolGroup,
+    _zonePos,
+    _zoneRadius,
+    5,
+    "MOVE",
+    "AWARE",
+    "YELLOW",
+    "LIMITED",
+    "STAG COLUMN"
+] call CBA_fnc_taskPatrol;
 
 private _buildingList = nearestObjects [_zonePos, ["House"], _zoneRadius];
 if (_buildingList isEqualTo []) exitWith {

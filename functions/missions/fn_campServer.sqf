@@ -55,20 +55,24 @@ if (_opforFaction == "") exitWith {
     ERROR("opfor faction cannot be empty");
     "";
 };
-
-private _zoneRadius     = 400;
-private _minLz          = _zoneRadius + 500;
-private _maxLz          = _zoneRadius + 550;
-private _minReinforce   = _minLz;
-private _maxReinforce   = _maxLz;
-private _maxCamp        = _zoneRadius * 0.25;
-private _maxInfPatrol   = _zoneRadius * 0.75;
+/*
+ * max radius for AO objects
+ */
+private _zoneRadius   = 400;
+private _minLz        = _zoneRadius + 500;
+private _maxLz        = _zoneRadius + 550;
+private _minReinforce = _minLz;
+private _maxReinforce = _maxLz;
+private _maxCamp      = _zoneRadius * 0.25;
+private _maxReact     = _zoneRadius * 0.5;  // reaction force
+private _maxPatrol    = _zoneRadius * 0.75; // patrol
 
 private _safePosParams = [
     [_minLz,        _maxLz,        15, 0.1], // lz safe position
-    [_minReinforce, _maxReinforce, 15,  -1], // reinforce safe position
+    [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
     [0,             _maxCamp,      20, 0.1], // camp safe position
-    [0,             _maxInfPatrol, 15,  -1]  // patrol safe position
+    [0,             _maxReact,      5,  -1], // patrol safe position
+    [0,             _maxPatrol,     5,  -1]  // patrol safe position
 ];
 
 private _zone = [
@@ -89,7 +93,8 @@ private _zoneSafePosList = _zone select 2;
 private _lzPos           = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _campPos         = _zoneSafePosList select 2;
-private _infPatrolPos    = _zoneSafePosList select 3;
+private _reactPos        = _zoneSafePosList select 3;
+private _patrolPos       = _zoneSafePosList select 4;
 
 /*
  * lz
@@ -114,17 +119,18 @@ createMarker ["campMarker", _campPos];
 createGuardedPoint [opfor, _campPos, -1, objNull];
 
 private _guardType         = "ReconSquad";
-private _patrolType        = "ReconTeam";
+private _reactType         = "ReconTeam";
+private _patrolType        = "Sentry";
 private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
 private _extractAttackType = "FireTeam";
 
 switch (_difficulty) do {
     case 1: {
-        _patrolType    = "ReconSquad";
+        _reactType     = "ReconSquad";
         _reinforceArgs = [[_reinforcePos, "MotorizedAssault"]];
     };
     case 2: {
-        _patrolType    = "ReconSquad";
+        _reactType     = "ReconSquad";
         _reinforceArgs = [
             [_reinforcePos, "MotorizedAssault"],
             [_reinforcePos, "MotorizedAssault"]
@@ -147,20 +153,32 @@ private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
     };
 } forEach units _guardGroup;
 
-private _patrolGroup = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
-
+private _reactGroup = [_reactPos, _opforFaction, _reactType] call den_fnc_spawnGroup;
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
-[_patrolGroup, _patrolWpPos] spawn {
-    private _group = _this select 0;
-    private _pos   = _this select 1;
+private _reactWpPos = selectRandom [_reactPos, _lzPos];
+[_reactGroup, _reactWpPos] spawn {
+    params ["_group", "_pos"];
+
     while {isNil "den_insertUnload"} do { sleep 1 };
     [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 };
+
+private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+[
+    _patrolGroup,
+    _campPos,
+    300,
+    6,
+    "MOVE",
+    "SAFE",
+    "YELLOW",
+    "LIMITED",
+    "STAG COLUMN"
+] call CBA_fnc_taskPatrol;
 
 [_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
 

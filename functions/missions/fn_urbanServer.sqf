@@ -56,16 +56,21 @@ if (_opforFaction == "") exitWith {
     "";
 };
 
-private _zoneRadius   = 350;
-private _minLz        = _zoneRadius + 450;
-private _maxLz        = _zoneRadius + 500;
-private _maxCamp      = _zoneRadius * 0.25;
-private _maxInfPatrol = _zoneRadius * 0.75;
+private _zoneRadius = 350;
+/*
+ * max radius for AO objects
+ */
+private _minLz      = _zoneRadius + 450;
+private _maxLz      = _zoneRadius + 500;
+private _maxCamp    = _zoneRadius * 0.25; // garrison
+private _maxReact   = _zoneRadius * 0.5;  // reaction force
+private _maxPatrol  = _zoneRadius * 0.75; // patrol force
 
 private _safePosParams = [
-    [_minLz, _maxLz,        15, 0.1], // lz safe position
-    [0,      _maxCamp,      15, 0.1], // camp safe position
-    [0,      _maxInfPatrol, 15,  -1]  // patrol safe position
+    [_minLz, _maxLz,        15, 0.1], // lz safe pos
+    [0,      _maxCamp,      15, 0.1], // max camp safe pos
+    [0,      _maxReact,     15, 0.1], // reaction force safe pos
+    [0,      _maxPatrol,     5,  -1]  // patrol safe pos
 ];
 
 private _zone = [
@@ -87,7 +92,8 @@ private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
 private _lzPos           = _zoneSafePosList select 0;
 private _campPos         = _zoneSafePosList select 1;
-private _infPatrolPos    = _zoneSafePosList select 2;
+private _reactPos        = _zoneSafePosList select 2;
+private _patrolPos       = _zoneSafePosList select 3;
 
 /*
  * lz
@@ -109,18 +115,19 @@ _zoneTrigger setTriggerStatements    ["this", _zoneActivation, ""];
 createGuardedPoint [opfor, _campPos, -1, objNull];
 
 private _guardType   = "MotorizedAssault";
-private _patrolType  = "FireTeam";
+private _patrolType  = "Sentry";
+private _reactType   = "FireTeam";
 private _occupyCount = 4;
 
 switch (_difficulty) do {
     case 1: {
         _guardType   = "MotorizedAssault";
-        _patrolType  = "AssaultSquad";
+        _reactType   = "AssaultSquad";
         _occupyCount = 8;
     };
     case 2: {
         _guardType   = "MotorizedAssault";
-        _patrolType  = "MotorizedAssault";
+        _reactType   = "MotorizedAssault";
         _occupyCount = 8;
     };
 };
@@ -129,22 +136,34 @@ private _guardGroup = [_campPos, _opforFaction, _guardType] call den_fnc_spawnGr
 
 [_guardGroup, _campPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-private _patrolGroup  = [_infPatrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
-
-[_zonePos, _zoneRadius * 0.25, _opforFaction, _occupyCount] call den_fnc_buildingOccupy;
-
+private _reactGroup  = [_reactPos, _opforFaction, _reactType] call den_fnc_spawnGroup;
 /*
- * Select either the current patrol pos, or the LZ by random.
+ * Select either the current react pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _patrolWpPos = selectRandom [_infPatrolPos, _lzPos];
-[_patrolGroup, _patrolWpPos] spawn {
-    private _group = _this select 0;
-    private _pos   = _this select 1;
+private _reactWpPos = selectRandom [_reactPos, _lzPos];
+[_reactGroup, _reactWpPos] spawn {
+    params ["_group", "_pos"];
+
     while {isNil "den_insertUnload"} do { sleep 1 };
     [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 };
+
+private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+[
+    _patrolGroup,
+    _campPos,
+    300,
+    6,
+    "MOVE",
+    "SAFE",
+    "YELLOW",
+    "LIMITED",
+    "STAG COLUMN"
+] call CBA_fnc_taskPatrol;
+
+[_zonePos, _zoneRadius * 0.25, _opforFaction, _occupyCount] call den_fnc_buildingOccupy;
 
 /*
  * enemy unit markers
