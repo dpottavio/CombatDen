@@ -18,47 +18,63 @@ argParser.add_argument("-z", "--zip", action="store_true", help="build pbo files
 
 args = argParser.parse_args()
 
-missionSrcPathBase  = pathlib.Path("./missions")
-destPathBase = args.dest
+rootSrcPath         = pathlib.Path(".")
+missionSrcPathBase  = rootSrcPath / "missions"
+destPathBase        = pathlib.Path(args.dest)
 
 missionSrcList = os.listdir(missionSrcPathBase)
 
 zip = None
 if args.zip:
-    zipPath = pathlib.Path(destPathBase + "/CombatDen.zip", compression=zipfile.ZIP_DEFLATED)
-    zip = zipfile.ZipFile(str(zipPath), "w")
+    zipPath = destPathBase / "CombatDen.zip"
+    zip = zipfile.ZipFile(str(zipPath), "w", compression=zipfile.ZIP_DEFLATED)
 
 for terrain in missionSrcList:
     print (terrain, end="....")
 
     missionName = "CombatDen." + terrain;
-    missionDestPath = pathlib.Path(destPathBase + "/" + missionName + "/")
+    missionDestPath = destPathBase / missionName
 
     if os.path.exists(missionDestPath):
         shutil.rmtree(missionDestPath)
 
-    missionSrcPath = pathlib.Path(str(missionSrcPathBase) + "/" + terrain + "/")
+    missionSrcPath = missionSrcPathBase / terrain
 
+    #
+    # Copy source contents to destination.
+    #
     shutil.copytree(missionSrcPath, missionDestPath)
-
     for src in srcFiles:
-        srcPath  = pathlib.Path("./" + src)
-        destPath = pathlib.Path(str(missionDestPath) + "/" + str(src))
+        srcPath  = rootSrcPath / src
+        destPath = missionDestPath / src
 
         if os.path.isfile(str(src)):
             shutil.copyfile(srcPath, destPath)
         else:
             shutil.copytree(srcPath, destPath)
 
+    #
+    # Add version watermark to Description.ext
+    #
+    try:
+        version = subprocess.getoutput("git describe --tags --dirty");
+        cfgVersion = "\n\nclass CfgVersion { version = \"" + version + "\" };\n\n"
+
+        descriptionPath = missionDestPath / "Description.ext"
+        descriptionFile = open(str(descriptionPath), "a");
+        descriptionFile.write(cfgVersion)
+    except subprocess.CalledProcessError as e:
+        print ("WARNING: failed to set version watermark:" + e)
+
     if args.zip or args.pbo:
+        # Create PBOs
         try:
-            job = subprocess.run(["FileBank", str(missionDestPath)])
-            job.check_returncode()
+            job = subprocess.run(["FileBank", str(missionDestPath.resolve())], check=True)
         except FileNotFoundError as e:
-            print ("ERROR. FileBank was not found. Make sure BI Tools are installed and it's in your path.")
+            print ("ERROR: FileBank was not found. Make sure BI Tools are installed and it's in your path.")
             sys.exit(1)
         except subprocess.CalledProcessError as e:
-            print ("ERROR. FileBank process error.")
+            print ("ERROR: FileBank process:" + e)
             sys.exit(1)
 
     if zip != None:

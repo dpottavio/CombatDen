@@ -19,10 +19,15 @@ player createDiarySubject ["CombatDenSubject", "Combat Den"];
 
 private _items = "true" configClasses (missionConfigFile >> "CfgHelp");
 {
-    private _title   = getText (_x >> "title");
-    private _text    = getText (_x >> "text");
+    private _title = getText (_x >> "title");
+    private _text  = getText (_x >> "text");
 
     player createDiaryRecord ["CombatDenSubject", [_title, _text]];
 } forEach _items;
+
+private _version = getText (missionConfigFile >> "CfgVersion" >> "version");
+if (_version != "") then {
+    player createDiaryRecord ["CombatDenSubject", ["Version", _version]];
+};
 
 true;
