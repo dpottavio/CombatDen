@@ -27,7 +27,7 @@ if (!isMultiplayer) then {
 
     player setVariable ["den_isReady", true, true];
 
-    cutText ["waiting for server...", "BLACK OUT", 1];
+    cutText ["waiting for players...", "BLACK OUT", 1];
 
     waitUntil { !isNull findDisplay 46 };
 
