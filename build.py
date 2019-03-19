@@ -63,7 +63,7 @@ for terrain in missionSrcList:
                              check=True, capture_output=True, text=True)
 
         version = job.stdout.rstrip()
-        cfgVersion = "\n\nclass CfgVersion { version = \"" + version + "\" };\n\n"
+        cfgVersion = "\n\nclass CfgVersion { version = \"" + version + "\"; };\n\n"
 
         descriptionPath = missionDestPath / "Description.ext"
         descriptionFile = open(str(descriptionPath), "a")
