@@ -20,7 +20,7 @@ class Header
 {
 	gameType   = COOP;
 	minPlayers = 1;
-	maxPlayers = 8;
+	maxPlayers = 9;
 };
 
 #include "config\CfgArsenal.cpp"
