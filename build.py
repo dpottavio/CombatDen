@@ -1,15 +1,17 @@
 #! /usr/bin/env python3
+#
+# pylint: disable=C
+#
 import argparse
 import os
 import pathlib
 import shutil
 import subprocess
-import sys;
+import sys
 import zipfile
-import zlib
 
 srcFiles = ["config", "functions", "Description.ext", "XEH_preInit.sqf",
-            "LICENCE", "initPlayerLocal.sqf", "initServer.sqf", "macros.hpp"];
+            "LICENCE", "initPlayerLocal.sqf", "initServer.sqf", "macros.hpp"]
 
 argParser = argparse.ArgumentParser()
 argParser.add_argument("dest", help="mission destination directory")
@@ -24,15 +26,15 @@ destPathBase        = pathlib.Path(args.dest)
 
 missionSrcList = os.listdir(missionSrcPathBase)
 
-zip = None
+pboZip = None
 if args.zip:
     zipPath = destPathBase / "CombatDen.zip"
-    zip = zipfile.ZipFile(str(zipPath), "w", compression=zipfile.ZIP_DEFLATED)
+    pboZip = zipfile.ZipFile(str(zipPath), "w", compression=zipfile.ZIP_DEFLATED)
 
 for terrain in missionSrcList:
     print (terrain, end="....")
 
-    missionName = "CombatDen." + terrain;
+    missionName = "CombatDen." + terrain
     missionDestPath = destPathBase / missionName
 
     if os.path.exists(missionDestPath):
@@ -57,30 +59,33 @@ for terrain in missionSrcList:
     # Add version watermark to Description.ext
     #
     try:
-        version = subprocess.getoutput("git describe --tags --dirty");
+        job = subprocess.run(["git", "describe", "--tags", "--dirty"],
+                             check=True, capture_output=True, text=True)
+
+        version = job.stdout.rstrip()
         cfgVersion = "\n\nclass CfgVersion { version = \"" + version + "\" };\n\n"
 
         descriptionPath = missionDestPath / "Description.ext"
-        descriptionFile = open(str(descriptionPath), "a");
+        descriptionFile = open(str(descriptionPath), "a")
         descriptionFile.write(cfgVersion)
     except subprocess.CalledProcessError as e:
-        print ("WARNING: failed to set version watermark:" + e)
+        print ("WARNING: failed to set version watermark:" + str(e))
 
     if args.zip or args.pbo:
         # Create PBOs
         try:
-            job = subprocess.run(["FileBank", str(missionDestPath.resolve())], check=True)
+            subprocess.run(["FileBank", str(missionDestPath.resolve())], check=True)
         except FileNotFoundError as e:
             print ("ERROR: FileBank was not found. Make sure BI Tools are installed and it's in your path.")
             sys.exit(1)
         except subprocess.CalledProcessError as e:
-            print ("ERROR: FileBank process:" + e)
+            print ("ERROR: FileBank process:" + str(e))
             sys.exit(1)
 
-    if zip != None:
-        zip.write(str(missionDestPath) + ".pbo", arcname=missionName + ".pbo")
+    if pboZip != None:
+        pboZip.write(str(missionDestPath) + ".pbo", arcname=missionName + ".pbo")
 
     print ("done")
 
-if zip != None:
-    zip.close()
+if pboZip != None:
+    pboZip.close()
