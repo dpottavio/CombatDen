@@ -140,8 +140,6 @@ createMarker ["containerMarker", _containerPos];
 "containerMarker" setMarkerText "container";
 "containerMarker" setMarkerSize [0.75, 0.75];
 
-createGuardedPoint [east, [0,0], -1, den_container];
-
 /*
  * enemy units
  */
