@@ -227,7 +227,7 @@ private _guardGroupCount = 0;
     _helo lock true;
 
     private _explosiveTypes =
-        getArray (missionConfigFile >> "CfgArsenal" >> _bluforFaction >> "SemiArid" >> "explosives");
+        getArray (missionConfigFile >> "CfgArsenal" >> _bluforFaction >> "SemiArid" >> "baseExplosives");
     _explosiveTypes pushBack "ACE_M14";
 
     private _hasExplosive = false;
