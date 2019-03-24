@@ -15,6 +15,8 @@ if (hasInterface) then {
 };
 
 if (!isMultiplayer) then {
+    removeSwitchableUnit den_zeus;
+
     // Wait until the briefing has been read.
     waitUntil { !isNull findDisplay 46 };
 
