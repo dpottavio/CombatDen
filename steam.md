@@ -8,6 +8,7 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [list]
 [*] Single player support.
 [*] 8 player coop support on a dedicated server or player hosted server.
+[*] Zeus support.
 [*] Built for ACE 3 from the ground up.
 [*] Virtual Arsenal for player and AI units.
 [*] Configurable mission settings.
