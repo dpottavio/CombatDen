@@ -122,7 +122,7 @@ den_hostage addEventHandler ["killed", {
 
 [den_hostage, {
     ["den_hostageFree"] call den_fnc_publicBool;
-    [den_hostage] join den_hostageGroup;
+    [[den_hostage], den_hostageGroup] remoteExecCall ["join",  groupOwner den_hostageGroup];
 }] call den_fnc_hostage;
 
 createMarker ["hostageMarker", _hostagePos];
