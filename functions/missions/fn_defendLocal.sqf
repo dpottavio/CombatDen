@@ -36,7 +36,7 @@ if (_zone == "") exitWith {
     false;
 };
 
-if (isNull _helo) exitWith {
+if (isNull _helo && !didJIP) exitWith {
     ERROR("helo parameter is  empty");
     false;
 };
