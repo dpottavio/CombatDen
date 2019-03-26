@@ -8,7 +8,8 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 
 ## Features
 * Single player support.
-* player coop support on a dedicated server or player hosted server.
+* Multiplayer coop support on a dedicated server or player hosted server.
+* Zeus support.
 * Built for ACE 3 from the ground up.
 * Virtual Arsenal for player and AI units.
 * Configurable mission settings.
@@ -24,7 +25,7 @@ Access to the settings menu is available through the 'Configure Addons' button d
 The ACE Virtual Arsenal (VA) is available in the crates at the start of each mission.  You must use the ACE interact key on the crates to open the VA and custom loadout menu.
 
 ## Required Mods
-The following mods are the minimum required dependencies.  Mission files on non-vanilla terrains will require additional dependencies. 
+The following mods are the minimum required dependencies.  Mission files on non-vanilla terrains will require additional dependencies.
 * [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057)
 * [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997)
 
