@@ -10,8 +10,17 @@ import subprocess
 import sys
 import zipfile
 
+import pbo
+
 srcFiles = ["config", "functions", "Description.ext", "XEH_preInit.sqf",
             "LICENCE", "initPlayerLocal.sqf", "initServer.sqf", "macros.hpp"]
+
+def ok():
+    print("ok")
+
+def abort(text):
+    print("ERROR: " + text)
+    sys.exit(1)
 
 def main():
     argParser = argparse.ArgumentParser()
@@ -26,11 +35,6 @@ def main():
     destPathBase       = pathlib.Path(args.dest)
 
     missionSrcList = os.listdir(missionSrcPathBase)
-
-    pboZip = None
-    if args.zip:
-        zipPath = destPathBase / "CombatDen.zip"
-        pboZip = zipfile.ZipFile(str(zipPath), "w", compression=zipfile.ZIP_DEFLATED)
 
     for terrain in missionSrcList:
         print("{:15}".format(terrain), end="")
@@ -56,46 +60,44 @@ def main():
                 else:
                     shutil.copytree(srcPath, destPath)
         except IOError as e:
-            print("ERROR: " + str(e))
-            sys.exit(1)
-        except shutil.SameFileError as e:
-            print("ERROR: source and destination are the same")
-            sys.exit(1)
+            abort(str(e))
 
         #
         # Add version watermark to Description.ext
         #
         try:
-            job = subprocess.run(["git", "describe", "--tags", "--dirty"],
-                                 check=True, capture_output=True, text=True)
+            job = subprocess.run(["git", "describe", "--tags", "--dirty"], check=True, stdout=subprocess.PIPE)
 
-            version = job.stdout.rstrip()
+            version = str(job.stdout).rstrip()
             cfgVersion = "\n\nclass CfgVersion { version = \"" + version + "\"; };\n\n"
 
             descriptionPath = missionDestPath / "Description.ext"
-            descriptionFile = open(str(descriptionPath), "a")
-            descriptionFile.write(cfgVersion)
+
+            with open(str(descriptionPath), "a") as cfg:
+                cfg.write(cfgVersion)
         except subprocess.CalledProcessError as e:
             print("WARNING: failed to set version watermark:" + str(e))
 
         if args.zip or args.pbo:
             # Create PBO
             try:
-                subprocess.run(["FileBank", str(missionDestPath.resolve())], check=True)
-            except FileNotFoundError as e:
-                rint("ERROR: FileBank was not found. Make sure BI Tools are installed and it's in your path.")
-                sys.exit(1)
-            except subprocess.CalledProcessError as e:
-                print("ERROR: FileBank process:" + str(e))
-                sys.exit(1)
+                destStr = str(missionDestPath)
+                with pbo.PboWriter(destStr) as pboWriter:
+                    pboWriter.writeDir(destStr)
+            except IOError as e:
+                abort("pbo packing:" + str(e))
+        ok()
 
-        if pboZip != None:
-            pboZip.write(str(missionDestPath) + ".pbo", arcname=missionName + ".pbo")
+    if args.zip:
+        print("{:15}".format("zip"), end="")
 
-        print("ok")
-
-    if pboZip != None:
-        pboZip.close()
+        zipPath = destPathBase / "CombatDen.zip"
+        with zipfile.ZipFile(str(zipPath), "w", compression=zipfile.ZIP_DEFLATED) as pboZip:
+            for terrain in missionSrcList:
+                pboFile = "CombatDen." + terrain + ".pbo"
+                pboPath = destPathBase / pboFile
+                pboZip.write(str(pboPath), arcname=pboFile)
+        ok()
 
 if __name__ == "__main__":
     main()
