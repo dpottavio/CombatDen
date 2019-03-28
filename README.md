@@ -41,6 +41,29 @@ Combat Den supports the following list of mods to add additional units and weapo
 * [RHS AFRF](https://steamcommunity.com/sharedfiles/filedetails/?id=843425103) replaces CSAT forces with Russia.
 * [RHS USAF](https://steamcommunity.com/sharedfiles/filedetails/?id=843577117) replaces NATO forces with USMC.
 
+## Requests
+
+If there is a faction, terrain, or general improvement you would like
+to see, please open an issue and describe in detail what it is you
+would like.  The only general guideline is that the request should
+"make sense" in the context of the mission.  Use your best judgement.
+
+Depending on the amount of work, request may take some time to
+complete.  The best way to expedite this process is to make a
+Pull-Request contribution.  Contributions take priority over request
+issues (see Contributing section below).
+
+## Contributing
+
+Pull-Requests that add content and make improvements are accepted if
+they make sense.  The
+[wiki](https://github.com/dpottavio/CombatDen/wiki) contains a
+Development section.  Please read this first, as it contains useful
+information for getting started.  This document is still a WIP and new
+content will be added over time.
+
+If you have any questions, please open an issue and ask.
+
 ## Links
 * [BI Forum Page](https://forums.bohemia.net/forums/topic/219387-combat-den/)
 * [Steam Collection](https://steamcommunity.com/workshop/filedetails/?id=1491480111)
