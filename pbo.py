@@ -120,9 +120,7 @@ class PboWriter:
 
 
     def writeDir(self, directoryPath):
-        '''Write the contents of a directory into a pbo file.  This method
-        walks the contents of a directory and writes them into a pbo
-        file.
+        '''Write the contents of a directory into a pbo file.
 
         @param directoryPath - full path of the directory to write
         into the pbo file
