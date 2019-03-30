@@ -30,7 +30,7 @@ params [
     ["_playerGroup",   grpNull, [grpNull]],
     ["_helo",          objNull, [objNull]],
     ["_bluforFaction", "",      [""]],
-    ["_opforFaciton",  "",      [""]],
+    ["_opforFaction",  "",      [""]],
     ["_difficulty",    0,       [0]]
 ];
 

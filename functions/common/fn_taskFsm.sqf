@@ -67,7 +67,7 @@ while {_head < _end && _ok}  do {
 
     while {_ok} do {
         if (!isNil _taskEvent) exitWith {
-            _taskName = _taskArgs select 1;
+            private _taskName = _taskArgs select 1;
             [_taskName, "SUCCEEDED"] call BIS_fnc_taskSetState;
             _head = _head + 1;
             sleep 4;

@@ -58,7 +58,6 @@ private _helo = [
 ] call den_fnc_spawnvehicle;
 
 private _heloObj   = _helo select 0;
-private _heloCrew  = _helo select 1;
 private _heloGroup = _helo select 2;
 
 _heloGroup setGroupIdGlobal ["Eagle"];

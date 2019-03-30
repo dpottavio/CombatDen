@@ -88,7 +88,7 @@ player createDiaryRecord ["Diary", ["Mission",
 "
 ]];
 
-_situationText = format["\
+private _situationText = format["\
 A %1 pilot was downed and taken hostage by %2 forces.  \
 He is currently being held in a camp located near position <marker name='zoneMarker'>%3</marker>.  \
 A rescue squad will be deployed to extract the hostage.", _bluforFaction, _opforFaction, _zone];

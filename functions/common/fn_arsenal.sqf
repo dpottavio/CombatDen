@@ -27,7 +27,7 @@ params [
     ["_obj",            objNull, [objNull]]
 ];
 
-if (_bluforFaciton == "") exitWith {
+if (_bluforFaction == "") exitWith {
     ERROR("faction parameter is empty");
     false;
 };

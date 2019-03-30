@@ -16,18 +16,13 @@
 
     0: STRING - Class name of blufor faction.  See CfgFactions.
 
-    1: OBJECT - A unit to apply the loadout preset.
-    If this is NULL, the loadout is applied to the player using
-    the menu.
-
     Returns: true on success, false on error
 */
 params [
-    ["_bluforFaction", "",      [""]],
-    ["_unit",          objNull, [objNull]]
+    ["_bluforFaction", "",      [""]]
 ];
 
-if (_bluforFaciton == "") exitWith {
+if (_bluforFaction == "") exitWith {
     ["faction parameter is empty"] call BIS_fnc_error;
     false;
 };
@@ -99,7 +94,6 @@ lbSort [_roleListBoxId, "ASC"];
 
     {
         if (getText (_x >> "role") == _roleSelect) then {
-            private _typeList = [];
             private _typesCfg = "true" configClasses (_x);
 
             private _i = 0;

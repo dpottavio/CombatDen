@@ -49,7 +49,6 @@ clearItemCargoGlobal     _helo;
 clearBackpackCargoGlobal _helo;
 
 private _pilotGroup = [_pos getPos [10,0], _bluforFaction, "HeloPilot"] call den_fnc_spawnGroup;
-private _pilotUnits = units _pilotGroup;
 {
     _x moveInAny _helo;
 } forEach units _pilotGroup;
