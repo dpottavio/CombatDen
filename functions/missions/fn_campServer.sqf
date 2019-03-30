@@ -88,7 +88,6 @@ if (_zone isEqualTo []) exitWith {
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
-private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
 private _lzPos           = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;

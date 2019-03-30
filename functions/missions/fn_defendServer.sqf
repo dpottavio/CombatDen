@@ -83,7 +83,6 @@ if (_zone isEqualTo []) exitWith {
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
-private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
 private _lzPos           = _zoneSafePosList select 0;
 private _convoyRoads     = _zonePos nearRoads (_maxConvoy);
@@ -144,13 +143,12 @@ _trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activ
 /*
  * assault waves
  */
-[_assaultPos1, _assaultPos2, _zoneArea, _convoyPos, _opforFaction, _difficulty] spawn {
+[_assaultPos1, _assaultPos2, _zoneArea, _opforFaction, _difficulty] spawn {
     private _assaultPos1  = _this select 0;
     private _assaultPos2  = _this select 1;
     private _zoneArea     = _this select 2;
-    private _convoyPos    = _this select 3;
-    private _opforFaction = _this select 4;
-    private _difficulty   = _this select 5;
+    private _opforFaction = _this select 3;
+    private _difficulty   = _this select 4;
 
     // wait for player insert before staring wave attacks
     while {true} do {
