@@ -55,7 +55,8 @@ private _loadout = configNull;
 if (_type != "") then {
     _loadout = missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role >> _type;
 } else {
-    private _loadouts = "getNumber(_x >> ""default"") == 1" configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role);
+    private _configCondition = "getNumber(_x >> ""default"") == 1";
+    private _loadouts = _configCondition configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role);
     if (_loadouts isEqualTo []) exitWith {
         ERROR("no default loadouts");
         false;
