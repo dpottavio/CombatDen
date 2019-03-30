@@ -66,9 +66,9 @@ def main():
         # Add version watermark to Description.ext
         #
         try:
-            job = subprocess.run(["git", "describe", "--tags", "--dirty"], check=True, stdout=subprocess.PIPE)
+            job = subprocess.run(["git", "describe", "--tags", "--dirty"], check=True, encoding='utf-8', stdout=subprocess.PIPE)
 
-            version = str(job.stdout).rstrip()
+            version = job.stdout.rstrip()
             cfgVersion = "\n\nclass CfgVersion { version = \"" + version + "\"; };\n\n"
 
             descriptionPath = missionDestPath / "Description.ext"
