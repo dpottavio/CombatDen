@@ -45,28 +45,32 @@
 */
 #include "..\..\macros.hpp"
 
-[_this] spawn {
-    private ["_args", "_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
+params [
+    ["_area",      [],   [[], objNull], [5,6]],
+    ["_spawnList", [],   [[]]],
+    ["_faction",   "",   [""]],
+    ["_code",      nil,  [{}]],
+    ["_threshold", 0.25, [0]],
+    ["_cooldown",  60,   [0]],
+    ["_notify",    true, [true]]
+];
 
-    _args      = _this select 0;
-    _area      = _args param [0, [],   [[], objNull], [5,6]];
-    _spawnList = _args param [1, [],   [[]]];
-    _faction   = _args param [2, "",   [""]];
-    _code      = _args param [3, nil,  [{}]];
-    _threshold = _args param [4, 0.25, [0]];
-    _cooldown  = _args param [5, 60,   [0]];
-    _notify    = _args param [6, true, [true]];
+if (_area isEqualTo []) exitWith {
+    ERROR("empty area");
+    false;
+};
 
-    if (_area isEqualTo []) exitWith {
-        ERROR("empty area");
-    };
-    if (_spawnList isEqualTo []) exitWith {
-        ERROR("empty spawn list");
-    };
-    if (_faction == "") exitWith {
-        ERROR("no faction specified");
-    };
+if (_spawnList isEqualTo []) exitWith {
+    ERROR("empty spawn list");
+    false;
+};
+if (_faction == "") exitWith {
+    ERROR("no faction specified");
+    false;
+};
 
+[_area, _spawnList, _faction, _code, _threshold, _cooldown, _notify] spawn {
+    params ["_area", "_spawnList", "_faction", "_code", "_threshold", "_cooldown", "_notify"];
     {
         private _total = {((side _x) == opfor) && ((getPos _x) inArea _area)} count allUnits;
 

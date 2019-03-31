@@ -10,7 +10,7 @@ before_test:
   - "%PYTHON% -m pip install sqflint"
 
 test_script:
-  - "%SQFLINT% -d functions -e e"
+  - "%SQFLINT% -d functions -e w"
 
 artifacts:
   - path: build/CombatDen.zip

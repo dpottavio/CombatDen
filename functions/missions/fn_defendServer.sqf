@@ -144,11 +144,7 @@ _trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activ
  * assault waves
  */
 [_assaultPos1, _assaultPos2, _zoneArea, _opforFaction, _difficulty] spawn {
-    private _assaultPos1  = _this select 0;
-    private _assaultPos2  = _this select 1;
-    private _zoneArea     = _this select 2;
-    private _opforFaction = _this select 3;
-    private _difficulty   = _this select 4;
+    params ["_assaultPos1", "_assaultPos2", "_zoneArea", "_opforFaction", "_difficulty"];
 
     // wait for player insert before staring wave attacks
     while {true} do {

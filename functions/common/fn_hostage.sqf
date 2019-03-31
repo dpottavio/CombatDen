@@ -67,7 +67,7 @@ _hostage switchMove _enableAnimation;
     {},                                                 // Code executed when action starts
     {},                                                 // Code executed on every progress tick
     {
-        params ["_target", "_caller", "_actionId", "_arguments"];
+        params ["_target", "", "", "_arguments"];
 
         private _code      = _arguments select 0;
         private _animation = _arguments select 1;

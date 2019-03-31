@@ -40,24 +40,43 @@
 
     Returns: true
 */
-[_this] spawn {
-    private [
-        "_args",
-        "_lzPos",
-        "_cargoGroup",
-        "_bluforFaction",
-        "_bool",
-        "_blackArea",
-        "_area"
-    ];
+#include "..\..\macros.hpp"
 
-    _args          = _this select 0;
-    _lzPos         = _args param [0, [], [[]], [2,3]];
-    _cargoGroup    = _args param [1, grpNull, [grpNull]];
-    _bluforFaction = _args param [2, "", [""]];
-    _bool          = _args param [3, "", [""]];
-    _blackArea     = _args param [4, [], [[]], [5,6]];
-    _area          = _args param [5, [_lzPos, 50, 50, 0, false], [[]], [5,6]];
+params [
+    ["_lzPos",         [],      [[]], [2,3]],
+    ["_cargoGroup",    grpNull, [grpNull]],
+    ["_bluforFaction", "",      [""]],
+    ["_bool",          "",      [""]],
+    ["_blackArea",     [],      [[]], [5,6]],
+    ["_area",          [],      [[]], [5,6]]
+];
+
+if (_lzPos isEqualTo []) exitWith {
+    ERROR("position parameter is empty");
+    false;
+};
+
+if (isNull _cargoGroup) exitWith {
+    ERROR("cargo group parameter is empty");
+    false;
+};
+
+if (_bluforFaction == "") exitWith {
+    ERROR("blufor faction is empty");
+    false;
+};
+
+if (_bool == "") exitWith {
+    ERROR("bool parameter is empty");
+    false;
+};
+
+if (_area isEqualTo []) then {
+    _area = [_lzPos, 50, 50, 0, false];
+};
+
+[_lzPos, _cargoGroup, _bluforFaction, _bool, _blackArea, _area] spawn {
+    params ["_lzPos", "_cargoGroup", "_bluforFaction", "_bool", "_blackArea", "_area"];
 
     private _blackPos  = _blackArea param [0, _lzPos];
     private _deployDir = _blackPos getDir _lzPos;

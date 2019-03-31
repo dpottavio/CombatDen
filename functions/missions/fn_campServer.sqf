@@ -197,8 +197,7 @@ den_searchItem = selectRandom (_searchItems);
 publicVariable "den_searchItem";
 
 [_lzPos, _opforFaction] spawn {
-    private _lzPos   = _this select 0;
-    private _opforFaction = _this select 1;
+    params ["_lzPos", "_opforFaction"];
 
     while {isNil "den_campSeized"} do {
         sleep 1;

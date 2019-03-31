@@ -64,7 +64,7 @@ private _loadoutAction = [
     "Mission Loadouts",
     "",
     {
-        params ["_target", "_player", "_params"];
+        params ["", "", "_params"];
 
         private _bluforFaction = _params select 0;
         private _obj           = _params select 1;

@@ -45,7 +45,7 @@ params [
 private _aceRespawnGear = missionNamespace getVariable ["ace_respawn_savePreDeathGear", false];
 if (isMultiPlayer && hasInterface && !_aceRespawnGear) then {
     _helo addEventHandler ["GetIn", {
-        params ["_vehicle", "_role", "_unit", "_turret"];
+        params ["", "", "_unit", ""];
 
         if (local _unit) then {
             _unit setVariable ["den_loadout", (getUnitLoadout _unit)];
@@ -53,7 +53,7 @@ if (isMultiPlayer && hasInterface && !_aceRespawnGear) then {
     }];
 
     player addEventHandler ["Respawn", {
-        params ["_unit", "_corpse"];
+        params ["_unit", ""];
 
         private _loadout = _unit getVariable ["den_loadout", []];
         if !(_loadout isEqualTo []) then {
