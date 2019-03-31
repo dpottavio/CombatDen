@@ -1,10 +1,15 @@
 # Combat Den
 
-## Introduction
-Combat Den is a work-in-progress project to provide simple randomized missions for Arma 3.  A single mission file provides a number of re-playable missions, no two mission play throughs are the same.
+[![Build status](https://ci.appveyor.com/api/projects/status/2lqpbhv71sc97ip9/branch/master?svg=true)](https://ci.appveyor.com/project/dpottavio/combatden/branch/master)
+
+Combat Den is a work-in-progress project to provide simple randomized
+missions for Arma 3.  A single mission file provides a number of
+re-playable missions, no two mission play throughs are the same.
 
 ## How can I play?
-It's simple.  A randomized mission will be selected complete with a briefing.  Just play.
+
+It's simple.  A randomized mission will be selected complete with a
+briefing.  Just play.
 
 ## Features
 * Single player support.
@@ -18,19 +23,32 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 * Support for RHS, CUP, and 3CB BAF.  See Mod Support below.
 
 ## Mission Settings
-Mission settings are available through the [CBA Settings System](url=https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System).
-Access to the settings menu is available through the 'Configure Addons' button during the mission briefing.
+
+Mission settings are available through the [CBA Settings
+System](url=https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System).
+Access to the settings menu is available through the 'Configure
+Addons' button during the mission briefing.
 
 ## Virtual Arsenal
-The ACE Virtual Arsenal (VA) is available in the crates at the start of each mission.  You must use the ACE interact key on the crates to open the VA and custom loadout menu.
+
+The ACE Virtual Arsenal (VA) is available in the crates at the start
+of each mission.  You must use the ACE interact key on the crates to
+open the VA and custom loadout menu.
 
 ## Required Mods
-The following mods are the minimum required dependencies.  Mission files on non-vanilla terrains will require additional dependencies.
+
+The following mods are the minimum required dependencies.  Mission
+files on non-vanilla terrains will require additional dependencies.
+
 * [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057)
 * [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997)
 
 ## Optional Mods
-Combat Den supports the following list of mods to add additional units and weapons to the mission.  Be sure to check for any required ACE compatibility mods when loading anything from the list below.
+
+Combat Den supports the following list of mods to add additional units
+and weapons to the mission.  Be sure to check for any required ACE
+compatibility mods when loading anything from the list below.
+
 * [3CB BAF Units](https://steamcommunity.com/sharedfiles/filedetails/?id=893346105) replaces NATO with BAF.
 * [3CB BAF Vehicles](https://steamcommunity.com/sharedfiles/filedetails/?id=893349825) replaces default friendly vehicles with BAF equivalents.
 * [Community Factions Project](https://steamcommunity.com/sharedfiles/filedetails/?id=1369691841) adds various enemy factions depending on the terrain.
@@ -41,29 +59,35 @@ Combat Den supports the following list of mods to add additional units and weapo
 * [RHS AFRF](https://steamcommunity.com/sharedfiles/filedetails/?id=843425103) replaces CSAT forces with Russia.
 * [RHS USAF](https://steamcommunity.com/sharedfiles/filedetails/?id=843577117) replaces NATO forces with USMC.
 
-## Requests
+## Enhancement Requests
 
 If there is a faction, terrain, or general improvement you would like
-to see, please open an issue and describe in detail what it is you
-would like.  The only general guideline is that the request should
-"make sense" in the context of the mission.  Use your best judgement.
+to see, please open an
+[issue](https://github.com/dpottavio/CombatDen/issues) and describe in
+detail what it is you would like.  The only general guideline is that
+the request should "make sense" in the context of the mission.  Use
+your best judgement.
 
-Depending on the amount of work, request may take some time to
-complete.  The best way to expedite this process is to make a
-Pull-Request contribution.  Contributions take priority over request
-issues (see Contributing section below).
+Depending on the amount of work, requests may take some time to
+complete.  The best way to expedite this process is to make the change
+yourself and make a Pull-Request to the project.  Pull-Requests take
+priority over enhancement requests regardless of size.
 
 ## Contributing
 
-Pull-Requests that add content and make improvements are accepted if
-they make sense.  The
-[wiki](https://github.com/dpottavio/CombatDen/wiki) contains a
-Development section.  Please read this first, as it contains useful
-information for getting started.  This document is still a WIP and new
-content will be added over time.
+If you would like to make an enhancement yourself, please open a pull
+request to the project.  If you take the time to make a contribution,
+it will be reviewed ASAP.  Please read the
+[Wiki](https://github.com/dpottavio/CombatDen/wiki) as it contains
+some information regarding development.  While the Wiki is still a
+work in progress, it's a good place to get started.
 
-If you have any questions, please open an issue and ask.
+## Questions
+
+If you have any questions, please open an
+[issue](https://github.com/dpottavio/CombatDen/issues) and ask.
 
 ## Links
+
 * [BI Forum Page](https://forums.bohemia.net/forums/topic/219387-combat-den/)
 * [Steam Collection](https://steamcommunity.com/workshop/filedetails/?id=1491480111)
