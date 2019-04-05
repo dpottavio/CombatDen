@@ -49,7 +49,7 @@ params [
     ["_area",      [],   [[], objNull], [5,6]],
     ["_spawnList", [],   [[]]],
     ["_faction",   "",   [""]],
-    ["_code",      nil,  [{}]],
+    ["_code",      {},   [{}]],
     ["_threshold", 0.25, [0]],
     ["_cooldown",  60,   [0]],
     ["_notify",    true, [true]]
@@ -104,9 +104,7 @@ if (_faction == "") exitWith {
         sleep _cooldown;
     } forEach _spawnList;
 
-    if (!isNil "_code") then {
-        [] call _code;
-    };
+    [] call _code;
 };
 
 true;
