@@ -10,39 +10,39 @@
 
     Description:
 
-    Set a random hour or month.
+    Set a random date
 
     Parameter(s):
 
     0: (Optional) NUMBER - Hour. If this is not set, a random
-    hour is chosen.
-
-    1: (Optional) NUMBER - Month. If this is not set, a random
-    month is chosen.
-
-    Returns: ARRAY - [hour, month]
+    hour is chosen between [6, 12, 18, 0];
 */
 params [
-    ["_hour",  -1, [0]],
-    ["_month", -1, [0]]
+    ["_hour",  -1, [0]]
 ];
 
-switch (toLower worldName) do {
-    case "chernarus": {
-        // The foliage in this terrain suggests mid Autumn.
-        _month = 10;
-    };
-    default {
-        if (_month < 0) then {
-            _month = [1, 12] call BIS_fnc_randomInt;
-        };
-    };
-};
+private _year  = 2019;
+private _month = 1;
+private _day   = 1;
 
 if (_hour < 0) then {
     _hour = selectRandom [6, 12, 18, 0];
 };
 
-setDate [date select 0, _month, date select 2, _hour, 0];
+switch (toLower worldName) do {
+    case "chernarus": {
+        // The foliage in this terrain suggests mid Autumn.
+        _month = 10;
+        _day = [1, 31] call BIS_fnc_randomInt;
+    };
+    default {
+        private _randTimeNum = ([1, 365] call BIS_fnc_randomInt) / 365;
+        private _date        = numberToDate [_year, _randTimeNum];
+        _month               = _date select 1;
+        _day                 = _date select 2;
+    };
+};
+
+setDate [_year, _month, _day, _hour, 0];
 
 [_hour, _month];
