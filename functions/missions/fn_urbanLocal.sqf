@@ -12,14 +12,6 @@
 
     Mission logic to run locally on each host.
 
-    Parameter(s):
-
-    0: STRING - zone name
-
-    1: OBJECT - Transport helicopter to take players to the zone.
-
-    2: STRING - Enemy faction. See CfgFactions.
-
     Returns: true on success, false on error
 */
 #include "..\..\macros.hpp"
@@ -27,8 +19,8 @@
 params [
     ["_zone",          "",      [""]],
     ["_helo",          objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_opforFaction",  "",      [""]]
+    ["_friendlyFaction", "",      [""]],
+    ["_enemyFaction",  "",      [""]]
 ];
 
 if (_zone == "") exitWith {
@@ -41,19 +33,24 @@ if (isNull _helo && !didJIP) exitWith {
     false;
 };
 
-if (_bluforFaction == "") exitWith {
-    ERROR("faction parameter cannot be empty");
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction parameter cannot be empty");
     false;
 };
 
-if (_opforFaction == "") exitWith {
-    ERROR("faction parameter cannot be empty");
+if (_enemyFaction == "") exitWith {
+    ERROR("enemy faction parameter cannot be empty");
     false;
 };
+
+private _friendlyFactionName = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "name");
+private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "name");
+
+private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[blufor, "boardInsert",   "BoardInsert", _helo,   "CREATED", 1, true, "getin"],  "den_insert"],
-    [[blufor, "clearZoneTask", "ClearZone",   objNull, "CREATED", 1, true, "attack"], "den_zoneClear"]
+    [[_side, "boardInsert",   "BoardInsert", _helo,   "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "clearZoneTask", "ClearZone",   objNull, "CREATED", 1, true, "attack"], "den_zoneClear"]
 ];
 
 private _failQueue = [
@@ -64,7 +61,7 @@ private _failQueue = [
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;
 
-if (isDedicated) exitWith {true};
+if !(hasInterface) exitWith { true };
 
 /*
  * briefing notes
@@ -84,7 +81,7 @@ player createDiaryRecord ["Diary", ["Mission",
 
 private _situationText = format["\
 %1 forces occupy position <marker name='zoneMarker'>%2</marker>.  \
-This position must be recovered by %3 forces.", _opforFaction, _zone, _bluforFaction];
+This position must be recovered by %3 forces.", _enemyFactionName, _zone, _friendlyFactionName];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

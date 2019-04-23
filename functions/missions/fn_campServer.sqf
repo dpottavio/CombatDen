@@ -18,9 +18,9 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - BLUFOR faction. See CfgFactions.
+    2: STRING - friendly faction. See CfgFactions.
 
-    3: STRING - OPFOR faction. See CfgFactions.
+    3: STRING - enemy faction. See CfgFactions.
 
     4: NUMBER - difficulty. See CfgParams.
 
@@ -29,11 +29,11 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_playerGroup",   grpNull, [grpNull]],
-    ["_helo",          objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_opforFaction",  "",      [""]],
-    ["_difficulty",    0,       [0]]
+    ["_playerGroup",     grpNull, [grpNull]],
+    ["_helo",            objNull, [objNull]],
+    ["_friendlyFaction", "",      [""]],
+    ["_enemyFaction",    "",      [""]],
+    ["_difficulty",      0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -46,13 +46,13 @@ if (isNull _helo) exitWith {
     "";
 };
 
-if (_bluforFaction == "") exitWith {
-    ERROR("blufor faction cannot be empty");
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction cannot be empty");
     "";
 };
 
-if (_opforFaction == "") exitWith {
-    ERROR("opfor faction cannot be empty");
+if (_enemyFaction == "") exitWith {
+    ERROR("enemy faction cannot be empty");
     "";
 };
 /*
@@ -74,6 +74,9 @@ private _safePosParams = [
     [0,             _maxReact,      5,  -1], // patrol safe position
     [0,             _maxPatrol,     5,  -1]  // patrol safe position
 ];
+
+private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
+private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySideStr >> "color");
 
 private _zone = [
     ["NameLocal", "Mount", "NameVillage"],
@@ -98,8 +101,8 @@ private _patrolPos       = _zoneSafePosList select 4;
 /*
  * lz
  */
-[_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
-[_lzPos, _playerGroup, _bluforFaction, "den_intelFound", _zoneArea] call den_fnc_extract;
+[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
+[_lzPos, _playerGroup, _friendlyFaction, "den_intelFound", _zoneArea] call den_fnc_extract;
 
 /*
  * camp
@@ -108,14 +111,15 @@ private _patrolPos       = _zoneSafePosList select 4;
 
 createMarker ["campMarker", _campPos];
 "campMarker" setMarkerType "mil_objective";
-"campMarker" setMarkerColor "colorOPFOR";
+"campMarker" setMarkerColor _enemyColor;
 "campMarker" setMarkerText "camp";
 "campMarker" setMarkerSize [0.75, 0.75];
 
 /*
  * enemy units
  */
-createGuardedPoint [opfor, _campPos, -1, objNull];
+private _enemySide = [_enemyFaction] call den_fnc_factionSide;
+createGuardedPoint [_enemySide, _campPos, -1, objNull];
 
 private _guardType         = "ReconSquad";
 private _reactType         = "ReconTeam";
@@ -137,7 +141,7 @@ switch (_difficulty) do {
     };
 };
 
-private _guardGroup = [_campPos, _opforFaction, _guardType] call den_fnc_spawnGroup;
+private _guardGroup = [_campPos, _enemyFaction, _guardType] call den_fnc_spawnGroup;
 
 [_guardGroup, _campPos, 0, "GUARD", "AWARE"] call CBA_fnc_addWaypoint;
 
@@ -152,7 +156,7 @@ private _hmgs = _campPos nearObjects ["StaticWeapon", 25];
     };
 } forEach units _guardGroup;
 
-private _reactGroup = [_reactPos, _opforFaction, _reactType] call den_fnc_spawnGroup;
+private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
@@ -166,7 +170,7 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
     [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 };
 
-private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
 [
     _patrolGroup,
     _campPos,
@@ -179,10 +183,10 @@ private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spa
     "STAG COLUMN"
 ] call CBA_fnc_taskPatrol;
 
-[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
+[_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _lzPos, _opforFaction, _extractAttackType] call den_fnc_attackExtraction;
+[_reinforcePos, _lzPos, _enemyFaction, _extractAttackType] call den_fnc_attackExtraction;
 
 /*
  * Attach a search action to a random camp unit to
@@ -196,8 +200,8 @@ if (_searchItems isEqualTo []) exitWith {
 den_searchItem = selectRandom (_searchItems);
 publicVariable "den_searchItem";
 
-[_lzPos, _opforFaction] spawn {
-    params ["_lzPos", "_opforFaction"];
+[_lzPos, _enemyFaction] spawn {
+    params ["_lzPos", "_enemyFaction"];
 
     while {isNil "den_campSeized"} do {
         sleep 1;
@@ -220,18 +224,26 @@ publicVariable "den_searchItem";
         false                                               // Show in unconscious state
     ] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
-    [_lzPos, _opforFaction, "ReconTeam"] call den_fnc_spawnGroup;
+    [_lzPos, _enemyFaction, "ReconTeam"] call den_fnc_spawnGroup;
+};
+
+private _activateBy = "WEST SEIZED";
+
+private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
+if (_friendlySide == opfor) then {
+    _activateBy = "EAST SEIZED";
 };
 
 private _activation = "[""den_campSeized""] call den_fnc_publicBool";
 private _trigger = createTrigger ["EmptyDetector", _campPos];
 _trigger setTriggerArea          [25, 25, 0, false, 10];
-_trigger setTriggerActivation    ["WEST SEIZED", "PRESENT", false];
+_trigger setTriggerActivation    [_activateBy, "PRESENT", false];
 _trigger setTriggerStatements    ["this", _activation, ""];
 
 private _infMarkerPos = _campPos getPos [100, (_campPos getDir _lzPos)];
 
 private _marker = createMarker ["opforInfMarker", _infMarkerPos];
-_marker setMarkerType "o_recon";
+_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "recon"));
+_marker setMarkerColor _enemyColor;
 
 _zoneName;

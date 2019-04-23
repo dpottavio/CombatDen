@@ -18,9 +18,9 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - BLUFOR faction. See CfgFactions.
+    2: STRING - friendly faction. See CfgFactions.
 
-    3: STRING - OPFOR faction. See CfgFactions.
+    3: STRING - enemy faction. See CfgFactions.
 
     4: NUMBER - difficulty. See CfgParams.
 
@@ -29,11 +29,11 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_playerGroup",   grpNull, [grpNull]],
-    ["_helo",          objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_opforFaction",  "",      [""]],
-    ["_difficulty",    0,       [0]]
+    ["_playerGroup",     grpNull, [grpNull]],
+    ["_helo",            objNull, [objNull]],
+    ["_friendlyFaction", "",      [""]],
+    ["_enemyFaction",    "",      [""]],
+    ["_difficulty",      0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -46,13 +46,13 @@ if (isNull _helo) exitWith {
     "";
 };
 
-if (_bluforFaction == "") exitWith {
-    ERROR("blufor faction cannot be empty");
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction cannot be empty");
     "";
 };
 
-if (_opforFaction == "") exitWith {
-    ERROR("opfor faction cannot be empty");
+if (_enemyFaction == "") exitWith {
+    ERROR("enemy faction cannot be empty");
     "";
 };
 /*
@@ -72,11 +72,14 @@ private _safePosParams = [
     [_minPatrol,    _maxPatrol,    4,  -1]   // patrol safe position
 ];
 
+private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
+private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySideStr >> "color");
+
 private _zone = [
     ["NameVillage", "CityCenter"],
     _zoneRadius,
     _safePosParams,
-    true
+    _enemyColor
 ] call den_fnc_zone;
 
 if (_zone isEqualTo []) exitWith {
@@ -96,15 +99,17 @@ private _patrolPos       = _zoneSafePosList select 2;
 /*
  * lz
  */
-[_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
-[_lzPos, _playerGroup, _bluforFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
+[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
+[_lzPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
 
 /*
  * ammo crates and enemy units
  */
-createGuardedPoint [opfor, _zonePos, -1, objNull];
+private _enemySide = [_enemyFaction] call den_fnc_factionSide;
+createGuardedPoint [_enemySide, _zonePos, -1, objNull];
 
-private _ammoCrate = getText (missionConfigFile >> "CfgEquipment" >> _opforFaction >> "ammoCrate");
+private _climate = [] call den_fnc_worldToClimate;
+private _ammoCrate = getText (missionConfigFile >> "CfgVehicles" >> _enemyFaction >> _climate >> "ammoBox");
 
 den_crateCount = 0;
 den_crateDestroyCount = 0;
@@ -131,7 +136,7 @@ switch (_difficulty) do {
     };
 };
 
-private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
 [
     _patrolGroup,
     _zonePos,
@@ -189,7 +194,7 @@ private _guardGroupCount = 0;
     };
 
     if ((_guardGroupCount < _maxGuardGroups) && !(_guardPos isEqualTo [0,0])) then {
-        private _group = [_guardPos, _opforFaction, "Sentry"] call den_fnc_spawnGroup;
+        private _group = [_guardPos, _enemyFaction, "Sentry"] call den_fnc_spawnGroup;
 
         private _wp = [
             _group,
@@ -209,24 +214,24 @@ private _guardGroupCount = 0;
     if (den_crateCount == _maxCrates) exitWith {};
 } forEach _buildingList;
 
-[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
+[_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _lzPos, _opforFaction, _extractGroup] call den_fnc_attackExtraction;
+[_reinforcePos, _lzPos, _enemyFaction, _extractGroup] call den_fnc_attackExtraction;
 
 /*
  * Players must have in their possession explosives
  * to advance to the next task
  */
-[_playerGroup, _bluforFaction, _helo] spawn {
-    params ["_playerGroup", "_bluforFaction", "_helo"];
+[_playerGroup, _friendlyFaction, _helo] spawn {
+    params ["_playerGroup", "_friendlyFaction", "_helo"];
     /*
      * Scan player equipment until explosives are found.
      */
     _helo lock true;
 
     private _explosiveTypes =
-        getArray (missionConfigFile >> "CfgArsenal" >> _bluforFaction >> "SemiArid" >> "baseExplosives");
+        getArray (missionConfigFile >> "CfgArsenal" >> _friendlyFaction >> "SemiArid" >> "baseExplosives");
     _explosiveTypes pushBack "ACE_M14";
 
     private _hasExplosive = false;
@@ -252,7 +257,8 @@ private _guardGroupCount = 0;
  * enemy markers
  */
 private _infMarkerPos = _zonePos getPos [25, (_zonePos getDir _lzPos)];
-private _marker = createMarker ["opforInfMarker", _infMarkerPos];
-_marker setMarkerType "o_inf";
+private _marker = createMarker ["enemyInfMarker", _infMarkerPos];
+_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
+_marker setMarkerColor _enemyColor;
 
 _zoneName;

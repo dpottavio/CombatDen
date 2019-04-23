@@ -22,8 +22,10 @@ class CfgFunctions
             class buildingOccupy {};
             class commandChat {};
             class composition {};
+            class createPlayerUnit {};
             class diaryHelp {};
             class extract {};
+            class factionSide {};
             class hostage {};
             class initPlayer {};
             class insert {};
@@ -34,6 +36,7 @@ class CfgFunctions
             class publicBool {};
             class randTime {};
             class randWeather {};
+            class resistFactions {};
             class sideChat {};
             class sling {};
             class spawnGroup {};
@@ -62,7 +65,6 @@ class CfgFunctions
             class hostageServer {};
             class initMissionLocal {};
             class initMissionServer {};
-            class initSinglePlayer {};
             class urbanLocal {};
             class urbanServer{};
         };

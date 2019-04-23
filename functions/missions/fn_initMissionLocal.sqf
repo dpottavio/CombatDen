@@ -30,12 +30,12 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_type",          0,       [0]],
-    ["_zone",          "",      [""]],
-    ["_helo",          objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_opforFaction",  "",      [""]],
-    ["_arsenal",       objNull, [objNull]]
+    ["_type",            0,       [0]],
+    ["_zone",            "",      [""]],
+    ["_helo",            objNull, [objNull]],
+    ["_friendlyFaction", "",      [""]],
+    ["_enemyFaction",    "",      [""]],
+    ["_arsenal",         objNull, [objNull]]
 ];
 
 /*
@@ -62,11 +62,8 @@ if (isMultiPlayer && hasInterface && !_aceRespawnGear) then {
     }];
 };
 
-private _bluforFactionName = getText (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "name");
-private _opforFactionName  = getText (missionConfigFile >> "CfgFactions" >> _opforFaction >> "name");
-
 private _success = false;
-private _missionArgs = [_zone, _helo, _bluforFactionName , _opforFactionName, _arsenal];
+private _missionArgs = [_zone, _helo, _friendlyFaction, _enemyFaction, _arsenal];
 switch (_type) do {
     case 0: {
         _success = _missionArgs call den_fnc_defendLocal;

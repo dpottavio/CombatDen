@@ -31,10 +31,11 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_lzPos",      [],      [[]],      [2,3]],
-    ["_cargoGroup", grpNull, [grpNull]],
-    ["_helo",       objNull, [objNull]],
-    ["_zoneArea",   [],      [[]],      [5,6]]
+    ["_lzPos",           [],      [[]],      [2,3]],
+    ["_cargoGroup",      grpNull, [grpNull]],
+    ["_helo",            objNull, [objNull]],
+    ["_zoneArea",        [],      [[]],      [5,6]],
+    ["_friendlyFaction", "",      [""]]
 ];
 
 if (isNull _cargoGroup) exitWith {
@@ -52,9 +53,17 @@ if (_zoneArea isEqualTo []) exitWith {
     false;
 };
 
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction parameter is empty");
+    false;
+};
+
+private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
+private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");
+
 createMarker ["lzMarker", _lzPos];
 "lzMarker" setMarkerType "mil_pickup";
-"lzMarker" setMarkerColor "colorBLUFOR";
+"lzMarker" setMarkerColor _friendlyColor;
 "lzMarker" setMarkerText "LZ";
 
 private _zonePos        = _zoneArea param [0, _lzPos];
@@ -63,12 +72,12 @@ private _alphaMarkerPos = _lzPos getPos [500, _markerDir];
 private _arrowPos       = _lzPos getPos [250, _markerDir];
 
 createMarker ["alphaMarker", _alphaMarkerPos];
-"alphaMarker" setMarkerType "b_inf";
+"alphaMarker" setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _friendlySideStr >> "infantry"));
 
 createMarker ["alphaArrowMarker", _arrowPos];
 "alphaArrowMarker" setMarkerType "mil_arrow";
 "alphaArrowMarker" setMarkerDir (_arrowPos getDir _zonePos);
-"alphaArrowMarker" setMarkerColor "colorBLUFOR";
+"alphaArrowMarker" setMarkerColor _friendlyColor;
 
 /*
  * Trigger to start the helo once players approach it.
@@ -76,8 +85,8 @@ createMarker ["alphaArrowMarker", _arrowPos];
 private _startHeloTrigger = createTrigger ["EmptyDetector", getPos _helo, false];
 _startHeloTrigger setVariable["helo", _helo];
 private _startActivation = "(thisTrigger getVariable ""helo"") engineOn true";
-_startHeloTrigger setTriggerArea       [20, 20, 0, false];
-_startHeloTrigger setTriggerActivation ["WEST", "PRESENT", false];
+_startHeloTrigger setTriggerArea       [10, 10, 0, false];
+_startHeloTrigger setTriggerActivation ["ANYPLAYER", "PRESENT", false];
 _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
 
 [_lzPos, _cargoGroup, _helo, _zonePos] spawn {
@@ -128,8 +137,8 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
         deleteVehicle _x;
     } forEach units _heloGroup;
 
-    private _hpad = "Land_HelipadEmpty_F" createVehicle _lzPos;
-
+    private _hpad    = "Land_HelipadEmpty_F" createVehicle _lzPos;
+    private _side    = side _cargoGroup;
     private _delta   = 4;
     private _a       = _delta;
     private _b       = _delta;
@@ -157,9 +166,9 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
     } forEach _cargoUnits;
 
     if (isMultiplayer) then {
-        [blufor, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
+        [_side, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
         {
-            [blufor, _x] call BIS_fnc_addRespawnPosition;
+            [_side, _x] call BIS_fnc_addRespawnPosition;
         } forEach _cargoUnits;
     };
 
@@ -173,7 +182,7 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
     _cloneDestPos set [2, 250];
 
     private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
-    private _heloCloneVehicle = [_heloClonePos, _zoneDir, _heloType, blufor] call BIS_fnc_spawnVehicle;
+    private _heloCloneVehicle = [_heloClonePos, _zoneDir, _heloType, _side] call BIS_fnc_spawnVehicle;
     private _heloClone        = _heloCloneVehicle select 0;
 
     private _cloneCrew  = crew _heloClone;

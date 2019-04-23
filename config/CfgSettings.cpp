@@ -11,23 +11,16 @@
 
 class CfgSettings
 {
-    class Difficulty
+    class PlayerFaction
     {
-        title    = "Difficulty";
-        texts[]  = {"Normal", "High", "Ultra"};
-        values[] = {0,1,2};
+        title    = "Player Faction";
+        function = "[[blufor,opfor]] call den_fnc_factionOptions";
         default  = 0;
     };
     class EnemyFaction
     {
         title    = "Enemy Faction";
-        function = "[false] call den_fnc_factionOptions";
-        default  = 0;
-    };
-    class FriendlyFaction
-    {
-        title    = "Friendly Faction";
-        function = "[true] call den_fnc_factionOptions";
+        function = "[[resistance,blufor,opfor]] call den_fnc_factionOptions";
         default  = 0;
     };
     class Mission
@@ -35,6 +28,13 @@ class CfgSettings
         title    = "Mission";
         texts[]  = {"Random", "Defend Convoy", "Demolition", "Camp Raid", "Container Extraction", "Clear Bunkers", "Hostage Rescue", "Urban Combat"};
         values[] = {-1,0,1,2,3,4,5,6};
+        default  = 0;
+    };
+    class Difficulty
+    {
+        title    = "Difficulty";
+        texts[]  = {"Normal", "High", "Ultra"};
+        values[] = {0,1,2};
         default  = 0;
     };
     class RespawnTickets

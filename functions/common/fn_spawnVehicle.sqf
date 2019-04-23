@@ -14,14 +14,31 @@
 
     Returns: ARRAY - see BIS_fnc_spawnVehicle return value
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_pos",     [],     [[]], [2,3]],
     ["_dir",     0,      [0]],
     ["_type",    "",     [""]],
-    ["_faction", "NATO", [""]]
+    ["_faction", "", [""]]
 ];
 
-private _side = blufor;
+if (_pos isEqualTo []) exitWith {
+    ERROR("position cannot be empty");
+    [];
+};
+
+if (_type == "") exitWith {
+    ERROR("faction cannot be empty");
+    [];
+};
+
+if (_faction == "") exitWith {
+    ERROR("faction cannot be empty");
+    [];
+};
+
+private _side = [_faction] call den_fnc_factionSide;
 
 private _climate = [] call den_fnc_worldToClimate;
 

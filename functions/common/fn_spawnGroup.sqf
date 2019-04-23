@@ -40,19 +40,22 @@ if (isNil "_cfgType") exitWith {
     grpNull;
 };
 
-private _side     = opfor;
-private _sideText = getText(missionConfigFile >> "CfgFactions" >> _faction >> "side");
-if (_sideText == "WEST") then {
-    _side = blufor;
-};
+private _side = [_faction] call den_fnc_factionSide;
 
 private _group = [_pos, _side, _cfgType] call BIS_fnc_spawnGroup;
 
 // Remove NVG from CSAT by default
-if (_faction == "CSAT") then {
+if (_faction == "Csat") then {
     {
         _x unassignItem "NVGoggles_OPFOR";
         _x removeItem "NVGoggles_OPFOR";
+    } forEach units _group;
+};
+// Remove NVG from NATO by default
+if (_faction == "Nato") then {
+    {
+        _x unassignItem "NVGoggles";
+        _x removeItem "NVGoggles";
     } forEach units _group;
 };
 

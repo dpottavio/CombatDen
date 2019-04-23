@@ -9,6 +9,8 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
+// TODO: This should be integrated into CfgVehicles and removed.
+
 class CfgEquipment
 {
     class Csat

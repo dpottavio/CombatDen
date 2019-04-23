@@ -15,33 +15,55 @@
 
     Parameters:
 
-    0: BOOL - Returns friendly factions when true.  Enemy factions
-    when false.
+    0: (Optional) ARRAY - List of sides the returned faction
+    list should match.
 
     Returns: ARRAY
         0: ARRAY - faction titles
         1: ARRAY - faction values
 */
-params [["_friendly", true, [true]]];
+#include "..\..\macros.hpp"
+
+params [
+    ["_sides", [], [[]]]
+];
 
 private _factions = [];
 private _titles   = [];
 private _values   = [];
 private _data     = [];
 
-if (_friendly) then {
-    _factions = [] call den_fnc_bluforFactions;
-} else {
-    _factions = [] call den_fnc_opforFactions;
-};
+{
+    private _sideFactions = [];
+    switch (_x) do {
+        case blufor: {
+            _sideFactions = [] call den_fnc_bluforFactions;
+        };
+        case opfor: {
+            _sideFactions = [] call den_fnc_opforFactions;
+        };
+        case resistance: {
+            _sideFactions = [] call den_fnc_resistFactions;
+        };
+        default {
+            ERROR_1("unrecognized side %1", _x);
+        };
+    };
+    {
+        _factions pushBack _x;
+    } forEach _sideFactions;
+} forEach _sides;
 
 {
     private _addon = getText (_x >> "addon");
     private _name  = getText (_x >> "name");
+    private _side  = getText (_x >> "side");
     private _value = configName _x;
 
     if (_addon != "") then {
-        _name = format["%1 (%2)", _name, _addon];
+        _name = format["%1 %2 (%3)", _side, _name, _addon];
+    } else {
+        _name = format["%1 %2", _side, _name];
     };
 
     _data pushBack [_name, _value];

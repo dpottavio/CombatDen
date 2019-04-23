@@ -32,6 +32,7 @@ class Header
 #include "config\CfgGroups.cpp"
 #include "config\CfgHelp.cpp"
 #include "config\CfgLoadout.cpp"
+#include "config\CfgMarkers.cpp"
 #include "config\CfgTaskDescriptions.cpp"
 #include "config\CfgVehicles.cpp"
 #include "config\CfgSettings.cpp"

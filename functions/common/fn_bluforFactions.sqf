@@ -10,13 +10,9 @@
 
     Description:
 
-    Return the name of the player friendly faction.  This is determined
-    based on mod configuration.  If RHSUSF is installed, firendly faction
-    is USMC.  Otherwise, it defaults to NATO.
+    Return the name of the blufor faction.
 
-    Returns: ARRAY
-        0: STRING - faction name
-        1: STRING - flag texture
+    Returns: ARRAY - blufor faction names
 */
 
 private _addons = [];

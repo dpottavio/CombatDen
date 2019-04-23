@@ -15,17 +15,24 @@
 
     0: STRING - Chat message to send,
 
-    1: (Optional) STRING - Id of sender.  See commandChat. Default is "Base".
+    1: (Optional) SIDE - Side to send message. Default is blufor.
 
-    2: (Optional) SIDE - Side to send message. Default is blufor.
+    2: (Optional) STRING - Id of sender.  See commandChat. Default is "Base".
 
-    Returns: true
+    Returns: true, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_message", "",     [""]],
-    ["_id",      "Base", [""]],
-    ["_side",    blufor, [blufor]]
+    ["_side",    nil, [blufor]],
+    ["_id",      "Base", [""]]
 ];
+
+if (isNil "_side") exitWith {
+    ERROR("side parameter is empty");
+    false;
+};
 
 [[_side, _id], _message] remoteExec ["sideChat"];
 

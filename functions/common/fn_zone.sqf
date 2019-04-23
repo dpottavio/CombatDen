@@ -45,8 +45,7 @@
             0 - anywhere  (default)
             1 - on a rode
 
-    3: (Optional) BOOL - Area marker visibility.  If true the area marker
-    is visible.  False the area marker is not visible. The default is false.
+    3: (Optional) STRING - Area marker color.
 
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
@@ -60,7 +59,7 @@ params [
     ["_types",         [],    [[]]],
     ["_radius",        500,   [0]],
     ["_safePosParams", [],    [[]]],
-    ["_markerVisible", false, [false]]
+    ["_markerColor",   "",    [""]]
 ];
 
 private _defaultTypes = ["NameCity", "NameCityCapital", "NameMarine", "NameVillage", "NameLocal", "Hill", "Mount", "Airport"];
@@ -159,9 +158,9 @@ createMarker ["zoneMarker", _pos];
 "zoneMarker" setMarkerShape "ELLIPSE";
 "zoneMarker" setMarkerSize  [_radius, _radius];
 "zoneMarker" setMarkerBrush "SolidBorder";
-"zoneMarker" setMarkerColor "colorOPFOR";
 
-if (_markerVisible) then {
+if (_markerColor != "") then {
+    "zoneMarker" setMarkerColor _markerColor;
     "zoneMarker" setMarkerAlpha 0.25;
 } else {
     "zoneMarker" setMarkerAlpha 0;

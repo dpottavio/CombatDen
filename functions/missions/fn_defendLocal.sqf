@@ -12,23 +12,15 @@
 
     Mission logic to run locally on each host.
 
-    Parameter(s):
-
-    0: STRING - zone name
-
-    1: OBJECT - Transport helicopter to take players to the zone.
-
-    2: STRING - Enemy faction.  See CfgFactions.
-
     Returns: true on success, false on error
 */
 #include "..\..\macros.hpp"
 
 params [
-    ["_zone",          "",      [""]],
-    ["_helo",          objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_opforFaction",  "",      [""]]
+    ["_zone",            "",      [""]],
+    ["_helo",            objNull, [objNull]],
+    ["_friendlyFaction", "",      [""]],
+    ["_enemyFaction",    "",      [""]]
 ];
 
 if (_zone == "") exitWith {
@@ -41,20 +33,25 @@ if (isNull _helo && !didJIP) exitWith {
     false;
 };
 
-if (_bluforFaction == "") exitWith {
-    ERROR("faction parameter cannot be empty");
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction parameter cannot be empty");
     false;
 };
 
-if (_opforFaction == "") exitWith {
-    ERROR("faction parameter cannot be empty");
+if (_enemyFaction == "") exitWith {
+    ERROR("enemy faction parameter cannot be empty");
     false;
 };
+
+private _friendlyFactionName = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "name");
+private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "name");
+
+private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[blufor, "boardInsert",  "BoardInsert",  _helo,           "CREATED", 1, true, "getin"],  "den_insert"],
-    [[blufor, "reachConvoy",  "ReachConvoy",  "convoyMarker",  "CREATED", 1, true, "move"],   "den_convoyReached"],
-    [[blufor, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
+    [[_side, "boardInsert",  "BoardInsert",  _helo,           "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "reachConvoy",  "ReachConvoy",  "convoyMarker",  "CREATED", 1, true, "move"],   "den_convoyReached"],
+    [[_side, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
 
 private _failQueue = [
@@ -66,7 +63,7 @@ private _failQueue = [
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;
 
-if (isDedicated) exitWith {true};
+if !(hasInterface) exitWith { true };
 
 /*
  * briefing notes
@@ -89,7 +86,7 @@ private _situationText = format["\
 A %1 <marker name='convoyMarker'>convoy</marker> \
 was ambushed and is currently disabled near position <marker name='zoneMarker'>%2</marker>.  \
 %3 forces are expected to launched a second attack to seize the convoy. Additional forces are \
-needed to defend the convoy assets.", _bluforFaction, _zone, _opforFaction];
+needed to defend the convoy assets.", _friendlyFactionName, _zone, _enemyFactionName];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 

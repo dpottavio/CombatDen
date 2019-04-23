@@ -248,7 +248,8 @@ class CfgArsenal
                 "B_AssaultPack_rgr",
                 "B_Bergen_mpt",
                 "B_Kitbag_mcamo",
-                "B_Kitbag_rgr"
+                "B_Kitbag_rgr",
+                "B_TacticalPack_mcamo"
             };
             aridHelmets[] = {
                 "H_HelmetB"
@@ -297,11 +298,388 @@ class CfgArsenal
             tropicBackpacks[] = {
                 "B_AssaultPack_tna_F",
                 "B_Bergen_tna_F",
-                "B_Kitbag_rgr"
+                "B_Kitbag_rgr",
+                "B_TacticalPack_rgr"
             };
         };
         class Arid : SemiArid {};
         class Wood : SemiArid {};
+    };
+    class Csat
+    {
+        class Base : ArsenalBase
+        {
+            grenades[] = {
+                "SmokeShellBlue",
+                "SmokeShellGreen",
+                "SmokeShellOrange",
+                "SmokeShellPurple",
+                "SmokeShellRed",
+                "SmokeShellYellow",
+                "SmokeShell",
+                "HandGrenade"
+            };
+            aceGrenades[] = {
+                "ACE_M14",
+                "ACE_M84"
+            };
+            mags[] = {
+                "30Rnd_65x39_caseless_green",
+                "30Rnd_65x39_caseless_green_mag_Tracer",
+                "150Rnd_762x54_Box",
+                "150Rnd_762x54_Box_Tracer",
+                "10Rnd_762x54_Mag",
+                "150Rnd_93x64_Mag",
+                "100Rnd_580x42_Mag_F",
+                "100Rnd_580x42_Mag_Tracer_F",
+                "30Rnd_580x42_Mag_F",
+                "30Rnd_580x42_Mag_Tracer_F",
+                "10Rnd_93x64_DMR_05_Mag",
+                "30Rnd_556x45_Stanag"
+            };
+            weapons[] = {
+                "arifle_Katiba_F",
+                "arifle_Katiba_GL_F",
+                "arifle_Katiba_C_F",
+                "srifle_DMR_05_blk_F",
+                "srifle_DMR_05_hex_F",
+                "MMG_01_hex_F",
+                "LMG_Zafir_F",
+                "srifle_DMR_01_F",
+                "srifle_DMR_07_blk_F",
+                "arifle_CTAR_blk_F",
+                "arifle_CTAR_GL_blk_F",
+                "arifle_CTARS_blk_F",
+                "arifle_ARX_blk_F"
+            };
+            launchers[] = {
+                "launch_RPG32_F",
+                "launch_O_Titan_F",
+                "launch_O_Vorona_brown_F"
+            };
+            aceSights[] = {
+                "ace_optic_lrps_2d",
+                "ace_optic_lrps_pip",
+                "ace_optic_sos_2d",
+                "ace_optic_sos_pip",
+                "ace_optic_mrco_2d"
+            };
+            sights[] = {
+                "optic_aco_grn",
+                "optic_arco_blk_f",
+                "optic_holosight_blk_f",
+                "optic_mrco",
+                "optic_khs_blk",
+                "optic_sos",
+                "optic_lrps",
+                "optic_nightstalker",
+                "optic_nvs",
+                "optic_dms"
+            };
+            bipods[] = {
+                "bipod_02_f_blk",
+                "bipod_02_f_hex"
+            };
+        };
+        class SemiArid : Base
+        {
+            aridWeapons[] = {
+                "srifle_DMR_05_tan_f",
+                "MMG_01_tan_F",
+                "srifle_DMR_07_hex_F",
+                "arifle_CTAR_hex_F",
+                "arifle_CTAR_GL_hex_F",
+                "arifle_CTARS_hex_F",
+                "arifle_ARX_hex_F"
+            };
+            aridVests[] = {
+                "V_HarnessO_brn",
+                "V_HarnessOGL_brn"
+            };
+            aridBacpacks[] = {
+                "B_AssaultPack_ocamo",
+                "B_Bergen_hex_F",
+                "B_Carryall_ocamo",
+                "B_FieldPack_ocamo",
+                "B_TacticalPack_ocamo",
+                "B_ViperHarness_hex_F",
+                "B_ViperLightHarness_hex_F",
+                "B_FieldPack_cbr"
+            };
+            aridHelmets[] = {
+                "H_HelmetO_ocamo",
+
+            };
+            aridUniforms[] = {
+                "U_O_CombatUniform_ocamo"
+            };
+            aridFaceware[] = {
+                "G_Bandanna_tan",
+                "G_Bandanna_khk"
+            };
+        };
+        class Tropic : Base
+        {
+            tropicSights[] = {
+                "optic_dms_ghex_f",
+                "optic_arco_ghex_f"
+            };
+            tropicWeapons[] = {
+                "srifle_DMR_07_ghex_F",
+                "arifle_CTAR_ghex_F",
+                "arifle_CTAR_GL_ghex_F",
+                "arifle_CTARS_ghex_F",
+                "arifle_ARX_ghex_F"
+            };
+            tropicLaunchers[] = {
+               "launch_RPG32_ghex_F",
+               "launch_O_Titan_ghex_F",
+               "launch_O_Vorona_green_F"
+            };
+            tropicVests[] = {
+                "V_HarnessO_ghex_F"
+            };
+            tropicBackpacks[] = {
+                "B_FieldPack_ghex_F"
+            };
+        };
+
+        class Arid : SemiArid {};
+        class Wood : Tropic {};
+    };
+    class Fia
+    {
+
+    };
+    class RhsRussia
+    {
+        class Base : ArsenalBase
+        {
+            grenades[] = {
+                "rhs_mag_nspd",
+                "rhs_mag_nspn_green",
+                "rhs_mag_nspn_red",
+                "rhs_mag_nspn_yellow",
+                "rhs_mag_plamyam",
+                "rhs_mag_fakel",
+                "rhs_mag_fakels",
+                "rhs_mag_rdg2_black",
+                "rhs_mag_rdg2_white",
+                "rhs_mag_rgd5",
+                "rhs_mag_rgn",
+                "rhs_mag_rgo",
+                "rhs_mag_zarya2"
+            };
+            mags[] = {
+                "rhs_100Rnd_762x54mmR",
+                "rhs_100Rnd_762x54mmR_7BZ3",
+                "rhs_100Rnd_762x54mmR_7N13",
+                "rhs_100Rnd_762x54mmR_7N26",
+                "rhs_100Rnd_762x54mmR_green",
+                "rhs_10Rnd_762x39mm",
+                "rhs_10Rnd_762x39mm_89",
+                "rhs_10Rnd_762x39mm_tracer",
+                "rhs_10Rnd_762x39mm_U",
+                "rhs_10rnd_9x39mm_SP5",
+                "rhs_10rnd_9x39mm_SP6",
+                "rhs_10Rnd_762x54mmR_7N1",
+                "rhs_10Rnd_762x54mmR_7N14",
+                "rhs_mag_9x18_12_57N181S",
+                "rhs_mag_9x19_17",
+                "rhs_18rnd_9x21mm_7BT3",
+                "rhs_18rnd_9x21mm_7N28",
+                "rhs_18rnd_9x21mm_7N29",
+                "rhs_20rnd_9x39mm_SP5",
+                "rhs_20rnd_9x39mm_SP6",
+                "rhs_mag_9x19mm_7n21_20",
+                "rhs_mag_9x19mm_7n31_20",
+                "rhs_30Rnd_762x39mm_polymer",
+                "rhs_30Rnd_762x39mm_polymer_89",
+                "rhs_30Rnd_762x39mm_polymer_tracer",
+                "rhs_30Rnd_762x39mm_polymer_U",
+                "rhs_30Rnd_545x39_7N10_2mag_AK",
+                "rhs_30Rnd_545x39_7N10_2mag_camo_AK",
+                "rhs_30Rnd_545x39_7N10_2mag_desert_AK",
+                "rhs_30Rnd_545x39_7N10_2mag_plum_AK",
+                "rhs_30Rnd_545x39_AK_green",
+                "rhs_30Rnd_545x39_7N6_AK",
+                "rhs_30Rnd_545x39_7N6M_AK",
+                "rhs_30Rnd_545x39_7N10_camo_AK",
+                "rhs_30Rnd_545x39_7N22_camo_AK",
+                "rhs_30Rnd_545x39_7N10_desert_AK",
+                "rhs_30Rnd_545x39_7N22_desert_AK",
+                "rhs_30Rnd_545x39_7N6_green_AK",
+                "rhs_30Rnd_545x39_7N6M_green_AK",
+                "rhs_30Rnd_545x39_AK_plum_green",
+                "rhs_30Rnd_545x39_7N10_plum_AK",
+                "rhs_30Rnd_545x39_7N22_plum_AK",
+                "rhs_30Rnd_545x39_7N6M_plum_AK",
+                "rhs_30Rnd_545x39_7N10_AK",
+                "rhs_30Rnd_545x39_7N22_AK",
+                "rhs_30Rnd_545x39_7U1_AK",
+                "rhs_30Rnd_762x39mm_bakelite",
+                "rhs_30Rnd_762x39mm_bakelite_89",
+                "rhs_30Rnd_762x39mm_bakelite_tracer",
+                "rhs_30Rnd_762x39mm_bakelite_U",
+                "rhs_30Rnd_762x39mm",
+                "rhs_30Rnd_762x39mm_89",
+                "rhs_30Rnd_762x39mm_tracer",
+                "rhs_30Rnd_762x39mm_U",
+                "rhs_mag_9x19mm_7n21_44",
+                "rhs_mag_9x19mm_7n31_44",
+                "rhs_45Rnd_545X39_AK_Green",
+                "rhs_45Rnd_545X39_7N10_AK",
+                "rhs_45Rnd_545X39_7N22_AK",
+                "rhs_45Rnd_545X39_7N6_AK",
+                "rhs_45Rnd_545X39_7U1_AK",
+                "rhs_5Rnd_338lapua_t5000",
+                "rhs_75Rnd_762x39mm",
+                "rhs_75Rnd_762x39mm_89",
+                "rhs_75Rnd_762x39mm_tracer",
+                "rhs_mag_9x18_8_57N181S",
+                "rhs_mag_2Rnd_Igla",
+                "rhs_mag_9k32_rocket",
+                "rhs_mag_9k38_rocket",
+                "rhs_mag_rsp30_green",
+                "rhs_mag_rsp30_red",
+                "rhs_mag_rsp30_white",
+                "rhs_GDM40",
+                "rhs_GRD40_Green",
+                "rhs_GRD40_Red",
+                "rhs_GRD40_White",
+                "rhs_rpg7_OG7V_mag",
+                "rhs_rpg7_PG7V_mag",
+                "rhs_rpg7_PG7VL_mag",
+                "rhs_rpg7_PG7VM_mag",
+                "rhs_rpg7_PG7VR_mag",
+                "rhs_rpg7_PG7VS_mag",
+                "rhs_rpg7_TBG7V_mag",
+                "rhs_rpg7_type69_airburst_mag",
+                "rhs_VG40MD_Green",
+                "rhs_VG40MD_Red",
+                "rhs_VG40MD_White",
+                "rhs_VG40OP_green",
+                "rhs_VG40OP_red",
+                "rhs_VG40OP_white",
+                "rhs_VG40SZ",
+                "rhs_VG40TB",
+                "rhs_VOG25",
+                "rhs_VOG25P"
+            };
+            weapons[] = {
+                "rhs_weap_ak103",
+                "rhs_weap_ak103_1",
+                "rhs_weap_ak103_1_npz",
+                "rhs_weap_ak103_2",
+                "rhs_weap_ak103_2_npz",
+                "rhs_weap_ak103_npz",
+                "rhs_weap_ak103_gp25",
+                "rhs_weap_ak103_gp25_npz",
+                "rhs_weap_ak103_zenitco01",
+                "rhs_weap_ak103_zenitco01_b33",
+                "rhs_weap_ak104",
+                "rhs_weap_ak104_npz",
+                "rhs_weap_ak104_zenitco01",
+                "rhs_weap_ak104_zenitco01_b33",
+                "rhs_weap_ak105",
+                "rhs_weap_ak105_npz",
+                "rhs_weap_ak105_zenitco01",
+                "rhs_weap_ak105_zenitco01_b33",
+                "rhs_weap_ak74",
+                "rhs_weap_ak74_gp25",
+                "rhs_weap_ak74_3",
+                "rhs_weap_ak74_2",
+                "rhs_weap_ak74m",
+                "rhs_weap_ak74m_npz",
+                "rhs_weap_ak74m_camo",
+                "rhs_weap_ak74m_gp25",
+                "rhs_weap_ak74m_gp25_npz",
+                "rhs_weap_ak74m_fullplum_gp25",
+                "rhs_weap_ak74m_fullplum_gp25_npz",
+                "rhs_weap_ak74m_fullplum",
+                "rhs_weap_ak74m_fullplum_npz",
+                "rhs_weap_ak74m_zenitco01",
+                "rhs_weap_ak74m_zenitco01_b33",
+                "rhs_weap_ak74mr",
+                "rhs_weap_ak74mr_gp25",
+                "rhs_weap_pkm",
+                "rhs_weap_pkp",
+                "rhs_weap_svdp",
+                "rhs_weap_svdp_npz",
+                "rhs_weap_svds",
+                "rhs_weap_svds_npz",
+                "rhs_weap_6p53",
+                "rhs_weap_pya",
+                "rhs_weap_makarov_pm"
+            };
+            launchers[] = {
+                "rhs_weap_rpg26",
+                "rhs_weap_rpg7",
+                "rhs_weap_rshg2"
+            };
+            rhsNvg[] = {
+                "rhs_1PN138"
+            };
+            binoculars[] = {
+                "rhs_pdu4",
+                "Binocular"
+            };
+            sights[] = {
+               "rhs_acc_1p29",
+               "rhs_acc_1p63",
+               "rhs_acc_1p78",
+               "rhs_acc_1pn93_1",
+               "rhs_acc_1pn93_2",
+               "rhs_acc_ekp1",
+               "rhs_acc_ekp8_02",
+               "rhs_acc_nita",
+               "rhs_acc_pgo7v",
+               "rhs_acc_pgo7v2",
+               "rhs_acc_pgo7v3",
+               "rhs_acc_pkas",
+               "rhs_acc_pso1m2",
+               "rhs_acc_pso1m21"
+            };
+            attachments[] = {
+               "rhs_acc_2dpzenit",
+               "rhs_acc_perst1ik"
+            };
+            faceware[] = {
+                "rhs_balaclava",
+                "rhs_balaclava1_olive",
+                "rhs_scarf"
+            };
+            vests[] = {
+                "rhs_6b23_digi",
+                "rhs_6b23_6sh116",
+                "rhs_6b23_6sh116_vog",
+                "rhs_6b23_digi_6sh92",
+                "rhs_6b23_digi_6sh92_spetsnaz2",
+                "rhs_6b23_digi_6sh92_headset",
+                "rhs_6b23_digi_6sh92_headset_spetsnaz",
+                "rhs_6b23_digi_6sh92_headset_mapcase",
+                "rhs_6b23_digi_6sh92_radio",
+                "rhs_6b23_digi_6sh92_Spetsnaz",
+                "rhs_6b23_digi_6sh92_vog",
+                "rhs_6b23_digi_6sh92_Vog_Spetsnaz",
+                "rhs_6b23_digi_6sh92_vog_headset",
+                "rhs_6b23_digi_6sh92_Vog_Radio_Spetsnaz",
+                "rhs_6b23_digi_medic",
+                "rhs_6b23_digi_rifleman",
+                "rhs_6b23_digi_vydra_3m"
+            };
+            backpacks[] = {
+                "rhs_assault_umbts_engineer_empty",
+                "rhs_assault_umbts",
+                "rhs_sidor",
+                "B_Kitbag_sgg",
+                "rhs_rpg_at"
+            };
+        };
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
     };
     class RhsUsmc
     {
@@ -434,7 +812,8 @@ class CfgArsenal
                 "rhs_mag_M781_Practice",
                 "rhs_mag_smaw_SR",
                 "rhs_mag_smaw_HEDP",
-                "rhs_mag_smaw_HEAA"
+                "rhs_mag_smaw_HEAA",
+                "rhs_fgm148_magazine_AT"
             };
             weapons[] = {
                 "rhs_weap_hk416d10",
@@ -487,7 +866,8 @@ class CfgArsenal
                 "rhs_weap_M136_hp",
                 "rhs_weap_maaws",
                 "rhs_weap_m72a7",
-                "rhs_weap_smaw_green"
+                "rhs_weap_smaw_green",
+                "rhs_weap_fgm148"
             };
             rhsNvg[] = {
                 "rhsusf_ANPVS_14",
@@ -585,75 +965,255 @@ class CfgArsenal
         class Tropic   : Base {};
         class Wood     : Base {};
     };
-    class Cup
+    class LopTakistan
     {
-        class Base : ArsenalBase
+      class Base : ArsenalBase
+      {
+          baseMags[] = {
+          };
+          baseNvg[] = {
+          };
+          baseBinoculars[] = {
+          };
+          baseAttachments[] = {
+          };
+          grenades[] = {
+              "rhs_mag_an_m8hc",
+              "rhs_mag_m18_green",
+              "rhs_mag_m18_purple",
+              "rhs_mag_m18_red",
+              "rhs_mag_m18_yellow",
+              "rhs_mag_m67",
+              "rhs_mag_m69",
+              "rhs_mag_mk3a2"
+          };
+          mags[] = {
+              "rhs_30Rnd_762x39mm",
+              "rhs_30Rnd_762x39mm_89",
+              "rhs_30Rnd_762x39mm_tracer",
+              "rhs_30Rnd_762x39mm_U",
+              "rhs_75Rnd_762x39mm",
+              "rhs_75Rnd_762x39mm_89",
+              "rhs_75Rnd_762x39mm_tracer",
+              "rhs_GDM40",
+              "rhs_GRD40_Green",
+              "rhs_GRD40_Red",
+              "rhs_GRD40_White",
+              "rhs_rpg7_OG7V_mag",
+              "rhs_rpg7_PG7V_mag",
+              "rhs_rpg7_PG7VL_mag",
+              "rhs_rpg7_PG7VM_mag",
+              "rhs_rpg7_PG7VR_mag",
+              "rhs_rpg7_PG7VS_mag",
+              "rhs_rpg7_TBG7V_mag",
+              "rhs_rpg7_type69_airburst_mag",
+              "rhs_VG40MD_Green",
+              "rhs_VG40MD_Red",
+              "rhs_VG40MD_White",
+              "rhs_VG40OP_green",
+              "rhs_VG40OP_red",
+              "rhs_VG40OP_white",
+              "rhs_VG40SZ",
+              "rhs_VG40TB",
+              "rhs_VOG25",
+              "rhs_VOG25P",
+              "rhs_100Rnd_762x54mmR",
+              "rhs_100Rnd_762x54mmR_7BZ3",
+              "rhs_100Rnd_762x54mmR_7N13",
+              "rhs_100Rnd_762x54mmR_7N26",
+              "rhs_100Rnd_762x54mmR_green",
+              "rhs_10Rnd_762x54mmR_7N1",
+              "rhs_10Rnd_762x54mmR_7N14"
+          };
+          weapons[] = {
+              "rhs_weap_akm",
+              "rhs_weap_akm_gp25",
+              "rhs_weap_akm_zenitco01_b33",
+              "rhs_weap_akms",
+              "rhs_weap_pkm",
+              "rhs_weap_svd"
+          };
+          launchers[] = {
+              "rhs_weap_rpg26",
+              "rhs_weap_rpg7",
+              "rhs_weap_rshg2"
+          };
+          binoculars[] = {
+              "Binocular"
+          };
+          sights[] = {
+              "rhs_acc_1pn93_1",
+              "rhs_acc_pso1m2",
+              "rhs_acc_pso1m21"
+          };
+          attachments[] = {
+             "rhs_acc_2dpzenit",
+             "rhs_acc_perst1ik"
+          };
+          faceware[] = {
+              "rhs_balaclava",
+              "rhs_balaclava1_olive",
+              "rhs_scarf"
+          };
+          vests[] = {
+              "LOP_V_6Sh92_OLV",
+              "LOP_V_6Sh92_Vog_OLV"
+          };
+          backpacks[] = {
+              "B_TacticalPack_oli",
+              "B_Kitbag_rgr"
+          };
+      };
+      class SemiArid : Base {};
+      class Arid     : Base {};
+      class Tropic   : Base {};
+      class Wood     : Base {};
+    };
+    class CupBluforBase : ArsenalBase
+    {
+        cupBluforMags[] = {
+            "CUP_20Rnd_556x45_Stanag",
+            "CUP_20Rnd_556x45_Stanag_Tracer_Green",
+            "CUP_20Rnd_556x45_Stanag_Tracer_Red",
+            "CUP_20Rnd_556x45_Stanag_Tracer_Yellow",
+            "CUP_30Rnd_556x45_Emag",
+            "CUP_30Rnd_556x45_Emag_Tracer_Green",
+            "CUP_30Rnd_556x45_Emag_Tracer_Red",
+            "CUP_30Rnd_556x45_Emag_Tracer_Yellow",
+            "CUP_30Rnd_556x45_PMAG_QP",
+            "CUP_30Rnd_556x45_PMAG_QP_Tracer_Green",
+            "CUP_30Rnd_556x45_PMAG_QP_Tracer_Red",
+            "CUP_30Rnd_556x45_PMAG_QP_Tracer_Yellow",
+            "CUP_30Rnd_556x45_Stanag",
+            "CUP_30Rnd_556x45_Stanag_Tracer_Green",
+            "CUP_30Rnd_556x45_Stanag_Tracer_Red",
+            "CUP_30Rnd_556x45_Stanag_Tracer_Yellow",
+            "CUP_30Rnd_556x45_Stanag_L85",
+            "CUP_30Rnd_556x45_Stanag_L85_Tracer_Green",
+            "CUP_30Rnd_556x45_Stanag_L85_Tracer_Red",
+            "CUP_30Rnd_556x45_Stanag_L85_Tracer_Yellow",
+            "CUP_30Rnd_556x45_Stanag_Mk16_black",
+            "CUP_30Rnd_556x45_Stanag_Mk16_black_Tracer_Green",
+            "CUP_30Rnd_556x45_Stanag_Mk16_black_Tracer_Red",
+            "CUP_30Rnd_556x45_Stanag_Mk16_black_Tracer_Yellow",
+            "CUP_60Rnd_556x45_SureFire",
+            "CUP_100Rnd_556x45_BetaCMag_ar15",
+            "CUP_100Rnd_TE1_Green_Tracer_556x45_BetaCMag_ar15",
+            "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag_ar15",
+            "CUP_100Rnd_TE1_Yellow_Tracer_556x45_BetaCMag_ar15",
+            "CUP_1Rnd_HE_M203",
+            "CUP_1Rnd_HEDP_M203",
+            "CUP_FlareWhite_M203",
+            "CUP_1Rnd_StarFlare_White_M203",
+            "CUP_1Rnd_StarCluster_White_M203",
+            "CUP_FlareGreen_M203",
+            "CUP_1Rnd_StarCluster_Green_M203",
+            "CUP_1Rnd_StarFlare_Green_M203",
+            "CUP_FlareRed_M203",
+            "CUP_1Rnd_StarCluster_Red_M203",
+            "CUP_1Rnd_StarFlare_Red_M203",
+            "CUP_FlareYellow_M203",
+            "CUP_1Rnd_SmokeRed_M203",
+            "CUP_1Rnd_Smoke_M203",
+            "CUP_1Rnd_SmokeGreen_M203",
+            "CUP_1Rnd_SmokeYellow_M203",
+            "CUP_20Rnd_762x51_DMR",
+            "CUP_20Rnd_762x51_HK417",
+            "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"
+        };
+        cupBluforWeapons[] = {
+            "CUP_hgun_Glock17",
+            "CUP_arifle_HK416_CQB_Black",
+            "CUP_arifle_HK416_CQB_M203_Black",
+            "CUP_arifle_HK416_Black",
+            "CUP_arifle_HK416_AGL_Black",
+            "CUP_arifle_HK416_M203_Black",
+            "CUP_arifle_HK417_12",
+            "CUP_arifle_HK417_12_M203",
+            "CUP_arifle_HK417_20",
+            "CUP_glaunch_M32",
+            "CUP_arifle_Mk16_CQC_black",
+            "CUP_arifle_Mk16_CQC_FG_black",
+            "CUP_arifle_Mk16_CQC_SFG_black",
+            "CUP_arifle_Mk16_CQC_EGLM_black",
+            "CUP_arifle_Mk16_STD_FG_black",
+            "CUP_arifle_Mk16_STD_SFG_black",
+            "CUP_arifle_Mk16_STD_EGLM_black",
+            "CUP_arifle_Mk16_STD_black",
+            "CUP_arifle_Mk16_SV_black",
+            "CUP_arifle_Mk17_CQC_Black",
+            "CUP_arifle_Mk17_CQC_FG_black",
+            "CUP_arifle_Mk17_CQC_SFG_black",
+            "CUP_arifle_Mk17_CQC_EGLM_black",
+            "CUP_arifle_Mk20_black",
+            "CUP_arifle_Mk17_STD_FG_black",
+            "CUP_arifle_Mk17_STD_SFG_black",
+            "CUP_arifle_Mk17_STD_EGLM_black",
+            "CUP_arifle_Mk17_STD_black",
+            "CUP_srifle_M14",
+            "CUP_srifle_M14_DMR",
+            "CUP_srifle_L129A1",
+            "CUP_srifle_L129A1_HG"
+        };
+        cupBluforLaunchers[] = {
+            "CUP_launch_M136",
+            "CUP_launch_M72A6",
+            "CUP_launch_M72A6_Special",
+            "CUP_launch_NLAW"
+        };
+        cupBluforNvg[] = {
+            "CUP_NVG_PVS14",
+            "CUP_NVG_PVS15_black",
+            "CUP_NVG_PVS7",
+            "CUP_NVG_GPNVG_black"
+        };
+        cupBluforSights[] = {
+            "cup_optic_compm4",
+            "cup_optic_an_pas_13c1",
+            "cup_optic_elcan",
+            "cup_optic_elcan_reflex",
+            "cup_optic_elcanm145",
+            "cup_optic_holoblack",
+            "cup_optic_leupoldmk4_cq_t",
+            "cup_optic_compm2_black",
+            "cup_optic_mrad",
+            "cup_optic_zddot",
+            "cup_optic_susat",
+            "cup_optic_rco",
+            "cup_optic_acog2",
+            "cup_optic_acog",
+            "cup_optic_trijiconrx01_black",
+            "cup_optic_leupoldmk4"
+        };
+        cupBluforAttachments[] = {
+            "cup_acc_anpeq_15",
+            "cup_acc_anpeq_2"
+        };
+        cupBluforFaceware[] = {
+            "CUP_RUS_Balaclava_blk",
+            "CUP_RUS_Balaclava_grn",
+            "CUP_PMC_Facewrap_Black",
+            "CUP_PMC_Facewrap_Ranger",
+            "CUP_PMC_Facewrap_Tan",
+            "CUP_PMC_Facewrap_Tropical"
+        };
+    };
+    class CupUsmc
+    {
+        class Base : CupBluforBase
         {
-            mags[] = {
-                "CUP_20Rnd_556x45_Stanag",
-                "CUP_20Rnd_556x45_Stanag_Tracer_Green",
-                "CUP_20Rnd_556x45_Stanag_Tracer_Red",
-                "CUP_20Rnd_556x45_Stanag_Tracer_Yellow",
-                "CUP_30Rnd_556x45_Emag",
-                "CUP_30Rnd_556x45_Emag_Tracer_Green",
-                "CUP_30Rnd_556x45_Emag_Tracer_Red",
-                "CUP_30Rnd_556x45_Emag_Tracer_Yellow",
-                "CUP_30Rnd_556x45_PMAG_QP",
-                "CUP_30Rnd_556x45_PMAG_QP_Tracer_Green",
-                "CUP_30Rnd_556x45_PMAG_QP_Tracer_Red",
-                "CUP_30Rnd_556x45_PMAG_QP_Tracer_Yellow",
-                "CUP_30Rnd_556x45_Stanag",
-                "CUP_30Rnd_556x45_Stanag_Tracer_Green",
-                "CUP_30Rnd_556x45_Stanag_Tracer_Red",
-                "CUP_30Rnd_556x45_Stanag_Tracer_Yellow",
-                "CUP_30Rnd_556x45_Stanag_L85",
-                "CUP_30Rnd_556x45_Stanag_L85_Tracer_Green",
-                "CUP_30Rnd_556x45_Stanag_L85_Tracer_Red",
-                "CUP_30Rnd_556x45_Stanag_L85_Tracer_Yellow",
-                "CUP_30Rnd_556x45_Stanag_Mk16_black",
-                "CUP_30Rnd_556x45_Stanag_Mk16_black_Tracer_Green",
-                "CUP_30Rnd_556x45_Stanag_Mk16_black_Tracer_Red",
-                "CUP_30Rnd_556x45_Stanag_Mk16_black_Tracer_Yellow",
-                "CUP_60Rnd_556x45_SureFire",
-                "CUP_100Rnd_556x45_BetaCMag_ar15",
-                "CUP_100Rnd_TE1_Green_Tracer_556x45_BetaCMag_ar15",
-                "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag_ar15",
-                "CUP_100Rnd_TE1_Yellow_Tracer_556x45_BetaCMag_ar15",
-                "CUP_1Rnd_HE_M203",
-                "CUP_1Rnd_HEDP_M203",
-                "CUP_FlareWhite_M203",
-                "CUP_1Rnd_StarFlare_White_M203",
-                "CUP_1Rnd_StarCluster_White_M203",
-                "CUP_FlareGreen_M203",
-                "CUP_1Rnd_StarCluster_Green_M203",
-                "CUP_1Rnd_StarFlare_Green_M203",
-                "CUP_FlareRed_M203",
-                "CUP_1Rnd_StarCluster_Red_M203",
-                "CUP_1Rnd_StarFlare_Red_M203",
-                "CUP_FlareYellow_M203",
-                "CUP_1Rnd_SmokeRed_M203",
-                "CUP_1Rnd_Smoke_M203",
-                "CUP_1Rnd_SmokeGreen_M203",
-                "CUP_1Rnd_SmokeYellow_M203",
-                "CUP_20Rnd_762x51_DMR",
-                "CUP_20Rnd_762x51_HK417",
-                "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"
-            };
-            weapons[] = {
-                "CUP_hgun_Glock17",
-                "CUP_arifle_HK416_CQB_Black",
-                "CUP_arifle_HK416_CQB_M203_Black",
-                "CUP_arifle_HK416_Black",
-                "CUP_arifle_HK416_AGL_Black",
-                "CUP_arifle_HK416_M203_Black",
-                "CUP_arifle_HK417_12",
-                "CUP_arifle_HK417_12_M203",
-                "CUP_arifle_HK417_20",
+            usmcWeapons[] = {
                 "CUP_arifle_M16A2",
                 "CUP_arifle_M16A2_GL",
                 "CUP_arifle_M16A4_Base",
                 "CUP_arifle_M16A4_Grip",
                 "CUP_arifle_M16A4_GL",
+                "CUP_arifle_M4A1_black",
+                "CUP_arifle_M4A1",
+                "CUP_arifle_M4A1_BUIS_GL",
+                "CUP_arifle_M4A3_black",
+                "CUP_arifle_mk18_black",
+                "CUP_arifle_mk18_m203_black",
                 "CUP_lmg_m249_SQuantoon",
                 "CUP_lmg_m249_pip1",
                 "CUP_lmg_m249_pip3",
@@ -662,178 +1222,16 @@ class CfgArsenal
                 "CUP_lmg_m249_pip2",
                 "CUP_lmg_m249_para_gl",
                 "CUP_lmg_m249_para",
-                "CUP_arifle_HK_M27",
-                "CUP_glaunch_M32",
-                "CUP_arifle_M4A1_black",
-                "CUP_arifle_M4A1",
-                "CUP_arifle_M4A1_BUIS_GL",
-                "CUP_arifle_M4A3_black",
-                "CUP_arifle_mk18_black",
-                "CUP_arifle_mk18_m203_black",
-                "CUP_arifle_Mk16_CQC_black",
-                "CUP_arifle_Mk16_CQC_FG_black",
-                "CUP_arifle_Mk16_CQC_SFG_black",
-                "CUP_arifle_Mk16_CQC_EGLM_black",
-                "CUP_arifle_Mk16_STD_FG_black",
-                "CUP_arifle_Mk16_STD_SFG_black",
-                "CUP_arifle_Mk16_STD_EGLM_black",
-                "CUP_arifle_Mk16_STD_black",
-                "CUP_arifle_Mk16_SV_black",
-                "CUP_arifle_Mk17_CQC_Black",
-                "CUP_arifle_Mk17_CQC_FG_black",
-                "CUP_arifle_Mk17_CQC_SFG_black",
-                "CUP_arifle_Mk17_CQC_EGLM_black",
-                "CUP_arifle_Mk20_black",
-                "CUP_arifle_Mk17_STD_FG_black",
-                "CUP_arifle_Mk17_STD_SFG_black",
-                "CUP_arifle_Mk17_STD_EGLM_black",
-                "CUP_arifle_Mk17_STD_black",
-                "CUP_srifle_M14",
-                "CUP_srifle_M14_DMR",
-                "CUP_arifle_L85A2",
-                "CUP_arifle_L85A2_G",
-                "CUP_arifle_L85A2_NG",
-                "CUP_arifle_L85A2_GL",
-                "CUP_arifle_L86A2",
-                "CUP_srifle_L129A1",
-                "CUP_srifle_L129A1_HG",
-                "CUP_lmg_minimi",
-                "CUP_lmg_minimi_railed",
-                "CUP_lmg_minimipara"
+                "CUP_arifle_HK_M27"
             };
-            launchers[] = {
-                "CUP_launch_Javelin",
-                "CUP_launch_M136",
-                "CUP_launch_M72A6",
-                "CUP_launch_M72A6_Special",
-                "CUP_launch_MAAWS",
-                "CUP_launch_NLAW"
+            usmcLaunchers[] = {
+                "CUP_launch_Javelin"
             };
-            nvg[] = {
-                "CUP_NVG_PVS14",
-                "CUP_NVG_PVS15_black",
-                "CUP_NVG_PVS7",
-                "CUP_NVG_GPNVG_black"
-            };
-            sights[] = {
-                "cup_optic_compm4",
-                "cup_optic_an_pas_13c1",
-                "cup_optic_elcan",
-                "cup_optic_elcan_reflex",
-                "cup_optic_elcanm145",
-                "cup_optic_holoblack",
-                "cup_optic_leupoldmk4_cq_t",
-                "cup_optic_compm2_black",
-                "cup_optic_mrad",
-                "cup_optic_zddot",
-                "cup_optic_susat",
-                "cup_optic_rco",
-                "cup_optic_acog2",
-                "cup_optic_acog",
-                "cup_optic_trijiconrx01_black",
-                "cup_optic_leupoldmk4"
-            };
-            attachments[] = {
-                "cup_acc_anpeq_15",
-                "cup_acc_anpeq_2"
-            };
-            faceware[] = {
-                "CUP_RUS_Balaclava_blk",
-                "CUP_RUS_Balaclava_grn",
-                "CUP_PMC_Facewrap_Black",
-                "CUP_PMC_Facewrap_Ranger",
-                "CUP_PMC_Facewrap_Tan",
-                "CUP_PMC_Facewrap_Tropical"
-            };
-        };
-        class SemiArid : Base
-        {
-            semiAridMags[] = {
-                "CUP_30Rnd_556x45_Stanag_Mk16",
-                "CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Green",
-                "CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Red",
-                "CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Yellow"
-            };
-            semiAridWeapons[] = {
-                "CUP_arifle_HK416_CQB_Desert",
-                "CUP_arifle_HK416_Desert",
-                "CUP_arifle_HK416_M203_Desert",
-                "CUP_arifle_M4A1_desert_carryhandle",
-                "CUP_arifle_M4A1_desert",
-                "CUP_arifle_M4A1_BUIS_desert_GL",
-                "CUP_arifle_M4A3_desert",
-                "CUP_arifle_Mk16_CQC",
-                "CUP_arifle_Mk16_CQC_FG",
-                "CUP_arifle_Mk16_CQC_SFG",
-                "CUP_arifle_Mk16_CQC_EGLM",
-                "CUP_arifle_Mk16_STD",
-                "CUP_arifle_Mk16_STD_FG",
-                "CUP_arifle_Mk16_STD_SFG",
-                "CUP_arifle_Mk16_STD_EGLM",
-                "CUP_arifle_Mk16_SV",
-                "CUP_arifle_Mk17_CQC",
-                "CUP_arifle_Mk17_CQC_FG",
-                "CUP_arifle_Mk17_CQC_SFG",
-                "CUP_arifle_Mk17_CQC_EGLM",
-                "CUP_arifle_Mk17_STD",
-                "CUP_arifle_Mk17_STD_FG",
-                "CUP_arifle_Mk17_STD_SFG",
-                "CUP_arifle_Mk17_STD_EGLM",
-                "CUP_arifle_G36A",
-                "CUP_arifle_G36C",
-                "CUP_arifle_AG36",
-                "CUP_arifle_G36K"
-            };
-        };
-        class Arid   : SemiArid {};
-        class Tropic : Base
-        {
-            tropicMags[] = {
-                "CUP_30Rnd_556x45_Stanag_Mk16_woodland",
-                "CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Green",
-                "CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Red",
-                "CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Yellow",
-                "CUP_20Rnd_762x51_B_SCAR_wdl"
-            };
-            tropicWeapons[] = {
-                "CUP_arifle_HK416_CQB_Wood",
-                "CUP_arifle_HK416_CQB_M203_Wood",
-                "CUP_arifle_HK416_Wood",
-                "CUP_arifle_HK416_AGL_Wood",
-                "CUP_arifle_HK416_M203_Wood",
-                "CUP_arifle_M4A1_camo_carryhandle",
-                "CUP_arifle_M4A1_camo",
-                "CUP_arifle_M4A1_BUIS_camo_GL",
-                "CUP_arifle_M4A3_camo",
-                "CUP_arifle_Mk16_CQC_woodland",
-                "CUP_arifle_Mk16_CQC_FG_woodland",
-                "CUP_arifle_Mk16_CQC_SFG_woodland",
-                "CUP_arifle_Mk16_CQC_EGLM_woodland",
-                "CUP_arifle_Mk16_STD_FG_woodland",
-                "CUP_arifle_Mk16_STD_SFG_woodland",
-                "CUP_arifle_Mk16_STD_EGLM_woodland",
-                "CUP_arifle_Mk16_STD_woodland",
-                "CUP_arifle_Mk16_SV_woodland",
-                "CUP_arifle_Mk17_CQC_woodland",
-                "CUP_arifle_Mk17_CQC_FG_woodland",
-                "CUP_arifle_Mk17_CQC_EGLM_woodland",
-                "CUP_arifle_Mk17_STD_FG_woodland",
-                "CUP_arifle_Mk17_STD_SFG_woodland",
-                "CUP_arifle_Mk17_STD_woodland",
-                "CUP_arifle_Mk17_STD_EGLM_woodland"
-            };
-        };
-        class Wood : Tropic {};
-    };
-    class CupUsmc : Cup
-    {
-        class ArsenalBase : ArsenalBase
-        {
-            cupUsmcBackpacks[] = {
+            usmcBackpacks[] = {
                 "B_AssaultPack_cbr",
                 "B_Kitbag_cbr"
             };
-            cupUsmcVests[] = {
+            usmcVests[] = {
                 "CUP_V_B_Eagle_SPC_AT",
                 "CUP_V_B_Eagle_SPC_AR",
                 "CUP_V_B_Eagle_SPC_Corpsman",
@@ -844,51 +1242,311 @@ class CfgArsenal
                 "CUP_V_B_Eagle_SPC_Rifleman"
             };
         };
-        class SemiArid    : ArsenalBase {};
-        class Arid        : ArsenalBase {};
-        class Tropic      : ArsenalBase {};
-        class Wood        : ArsenalBase {};
-    };
-    class CupBaf : Cup
-    {
-        class ArsenalBase : ArsenalBase
+        class SemiArid : Base
         {
-            cupBafBackpacks[] = {
+            usmcSemiAridWeapons[] = {
+                "CUP_arifle_M4A1_desert_carryhandle",
+                "CUP_arifle_M4A1_desert",
+                "CUP_arifle_M4A1_BUIS_desert_GL",
+                "CUP_arifle_M4A3_desert"
+            };
+        };
+        class Arid   : SemiArid {};
+        class Tropic : Base
+        {
+            usmcTropicWeapons[] = {
+                "CUP_arifle_M4A1_camo_carryhandle",
+                "CUP_arifle_M4A1_camo",
+                "CUP_arifle_M4A1_BUIS_camo_GL",
+                "CUP_arifle_M4A3_camo"
+            };
+        };
+        class Wood : Tropic {};
+    };
+    class CupBaf
+    {
+        class Base : CupBluforBase
+        {
+            bafWeapons[] = {
+                "CUP_arifle_L85A2",
+                "CUP_arifle_L85A2_G",
+                "CUP_arifle_L85A2_NG",
+                "CUP_arifle_L85A2_GL",
+                "CUP_arifle_L86A2",
+                "CUP_lmg_minimi",
+                "CUP_lmg_minimi_railed",
+                "CUP_lmg_minimipara"
+            };
+            bafBackpacks[] = {
                 "CUP_B_Bergen_BAF",
                 "CUP_B_Motherlode_MTP",
                 "CUP_B_Predator_MTP"
             };
-            cupBafVests[] = {
+            bafVests[] = {
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_AutomaticRifleman",
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Grenadier",
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Medic",
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Rifleman"
             };
         };
-        class SemiArid    : ArsenalBase {};
-        class Arid        : ArsenalBase {};
-        class Tropic      : ArsenalBase {};
-        class Wood        : ArsenalBase {};
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
     };
-    class CupBundeswehr : Cup
+    class CupBundeswehr
     {
-        class ArsenalBase : ArsenalBase
+        class Base : CupBluforBase
         {
-            cupBundesBackpacks[] = {
+            bundesWeapons[] = {
+                "CUP_arifle_G36A",
+                "CUP_arifle_G36C",
+                "CUP_arifle_AG36",
+                "CUP_arifle_G36K",
+                "CUP_arifle_MG36"
+            };
+            bundesLaunchers[] = {
+                "CUP_launch_MAAWS"
+            };
+            bundesBackpacks[] = {
                 "CUP_B_GER_Pack_Flecktarn",
                 "CUP_B_GER_Medic_FLecktarn"
             };
         };
-        class SemiArid    : ArsenalBase {};
-        class Arid        : ArsenalBase
+        class SemiArid : Base {};
+        class Arid     : Base
         {
-            cupBundesBackpacks[] = {
+            bundesAridBackpacks[] = {
                 "CUP_B_GER_Pack_Tropentarn",
                 "CUP_B_GER_Medic_Tropentarn"
             };
         };
-        class Tropic      : ArsenalBase {};
-        class Wood        : ArsenalBase {};
+        class Tropic : Base {};
+        class Wood   : Base {};
+    };
+    class CupRussia
+    {
+        class Base : ArsenalBase
+        {
+            mags[] = {
+                "CUP_30Rnd_545x39_AK74M_M",
+                "CUP_30Rnd_Subsonic_545x39_AK74M_M",
+                "CUP_30Rnd_TE1_Green_Tracer_545x39_AK74_plum_M",
+                "CUP_30Rnd_TE1_Red_Tracer_545x39_AK74_plum_M",
+                "CUP_30Rnd_TE1_White_Tracer_545x39_AK74_plum_M",
+                "CUP_30Rnd_TE1_Yellow_Tracer_545x39_AK74_plum_M",
+                "CUP_60Rnd_545x39_AK74M_M",
+                "CUP_60Rnd_TE1_Green_Tracer_545x39_AK74M_M",
+                "CUP_60Rnd_TE1_Red_Tracer_545x39_AK74_plum_M",
+                "CUP_60Rnd_TE1_White_Tracer_545x39_AK74_plum_M",
+                "CUP_60Rnd_TE1_Yellow_Tracer_545x39_AK74_plum_M",
+                "CUP_30Rnd_762x39_AK103_bakelite_M",
+                "CUP_30Rnd_TE1_Green_Tracer_762x39_AK103_bakelite_M",
+                "CUP_30Rnd_TE1_Red_Tracer_762x39_AK103_bakelite_M",
+                "CUP_30Rnd_TE1_Yellow_Tracer_762x39_bakelite_AK103_M",
+                "CUP_30Rnd_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Yellow_Tracer_762x39_AK47_M",
+                "CUP_40Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M",
+                "CUP_75Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M",
+                "CUP_30Rnd_556x45_AK",
+                "CUP_30Rnd_TE1_Green_Tracer_556x45_AK",
+                "CUP_30Rnd_TE1_Red_Tracer_556x45_AK",
+                "CUP_30Rnd_TE1_Yellow_Tracer_556x45_AK",
+                "CUP_45Rnd_TE4_LRT4_Green_Tracer_545x39_RPK74M_M",
+                "CUP_OG7_M",
+                "CUP_PG7V_M",
+                "CUP_PG7VL_M",
+                "CUP_PG7VM_M",
+                "CUP_AT13_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Red_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Yellow_M",
+                "CUP_1Rnd_SmokeGreen_GP25_M",
+                "CUP_1Rnd_SmokeRed_GP25_M",
+                "CUP_1Rnd_SmokeYellow_GP25_M",
+                "CUP_1Rnd_SMOKE_GP25_M",
+                "CUP_IlumFlareGreen_GP25_M",
+                "CUP_IlumFlareRed_GP25_M",
+                "CUP_IlumFlareWhite_GP25_M",
+                "CUP_FlareGreen_GP25_M",
+                "CUP_FlareRed_GP25_M",
+                "CUP_FlareWhite_GP25_M",
+                "CUP_FlareYellow_GP25_M",
+                "CUP_1Rnd_HE_GP25_M"
+            };
+            weapons[] = {
+                "CUP_arifle_AK74M",
+                "CUP_arifle_AK74M_top_rail",
+                "CUP_arifle_AK74M_railed",
+                "CUP_arifle_AK74M_GL",
+                "CUP_arifle_AK74M_GL_top_rail",
+                "CUP_arifle_AK74M_GL_railed",
+                "CUP_arifle_AK103",
+                "CUP_arifle_AK103_top_rail",
+                "CUP_arifle_AK103_railed",
+                "CUP_arifle_AK103_GL",
+                "CUP_arifle_AK103_GL_top_rail",
+                "CUP_arifle_AK103_GL_railed",
+                "CUP_arifle_AK104",
+                "CUP_arifle_AK104_top_rail",
+                "CUP_arifle_AK104_railed",
+                "CUP_arifle_AK105",
+                "CUP_arifle_AK105_top_rail",
+                "CUP_arifle_AK105_railed",
+                "CUP_arifle_AK107",
+                "CUP_arifle_AK107_top_rail",
+                "CUP_arifle_AK107_railed",
+                "CUP_arifle_AK107_GL",
+                "CUP_arifle_AK107_GL_top_rail",
+                "CUP_arifle_AK107_GL_railed",
+                "CUP_arifle_AK108",
+                "CUP_arifle_AK108_top_rail",
+                "CUP_arifle_AK108_railed",
+                "CUP_arifle_AK108_GL",
+                "CUP_arifle_AK108_GL_top_rail",
+                "CUP_arifle_AK108_GL_railed",
+                "CUP_arifle_AK109",
+                "CUP_arifle_AK109_top_rail",
+                "CUP_arifle_AK109_railed",
+                "CUP_arifle_AK109_GL",
+                "CUP_arifle_AK109_GL_top_rail",
+                "CUP_arifle_AK109_GL_railed",
+                "CUP_lmg_Pecheneg",
+                "CUP_lmg_PKM",
+                "CUP_arifle_RPK74M"
+            };
+            launchers[] = {
+                "CUP_launch_Metis",
+                "CUP_launch_RPG7V",
+                "CUP_launch_RPG18"
+            };
+            grenades[] = {
+                "SmokeShellBlue",
+                "SmokeShellGreen",
+                "SmokeShellOrange",
+                "SmokeShellPurple",
+                "SmokeShellRed",
+                "SmokeShellYellow",
+                "SmokeShell",
+                "CUP_HandGrenade_RGD5"
+            };
+            nvg[] = {
+                "CUP_NVG_HMNVS"
+            };
+            sights[] = {
+                "cup_optic_ekp_8_02",
+                "cup_optic_goshawk",
+                "cup_optic_kobra",
+                "cup_optic_pechenegscope",
+                "cup_optic_pso_1_1",
+                "cup_optic_pso_1_1_open",
+                "cup_optic_pso_1",
+                "cup_optic_pso_1_ak",
+                "cup_optic_pso_1_ak_open",
+                "cup_optic_pso_1_open",
+                "cup_optic_pso_3",
+                "cup_optic_pso_3_open"
+            };
+            attachments[] = {
+                "cup_acc_flashlight",
+                "cup_acc_anpeq_15_black"
+            };
+            faceware[] = {
+                "CUP_RUS_Balaclava_blk",
+                "CUP_RUS_Balaclava_grn"
+            };
+            backpacks[] = {
+                "B_Kitbag_sgg",
+                "B_TacticalPack_oli"
+            };
+        };
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
+    };
+    class CupTakistan
+    {
+       class Base : ArsenalBase
+        {
+            mags[] = {
+                "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Yellow_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_762x39_AK47_M",
+                "CUP_OG7_M",
+                "CUP_PG7V_M",
+                "CUP_PG7VL_M",
+                "CUP_PG7VM_M",
+                "CUP_AT13_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Red_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Yellow_M",
+                "CUP_1Rnd_SmokeGreen_GP25_M",
+                "CUP_1Rnd_SmokeRed_GP25_M",
+                "CUP_1Rnd_SmokeYellow_GP25_M",
+                "CUP_1Rnd_SMOKE_GP25_M",
+                "CUP_IlumFlareGreen_GP25_M",
+                "CUP_IlumFlareRed_GP25_M",
+                "CUP_IlumFlareWhite_GP25_M",
+                "CUP_FlareGreen_GP25_M",
+                "CUP_FlareRed_GP25_M",
+                "CUP_FlareWhite_GP25_M",
+                "CUP_FlareYellow_GP25_M",
+                "CUP_1Rnd_HE_GP25_M"
+            };
+            weapons[] = {
+                "CUP_arifle_AKM",
+                "CUP_arifle_AKM_top_rail",
+                "CUP_arifle_AKM_GL",
+                "CUP_arifle_AKM_GL_top_rail",
+                "CUP_arifle_AKMS",
+                "CUP_arifle_AKMS_GL",
+                "CUP_arifle_AKMS_GL_top_rail",
+                "CUP_lmg_Pecheneg",
+                "CUP_lmg_PKM",
+            };
+            launchers[] = {
+                "CUP_launch_RPG7V",
+                "CUP_launch_RPG18"
+            };
+            grenades[] = {
+                "SmokeShellBlue",
+                "SmokeShellGreen",
+                "SmokeShellOrange",
+                "SmokeShellPurple",
+                "SmokeShellRed",
+                "SmokeShellYellow",
+                "SmokeShell",
+                "CUP_HandGrenade_RGD5"
+            };
+            nvg[] = {
+                "CUP_NVG_HMNVS"
+            };
+            sights[] = {
+                "cup_optic_pso_1"
+            };
+            attachments[] = {
+                "cup_acc_flashlight",
+                "cup_acc_anpeq_15_black"
+            };
+            faceware[] = {
+                "CUP_FR_NeckScarf3",
+                "CUP_FR_NeckScarf",
+                "CUP_FR_NeckScarf2",
+                "CUP_FR_NeckScarf5",
+                "CUP_FR_NeckScarf4"
+            };
+            backpacks[] = {
+                "B_Kitbag_rgr"
+            };
+        };
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
     };
     class Uk3CbBaf
     {

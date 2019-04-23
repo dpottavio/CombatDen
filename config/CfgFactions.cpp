@@ -19,27 +19,20 @@ class CfgFactions
         side        = "WEST";
         name        = "BAF";
         flagTexture = "a3\data_f\flags\flag_uk_co.paa";
-        voices[]    = {
-            "Male01ENGB",
-            "Male02ENGB",
-            "Male03ENGB",
-            "Male04ENGB",
-            "Male05ENGB"
-        };
     };
     class ChDkzBase
     {
-        side = "EAST";
+        side = "GUER";
         name = "ChDKZ";
     };
     class GuerrillaBase
     {
-        side = "EAST";
+        side = "GUER";
         name = "Guerrilla";
     };
     class IsisBase
     {
-        side = "EAST";
+        side = "GUER";
         name = "ISIS";
     };
     class RussiaBase
@@ -70,7 +63,7 @@ class CfgFactions
     };
     class Fia
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "FIA";
         flagTexture = "\A3\Data_F\Flags\Flag_FIA_CO.paa";
     };
@@ -82,7 +75,7 @@ class CfgFactions
     };
     class Syndikat
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Syndikat";
         flagTexture = "a3\data_f_exp\flags\flag_synd_co.paa";
     };
@@ -115,7 +108,7 @@ class CfgFactions
     };
     class LopInsurgent
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Insurgent";
         addon       = "LOP";
         flagTexture = "";
@@ -127,7 +120,7 @@ class CfgFactions
     };
     class LopNovo
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Novorossiya";
         addon       = "LOP";
         flagTexture = "po_main\data\ui\flags\flag_sla_co.paa";
@@ -151,14 +144,6 @@ class CfgFactions
         name        = "Bundeswehr";
         flagTexture = "ca\ca_e\data\flag_ger_co.paa";
         addon       = "CUP";
-        voices[]    = {
-            "Male01GRE",
-            "Male02GRE",
-            "Male03GRE",
-            "Male04GRE",
-            "Male05GRE",
-            "Male06GRE"
-        };
     };
     class CupChDkz : ChDkzBase
     {
@@ -181,7 +166,7 @@ class CfgFactions
     };
     class CupTakistanMilitia
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Takistan Militia";
         addon       = "CUP";
         flagTexture = "ca\ca_e\data\flag_tka_co.paa";
@@ -192,21 +177,21 @@ class CfgFactions
      */
     class CfpAlQaeda
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Al Qaeda";
         addon       = "CFP";
         flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
     };
     class CfpAlShabaab
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Al Shabaab";
         addon       = "CFP";
         flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
     };
     class CfpBokoHaram
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Boko Haram";
         addon       = "CFP";
         flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
@@ -218,14 +203,14 @@ class CfgFactions
     };
     class CfpHamas
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Hamas";
         addon       = "CFP";
         flagTexture = "x\cfp\addons\flags\others\hamas.paa";
     };
     class CfpHezbollah
     {
-        side        = "EAST";
+        side        = "GUER";
         name        = "Hezbollah";
         addon       = "CFP";
         flagTexture = "x\cfp\addons\flags\hezbollah\cfp_flag_hezbollah.paa";

@@ -16,30 +16,29 @@
 
     0: ARRAY - LZ position
 
-    1: GROUP - Cargo group for transport.
+    1: STRING - faction name.  See CfgFaction.
 
-    2: OBJECT - Helicopter.  Once all cargo units enter
-    the helicopter, they are transported to the LZ.
-
-    3: (Optional) AREA - Blacklist area the helicopter should
-    avoid en route to LZ.
-
-    Returns: true on success, false on error
+    Returns: helo obj on success, objNull on error
 */
 #include "..\..\macros.hpp"
 
 params [
-    ["_pos",           [], [[]], [2,3]],
-    ["_bluforFaction", "", [""]]
+    ["_pos",     [], [[]], [2,3]],
+    ["_faction", "", [""]]
 ];
 
-if (_bluforFaction == "") exitWith {
-    ERROR("blufor faction parameter is empty");
-    false;
+if (_pos isEqualTo []) then {
+    ERROR("position parameter is empty");
+    objNull;
+};
+
+if (_faction == "") exitWith {
+    ERROR("faction parameter is empty");
+    objNull;
 };
 
 private _climate  = [] call den_fnc_worldToClimate;
-private _heloType = getText (missionConfigFile >> "CfgVehicles" >> _bluforFaction >> _climate >> "heloTransport");
+private _heloType = getText (missionConfigFile >> "CfgVehicles" >> _faction >> _climate >> "heloTransport");
 
 private _helo = createVehicle [_heloType, _pos, [], 0, "CAN_COLLIDE"];
 
@@ -48,14 +47,14 @@ clearWeaponCargoGlobal   _helo;
 clearItemCargoGlobal     _helo;
 clearBackpackCargoGlobal _helo;
 
-private _pilotGroup = [_pos getPos [10,0], _bluforFaction, "HeloPilot"] call den_fnc_spawnGroup;
+private _pilotGroup = [_pos getPos [10,0], _faction, "HeloPilot"] call den_fnc_spawnGroup;
 {
     _x moveInAny _helo;
 } forEach units _pilotGroup;
 
 if (_heloType == "B_Heli_Transport_01_camo_F") then {
     // For this helo, fill the gunner positions will extra crew.
-    private _gunnerGroup = [_pos getPos [10,0], _bluforFaction, "HeloCrew"] call den_fnc_spawnGroup;
+    private _gunnerGroup = [_pos getPos [10,0], _faction, "HeloCrew"] call den_fnc_spawnGroup;
     {
         _x moveInAny _helo;
     } forEach units _gunnerGroup;

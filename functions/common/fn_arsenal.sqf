@@ -23,11 +23,11 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_bluforFaction",  "",      [""]],
-    ["_obj",            objNull, [objNull]]
+    ["_faction",  "",      [""]],
+    ["_obj",      objNull, [objNull]]
 ];
 
-if (_bluforFaction == "") exitWith {
+if (_faction == "") exitWith {
     ERROR("faction parameter is empty");
     false;
 };
@@ -40,22 +40,12 @@ if (isNull _obj) exitWith {
 private _cfgClimate = [] call den_fnc_worldToClimate;
 
 private _items = [];
-private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _bluforFaction >> _cfgClimate];
+private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _faction >> _cfgClimate];
 {
     if (isArray _x) then {
         _items = _items + (getArray _x);
     };
 } forEach _arsenalProps;
-
-// Check for CUP weapons
-if (isClass (configfile >> "CfgPatches" >> "CUP_Weapons_WeaponsCore")) then {
-    private _cupProps = configProperties [missionConfigFile >> "CfgArsenal" >> "Cup" >> _cfgClimate];
-    {
-        if (isArray _x) then {
-            _items = _items + (getArray _x);
-        };
-    } forEach _cupProps;
-};
 
 [_obj, _items] call ace_arsenal_fnc_initBox;
 
@@ -73,7 +63,7 @@ private _loadoutAction = [
     },
     {true},
     {},
-    [_bluforFaction, _obj]
+    [_faction, _obj]
 ] call ace_interact_menu_fnc_createAction;
 
 [_obj, 0, ["ACE_MainActions"], _loadoutAction] call ace_interact_menu_fnc_addActionToObject;

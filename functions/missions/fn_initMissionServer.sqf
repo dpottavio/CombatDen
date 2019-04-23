@@ -14,7 +14,7 @@
 */
 #include "..\..\macros.hpp"
 
-params [["_group", grpNull, [grpNull]]];
+params [["_playerSlots", grpNull, [grpNull]]];
 
 if (!isServer) exitWith {};
 
@@ -28,59 +28,126 @@ if (_mission < 0) then {
 private _hourMonth = [den_cba_timeOfDay] call den_fnc_randTime;
 private _month     = _hourMonth select 1;
 
-private _lowDaylight = [] call den_fnc_lowDaylight;
-
 [_month] call den_fnc_randWeather;
 
+private _friendlyFaction = den_cba_playerFaction;
+
+if (_friendlyFaction == "") then {
+    private _friendlyFactions = ([] call den_fnc_opforFactions) + ([] call den_fnc_bluforFactions);
+    _friendlyFaction = configName (selectRandom _friendlyFactions);
+};
+
+private _friendlySide  = [_friendlyFaction] call den_fnc_factionSide;
+private _enemySide     = sideUnknown;
+
 /*
- * select blufor faction
+ * Validate that the player and enemy sides are not the same.
+ *
+ * The proper way to handle this would be in the UI by not
+ * allowing the player to make an invalid selection.  However,
+ * this is not possible with CBA Settings because one setting
+ * cannot populate another setting, i.e., it's not possible to
+ * change the CBA setting on the fly.
  */
-private _bluforFaction = den_cba_friendlyFaction;
-if (_bluforFaction == "") then {
-    private _factions = [] call den_fnc_bluforFactions;
-    _bluforFaction = configName (selectRandom _factions);
+private _enemyFaction = den_cba_enemyFaction;
+if (_enemyFaction != "") then {
+    _enemySide = [_enemyFaction] call den_fnc_factionSide;
+    if (_enemySide == _friendlySide) then {
+        _enemyFaction = "";
+        ["Warning: Enemy and Player factions of the same side are not supported."] remoteExec ["hint"];
+    };
 };
 
+if (_enemyFaction == "") then {
+    private _enemyFactions = [];
+    switch (_friendlySide) do {
+        case blufor: {
+            _enemyFactions = ([] call den_fnc_resistFactions) + ([] call den_fnc_opforFactions);
+        };
+        case opfor: {
+            _enemyFactions = ([] call den_fnc_resistFactions) + ([] call den_fnc_bluforFactions);
+        };
+        default {
+            ERROR("invalid player side type");
+        };
+    };
+    _enemyFaction = configName (selectRandom _enemyFactions);
+};
+
+private _playerGroup = createGroup [_friendlySide, true];
+_playerGroup setGroupIdGlobal ["Alpha"];
+/*
+ * For each player slot, create a player unit and link
+ * the two object together by slotId.  When the player
+ * joins they will switch from the player slot to a player
+ * unit that matches the slot id.
+ *
+ * This enables creating player units dynamically based
+ * on CBA settings.
+ */
 {
-    private _role = _x getVariable ["den_role", "Riflemen"];
-    [_x, _role, "", _lowDaylight, _bluforFaction] remoteExecCall ["den_fnc_loadout", _x, true];
-} forEach units _group;
+    private _role = _x getVariable ["den_role", ""];
+    if (_role == "") then {
+        _role = "Rifleman";
+        ERROR_1("%1 has no role defined", _x);
+    };
+    private _slotId = _x getVariable ["den_slotId", -1];
+    if (_slotId < 0) then {
+        ERROR_1("%1 has invalid slot id", _x);
+    };
 
-private _voices = getArray (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "voices");
-if !(_voices isEqualTo []) then {
-    {
-        [_x, selectRandom _voices] remoteExec ["setSpeaker", 0, _x];
-    } forEach units _group;
-};
+    private _playerUnit = [
+        _playerGroup,
+        ASLToAGL getPosASL _x,
+        _friendlyFaction,
+        _slotId,
+        _role
+    ] call den_fnc_createPlayerUnit;
 
-private _bluforFlag = getText (missionConfigFile >> "CfgFactions" >> _bluforFaction >> "flagTexture");
+    _playerUnit disableAI "MOVE";
+    _playerUnit setDir getDir _x;
+} forEach units _playerSlots;
+
+private _friendlyFlag = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "flagTexture");
 
 if !(isNil "den_destroyer") then {
+    /*
+     * setup naval FOB if it exists
+     */
     private _flag = [den_destroyer, "ShipFlag_US_F"] call bis_fnc_destroyer01GetShipPart;
-    _flag setFlagTexture _bluforFlag;
+    _flag setFlagTexture _friendlyFlag;
+
+    private _marker = createMarker ["navalMarker", getPos den_destroyer];
+    _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> str(_friendlySide) >> "naval"));
+    _marker setMarkerText "Naval FOB";
 };
+
 if !(isNil "den_flagPole") then {
-    den_flagPole setFlagTexture _bluforFlag;
+    /*
+     * setup COP if it exists
+     */
+    den_flagPole setFlagTexture _friendlyFlag;
+
+    private _marker = createMarker ["copMarker", getPos den_flagPole];
+    _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> str(_friendlySide) >> "installation"));
+    _marker setMarkerText "COP";
 };
 
-private _transport = [getPosATL den_heloMarker, _bluforFaction] call den_fnc_spawnHeloTransport;
-
-[_bluforFaction, den_arsenal] remoteExecCall ["den_fnc_arsenal", 0, true];
+private _transport = [getPosATL den_heloMarker, _friendlyFaction] call den_fnc_spawnHeloTransport;
 
 /*
- * select opfor faction
+ * setup arsenal
  */
-private _opforFaction = den_cba_enemyFaction;
-if (_opforFaction == "") then {
-    private _factions = [] call den_fnc_opforFactions;
-    _opforFaction = configName (selectRandom _factions);
-};
+private _climate     = [] call den_fnc_worldToClimate;
+private _arsenalType = getText(missionConfigFile >> "CfgVehicles" >> _friendlyFaction >> _climate >> "cargoBox");
+private _arsenalPos  = getPosATL den_arsenalMarker;
+private _arsenal     = createVehicle [_arsenalType, _arsenalPos, [], 0, "CAN_COLLIDE"];
 
 if (isMultiPlayer) then {
     [den_cba_respawnTickets] call BIS_fnc_paramRespawnTickets;
 };
 
-private _missionArgs = [_group, _transport, _bluforFaction, _opforFaction, den_cba_difficulty];
+private _missionArgs = [_playerGroup, _transport, _friendlyFaction, _enemyFaction, den_cba_difficulty];
 private _zone        = "";
 
 switch (_mission) do {
@@ -114,4 +181,4 @@ if (_zone == "") exitWith {
     [];
 };
 
-[_mission, _opforFaction, _zone, _transport, _bluforFaction];
+[_mission, _enemyFaction, _zone, _transport, _friendlyFaction, _playerGroup, _arsenal];

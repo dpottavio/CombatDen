@@ -18,7 +18,7 @@
 
     1: STRING - Loadout role, e.g., "Riflemen".
 
-    2: STRING - Loadout type, e.g., "Mx".
+    2: (Optional) STRING - Loadout type, e.g., "Mx".
 
     3: (Optional) BOOL - Low daylight. If true unit
     will be equip with night time items. Defaults to false.
@@ -37,7 +37,9 @@ params [
     ["_faction",     "",      [""]]
 ];
 
-if !(local _unit) exitWith {};
+if !(local _unit) exitWith {
+    WARNING_1("setting loadout on non-local unit %1", _unit);
+};
 
 if (_role == "") exitWith {
     ERROR("role is empty");

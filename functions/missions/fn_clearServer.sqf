@@ -16,9 +16,9 @@
 
     1: OBJECT - Transport helicopter to take players to the zone.
 
-    2: STRING - BLUFOR faction. See CfgFactions.
+    2: STRING - friendly faction. See CfgFactions.
 
-    3: STRING - OPFOR faction. See CfgFactions.
+    3: STRING - enemy faction. See CfgFactions.
 
     4: NUMBER - difficulty. See CfgParams.
 
@@ -27,11 +27,11 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_playerGroup",   grpNull, [grpNull]],
-    ["_helo",          objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_opforFaction",  "",      [""]],
-    ["_difficulty",    0,       [0]]
+    ["_playerGroup",     grpNull, [grpNull]],
+    ["_helo",            objNull, [objNull]],
+    ["_friendlyFaction", "",      [""]],
+    ["_enemyFaction",    "",      [""]],
+    ["_difficulty",      0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -44,13 +44,13 @@ if (isNull _helo) exitWith {
     "";
 };
 
-if (_bluforFaction == "") exitWith {
-    ERROR("blufor faction cannot be empty");
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction cannot be empty");
     "";
 };
 
-if (_opforFaction == "") exitWith {
-    ERROR("opfor faction cannot be empty");
+if (_enemyFaction == "") exitWith {
+    ERROR("enemy faction cannot be empty");
     "";
 };
 /*
@@ -75,11 +75,14 @@ private _safePosParams = [
     [_minReinforce, _maxReinforce,   15, 0.1]  // reinforce safe position
 ];
 
+private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
+private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySideStr >> "color");
+
 private _zone = [
     ["NameVillage", "NameLocal", "CityCenter"],
     _zoneRadius,
     _safePosParams,
-    true
+    _enemyColor
 ] call den_fnc_zone;
 
 if (_zone isEqualTo []) exitWith {
@@ -108,13 +111,15 @@ _zoneTrigger setTriggerArea          [_zoneRadius, _zoneRadius, 0, false];
 _zoneTrigger setTriggerActivation    ["EAST", "NOT PRESENT", false];
 _zoneTrigger setTriggerStatements    ["this", _zoneActivation, ""];
 
-[_lzPos, _playerGroup, _helo, _zoneArea] call den_fnc_insert;
+[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
 
 /*
  * enemy units
  */
-private _guardPos = selectRandom _bunkerPosList;
-createGuardedPoint [east, _guardPos, -1, objNull];
+private _guardPos  = selectRandom _bunkerPosList;
+private _enemySide = [_enemyFaction] call den_fnc_factionSide;
+
+createGuardedPoint [_enemySide, _guardPos, -1, objNull];
 
 private _guardType     = "FireTeam";
 private _reactType     = "FireTeam";
@@ -137,20 +142,20 @@ private _i = 1;
 {
     [_x, "bunker01"] call den_fnc_composition;
 
-    private _group = [_x, _opforFaction, _guardType] call den_fnc_spawnGroup;
+    private _group = [_x, _enemyFaction, _guardType] call den_fnc_spawnGroup;
 
     private _wp = [_group, _x, 0, "SCRIPTED", "AWARE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
     _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 
     private _marker = createMarker [format["bunkerMarker-%1", _i], _x];
     _marker setMarkerType  "loc_Bunker";
-    _marker setMarkerColor "colorOPFOR";
+    _marker setMarkerColor _enemyColor;
     _marker setMarkerText  format["%1", _i];
     _marker setMarkerSize  [2,2];
     _i = _i + 1;
 } forEach _bunkerPosList;
 
-private _reactGroup = [_reactPos, _opforFaction, _reactType] call den_fnc_spawnGroup;
+private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
@@ -164,7 +169,7 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
     [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 };
 
-private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spawnGroup;
+private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
 [
     _patrolGroup,
     _zonePos,
@@ -177,9 +182,9 @@ private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spa
     "STAG COLUMN"
 ] call CBA_fnc_taskPatrol;
 
-[_zonePos, _zoneRadius * 0.5, _opforFaction, 4] call den_fnc_buildingOccupy;
+[_zonePos, _zoneRadius * 0.5, _enemyFaction, 4] call den_fnc_buildingOccupy;
 
-[_zoneArea, _reinforceArgs, _opforFaction] call den_fnc_wave;
+[_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 /*
  * enemy unit markers
@@ -187,6 +192,7 @@ private _patrolGroup = [_patrolPos, _opforFaction, _patrolType] call den_fnc_spa
 private _infMarkerPos = _zonePos getPos [100, (_zonePos getDir _lzPos)];
 
 private _marker = createMarker ["opforInfMarker", _infMarkerPos];
-_marker setMarkerType "o_inf";
+_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
+_marker setMarkerColor _enemyColor;
 
 _zoneName;

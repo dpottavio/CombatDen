@@ -17,7 +17,7 @@
 
     0: OBJECT - object to sling load
 
-    1: STRING - BLUFOR faction. See CfgFactions.
+    1: STRING - faction. See CfgFactions.
 
     1: (Optional) NUMBER - Direction from the LZ the helicopter should
     approach. Defaults to 180.
@@ -30,10 +30,10 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_obj",           objNull, [objNull]],
-    ["_bluforFaction", "",      [""]],
-    ["_distance",      0,       [0]],
-    ["_dir",           4000,    [0]]
+    ["_obj",      objNull, [objNull]],
+    ["_faction",  "",      [""]],
+    ["_distance", 0,       [0]],
+    ["_dir",      4000,    [0]]
 ];
 
 if (_obj == objNull) exitWith {
@@ -41,8 +41,8 @@ if (_obj == objNull) exitWith {
     objNull;
 };
 
-if (_bluforFaction == "") exitWith {
-    ERROR("blufor faction parameter cannot be empty");
+if (_faction == "") exitWith {
+    ERROR("faction parameter cannot be empty");
     objNull;
 };
 
@@ -54,7 +54,7 @@ private _helo = [
     _heloPos,
     _heloPos getDir _objPos,
     "heloCargo",
-    _bluforFaction
+    _faction
 ] call den_fnc_spawnvehicle;
 
 private _heloObj   = _helo select 0;

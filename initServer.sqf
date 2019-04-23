@@ -10,18 +10,10 @@
 */
 #include "macros.hpp"
 
-den_alpha setGroupIdGlobal ["Alpha"];
+resistance setFriend [blufor, 0];
+resistance setFriend [opfor, 0];
 
 if (!isMultiplayer) exitWith {};
-
-{
-    _x addMPEventHandler ["MPRespawn", {
-        private _unit = _this select 0;
-        if (!isPlayer _unit) exitWith {
-            deleteVehicle _unit;
-        };
-    }]
-} forEach playableUnits;
 
 [] spawn den_fnc_mpEndMission;
 
@@ -40,20 +32,24 @@ while {true} do {
 
 INFO("players ready");
 
-private _genMissionParams = [den_alpha] call den_fnc_initMissionServer;
+private _genMissionParams = [den_playerSlots] call den_fnc_initMissionServer;
 
 if !(_genMissionParams isEqualTo []) then {
-    den_mission       = _genMissionParams select 0;
-    den_opforFaction  = _genMissionParams select 1;
-    den_zone          = _genMissionParams select 2;
-    den_falcon        = _genMissionParams select 3;
-    den_bluforFaction = _genMissionParams select 4;
+    den_mission         = _genMissionParams select 0;
+    den_enemyFaction    = _genMissionParams select 1;
+    den_zone            = _genMissionParams select 2;
+    den_transport       = _genMissionParams select 3;
+    den_friendlyFaction = _genMissionParams select 4;
+    den_playerGroup     = _genMissionParams select 5;
+    den_arsenal         = _genMissionParams select 6;
 
     publicVariable "den_mission";
-    publicVariable "den_opforFaction";
+    publicVariable "den_enemyFaction";
     publicVariable "den_zone";
-    publicVariable "den_falcon";
-    publicVariable "den_bluforFaction";
+    publicVariable "den_transport";
+    publicVariable "den_friendlyFaction";
+    publicVariable "den_playerGroup";
+    publicVariable "den_arsenal";
 } else {
     ["den_initServerError"] call den_fnc_publicBool;
 };
@@ -66,9 +62,9 @@ if (isDedicated && isNil "den_initServerError") then {
     [
         den_mission,
         den_zone,
-        den_falcon,
-        den_bluforFaction,
-        den_opforFaction,
+        den_transport,
+        den_friendlyFaction,
+        den_enemyFaction,
         den_arsenal
     ] call den_fnc_initMissionLocal;
     INFO("local initialization complete");

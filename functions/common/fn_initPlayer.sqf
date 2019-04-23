@@ -18,26 +18,34 @@
 
     1: STRING - Units role.  See CfgLoadout.
 
+    2: NUMBER - player slot id
+
     Returns: true on success, false on error
 */
 #include "..\..\macros.hpp"
 
 params [
-    ["_unit", objNull, [objNull]],
-    ["_role", "",      [""]]
+    ["_unit",   objNull, [objNull]],
+    ["_role",   "",      [""]],
+    ["_slotId", -1,      [0]]
 ];
 
 if (isNull _unit) then {
     ERROR("unit param is empty");
-    false;
 };
 
 if (_role == "") then {
     ERROR("role param is empty");
-    false;
+};
+
+if (_slotId < 0) then {
+    ERROR("slot id is invalid");
 };
 
 _unit disableAI "MOVE";
 _unit setVariable ["den_role", _role];
+_unit setVariable ["den_slotId", _slotId];
+removeSwitchableUnit _unit;
+hideObject _unit;
 
 true;
