@@ -4,7 +4,7 @@
 
 Combat Den is a work-in-progress project to provide simple randomized
 missions for Arma 3.  A single mission file provides a number of
-re-playable missions, no two mission play throughs are the same.
+re-playable missions, no two missions are the same.
 
 ## How can I play?
 
@@ -14,13 +14,14 @@ briefing.  Just play.
 ## Features
 * Single player support.
 * 8 player coop support on a dedicated server or player hosted server.
+* Playable Blufor and Opfor factions.
 * Zeus support.
 * Built for ACE 3 from the ground up.
 * Virtual Arsenal for player and AI units.
 * Configurable mission settings.
 * 7 randomized mission types complete with briefing.
 * Multi terrain support.
-* Support for thrid party factions from RHS, CUP, and 3CB.
+* Support for third party factions from RHS, CUP, and 3CB.
 
 ## Required Mods
 
@@ -56,7 +57,7 @@ to see, please open an
 [issue](https://github.com/dpottavio/CombatDen/issues) and describe in
 detail what it is you would like.  The only general guideline is that
 the feature should "make sense" in the context of the mission.  Use
-your best judgement.
+your best judgment.
 
 Depending on the amount of work, feature requests may take some time
 to complete.  The best way to expedite this process is to make the
