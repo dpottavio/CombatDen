@@ -138,8 +138,7 @@ private _transport = [getPosATL den_heloMarker, _friendlyFaction] call den_fnc_s
 /*
  * setup arsenal
  */
-private _climate     = [] call den_fnc_worldToClimate;
-private _arsenalType = getText(missionConfigFile >> "CfgVehicles" >> _friendlyFaction >> _climate >> "cargoBox");
+private _arsenalType = getText(missionConfigFile >> "CfgVehicles" >> _friendlyFaction >> "cargoBox");
 private _arsenalPos  = getPosATL den_arsenalMarker;
 private _arsenal     = createVehicle [_arsenalType, _arsenalPos, [], 0, "CAN_COLLIDE"];
 

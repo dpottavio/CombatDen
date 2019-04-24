@@ -13,17 +13,11 @@ class CfgVehicles
 {
     class Csat
     {
+        ammoBox  = "Box_East_Ammo_F";
+        cargoBox = "O_CargoNet_01_ammo_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "Box_East_Ammo_F";
-            cargoBox = "O_CargoNet_01_ammo_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "O_Heli_Light_02_unarmed_F";
             heloTransportLarge = "O_Heli_Transport_04_covered_F";
             heloCargo          = "O_Heli_Transport_04_box_F";
@@ -34,9 +28,6 @@ class CfgVehicles
         class Arid   : SemiArid {};
         class Tropic : SemiArid
         {
-            /*
-             * cars, trucks, and helicopters.
-             */
             supplyTruckAmmo = "O_T_Truck_03_ammo_ghex_F";
             supplyTruck     = "O_T_Truck_03_repair_ghex_F";
             supplyTruckFuel = "O_T_Truck_03_fuel_ghex_F";
@@ -45,17 +36,11 @@ class CfgVehicles
     };
     class Nato
     {
+        ammoBox  = "Box_NATO_Ammo_F";
+        cargoBox = "B_CargoNet_01_ammo_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "Box_NATO_Ammo_F";
-            cargoBox = "B_CargoNet_01_ammo_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "B_Heli_Transport_01_camo_F";
             heloTransportLarge = "B_Heli_Transport_03_F";
             heloCargo          = "B_Heli_Transport_03_F";
@@ -66,28 +51,27 @@ class CfgVehicles
         class Arid   : SemiArid {};
         class Tropic : SemiArid
         {
-            /*
-             * cars, trucks, and helicopters.
-             */
             supplyTruckAmmo = "B_T_Truck_01_ammo_F";
             supplyTruck     = "B_T_Truck_01_box_F";
             supplyTruckFuel = "B_T_Truck_01_fuel_F";
         };
         class Wood : Tropic {};
     };
+    class Fia
+    {
+        ammoBox = "Box_IND_Ammo_F";
+    };
+    class Syndikat
+    {
+        ammoBox = "Box_Syndicate_Ammo_F";
+    };
     class RhsRussia
     {
+        ammoBox  = "rhs_7ya37_1_single";
+        cargoBox = "CargoNet_01_box_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "rhs_7ya37_1_single";
-            cargoBox = "CargoNet_01_box_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "RHS_Mi8mt_Cargo_vdv";
             heloTransportLarge = "RHS_Mi8mt_Cargo_vdv";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
@@ -102,17 +86,11 @@ class CfgVehicles
     };
     class RhsUsmc
     {
+        ammoBox  = "Box_NATO_Ammo_F";
+        cargoBox = "B_CargoNet_01_ammo_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "Box_NATO_Ammo_F";
-            cargoBox = "B_CargoNet_01_ammo_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "RHS_UH1Y_UNARMED";
             heloTransportLarge = "RHS_UH1Y_UNARMED";
             heloCargo          = "rhsusf_CH53E_USMC";
@@ -122,8 +100,6 @@ class CfgVehicles
         };
         class Arid : SemiArid
         {
-
-            // cars, trucks, and helicopters.
             heloTransport   = "RHS_UH1Y_UNARMED_d";
             heloCargo       = "rhsusf_CH53E_USMC_D";
             supplyTruckAmmo = "rhsusf_M977A4_AMMO_usarmy_d";
@@ -135,17 +111,11 @@ class CfgVehicles
     };
     class LopTakistan
     {
+        ammoBox  = "rhs_7ya37_1_single";
+        cargoBox = "CargoNet_01_box_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "rhs_7ya37_1_single";
-            cargoBox = "CargoNet_01_box_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "LOP_TKA_Mi8MT_Cargo";
             heloTransportLarge = "LOP_TKA_Mi8MT_Cargo";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
@@ -158,19 +128,24 @@ class CfgVehicles
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
     };
+
+    class LopGuer
+    {
+        ammoBox = "rhs_7ya37_1_single";
+    };
+    class LopInsurgent : LopGuer {};
+    class LopIsis      : LopGuer {};
+    class LopNova      : LopGuer {};
+    class LopChDkz     : LopGuer {};
+    class LopGuerrilla : LopGuer {};
+
     class CupRussia
     {
+        ammoBox  = "CUP_RUBasicAmmunitionBox";
+        cargoBox = "CargoNet_01_box_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "CUP_RUBasicAmmunitionBox";
-            cargoBox = "CargoNet_01_box_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "CUP_O_Mi8_medevac_RU";
             heloTransportLarge = "CUP_O_Mi8_medevac_RU";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
@@ -185,17 +160,11 @@ class CfgVehicles
     };
     class CupTakistan
     {
+        ammoBox  = "CUP_RUBasicAmmunitionBox";
+        cargoBox = "CargoNet_01_box_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "CUP_RUBasicAmmunitionBox";
-            cargoBox = "CargoNet_01_box_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "CUP_O_UH1H_TKA";
             heloTransportLarge = "CUP_O_Mi17_TK";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
@@ -210,17 +179,11 @@ class CfgVehicles
     };
     class CupUsmc
     {
-        class SemiArid
-        {
-            /*
-             * equipment
-             */
-            ammoBox  = "CUP_USBasicAmmunitionBox";
-            cargoBox = "B_CargoNet_01_ammo_F";
+        ammoBox  = "CUP_USBasicAmmunitionBox";
+        cargoBox = "B_CargoNet_01_ammo_F";
 
-            /*
-             * cars, trucks, and helicopters.
-             */
+       class SemiArid
+       {
             heloTransport      = "CUP_B_UH1Y_UNA_USMC";
             heloTransportLarge = "CUP_B_UH1Y_UNA_USMC";
             heloCargo          = "CUP_B_CH53E_USMC";
@@ -234,17 +197,11 @@ class CfgVehicles
     };
     class CupBaf
     {
+        ammoBox  = "CUP_BAF_BasicAmmunitionBox";
+        cargoBox = "B_CargoNet_01_ammo_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "CUP_BAF_BasicAmmunitionBox";
-            cargoBox = "B_CargoNet_01_ammo_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "CUP_B_AW159_Unarmed_GB";
             heloTransportLarge = "CUP_B_SA330_Puma_HC1_BAF";
             heloCargo          = "CUP_B_Merlin_HC3A_GB";
@@ -258,17 +215,11 @@ class CfgVehicles
     };
     class CupBundeswehr
     {
+        ammoBox  = "CUP_USBasicAmmunitionBox";
+        cargoBox = "B_CargoNet_01_ammo_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox  = "CUP_USBasicAmmunitionBox";
-            cargoBox = "B_CargoNet_01_ammo_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "CUP_B_UH1D_GER_KSK";
             heloTransportLarge = "CUP_B_CH53E_GER";
             heloCargo          = "CUP_B_CH53E_GER";
@@ -283,19 +234,28 @@ class CfgVehicles
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
     };
+
+    class CupGuer
+    {
+        ammoBox = "CUP_RUBasicAmmunitionBox";
+    };
+    class CupChDkz           : CupGuer {};
+    class CupTakistanMilitia : CupGuer {};
+    class CfpAlQaeda         : CupGuer {};
+    class CfpAlShabaab       : CupGuer {};
+    class CfpBokoHaram       : CupGuer {};
+    class CfpHamas           : CupGuer {};
+    class CfpGuerrilla       : CupGuer {};
+    class CfpHezbollah       : CupGuer {};
+    class CfpIsis            : CupGuer {};
+
     class Uk3CbBaf
     {
+        ammoBox = "CUK3CB_BAF_Box_556_Ammo";
+        cargoBox = "B_CargoNet_01_ammo_F";
+
         class SemiArid
         {
-            /*
-             * equipment
-             */
-            ammoBox = "CUK3CB_BAF_Box_556_Ammo";
-            cargoBox = "B_CargoNet_01_ammo_F";
-
-            /*
-             * cars, trucks, and helicopters.
-             */
             heloTransport      = "UK3CB_BAF_Wildcat_AH1_TRN_8A_MTP_RM";
             heloTransportLarge = "UK3CB_BAF_Merlin_HC4_18_MTP_RM";
             // Using vanilla helo because 3CB variant cannot sling load the container.
@@ -306,9 +266,6 @@ class CfgVehicles
         };
         class Arid   : SemiArid
         {
-            /*
-             * cars, trucks, and helicopters.
-             */
             supplyTruckAmmo = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
             supplyTruck     = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
             supplyTruckFuel = "UK3CB_BAF_MAN_HX60_Fuel_Sand_MTP_RM";

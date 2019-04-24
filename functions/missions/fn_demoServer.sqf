@@ -108,8 +108,11 @@ private _patrolPos       = _zoneSafePosList select 2;
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _zonePos, -1, objNull];
 
-private _climate = [] call den_fnc_worldToClimate;
-private _ammoCrate = getText (missionConfigFile >> "CfgVehicles" >> _enemyFaction >> _climate >> "ammoBox");
+private _ammoCrate = getText (missionConfigFile >> "CfgVehicles" >> _enemyFaction >> "ammoBox");
+if (_ammoCrate == "") then {
+    _ammoCrate = "Box_NATO_Ammo_F";
+    WARNING_1("missing ammoBox property for faction %1", _enemyFaction);
+};
 
 den_crateCount = 0;
 den_crateDestroyCount = 0;
