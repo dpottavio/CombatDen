@@ -127,8 +127,36 @@ selectPlayer _newPlayerUnit;
 waitUntil {(group _newPlayerUnit) == den_playerGroup};
 
 if (_role == "SquadLeader") then {
+    if (isMultiplayer && isNil "den_insert") then {
+        /*
+         * Once the Squad Leader player becomes the group leader,
+         * the locality of the AI units will change to the player
+         * leader.  This will undo the previous call to disable
+         * AI movement by the server.
+         *
+         * To maintain that AI movement is disabled in the staging
+         * area, add an event handler to re-disable it when the
+         * AI unit locality changes to the leader's host.
+         */
+        {
+            // trick the linter
+            private _thisEventHandler = "";
+
+            _x addEventHandler ["Local", {
+                params ["_unit", ""];
+
+                if (isNil "den_insert") then {
+                    _unit disableAI "MOVE";
+                } else {
+                    _unit removeEventHandler ["Local", _thisEventHandler];
+                };
+            }];
+        } forEach units den_playerGroup;
+    };
+
     [den_playerGroup, _newPlayerUnit] remoteExecCall ["selectLeader", groupOwner den_playerGroup];
-    waitUntil {(leader den_playerGroup) == _newPlayerUnit};
+
+    waitUntil { (leader den_playerGroup) == _newPlayerUnit };
 };
 
 private _success = [

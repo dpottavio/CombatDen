@@ -104,7 +104,7 @@ addSwitchableUnit _unit;
     */
     params ["_unit", "_role", "_roleType", "_lowDaylight", "_faction"];
     sleep 3;
-    [_unit, _role, _roleType, _lowDaylight, _faction] call den_fnc_loadout;
+    [_unit, _role, _roleType, _lowDaylight, _faction] remoteExecCall ["den_fnc_loadout", _unit];
 };
 
 if (isMultiplayer) then {
