@@ -21,7 +21,7 @@ briefing.  Just play.
 * Configurable mission settings.
 * 7 randomized mission types complete with briefing.
 * Multi terrain support.
-* Support for third party factions from RHS, CUP, and 3CB.
+* Support for third party factions from RHS, CUP, 3CB, and more.
 
 ## Required Mods
 
@@ -35,6 +35,13 @@ files on non-vanilla terrains will require additional dependencies.
 
 Please visit the [Wiki](https://github.com/dpottavio/CombatDen/wiki)
 for more information about features and development.
+
+## Report a Bug
+
+If you found a bug, please open an
+[issue](https://github.com/dpottavio/CombatDen/issues).  Provide in
+full detail the symptom you're seeing and include which mods you have
+loaded.
 
 ## Feature Requests
 
