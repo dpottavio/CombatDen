@@ -119,17 +119,13 @@ den_container addEventHandler ["killed", {
 private _secureActivation =
 format["[""den_containerSecure""] call den_fnc_publicBool;[den_container,""%1"",3000] call den_fnc_sling",_friendlyFaction];
 
-private _activateBy = "WEST SEIZED";
+private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
+private _activatedBy     = format["%1 SEIZED", _friendlySideStr];
+private _secureTrigger   = createTrigger ["EmptyDetector", _containerPos, false];
 
-private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
-if (_friendlySide == opfor) then {
-    _activateBy = "EAST SEIZED";
-};
-
-private _secureTrigger = createTrigger ["EmptyDetector", _containerPos, false];
-_secureTrigger setTriggerArea          [10, 10, 0, false, 10];
-_secureTrigger setTriggerActivation    [_activateBy, "PRESENT", false];
-_secureTrigger setTriggerStatements    ["this", _secureActivation, ""];
+_secureTrigger setTriggerArea       [10, 10, 0, false, 10];
+_secureTrigger setTriggerActivation [_activatedBy, "PRESENT", false];
+_secureTrigger setTriggerStatements ["this", _secureActivation, ""];
 
 private _extractTrigArea = [
     _zoneArea select 1,

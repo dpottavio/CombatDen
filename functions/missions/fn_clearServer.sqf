@@ -106,10 +106,11 @@ private _patrolPos    = _zoneSafePosList select 5;
 private _reinforcePos = _zoneSafePosList select 6;
 
 private _zoneActivation = "[""den_zoneClear""] call den_fnc_publicBool;";
-private _zoneTrigger = createTrigger ["EmptyDetector", _zonePos, false];
-_zoneTrigger setTriggerArea          [_zoneRadius, _zoneRadius, 0, false];
-_zoneTrigger setTriggerActivation    ["EAST", "NOT PRESENT", false];
-_zoneTrigger setTriggerStatements    ["this", _zoneActivation, ""];
+private _zoneTrigger    = createTrigger ["EmptyDetector", _zonePos, false];
+
+_zoneTrigger setTriggerArea       [_zoneRadius, _zoneRadius, 0, false];
+_zoneTrigger setTriggerActivation [_enemySideStr, "NOT PRESENT", false];
+_zoneTrigger setTriggerStatements ["this", _zoneActivation, ""];
 
 [_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
 
