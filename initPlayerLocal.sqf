@@ -147,9 +147,8 @@ if (_role == "SquadLeader") then {
 
                 if (isNil "den_insert") then {
                     _unit disableAI "MOVE";
-                } else {
-                    _unit removeEventHandler ["Local", _thisEventHandler];
                 };
+                _unit removeEventHandler ["Local", _thisEventHandler];
             }];
         } forEach units den_playerGroup;
     };
