@@ -227,17 +227,13 @@ publicVariable "den_searchItem";
     [_lzPos, _enemyFaction, "ReconTeam"] call den_fnc_spawnGroup;
 };
 
-private _activateBy = "WEST SEIZED";
+private _activation      = "[""den_campSeized""] call den_fnc_publicBool";
+private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
+private _activatedBy     = format["%1 SEIZED", _friendlySideStr];
 
-private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
-if (_friendlySide == opfor) then {
-    _activateBy = "EAST SEIZED";
-};
-
-private _activation = "[""den_campSeized""] call den_fnc_publicBool";
 private _trigger = createTrigger ["EmptyDetector", _campPos];
 _trigger setTriggerArea          [25, 25, 0, false, 10];
-_trigger setTriggerActivation    [_activateBy, "PRESENT", false];
+_trigger setTriggerActivation    [_activatedBy, "PRESENT", false];
 _trigger setTriggerStatements    ["this", _activation, ""];
 
 private _infMarkerPos = _campPos getPos [100, (_campPos getDir _lzPos)];

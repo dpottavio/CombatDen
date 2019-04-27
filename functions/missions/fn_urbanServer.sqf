@@ -73,8 +73,8 @@ private _safePosParams = [
     [0,      _maxPatrol,     5,  -1]  // patrol safe pos
 ];
 
-private _enemySide  = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
-private _enemyColor = getText(missionConfigFile >> "CfgMarkers"  >> _enemySide    >> "color");
+private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
+private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySideStr >> "color");
 
 private _zone = [
     ["NameCity", "NameVillage", "CityCenter"],
@@ -106,7 +106,6 @@ private _patrolPos       = _zoneSafePosList select 3;
 /*
  * clear trigger
  */
-private _enemySideStr   = getText (missionConfigfile >> "CfgFactions" >> _enemyFaction >> "side");
 private _zoneActivation = "[""den_zoneClear""] call den_fnc_publicBool;";
 private _zoneTrigger    = createTrigger ["EmptyDetector", _zonePos, false];
 
@@ -117,7 +116,8 @@ _zoneTrigger setTriggerStatements ["this", _zoneActivation, ""];
 /*
  * enemy units
  */
-createGuardedPoint [opfor, _campPos, -1, objNull];
+private _enemySide = [_enemyFaction] call den_fnc_factionSide;
+createGuardedPoint [_enemySide, _campPos, -1, objNull];
 
 private _guardType   = "MotorizedAssault";
 private _patrolType  = "Sentry";
@@ -177,11 +177,11 @@ private _infMarkerPos   = _zonePos getPos [100, (_zonePos getDir _lzPos)];
 private _motorMarkerPos = _zonePos getPos [150, (_zonePos getDir _lzPos)];
 
 private _marker = createMarker ["enemyInfMarker", _infMarkerPos];
-_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySide >> "infantry"));
+_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
 _marker setMarkerColor _enemyColor;
 
 _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
-_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySide >> "motorized"));
+_marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
 _zoneName;

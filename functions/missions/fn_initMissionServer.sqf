@@ -143,7 +143,8 @@ private _arsenalPos  = getPosATL den_arsenalMarker;
 private _arsenal     = createVehicle [_arsenalType, _arsenalPos, [], 0, "CAN_COLLIDE"];
 
 if (isMultiPlayer) then {
-    [den_cba_respawnTickets] call BIS_fnc_paramRespawnTickets;
+    [_friendlySide, den_cba_respawnTickets] call BIS_fnc_respawnTickets;
+    [_friendlyFaction] call den_fnc_mpEndMission;
 };
 
 private _missionArgs = [_playerGroup, _transport, _friendlyFaction, _enemyFaction, den_cba_difficulty];

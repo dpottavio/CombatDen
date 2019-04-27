@@ -136,7 +136,8 @@ createMarker ["hostageMarker", _hostagePos];
 "hostageMarker" setMarkerText "hostage";
 "hostageMarker" setMarkerSize [0.75, 0.75];
 
-createGuardedPoint [east, _hostagePos, -1, objNull];
+private _enemySide = [_enemyFaction] call den_fnc_factionSide;
+createGuardedPoint [_enemySide, _hostagePos, -1, objNull];
 
 /*
  * enemy units

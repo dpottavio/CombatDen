@@ -20,6 +20,10 @@
 */
 #include "..\..\macros.hpp"
 
+params [
+    ["_faction", "", [""]]
+];
+
 if (!isMultiplayer) exitWith {
     WARNING("not in multi player");
     false
@@ -30,14 +34,25 @@ if (!isServer) exitWith {
     false;
 };
 
-while {true} do {
-    private _tickets = [blufor] call BIS_fnc_respawnTickets;
-    private _alive = { alive _x } count allPlayers;
+if (_faction == "") exitWith {
+    ERROR("faction parameter is empty");
+    false;
+};
 
-    if ((_tickets == 0) && (_alive == 0)) exitWith {
-        ["den_playersDead"] call den_fnc_publicBool;
+private _side = [_faction] call den_fnc_factionSide;
+
+[_side] spawn {
+    params ["_side"];
+
+    while {true} do {
+        private _tickets = [_side] call BIS_fnc_respawnTickets;
+        private _alive = { alive _x } count allPlayers;
+
+        if ((_tickets == 0) && (_alive == 0)) exitWith {
+            ["den_playersDead"] call den_fnc_publicBool;
+        };
+        sleep 2;
     };
-    sleep 2;
 };
 
 true;

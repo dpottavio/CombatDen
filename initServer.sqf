@@ -15,8 +15,6 @@ resistance setFriend [opfor, 0];
 
 if (!isMultiplayer) exitWith {};
 
-[] spawn den_fnc_mpEndMission;
-
 INFO("waiting for players...");
 
 while {true} do {
