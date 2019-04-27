@@ -229,7 +229,7 @@ publicVariable "den_searchItem";
 
 private _activation      = "[""den_campSeized""] call den_fnc_publicBool";
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
-private _activatedBy     = format["%1 SEIZED", _friendlySideStr];
+private _activatedBy     = format["%1", _friendlySideStr];
 
 private _trigger = createTrigger ["EmptyDetector", _campPos];
 _trigger setTriggerArea          [25, 25, 0, false, 10];

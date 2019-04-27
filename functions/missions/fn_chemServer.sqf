@@ -110,6 +110,7 @@ private _patrolPos       = _zoneSafePosList select 4;
 /*
  * container
  */
+
 den_container = "B_Slingload_01_Fuel_F" createVehicle _containerPos;
 
 den_container addEventHandler ["killed", {
@@ -120,7 +121,7 @@ private _secureActivation =
 format["[""den_containerSecure""] call den_fnc_publicBool;[den_container,""%1"",3000] call den_fnc_sling",_friendlyFaction];
 
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
-private _activatedBy     = format["%1 SEIZED", _friendlySideStr];
+private _activatedBy     = format["%1", _friendlySideStr];
 private _secureTrigger   = createTrigger ["EmptyDetector", _containerPos, false];
 
 _secureTrigger setTriggerArea       [10, 10, 0, false, 10];
