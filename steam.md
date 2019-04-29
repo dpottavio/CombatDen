@@ -22,4 +22,4 @@ briefing.  Just play.
 Additional documentation can be found on the GitHub [url=https://github.com/dpottavio/CombatDen]page[/url].  If you find a bug, or have a feature request, please open an [url=https://github.com/dpottavio/CombatDen/issues]issue[/url].
 
 [h1]License[/h1]
-you are free to adapt (i.e. modify, rework or update) and share (i.e. copy, distribute or transmit) this material under the Arma Public License Share Alike (APL-SA).  See the full [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]license[/url] for details.
+You are free to adapt (i.e. modify, rework or update) and share (i.e. copy, distribute or transmit) this material under the Arma Public License Share Alike (APL-SA).  See the full [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]license[/url] for details.
