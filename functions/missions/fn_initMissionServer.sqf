@@ -141,6 +141,10 @@ private _transport = [getPosATL den_heloMarker, _friendlyFaction] call den_fnc_s
 private _arsenalType = getText(missionConfigFile >> "CfgVehicles" >> _friendlyFaction >> "cargoBox");
 private _arsenalPos  = getPosATL den_arsenalMarker;
 private _arsenal     = createVehicle [_arsenalType, _arsenalPos, [], 0, "CAN_COLLIDE"];
+clearItemCargoGlobal     _arsenal;
+clearMagazineCargoGlobal _arsenal;
+clearWeaponCargoGlobal   _arsenal;
+clearBackpackCargoGlobal _arsenal;
 
 if (isMultiPlayer) then {
     [_friendlySide, den_cba_respawnTickets] call BIS_fnc_respawnTickets;
