@@ -1,8 +1,7 @@
 Combat Den is a simple randomized mission for single and 8 player coop.  A single mission file provides a number of re-playable scenarios, no two mission play throughs are the same.
 
 [h1]How can I play?[/h1]
-It's simple.  A randomized mission will be selected complete with a
-briefing.  Just play.
+It's simple.  A randomized mission will be selected complete with a briefing.  Just play.
 
 [h1]Features[/h1]
 [list]
