@@ -14,20 +14,20 @@
 
     Parameter(s):
 
-    0: STRING - Class name of blufor faction.  See CfgFactions.
+    0: STRING - Class name of faction.  See CfgFactions.
 
     Returns: true on success, false on error
 */
 params [
-    ["_bluforFaction", "",      [""]]
+    ["_faction", "",      [""]]
 ];
 
-if (_bluforFaction == "") exitWith {
+if (_faction == "") exitWith {
     ["faction parameter is empty"] call BIS_fnc_error;
     false;
 };
 
-den_loadoutMenuFaction = _bluforFaction;
+den_loadoutMenuFaction = _faction;
 
 disableSerialization;
 
@@ -59,7 +59,7 @@ lbSetCurSel [_unitListBoxId, 0];
  */
 private _roleListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "RoleListBox" >> "idc");
 private _climate       = [] call den_fnc_worldToClimate;
-private _rolesCfg      = "true" configClasses (missionConfigFile >> "CfgLoadout" >> _bluforFaction >> _climate);
+private _rolesCfg      = "true" configClasses (missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate);
 private _i             = 0;
 {
     private _nameUi  = (getText (_x >> "role"));
@@ -75,7 +75,7 @@ lbSort [_roleListBoxId, "ASC"];
 
 /*
  * When the role list box is selected, populate the loadout list box
- * with the corresponding loadout types from CfgLoadout config.
+ * with the corresponding loadout types from CfgFactions config.
  */
 (_display displayCtrl _roleListBoxId) ctrlAddEventHandler ["LBSelChanged", {
     params ["_control", "_selectedIndex"];
@@ -90,7 +90,7 @@ lbSort [_roleListBoxId, "ASC"];
 
     private _climate = [] call den_fnc_worldToClimate;
     private _loadoutsCfg =
-        "true" configClasses (missionConfigFile >> "CfgLoadout" >> den_loadoutMenuFaction >> _climate);
+        "true" configClasses (missionConfigFile >> "CfgFactions" >> den_loadoutMenuFaction >> "Loadout" >> _climate);
 
     {
         if (getText (_x >> "role") == _roleSelect) then {

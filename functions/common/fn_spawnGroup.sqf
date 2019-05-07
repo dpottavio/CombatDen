@@ -18,10 +18,12 @@
 
     1: (Optional) STRING - Faction name. Defaults to CSAT. See CfgFactions.
 
-    2: (Optional) STRING - Unit type.  See CfgGroups.
+    2: (Optional) STRING - Unit type.  See CfgFactions.
 
     Returns: GROUP on success, grpNull on error.
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_pos",     [],         [[]], [2,3]],
     ["_faction", "Csat",     [""]],
@@ -32,11 +34,11 @@ if (_type == "") then {
     _type = "FireTeam";
 };
 
-private _cfgClimate = [] call den_fnc_worldToClimate;
+private _climate = [] call den_fnc_worldToClimate;
 
-private _cfgType = missionConfigFile >> "CfgGroups" >> _faction >> _cfgClimate >> _type;
+private _cfgType = missionConfigFile >> "CfgFactions" >> _faction >> "Group" >> _climate >> _type;
 if (isNil "_cfgType") exitWith {
-    ["invalid config parameters"] call BIS_fnc_error;
+    ERROR_1("missing group config for faction %1", _faction);
     grpNull;
 };
 
@@ -65,14 +67,14 @@ if (_faction == "Nato") then {
  */
 private _lowDaylight = [] call den_fnc_lowDaylight;
 if (_lowDaylight) then {
-    private _accLight = getText (missionConfigFile >> "CfgGroups" >> _faction >> "accLight");
+    private _accLight = getText (missionConfigFile >> "CfgFactions" >> _faction >> "Group" >> "accLight");
     if (_accLight != "") then {
         {
             _x addPrimaryWeaponItem _accLight;
         } forEach units _group;
     };
 
-    private _nvg = getText (missionConfigFile >> "CfgGroups" >> _faction >> _cfgClimate >> _type >> "nvg");
+    private _nvg = getText (missionConfigFile >> "CfgFactions" >> _faction >> "Group" >> _climate >> _type >> "nvg");
     if (_nvg != "") then {
         {
             _x linkItem _nvg;

@@ -19,11 +19,11 @@
 
     1: ARRAY - Position the new unit will be placed.
 
-    2: STRING - Faction name the new unit will belong to.  See CfgLoadout.
+    2: STRING - Faction name the new unit will belong to.  See CfgFactions.
 
     3: NUMBER - Slot Id.  This is a unique player id.
 
-    4: STRING - Loadout role for the new unit.  See CfgLoadout.
+    4: STRING - Loadout role for the new unit.  See CfgFactions.
 
     5: (OPTIONAL) STRING - Loadout role type for the new unit.  If this is empty
     the role type that has "default = 1" defined will be selected.  See CfgLoadtout.
@@ -72,11 +72,11 @@ private _unitType    = "";
 if (_roleType == "") then {
     private _condition = "getNumber(_x >> ""default"") == 1";
     private _cfgList = _condition configClasses
-			(missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role);
+			(missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role);
 
     _typeCfg  = _cfgList select 0;
 } else {
-    _typeCfg = missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role >> _roleType;
+    _typeCfg = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role >> _roleType;
 };
 
 _unitType = getText(_typeCfg >> "unit");

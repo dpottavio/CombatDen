@@ -38,7 +38,7 @@ if (_faction == "") exitWith {
 };
 
 private _climate  = [] call den_fnc_worldToClimate;
-private _heloType = getText (missionConfigFile >> "CfgVehicles" >> _faction >> _climate >> "heloTransport");
+private _heloType = getText (missionConfigFile >> "CfgFactions" >> _faction >> "Vehicle" >> _climate >> "heloTransport");
 
 private _helo = createVehicle [_heloType, _pos, [], 0, "CAN_COLLIDE"];
 

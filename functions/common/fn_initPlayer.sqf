@@ -16,7 +16,9 @@
 
     0: OBJECT - Unit.
 
-    1: STRING - Units role.  See CfgLoadout.
+    1: STRING - Units role.  See CfgFactions.
+
+    2: NUMBER - player slot id
 
     2: NUMBER - player slot id
 

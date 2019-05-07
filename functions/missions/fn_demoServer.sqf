@@ -108,7 +108,7 @@ private _patrolPos       = _zoneSafePosList select 2;
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _zonePos, -1, objNull];
 
-private _ammoCrate = getText (missionConfigFile >> "CfgVehicles" >> _enemyFaction >> "ammoBox");
+private _ammoCrate = getText (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "ammoBox");
 if (_ammoCrate == "") then {
     _ammoCrate = "Box_NATO_Ammo_F";
     WARNING_1("missing ammoBox property for faction %1", _enemyFaction);
@@ -234,7 +234,7 @@ private _guardGroupCount = 0;
     _helo lock true;
 
     private _explosiveTypes =
-        getArray (missionConfigFile >> "CfgArsenal" >> _friendlyFaction >> "SemiArid" >> "baseExplosives");
+        getArray (missionConfigFile >> "CfgFaction" >> _friendlyFaction >> "Arsenal" >> "SemiArid" >> "baseExplosives");
     _explosiveTypes pushBack "ACE_M14";
 
     private _hasExplosive = false;

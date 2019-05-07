@@ -114,7 +114,7 @@ private _climate = [] call den_fnc_worldToClimate;
 private _i = 0;
 {
     private _vpos = _convoyPos getPos [_i * 15, _convoyDir];
-    private _type = getText (missionConfigFile >> "CfgVehicles" >> _friendlyFaction >> _climate >> _x);
+    private _type = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "Vehicle" >> _climate >> _x);
     private _v = _type createVehicle _vpos;
     _v setDir _convoyDir;
     _v setDamage 0.80;

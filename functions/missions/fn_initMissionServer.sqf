@@ -138,7 +138,11 @@ private _transport = [getPosATL den_heloMarker, _friendlyFaction] call den_fnc_s
 /*
  * setup arsenal
  */
-private _arsenalType = getText(missionConfigFile >> "CfgVehicles" >> _friendlyFaction >> "cargoBox");
+private _arsenalType = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "cargoBox");
+if (_arsenalType == "") exitWith {
+    ERROR_1("arsenal not defined for faction %1", _friendlyFaction);
+    [];
+};
 private _arsenalPos  = getPosATL den_arsenalMarker;
 private _arsenal     = createVehicle [_arsenalType, _arsenalPos, [], 0, "CAN_COLLIDE"];
 clearItemCargoGlobal     _arsenal;

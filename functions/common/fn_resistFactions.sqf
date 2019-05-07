@@ -19,6 +19,17 @@
 private _addons = [];
 
 /*
+ * CUP
+ */
+private _hasCupVehicles = isClass (configfile >> "CfgPatches" >> "CUP_Vehicles_Core");
+if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_TakiInsurgents")) then {
+    _addons pushBack "CupTakistanMilitia";
+};
+if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Chedaki")) then {
+    _addons pushBack "CupChDkz";
+};
+
+/*
  * ProjectOpfor
  */
 if (isClass (configfile >> "CfgPatches" >> "lop_faction_afr")) then {
@@ -32,9 +43,6 @@ if (isClass (configfile >> "CfgPatches" >> "lop_faction_ists")) then {
 };
 if (isClass (configfile >> "CfgPatches" >> "lop_faction_us")) then {
     _addons pushBack "LopNovo";
-};
-if (isClass (configfile >> "CfgPatches" >> "lop_faction_tka")) then {
-    _addons pushBack "LopTakistan";
 };
 if (isClass (configfile >> "CfgPatches" >> "lop_faction_chdkz")) then {
     _addons pushBack "LopChDkz";
@@ -64,7 +72,6 @@ if (isClass (configfile >> "CfgPatches" >> "CFP_O_BOKOHARAM")) then {
 if (isClass (configfile >> "CfgPatches" >> "CFP_O_ALSHABAAB")) then {
     _addons pushBack "CfpAlShabaab";
 };
-
 
 if (_addons isEqualTo []) then {
     _addons = ["Fia", "Syndikat"];

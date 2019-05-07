@@ -23,17 +23,13 @@ class Header
 	maxPlayers = 9;
 };
 
-#include "config\CfgArsenal.cpp"
 #include "config\CfgBlacklist.cpp"
 #include "config\CfgDebriefing.cpp"
 #include "config\CfgFactions.cpp"
 #include "config\CfgFunctions.cpp"
-#include "config\CfgGroups.cpp"
 #include "config\CfgHelp.cpp"
-#include "config\CfgLoadout.cpp"
 #include "config\CfgMarkers.cpp"
 #include "config\CfgTaskDescriptions.cpp"
-#include "config\CfgVehicles.cpp"
 #include "config\CfgSettings.cpp"
 #include "config\CfgUi.cpp"
 

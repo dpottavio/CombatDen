@@ -23,6 +23,11 @@ if (isClass (configfile >> "CfgPatches" >> "rhs_c_troops")) then {
     _addons pushBack "RhsRussia";
 };
 
+// LOP
+if (isClass (configfile >> "CfgPatches" >> "lop_faction_tka")) then {
+    _addons pushBack "LopTakistan";
+};
+
 /*
  * CUP
  */
@@ -31,14 +36,8 @@ private _hasCupVehicles = isClass (configfile >> "CfgPatches" >> "CUP_Vehicles_C
 if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Russia")) then {
     _addons pushBack "CupRussia";
 };
-if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Chedaki")) then {
-    _addons pushBack "CupChDkz";
-};
 if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Taki")) then {
     _addons pushBack "CupTakistan";
-};
-if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_TakiInsurgents")) then {
-    _addons pushBack "CupTakistanMilitia";
 };
 
 if (_addons isEqualTo []) then {

@@ -11,224 +11,53 @@
 
 class CfgFactions
 {
-    /*
-     * base classes
-     */
-    class BafBase
-    {
-        side        = "WEST";
-        name        = "BAF";
-        flagTexture = "a3\data_f\flags\flag_uk_co.paa";
-    };
-    class ChDkzBase
-    {
-        side = "GUER";
-        name = "ChDKZ";
-    };
-    class GuerrillaBase
-    {
-        side = "GUER";
-        name = "Guerrilla";
-    };
-    class IsisBase
-    {
-        side = "GUER";
-        name = "ISIS";
-    };
-    class RussiaBase
-    {
-        side = "EAST";
-        name = "Russia";
-    };
-    class TakistanBase
-    {
-        side = "EAST";
-        name = "Takistan";
-    };
-    class UsmcBase
-    {
-        side        = "WEST";
-        name        = "USMC";
-        flagTexture = "\A3\Data_F\Flags\Flag_us_CO.paa";
-    };
 
-    /*
-     * 2035 factions
-     */
-    class Csat
-    {
-        side        = "EAST";
-        name        = "CSAT";
-        flagTexture = "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
-    };
-    class Fia
-    {
-        side        = "GUER";
-        name        = "FIA";
-        flagTexture = "\A3\Data_F\Flags\Flag_FIA_CO.paa";
-    };
-    class Nato
-    {
-        side        = "WEST";
-        name        = "NATO";
-        flagTexture = "\A3\Data_F\Flags\Flag_nato_CO.paa";
-    };
-    class Syndikat
-    {
-        side        = "GUER";
-        name        = "Syndikat";
-        flagTexture = "a3\data_f_exp\flags\flag_synd_co.paa";
-    };
-
-    /*
-     * RHS factions
-     */
-    class RhsRussia : RussiaBase
-    {
-        flagTexture = "rhsafrf\addons\rhs_main\data\flag_rus_co.paa";
-        addon       = "RHS";
-    };
-    class RhsUsmc : UsmcBase
-    {
-        addon = "RHS";
-    }
-
-    /*
-     * ProjectOpfor factions
-     */
-    class LopChDkz : ChDkzBase
-    {
-        flagTexture = "ca\data\flag_chdkz_co.paa";
-        addon       = "LOP";
-    };
-    class LopGuerrilla : GuerrillaBase
-    {
-        addon       = "LOP";
-        flagTexture = "rhsafrf\addons\rhs_c_cti_indep\flag_insurgents_co.paa";
-    };
-    class LopInsurgent
-    {
-        side        = "GUER";
-        name        = "Insurgent";
-        addon       = "LOP";
-        flagTexture = "";
-    };
-    class LopIsis : IsisBase
-    {
-        addon       = "LOP";
-        flagTexture = "";
-    };
-    class LopNovo
-    {
-        side        = "GUER";
-        name        = "Novorossiya";
-        addon       = "LOP";
-        flagTexture = "po_main\data\ui\flags\flag_sla_co.paa";
-    };
-    class LopTakistan : TakistanBase
-    {
-        flagTexture = "po_main\data\ui\flags\flag_tak_co.paa";
-        addon       = "LOP";
-    };
-
-    /*
-     * CUP factions
-     */
-    class CupBaf : BafBase
-    {
-        addon = "CUP";
-    };
-    class CupBundeswehr
-    {
-        side        = "WEST";
-        name        = "Bundeswehr";
-        flagTexture = "ca\ca_e\data\flag_ger_co.paa";
-        addon       = "CUP";
-    };
-    class CupChDkz : ChDkzBase
-    {
-        flagTexture = "ca\data\flag_chdkz_co.paa";
-        addon       = "CUP";
-    };
-    class CupRussia : RussiaBase
-    {
-        flagTexture = "ca\data\flag_rus_co.paa";
-        addon       = "CUP";
-    };
-    class CupUsmc : UsmcBase
-    {
-       addon = "CUP";
-    };
-    class CupTakistan : TakistanBase
-    {
-        flagTexture = "ca\ca_e\data\flag_tka_co.paa";
-        addon       = "CUP";
-    };
-    class CupTakistanMilitia
-    {
-        side        = "GUER";
-        name        = "Takistan Militia";
-        addon       = "CUP";
-        flagTexture = "ca\ca_e\data\flag_tka_co.paa";
-    };
-
-    /*
-     * CFP factions
-     */
-    class CfpAlQaeda
-    {
-        side        = "GUER";
-        name        = "Al Qaeda";
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
-    };
-    class CfpAlShabaab
-    {
-        side        = "GUER";
-        name        = "Al Shabaab";
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
-    };
-    class CfpBokoHaram
-    {
-        side        = "GUER";
-        name        = "Boko Haram";
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
-    };
-    class CfpGuerrilla : GuerrillaBase
-    {
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\centralafricanrepublic\centralafricanrepublic.paa";
-    };
-    class CfpHamas
-    {
-        side        = "GUER";
-        name        = "Hamas";
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\others\hamas.paa";
-    };
-    class CfpHezbollah
-    {
-        side        = "GUER";
-        name        = "Hezbollah";
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\hezbollah\cfp_flag_hezbollah.paa";
-    };
-    class CfpIsis : IsisBase
-    {
-        addon       = "CFP";
-        flagTexture = "x\cfp\addons\flags\others\islamicstateiraqlevantisil.paa";
-    };
-
-    /*
-     *  3CB BAF
-     */
-    class Uk3CbBaf : BafBase
-    {
-        addon = "3CB";
-    };
-
+#include "factions\faction.cpp" // must be declaired first
+/*
+ * 2035 Factions
+ */
+#include "factions\csat.cpp"
+#include "factions\fia.cpp"
+#include "factions\nato.cpp"
+#include "factions\syndikat.cpp"
+/*
+ * 3CB Factions
+ */
+#include "factions\3cbBaf.cpp"
+/*
+ * CFP Factions
+ */
+#include "factions\cfpAlQaeda.cpp"
+#include "factions\cfpAlShabaab.cpp"
+#include "factions\cfpBokoHaram.cpp"
+#include "factions\cfpGuerrilla.cpp"
+#include "factions\cfpHamas.cpp"
+#include "factions\cfpHezbollah.cpp"
+#include "factions\cfpIsis.cpp"
+/*
+ * CUP Factions
+ */
+#include "factions\cupBaf.cpp"
+#include "factions\cupBundeswehr.cpp"
+#include "factions\cupChDkz.cpp"
+#include "factions\cupRussia.cpp"
+#include "factions\cupTakistan.cpp"
+#include "factions\cupTakistanMilitia.cpp"
+#include "factions\cupUsmc.cpp"
+/*
+ * LOP Factions
+ */
+#include "factions\lopChDkz.cpp"
+#include "factions\lopGuerrilla.cpp"
+#include "factions\lopInsurgent.cpp"
+#include "factions\lopIsis.cpp"
+#include "factions\lopNovo.cpp"
+#include "factions\lopTakistan.cpp"
+/*
+ * RHS Factions
+ */
+#include "factions\rhsRussia.cpp"
+#include "factions\rhsUsmc.cpp"
     /*
      * faction terrains
      */

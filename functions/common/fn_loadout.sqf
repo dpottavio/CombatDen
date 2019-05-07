@@ -10,7 +10,7 @@
 
     Description:
 
-    Set a player loadout based on role and type defined in CfgLoadout.
+    Set a player loadout based on role and type defined in CfgFactions.
 
     Parameter(s):
 
@@ -55,12 +55,16 @@ private _climate = [] call den_fnc_worldToClimate;
 
 private _loadout = configNull;
 if (_type != "") then {
-    _loadout = missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role >> _type;
+    _loadout = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role >> _type;
+    if (_loadout isEqualTo []) exitWith {
+        ERROR_1("no loadouts for faction %1", _faction);
+        false;
+    };
 } else {
     private _configCondition = "getNumber(_x >> ""default"") == 1";
-    private _loadouts = _configCondition configClasses (missionConfigFile >> "CfgLoadout" >> _faction >> _climate >> _role);
+    private _loadouts = _configCondition configClasses (missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role);
     if (_loadouts isEqualTo []) exitWith {
-        ERROR("no default loadouts");
+        ERROR_1("no default loadouts for faction %1", _faction);
         false;
     };
    _loadout = _loadouts select 0;
@@ -78,9 +82,9 @@ removeGoggles _unit;
 /*
  * uniform
  */
-_unit forceAddUniform getText (_loadout >> "uniform");
+_unit forceAddUniform getText (_loadout >> "Uniform" >> "type");
 
-private _uniformItems = configProperties [_loadout >> "UniformItems"];
+private _uniformItems = configProperties [_loadout >> "Uniform"];
 {
     if (isArray _x) then {
         private _list = getArray _x;
@@ -93,9 +97,9 @@ private _uniformItems = configProperties [_loadout >> "UniformItems"];
 /*
  * vest
  */
-_unit addVest getText (_loadout >> "vest");
+_unit addVest getText (_loadout >> "Vest" >> "type");
 
-private _vestItems = configProperties [_loadout >> "VestItems"];
+private _vestItems = configProperties [_loadout >> "Vest"];
 {
     if (isArray _x) then {
         private _list = getArray _x;
@@ -108,9 +112,9 @@ private _vestItems = configProperties [_loadout >> "VestItems"];
 /*
  * backpack
  */
-_unit addBackpack getText (_loadout >> "backpack");
+_unit addBackpack getText (_loadout >> "Backpack" >> "type");
 
-private _backpackItems = configProperties [_loadout >> "BackpackItems"];
+private _backpackItems = configProperties [_loadout >> "Backpack"];
 {
     if (isArray _x) then {
         private _list = getArray _x;

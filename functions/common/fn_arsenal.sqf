@@ -11,7 +11,7 @@
     Description:
 
     Add an ACE arsenal to an object.  The arsenal is populated
-    with items from "missionConfigFile >> "CfgArsenal" >> worldName".
+    with items from "missionConfigFile >> "CfgFaction" >> <faction> >> Arsenal.
 
     Parameter(s):
 
@@ -40,7 +40,11 @@ if (isNull _obj) exitWith {
 private _cfgClimate = [] call den_fnc_worldToClimate;
 
 private _items = [];
-private _arsenalProps = configProperties [missionConfigFile >> "CfgArsenal" >> _faction >> _cfgClimate];
+private _arsenalProps = configProperties [missionConfigFile >> "CfgFactions" >> _faction >> "Arsenal" >> _cfgClimate];
+if (_arsenalProps isEqualTo []) exitWith {
+    WARNING_1("arsenal is empty for faction %1", _faction);
+};
+
 {
     if (isArray _x) then {
         _items = _items + (getArray _x);
