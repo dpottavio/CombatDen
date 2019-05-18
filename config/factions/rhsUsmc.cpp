@@ -1132,12 +1132,9 @@ class RhsUsmc : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
-                    "rhs_mag_an_m14_th3",
-                    "rhs_mag_an_m14_th3",
-                    "rhs_mag_an_m14_th3",
-                    "rhs_mag_an_m14_th3",
-                    "rhs_mag_an_m14_th3",
-                    "rhs_mag_an_m14_th3"
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};
