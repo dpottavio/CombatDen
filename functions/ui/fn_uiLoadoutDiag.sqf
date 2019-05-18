@@ -18,6 +18,8 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_faction", "",      [""]]
 ];
@@ -92,13 +94,21 @@ lbSort [_roleListBoxId, "ASC"];
     private _loadoutsCfg =
         "true" configClasses (missionConfigFile >> "CfgFactions" >> den_loadoutMenuFaction >> "Loadout" >> _climate);
 
+    private _hasAceArsenal = DEN_HAS_ADDON("ace_arsenal");
     {
         if (getText (_x >> "role") == _roleSelect) then {
             private _typesCfg = "true" configClasses (_x);
 
             private _i = 0;
             {
-                private _nameUi  = getText (_x >> "type");
+                private _nameUi = getText (_x >> "type");
+                if (_hasAceArsenal) then {
+                    private _aceNameUi = getText (_x >> "aceType");
+                    if (_aceNameUi != "") then {
+                        _nameUi = _aceNameUi;
+                    };
+                };
+
                 private _nameCfg = configName _x;
 
                 lbAdd     [_loadoutListBoxId, _nameUi];

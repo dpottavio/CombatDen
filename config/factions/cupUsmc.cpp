@@ -22,7 +22,7 @@ class CupUsmc : Faction
     {
         class Base : Base
         {
-            usmcWeapons[] = {
+            cupUsmcWeapons[] = {
                 "CUP_arifle_M16A2",
                 "CUP_arifle_M16A2_GL",
                 "CUP_arifle_M16A4_Base",
@@ -44,14 +44,14 @@ class CupUsmc : Faction
                 "CUP_lmg_m249_para",
                 "CUP_arifle_HK_M27"
             };
-            usmcLaunchers[] = {
+            cupUsmcLaunchers[] = {
                 "CUP_launch_Javelin"
             };
-            usmcBackpacks[] = {
+            cupUsmcBackpacks[] = {
                 "B_AssaultPack_cbr",
                 "B_Kitbag_cbr"
             };
-            usmcVests[] = {
+            cupUsmcVests[] = {
                 "CUP_V_B_Eagle_SPC_AT",
                 "CUP_V_B_Eagle_SPC_AR",
                 "CUP_V_B_Eagle_SPC_Corpsman",
@@ -65,7 +65,7 @@ class CupUsmc : Faction
 
         class SemiArid : Base
         {
-            usmcSemiAridWeapons[] = {
+            cupUsmcSemiAridWeapons[] = {
                 "CUP_arifle_M4A1_desert_carryhandle",
                 "CUP_arifle_M4A1_desert",
                 "CUP_arifle_M4A1_BUIS_desert_GL",
@@ -75,7 +75,7 @@ class CupUsmc : Faction
 
         class Tropic : Base
         {
-            usmcTropicWeapons[] = {
+            cupUsmcTropicWeapons[] = {
                 "CUP_arifle_M4A1_camo_carryhandle",
                 "CUP_arifle_M4A1_camo",
                 "CUP_arifle_M4A1_BUIS_camo_GL",
@@ -729,12 +729,14 @@ class CupUsmc : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
             handgun    = "CUP_hgun_Glock17_blk";
-            binoculars = "ACE_Vector";
+            binoculars = "CUP_Vector21Nite";
             headgear   = "CUP_H_USMC_MICH2000_WDL";
             rifleSight = "cup_optic_acog";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "CUP_NVG_PVS15_black";
             rifleLight = "cup_acc_flashlight";
             primaryMag = "CUP_30Rnd_556x45_Stanag";
 
@@ -889,7 +891,7 @@ class CupUsmc : Faction
             {
                 type = "B_Kitbag_cbr";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -900,6 +902,15 @@ class CupUsmc : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

@@ -667,12 +667,14 @@ class CupRussia : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
             handgun    = "CUP_hgun_Duty";
-            binoculars = "ACE_Vector";
+            binoculars = "CUP_Vector21Nite";
             headgear   = "CUP_H_RUS_6B47";
             rifleSight = "cup_optic_ekp_8_02";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "CUP_NVG_PVS15_black";
             rifleLight = "acc_flashlight";
             primaryMag = "CUP_30Rnd_545x39_AK74M_M";
 
@@ -840,7 +842,7 @@ class CupRussia : Faction
             {
                 type = "B_Kitbag_sgg";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -851,6 +853,15 @@ class CupRussia : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

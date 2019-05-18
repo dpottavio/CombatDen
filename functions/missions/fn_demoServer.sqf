@@ -226,18 +226,16 @@ private _guardGroupCount = 0;
  * Players must have in their possession explosives
  * to advance to the next task
  */
-[_playerGroup, _friendlyFaction, _helo] spawn {
-    params ["_playerGroup", "_friendlyFaction", "_helo"];
+[_playerGroup, _helo] spawn {
+    params ["_playerGroup", "_helo"];
     /*
      * Scan player equipment until explosives are found.
      */
     _helo lock true;
 
-    private _explosiveTypes =
-        getArray (missionConfigFile >> "CfgFaction" >> _friendlyFaction >> "Arsenal" >> "SemiArid" >> "baseExplosives");
-    _explosiveTypes pushBack "ACE_M14";
+    private _explosiveTypes = ["DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ACE_M14"];
+    private _hasExplosive   = false;
 
-    private _hasExplosive = false;
     while {!_hasExplosive} do {
         {
             {

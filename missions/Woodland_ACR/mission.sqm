@@ -34,7 +34,6 @@ addons[]=
 	"A3_Structures_F_Mil_Fortification",
 	"A3_Structures_F_Items_Vessels",
 	"A3_Structures_F_EPA_Mil_Scrapyard",
-	"ace_cargo",
 	"A3_Structures_F_Civ_Garbage",
 	"A3_Structures_F_Civ_Constructions",
 	"A3_Structures_F_EPB_Items_Vessels",

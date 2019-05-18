@@ -10,8 +10,8 @@
 
     Description:
 
-    Add an ACE arsenal to an object.  The arsenal is populated
-    with items from "missionConfigFile >> "CfgFaction" >> <faction> >> Arsenal.
+    Add an arsenal to an object.  The arsenal is populated
+    with items from CfgFactions.
 
     Parameter(s):
 
@@ -45,31 +45,60 @@ if (_arsenalProps isEqualTo []) exitWith {
     WARNING_1("arsenal is empty for faction %1", _faction);
 };
 
+private _hasAceCommon = DEN_HAS_ADDON("ace_common");
 {
-    if (isArray _x) then {
+    private _name      = configName _x;
+    private _isAceProp = ((_name find "ace") == 0);
+
+    if (isArray _x && (_hasAceCommon || !_isAceProp)) then {
         _items = _items + (getArray _x);
     };
 } forEach _arsenalProps;
 
-[_obj, _items] call ace_arsenal_fnc_initBox;
+if (DEN_HAS_ADDON("ace_arsenal")) then {
+    [_obj, _items] call ace_arsenal_fnc_initBox;
 
-private _loadoutAction = [
-    "den_loadoutMenu",
-    "Mission Loadouts",
-    "",
-    {
-        params ["", "", "_params"];
+    private _loadoutAction = [
+        "den_loadoutMenu",
+        "Mission Loadout",
+        "",
+        {
+            params ["", "", "_params"];
 
-        private _bluforFaction = _params select 0;
-        private _obj           = _params select 1;
+            private _faction = _params select 0;
+            private _obj     = _params select 1;
 
-        [_bluforFaction, _obj] call den_fnc_uiLoadoutDiag;
-    },
-    {true},
-    {},
-    [_faction, _obj]
-] call ace_interact_menu_fnc_createAction;
+            [_faction, _obj] call den_fnc_uiLoadoutDiag;
+        },
+        {true},
+        {},
+        [_faction, _obj]
+    ] call ace_interact_menu_fnc_createAction;
 
-[_obj, 0, ["ACE_MainActions"], _loadoutAction] call ace_interact_menu_fnc_addActionToObject;
+    [_obj, 0, ["ACE_MainActions"], _loadoutAction] call ace_interact_menu_fnc_addActionToObject;
+} else {
+    [_obj, _items, false, false ] call BIS_fnc_addVirtualItemCargo;
+    [_obj, _items, false, false ] call BIS_fnc_addVirtualWeaponCargo;
+    [_obj, _items, false, false ] call BIS_fnc_addVirtualMagazineCargo;
+    [_obj, _items, false, false ] call BIS_fnc_addVirtualBackpackCargo;
 
+    _obj addAction [
+        "Mission Loadout",
+        {
+            params ["_obj", "", "", "_params"];
+
+            private _faction = _params select 0;
+            private _obj     = _params select 1;
+
+            [_faction, _obj] call den_fnc_uiLoadoutDiag;
+        },
+        [_faction, _obj],  // arguments
+        99,                // priority
+        true,              // showWindow
+        true,              // hideOnUse
+        "",                // shortcut
+        "true",            // condition
+        3                  // radius
+    ];
+};
 true;

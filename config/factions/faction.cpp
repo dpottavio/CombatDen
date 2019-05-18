@@ -13,33 +13,50 @@
 #define SIDE_GUER   "GUER"
 #define SIDE_OPFOR  "EAST"
 
-
 class Faction
 {
     class Arsenal
     {
         class Base
         {
-            baseGrenades[] = {
+            grenades[] = {
                 "Chemlight_blue",
                 "Chemlight_green",
                 "Chemlight_red",
-                "Chemlight_yellow",
-                "ACE_HandFlare_Green",
-                "ACE_HandFlare_White",
-                "ACE_HandFlare_Yellow",
-                "ACE_HandFlare_Red",
+                "Chemlight_yellow"
+            };
+            aceGrenades[] = {
                 "ACE_Chemlight_HiOrange",
                 "ACE_Chemlight_HiRed",
                 "ACE_Chemlight_HiWhite",
                 "ACE_Chemlight_HiYellow",
                 "ACE_Chemlight_IR",
                 "ACE_Chemlight_Orange",
-                "ACE_Chemlight_White"
+                "ACE_Chemlight_White",
+                "ACE_HandFlare_Green",
+                "ACE_HandFlare_Red",
+                "ACE_HandFlare_White",
+                "ACE_HandFlare_Yellow",
+                "ACE_M14"
             };
-            baseMisc[] = {
-                "ACE_fieldDressing",
-                "ACE_elasticBandage",
+
+            misc[] = {
+                "ItemCompass",
+                "ItemMap",
+                "ItemRadio",
+                "ItemWatch",
+                "Medikit",
+                "FirstAidKit"
+            };
+            aceMisc[] = {
+                "ACE_CableTie",
+                "ACE_EarPlugs",
+                "ACE_EntrenchingTool",
+                "ACE_Flashlight_KSF1",
+                "ACE_Flashlight_MX991",
+                "ACE_Flashlight_XL50",
+                "ACE_HuntIR_monitor",
+                "ACE_MapTools",
                 "ACE_SpraypaintBlack",
                 "ACE_SpraypaintBlue",
                 "ACE_SpraypaintGreen",
@@ -49,67 +66,68 @@ class Faction
                 "ACE_bloodIV",
                 "ACE_bloodIV_250",
                 "ACE_bloodIV_500",
-                "ACE_quikclot",
-                "ACE_CableTie",
-                "ACE_EarPlugs",
-                "ACE_EntrenchingTool",
+                "ACE_elasticBandage",
                 "ACE_epinephrine",
-                "ACE_HuntIR_monitor",
-                "ACE_Flashlight_XL50",
-                "ACE_Flashlight_MX991",
-                "ACE_Flashlight_KSF1",
-                "ACE_MapTools",
+                "ACE_fieldDressing",
                 "ACE_morphine",
                 "ACE_personalAidKit",
                 "ACE_plasmaIV",
                 "ACE_plasmaIV_250",
                 "ACE_plasmaIV_500",
+                "ACE_quikclot",
                 "ACE_salineIV",
                 "ACE_salineIV_250",
                 "ACE_salineIV_500",
                 "ACE_surgicalKit",
-                "ACE_tourniquet",
-                "ItemMap",
-                "ItemRadio",
-                "ItemCompass",
-                "ItemWatch"
+                "ACE_tourniquet"
             };
-            baseGps[] = {
-                "ACE_microDAGR",
-                "ACE_DAGR"
+
+            gps[] = {
+                "ItemGps"
             };
-            baseMags[] = {
+            aceGps[] = {
+                "ACE_DAGR",
+                "ACE_microDAGR"
+            };
+
+            aceMags[] = {
+                "ACE_20Rnd_762x51_M118LR_Mag",
+                "ACE_20Rnd_762x51_M993_AP_Mag",
+                "ACE_20Rnd_762x51_Mag_SD",
+                "ACE_20Rnd_762x51_Mag_Tracer",
+                "ACE_20Rnd_762x51_Mag_Tracer_Dim",
+                "ACE_20Rnd_762x51_Mk316_Mod_0_Mag",
+                "ACE_20Rnd_762x51_Mk319_Mod_0_Mag",
                 "ACE_30Rnd_556x45_Stanag_M995_AP_mag",
                 "ACE_30Rnd_556x45_Stanag_Mk262_mag",
                 "ACE_30Rnd_556x45_Stanag_Mk318_mag",
-                "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
-                "ACE_20Rnd_762x51_M118LR_Mag",
-                "ACE_20Rnd_762x51_M993_AP_Mag",
-                "ACE_20Rnd_762x51_Mk316_Mod_0_Mag",
-                "ACE_20Rnd_762x51_Mk319_Mod_0_Mag",
-                "ACE_20Rnd_762x51_Mag_SD",
-                "ACE_20Rnd_762x51_Mag_Tracer_Dim",
-                "ACE_20Rnd_762x51_Mag_Tracer"
+                "ACE_30Rnd_556x45_Stanag_Tracer_Dim"
             };
-            baseExplosives[] = {
+            explosives[] = {
                 "DemoCharge_Remote_Mag",
                 "SatchelCharge_Remote_Mag"
             };
-            baseNvg[] = {
-                "ACE_NVG_Wide",
-                "ACE_NVG_Gen4"
+            aceNvg[] = {
+                "ACE_NVG_Gen4",
+                "ACE_NVG_Wide"
             };
-            baseBinoculars[] = {
+
+            binoculars[] = {
                 "Binocular",
+            };
+            aceBinoculars[] = {
                 "ACE_Vector",
                 "ACE_Yardage450"
             };
-            baseAttachments[] = {
-                "acc_flashlight",
+
+            attachments[] = {
+                "acc_flashlight"
+            };
+            aceAttachments[] = {
                 "ACE_acc_pointer_green",
                 "ACE_acc_pointer_green_IR"
             };
-            baseFaceware[] = {
+            faceware[] = {
                 "G_Bandanna_beast",
                 "G_Bandanna_blk",
                 "G_Bandanna_oli",
@@ -119,8 +137,8 @@ class Faction
                 "G_Shades_Blue",
                 "G_Shades_Green",
                 "G_Shades_Red",
-                "G_Tactical_Clear",
-                "G_Tactical_Black"
+                "G_Tactical_Black",
+                "G_Tactical_Clear"
             };
         };
     };
@@ -376,11 +394,15 @@ class Faction
     {
         class Base
         {
+            binoculars = "Binocular";
+
             class Uniform
             {
-                items[] = {
+                aceItems[] = {
                     "ACE_MapTools",
-                    "ACE_EarPlugs",
+                    "ACE_EarPlugs"
+                };
+                items[] = {
                     "Chemlight_green",
                     "Chemlight_blue"
                 };
@@ -388,14 +410,15 @@ class Faction
 
             class Vest
             {
-                items[] = {
+                aceItems[] = {
                     "ACE_microDAGR"
                 };
             };
 
             class Backpack
             {
-                items[] = {
+                aceItems[] = {
+                    "ACE_Flashlight_XL50",
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
@@ -406,12 +429,18 @@ class Faction
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
-                    "ACE_morphine",
-                    "ACE_morphine",
-                    "ACE_morphine",
                     "ACE_epinephrine",
                     "ACE_epinephrine",
-                    "ACE_epinephrine"
+                    "ACE_epinephrine",
+                    "ACE_morphine",
+                    "ACE_morphine",
+                    "ACE_morphine"
+                };
+                noAceItems[] = {
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit"
                 };
             };
 
@@ -423,11 +452,14 @@ class Faction
                     "ItemWatch",
                     "ItemRadio"
                 };
+                noAceItems[] = {
+                    "ItemGps"
+                };
             };
 
             class MedicBackpack : Backpack
             {
-                medicItems[] = {
+                aceMedicItems[] = {
                     "ACE_bloodIV_500",
                     "ACE_bloodIV_500",
                     "ACE_bloodIV_500",
@@ -463,6 +495,19 @@ class Faction
                     "ACE_morphine",
                     "ACE_morphine",
                     "ACE_morphine"
+                };
+                noAceItems[] = {
+                  "Medikit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit"
                 };
             };
         };

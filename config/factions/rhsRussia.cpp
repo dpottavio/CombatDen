@@ -22,7 +22,7 @@ class RhsRussia : Faction
     {
         class Base : Base
         {
-           grenades[] = {
+           rhsRussiaGrenades[] = {
                 "rhs_mag_nspd",
                 "rhs_mag_nspn_green",
                 "rhs_mag_nspn_red",
@@ -37,7 +37,7 @@ class RhsRussia : Faction
                 "rhs_mag_rgo",
                 "rhs_mag_zarya2"
             };
-            mags[] = {
+            rhsRussiaMags[] = {
                 "rhs_100Rnd_762x54mmR",
                 "rhs_100Rnd_762x54mmR_7BZ3",
                 "rhs_100Rnd_762x54mmR_7N13",
@@ -133,7 +133,7 @@ class RhsRussia : Faction
                 "rhs_VOG25",
                 "rhs_VOG25P"
             };
-            weapons[] = {
+            rhsRussiaWeapons[] = {
                 "rhs_weap_ak103",
                 "rhs_weap_ak103_1",
                 "rhs_weap_ak103_1_npz",
@@ -179,19 +179,18 @@ class RhsRussia : Faction
                 "rhs_weap_pya",
                 "rhs_weap_makarov_pm"
             };
-            launchers[] = {
+            rhsRussiaLaunchers[] = {
                 "rhs_weap_rpg26",
                 "rhs_weap_rpg7",
                 "rhs_weap_rshg2"
             };
-            rhsNvg[] = {
+            rhsRussiaNvg[] = {
                 "rhs_1PN138"
             };
-            binoculars[] = {
-                "rhs_pdu4",
-                "Binocular"
+            rhsRussiaBinoculars[] = {
+                "rhs_pdu4"
             };
-            sights[] = {
+            rhsRussiaSights[] = {
                "rhs_acc_1p29",
                "rhs_acc_1p63",
                "rhs_acc_1p78",
@@ -207,16 +206,16 @@ class RhsRussia : Faction
                "rhs_acc_pso1m2",
                "rhs_acc_pso1m21"
             };
-            attachments[] = {
+            rhsRussiaAttachments[] = {
                "rhs_acc_2dpzenit",
                "rhs_acc_perst1ik"
             };
-            faceware[] = {
+            rhsRussiaFaceware[] = {
                 "rhs_balaclava",
                 "rhs_balaclava1_olive",
                 "rhs_scarf"
             };
-            vests[] = {
+            rhsRussiaVests[] = {
                 "rhs_6b23_digi",
                 "rhs_6b23_6sh116",
                 "rhs_6b23_6sh116_vog",
@@ -235,12 +234,16 @@ class RhsRussia : Faction
                 "rhs_6b23_digi_rifleman",
                 "rhs_6b23_digi_vydra_3m"
             };
-            backpacks[] = {
+            rhsRussiaBackpacks[] = {
                 "rhs_assault_umbts_engineer_empty",
                 "rhs_assault_umbts",
                 "rhs_sidor",
                 "B_Kitbag_sgg",
                 "rhs_rpg_at"
+            };
+            rhsRussiaHelmet[] = {
+                "rhs_6b28_bala",
+                "rhs_6b28"
             };
         };
         class SemiArid : Base {};
@@ -850,12 +853,13 @@ class RhsRussia : Faction
     {
         class Base : Base
         {
+            aceNvg = "ACE_NVG_Wide";
+
             handgun    = "rhs_weap_pya";
             binoculars = "rhs_pdu4";
             headgear   = "rhs_6b28_bala";
             rifleSight = "rhs_acc_pkas";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "rhs_1PN138";
             rifleLight = "rhs_acc_2dpzenit";
             primaryMag = "rhs_30Rnd_545x39_7N10_AK";
 
@@ -1033,7 +1037,7 @@ class RhsRussia : Faction
             {
                 type = "B_Kitbag_sgg";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1044,6 +1048,15 @@ class RhsRussia : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

@@ -21,7 +21,7 @@ class Csat : Faction
     {
         class Base : Base
         {
-            grenades[] = {
+            csatGrenades[] = {
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
@@ -31,11 +31,10 @@ class Csat : Faction
                 "SmokeShell",
                 "HandGrenade"
             };
-            aceGrenades[] = {
-                "ACE_M14",
+            csatAceGrenades[] = {
                 "ACE_M84"
             };
-            mags[] = {
+            csatMags[] = {
                 "30Rnd_65x39_caseless_green",
                 "30Rnd_65x39_caseless_green_mag_Tracer",
                 "150Rnd_762x54_Box",
@@ -49,7 +48,7 @@ class Csat : Faction
                 "10Rnd_93x64_DMR_05_Mag",
                 "30Rnd_556x45_Stanag"
             };
-            weapons[] = {
+            csatWeapons[] = {
                 "arifle_Katiba_F",
                 "arifle_Katiba_GL_F",
                 "arifle_Katiba_C_F",
@@ -64,19 +63,19 @@ class Csat : Faction
                 "arifle_CTARS_blk_F",
                 "arifle_ARX_blk_F"
             };
-            launchers[] = {
+            csatLaunchers[] = {
                 "launch_RPG32_F",
                 "launch_O_Titan_F",
                 "launch_O_Vorona_brown_F"
             };
-            aceSights[] = {
+            csatAceSights[] = {
                 "ace_optic_lrps_2d",
                 "ace_optic_lrps_pip",
                 "ace_optic_sos_2d",
                 "ace_optic_sos_pip",
                 "ace_optic_mrco_2d"
             };
-            sights[] = {
+            castSights[] = {
                 "optic_aco_grn",
                 "optic_arco_blk_f",
                 "optic_holosight_blk_f",
@@ -88,14 +87,14 @@ class Csat : Faction
                 "optic_nvs",
                 "optic_dms"
             };
-            bipods[] = {
+            csatBipods[] = {
                 "bipod_02_f_blk",
                 "bipod_02_f_hex"
             };
         };
-                class SemiArid : Base
+        class SemiArid : Base
         {
-            aridWeapons[] = {
+            csatSemiAridWeapons[] = {
                 "srifle_DMR_05_tan_f",
                 "MMG_01_tan_F",
                 "srifle_DMR_07_hex_F",
@@ -104,11 +103,11 @@ class Csat : Faction
                 "arifle_CTARS_hex_F",
                 "arifle_ARX_hex_F"
             };
-            aridVests[] = {
+            csatSemiAridVests[] = {
                 "V_HarnessO_brn",
                 "V_HarnessOGL_brn"
             };
-            aridBacpacks[] = {
+            csatSemiAridBacpacks[] = {
                 "B_AssaultPack_ocamo",
                 "B_Bergen_hex_F",
                 "B_Carryall_ocamo",
@@ -118,40 +117,40 @@ class Csat : Faction
                 "B_ViperLightHarness_hex_F",
                 "B_FieldPack_cbr"
             };
-            aridHelmets[] = {
+            csatSemiAridHelmets[] = {
                 "H_HelmetO_ocamo",
 
             };
-            aridUniforms[] = {
+            csatSemiAridUniforms[] = {
                 "U_O_CombatUniform_ocamo"
             };
-            aridFaceware[] = {
+            csatSemiAridFaceware[] = {
                 "G_Bandanna_tan",
                 "G_Bandanna_khk"
             };
         };
         class Tropic : Base
         {
-            tropicSights[] = {
+            csatTropicSights[] = {
                 "optic_dms_ghex_f",
                 "optic_arco_ghex_f"
             };
-            tropicWeapons[] = {
+            csatTropicWeapons[] = {
                 "srifle_DMR_07_ghex_F",
                 "arifle_CTAR_ghex_F",
                 "arifle_CTAR_GL_ghex_F",
                 "arifle_CTARS_ghex_F",
                 "arifle_ARX_ghex_F"
             };
-            tropicLaunchers[] = {
+            csatTropicLaunchers[] = {
                "launch_RPG32_ghex_F",
                "launch_O_Titan_ghex_F",
                "launch_O_Vorona_green_F"
             };
-            tropicVests[] = {
+            csatTropicVests[] = {
                 "V_HarnessO_ghex_F"
             };
-            tropicBackpacks[] = {
+            csatTropicBackpacks[] = {
                 "B_FieldPack_ghex_F"
             };
         };
@@ -789,12 +788,13 @@ class Csat : Faction
     {
         class Base : Base
         {
+            aceNvg        = "ACE_NVG_Wide";
+            aceBinoculars = "ACE_Vector";
+
             handgun    = "hgun_Rook40_F";
-            binoculars = "ACE_Vector";
             headgear   = "H_HelmetO_ocamo";
-            rifleSight = "ace_optic_mrco_2d";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            rifleSight = "optic_mrco";
+            nvg        = "NVGoggles_OPFOR";
             rifleLight = "acc_flashlight";
 
             class Uniform : Uniform
@@ -898,7 +898,7 @@ class Csat : Faction
             {
                 marksmanBaseItems[] = {
                   "optic_tws",
-                  "ACE_optic_Hamr_2D"
+                  "optic_mrco"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -967,7 +967,7 @@ class Csat : Faction
             };
             class Backpack : Backpack
             {
-                edoBaseList[] = {
+                aceEdoBaseList[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -978,6 +978,15 @@ class Csat : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseList[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -991,7 +1000,8 @@ class Csat : Faction
                 class Kh2002 : RiflemanBase
                 {
                     default    = 1;
-                    type       = "KH2002";
+                    aceType    = "KH2002";
+                    type       = "Katiba";
                     rifle      = "arifle_Katiba_F";
                     primaryMag = "30Rnd_65x39_caseless_green";
 
@@ -1003,7 +1013,8 @@ class Csat : Faction
                 class Qbz : RiflemanBase
                 {
                     default    = 1;
-                    type       = "QBZ-95-1";
+                    aceType    = "QBZ-95-1";
+                    type       = "CAR-95";
                     rifle      = "arifle_CTAR_blk_F";
                     primaryMag = "30Rnd_580x42_Mag_F";
 
@@ -1020,7 +1031,8 @@ class Csat : Faction
                 class Kh2002 : GrenadierBase
                 {
                     default    = 1;
-                    type       = "KH2002 GL";
+                    aceType    = "KH2002 GL";
+                    type       = "Katiba GL";
                     rifle      = "arifle_Katiba_GL_F";
                     primaryMag = "30Rnd_65x39_caseless_green";
 
@@ -1031,7 +1043,8 @@ class Csat : Faction
                 };
                 class Qbz: GrenadierBase
                 {
-                    type       = "QBZ-95-1 GL";
+                    aceType    = "QBZ-95-1 GL";
+                    type       = "CAR-95 GL";
                     rifle      = "arifle_CTAR_GL_blk_F";
                     primaryMag = "30Rnd_580x42_Mag_F";
 
@@ -1071,7 +1084,8 @@ class Csat : Faction
                 class Ng : AutorifleBase
                 {
                     default         = 1;
-                    type            = "Negev NG7";
+                    aceType         = "NG7";
+                    type            = "Zafir";
                     rifle           = "LMG_Zafir_F";
                     primaryMag      = "150Rnd_762x54_Box_Tracer";
                     primaryMagCount = CSAT_AUTORIFLE_NG_MAG_COUNT;
@@ -1083,7 +1097,8 @@ class Csat : Faction
                 };
                 class Qbz : AutorifleBase
                 {
-                    type            = "QBZ-95-1 LSW";
+                    aceType         = "QBZ-95-1 LSW";
+                    type            = "CAR-95-1";
                     rifle           = "arifle_CTARS_blk_F";
                     primaryMag      = "100Rnd_580x42_Mag_Tracer_F";
                     primaryMagCount = CSAT_AUTORIFLE_QBZ_MAG_COUNT;
@@ -1101,7 +1116,8 @@ class Csat : Faction
                 class Vs : MarksmanBase
                 {
                     default    = 1;
-                    type       = "VS 121";
+                    aceType    = "VS 121";
+                    type       = "Rahim";
                     rifle      = "srifle_DMR_01_F";
                     rifleBipod = "bipod_02_f_blk";
                     rifleSight = "optic_dms";
@@ -1146,7 +1162,8 @@ class Csat : Faction
                 class Kh2002 : MedicBase
                 {
                     default    = 1;
-                    type       = "KH2002";
+                    aceType    = "KH2002";
+                    type       = "Katiba";
                     rifle      = "arifle_Katiba_F";
                     primaryMag = "30Rnd_65x39_caseless_green";
 
@@ -1157,7 +1174,8 @@ class Csat : Faction
                 };
                 class Qbz : MedicBase
                 {
-                    type       = "QBZ-95-1";
+                    aceType    = "QBZ-95-1";
+                    type       = "CAR-95";
                     rifle      = "arifle_CTAR_blk_F";
                     primaryMag = "30Rnd_580x42_Mag_F";
 
@@ -1200,7 +1218,8 @@ class Csat : Faction
                 class Kh2002 : EodBase
                 {
                     default    = 1;
-                    type       = "KH2002";
+                    aceType    = "KH2002";
+                    type       = "Katiba";
                     rifle      = "arifle_Katiba_F";
                     primaryMag = "30Rnd_65x39_caseless_green";
 
@@ -1214,7 +1233,8 @@ class Csat : Faction
                 };
                 class Qbz : EodBase
                 {
-                    type       = "QBZ-95-1";
+                    aceType    = "QBZ-95-1";
+                    type       = "CAR-95";
                     rifle      = "arifle_CTAR_blk_F";
                     primaryMag = "30Rnd_580x42_Mag_F";
 
@@ -1459,7 +1479,7 @@ class Csat : Faction
                         type = "B_FieldPack_ghex_F";
                     };
                 };
-                class Type115 : MarksmanBase
+                class Type115 : Type115
                 {
                     headgear = "H_HelmetO_ghex_F";
 

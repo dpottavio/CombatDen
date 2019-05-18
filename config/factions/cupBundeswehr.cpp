@@ -22,17 +22,17 @@ class CupBundeswehr : Faction
     {
         class Base : Base
         {
-            bundesWeapons[] = {
+            cupBundesWeapons[] = {
                 "CUP_arifle_G36A",
                 "CUP_arifle_G36C",
                 "CUP_arifle_AG36",
                 "CUP_arifle_G36K",
                 "CUP_arifle_MG36"
             };
-            bundesLaunchers[] = {
+            cupBundesLaunchers[] = {
                 "CUP_launch_MAAWS"
             };
-            bundesBackpacks[] = {
+            cupBundesBackpacks[] = {
                 "CUP_B_GER_Pack_Flecktarn",
                 "CUP_B_GER_Medic_FLecktarn"
             };
@@ -41,7 +41,7 @@ class CupBundeswehr : Faction
         class Tropic   : Base {};
         class Arid     : Base
         {
-            bundesAridBackpacks[] = {
+            cupBundesAridBackpacks[] = {
                 "CUP_B_GER_Pack_Tropentarn",
                 "CUP_B_GER_Medic_Tropentarn"
             };
@@ -687,12 +687,14 @@ class CupBundeswehr : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
             handgun    = "CUP_hgun_Glock17_blk";
-            binoculars = "ACE_Vector";
+            binoculars = "CUP_Vector21Nite";
             headgear   = "CUP_H_RACS_Helmet_olive";
             rifleSight = "cup_optic_acog";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "CUP_NVG_PVS15_black";
             rifleLight = "cup_acc_flashlight";
             primaryMag = "CUP_30Rnd_556x45_G36";
 
@@ -855,7 +857,7 @@ class CupBundeswehr : Faction
             };
             class Backpack : Backpack
             {
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -866,6 +868,15 @@ class CupBundeswehr : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

@@ -22,7 +22,7 @@ class RhsUsmc : Faction
     {
       class Base : Base
       {
-            grenades[] = {
+            rhsUsmcGrenades[] = {
                 "rhs_mag_an_m8hc",
                 "rhs_mag_m18_green",
                 "rhs_mag_m18_purple",
@@ -32,7 +32,7 @@ class RhsUsmc : Faction
                 "rhs_mag_m69",
                 "rhs_mag_mk3a2"
             };
-            mags[] = {
+            rhsUsmcMags[] = {
                 "rhs_mag_100Rnd_556x45_M855_cmag",
                 "rhs_mag_100Rnd_556x45_M855_cmag_mixed",
                 "rhs_mag_100Rnd_556x45_M855A1_cmag",
@@ -152,7 +152,7 @@ class RhsUsmc : Faction
                 "rhs_mag_smaw_HEAA",
                 "rhs_fgm148_magazine_AT"
             };
-            weapons[] = {
+            rhsUsmcWeapons[] = {
                 "rhs_weap_hk416d10",
                 "rhs_weap_hk416d10_m320",
                 "rhs_weap_hk416d10_LMT",
@@ -197,7 +197,7 @@ class RhsUsmc : Faction
                 "rhs_weap_M320",
                 "rhsusf_weap_m9"
             };
-            launchers[] = {
+            rhsUsmcLaunchers[] = {
                 "rhs_weap_M136",
                 "rhs_weap_M136_hedp",
                 "rhs_weap_M136_hp",
@@ -206,16 +206,16 @@ class RhsUsmc : Faction
                 "rhs_weap_smaw_green",
                 "rhs_weap_fgm148"
             };
-            rhsNvg[] = {
+            rhsUsmcNvg[] = {
                 "rhsusf_ANPVS_14",
                 "rhsusf_ANPVS_15"
             };
-            binoculars[] = {
+            rhsUsmcBinoculars[] = {
                 "rhsusf_bino_lerca_1200_black",
                 "rhsusf_bino_lerca_1200_tan",
                 "rhsusf_bino_m24_ARD"
             };
-            sights[] = {
+            rhsUsmcSights[] = {
                 "rhsusf_acc_t1_high",
                 "rhsusf_acc_t1_low",
                 "rhsusf_acc_anpas13gv1",
@@ -254,9 +254,7 @@ class RhsUsmc : Faction
                 "rhsusf_acc_eotech_xps3",
                 "rhs_optic_maaws"
             };
-            attachments[] = {
-                "ACE_acc_pointer_green",
-                "ACE_acc_pointer_green_IR",
+            rhsUsmcAttachments[] = {
                 "rhsusf_acc_anpeq15side",
                 "rhsusf_acc_anpeq15_top",
                 "rhsusf_acc_anpeq15_wmx",
@@ -276,14 +274,14 @@ class RhsUsmc : Faction
                 "rhsusf_acc_wmx",
                 "rhsusf_acc_wmx_bk"
             };
-            faceware[] = {
+            rhsUsmcFaceware[] = {
                 "rhs_googles_black",
                 "rhs_googles_clear",
                 "rhs_googles_yellow",
                 "rhs_googles_orange",
                 "rhs_ess_black"
             };
-            vests[] = {
+            rhsUsmcvests[] = {
                 "rhsusf_spc_iar",
                 "rhsusf_spc_light",
                 "rhsusf_spc_mg",
@@ -292,9 +290,10 @@ class RhsUsmc : Faction
                 "rhsusf_spc_squadleader",
                 "rhsusf_spc_teamleader"
             };
-            backpacks[] = {
+            rhsUsmcBackpacks[] = {
                 "rhsusf_assault_eagleaiii_coy",
-                "rhsusf_falconii_coy"
+                "rhsusf_falconii_coy",
+                "B_Kitbag_cbr"
             };
         };
 
@@ -951,12 +950,14 @@ class RhsUsmc : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
             handgun    = "rhsusf_weap_glock17g4";
-            binoculars = "ACE_Vector";
+            binoculars = "rhsusf_bino_lrf_Vector21";
             headgear   = "rhsusf_mich_helmet_marpatwd";
+            nvg        = "rhsusf_ANPVS_15";
             rifleSight = "rhsusf_acc_acog_rmr";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
             rifleLight = "rhsusf_acc_wmx_bk";
             primaryMag = "rhs_mag_30Rnd_556x45_M855A1_Stanag";
 
@@ -1112,9 +1113,9 @@ class RhsUsmc : Faction
             };
             class Backpack : Backpack
             {
-                type = "rhsusf_assault_eagleaiii_coy";
+                type = "B_Kitbag_cbr";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1125,6 +1126,18 @@ class RhsUsmc : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "rhs_mag_an_m14_th3",
+                    "rhs_mag_an_m14_th3",
+                    "rhs_mag_an_m14_th3",
+                    "rhs_mag_an_m14_th3",
+                    "rhs_mag_an_m14_th3",
+                    "rhs_mag_an_m14_th3"
                 };
             };
             class LinkedItems : LinkedItems {};

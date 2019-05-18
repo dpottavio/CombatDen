@@ -9,7 +9,7 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [*] 8 player coop support on a dedicated server or player hosted server.
 [*] Playable Blufor and Opfor factions.
 [*] Zeus support.
-[*] Built for ACE 3 from the ground up.
+[*] ACE support, but not required.
 [*] Virtual Arsenal for player and AI units.
 [*] Configurable CBA mission settings.
 [*] Multiple distinct mission types complete with briefing.

@@ -25,7 +25,7 @@ class CupTakistan : Faction
             baseGps[] = {};
             baseNgv[] = {};
 
-            mags[] = {
+            cupTakistanMags[] = {
                 "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
                 "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
                 "CUP_30Rnd_TE1_Yellow_Tracer_762x39_AK47_M",
@@ -51,7 +51,7 @@ class CupTakistan : Faction
                 "CUP_FlareYellow_GP25_M",
                 "CUP_1Rnd_HE_GP25_M"
             };
-            weapons[] = {
+             cupTakistanWeapons[] = {
                 "CUP_arifle_AKM",
                 "CUP_arifle_AKM_top_rail",
                 "CUP_arifle_AKM_GL",
@@ -62,11 +62,11 @@ class CupTakistan : Faction
                 "CUP_lmg_Pecheneg",
                 "CUP_lmg_PKM"
             };
-            launchers[] = {
+             cupTakistanLaunchers[] = {
                 "CUP_launch_RPG7V",
                 "CUP_launch_RPG18"
             };
-            grenades[] = {
+             cupTakistanGrenades[] = {
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
@@ -76,21 +76,21 @@ class CupTakistan : Faction
                 "SmokeShell",
                 "CUP_HandGrenade_RGD5"
             };
-            sights[] = {
+             cupTakistanSights[] = {
                 "cup_optic_pso_1"
             };
-            attachments[] = {
+             cupTakistanAttachments[] = {
                 "cup_acc_flashlight",
                 "cup_acc_anpeq_15_black"
             };
-            faceware[] = {
+             cupTakistanFaceware[] = {
                 "CUP_FR_NeckScarf3",
                 "CUP_FR_NeckScarf",
                 "CUP_FR_NeckScarf2",
                 "CUP_FR_NeckScarf5",
                 "CUP_FR_NeckScarf4"
             };
-            backpacks[] = {
+             cupTakistanBackpacks[] = {
                 "B_Kitbag_rgr"
             };
         };
@@ -304,7 +304,6 @@ class CupTakistan : Faction
             headgear   = "CUP_H_TK_Helmet";
             rifleSight = "";
             nvg        = "";
-            mapLight   = "ACE_Flashlight_XL50";
             rifleLight = "acc_flashlight";
             primaryMag = "CUP_30Rnd_762x39_AK47_M";
 
@@ -466,7 +465,7 @@ class CupTakistan : Faction
             };
             class Backpack : Backpack
             {
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -477,6 +476,15 @@ class CupTakistan : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

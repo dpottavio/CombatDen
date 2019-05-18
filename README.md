@@ -16,7 +16,7 @@ briefing.  Just play.
 * 8 player coop support on a dedicated server or player hosted server.
 * Playable Blufor and Opfor factions.
 * Zeus support.
-* Built for ACE 3 from the ground up.
+* ACE support, but not required.
 * Virtual Arsenal for player and AI units.
 * Configurable mission settings.
 * 7 randomized mission types complete with briefing.

@@ -22,7 +22,7 @@ class CupBaf : Faction
     {
         class Base : Base
         {
-            bafWeapons[] = {
+            cupBafWeapons[] = {
                 "CUP_arifle_L85A2",
                 "CUP_arifle_L85A2_G",
                 "CUP_arifle_L85A2_NG",
@@ -32,12 +32,12 @@ class CupBaf : Faction
                 "CUP_lmg_minimi_railed",
                 "CUP_lmg_minimipara"
             };
-            bafBackpacks[] = {
+            cupBafBackpacks[] = {
                 "CUP_B_Bergen_BAF",
                 "CUP_B_Motherlode_MTP",
                 "CUP_B_Predator_MTP"
             };
-            bafVests[] = {
+            cupBafVests[] = {
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_AutomaticRifleman",
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Grenadier",
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Medic",
@@ -564,12 +564,14 @@ class CupBaf : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
             handgun    = "CUP_hgun_Glock17_blk";
-            binoculars = "ACE_Vector";
+            binoculars = "CUP_Vector21Nite";
             headgear   = "CUP_H_BAF_MTP_Mk7";
             rifleSight = "cup_optic_acog";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "CUP_NVG_PVS15_black";
             rifleLight = "cup_acc_flashlight";
             primaryMag = "CUP_30Rnd_556x45_Stanag";
 
@@ -744,7 +746,7 @@ class CupBaf : Faction
             {
                 type = "CUP_B_Motherlode_MTP";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -755,6 +757,15 @@ class CupBaf : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

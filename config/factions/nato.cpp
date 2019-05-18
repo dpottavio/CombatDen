@@ -21,109 +21,124 @@ class Nato : Faction
     {
         class Base : Base
         {
-            grenades[] = {
+            natoGrenades[] = {
+                "HandGrenade",
+                "SmokeShell",
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
                 "SmokeShellPurple",
                 "SmokeShellRed",
-                "SmokeShellYellow",
-                "SmokeShell",
-                "HandGrenade"
+                "SmokeShellYellow"
             };
-            aceGrenades[] = {
-                "ACE_M14",
-                "ACE_M84",
+            aceNatoGrenades[] = {
+                "ACE_M84"
             };
 
-            mags[] = {
-                "30Rnd_65x39_caseless_mag",
-                "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim",
-                "30Rnd_65x39_caseless_mag_Tracer",
+            natoMags[] = {
                 "100Rnd_65x39_caseless_mag",
-                "ACE_100Rnd_65x39_caseless_mag_Tracer_Dim",
                 "100Rnd_65x39_caseless_mag_Tracer",
-                "30Rnd_65x39_caseless_mag",
-                "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim",
+                "130Rnd_338_Mag",
+                "150Rnd_556x45_Drum_Mag_F",
+                "150Rnd_556x45_Drum_Mag_Tracer_F",
+                "150Rnd_762x54_Box",
+                "150Rnd_762x54_Box_Tracer",
                 "16Rnd_9x21_Mag",
-                "30Rnd_9x21_Mag",
-                "3Rnd_UGL_FlareGreen_F",
-                "3Rnd_UGL_FlareCIR_F",
-                "3Rnd_UGL_FlareRed_F",
-                "3Rnd_UGL_FlareWhite_F",
-                "3Rnd_UGL_FlareYellow_F",
-                "3Rnd_SmokeBlue_Grenade_shell",
-                "3Rnd_SmokeGreen_Grenade_shell",
-                "3Rnd_SmokeOrange_Grenade_shell",
-                "3Rnd_SmokePurple_Grenade_shell",
-                "3Rnd_SmokeRed_Grenade_shell",
-                "3Rnd_Smoke_Grenade_shell",
-                "3Rnd_SmokeYellow_Grenade_shell",
-                "3Rnd_HE_Grenade_shell",
                 "1Rnd_HE_Grenade_shell",
-                "UGL_FlareGreen_F",
-                "UGL_FlareCIR_F",
-                "UGL_FlareRed_F",
-                "UGL_FlareWhite_F",
-                "UGL_FlareYellow_F",
                 "1Rnd_SmokeBlue_Grenade_shell",
                 "1Rnd_SmokeGreen_Grenade_shell",
                 "1Rnd_SmokeOrange_Grenade_shell",
                 "1Rnd_SmokePurple_Grenade_shell",
                 "1Rnd_SmokeRed_Grenade_shell",
-                "1Rnd_Smoke_Grenade_shell",
                 "1Rnd_SmokeYellow_Grenade_shell",
-                "130Rnd_338_Mag",
+                "1Rnd_Smoke_Grenade_shell",
                 "20Rnd_762x51_Mag",
-                "150Rnd_762x54_Box",
-                "150Rnd_762x54_Box_Tracer",
-                "MRAWS_HE_F",
-                "MRAWS_HEAT_F",
-                "Titan_AA",
-                "Titan_AP",
-                "Titan_AT",
-                "MRAWS_HE_F",
-                "30Rnd_556x45_Stanag_green",
-                "30Rnd_556x45_Stanag_red",
                 "30Rnd_556x45_Stanag",
                 "30Rnd_556x45_Stanag_Tracer_Green",
                 "30Rnd_556x45_Stanag_Tracer_Red",
                 "30Rnd_556x45_Stanag_Tracer_Yellow",
-                "150Rnd_556x45_Drum_Mag_F",
-                "150Rnd_556x45_Drum_Mag_Tracer_F"
+                "30Rnd_556x45_Stanag_green",
+                "30Rnd_556x45_Stanag_red",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag",
+                "30Rnd_65x39_caseless_mag_Tracer",
+                "30Rnd_9x21_Mag",
+                "3Rnd_HE_Grenade_shell",
+                "3Rnd_SmokeBlue_Grenade_shell",
+                "3Rnd_SmokeGreen_Grenade_shell",
+                "3Rnd_SmokeOrange_Grenade_shell",
+                "3Rnd_SmokePurple_Grenade_shell",
+                "3Rnd_SmokeRed_Grenade_shell",
+                "3Rnd_SmokeYellow_Grenade_shell",
+                "3Rnd_Smoke_Grenade_shell",
+                "3Rnd_UGL_FlareCIR_F",
+                "3Rnd_UGL_FlareGreen_F",
+                "3Rnd_UGL_FlareRed_F",
+                "3Rnd_UGL_FlareWhite_F",
+                "3Rnd_UGL_FlareYellow_F",
+                "MRAWS_HEAT_F",
+                "MRAWS_HE_F",
+                "MRAWS_HE_F",
+                "Titan_AA",
+                "Titan_AP",
+                "Titan_AT",
+                "UGL_FlareCIR_F",
+                "UGL_FlareGreen_F",
+                "UGL_FlareRed_F",
+                "UGL_FlareWhite_F",
+                "UGL_FlareYellow_F"
             };
-            weapons[] = {
+            aceNatoMags[] = {
+                "ACE_100Rnd_65x39_caseless_mag_Tracer_Dim",
+                "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim",
+                "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim"
+            };
+
+            natoWeapons[] = {
                 "LMG_Zafir_F",
                 "hgun_P07_F",
                 "srifle_EBR_F"
             };
-            launchers[] = {
+            natoLaunchers[] = {
                 "launch_NLAW_F",
             };
-            sights[] = {
-                "ACE_optic_Hamr_2D",
-                "ACE_optic_SOS_2D",
-                "optic_Holosight",
-                "ACE_optic_LRPS_2D",
+            natoSights[] = {
                 "optic_Aco",
                 "optic_Aco_smg",
+                "optic_Holosight",
+                "optic_NVS",
                 "optic_tws",
                 "optic_tws_mg",
-                "optic_NVS",
+                "optic_hamr"
+            };
+            aceNatoSights[] = {
+                "ACE_optic_Hamr_2D",
+                "ACE_optic_LRPS_2D",
+                "ACE_optic_SOS_2D",
+                "ACE_optic_lrps_pip",
+                "ACE_optic_sos_pip",
+                "ACE_optic_hamr_pip"
+            };
+
+            natoNvg[] = {
+                "NVGoggles"
+            };
+            aceNatoNvg[] = {
+                "ACE_NVG_Wide"
             };
         };
 
         class SemiArid : Base
         {
-            aridSights[] = {
+            aridNatoSights[] = {
                 "optic_AMS_snd",
                 "optic_Holosight_F",
                 "optic_ERCO_snd_F"
             };
-            aridBipods[] = {
+            aridNatoBipods[] = {
                 "bipod_01_f_snd"
             };
-            aridWeapons[] = {
+            aridNatoWeapons[] = {
                 "arifle_MX_F",
                 "arifle_MX_GL_F",
                 "arifle_MX_SW_F",
@@ -135,18 +150,18 @@ class Nato : Faction
                 "arifle_SPAR_03_snd_F",
                 "MMG_02_sand_F"
             };
-            aridLaunchers[] = {
+            aridNatoLaunchers[] = {
                 "launch_B_Titan_F",
                 "launch_B_Titan_short_F",
                 "launch_MRAWS_sand_F"
             };
-            aridVests[] = {
+            aridNatoVests[] = {
                 "V_PlateCarrierGL_rgr",
                 "V_PlateCarrier1_rgr",
                 "V_PlateCarrier2_rgr",
                 "V_PlateCarrierSpec_rgr"
             };
-            aridBacpacks[] = {
+            aridNatoBacpacks[] = {
                 "B_AssaultPack_mcamo",
                 "B_AssaultPack_rgr",
                 "B_Bergen_mpt",
@@ -154,13 +169,13 @@ class Nato : Faction
                 "B_Kitbag_rgr",
                 "B_TacticalPack_mcamo"
             };
-            aridHelmets[] = {
+            aridNatoHelmets[] = {
                 "H_HelmetB"
             };
-            aridUniforms[] = {
+            aridNatoUniforms[] = {
                 "U_B_CombatUniform_mcam"
             };
-            aridFaceware[] = {
+            aridNatoFaceware[] = {
                 "G_Bandanna_tan",
                 "G_Bandanna_khk"
             };
@@ -168,15 +183,15 @@ class Nato : Faction
 
         class Tropic : Base
         {
-            tropicSights[] = {
+            tropicNatoSights[] = {
                 "optic_AMS",
                 "optic_Holosight_blk_F",
                 "optic_ERCO_blk_F"
             };
-            tropicBipods[] = {
+            tropicNatoBipods[] = {
                 "bipod_01_F_blk"
             };
-            tropicWeapons[] = {
+            tropicNatoWeapons[] = {
                 "arifle_MX_Black_F",
                 "arifle_MX_GL_Black_F",
                 "arifle_MX_SW_Black_F",
@@ -188,18 +203,23 @@ class Nato : Faction
                 "arifle_SPAR_03_blk_F",
                 "MMG_02_black_F"
             };
-            tropicLaunchers[] = {
+            tropicNatoMags[] = {
+                "30Rnd_65x39_caseless_black_mag",
+                "30Rnd_556x45_Stanag",
+                "150Rnd_556x45_Drum_Mag_F"
+            };
+            tropicNatoLaunchers[] = {
                 "launch_B_Titan_tna_F",
                 "launch_B_Titan_short_tna_F",
                 "launch_MRAWS_green_F"
             };
-            tropicVests[] = {
+            tropicNatoVests[] = {
                 "V_PlateCarrierGL_tna_F",
                 "V_PlateCarrier1_tna_F",
                 "V_PlateCarrier2_tna_F",
                 "V_PlateCarrierSpec_tna_F"
             };
-            tropicBackpacks[] = {
+            tropicNatoBackpacks[] = {
                 "B_AssaultPack_tna_F",
                 "B_Bergen_tna_F",
                 "B_Kitbag_rgr",
@@ -842,13 +862,15 @@ class Nato : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
+            binoculars = "RangeFinder";
             handgun    = "hgun_P07_F";
-            binoculars = "ACE_Vector";
             headgear   = "H_HelmetB";
-            rifleSight = "ace_optic_hamr_2d";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "NVGoggles";
             rifleLight = "acc_flashlight";
+            rifleSight = "optic_hamr";
 
             class Uniform : Uniform
             {
@@ -891,7 +913,7 @@ class Nato : Faction
                     "HandGrenade",
                     "HandGrenade",
                     "HandGrenade",
-                    "HandGrenade",
+                    "HandGrenade"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -945,6 +967,7 @@ class Nato : Faction
         {
             unit            = "B_soldier_M_F";
             primaryMagCount = NATO_MARKSMAN_MAG_COUNT ;
+            rifleSight      = "optic_sos";
 
             class Uniform : Uniform {};
             class Vest    : Vest
@@ -960,7 +983,7 @@ class Nato : Faction
             {
                 marksmanBaseItems[] = {
                   "optic_tws",
-                  "ACE_optic_Hamr_2D"
+                  "optic_Hamr"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -985,9 +1008,9 @@ class Nato : Faction
                     "HandGrenade"
                 };
             };
-            class Backpack    : MedicBackpack
+            class Backpack : MedicBackpack
             {
-                type = "B_AssaultPack_mcamo";
+                type = "B_Kitbag_mcamo";
             };
             class LinkedItems : LinkedItems {};
         };
@@ -1031,7 +1054,7 @@ class Nato : Faction
             {
                 type = "B_Kitbag_mcamo";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1042,6 +1065,15 @@ class Nato : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEodBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1066,7 +1098,8 @@ class Nato : Faction
                 };
                 class Hk : RiflemanBase
                 {
-                    type       = "HK416 11";
+                    aceType    = "HK416 11";
+                    type       = "SPAR-16";
                     rifle      = "arifle_SPAR_01_snd_F";
                     primaryMag = "30Rnd_556x45_Stanag";
 
@@ -1094,7 +1127,8 @@ class Nato : Faction
                 };
                 class Hk : GrenadierBase
                 {
-                    type       = "HK416 11GL";
+                    aceType    = "HK416 11GL";
+                    type       = "SPAR-16 GL";
                     rifle      = "arifle_SPAR_01_GL_snd_F";
                     primaryMag = "30Rnd_556x45_Stanag";
 
@@ -1110,7 +1144,7 @@ class Nato : Faction
 
                 class Mx : Mx
                 {
-                    type = "B_Soldier_SL_F";
+                    unit = "B_Soldier_SL_F";
 
                     class Uniform  : Uniform {};
                     class Vest     : Vest {};
@@ -1147,7 +1181,8 @@ class Nato : Faction
                 };
                 class Hk : AutorifleBase
                 {
-                    type            = "HK416 14.5";
+                    aceType         = "HK416 14.5";
+                    type            = "SPAR-16S";
                     rifle           = "arifle_SPAR_02_snd_F";
                     rifleBipod      = "bipod_01_f_snd";
                     primaryMag      = "150Rnd_556x45_Drum_Mag_Tracer_F";
@@ -1160,7 +1195,8 @@ class Nato : Faction
                 };
                 class Ng7 : AutorifleBase
                 {
-                    type            = "NG7";
+                    aceType         = "NG7";
+                    type            = "Zafir";
                     rifle           = "LMG_Zafir_F";
                     rifleBipod      = "bipod_01_f_snd";
                     primaryMag      = "150Rnd_762x54_Box_Tracer";
@@ -1187,7 +1223,8 @@ class Nato : Faction
                 };
                 class Lwmmg : AutorifleBase
                 {
-                    type            = "LWMMG";
+                    aceType         = "LWMMG";
+                    type            = "SPMG";
                     rifle           = "MMG_02_sand_F";
                     rifleBipod      = "bipod_01_f_snd";
                     primaryMag      = "130Rnd_338_Mag";
@@ -1214,11 +1251,11 @@ class Nato : Faction
 
                 class Hk : MarksmanBase
                 {
-                    type       = "HK417A2 20";
-                    rifle      = "arifle_SPAR_03_snd_F";
-                    rifleBipod = "bipod_01_f_snd";
-                    rifleSight = "ace_optic_sos_2d";
-                    primaryMag = "20Rnd_762x51_Mag";
+                    aceType       = "HK417A2 20";
+                    type          = "SPAR-17";
+                    rifle         = "arifle_SPAR_03_snd_F";
+                    rifleBipod    = "bipod_01_f_snd";
+                    primaryMag    = "20Rnd_762x51_Mag";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1227,12 +1264,12 @@ class Nato : Faction
                 };
                 class Mk14 : MarksmanBase
                 {
-                    default    = 1;
-                    type       = "Mk14 Mod 1";
-                    rifle      = "srifle_EBR_F";
-                    rifleBipod = "bipod_01_f_snd";
-                    rifleSight = "ace_optic_sos_2d";
-                    primaryMag = "20Rnd_762x51_Mag";
+                    default       = 1;
+                    aceType       = "Mk14 Mod 1";
+                    type          = "Mk18 ABR";
+                    rifle         = "srifle_EBR_F";
+                    rifleBipod    = "bipod_01_f_snd";
+                    primaryMag    = "20Rnd_762x51_Mag";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1244,7 +1281,6 @@ class Nato : Faction
                     type       = "MXM";
                     rifle      = "arifle_MXM_F";
                     rifleBipod = "bipod_01_f_snd";
-                    rifleSight = "ace_optic_sos_2d";
                     primaryMag = "30Rnd_65x39_caseless_mag";
 
                     class Uniform  : Uniform {};
@@ -1254,7 +1290,8 @@ class Nato : Faction
                 };
                 class Sig : MarksmanBase
                 {
-                    type       = "SIG 556";
+                    aceType    = "SIG 556";
+                    type       = "Mk-1 EMR";
                     rifle      = "srifle_DMR_03_tan_F";
                     rifleBipod = "bipod_01_f_snd";
                     rifleSight = "optic_ams_snd";
@@ -1284,7 +1321,8 @@ class Nato : Faction
                 };
                 class Hk : MedicBase
                 {
-                    type       = "HK416 11";
+                    aceType    = "HK416 11";
+                    type       = "SPAR-16";
                     rifle      = "arifle_SPAR_01_snd_F";
                     primaryMag = "30Rnd_556x45_Stanag";
 
@@ -1313,7 +1351,8 @@ class Nato : Faction
                 class Nlaw : AtBase
                 {
                     default  = 1;
-                    type     = "NLAW";
+                    aceType  = "NLAW";
+                    type     = "PCML";
                     launcher = "launch_NLAW_F";
 
                     class Uniform     : Uniform {};
@@ -1340,7 +1379,8 @@ class Nato : Faction
                 };
                 class Hk : EodBase
                 {
-                    type       = "HK416 11";
+                    aceType    = "HK416 11";
+                    type       = "SPAR-16";
                     rifle      = "arifle_SPAR_01_snd_F";
                     primaryMag = "30Rnd_556x45_Stanag";
 
@@ -1524,8 +1564,9 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    headgear = "H_HelmetB_tna_F";
-                    rifle    = "arifle_MX_Black_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1545,6 +1586,7 @@ class Nato : Faction
                 {
                     headgear = "H_HelmetB_tna_F";
                     rifle    = "arifle_SPAR_01_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
 
                     class Uniform : Uniform
                     {
@@ -1565,8 +1607,9 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    headgear = "H_HelmetB_tna_F";
-                    rifle    = "arifle_MX_GL_Black_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1586,6 +1629,7 @@ class Nato : Faction
                 {
                     headgear = "H_HelmetB_tna_F";
                     rifle    = "arifle_SPAR_01_GL_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
 
                     class Uniform : Uniform
                     {
@@ -1609,6 +1653,7 @@ class Nato : Faction
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_MX_SW_Black_F";
                     rifleBipod = "bipod_01_f_blk";
+                    primaryMag = "100Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1624,11 +1669,12 @@ class Nato : Faction
                     };
                     class LinkedItems : LinkedItems {};
                 };
-                class Hk :Hk
+                class Hk : Hk
                 {
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_SPAR_02_blk_F";
                     rifleBipod = "bipod_01_f_blk";
+                    primaryMag = "150Rnd_556x45_Drum_Mag_F";
 
                     class Uniform : Uniform
                     {
@@ -1689,8 +1735,9 @@ class Nato : Faction
 
                 class Mx : Mx
                 {
-                    headgear = "H_HelmetB_tna_F";
-                    rifle    = "arifle_MX_GL_Black_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1708,8 +1755,9 @@ class Nato : Faction
                 };
                 class Hk : Hk
                 {
-                    headgear = "H_HelmetB_tna_F";
-                    rifle    = "arifle_SPAR_01_GL_blk_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_SPAR_01_GL_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
 
                     class Uniform : Uniform
                     {
@@ -1773,6 +1821,7 @@ class Nato : Faction
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_MXM_Black_F";
                     rifleBipod = "bipod_01_f_blk";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1813,8 +1862,9 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    headgear = "H_HelmetB_tna_F";
-                    rifle    = "arifle_MX_Black_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1832,8 +1882,9 @@ class Nato : Faction
                 };
                 class Hk : Hk
                 {
-                    headgear = "H_HelmetB_tna_F";
-                    rifle    = "arifle_SPAR_01_blk_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
 
                     class Uniform : Uniform
                     {
@@ -1858,6 +1909,7 @@ class Nato : Faction
                 {
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1877,6 +1929,7 @@ class Nato : Faction
                 {
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1899,6 +1952,7 @@ class Nato : Faction
                 {
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
 
                     class Uniform : Uniform
                     {
@@ -1916,8 +1970,9 @@ class Nato : Faction
                 };
                 class Hk : Hk
                 {
-                    rifle    = "arifle_SPAR_01_blk_F";
-                    headgear = "H_HelmetB_tna_F";
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
 
                     class Uniform : Uniform
                     {

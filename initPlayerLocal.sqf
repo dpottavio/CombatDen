@@ -158,6 +158,29 @@ if (_role == "SquadLeader") then {
     waitUntil { (leader den_playerGroup) == _newPlayerUnit };
 };
 
+/*
+ * If ACE Respawn Gear is not present in MP, then give a respawned
+ * player the same gear they had entering the transport vehicle.
+ */
+private _aceRespawnGear = missionNamespace getVariable ["ace_respawn_savePreDeathGear", false];
+if (isMultiplayer && !_aceRespawnGear) then {
+    den_transport addEventHandler ["GetIn", {
+        params ["", "", "_unit", ""];
+        if (local _unit) then {
+            _unit setVariable ["den_loadout", (getUnitLoadout _unit)];
+        };
+    }];
+
+    player addEventHandler ["Respawn", {
+        params ["_unit", ""];
+
+        private _loadout = _unit getVariable ["den_loadout", []];
+        if !(_loadout isEqualTo []) then {
+            _unit setUnitLoadout _loadout;
+        };
+    }];
+};
+
 private _success = [
     den_mission,
     den_zone,

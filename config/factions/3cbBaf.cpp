@@ -22,7 +22,7 @@ class Uk3cbBaf : Faction
     {
         class Base : Base
         {
-            grenades[] = {
+            uk3CbBafGrenades[] = {
                 "Chemlight_blue",
                 "Chemlight_green",
                 "Chemlight_red",
@@ -36,7 +36,7 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_SmokeShellRed",
                 "UK3CB_BAF_SmokeShellBlue"
             };
-            mags[] = {
+            uk3CbBafMags[] = {
                 "UK3CB_BAF_9_17Rnd",
                 "UK3CB_BAF_556_30Rnd",
                 "UK3CB_BAF_556_30Rnd_T",
@@ -68,7 +68,7 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_UGL_FlareYellow_F",
                 "UK3CB_BAF_1Rnd_SmokeYellow_Grenade_shell"
             };
-            weapons[] = {
+            uk3CbBafWeapons[] = {
                 "UK3CB_BAF_L105A1",
                 "UK3CB_BAF_L105A2",
                 "UK3CB_BAF_L107A1",
@@ -111,20 +111,20 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_L92A1",
                 "UK3CB_BAF_L98A2"
             };
-            launchers[] = {
+            uk3CbBafLaunchers[] = {
                "UK3CB_BAF_AT4_CS_AP_Launcher",
                "UK3CB_BAF_AT4_CS_AT_Launcher",
                "UK3CB_BAF_NLAW_Launcher",
                "UK3CB_BAF_Javelin_Slung_Tube"
             };
-            nvg[] = {
+            uk3CbBafNvg[] = {
                 "UK3CB_BAF_HMNVS"
             };
-            binoculars[] = {
+            uk3CbBafBinoculars[] = {
                "UK3CB_BAF_Soflam_Laserdesignator",
                "UK3CB_BAF_Javelin_CLU"
             };
-            sights[] = {
+            uk3CbBafSights[] = {
                 "uk3cb_baf_eotech",
                 "uk3cb_baf_kite",
                 "uk3cb_baf_maxikite",
@@ -142,25 +142,25 @@ class Uk3cbBaf : Faction
                 "uk3cb_baf_ta648",
                 "uk3cb_baf_ta648_308"
             };
-            attachments[] = {
+            uk3CbBafAttachments[] = {
                 "uk3cb_baf_llm_flashlight_black",
                 "uk3cb_baf_llm_ir_black",
             };
-            faceware[] = {
+            uk3CbBafFaceware[] = {
                 "UK3CB_BAF_G_Tactical_Black",
                 "UK3CB_BAF_G_Tactical_Clear",
                 "UK3CB_BAF_G_Tactical_Grey",
                 "UK3CB_BAF_G_Tactical_Orange",
                 "UK3CB_BAF_G_Tactical_Yellow"
             };
-            backpacks[] = {
+            uk3CbBafBackpacks[] = {
                 "UK3CB_BAF_B_Bergen_MTP_Medic_L_A",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_A",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_B",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_C",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_D"
             };
-            vest[] = {
+            uk3CbBafVest[] = {
                 "UK3CB_BAF_V_Osprey_Rifleman_A",
                 "UK3CB_BAF_V_Osprey_Rifleman_B",
                 "UK3CB_BAF_V_Osprey_Rifleman_C",
@@ -713,12 +713,14 @@ class Uk3cbBaf : Faction
     {
         class Base : Base
         {
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
             handgun    = "UK3CB_BAF_L131A1";
-            binoculars = "ACE_Vector";
+            binoculars = "UK3CB_BAF_Soflam_Laserdesignator";
             headgear   = "UK3CB_BAF_H_Mk7_Camo_A";
             rifleSight = "rksl_optic_lds";
-            nvg        = "ACE_NVG_Wide";
-            mapLight   = "ACE_Flashlight_XL50";
+            nvg        = "UK3CB_BAF_HMNVS";
             rifleLight = "uk3cb_baf_llm_flashlight_black";
             primaryMag = "UK3CB_BAF_556_30Rnd";
 
@@ -895,7 +897,7 @@ class Uk3cbBaf : Faction
             {
                 type = "UK3CB_BAF_B_Bergen_MTP_Sapper_L_A";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -906,6 +908,15 @@ class Uk3cbBaf : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};

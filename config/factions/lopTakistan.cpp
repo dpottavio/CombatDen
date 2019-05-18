@@ -20,17 +20,12 @@ class LopTakistan : Faction
 
     class Arsenal : Arsenal
     {
-        class Base : Base
+      class Base : Base
       {
-          baseMags[] = {
-          };
-          baseNvg[] = {
-          };
-          baseBinoculars[] = {
-          };
-          baseAttachments[] = {
-          };
-          grenades[] = {
+          baseGps[] = {};
+          baseNgv[] = {};
+
+          rhsTakistanGrenades[] = {
               "rhs_mag_an_m8hc",
               "rhs_mag_m18_green",
               "rhs_mag_m18_purple",
@@ -40,7 +35,7 @@ class LopTakistan : Faction
               "rhs_mag_m69",
               "rhs_mag_mk3a2"
           };
-          mags[] = {
+          rhsTakistanMags[] = {
               "rhs_30Rnd_762x39mm",
               "rhs_30Rnd_762x39mm_89",
               "rhs_30Rnd_762x39mm_tracer",
@@ -78,7 +73,7 @@ class LopTakistan : Faction
               "rhs_10Rnd_762x54mmR_7N1",
               "rhs_10Rnd_762x54mmR_7N14"
           };
-          weapons[] = {
+          rhsTakistanWeapons[] = {
               "rhs_weap_akm",
               "rhs_weap_akm_gp25",
               "rhs_weap_akm_zenitco01_b33",
@@ -86,33 +81,30 @@ class LopTakistan : Faction
               "rhs_weap_pkm",
               "rhs_weap_svd"
           };
-          launchers[] = {
+          rhsTakistanLaunchers[] = {
               "rhs_weap_rpg26",
               "rhs_weap_rpg7",
               "rhs_weap_rshg2"
           };
-          binoculars[] = {
-              "Binocular"
-          };
-          sights[] = {
+          rhsTakistanSights[] = {
               "rhs_acc_1pn93_1",
               "rhs_acc_pso1m2",
               "rhs_acc_pso1m21"
           };
-          attachments[] = {
+          rhsTakistanAttachments[] = {
              "rhs_acc_2dpzenit",
              "rhs_acc_perst1ik"
           };
-          faceware[] = {
+          rhsTakistanFaceware[] = {
               "rhs_balaclava",
               "rhs_balaclava1_olive",
               "rhs_scarf"
           };
-          vests[] = {
+          rhsTakistanVests[] = {
               "LOP_V_6Sh92_OLV",
               "LOP_V_6Sh92_Vog_OLV"
           };
-          backpacks[] = {
+          rhsTakistanBackpacks[] = {
               "B_TacticalPack_oli",
               "B_Kitbag_rgr"
           };
@@ -327,7 +319,6 @@ class LopTakistan : Faction
             headgear   = "LOP_H_SSh68Helmet_TAN";
             rifleSight = "";
             nvg        = "";
-            mapLight   = "ACE_Flashlight_XL50";
             rifleLight = "rhs_acc_2dpzenit";
             primaryMag = "rhs_30Rnd_762x39mm";
 
@@ -348,7 +339,7 @@ class LopTakistan : Faction
             {
                 type = "B_TacticalPack_oli";
             };
-            class LinkedItems   : LinkedItems {};
+            class LinkedItems : LinkedItems {};
         };
         class RiflemanBase : Base
         {
@@ -501,7 +492,7 @@ class LopTakistan : Faction
             {
                 type = "B_Kitbag_rgr";
 
-                eodBaseItems[] = {
+                aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -512,6 +503,15 @@ class LopTakistan : Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
+                };
+                noAceEdoBaseItems[] = {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
                 };
             };
             class LinkedItems : LinkedItems {};
