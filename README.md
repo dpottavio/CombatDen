@@ -28,7 +28,6 @@ briefing.  Just play.
 The following mods are the minimum required dependencies.  Mission
 files on non-vanilla terrains will require additional dependencies.
 
-* [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057)
 * [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997)
 
 ## Documentation
