@@ -71,7 +71,7 @@ private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 private _safePosParams = [
     [_minLz,        _maxLz,        15, 0.1], // lz safe pos
     [_minReinforce, _maxReinforce, 15, 0.1], // reinforcements safe pos
-    [0,             _maxHostage,   10, 0.1], // hostage safe pos
+    [0,             _maxHostage,   15, 0.1], // hostage safe pos
     [0,             _maxReact,     15, 0.1], // reaction force safe pos
     [0,             _maxPatrol,    5,   -1]  // patrol force safe pos
 ];
@@ -103,8 +103,6 @@ private _hostagePos      = _zoneSafePosList select 2;
 private _reactPos        = _zoneSafePosList select 3;
 private _patrolPos       = _zoneSafePosList select 4;
 
-[_hostagePos, "camp02"] call den_fnc_composition;
-
 /*
  * lz
  */
@@ -114,6 +112,9 @@ private _patrolPos       = _zoneSafePosList select 4;
 /*
  * hostage
  */
+private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Camp"]);
+[_hostagePos] call compile (format["_this call %1;", getText _compFunc]);
+
 private _hostageGroup = [_hostagePos, _friendlyFaction, "Pilot"] call den_fnc_spawnGroup;
 den_hostage = (units _hostageGroup) select 0;
 publicVariable "den_hostage";
@@ -142,6 +143,8 @@ createGuardedPoint [_enemySide, _hostagePos, -1, objNull];
 /*
  * enemy units
  */
+[_zonePos, _zoneRadius, 2, _enemyFaction, [_hostagePos]] call den_fnc_spawnRoadblock;
+
 private _guard1Type        = "FireTeam";
 private _guard2Type        = "FireTeam";
 private _reactType         = "MotorizedTeam";
@@ -163,7 +166,8 @@ switch (_difficulty) do {
 
 private _guard1Group  = [_hostagePos getPos [10, 0], _enemyFaction, _guard1Type] call den_fnc_spawnGroup;
 
-[_guard1Group, _hostagePos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+private _guard1Wp = [_guard1Group, _hostagePos, 0, "SCRIPTED", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+_guard1Wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 
 private _guard2Group  = [_hostagePos getPos [10, 0], _enemyFaction, _guard2Type] call den_fnc_spawnGroup;
 

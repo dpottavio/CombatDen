@@ -92,6 +92,8 @@ if (_zone isEqualTo []) exitWith {
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
 private _zoneSafePosList = _zone select 2;
+private _zoneRadius      = _zoneArea select 1;
+private _zonePos         = _zoneArea select 0;
 private _lzPos           = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _campPos         = _zoneSafePosList select 2;
@@ -107,7 +109,8 @@ private _patrolPos       = _zoneSafePosList select 4;
 /*
  * camp
  */
-[_campPos, "camp01"] call den_fnc_composition;
+private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Camp"]);
+[_campPos] call compile (format["_this call %1;", getText _compFunc]);
 
 createMarker ["campMarker", _campPos];
 "campMarker" setMarkerType "mil_objective";
@@ -118,6 +121,8 @@ createMarker ["campMarker", _campPos];
 /*
  * enemy units
  */
+[_zonePos, _zoneRadius, 2, _enemyFaction, [_campPos]] call den_fnc_spawnRoadblock;
+
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _campPos, -1, objNull];
 

@@ -21,7 +21,6 @@ class CfgFunctions
             class bluforFactions {};
             class buildingOccupy {};
             class commandChat {};
-            class composition {};
             class createPlayerUnit {};
             class diaryHelp {};
             class extract {};
@@ -41,12 +40,26 @@ class CfgFunctions
             class sling {};
             class spawnGroup {};
             class spawnHeloTransport {};
+            class spawnRoadblock {};
             class spawnVehicle {};
             class taskFsm {};
             class teleport {};
             class wave {};
             class worldToClimate {};
             class zone {};
+        };
+        class compositions
+        {
+            file = "functions\compositions";
+            class compBunker01 {};
+            class compBunker02 {};
+            class compBunker03 {};
+            class compCamp01 {};
+            class compCamp02 {};
+            class compCamp03 {};
+            class compRoadBlock01 {};
+            class compRoadBlock02 {};
+            class compRoadBlock03 {};
         };
         class mission
         {

@@ -150,6 +150,8 @@ createMarker ["containerMarker", _containerPos];
 /*
  * enemy units
  */
+[_zonePos, _zoneRadius, 2, _enemyFaction, [_containerPos]] call den_fnc_spawnRoadblock;
+
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, [0,0], -1, den_container];
 

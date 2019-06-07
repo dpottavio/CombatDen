@@ -141,7 +141,8 @@ switch (_difficulty) do {
 
 private _i = 1;
 {
-    [_x, "bunker01"] call den_fnc_composition;
+    private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Bunker"]);
+    [_x] call compile (format["_this call %1;", getText _compFunc]);
 
     private _group = [_x, _enemyFaction, _guardType] call den_fnc_spawnGroup;
 

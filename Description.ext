@@ -24,6 +24,7 @@ class Header
 };
 
 #include "config\CfgBlacklist.cpp"
+#include "config\CfgCompositions.cpp"
 #include "config\CfgDebriefing.cpp"
 #include "config\CfgFactions.cpp"
 #include "config\CfgFunctions.cpp"
