@@ -27,16 +27,19 @@
 
     5: (OPTIONAL) STRING - Loadout role type for the new unit.  If this is empty
     the role type that has "default = 1" defined will be selected.  See CfgLoadtout.
+
+    6: (OPTIONAL) SRTRING - Placement type, defaults to NONE.
 */
 #include "..\..\macros.hpp"
 
 params [
-    ["_group",    grpNull,  [grpNull]],
-    ["_pos",      [],       [[]],   [2,3]],
-    ["_faction",  "",       [""]],
-    ["_slotId",   -1,       [0]],
-    ["_role",     "",       [""]],
-    ["_roleType", "",       [""]]
+    ["_group",     grpNull, [grpNull]],
+    ["_pos",       [],      [[]],   [2,3]],
+    ["_faction",   "",      [""]],
+    ["_slotId",    -1,      [0]],
+    ["_role",      "",      [""]],
+    ["_roleType",  "",      [""]],
+    ["_placement", "NONE",  [""]]
 ];
 
 if (isNull _group) exitWith {
@@ -81,7 +84,7 @@ if (_roleType == "") then {
 
 _unitType = getText(_typeCfg >> "unit");
 
-private _unit = _group createUnit [_unitType, _pos, [], 0, "NONE"];
+private _unit = _group createUnit [_unitType, _pos, [], 0, _placement];
 
 waitUntil {!isNil "_unit"};
 

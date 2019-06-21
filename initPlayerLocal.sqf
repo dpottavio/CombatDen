@@ -107,15 +107,22 @@ if !(isNull _playerUnit) then {
 /*
  * Create a new player unit local to the player.
  */
-private _side     = [den_friendlyFaction] call den_fnc_factionSide;
-private _tmpGroup = createGroup _side;
+private _side      = [den_friendlyFaction] call den_fnc_factionSide;
+private _tmpGroup  = createGroup _side;
+private _placement = "NONE";
+if (isNil "den_insert" && !isNil "den_destroyer") then {
+    // If on the ship, place on exact position.
+    _placement = "CAN_COLLIDE";
+};
 
 private _newPlayerUnit = [
     _tmpGroup,
     _playerPos,
     den_friendlyFaction,
     _slotId,
-    _role
+    _role,
+    "",
+    _placement
 ] call den_fnc_createPlayerUnit;
 
 _newPlayerUnit setDir _playerDir;
