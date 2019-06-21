@@ -122,7 +122,7 @@ _newPlayerUnit setDir _playerDir;
 
 selectPlayer _newPlayerUnit;
 
-[[_newPlayerUnit], den_playerGroup] remoteExecCall ["join", groupOwner den_playerGroup];
+_newPlayerUnit joinAsSilent [den_playerGroup, _slotId];
 
 waitUntil {(group _newPlayerUnit) == den_playerGroup};
 
@@ -153,7 +153,7 @@ if (_role == "SquadLeader") then {
         } forEach units den_playerGroup;
     };
 
-    [den_playerGroup, _newPlayerUnit] remoteExecCall ["selectLeader", groupOwner den_playerGroup];
+    [den_playerGroup, _newPlayerUnit] remoteExecCall ["selectLeader", "den_playerGroup"];
 
     waitUntil { (leader den_playerGroup) == _newPlayerUnit };
 };
