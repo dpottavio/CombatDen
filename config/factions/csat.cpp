@@ -12,7 +12,7 @@
 class Csat : Faction
 {
     ammoBox     = "Box_East_Ammo_F";
-    cargoBox    = "B_CargoNet_01_ammo_F";
+    cargoBox    = "O_CargoNet_01_ammo_F";
     flagTexture = "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
     name        = "CSAT";
     side        = SIDE_OPFOR;
