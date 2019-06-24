@@ -166,9 +166,9 @@ class Csat : Faction
             heloTransport      = "O_Heli_Light_02_unarmed_F";
             heloTransportLarge = "O_Heli_Transport_04_covered_F";
             heloCargo          = "O_Heli_Transport_04_box_F";
-            supplyTruckAmmo    = "O_Truck_03_ammo_F";
-            supplyTruck        = "O_Truck_03_repair_F";
-            supplyTruckFuel    = "O_Truck_03_fuel_F";
+            truckSupplyAmmo    = "O_Truck_03_ammo_F";
+            truckSupplyCargo   = "O_Truck_03_repair_F";
+            truckSupplyFuel    = "O_Truck_03_fuel_F";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid
@@ -176,9 +176,9 @@ class Csat : Faction
             /*
              * cars, trucks, and helicopters.
              */
-            supplyTruckAmmo = "O_T_Truck_03_ammo_ghex_F";
-            supplyTruck     = "O_T_Truck_03_repair_ghex_F";
-            supplyTruckFuel = "O_T_Truck_03_fuel_ghex_F";
+            truckSupplyAmmo  = "O_T_Truck_03_ammo_ghex_F";
+            truckSupplyCargo = "O_T_Truck_03_repair_ghex_F";
+            truckSupplyFuel  = "O_T_Truck_03_fuel_ghex_F";
         };
         class Wood : Tropic {};
     };

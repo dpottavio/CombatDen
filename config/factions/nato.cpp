@@ -237,16 +237,16 @@ class Nato : Faction
             heloTransport      = "B_Heli_Transport_01_camo_F";
             heloTransportLarge = "B_Heli_Transport_03_F";
             heloCargo          = "B_Heli_Transport_03_F";
-            supplyTruckAmmo    = "B_Truck_01_ammo_F";
-            supplyTruck        = "B_Truck_01_box_F";
-            supplyTruckFuel    = "B_Truck_01_fuel_F";
+            truckSupplyAmmo    = "B_Truck_01_ammo_F";
+            truckSupplyCargo   = "B_Truck_01_box_F";
+            truckSupplyFuel    = "B_Truck_01_fuel_F";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid
         {
-            supplyTruckAmmo = "B_T_Truck_01_ammo_F";
-            supplyTruck     = "B_T_Truck_01_box_F";
-            supplyTruckFuel = "B_T_Truck_01_fuel_F";
+            truckSupplyAmmo  = "B_T_Truck_01_ammo_F";
+            truckSupplyCargo = "B_T_Truck_01_box_F";
+            truckSupplyFuel  = "B_T_Truck_01_fuel_F";
         };
         class Wood : Tropic {};
     };

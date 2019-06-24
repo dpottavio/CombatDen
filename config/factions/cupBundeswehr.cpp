@@ -56,9 +56,9 @@ class CupBundeswehr : Faction
             heloTransport      = "CUP_B_UH1D_GER_KSK";
             heloTransportLarge = "CUP_B_CH53E_GER";
             heloCargo          = "CUP_B_CH53E_GER";
-            supplyTruckAmmo    = "CUP_B_MTVR_Ammo_USMC";
-            supplyTruck        = "CUP_B_MTVR_USMC";
-            supplyTruckFuel    = "CUP_B_MTVR_Refuel_USMC";
+            truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
+            truckSupplyCargo   = "CUP_B_MTVR_USMC";
+            truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
         };
         class Arid : SemiArid
         {

@@ -105,9 +105,9 @@ class CupTakistan : Faction
             heloTransportLarge = "CUP_O_Mi17_TK";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
             heloCargo          = "B_Heli_Transport_03_F";
-            supplyTruckAmmo    = "CUP_O_Ural_Reammo_TKA";
-            supplyTruck        = "CUP_O_Ural_TKA";
-            supplyTruckFuel    = "CUP_O_Ural_Refuel_TKA";
+            truckSupplyAmmo    = "CUP_O_Ural_Reammo_TKA";
+            truckSupplyCargo   = "CUP_O_Ural_TKA";
+            truckSupplyFuel    = "CUP_O_Ural_Refuel_TKA";
         };
     };
 

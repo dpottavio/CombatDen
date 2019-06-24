@@ -120,9 +120,9 @@ class LopTakistan : Faction
             heloTransportLarge = "LOP_TKA_Mi8MT_Cargo";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
             heloCargo          = "B_Heli_Transport_03_F";
-            supplyTruckAmmo    = "LOP_TKA_Ural";
-            supplyTruck        = "LOP_TKA_Ural";
-            supplyTruckFuel    = "LOP_TKA_Ural";
+            truckSupplyAmmo    = "LOP_TKA_Ural";
+            truckSupplyCargo   = "LOP_TKA_Ural";
+            truckSupplyFuel    = "LOP_TKA_Ural";
         };
     };
 

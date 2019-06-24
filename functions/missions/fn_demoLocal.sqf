@@ -17,11 +17,11 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_zone",          "",      [""]],
-    ["_helo",          objNull, [objNull]],
+    ["_zone",            "",      [""]],
+    ["_transport",       objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
-    ["_enemyFaction",  "",      [""]],
-    ["_arsenal",       objNull, [objNull]]
+    ["_enemyFaction",    "",      [""]],
+    ["_arsenal",         objNull, [objNull]]
 ];
 
 if (_zone == "") exitWith {
@@ -29,7 +29,7 @@ if (_zone == "") exitWith {
     false;
 };
 
-if (isNull _helo && !didJIP) exitWith {
+if (isNull _transport && !didJIP) exitWith {
     ERROR("helo parameter is  empty");
     false;
 };
@@ -56,11 +56,16 @@ private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
     [[_side, "packOrdnance",         "PackOrdnance",     _arsenal,   "CREATED", 1, true, "backpack"], "den_ordnancePacked"],
-    [[_side, "boardInsert",          "BoardInsert",      _helo,      "CREATED", 1, true, "getin"],    "den_insert"],
+    [[_side, "boardInsert",          "BoardInsert",      _transport, "CREATED", 1, true, "getin"],    "den_insert"],
     [[_side, "destroyOrdnancesTask", "DestroyOrdnances", objNull,    "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
-    [[_side, "lzExtract",            "LzExtract",        "lzMarker", "CREATED", 1, true, "move"],     "den_lzExtract"],
-    [[_side, "boardExtract",         "BoardExtract",     objNull,    "CREATED", 1, true, "getin"],    "den_extract"]
+    [[_side, "lzExtract",            "LzExtract",        "lzMarker", "CREATED", 1, true, "move"],     "den_lzExtract"]
 ];
+
+if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+    // If faction has a transport helo, add boarding it the final task.
+    _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
+};
+
 
 private _failQueue = [
     ["HeloDead",        "den_heloDead"],

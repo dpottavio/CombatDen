@@ -17,10 +17,10 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_zone",          "",      [""]],
-    ["_helo",          objNull, [objNull]],
+    ["_zone",            "",      [""]],
+    ["_transport",       objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
-    ["_enemyFaction",  "",      [""]]
+    ["_enemyFaction",    "",      [""]]
 ];
 
 if (_zone == "") exitWith {
@@ -28,7 +28,7 @@ if (_zone == "") exitWith {
     false;
 };
 
-if (isNull _helo && !didJIP) exitWith {
+if (isNull _transport && !didJIP) exitWith {
     ERROR("helo parameter is  empty");
     false;
 };
@@ -49,8 +49,8 @@ private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _e
 private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[_side, "boardInsert",   "BoardInsert", _helo,   "CREATED", 1, true, "getin"],  "den_insert"],
-    [[_side, "clearZoneTask", "ClearZone",   objNull, "CREATED", 1, true, "attack"], "den_zoneClear"]
+    [[_side, "boardInsert",   "BoardInsert", _transport, "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "clearZoneTask", "ClearZone",   objNull,    "CREATED", 1, true, "attack"], "den_zoneClear"]
 ];
 
 private _failQueue = [

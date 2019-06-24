@@ -37,7 +37,7 @@ def main():
     missionSrcList = os.listdir(missionSrcPathBase)
 
     for terrain in missionSrcList:
-        print("{:15}".format(terrain), end="")
+        print("{:25}".format(terrain), end="")
 
         missionName     = "CombatDen." + terrain
         missionDestPath = destPathBase / missionName
@@ -89,7 +89,7 @@ def main():
         ok()
 
     if args.zip:
-        print("{:15}".format("zip"), end="")
+        print("{:25}".format("zip"), end="")
 
         zipPath = destPathBase / "CombatDen.zip"
         with zipfile.ZipFile(str(zipPath), "w", compression=zipfile.ZIP_DEFLATED) as pboZip:

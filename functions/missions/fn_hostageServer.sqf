@@ -113,7 +113,7 @@ private _patrolPos       = _zoneSafePosList select 4;
  * hostage
  */
 private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Camp"]);
-[_hostagePos] call compile (format["_this call %1;", getText _compFunc]);
+[_hostagePos, 0, _enemyFaction] call compile (format["_this call %1;", getText _compFunc]);
 
 private _hostageGroup = [_hostagePos, _friendlyFaction, "Pilot"] call den_fnc_spawnGroup;
 den_hostage = (units _hostageGroup) select 0;

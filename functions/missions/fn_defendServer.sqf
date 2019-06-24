@@ -109,7 +109,7 @@ private _assaultPos2 = _zoneSafePosList select 2;
 /*
  * convoy
  */
-private _convoyVehicles = ["supplyTruck", "supplyTruckAmmo", "supplyTruckFuel"];
+private _convoyVehicles = ["truckSupplyCargo", "truckSupplyAmmo", "truckSupplyFuel"];
 private _climate = [] call den_fnc_worldToClimate;
 private _i = 0;
 {

@@ -15,6 +15,7 @@ class CfgBlacklist
     {
         locations[] = {
             "Almyra",
+            "Athanos",
             "AtsalisIsland",
             "CapMakrinos",
             "ChelonisiIsland",
@@ -39,7 +40,14 @@ class CfgBlacklist
             "Malden_M_BaiCancon",
             "Malden_M_GolfeAzur",
             "Malden_M_GolfeVert",
-            "Malden_M_LesSables"
+            "Malden_M_LesSables",
+            "Malden_L_Faro"
+        };
+    };
+    class Stratis
+    {
+        locations[] = {
+          "Spartan"
         };
     };
     class Tanoa
@@ -52,7 +60,10 @@ class CfgBlacklist
              "RavitaIsland01",
              "SosovuIsland01",
              "TuaduaIsland01",
-             "YasaIsland01"
+             "YasaIsland01",
+             "Port01",
+             "Ipota01",
+             "Villa01"
         };
     };
     class Woodland_ACR
@@ -66,6 +77,21 @@ class CfgBlacklist
     {
         locations[] = {
             "vill_Landay"
+        };
+    };
+    class Chernarus
+    {
+        locations[] = {
+            "Local_Pass_Grozovoy",
+            "hill_Lysina"
+        };
+    };
+    class sara
+    {
+        locations[] = {
+            "Local_Antigua",
+            "Hill_Virgo",
+            "Hill_Vieja"
         };
     };
 };

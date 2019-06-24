@@ -9,188 +9,108 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-class Uk3cbBaf : Faction
+class GmEastGermany : Faction
 {
-    addOn       = "3CB";
-    ammoBox     = "CUK3CB_BAF_Box_556_Ammo";
-    cargoBox    = "B_CargoNet_01_ammo_F";
-    flagTexture = "a3\data_f\flags\flag_uk_co.paa";
-    name        = "BAF";
-    side        = SIDE_BLUFOR;
+    addon        = "GM";
+    ammoBox      = "gm_AmmoBox_1000Rnd_762x51mm_b_DM41_g3";
+    cargoBox     = "CargoNet_01_box_F";
+    flagTexture  = "gm\gm_core\data\flags\gm_flag_gc_co.paa";
+    fullMoonOnly = 1;
+    name         = "East Germany";
+    side         = SIDE_OPFOR;
 
-    class Arsenal : ArsenalCupWest
+    class Arsenal : Arsenal
     {
         class Base : Base
         {
-            uk3CbBafGrenades[] = {
-                "Chemlight_blue",
-                "Chemlight_green",
-                "Chemlight_red",
-                "Chemlight_yellow",
-                "UK3CB_BAF_SmokeShellYellow",
-                "UK3CB_BAF_SmokeShellPurple",
-                "UK3CB_BAF_HandGrenade_Blank",
-                "UK3CB_BAF_SmokeShell",
-                "UK3CB_BAF_SmokeShellGreen",
-                "UK3CB_BAF_SmokeShellOrange",
-                "UK3CB_BAF_SmokeShellRed",
-                "UK3CB_BAF_SmokeShellBlue"
+            aceAttachments[] = {};
+            aceBinoculars[]  = {};
+            aceGrenades[]    = {};
+            aceGps[]         = {};
+            aceMisc[]        = {};
+            aceNvg[]         = {};
+
+            attachments[] = {};
+            nvg[]         = {};
+            gps[]         = {};
+            faceware[]    = {};
+
+            binoculars[] = {
+                "gm_ferod16_oli"
             };
-            uk3CbBafMags[] = {
-                "UK3CB_BAF_9_17Rnd",
-                "UK3CB_BAF_556_30Rnd",
-                "UK3CB_BAF_556_30Rnd_T",
-                "UK3CB_BAF_762_L42A1_10Rnd",
-                "UK3CB_BAF_762_L42A1_10Rnd_T",
-                "UK3CB_BAF_762_100Rnd",
-                "UK3CB_BAF_762_100Rnd_T",
-                "UK3CB_BAF_762_200Rnd",
-                "UK3CB_BAF_762_200Rnd_T",
-                "UK3CB_BAF_556_100Rnd",
-                "UK3CB_BAF_556_100Rnd_T",
-                "UK3CB_BAF_556_200Rnd",
-                "UK3CB_BAF_556_200Rnd_T",
-                "UK3CB_BAF_338_5Rnd",
-                "UK3CB_BAF_338_5Rnd_Tracer",
-                "UK3CB_BAF_1Rnd_SmokeBlue_Grenade_shell",
-                "UK3CB_BAF_UGL_FlareGreen_F",
-                "UK3CB_BAF_1Rnd_SmokeGreen_Grenade_shell",
-                "UK3CB_BAF_1Rnd_HE_Grenade_Shell",
-                "UK3CB_BAF_1Rnd_HEDP_Grenade_Shell",
-                "UK3CB_BAF_UGL_FlareCIR_F",
-                "UK3CB_BAF_1Rnd_SmokeOrange_Grenade_shell",
-                "UK3CB_BAF_1Rnd_Blank_Grenade_Shell",
-                "UK3CB_BAF_1Rnd_SmokePurple_Grenade_shell",
-                "UK3CB_BAF_UGL_FlareRed_F",
-                "UK3CB_BAF_1Rnd_SmokeRed_Grenade_shell",
-                "UK3CB_BAF_UGL_FlareWhite_F",
-                "UK3CB_BAF_1Rnd_Smoke_Grenade_shell",
-                "UK3CB_BAF_UGL_FlareYellow_F",
-                "UK3CB_BAF_1Rnd_SmokeYellow_Grenade_shell"
+
+            grenades[] = {
+                "gm_handgrenade_frag_rgd5",
+                "gm_smokeshell_blk_gc",
+                "gm_smokeshell_blu_gc",
+                "gm_smokeshell_grn_gc",
+                "gm_smokeshell_org_gc",
+                "gm_smokeshell_red_gc",
+                "gm_smokeshell_wht_gc",
+                "gm_smokeshell_yel_gc"
             };
-            uk3CbBafWeapons[] = {
-                "UK3CB_BAF_L105A1",
-                "UK3CB_BAF_L105A2",
-                "UK3CB_BAF_L107A1",
-                "UK3CB_BAF_L117A2",
-                "UK3CB_BAF_L131A1",
-                "UK3CB_BAF_L9A1",
-                "UK3CB_BAF_L103A2",
-                "UK3CB_BAF_L110_762",
-                "UK3CB_BAF_L110A1",
-                "UK3CB_BAF_L110A2",
-                "UK3CB_BAF_L110A2RIS",
-                "UK3CB_BAF_L110A3",
-                "UK3CB_BAF_L115A3",
-                "UK3CB_BAF_L115A3_BL",
-                "UK3CB_BAF_L115A3_DE",
-                "UK3CB_BAF_L118A1_Covert",
-                "UK3CB_BAF_L118A1_Covert_BL",
-                "UK3CB_BAF_L119A1",
-                "UK3CB_BAF_L119A1_CQB",
-                "UK3CB_BAF_L119A1_UKUGL",
-                "UK3CB_BAF_L119A1_FG",
-                "UK3CB_BAF_L129A1",
-                "UK3CB_BAF_L135A1",
-                "UK3CB_BAF_L1A1",
-                "UK3CB_BAF_L1A1_Wood",
-                "UK3CB_BAF_L22",
-                "UK3CB_BAF_L22A2",
-                "UK3CB_BAF_L7A2",
-                "UK3CB_BAF_L85A2",
-                "UK3CB_BAF_L85A2_RIS_AFG",
-                "UK3CB_BAF_L85A2_EMAG",
-                "UK3CB_BAF_L85A2_RIS",
-                "UK3CB_BAF_L85A2_RIS_Green",
-                "UK3CB_BAF_L85A2_RIS_Tan",
-                "UK3CB_BAF_L85A2_UGL",
-                "UK3CB_BAF_L85A2_UGL_HWS",
-                "UK3CB_BAF_L86A2",
-                "UK3CB_BAF_L86A3",
-                "UK3CB_BAF_L91A1",
-                "UK3CB_BAF_L92A1",
-                "UK3CB_BAF_L98A2"
+
+            mags[] = {
+                "gm_30Rnd_545x39mm_B_7N6_ak74_org",
+                "gm_30Rnd_545x39mm_B_7N6_ak74_prp",
+                "gm_30Rnd_545x39mm_B_T_7T3_ak74_prp",
+                "gm_30Rnd_545x39mm_B_T_7T3_ak74_org",
+                "gm_45Rnd_545x39mm_B_T_7T3_ak74_org",
+                "gm_45Rnd_545x39mm_B_T_7T3_ak74_prp",
+                "gm_45Rnd_545x39mm_B_7N6_ak74_prp",
+                "gm_45Rnd_545x39mm_B_7N6_ak74_org",
+                "gm_30Rnd_762x39mm_B_T_M43_ak47_blk",
+                "gm_30Rnd_762x39mm_B_M43_ak47_blk",
+                "gm_75Rnd_762x39mm_B_T_M43_ak47_blk",
+                "gm_75Rnd_762x39mm_B_M43_ak47_blk",
+                "gm_100Rnd_762x54mm_API_B32_pk_grn",
+                "gm_100Rnd_762x54mm_B_T_T46_pk_grn",
+                "gm_8Rnd_9x18mm_B_pst_pm_blk",
+                "gm_1Rnd_40mm_heat_pg7v_rpg7"
             };
-            uk3CbBafLaunchers[] = {
-               "UK3CB_BAF_AT4_CS_AP_Launcher",
-               "UK3CB_BAF_AT4_CS_AT_Launcher",
-               "UK3CB_BAF_NLAW_Launcher",
-               "UK3CB_BAF_Javelin_Slung_Tube"
+
+            misc[] = {
+                "ItemMap",
+                "ItemRadio",
+                "gm_ge_army_medkit_80",
+                "FirstAidKit",
+                "gm_watch_kosei_80",
+                "gm_gc_compass_f73"
             };
-            uk3CbBafNvg[] = {
-                "UK3CB_BAF_HMNVS"
+
+            sights[] = {
+                "gm_pgo7v_blk"
             };
-            uk3CbBafBinoculars[] = {
-               "UK3CB_BAF_Soflam_Laserdesignator",
-               "UK3CB_BAF_Javelin_CLU"
+
+            weapons[] = {
+                "gm_hmgpkm_prp",
+                "gm_lmgrpk74n_brn",
+                "gm_lmgrpk74n_prp",
+                "gm_lmgrpk_brn",
+                "gm_lmgrpk_prp",
+                "gm_mpiak74n_brn",
+                "gm_mpiak74n_prp",
+                "gm_mpiaks74n_brn",
+                "gm_mpiaks74n_prp",
+                "gm_mpiaks74nk_brn",
+                "gm_mpiaks74nk_prp",
+                "gm_mpikm72_brn",
+                "gm_mpikm72_prp",
+                "gm_mpikms72_brn",
+                "gm_mpikms72_prp",
+                "gm_pm_blk",
+                "gm_rpg7_prp"
             };
-            uk3CbBafSights[] = {
-                "uk3cb_baf_eotech",
-                "uk3cb_baf_kite",
-                "uk3cb_baf_maxikite",
-                "rksl_optic_lds",
-                "uk3cb_baf_specterlds",
-                "rksl_optic_rmr_ms19",
-                "rksl_optic_rmr_ms19_fde",
-                "rksl_optic_pmii_312",
-                "rksl_optic_pmii_312_sunshade",
-                "rksl_optic_pmii_525",
-                "uk3cb_baf_suit",
-                "uk3cb_baf_susat",
-                "uk3cb_baf_ta31f",
-                "uk3cb_baf_ta31f_hornbill",
-                "uk3cb_baf_ta648",
-                "uk3cb_baf_ta648_308"
-            };
-            uk3CbBafAttachments[] = {
-                "uk3cb_baf_llm_flashlight_black",
-                "uk3cb_baf_llm_ir_black",
-            };
-            uk3CbBafFaceware[] = {
-                "UK3CB_BAF_G_Tactical_Black",
-                "UK3CB_BAF_G_Tactical_Clear",
-                "UK3CB_BAF_G_Tactical_Grey",
-                "UK3CB_BAF_G_Tactical_Orange",
-                "UK3CB_BAF_G_Tactical_Yellow"
-            };
-            uk3CbBafBackpacks[] = {
-                "UK3CB_BAF_B_Bergen_MTP_Medic_L_A",
-                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_A",
-                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_B",
-                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_C",
-                "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_D"
-            };
-            uk3CbBafVest[] = {
-                "UK3CB_BAF_V_Osprey_Rifleman_A",
-                "UK3CB_BAF_V_Osprey_Rifleman_B",
-                "UK3CB_BAF_V_Osprey_Rifleman_C",
-                "UK3CB_BAF_V_Osprey_Rifleman_D",
-                "UK3CB_BAF_V_Osprey_Rifleman_E",
-                "UK3CB_BAF_V_Osprey_Rifleman_F",
-                "UK3CB_BAF_V_Osprey_Grenadier_A",
-                "UK3CB_BAF_V_Osprey_Grenadier_B",
-                "UK3CB_BAF_V_Osprey_Marksman_A",
-                "UK3CB_BAF_V_Osprey_Medic_A",
-                "UK3CB_BAF_V_Osprey_Medic_B",
-                "UK3CB_BAF_V_Osprey_Medic_C",
-                "UK3CB_BAF_V_Osprey_Medic_D",
+            backpacks[] = {
+                "gm_gc_army_backpack_80_assaultpack_str",
+                "gm_gc_army_backpack_80_at_str",
+                "gm_gc_army_backpack_80_lmg_str"
             };
         };
+
         class SemiArid : Base {};
-        class Arid     : Base
-        {
-            aridWeapons[] = {
-                "UK3CB_BAF_L115A3_DE",
-                "UK3CB_BAF_L118A1_Covert_DE",
-            };
-            aridAttachments[] = {
-                "rksl_optic_lds_c",
-                "rksl_optic_pmii_312_des",
-                "rksl_optic_pmii_312_sunshade_des",
-                "rksl_optic_pmii_525_des"
-            };
-        };
         class Tropic   : Base {};
+        class Arid     : Base {};
         class Wood     : Base {};
     };
 
@@ -198,31 +118,25 @@ class Uk3cbBaf : Faction
     {
         class SemiArid
         {
-            heloTransport      = "UK3CB_BAF_Wildcat_AH1_TRN_8A_MTP_RM";
-            heloTransportLarge = "UK3CB_BAF_Merlin_HC4_18_MTP_RM";
-            // Using vanilla helo because 3CB variant cannot sling load the container.
+            /*
+             * GM does not yet have helicopters.
+             */
+            heloTransport      = "";
+            heloTransportLarge = "";
             heloCargo          = "B_Heli_Transport_03_F";
-            truckSupplyAmmo    = "UK3CB_BAF_MAN_HX58_Cargo_Green_B_MTP_RM";
-            truckSupplyCargo   = "UK3CB_BAF_MAN_HX58_Cargo_Green_B_MTP_RM";
-            truckSupplyFuel    = "UK3CB_BAF_MAN_HX60_Fuel_Green_MTP_RM";
+
+            truckSupplyAmmo  = "gm_gc_army_ural4320_reammo";
+            truckSupplyCargo = "gm_gc_army_ural4320_repair";
+            truckSupplyFuel  = "gm_gc_army_ural375d_refuel";
+            truckTransport   = "gm_gc_army_ural4320_cargo";
         };
-        class Arid   : SemiArid
-        {
-            truckSupplyAmmo  = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
-            truckSupplyCargo = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
-            truckSupplyFuel  = "UK3CB_BAF_MAN_HX60_Fuel_Sand_MTP_RM";
-        };
+        class Arid   : SemiArid {};
         class Tropic : SemiArid {};
-        class Wood   : SemiArid {};
+        class Wood   : Tropic {};
     };
-
-
-#define UK3CB_BAF_NVG  "UK3CB_BAF_HMNVS"
 
     class Group : Group
     {
-        accLight = "uk3cb_baf_llm_flashlight_black";
-
         class Couple : Couple {};
         class Single : Single {};
         class Squad  : Squad {};
@@ -235,185 +149,145 @@ class Uk3cbBaf : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
             class HeloPilot : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
             class HeloCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_HeliCrew_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_HeliCrew_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
-             class Sentry : Couple
+            class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_FT_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_MGLMG_MTP_RM";
+                    vehicle = "gm_gc_army_machinegunner_lmgrpk_80_str";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "UK3CB_BAF_LAT_ILAW_MTP_RM";
+                    vehicle = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_FT_MTP_RM";
+                    vehicle = "gm_gc_army_squadleader_mpiak74n_80_str";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_MGLMG_MTP_RM";
+                    vehicle = "gm_gc_army_machinegunner_lmgrpk_80_str";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "UK3CB_BAF_MGLMG_MTP_RM";
+                    vehicle = "gm_gc_army_machinegunner_assistant_mpiak74n_lmgrpk_80_str";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "UK3CB_BAF_Grenadier_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "UK3CB_BAF_LAT_ILAW_MTP_RM";
+                    vehicle = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "UK3CB_BAF_LAT_ILAW_MTP_RM";
+                    vehicle = "gm_gc_army_antitank_assistant_mpiak74n_rpg7_80_str";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "UK3CB_BAF_Medic_MTP_RM";
+                    vehicle = "gm_gc_army_medic_mpiak74n_80_str";
                 };
             };
-            class ReconSquad : Squad
+            class ReconSquad : AssaultSquad
             {
-                nvg = UK3CB_BAF_NVG;
-
-                class Unit0 : Unit0
-                {
-                    vehicle = "UK3CB_BAF_SC_MTP_BPT_RM";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "UK3CB_BAF_MGLMG_MTP_BPT_RM";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "UK3CB_BAF_MGLMG_MTP_BPT_RM";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "UK3CB_BAF_Pointman_MTP_BPT_RM";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "UK3CB_BAF_Pointman_MTP_BPT_RM";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "UK3CB_BAF_Pointman_MTP_BPT_RM";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "UK3CB_BAF_Pointman_MTP_BPT_RM";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "UK3CB_BAF_Medic_MTP_BPT_RM";
-                };
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
-                nvg = UK3CB_BAF_NVG;
-
-                class Unit0 : Unit0
-                {
-                    vehicle = "UK3CB_BAF_SC_MTP_BPT_RM";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "UK3CB_BAF_MGLMG_MTP_BPT_RM";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "UK3CB_BAF_Pointman_MTP_BPT_RM";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "UK3CB_BAF_Pointman_MTP_BPT_RM";
-                };
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
             };
             class MotorizedHmg : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_Jackal2_L2A1_W_MTP_RM";
+                    vehicle = "gm_gc_army_brdm2";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "UK3CB_BAF_Jackal2_L2A1_W_MTP_RM";
+                    vehicle = "gm_gc_army_brdm2";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "UK3CB_BAF_Rifleman_MTP_RM";
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_str";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -432,13 +306,13 @@ class Uk3cbBaf : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "UK3CB_BAF_Jackal2_L2A1_W_MTP_RM";
+                    vehicle = "gm_gc_army_brdm2";
                 };
             };
         };
         class Arid : SemiArid
         {
-           class TruckCrew : TruckCrew
+            class TruckCrew : TruckCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -448,7 +322,7 @@ class Uk3cbBaf : Faction
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
             };
-            class HeloCrew : HeloCrew
+            class HeloCrew  : HeloCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -500,17 +374,11 @@ class Uk3cbBaf : Faction
             };
             class MotorizedHmg : MotorizedHmg
             {
-                class Unit0 : Unit0
-                {
-                    vehicle = "UK3CB_BAF_Jackal2_L2A1_D_MTP_RM";
-                };
+                class Unit0 : Unit0 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
-                class Unit0 : Unit0
-                {
-                    vehicle = "UK3CB_BAF_Jackal2_L2A1_D_MTP_RM";
-                };
+                class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
             };
@@ -524,10 +392,7 @@ class Uk3cbBaf : Faction
                 class Unit5 : Unit5 {};
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
-                class Unit8 : Unit8
-                {
-                    vehicle = "UK3CB_BAF_Jackal2_L2A1_D_MTP_RM";
-                };
+                class Unit8 : Unit8 {};
             };
         };
         class Tropic : SemiArid
@@ -702,214 +567,191 @@ class Uk3cbBaf : Faction
         };
     };
 
-#define UK3CB_AUTORIFLE_556_MAG_COUNT    3
-#define UK3CB_AT_MAG_COUNT              11
-#define UK3CB_GRENADIRE_MAG_COUNT       11
-#define UK3CB_MARKSMAN_MAG_COUNT        10
-#define UK3CB_MEDIC_MAG_COUNT           11
-#define UK3CB_RIFLEMAN_MAG_COUNT        11
+#define GM_GC_AT_MAG_COUNT             11
+#define GM_GC_AUTORIFLE_RPK_MAG_COUNT  12
+#define GM_GC_AUTORIFLE_PKM_MAG_COUNT   8
+#define GM_GC_GRENADIRE_MAG_COUNT      15
+#define GM_GC_MARKSMAN_MAG_COUNT       15
+#define GM_GC_MEDIC_MAG_COUNT          15
+#define GM_GC_RIFLEMAN_MAG_COUNT       15
 
     class Loadout : Loadout
     {
         class Base : Base
         {
-            aceBinoculars = "ACE_Vector";
-            aceNvg        = "ACE_NVG_Wide";
-
-            handgun    = "UK3CB_BAF_L131A1";
-            binoculars = "UK3CB_BAF_Soflam_Laserdesignator";
-            headgear   = "UK3CB_BAF_H_Mk7_Camo_A";
-            rifleSight = "rksl_optic_lds";
-            nvg        = "UK3CB_BAF_HMNVS";
-            rifleLight = "uk3cb_baf_llm_flashlight_black";
-            primaryMag = "UK3CB_BAF_556_30Rnd";
+            binoculars = "gm_ferod16_oli";
+            handgun    = "gm_pm_blk";
+            headgear   = "gm_ge_headgear_m62_net";
+            rifleLight = "";
+            rifleSight = "";
+            primaryMag = "gm_30Rnd_545x39mm_B_7N6_ak74_prp";
 
             class Uniform : Uniform
             {
-                type = "UK3CB_BAF_U_CombatUniform_MTP_RM";
+                type = "gm_gc_army_uniform_soldier_80_str";
 
-                uk3cbBase[] = {
-                    "UK3CB_BAF_9_17Rnd",
-                    "UK3CB_BAF_9_17Rnd"
+                items[] = {
+                    "gm_8Rnd_9x18mm_B_pst_pm_blk",
+                    "gm_8Rnd_9x18mm_B_pst_pm_blk"
                 };
             };
             class Vest : Vest
             {
-                type = "UK3CB_BAF_V_Osprey_Rifleman_A";
+                type = "gm_gc_army_vest_80_rifleman_str";
             };
-            class Backpack : Backpack
+            class Backpack : GmEastBackpack
             {
-                type = "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_A";
+                type = "gm_gc_army_backpack_80_assaultpack_str";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItems
+            {
+                items[] = {
+                    "ItemMap",
+                    "gm_watch_kosei_80",
+                    "gm_gc_compass_f73",
+                    "ItemRadio"
+                };
+                noAceItems[] = {};
+            };
         };
         class RiflemanBase : Base
         {
-            unit            = "UK3CB_BAF_Rifleman_MTP_RM";
-            primaryMagCount = UK3CB_RIFLEMAN_MAG_COUNT;
+            unit            = "gm_gc_army_rifleman_mpiak74n_80_str";
+            primaryMagCount = GM_GC_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                riflemanBaseItems[] = {
-                    "HandGrenade",
-                    "HandGrenade",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen"
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc"
                 };
             };
             class Backpack : Backpack
             {
                 riflemanBaseItems[] = {
-                    "HandGrenade",
-                    "HandGrenade",
-                    "HandGrenade",
-                    "HandGrenade"
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5"
                 };
             };
-            class LinkedItems : LinkedItems {};
-        };
-        class GrenadierBase : RiflemanBase
-        {
-            unit              = "UK3CB_BAF_Grenadier_MTP_RM";
-            primaryMagCount   = UK3CB_GRENADIRE_MAG_COUNT;
-            secondaryMag      = "UK3CB_BAF_1Rnd_HE_Grenade_Shell";
-            secondaryMagCount = 10;
-
-            class Uniform : Uniform {};
-            class Vest    : Vest
-            {
-                type = "UK3CB_BAF_V_Osprey_Grenadier_A";
-
-                grenadierBaseItems[] = {
-                    "UK3CB_BAF_1Rnd_Smoke_Grenade_shell",
-                };
-            };
-            class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class AutorifleBase : Base
         {
-            unit            = "UK3CB_BAF_MGLMG_MTP_RM";
-            rifleBipod      = "";
-            primaryMag      = "UK3CB_BAF_556_200Rnd_T";
-            primaryMagCount = UK3CB_AUTORIFLE_556_MAG_COUNT;
+            unit = "gm_gc_army_machinegunner_lmgrpk_80_str";
 
             class Uniform  : Uniform {};
-            class Vest     : Vest {
-                 arBaseItems[] = {
-                   "HandGrenade",
-                   "HandGrenade",
-                   "UK3CB_BAF_SmokeShellGreen",
-                   "UK3CB_BAF_SmokeShellGreen"
-                };
-            };
+            class Vest     : Vest {};
             class Backpack : Backpack
             {
-                type = "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_B";
+                arBaseItems[] = {
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc"
+                };
             };
             class LinkedItems : LinkedItems {};
         };
-        class MarksmanBase : Base
+        class MarksmanBase : RiflemanBase
         {
-            unit            = "UK3CB_BAF_Marksman_MTP_RM";
+            rifleSight = "gm_pgo7v_blk";
 
-            rifleSight      = "uk3cb_baf_ta648_308";
-            rifleBipod      = "uk3cb_underbarrel_acc_fgrip_bipod";
-            primaryMagCount = UK3CB_MARKSMAN_MAG_COUNT;
-
-            class Uniform : Uniform {};
-            class Vest    : Vest
-            {
-                type = "UK3CB_BAF_V_Osprey_Marksman_A";
-
-                marksmanBaseItems[] = {
-                    "HandGrenade",
-                    "HandGrenade",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen"
-                };
-            };
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
             class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class MedicBase : Base
         {
-            unit            = "UK3CB_BAF_Medic_MTP_RM";
-            primaryMagCount = UK3CB_MEDIC_MAG_COUNT;
+            unit            = "gm_gc_army_medic_mpiak74n_80_str";
+            primaryMagCount = GM_GC_MEDIC_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                type = "UK3CB_BAF_V_Osprey_Medic_A";
+                type = "gm_ge_army_vest_80_medic";
 
                 medicBaseItems[] = {
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "HandGrenade",
-                    "HandGrenade",
-                    "HandGrenade",
-                    "HandGrenade"
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5"
                 };
             };
-            class Backpack : MedicBackpack
+            class Backpack : GmEastMedicBackpack
             {
-                type = "UK3CB_BAF_B_Bergen_MTP_Medic_L_A";
+                type = "gm_gc_army_backpack_80_assaultpack_str";
             };
             class LinkedItems : LinkedItems {};
         };
-        class AtBase : RiflemanBase
+        class AtBase : Base
         {
-            primaryMagCount = UK3CB_AT_MAG_COUNT;
-            rifle           = "UK3CB_BAF_L85A2_RIS";
+            unit            = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
+            rifle           = "gm_mpiak74n_brn";
+            primaryMagCount = GM_GC_AT_MAG_COUNT;
+            primaryMag      = "gm_30Rnd_545x39mm_B_7N6_ak74_prp";
 
             class Uniform : Uniform {};
-            class Vest    : Vest
+
+            class Vest : Vest
             {
-                atBaseItems[] = {
-                   "HandGrenade",
-                   "HandGrenade",
-                   "HandGrenade"
+               atBaseItems[] = {
+                   "gm_smokeshell_wht_gc",
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5"
                };
+            };
+            class Backpack    : Backpack
+            {
+                type = "gm_gc_army_backpack_80_at_str";
             };
             class LinkedItems : LinkedItems {};
         };
         class EodBase : Base
         {
-            unit            = "UK3CB_BAF_Explosive_MTP_RM";
-            primaryMagCount = UK3CB_RIFLEMAN_MAG_COUNT;
+            unit            = "gm_ge_army_demolition_g3a4_80_ols";
+            primaryMagCount = GM_GC_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
-            class Vest    : Vest
+
+            class Vest : Vest
             {
-               eodBaseItems[] = {
-                    "HandGrenade",
-                    "HandGrenade",
-                    "UK3CB_BAF_SmokeShellGreen",
-                    "UK3CB_BAF_SmokeShellGreen"
+                type = "gm_ge_army_vest_80_demolition";
+
+                eodBaseItems[] = {
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc"
                 };
             };
             class Backpack : Backpack
             {
-                type = "UK3CB_BAF_B_Bergen_MTP_Sapper_L_A";
-
                 aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
-                    "ACE_M14",
+                    "DemoCharge_Remote_Mag",
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -927,12 +769,64 @@ class Uk3cbBaf : Faction
             {
                 role = "Rifleman";
 
-                class L85 : RiflemanBase
+                class Ak74 : RiflemanBase
                 {
-                    type    = "L85A2";
-                    rifle   = "UK3CB_BAF_L85A2_RIS";
+                    default    = 1;
+                    type       = "AK-74";
+                    rifle      = "gm_mpiak74n_brn";
 
-                    default = 1;
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : RiflemanBase
+                {
+                    type       = "KM-72";
+                    rifle      = "gm_mpikm72_brn";
+                    primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Rifleman
+            {
+                role = "Grenadier";
+
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : Grenadier
+            {
+                role = "Squad Leader";
+
+                class Ak74 : Ak74
+                {
+                    unit = "gm_gc_army_squadleader_mpiak74n_80_str";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    unit = "gm_gc_army_squadleader_mpiak74n_80_str";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -944,58 +838,58 @@ class Uk3cbBaf : Faction
             {
                 role = "Autorifleman";
 
-                class LnMini : AutorifleBase
+                class Rpk : AutorifleBase
                 {
-                    type    = "L110A2";
-                    rifle   = "UK3CB_BAF_L110A2RIS";
-                    default = 1;
+                    default         = 1;
+                    type            = "RPK";
+                    rifle           = "gm_lmgrpk_brn";
+                    primaryMag      = "gm_75Rnd_762x39mm_B_M43_ak47_blk";
+                    primaryMagCount = GM_GC_AUTORIFLE_RPK_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    class Backpack    : Backpack
+                    {
+                        type = "gm_gc_army_backpack_80_lmg_str";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class Grenadier
-            {
-                role = "Grenadier";
-
-                class L85 : GrenadierBase
+                class Pkm : AutorifleBase
                 {
-                    type    = "L85A2 GL";
-                    rifle   = "UK3CB_BAF_L85A2_UGL";
-                    default = 1;
+                    type            = "PKM";
+                    rifle           = "gm_hmgpkm_prp";
+                    primaryMag      = "gm_100Rnd_762x54mm_B_T_T46_pk_grn";
+                    primaryMagCount = GM_GC_AUTORIFLE_PKM_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    class Backpack    : Backpack
+                    {
+                         type = "gm_gc_army_backpack_80_mgk_str";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
-            class SquadLeader : Grenadier
-            {
-                role = "Squad Leader";
-
-                class L85 : L85
-                {
-                    unit = "UK3CB_BAF_FT_MTP_RM";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Marksman
+            class Marksman : Rifleman
             {
                 role = "Marksman";
 
-                class L129 : MarksmanBase
+                class Ak74 : MarksmanBase
                 {
-                    type       = "L129A1";
-                    rifle      = "UK3CB_BAF_L129A1";
-                    primaryMag = "UK3CB_BAF_762_L42A1_20Rnd";
                     default    = 1;
+                    type       = "AK-74";
+                    rifle      = "gm_mpiak74n_brn";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : MarksmanBase
+                {
+                    type       = "KM-72";
+                    rifle      = "gm_mpikm72_brn";
+                    primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1007,11 +901,22 @@ class Uk3cbBaf : Faction
             {
                 role = "Medic";
 
-                class L85 : MedicBase
+                class Ak74 : MedicBase
                 {
-                    type  = "L85A2";
-                    rifle = "UK3CB_BAF_L85A2_RIS";
-                    default = 1;
+                    default    = 1;
+                    type       = "AK-74";
+                    rifle      = "gm_mpiak74n_brn";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : MedicBase
+                {
+                    type       = "KM-72";
+                    rifle      = "gm_mpikm72_brn";
+                    primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1023,21 +928,14 @@ class Uk3cbBaf : Faction
             {
                 role = "Anti-Tank";
 
-                class Ilaw : AtBase
+                class Rpg7 : AtBase
                 {
-                    type     = "ILAW";
-                    launcher = "UK3CB_BAF_AT4_CS_AP_Launcher";
-                    default  = 1;
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : AtBase
-                {
-                    type     = "NLAW";
-                    launcher = "UK3CB_BAF_NLAW_Launcher";
+                    default           = 1;
+                    type              = "PZF44";
+                    launcher          = "gm_rpg7_prp";
+                    secondaryMag      = "gm_1Rnd_40mm_heat_pg7v_rpg7";
+                    // The AT backpack loads 3 RPG rounds by default.
+                    secondaryMagCount = 0;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1049,11 +947,22 @@ class Uk3cbBaf : Faction
             {
                 role = "EOD";
 
-                class L85 : EodBase
+                class Ak74 : EodBase
                 {
-                    type    = "L85A2";
-                    rifle   = "UK3CB_BAF_L85A2_RIS";
-                    default = 1;
+                    default    = 1;
+                    type       = "AK-74";
+                    rifle      = "gm_mpiak74n_brn";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : EodBase
+                {
+                    type       = "KM-72";
+                    rifle      = "gm_mpikm72_brn";
+                    primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1066,27 +975,14 @@ class Uk3cbBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Ak74 : Ak74
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1096,7 +992,48 @@ class Uk3cbBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1106,7 +1043,14 @@ class Uk3cbBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1116,7 +1060,14 @@ class Uk3cbBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1126,14 +1077,7 @@ class Uk3cbBaf : Faction
             };
             class At : At
             {
-                class Ilaw : Ilaw
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Rpg7 : Rpg7
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1143,7 +1087,14 @@ class Uk3cbBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1156,27 +1107,14 @@ class Uk3cbBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Ak74 : Ak74
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1186,7 +1124,48 @@ class Uk3cbBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1196,7 +1175,14 @@ class Uk3cbBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1206,7 +1192,14 @@ class Uk3cbBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1216,14 +1209,7 @@ class Uk3cbBaf : Faction
             };
             class At : At
             {
-                class Ilaw : Ilaw
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Rpg7 : Rpg7
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1233,7 +1219,14 @@ class Uk3cbBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1246,27 +1239,14 @@ class Uk3cbBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Ak74 : Ak74
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1276,7 +1256,48 @@ class Uk3cbBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1286,7 +1307,14 @@ class Uk3cbBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1296,7 +1324,14 @@ class Uk3cbBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1306,14 +1341,7 @@ class Uk3cbBaf : Faction
             };
             class At : At
             {
-                class Ilaw : Ilaw
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Rpg7 : Rpg7
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1323,7 +1351,14 @@ class Uk3cbBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

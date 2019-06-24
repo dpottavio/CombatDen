@@ -15,6 +15,7 @@
 
     Returns: ARRAY - opfor faction names
 */
+#include "..\..\macros.hpp"
 
 private _addons = [];
 
@@ -41,7 +42,11 @@ if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Mil
 };
 
 if (_addons isEqualTo []) then {
-    _addons = ["Csat"];
+    if (DEN_HAS_ADDON("gm_core")) then {
+        _addons = ["GmEastGermany"];
+    } else {
+        _addons = ["Csat"];
+    };
 };
 
 private _climate = [] call den_fnc_worldToClimate;

@@ -260,9 +260,9 @@ class RhsRussia : Faction
             heloTransportLarge = "RHS_Mi8mt_Cargo_vdv";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
             heloCargo          = "B_Heli_Transport_03_F";
-            supplyTruckAmmo    = "rhs_gaz66_ammo_vdv";
-            supplyTruck        = "RHS_Ural_VDV_01";
-            supplyTruckFuel    = "RHS_Ural_Fuel_VDV_01";
+            truckSupplyAmmo    = "rhs_gaz66_ammo_vdv";
+            truckSupplyCargo   = "RHS_Ural_VDV_01";
+            truckSupplyFuel    = "RHS_Ural_Fuel_VDV_01";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};

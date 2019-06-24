@@ -19,9 +19,10 @@ briefing.  Just play.
 * ACE support, but not required.
 * Virtual Arsenal for player and AI units.
 * Configurable mission settings.
-* 7 randomized mission types complete with briefing.
+* Multiple distinct mission types complete with briefing.
 * Multi terrain support.
-* Support for third party factions from RHS, CUP, 3CB, and more.
+* Optional third party factions from RHS, CUP, 3CB, and more.
+* GM support.
 
 ## Required Mods
 

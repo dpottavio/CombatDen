@@ -25,12 +25,19 @@ if (_mission < 0) then {
     _mission = [0, _missionCount - 1] call BIS_fnc_randomInt;
 };
 
-private _hourMonth = [den_cba_timeOfDay] call den_fnc_randTime;
-private _month     = _hourMonth select 1;
-
-[_month] call den_fnc_randWeather;
-
 private _friendlyFaction = den_cba_playerFaction;
+
+private _isDark       = (den_cba_timeOfDay >= 18 || den_cba_timeOfDay < 6);
+private _fullMoonOnly = ((getNumber (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "fullMoonOnly")) == 1);
+if (_isDark && _fullMoonOnly) then {
+    // Some factions only have fullmoon missions due to lack of NVG.
+    [den_cba_timeOfDay] call den_fnc_fullMoonDate;
+} else {
+    private _hourMonth = [den_cba_timeOfDay] call den_fnc_randTime;
+    private _month     = _hourMonth select 1;
+
+    [_month] call den_fnc_randWeather;
+};
 
 if (_friendlyFaction == "") then {
     private _friendlyFactions = ([] call den_fnc_opforFactions) + ([] call den_fnc_bluforFactions);
@@ -110,18 +117,6 @@ _playerGroup setGroupIdGlobal ["Alpha"];
 
 private _friendlyFlag = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "flagTexture");
 
-if !(isNil "den_destroyer") then {
-    /*
-     * setup naval FOB if it exists
-     */
-    private _flag = [den_destroyer, "ShipFlag_US_F"] call bis_fnc_destroyer01GetShipPart;
-    _flag setFlagTexture _friendlyFlag;
-
-    private _marker = createMarker ["navalMarker", getPos den_destroyer];
-    _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> str(_friendlySide) >> "naval"));
-    _marker setMarkerText "Naval FOB";
-};
-
 if !(isNil "den_flagPole") then {
     /*
      * setup COP if it exists
@@ -133,7 +128,11 @@ if !(isNil "den_flagPole") then {
     _marker setMarkerText "COP";
 };
 
-private _transport = [getPosATL den_heloMarker, _friendlyFaction] call den_fnc_spawnHeloTransport;
+private _transport = [
+    getPosATL den_transportMarker,
+    getDir den_transportMarker,
+    _friendlyFaction
+] call den_fnc_spawnTransport;
 
 /*
  * setup arsenal

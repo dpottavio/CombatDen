@@ -310,17 +310,17 @@ class RhsUsmc : Faction
             heloTransport      = "RHS_UH1Y_UNARMED";
             heloTransportLarge = "RHS_UH1Y_UNARMED";
             heloCargo          = "rhsusf_CH53E_USMC";
-            supplyTruckAmmo    = "rhsusf_M977A4_AMMO_usarmy_wd";
-            supplyTruck        = "rhsusf_M977A4_BKIT_usarmy_wd";
-            supplyTruckFuel    = "rhsusf_M978A4_usarmy_wd";
+            truckSupplyAmmo    = "rhsusf_M977A4_AMMO_usarmy_wd";
+            truckSupplyCargo   = "rhsusf_M977A4_BKIT_usarmy_wd";
+            truckSupplyFuel    = "rhsusf_M978A4_usarmy_wd";
         };
         class Arid : SemiArid
         {
-            heloTransport   = "RHS_UH1Y_UNARMED_d";
-            heloCargo       = "rhsusf_CH53E_USMC_D";
-            supplyTruckAmmo = "rhsusf_M977A4_AMMO_usarmy_d";
-            supplyTruck     = "rhsusf_M977A4_BKIT_usarmy_d";
-            supplyTruckFuel = "rhsusf_M978A4_usarmy_d";
+            heloTransport     = "RHS_UH1Y_UNARMED_d";
+            heloCargo         = "rhsusf_CH53E_USMC_D";
+            truckSupplyAmmo   = "rhsusf_M977A4_AMMO_usarmy_d";
+            truckSupplyCargo  = "rhsusf_M977A4_BKIT_usarmy_d";
+            truckSupplyFuel   = "rhsusf_M978A4_usarmy_d";
         };
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};

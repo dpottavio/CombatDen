@@ -14,7 +14,8 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [*] Configurable CBA mission settings.
 [*] Multiple distinct mission types complete with briefing.
 [*] Multi terrain support.  See Combat Den Steam collection for full list.
-[*] Support for third party factions found in RHS, CUP, 3CB, and more.
+[*] Optional third party factions found in RHS, CUP, 3CB, and more.
+[*] GM support.
 [/list]
 
 [h1]GitHub[/h1]

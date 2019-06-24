@@ -34,6 +34,9 @@ switch (toLower worldName) do {
     case "woodland_acr": { // Bystrica
         _cfgClimate = "Wood";
     };
+    case "gm_weferlingen_summer": {
+        _cfgClimate = "Wood";
+    };
     default { // Altis, Malden, Stratis
         _cfgClimate = "SemiArid";
     };

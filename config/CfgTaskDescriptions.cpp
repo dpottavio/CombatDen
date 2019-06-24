@@ -57,8 +57,8 @@ class CfgTaskDescriptions
     };
     class LzExtract
     {
-        title       = "Go to LZ";
-        description = "Go to the LZ for extraction. All units are required for extraction.";
+        title       = "Secure the LZ";
+        description = "Go to the LZ for extraction. All units must be at the LZ and no enemy units.";
     };
     class PackOrdnance
     {

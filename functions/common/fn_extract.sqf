@@ -29,11 +29,13 @@
 
     1: GROUP - Cargo group for transport.
 
-    2: BOOL - boolean flag condition to trigger the helicopter
+    2: STRING - player faction
 
-    3: (Optional) AREA - Area the helicopter should avoid.
+    3: STRING - boolean flag condition to trigger the helicopter
 
-    4: (Optional) AREA - Area the cargo group must enter as a condition
+    4: (Optional) AREA - Area the helicopter should avoid.
+
+    5: (Optional) AREA - Area the cargo group must enter as a condition
     to trigger the helicopter.
 
     Defaults to [_lzPos, 50, 50, 0, false]
@@ -45,7 +47,7 @@
 params [
     ["_lzPos",         [],      [[]], [2,3]],
     ["_cargoGroup",    grpNull, [grpNull]],
-    ["_bluforFaction", "",      [""]],
+    ["_faction",       "",      [""]],
     ["_bool",          "",      [""]],
     ["_blackArea",     [],      [[]], [5,6]],
     ["_area",          [],      [[]], [5,6]]
@@ -61,7 +63,7 @@ if (isNull _cargoGroup) exitWith {
     false;
 };
 
-if (_bluforFaction == "") exitWith {
+if (_faction == "") exitWith {
     ERROR("blufor faction is empty");
     false;
 };
@@ -75,8 +77,8 @@ if (_area isEqualTo []) then {
     _area = [_lzPos, 50, 50, 0, false];
 };
 
-[_lzPos, _cargoGroup, _bluforFaction, _bool, _blackArea, _area] spawn {
-    params ["_lzPos", "_cargoGroup", "_bluforFaction", "_bool", "_blackArea", "_area"];
+[_lzPos, _cargoGroup, _faction, _bool, _blackArea, _area] spawn {
+    params ["_lzPos", "_cargoGroup", "_faction", "_bool", "_blackArea", "_area"];
 
     private _blackPos  = _blackArea param [0, _lzPos];
     private _deployDir = _blackPos getDir _lzPos;
@@ -90,77 +92,91 @@ if (_area isEqualTo []) then {
         if (!isNil _bool) exitWith {};
         sleep 1;
     };
-
     /*
-     * Wait for players to get to the LZ
+     * Wait for all group members to reach the LZ.
      */
     while {true} do {
-        private _inArea = { (alive _x) && ((getPos _x) inArea _area) } count units _cargoGroup;
-        if (_inArea > 0) exitWith {
+        private _count     = { alive _x } count units _cargoGroup;
+        private _atLzCount = { (alive _x) && ((getPos _x) inArea _area) } count units _cargoGroup;
+        if (_count == _atLzCount) exitWith {};
+        sleep 1;
+    };
+    /*
+     * Wait until the LZ is free of enemies.
+     */
+    private _friendlySide = side (leader _cargoGroup);
+    while {true} do {
+        private _enemyAtLz = {
+            (alive _x) && ((getPos _x) inArea _area) && ([_friendlySide, side _x] call BIS_fnc_sideIsEnemy)
+        } count allUnits;
+
+        if (_enemyAtLz == 0) exitWith {
             ["den_lzExtract"] call den_fnc_publicBool;
         };
         sleep 1;
     };
 
-    /*
-     * send helo
-     */
-    private _heloType = "heloTransport";
-    if (({alive _x} count units _cargoGroup) > 8) then {
-        _heloType = "heloTransportLarge";
-    };
-    private _helo = [_deployPos, _deployDir, _heloType, _bluforFaction] call den_fnc_spawnvehicle;
-    private _heloObj   = _helo select 0;
-    private _heloGroup = _helo select 2;
-    clearMagazineCargoGlobal _heloObj;
-    clearWeaponCargoGlobal   _heloObj;
-    clearItemCargoGlobal     _heloObj;
-    clearBackpackCargoGlobal _heloObj;
-
-    _heloGroup setGroupIdGlobal ["Falcon"];
-
-    _heloObj addEventHandler ["killed", {
-        ["den_heloDead"] call den_fnc_publicBool;
-    }];
-
-    [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
-
-    [
-        _heloGroup,
-        _lzPos,
-        0,
-        "MOVE",
-        "AWARE",
-        "GREEN",
-        "FULL",
-        "COLUMN",
-        "(vehicle this) land ""GET IN"""
-    ] call CBA_fnc_addWaypoint;
-
-    // Wait for the cargo units to enter.
-    while {true} do {
-        private _total = { alive _x } count units _cargoGroup;
-        private _loaded = {((vehicle _x) == _heloObj)} count units _cargoGroup;
-        if (_total == _loaded) exitWith {
-            [
-                _heloGroup,
-                _deployPos,
-                0,
-                "MOVE",
-                "AWARE",
-                "GREEN",
-                "FULL",
-                "COLUMN",
-                ""
-            ] call CBA_fnc_addWaypoint;
-
-            [(leader _heloGroup), "Alpha team is on board. Returning to base."] call den_fnc_sideChat;
+    if (DEN_FACTION_HAS_TRANSPORT_HELO(_faction)) then {
+        /*
+         * If the faction has one, send a transport helicopter.
+         */
+        private _heloType = "heloTransport";
+        if (({alive _x} count units _cargoGroup) > 8) then {
+            _heloType = "heloTransportLarge";
         };
-        sleep 1;
-    };
+        private _helo = [_deployPos, _deployDir, _heloType, _faction] call den_fnc_spawnvehicle;
+        private _heloObj   = _helo select 0;
+        private _heloGroup = _helo select 2;
+        clearMagazineCargoGlobal _heloObj;
+        clearWeaponCargoGlobal   _heloObj;
+        clearItemCargoGlobal     _heloObj;
+        clearBackpackCargoGlobal _heloObj;
 
-    sleep 10;
-    ["den_extract"] call den_fnc_publicBool;
+        _heloGroup setGroupIdGlobal ["Falcon"];
+
+        _heloObj addEventHandler ["killed", {
+            ["den_heloDead"] call den_fnc_publicBool;
+        }];
+
+        [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
+
+        [
+            _heloGroup,
+            _lzPos,
+            0,
+            "MOVE",
+            "AWARE",
+            "GREEN",
+            "FULL",
+            "COLUMN",
+            "(vehicle this) land ""GET IN"""
+        ] call CBA_fnc_addWaypoint;
+
+        // Wait for the cargo units to enter.
+        while {true} do {
+            private _total = { alive _x } count units _cargoGroup;
+            private _loaded = {((vehicle _x) == _heloObj)} count units _cargoGroup;
+            if (_total == _loaded) exitWith {
+                [
+                    _heloGroup,
+                    _deployPos,
+                    0,
+                    "MOVE",
+                    "AWARE",
+                    "GREEN",
+                    "FULL",
+                    "COLUMN",
+                    ""
+                ] call CBA_fnc_addWaypoint;
+
+                [(leader _heloGroup), "Alpha team is on board. Returning to base."] call den_fnc_sideChat;
+            };
+            sleep 1;
+        };
+
+        sleep 10;
+        ["den_extract"] call den_fnc_publicBool;
+    };
 };
 
 true;

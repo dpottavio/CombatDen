@@ -21,8 +21,8 @@
 
     1: GROUP - Cargo group for transport.
 
-    2: OBJECT - Helicopter.  Once all cargo units enter
-    the helicopter, they are transported to the LZ.
+    2: OBJECT - Transport vehicle.  Once all cargo units enter
+    the vehicle, they are transported to the LZ.
 
     3: AREA - Zone Area. This is the objective area or AO.
 
@@ -33,7 +33,7 @@
 params [
     ["_lzPos",           [],      [[]],      [2,3]],
     ["_cargoGroup",      grpNull, [grpNull]],
-    ["_helo",            objNull, [objNull]],
+    ["_transport",       objNull, [objNull]],
     ["_zoneArea",        [],      [[]],      [5,6]],
     ["_friendlyFaction", "",      [""]]
 ];
@@ -43,8 +43,8 @@ if (isNull _cargoGroup) exitWith {
     false;
 };
 
-if (isNull _helo) exitWith {
-    ERROR("helo parameter is null");
+if (isNull _transport) exitWith {
+    ERROR("transport parameter is null");
     false;
 };
 
@@ -80,24 +80,24 @@ createMarker ["alphaArrowMarker", _arrowPos];
 "alphaArrowMarker" setMarkerColor _friendlyColor;
 
 /*
- * Trigger to start the helo once players approach it.
+ * Trigger to start the transport once players approach it.
  */
-private _startHeloTrigger = createTrigger ["EmptyDetector", getPos _helo, false];
-_startHeloTrigger setVariable["helo", _helo];
-private _startActivation = "(thisTrigger getVariable ""helo"") engineOn true";
+private _startHeloTrigger = createTrigger ["EmptyDetector", getPos _transport, false];
+_startHeloTrigger setVariable["transport", _transport];
+private _startActivation = "(thisTrigger getVariable ""transport"") engineOn true";
 _startHeloTrigger setTriggerArea       [10, 10, 0, false];
 _startHeloTrigger setTriggerActivation ["ANYPLAYER", "PRESENT", false];
 _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
 
-[_lzPos, _cargoGroup, _helo, _zonePos] spawn {
-    params ["_lzPos", "_cargoGroup", "_helo", "_zonePos"];
+[_lzPos, _cargoGroup, _transport, _zonePos] spawn {
+    params ["_lzPos", "_cargoGroup", "_transport", "_zonePos"];
 
-    private _heloType = typeOf _helo;
+    private _transportType = typeOf _transport;
 
-    // Wait for the cargo units to enter the helo.
+    // Wait for the cargo units to enter the transport.
     while {true} do {
         private _total = { (alive _x) && (isPlayer _x) } count units _cargoGroup;
-        private _loaded = {((vehicle _x) == _helo) && (isPlayer _x)} count units _cargoGroup;
+        private _loaded = {((vehicle _x) == _transport) && (isPlayer _x)} count units _cargoGroup;
         if (_total > 0 && _total == _loaded) exitWith {
             ["den_insert"] call den_fnc_publicBool;
         };
@@ -106,10 +106,11 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
 
     private _cargoUnits = units _cargoGroup;
 
-    // Move remaining units in the helo.
+    // Move remaining units in the transport.
     {
-        if ((_helo getCargoIndex _x) == -1) then {
-            [_x, _helo] remoteExecCall ["moveInCargo", _x];
+        if ((_transport getCargoIndex _x) == -1) then {
+            [_x, _transport] remoteExecCall ["moveInCargo", _x];
+            sleep 0.25;
         };
     } forEach _cargoUnits;
 
@@ -118,24 +119,25 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
      *
      * This works by the following steps:
      *
-     * 1. Delete the helo and crew the players are currently in.
+     * 1. Delete the transport and crew the players are currently in.
      *
      * 2. Teleport the players via setPos to the LZ.
      *
-     * 3. Create a clone helo above the players heading back to base.
+     * 3. If the transport is a helicopter, create a clone of the transport
+     *    above the players heading back to base.
      */
 
     sleep 3;
     [["","BLACK OUT",3]] remoteExec ["cutText"];
     sleep 6;
 
-    private _heloGroup = group leader driver _helo;
-    _heloGroup deleteGroupWhenEmpty true;
+    private _transportGroup = group leader driver _transport;
+    _transportGroup deleteGroupWhenEmpty true;
 
-    deleteVehicle _helo;
+    deleteVehicle _transport;
     {
         deleteVehicle _x;
-    } forEach units _heloGroup;
+    } forEach units _transportGroup;
 
     private _hpad    = "Land_HelipadEmpty_F" createVehicle _lzPos;
     private _side    = side _cargoGroup;
@@ -174,37 +176,39 @@ _startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _s
 
     den_insertUnload = true;
 
-    /*
-     * Create the helo clone over the LZ and send it in the opposite
-     * direction of the objective.
-     */
-    private _cloneDestPos = _lzPos getPos [2000, (_zonePos getDir _lzPos)];
-    _cloneDestPos set [2, 250];
+    if (_transport isKindOf "Helicopter") then {
+        /*
+         * Create the transport clone over the LZ and send it in the opposite
+         * direction of the objective.
+         */
+        private _cloneDestPos = _lzPos getPos [2000, (_zonePos getDir _lzPos)];
+        _cloneDestPos set [2, 250];
 
-    private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
-    private _heloCloneVehicle = [_heloClonePos, _zoneDir, _heloType, _side] call BIS_fnc_spawnVehicle;
-    private _heloClone        = _heloCloneVehicle select 0;
+        private _transportClonePos     = (_hpad modelToWorld [0,0,75]);
+        private _transportCloneVehicle = [_transportClonePos, _zoneDir, _transportType, _side] call BIS_fnc_spawnVehicle;
+        private _transportClone        = _transportCloneVehicle select 0;
 
-    private _cloneCrew  = crew _heloClone;
-    private _cloneGroup = group leader (_cloneCrew select 0);
-    _cloneGroup deleteGroupWhenEmpty true;
+        private _cloneCrew  = crew _transportClone;
+        private _cloneGroup = group leader (_cloneCrew select 0);
+        _cloneGroup deleteGroupWhenEmpty true;
 
-    {
-        _x disableAI "TARGET";
-        _x disableAI "AUTOTARGET";
-    } forEach units _cloneGroup;
+        {
+            _x disableAI "TARGET";
+            _x disableAI "AUTOTARGET";
+        } forEach units _cloneGroup;
 
-    [
-        _cloneGroup,
-        _cloneDestPos,
-        0,
-        "MOVE",
-        "AWARE",
-        "YELLOW",
-        "FULL",
-        "COLUMN",
-        "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
-    ] call CBA_fnc_addWaypoint;
+        [
+            _cloneGroup,
+            _cloneDestPos,
+            0,
+            "MOVE",
+            "AWARE",
+            "YELLOW",
+            "FULL",
+            "COLUMN",
+            "deleteVehicle (vehicle this); { deleteVehicle _x } forEach thisList;"
+        ] call CBA_fnc_addWaypoint;
+    };
 
     sleep 2;
     [["","BLACK IN",3]] remoteExec ["cutText"];

@@ -93,9 +93,9 @@ class CupUsmc : Faction
             heloTransport      = "CUP_B_UH1Y_UNA_USMC";
             heloTransportLarge = "CUP_B_UH1Y_UNA_USMC";
             heloCargo          = "CUP_B_CH53E_USMC";
-            supplyTruckAmmo    = "CUP_B_MTVR_Ammo_USMC";
-            supplyTruck        = "CUP_B_MTVR_USMC";
-            supplyTruckFuel    = "CUP_B_MTVR_Refuel_USMC";
+            truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
+            truckSupplyCargo   = "CUP_B_MTVR_USMC";
+            truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};

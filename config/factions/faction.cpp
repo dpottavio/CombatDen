@@ -15,6 +15,9 @@
 
 class Faction
 {
+    flagTexture  = "a3\data_f\flags\flag_rcrystal_co.paa";
+    fullMoonOnly = 0;
+
     class Arsenal
     {
         class Base
@@ -276,6 +279,131 @@ class Faction
         };
     };
 
+    class ArsenalGmWest : Arsenal
+    {
+       class Base : Base
+        {
+            aceAttachments[] = {};
+            aceBinoculars[]  = {};
+            aceGrenades[]    = {};
+            aceGps[]         = {};
+            aceMisc[]        = {};
+            aceNvg[]         = {};
+
+            attachments[] = {};
+            nvg[]         = {};
+            gps[]         = {};
+            faceware[]    = {};
+
+            binoculars[] = {
+                "gm_ferod16_oli"
+            };
+
+            grenades[] = {
+                "gm_handgrenade_conc_dm51",
+                "gm_handgrenade_conc_dm51a1",
+                "gm_handgrenade_frag_dm51",
+                "gm_handgrenade_frag_dm51a1",
+                "gm_smokeshell_red_dm23",
+                "gm_smokeshell_grn_dm21",
+                "gm_smokeshell_yel_dm26",
+                "gm_smokeshell_wht_dm25",
+                "gm_smokeshell_org_dm32"
+            };
+
+            mags[] = {
+                "gm_1Rnd_265mm_flare_para_yel_DM16",
+                "gm_1Rnd_265mm_flare_single_wht_DM15",
+                "gm_1Rnd_265mm_flare_single_red_DM13",
+                "gm_1Rnd_265mm_flare_single_grn_DM11",
+                "gm_1Rnd_265mm_flare_single_yel_DM10",
+                "gm_1Rnd_265mm_flare_multi_wht_DM25",
+                "gm_1Rnd_265mm_flare_multi_red_DM23",
+                "gm_1Rnd_265mm_flare_multi_grn_DM21",
+                "gm_1Rnd_265mm_flare_multi_yel_DM20",
+                "gm_1Rnd_265mm_flare_multi_nbc_DM47",
+                "gm_1Rnd_265mm_smoke_single_yel_DM19",
+                "gm_1Rnd_265mm_smoke_single_org_DM22",
+                "gm_1Rnd_265mm_smoke_single_vlt_DM24",
+                "gm_20Rnd_762x51mm_B_T_DM21_g3_blk",
+                "gm_20Rnd_762x51mm_B_T_DM21A1_g3_blk",
+                "gm_20Rnd_762x51mm_B_T_DM21A2_g3_blk",
+                "gm_20Rnd_762x51mm_B_DM111_g3_blk",
+                "gm_20Rnd_762x51mm_B_DM41_g3_blk",
+                "gm_20Rnd_762x51mm_AP_DM151_g3_blk",
+                "gm_1rnd_67mm_heat_dm22a1_g3",
+                "gm_120Rnd_762x51mm_B_T_DM21_mg3_grn",
+                "gm_120Rnd_762x51mm_B_T_DM21A1_mg3_grn",
+                "gm_120Rnd_762x51mm_B_T_DM21A2_mg3_grn",
+                "gm_8Rnd_9x19mm_B_DM11_p1_blk",
+                "gm_8Rnd_9x19mm_B_DM51_p1_blk",
+                "gm_8Rnd_9x18mm_B_pst_pm_blk",
+                "gm_1Rnd_44x537mm_heat_dm32_pzf44_2",
+                "gm_1Rnd_84x245mm_heat_t_DM12_carlgustaf",
+                "gm_1Rnd_84x245mm_heat_t_DM12a1_carlgustaf",
+                "gm_1Rnd_84x245mm_heat_t_DM22_carlgustaf",
+                "gm_1Rnd_84x245mm_heat_t_DM32_carlgustaf",
+                "gm_1Rnd_84x245mm_ILLUM_DM16_carlgustaf"
+            };
+
+            misc[] = {
+                "ItemMap",
+                "ItemRadio",
+                "gm_ge_army_medkit_80",
+                "gm_ge_army_gauzeBandage",
+                "gm_ge_army_gauzeCompress",
+                "gm_ge_army_burnBandage",
+                "gm_watch_kosei_80",
+                "gm_ge_army_conat2"
+            };
+
+            sights[] = {
+                "gm_feroz2x17_pzf44_2_blk",
+                "gm_feroz24_blk"
+            };
+
+            weapons[] = {
+                "gm_g3a3_oli",
+                "gm_g3a3_blk",
+                "gm_g3a3_grn",
+                "gm_g3a4_oli",
+                "gm_g3a4_blk",
+                "gm_g3a4_grn",
+                "gm_mg3_blk",
+                "gm_mp2a1_blk",
+                "gm_pzf44_2_oli",
+                "gm_pzf84_oli"
+            };
+            backpacks[] = {
+                "gm_dk_army_backpack_73_oli",
+                "gm_ge_army_backpack_80_oli"
+            };
+        };
+
+        class SemiArid : Base {};
+        class Tropic   : Base {};
+        class Arid     : Base
+        {
+            mags[] += {
+                "gm_20Rnd_762x51mm_B_T_DM21_g3_des",
+                "gm_20Rnd_762x51mm_B_T_DM21A1_g3_des",
+                "gm_20Rnd_762x51mm_B_T_DM21A2_g3_des",
+                "gm_20Rnd_762x51mm_B_DM111_g3_des",
+                "gm_20Rnd_762x51mm_B_DM41_g3_des",
+                "gm_20Rnd_762x51mm_AP_DM151_g3_des"
+            };
+
+            weapons[] += {
+                "gm_g3a3_des",
+                "gm_g3a4_des",
+                "gm_mg3_des",
+                "gm_pzf44_2_des",
+                "gm_pzf84_des"
+            };
+        };
+        class Wood : Base {};
+    };
+
     class Group
     {
         class Base
@@ -508,6 +636,60 @@ class Faction
                   "FirstAidKit",
                   "FirstAidKit",
                   "FirstAidKit"
+                };
+            };
+
+            class GmWestBackpack : BackPack
+            {
+                noAceItems[] = {
+                    "gm_ge_army_gauzeBandage",
+                    "gm_ge_army_gauzeBandage",
+                    "gm_ge_army_gauzeBandage",
+                    "gm_ge_army_gauzeBandage",
+                };
+            };
+
+            class GmWestMedicBackpack : MedicBackpack
+            {
+                noAceItems[] = {
+                  "gm_ge_army_medkit_80",
+                  "gm_ge_army_gauzeBandage",
+                  "gm_ge_army_gauzeBandage",
+                  "gm_ge_army_gauzeBandage",
+                  "gm_ge_army_gauzeBandage",
+                  "gm_ge_army_gauzeBandage",
+                  "gm_ge_army_gauzeBandage",
+                  "gm_ge_army_burnBandage",
+                  "gm_ge_army_burnBandage",
+                  "gm_ge_army_gauzeCompress",
+                  "gm_ge_army_gauzeCompress"
+                };
+            };
+
+            class GmEastBackpack : BackPack
+            {
+                noAceItems[] = {
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage"
+                };
+            };
+
+            class GmEastMedicBackpack : MedicBackpack
+            {
+                noAceItems[] = {
+                  "gm_gc_army_medkit",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage",
+                  "gm_gc_army_gauzeBandage"
                 };
             };
         };

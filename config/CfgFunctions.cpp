@@ -25,6 +25,7 @@ class CfgFunctions
             class diaryHelp {};
             class extract {};
             class factionSide {};
+            class fullMoonDate {};
             class hostage {};
             class initPlayer {};
             class insert {};
@@ -39,7 +40,7 @@ class CfgFunctions
             class sideChat {};
             class sling {};
             class spawnGroup {};
-            class spawnHeloTransport {};
+            class spawnTransport {};
             class spawnRoadblock {};
             class spawnVehicle {};
             class taskFsm {};

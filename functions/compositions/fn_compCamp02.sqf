@@ -24,7 +24,8 @@
 
 params [
     ["_pos", [], [[]], [2,3]],
-    ["_dir", 0,  [0]]
+    ["_dir", 0,  [0]],
+    ["_faction", "",   [""]]
 ];
 
 if (_pos isEqualTo []) exitWith {
@@ -42,9 +43,7 @@ if (_climate == "Tropic" || _climate == "Wood") then {
 private _objs = [
 	["CamoNet_BLUFOR_open_F",[-0.736328,-0.354492,0],0,1,0,[],"net_1","",true,false],
 	["Land_CampingTable_small_F",[0.363037,2.01782,0.00259924],0.00417018,1,0,[],"","",true,false],
-	["Land_PortableLongRangeRadio_F",[0.620361,1.86938,0.813],359.978,1,0,[],"","",true,false],
 	["Land_Map_blank_F",[0.236938,2.06641,0.813],359.998,1,0,[],"","",true,false],
-	["Land_PortableLongRangeRadio_F",[0.66748,2.09155,0.813],359.985,1,0,[],"","",true,false],
 	["Land_FMradio_F",[0.695068,2.21753,0.813],0.0186814,1,0,[],"","",true,false],
 	["BloodPool_01_Large_New_F",[-2.005,-1.48389,0],0,1,0,[],"","",true,false],
 	["Land_CampingChair_V2_F",[2.16345,1.68433,9.05991e-006],0.00596005,1,0,[],"","",true,false],
@@ -65,3 +64,13 @@ private _objs = [
 ];
 
 [_pos, _dir, _objs] call BIS_fnc_objectsMapper;
+
+if (_faction == "" || ((_faction find "Gm") != 0)) then {
+    // Create contemporary objects if the faction is not GM related.
+    private _contemporaryObjs = [
+        ["Land_PortableLongRangeRadio_F",[0.620361,1.86938,0.813],359.978,1,0,[],"","",true,false],
+        ["Land_PortableLongRangeRadio_F",[0.66748,2.09155,0.813],359.985,1,0,[],"","",true,false]
+    ];
+
+    [_pos, _dir, _contemporaryObjs] call BIS_fnc_objectsMapper;
+};

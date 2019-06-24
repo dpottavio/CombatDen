@@ -45,6 +45,12 @@ class CfgFactions
 #include "factions\cupTakistanMilitia.cpp"
 #include "factions\cupUsmc.cpp"
 /*
+ * GM Factions
+ */
+#include "factions\gmDenmark.cpp"
+#include "factions\gmEastGermany.cpp"
+#include "factions\gmWestGermany.cpp"
+/*
  * LOP Factions
  */
 #include "factions\lopChDkz.cpp"
@@ -63,78 +69,83 @@ class CfgFactions
      */
     class SemiArid
     {
+        class CfpAlQaeda    : CfpAlQaeda {};
+        class CfpHamas      : CfpHamas {};
+        class CfpHezbollah  : CfpHezbollah {};
+        class CfpIsis       : CfpIsis {};
+        class Csat          : Csat {};
         class CupBaf        : CupBaf {};
         class CupBundeswehr : CupBundeswehr {};
+        class CupRussia     : CupRussia {};
         class CupUsmc       : CupUsmc {};
+        class Fia           : Fia {};
+        class GmEastGermany : GmEastGermany {};
+        class GmWestGermany : GmWestGermany {};
+        class LopGuerrilla  : LopGuerrilla {};
+        class LopInsurgent  : LopInsurgent {};
         class Nato          : Nato {};
+        class RhsRussia     : RhsRussia {};
         class RhsUsmc       : RhsUsmc {};
         class Uk3CbBaf      : Uk3CbBaf {};
-
-
-        class CfpAlQaeda   : CfpAlQaeda {};
-        class CfpHamas     : CfpHamas {};
-        class CfpHezbollah : CfpHezbollah {};
-        class CfpIsis      : CfpIsis {};
-        class Csat         : Csat {};
-        class CupRussia    : CupRussia {};
-        class Fia          : Fia {};
-        class LopGuerrilla : LopGuerrilla {};
-        class LopInsurgent : LopInsurgent {};
-        class RhsRussia    : RhsRussia {};
     };
     class Arid
     {
-        class CupBaf        : CupBaf {};
-        class CupBundeswehr : CupBundeswehr {};
-        class CupUsmc       : CupUsmc {};
-        class Nato          : Nato {};
-        class RhsUsmc       : RhsUsmc {};
-        class Uk3CbBaf      : Uk3CbBaf {};
-
-        class Csat               : Csat {};
         class CfpAlQaeda         : CfpAlQaeda {};
         class CfpIsis            : CfpIsis {};
+        class Csat               : Csat {};
+        class CupBaf             : CupBaf {};
+        class CupBundeswehr      : CupBundeswehr {};
         class CupRussia          : CupRussia {};
         class CupTakistan        : CupTakistan {};
         class CupTakistanMilitia : CupTakistanMilitia {};
+        class CupUsmc            : CupUsmc {};
         class Fia                : Fia {};
+        class GmEastGermany      : GmEastGermany {};
+        class GmWestGermany      : GmWestGermany {};
         class LopIsis            : LopIsis {};
         class LopTakistan        : LopTakistan {};
+        class Nato               : Nato {};
         class RhsRussia          : RhsRussia {};
+        class RhsUsmc            : RhsUsmc {};
+        class Uk3CbBaf           : Uk3CbBaf {};
     };
     class Tropic
     {
+        class CfpAlShabaab  : CfpAlShabaab {};
+        class CfpBokoHaram  : CfpBokoHaram {};
+        class CfpGuerrilla  : CfpGuerrilla {};
+        class Csat          : Csat {};
         class CupBaf        : CupBaf {};
         class CupBundeswehr : CupBundeswehr {};
+        class CupRussia     : CupRussia {};
         class CupUsmc       : CupUsmc {};
+        class GmDenmark     : GmDenMark {};
+        class GmEastGermany : GmEastGermany {};
+        class GmWestGermany : GmWestGermany {};
+        class LopGuerrilla  : LopGuerrilla {};
+        class LopInsurgent  : LopInsurgent {};
         class Nato          : Nato {};
+        class RhsRussia     : RhsRussia {};
         class RhsUsmc       : RhsUsmc {};
+        class Syndikat      : Syndikat {};
         class Uk3CbBaf      : Uk3CbBaf {};
-
-        class CfpAlShabaab : CfpAlShabaab {};
-        class CfpBokoHaram : CfpBokoHaram {};
-        class CfpGuerrilla : CfpGuerrilla {};
-        class Csat         : Csat {};
-        class CupRussia    : CupRussia {};
-        class LopGuerrilla : LopGuerrilla {};
-        class LopInsurgent : LopInsurgent {};
-        class RhsRussia    : RhsRussia {};
-        class Syndikat     : Syndikat {};
     };
     class Wood
     {
+        class Csat          : Csat {};
         class CupBaf        : CupBaf {};
         class CupBundeswehr : CupBundeswehr {};
+        class CupChDkz      : CupChDkz {};
+        class CupRussia     : CupRussia {};
         class CupUsmc       : CupUsmc {};
+        class GmDenmark     : GmDenmark {};
+        class GmEastGermany : GmEastGermany {};
+        class GmWestGermany : GmWestGermany {};
+        class LopChDkz      : LopChDkz {};
+        class LopNovo       : LopNovo {};
         class Nato          : Nato {};
+        class RhsRussia     : RhsRussia {};
         class RhsUsmc       : RhsUsmc {};
         class Uk3CbBaf      : Uk3CbBaf {};
-
-        class Csat      : Csat {};
-        class CupChDkz  : CupChDkz {};
-        class CupRussia : CupRussia {};
-        class LopChDkz  : LopChDkz {};
-        class LopNovo   : LopNovo {};
-        class RhsRussia : RhsRussia {};
     };
 };

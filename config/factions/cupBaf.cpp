@@ -58,9 +58,9 @@ class CupBaf : Faction
             heloTransport      = "CUP_B_AW159_Unarmed_GB";
             heloTransportLarge = "CUP_B_SA330_Puma_HC1_BAF";
             heloCargo          = "CUP_B_Merlin_HC3A_GB";
-            supplyTruckAmmo    = "CUP_B_MTVR_Ammo_USMC";
-            supplyTruck        = "CUP_B_MTVR_USMC";
-            supplyTruckFuel    = "CUP_B_MTVR_Refuel_USMC";
+            truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
+            truckSupplyCargo   = "CUP_B_MTVR_USMC";
+            truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};

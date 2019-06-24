@@ -43,6 +43,6 @@ switch (toLower worldName) do {
     };
 };
 
-setDate [_year, _month, _day, _hour, 0];
+[[_year, _month, _day, _hour, 0]] remoteExec ["setDate"];
 
 [_hour, _month];

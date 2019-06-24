@@ -110,7 +110,7 @@ private _patrolPos       = _zoneSafePosList select 4;
  * camp
  */
 private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Camp"]);
-[_campPos] call compile (format["_this call %1;", getText _compFunc]);
+[_campPos, 0, _enemyFaction] call compile (format["_this call %1;", getText _compFunc]);
 
 createMarker ["campMarker", _campPos];
 "campMarker" setMarkerType "mil_objective";
@@ -198,8 +198,8 @@ private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spa
  * trigger "den_intelFound".
  */
 private _searchItems = nearestObjects [_campPos, ["Thing"], 10];
-if (_searchItems isEqualTo []) exitWith {
-    "";
+if (_searchItems isEqualTo []) then {
+    _searchItems = ["Land_HelipadEmpty_F" createVehicle _campPos];
 };
 
 den_searchItem = selectRandom (_searchItems);

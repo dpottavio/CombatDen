@@ -171,9 +171,9 @@ class CupRussia : Faction
             heloTransportLarge = "CUP_O_Mi8_medevac_RU";
             // Using vanilla helo because RHS Russia variant cannot sling load the container.
             heloCargo          = "B_Heli_Transport_03_F";
-            supplyTruckAmmo    = "CUP_O_Ural_Reammo_RU";
-            supplyTruck        = "CUP_O_Ural_RU";
-            supplyTruckFuel    = "CUP_O_Ural_Refuel_RU";
+            truckSupplyAmmo    = "CUP_O_Ural_Reammo_RU";
+            truckSupplyCargo   = "CUP_O_Ural_RU";
+            truckSupplyFuel    = "CUP_O_Ural_Refuel_RU";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};

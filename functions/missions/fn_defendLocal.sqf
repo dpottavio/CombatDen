@@ -18,7 +18,7 @@
 
 params [
     ["_zone",            "",      [""]],
-    ["_helo",            objNull, [objNull]],
+    ["_transport",       objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]]
 ];
@@ -28,7 +28,7 @@ if (_zone == "") exitWith {
     false;
 };
 
-if (isNull _helo && !didJIP) exitWith {
+if (isNull _transport && !didJIP) exitWith {
     ERROR("helo parameter is  empty");
     false;
 };
@@ -49,7 +49,7 @@ private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _e
 private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[_side, "boardInsert",  "BoardInsert",  _helo,           "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "boardInsert",  "BoardInsert",  _transport,      "CREATED", 1, true, "getin"],  "den_insert"],
     [[_side, "reachConvoy",  "ReachConvoy",  "convoyMarker",  "CREATED", 1, true, "move"],   "den_convoyReached"],
     [[_side, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
 ];
