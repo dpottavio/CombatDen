@@ -56,12 +56,12 @@ if (_enemyFaction == "") exitWith {
     "";
 };
 
-private _zoneRadius = 500;
+private _zoneRadius = 700;
 private _minLz      = 100;
 private _maxLz      = 250;
-private _maxConvoy  = _zoneRadius * 0.5;
-private _minAssault = _zoneRadius;
-private _maxAssault = _zoneRadius + 250;
+private _maxConvoy  = _zoneRadius * 0.25;
+private _minAssault = _zoneRadius * 0.75;
+private _maxAssault = _zoneRadius;
 
 private _safePosParams = [
     [_minLz,       _maxLz,     15, 0.1, 0], // insert safe position
