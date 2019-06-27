@@ -11,12 +11,13 @@
 
 class CupTakistan : Faction
 {
-    addOn       = "CUP";
-    ammoBox     = "CUP_RUBasicAmmunitionBox";
-    cargoBox    = "CargoNet_01_box_F";
-    flagTexture = "ca\ca_e\data\flag_tka_co.paa";
-    name        = "Takistan";
-    side        = SIDE_OPFOR;
+    addOn        = "CUP";
+    ammoBox      = "CUP_RUBasicAmmunitionBox";
+    cargoBox     = "CargoNet_01_box_F";
+    flagTexture  = "ca\ca_e\data\flag_tka_co.paa";
+    fullMoonOnly = 1;
+    name         = "Takistan";
+    side         = SIDE_OPFOR;
 
     class Arsenal : Arsenal
     {

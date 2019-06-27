@@ -11,12 +11,13 @@
 
 class LopTakistan : Faction
 {
-    addOn       = "LOP";
-    ammoBox     = "rhs_7ya37_1_single";
-    cargoBox    = "CargoNet_01_box_F";
-    flagTexture = "po_main\data\ui\flags\flag_tak_co.paa";
-    name        = "Takistan";
-    side        = SIDE_OPFOR;
+    addOn        = "LOP";
+    ammoBox      = "rhs_7ya37_1_single";
+    cargoBox     = "CargoNet_01_box_F";
+    flagTexture  = "po_main\data\ui\flags\flag_tak_co.paa";
+    fullMoonOnly = 1;
+    name         = "Takistan";
+    side         = SIDE_OPFOR;
 
     class Arsenal : Arsenal
     {
