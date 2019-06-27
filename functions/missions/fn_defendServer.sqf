@@ -118,6 +118,7 @@ private _i = 0;
     private _v = _type createVehicle _vpos;
     _v setDir _convoyDir;
     _v setDamage 0.80;
+    _v setVehicleLock "LOCKED";
 
     private _gpos = _vpos getPos [5, _convoyDir + 90];
     private _g = [_gpos, _friendlyFaction, "TruckCrew"] call den_fnc_spawnGroup;
