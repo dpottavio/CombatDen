@@ -57,8 +57,8 @@ if (_enemyFaction == "") exitWith {
  * max radius for AO objects
  */
 private _zoneRadius   = 400;
-private _minLz        = _zoneRadius + 500;
-private _maxLz        = _zoneRadius + 550;
+private _minLz        = _zoneRadius + 300;
+private _maxLz        = _zoneRadius + 350;
 private _maxBunker    = _zoneRadius * 0.8;
 private _maxReact     = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol    = _zoneRadius * 0.75; // patrol force

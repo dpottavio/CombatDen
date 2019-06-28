@@ -56,12 +56,12 @@ if (_enemyFaction == "") exitWith {
     "";
 };
 
-private _zoneRadius   = 500;
 /*
  * max radius for AO objects
  */
-private _minLz        = _zoneRadius + 500;
-private _maxLz        = _zoneRadius + 550;
+private _zoneRadius   = 400;
+private _minLz        = _zoneRadius + 300;
+private _maxLz        = _zoneRadius + 350;
 private _minReinforce = _minLz;
 private _maxReinforce = _maxLz;
 private _maxHostage   = _zoneRadius * 0.25;
