@@ -232,14 +232,41 @@ publicVariable "den_searchItem";
     [_lzPos, _enemyFaction, "ReconTeam"] call den_fnc_spawnGroup;
 };
 
-private _activation      = "[""den_campSeized""] call den_fnc_publicBool";
+/*
+ * This trigger activation sets the task state to campSeized and starts the mortar
+ * fire sequence. If the mortar fire sequence completes and intelFound is not set,
+ * fail the mission with intelDestroyed.
+ */
+private _activationCode  = {
+    params ["_enemyFaction"];
+
+    ["den_campSeized"] call den_fnc_publicBool;
+
+    [
+        getMarkerPos "campMarker",
+        _enemyFaction,
+        {
+            if (isNil "den_intelFound") then {
+                ["den_intelDestroyed"] call den_fnc_publicBool;
+            };
+        }
+    ] call den_fnc_mortarFire;
+};
+private _activationStr = "\
+private _activationArgs = thisTrigger getVariable ""activationArgs"";\
+private _activationCode = thisTrigger getVariable ""activationCode"";\
+[_activationArgs] call _activationCode;
+";
+
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 private _activatedBy     = format["%1", _friendlySideStr];
 
-private _trigger = createTrigger ["EmptyDetector", _campPos];
+private _trigger = createTrigger ["EmptyDetector",  _campPos];
+_trigger setVariable             ["activationArgs", _enemyFaction];
+_trigger setVariable             ["activationCode", _activationCode];
 _trigger setTriggerArea          [25, 25, 0, false, 10];
 _trigger setTriggerActivation    [_activatedBy, "PRESENT", false];
-_trigger setTriggerStatements    ["this", _activation, ""];
+_trigger setTriggerStatements    ["this", _activationStr, ""];
 
 private _infMarkerPos = _campPos getPos [100, (_campPos getDir _lzPos)];
 

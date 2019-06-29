@@ -53,4 +53,10 @@ class CfgDebriefing
         subtitle = "Civilian Killed";
         description = "Civilian killed by friendly forces.";
     };
+    class IntelDestroyed
+    {
+        title = "Mission Failed";
+        subtitle = "Intel Destroyed";
+        description = "The enemy intel was destroyed.";
+    };
 };

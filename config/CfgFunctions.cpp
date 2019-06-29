@@ -32,6 +32,7 @@ class CfgFunctions
             class loadout {};
             class lowDaylight {};
             class mpEndMission {};
+            class mortarFire {};
             class opforFactions {};
             class publicBool {};
             class randTime {};
