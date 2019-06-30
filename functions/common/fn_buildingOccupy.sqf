@@ -39,6 +39,9 @@ if (_buildingList isEqualTo []) exitWith {
 
 _buildingList call BIS_fnc_arrayShuffle;
 
+private _units     = [];
+private _positions = [];
+
 {
     if (_max == 0) exitWith{};
 
@@ -49,8 +52,18 @@ _buildingList call BIS_fnc_arrayShuffle;
         private _wp = [_group, _x, 0, "SCRIPTED", "AWARE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
         _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 
+        {
+            _units pushBack _x;
+        } forEach units _group;
+
+        _positions pushBack _pos;
+
         _max = _max - 1;
     };
 } forEach _buildingList;
+
+if ((count _positions) > 1) then {
+    [_units, _positions] call den_fnc_intelPositions;
+};
 
 true;

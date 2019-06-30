@@ -29,6 +29,7 @@ class CfgFunctions
             class hostage {};
             class initPlayer {};
             class insert {};
+            class intelPositions {};
             class loadout {};
             class lowDaylight {};
             class mpEndMission {};

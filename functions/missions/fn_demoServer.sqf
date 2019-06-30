@@ -162,6 +162,9 @@ _buildingList call BIS_fnc_arrayShuffle;
 // for debugging
 den_crates = [];
 
+private _guardUnits     = [];
+private _cratePositions = [];
+
 private _guardGroupCount = 0;
 {
     private _building = _x;
@@ -188,12 +191,13 @@ private _guardGroupCount = 0;
         private _crate = _ammoCrate createVehicle _cratePos;
         _crate addEventHandler ["killed", {
             den_crateDestroyCount = den_crateDestroyCount + 1;
-            if ((isNil "den_ordnancesDestroyed") && ((den_crateDestroyCount / den_crateCount) >= 0.70)) then {
+            if ((isNil "den_ordnancesDestroyed") && (den_crateDestroyCount == den_crateCount)) then {
                 ["den_ordnancesDestroyed"] call den_fnc_publicBool;
             };
         }];
         den_crateCount = den_crateCount + 1;
         den_crates pushBack _crate;
+        _cratePositions pushBack (getPos _crate);
     };
 
     if ((_guardGroupCount < _maxGuardGroups) && !(_guardPos isEqualTo [0,0])) then {
@@ -211,11 +215,18 @@ private _guardGroupCount = 0;
         ] call CBA_fnc_addWaypoint;
 
         _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+
+        {
+            _guardUnits pushBack _x;
+        } forEach units _group;
+
         _guardGroupCount = _guardGroupCount + 1;
     };
 
     if (den_crateCount == _maxCrates) exitWith {};
 } forEach _buildingList;
+
+[_guardUnits, _cratePositions, _enemyFaction] call den_fnc_intelPositions;
 
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
