@@ -44,7 +44,7 @@ if (_slotId < 0) then {
     ERROR("slot id is invalid");
 };
 
-_unit disableAI "MOVE";
+_unit disableAI "ALL";
 _unit setVariable ["den_role", _role];
 _unit setVariable ["den_slotId", _slotId];
 removeSwitchableUnit _unit;
