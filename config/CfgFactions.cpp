@@ -148,4 +148,10 @@ class CfgFactions
         class RhsUsmc       : RhsUsmc {};
         class Uk3CbBaf      : Uk3CbBaf {};
     };
+    class Winter
+    {
+        class GmDenmark     : GmDenmark {};
+        class GmEastGermany : GmEastGermany {};
+        class GmWestGermany : GmWestGermany {};
+    };
 };

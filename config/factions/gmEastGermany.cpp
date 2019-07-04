@@ -112,6 +112,7 @@ class GmEastGermany : Faction
         class Tropic   : Base {};
         class Arid     : Base {};
         class Wood     : Base {};
+        class Winter   : Base {};
     };
 
     class Vehicle
@@ -132,7 +133,8 @@ class GmEastGermany : Faction
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};
-        class Wood   : Tropic {};
+        class Wood   : SemiArid {};
+        class Winter : SemiArid {};
     };
 
     class Group : Group
@@ -563,6 +565,173 @@ class GmEastGermany : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
                 class Unit8 : Unit8 {};
+            };
+        };
+        class Winter
+        {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class Sentry : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class FireTeam : Team
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_machinegunner_lmgrpk_80_win";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "gm_gc_army_antitank_mpiak74n_rpg7_80_win";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class AssaultSquad : Squad
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_squadleader_mpiak74n_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_machinegunner_lmgrpk_80_win";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "gm_gc_army_machinegunner_assistant_mpiak74n_lmgrpk_80_win";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "gm_gc_army_antitank_mpiak74n_rpg7_80_win";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "gm_gc_army_antitank_assistant_mpiak74n_rpg7_80_win";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "gm_gc_army_medic_mpiak74n_80_win";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_brdm2";
+                };
+            };
+            class MotorizedTeam : Triple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_gc_army_brdm2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "gm_gc_army_rifleman_mpiak74n_80_win";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                type = "motorized";
+
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "gm_gc_army_brdm2";
+                };
             };
         };
     };
@@ -1361,6 +1530,213 @@ class GmEastGermany : Faction
                 class Km72 : Km72
                 {
                     class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};

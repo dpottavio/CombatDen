@@ -25,6 +25,7 @@ class GmWestGermany : Faction
         class Tropic   : Tropic {};
         class Arid     : Arid {};
         class Wood     : Wood {};
+        class Winter   : Winter {};
     };
 
     class Vehicle
@@ -45,7 +46,8 @@ class GmWestGermany : Faction
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};
-        class Wood   : Tropic {};
+        class Wood   : SemiArid {};
+        class Winter : SemiArid {};
     };
 
     class Group : Group
@@ -476,6 +478,173 @@ class GmWestGermany : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
                 class Unit8 : Unit8 {};
+            };
+        };
+        class Winter
+        {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class Sentry : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class FireTeam : Team
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_grenadier_g3a3_parka_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_machinegunner_mg3_parka_80_win";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "gm_ge_army_antitank_g3a3_pzf44_parka_80_win";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class AssaultSquad : Squad
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_squadleader_g3a3_p2a1_parka_80_win";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_machinegunner_mg3_parka_80_win";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "gm_ge_army_machinegunner_assistant_g3a3_mg3_parka_80_win";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "gm_ge_army_grenadier_g3a3_parka_80_win";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "gm_ge_army_antitank_g3a3_pzf44_parka_80_win";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "gm_ge_army_antitank_assistant_g3a3_pzf44_parka_80_win";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "gm_ge_army_medic_g3a3_parka_80_win";
+                };
+            };
+            class ReconSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_u1300l_container";
+                };
+            };
+            class MotorizedTeam : Triple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "gm_ge_army_u1300l_cargo_wdl";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                type = "motorized";
+
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "gm_ge_army_u1300l_cargo_wdl";
+                };
             };
         };
     };
@@ -1285,6 +1454,213 @@ class GmWestGermany : Faction
                 class G3A4 : G3A4
                 {
                     class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class G3A3 : G3A3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class G3A3 : G3A3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Mg3 : Mg3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class G3A3 : G3A3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class G3A3 : G3A3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class G3A3 : G3A3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Pzf44 : Pzf44
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pzf84 : Pzf84
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class G3A3 : G3A3
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    headgear = "gm_ge_headgear_m62_cover_win";
+
+                    class Uniform : Uniform
+                    {
+                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};

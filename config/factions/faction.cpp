@@ -401,7 +401,8 @@ class Faction
                 "gm_pzf84_des"
             };
         };
-        class Wood : Base {};
+        class Wood   : Base {};
+        class Winter : Base {};
     };
 
     class Group
