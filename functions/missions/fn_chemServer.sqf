@@ -117,16 +117,21 @@ den_container addEventHandler ["killed", {
     ["den_containerDead"] call den_fnc_publicBool;
 }];
 
-private _secureActivation =
-format["[""den_containerSecure""] call den_fnc_publicBool;[den_container,""%1"",3000] call den_fnc_sling",_friendlyFaction];
-
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
-private _activatedBy     = format["%1", _friendlySideStr];
-private _secureTrigger   = createTrigger ["EmptyDetector", _containerPos, false];
+[
+    _containerPos,
+    [10, 10, 0, false, 10],
+    [_friendlySideStr, "PRESENT", false],
+    nil,
+    [],
+    {
+        params ["", "", "_args"];
+        ["den_containerSecure"] call den_fnc_publicBool;
+        [(_args select 0), (_args select 1), 3000] call den_fnc_sling;
+    },
+    [den_container, _friendlyFaction]
+] call den_fnc_createTrigger;
 
-_secureTrigger setTriggerArea       [10, 10, 0, false, 10];
-_secureTrigger setTriggerActivation [_activatedBy, "PRESENT", false];
-_secureTrigger setTriggerStatements ["this", _secureActivation, ""];
 
 private _extractTrigArea = [
     _zoneArea select 1,
@@ -135,11 +140,22 @@ private _extractTrigArea = [
     _zoneArea select 4,
     _zoneArea param [5, -1]
 ];
-private _extractActivation = "[""den_containerExtract""] call den_fnc_publicBool;";
-private _extractTrigger = createTrigger ["EmptyDetector", _zonePos, false];
-_extractTrigger setTriggerArea          _extractTrigArea;
-_extractTrigger setTriggerActivation    ["LOGIC", "PRESENT", false];
-_extractTrigger setTriggerStatements    ["!(den_container inArea thisTrigger)", _extractActivation, ""];
+
+// Detect if the container was captured.
+[
+    _zonePos,
+    _extractTrigArea,
+    ["LOGIC", "PRESENT", false],
+    {
+        params ["", "_thisTrigger", "", "_args"];
+        private _val = !((_args select 0) inArea _thisTrigger);
+        _val;
+    },
+    [den_container],
+    {
+        ["den_containerExtract"] call den_fnc_publicBool;
+    }
+] call den_fnc_createTrigger;
 
 createMarker ["containerMarker", _containerPos];
 "containerMarker" setMarkerType "mil_objective";

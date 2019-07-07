@@ -138,12 +138,16 @@ createMarker ["convoyMarker", _convoyPos];
 
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
-
-private _activation = "[""den_convoyReached""] call den_fnc_publicBool;";
-private _trigger = createTrigger ["EmptyDetector", _convoyPos, false];
-_trigger setTriggerArea          [20, 20, 0, false, 10];
-_trigger setTriggerActivation    ["ANYPLAYER", "PRESENT", false];
-_trigger setTriggerStatements    ["({ isPlayer _x } count thisList) > 0", _activation, ""];
+[
+    _convoyPos,
+    [5, 5, 0, false, 5],
+    ["ANYPLAYER", "PRESENT", false],
+    nil,
+    [],
+    {
+        ["den_convoyReached"] call den_fnc_publicBool;
+    }
+] call den_fnc_createTrigger;
 
 /*
  * assault waves

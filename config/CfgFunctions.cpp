@@ -22,6 +22,7 @@ class CfgFunctions
             class buildingOccupy {};
             class commandChat {};
             class createPlayerUnit {};
+            class createTrigger {};
             class diaryHelp {};
             class extract {};
             class factionSide {};

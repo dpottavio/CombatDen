@@ -82,12 +82,20 @@ createMarker ["alphaArrowMarker", _arrowPos];
 /*
  * Trigger to start the transport once players approach it.
  */
-private _startHeloTrigger = createTrigger ["EmptyDetector", getPos _transport, false];
-_startHeloTrigger setVariable["transport", _transport];
-private _startActivation = "(thisTrigger getVariable ""transport"") engineOn true";
-_startHeloTrigger setTriggerArea       [10, 10, 0, false];
-_startHeloTrigger setTriggerActivation ["ANYPLAYER", "PRESENT", false];
-_startHeloTrigger setTriggerStatements ["({isPlayer _x} count thisList) > 0", _startActivation, ""];
+[
+    getPos _transport,
+    [10, 10, 0, false],
+    ["ANYPLAYER", "PRESENT", false],
+    {
+        ({isPlayer _x} count thisList) > 0
+    },
+    [],
+    {
+        params ["", "", "_args"];
+        (_args select 0) engineOn true;
+    },
+    [_transport]
+] call den_fnc_createTrigger;
 
 [_lzPos, _cargoGroup, _transport, _zonePos] spawn {
     params ["_lzPos", "_cargoGroup", "_transport", "_zonePos"];
