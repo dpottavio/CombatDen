@@ -66,7 +66,8 @@ private _maxAssault = _zoneRadius;
 private _safePosParams = [
     [_minLz,       _maxLz,     15, 0.1, 0], // insert safe position
     [_minAssault, _maxAssault, 15, 0.1, 0], // assault1 safe position
-    [_minAssault, _maxAssault, 15, 0.1, 0]  // assault2 safe position
+    [_minAssault, _maxAssault, 15, 0.1, 0], // assault2 safe position
+    [_minAssault, _maxAssault, 15, 0.1, 0]  // assault3 safe position
 ];
 
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
@@ -103,6 +104,7 @@ if !(_convoyConnList isEqualTo []) then {
 private _convoyPos  = getPos _convoyRoad;
 private _assaultPos1 = _zoneSafePosList select 1;
 private _assaultPos2 = _zoneSafePosList select 2;
+private _assaultPos3 = _zoneSafePosList select 3;
 
 [_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
 
@@ -152,8 +154,24 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
 /*
  * assault waves
  */
-[_assaultPos1, _assaultPos2, _zoneArea, _enemyFaction, _friendlyFaction, _difficulty] spawn {
-    params ["_assaultPos1", "_assaultPos2", "_zoneArea", "_enemyFaction", "_friendlyFaction", "_difficulty"];
+[
+    _assaultPos1,
+    _assaultPos2,
+    _assaultPos3,
+    _zoneArea,
+    _enemyFaction,
+    _friendlyFaction,
+    _difficulty] spawn {
+
+    params [
+        "_assaultPos1",
+        "_assaultPos2",
+        "_assaultPos3",
+        "_zoneArea",
+        "_enemyFaction",
+        "_friendlyFaction",
+        "_difficulty"
+    ];
 
     // wait for player insert before staring wave attacks
     while {true} do {
@@ -166,25 +184,25 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
     private _reinforceArgs = [
         [_assaultPos1, "MotorizedAssault"],
         [_assaultPos2, "AssaultSquad"],
-        [_assaultPos1, "AssaultSquad"]
+        [_assaultPos3, "AssaultSquad"]
     ];
     switch (_difficulty) do {
         case 1: {
             _reinforceArgs = [
                 [_assaultPos1, "MotorizedAssault"],
                 [_assaultPos2, "AssaultSquad"],
-                [_assaultPos1, "MotorizedAssault"],
-                [_assaultPos2, "AssaultSquad"]
+                [_assaultPos3, "MotorizedAssault"],
+                [_assaultPos1, "AssaultSquad"]
             ];
         };
         case 2: {
             _reinforceArgs = [
                 [_assaultPos1, "MotorizedAssault"],
                 [_assaultPos2, "AssaultSquad"],
-                [_assaultPos1, "MotorizedSquad"],
-                [_assaultPos2, "AssaultSquad"],
+                [_assaultPos3, "MotorizedSquad"],
+                [_assaultPos1, "AssaultSquad"],
                 [_assaultPos2, "MotorizedSquad"],
-                [_assaultPos2, "AssaultSquad"]
+                [_assaultPos3, "AssaultSquad"]
             ];
         };
     };
