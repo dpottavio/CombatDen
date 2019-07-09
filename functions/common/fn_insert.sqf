@@ -86,9 +86,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
     getPos _transport,
     [10, 10, 0, false],
     ["ANYPLAYER", "PRESENT", false],
-    {
-        ({isPlayer _x} count thisList) > 0
-    },
+    nil,
     [],
     {
         params ["", "", "_args"];
