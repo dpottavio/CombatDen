@@ -60,8 +60,8 @@ private _zoneRadius = 350;
 /*
  * max radius for AO objects
  */
-private _minLz      = _zoneRadius + 450;
-private _maxLz      = _zoneRadius + 500;
+private _minLz      = _zoneRadius + 300;
+private _maxLz      = _zoneRadius + 350;
 private _maxCamp    = _zoneRadius * 0.25; // garrison
 private _maxReact   = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol  = _zoneRadius * 0.75; // patrol force
