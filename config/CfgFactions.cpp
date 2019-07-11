@@ -150,8 +150,18 @@ class CfgFactions
     };
     class Winter
     {
+        class CupBaf        : CupBaf {};
+        class CupBundeswehr : CupBundeswehr {};
+        class CupChDkz      : CupChDkz {};
+        class CupRussia     : CupRussia {};
+        class CupUsmc       : CupUsmc {};
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class LopChDkz      : LopChDkz {};
+        class LopNovo       : LopNovo {};
+        class RhsRussia     : RhsRussia {};
+        class RhsUsmc       : RhsUsmc {};
+        class Uk3CbBaf      : Uk3CbBaf {};
     };
 };

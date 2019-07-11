@@ -192,6 +192,18 @@ class Uk3cbBaf : Faction
         };
         class Tropic   : Base {};
         class Wood     : Base {};
+        class Winter   : Base
+        {
+            uk3CbBafBackpacks[] = {
+                "UK3CB_BAF_B_Kitbag_Arctic",
+                "UK3CB_BAF_B_Bergen_Arctic_Rifleman_A",
+                "UK3CB_BAF_B_Bergen_Arctic_Rifleman_B",
+                "UK3CB_BAF_B_Carryall_Arctic"
+            };
+            uk3CbBafVest[] = {
+                "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+            };
+        };
     };
 
     class Vehicle
@@ -214,6 +226,7 @@ class Uk3cbBaf : Faction
         };
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
+        class Winter  : SemiArid {};
     };
 
 
@@ -698,6 +711,213 @@ class Uk3cbBaf : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
                 class Unit8 : Unit8 {};
+            };
+        };
+        class Winter
+        {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_HeliCrew_Arctic_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_HeliCrew_Arctic_RM";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_HeliPilot_RAF_MTP";
+                };
+            };
+             class Sentry : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+            };
+            class FireTeam : Team
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_FT_Arctic_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_MGLMG_Arctic_RM";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "UK3CB_BAF_LAT_ILAW_Arctic_RM";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+            };
+            class AssaultSquad : Squad
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_FT_Arctic_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_MGLMG_Arctic_RM";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "UK3CB_BAF_MGLMG_Arctic_RM";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "UK3CB_BAF_Grenadier_Arctic_RM";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "UK3CB_BAF_LAT_ILAW_Arctic_RM";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "UK3CB_BAF_LAT_ILAW_Arctic_RM";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "UK3CB_BAF_Medic_Arctic_RM";
+                };
+            };
+            class ReconSquad : Squad
+            {
+                nvg = UK3CB_BAF_NVG;
+
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_SC_Arctic_BPT_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_MGLMG_Arctic_BPT_RM";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "UK3CB_BAF_MGLMG_Arctic_BPT_RM";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "UK3CB_BAF_Pointman_Arctic_BPT_RM";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "UK3CB_BAF_Pointman_Arctic_BPT_RM";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "UK3CB_BAF_Pointman_Arctic_BPT_RM";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "UK3CB_BAF_Pointman_Arctic_BPT_RM";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "UK3CB_BAF_Medic_Arctic_BPT_RM";
+                };
+            };
+            class ReconTeam : Team
+            {
+                nvg = UK3CB_BAF_NVG;
+
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_SC_Arctic_BPT_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_MGLMG_Arctic_BPT_RM";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "UK3CB_BAF_Pointman_Arctic_BPT_RM";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "UK3CB_BAF_Pointman_Arctic_BPT_RM";
+                };
+            };
+            class MotorizedHmg : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_Jackal2_L2A1_W_MTP_RM";
+                };
+            };
+            class MotorizedTeam : Triple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "UK3CB_BAF_Jackal2_L2A1_W_Arctic_RM";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "UK3CB_BAF_Rifleman_Arctic_RM";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                type = "motorized";
+
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "UK3CB_BAF_Jackal2_L2A1_W_MTP_RM";
+                };
             };
         };
     };
@@ -1328,6 +1548,195 @@ class Uk3cbBaf : Faction
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class L85 : L85
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class L85 : L85
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class LnMini : LnMini
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class L85 : L85
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class L129 : L129
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class L85 : L85
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Ilaw : Ilaw
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Nlaw : Nlaw
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class L85 : L85
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
