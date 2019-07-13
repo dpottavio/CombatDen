@@ -206,9 +206,12 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
             ];
         };
     };
+
+    private _randomReinforceArgs = _reinforceArgs call BIS_fnc_arrayShuffle;
+
     [
         _zoneArea,
-        _reinforceArgs,
+        _randomReinforceArgs,
         _enemyFaction,
         _friendlyFaction,
         {den_spawnDone = true},
