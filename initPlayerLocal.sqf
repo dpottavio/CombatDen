@@ -153,7 +153,7 @@ if (_role == "SquadLeader") then {
                 params ["_unit", ""];
 
                 if (isNil "den_insert") then {
-                    _unit disableAI "MOVE";
+                    _unit disableAI "ALL";
                 };
                 _unit removeEventHandler ["Local", _thisEventHandler];
             }];

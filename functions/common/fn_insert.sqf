@@ -170,7 +170,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
         };
 
         [_x, _pos, _zoneDir] remoteExecCall ["den_fnc_teleport", _x];
-        [_x, "MOVE"] remoteExecCall ["enableAI", _x];
+        [_x, "ALL"] remoteExecCall ["enableAI", _x];
     } forEach _cargoUnits;
 
     if (isMultiplayer) then {
