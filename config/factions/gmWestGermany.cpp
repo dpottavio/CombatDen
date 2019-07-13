@@ -1013,7 +1013,6 @@ class GmWestGermany : Faction
 
                 class Pzf44 : AtBase
                 {
-                    default           = 1;
                     type              = "PZF44";
                     launcher          = "gm_pzf44_2_oli";
                     secondaryMag      = "gm_1Rnd_44x537mm_heat_dm32_pzf44_2";
@@ -1026,6 +1025,7 @@ class GmWestGermany : Faction
                 };
                 class Pzf84 : AtBase
                 {
+                    default           = 1;
                     type              = "PZF84";
                     launcher          = "gm_pzf84_oli";
                     secondaryMag      = "gm_1Rnd_84x245mm_heat_t_DM12_carlgustaf";
