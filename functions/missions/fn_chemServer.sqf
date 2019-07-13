@@ -143,7 +143,7 @@ private _extractTrigArea = [
 
 // Detect if the container was captured.
 [
-    _zonePos,
+    _containerPos,
     _extractTrigArea,
     ["LOGIC", "PRESENT", false],
     {
