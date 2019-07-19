@@ -94,4 +94,10 @@ class CfgBlacklist
             "Hill_Vieja"
         };
     };
+    class lythium
+    {
+        locations[] = {
+            "morar"
+        };
+    };
 };
