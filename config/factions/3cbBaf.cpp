@@ -201,7 +201,7 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_B_Carryall_Arctic"
             };
             uk3CbBafVest[] = {
-                "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter"
             };
         };
     };

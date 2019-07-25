@@ -63,7 +63,7 @@ private _positions = [];
 } forEach _buildingList;
 
 if ((count _positions) > 1) then {
-    [_units, _positions] call den_fnc_intelPositions;
+    [_units, _positions, _faction] call den_fnc_intelPositions;
 };
 
 true;
