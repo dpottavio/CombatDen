@@ -140,6 +140,8 @@ createMarker ["alphaArrowMarker", _arrowPos];
     private _transportGroup = group leader driver _transport;
     _transportGroup deleteGroupWhenEmpty true;
 
+    private _isHeloType = _transport isKindOf "Helicopter";
+
     deleteVehicle _transport;
     {
         deleteVehicle _x;
@@ -182,7 +184,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
 
     den_insertUnload = true;
 
-    if (_transport isKindOf "Helicopter") then {
+    if (_isHeloType) then {
         /*
          * Create the transport clone over the LZ and send it in the opposite
          * direction of the objective.
