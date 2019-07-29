@@ -19,10 +19,10 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [/list]
 
 [h1]Documentation[/h1]
-Please visit the [url=https://github.com/dpottavio/CombatDen/wiki]Wiki[/url] for more information regarding features and game play.
+Please visit the [url=https://github.com/dpottavio/CombatDen/wiki]Wiki[/url] for more information regarding features and game play.  If you have questions, this is a good place to start.
 
 [h1]GitHub[/h1]
-Additional documentation can be found on the GitHub [url=https://github.com/dpottavio/CombatDen]page[/url].  If you find a bug, or have a feature request, please open an [url=https://github.com/dpottavio/CombatDen/issues]issue[/url].
+The source code for this mission is available on [url=https://github.com/dpottavio/CombatDen]GitHub[/url].  Here you can browse the source, open an [url=https://github.com/dpottavio/CombatDen/issues]issue[/url], or download a single zip file [url=https://github.com/dpottavio/CombatDen/releases]release[/url].
 
 [h1]License[/h1]
 You are free to adapt (i.e. modify, rework or update) and share (i.e. copy, distribute or transmit) this material under the Arma Public License Share Alike (APL-SA).  See the full [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]license[/url] for details.
