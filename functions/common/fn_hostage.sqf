@@ -38,7 +38,7 @@ if (!local _hostage) exitWith {
 };
 
 _hostage setCaptive true;
-_hostage disableAI "MOVE";
+_hostage disableAI "ALL";
 
 removeAllWeapons       _hostage;
 removeBackpack         _hostage;
@@ -74,7 +74,7 @@ _hostage switchMove _enableAnimation;
 
         [_target, false]      remoteExecCall ["setCaptive", _target];
         [_target, _animation] remoteExecCall ["playMove",   _target];
-        [_target, "MOVE"]     remoteExecCall ["enableAI",   _target];
+        [_target, "ALL"]      remoteExecCall ["enableAI",   _target];
 
         [] call _code;
     },                                                  // Code executed on completion

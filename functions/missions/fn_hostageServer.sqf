@@ -128,7 +128,13 @@ den_hostage addEventHandler ["killed", {
 
 [den_hostage, {
     ["den_hostageFree"] call den_fnc_publicBool;
+
     [[den_hostage], den_hostageGroup] remoteExecCall ["join",  groupOwner den_hostageGroup];
+
+    if !(isMultiplayer) then {
+        waitUntil { (group den_hostage) == den_hostageGroup };
+        addSwitchableUnit den_hostage;
+    };
 }] call den_fnc_hostage;
 
 createMarker ["hostageMarker", _hostagePos];
