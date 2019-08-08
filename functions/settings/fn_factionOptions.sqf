@@ -25,49 +25,30 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_sides", [], [[]]]
+    ["_onlyPlayable", false, [false]]
 ];
 
-private _factions = [];
 private _titles   = [];
 private _values   = [];
 private _data     = [];
 
 {
-    private _sideFactions = [];
-    switch (_x) do {
-        case blufor: {
-            _sideFactions = [] call den_fnc_bluforFactions;
+    private _playable = getNumber (_x >> "playable");
+    if (!_onlyPlayable || _playable > 0) then {
+        private _addon = getText (_x >> "addon");
+        private _name  = getText (_x >> "name");
+        private _side  = getText (_x >> "side");
+        private _value = configName _x;
+
+        if (_addon != "") then {
+            _name = format["%1 %2 (%3)", _side, _name, _addon];
+        } else {
+            _name = format["%1 %2", _side, _name];
         };
-        case opfor: {
-            _sideFactions = [] call den_fnc_opforFactions;
-        };
-        case resistance: {
-            _sideFactions = [] call den_fnc_resistFactions;
-        };
-        default {
-            ERROR_1("unrecognized side %1", _x);
-        };
+
+        _data pushBack [_name, _value];
     };
-    {
-        _factions pushBack _x;
-    } forEach _sideFactions;
-} forEach _sides;
-
-{
-    private _addon = getText (_x >> "addon");
-    private _name  = getText (_x >> "name");
-    private _side  = getText (_x >> "side");
-    private _value = configName _x;
-
-    if (_addon != "") then {
-        _name = format["%1 %2 (%3)", _side, _name, _addon];
-    } else {
-        _name = format["%1 %2", _side, _name];
-    };
-
-    _data pushBack [_name, _value];
-} forEach _factions;
+} forEach ([] call den_fnc_factions);
 
 _data sort true;
 {

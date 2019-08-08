@@ -9,131 +9,150 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-class CupChDkz : Faction
+class Aaf : Faction
 {
-    addon        = "CUP";
-    ammoBox      = "CUP_RUBasicAmmunitionBox";
-    cargoBox     = "CargoNet_01_box_F";
-    flagTexture  = "ca\data\flag_chdkz_co.paa";
-    fullMoonOnly = 1;
-    name         = "ChDkz";
-    playable     = 1;
-    side         = SIDE_OPFOR;
+    ammoBox     = "Box_IND_Ammo_F";
+    cargoBox    = "I_CargoNet_01_ammo_F";
+    flagTexture = "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+    name        = "AAF";
+    playable    = 1;
+    side        = SIDE_GUER;
 
     class Arsenal : Arsenal
     {
-        class Wood : Base
+        class SemiArid : Base
         {
-            mags[] = {
-                "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
-                "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
-                "CUP_30Rnd_TE1_Yellow_Tracer_762x39_AK47_M",
-                "CUP_30Rnd_762x39_AK47_M",
-                "CUP_30Rnd_545x39_AK_M",
-                "CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M",
-                "CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M",
-                "CUP_75Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M",
-                "CUP_40Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M",
-                "CUP_45Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M",
-                "CUP_OG7_M",
-                "CUP_PG7V_M",
-                "CUP_PG7VL_M",
-                "CUP_PG7VM_M",
-                "CUP_AT13_M",
-                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M",
-                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Red_M",
-                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Yellow_M",
-                "CUP_1Rnd_SmokeGreen_GP25_M",
-                "CUP_1Rnd_SmokeRed_GP25_M",
-                "CUP_1Rnd_SmokeYellow_GP25_M",
-                "CUP_1Rnd_SMOKE_GP25_M",
-                "CUP_IlumFlareGreen_GP25_M",
-                "CUP_IlumFlareRed_GP25_M",
-                "CUP_IlumFlareWhite_GP25_M",
-                "CUP_FlareGreen_GP25_M",
-                "CUP_FlareRed_GP25_M",
-                "CUP_FlareWhite_GP25_M",
-                "CUP_FlareYellow_GP25_M",
-                "CUP_1Rnd_HE_GP25_M"
-            };
-            weapons[] = {
-                "CUP_arifle_AKM",
-                "CUP_arifle_AKM_GL",
-                "CUP_arifle_AK74_Early",
-                "CUP_arifle_AK74_GL_Early",
-                "CUP_arifle_RPK74",
-                "CUP_arifle_RPK74_45",
-                "CUP_lmg_PKM"
-            };
-            launchers[] = {
-                "CUP_launch_RPG7V",
-                "CUP_launch_RPG18"
-            };
-            grenades[] = {
+            grenades[] += {
+                "HandGrenade",
+                "SmokeShell",
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
                 "SmokeShellPurple",
                 "SmokeShellRed",
-                "SmokeShellYellow",
-                "SmokeShell",
-                "CUP_HandGrenade_RGD5"
+                "SmokeShellYellow"
+            };
+            aceGrenades[] += {
+                "ACE_M84"
+            };
+            mags[] = {
+                "30Rnd_556x45_Stanag_green",
+                "30Rnd_556x45_Stanag_Sand_green",
+                "30Rnd_556x45_Stanag_red",
+                "30Rnd_556x45_Stanag_Sand_red",
+                "30Rnd_556x45_Stanag",
+                "30Rnd_556x45_Stanag_Sand",
+                "30Rnd_556x45_Stanag_Tracer_Green",
+                "30Rnd_556x45_Stanag_Sand_Tracer_Green",
+                "30Rnd_556x45_Stanag_Tracer_Red",
+                "30Rnd_556x45_Stanag_Sand_Tracer_Red",
+                "30Rnd_556x45_Stanag_Tracer_Yellow",
+                "30Rnd_556x45_Stanag_Sand_Tracer_Yellow",
+                "9Rnd_45ACP_Mag",
+                "MRAWS_HE_F",
+                "MRAWS_HEAT55_F",
+                "MRAWS_HEAT_F",
+                "200Rnd_65x39_cased_Box_Red",
+                "200Rnd_65x39_cased_Box_Tracer_Red",
+                "200Rnd_65x39_cased_Box",
+                "200Rnd_65x39_cased_Box_Tracer",
+                "1Rnd_HE_Grenade_shell",
+                "1Rnd_SmokeBlue_Grenade_shell",
+                "1Rnd_SmokeGreen_Grenade_shell",
+                "1Rnd_SmokeOrange_Grenade_shell",
+                "1Rnd_SmokePurple_Grenade_shell",
+                "1Rnd_SmokeRed_Grenade_shell",
+                "1Rnd_SmokeYellow_Grenade_shell",
+                "1Rnd_Smoke_Grenade_shell",
+                "3Rnd_HE_Grenade_shell",
+                "3Rnd_SmokeBlue_Grenade_shell",
+                "3Rnd_SmokeGreen_Grenade_shell",
+                "3Rnd_SmokeOrange_Grenade_shell",
+                "3Rnd_SmokePurple_Grenade_shell",
+                "3Rnd_SmokeRed_Grenade_shell",
+                "3Rnd_SmokeYellow_Grenade_shell",
+                "3Rnd_Smoke_Grenade_shell",
+                "3Rnd_UGL_FlareCIR_F",
+                "3Rnd_UGL_FlareGreen_F",
+                "3Rnd_UGL_FlareRed_F",
+                "3Rnd_UGL_FlareWhite_F",
+                "3Rnd_UGL_FlareYellow_F"
+            };
+            noAceMags[] = {
+                "NLAW_F"
+            };
+            aceMags[] = {
+                "ACE_30Rnd_556x45_Stanag_M995_AP_mag",
+                "ACE_30Rnd_556x45_Stanag_Mk262_mag",
+                "ACE_30Rnd_556x45_Stanag_Mk318_mag",
+                "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
+                "ACE_200Rnd_65x39_cased_Box_Tracer_Dim"
+            };
+
+            weapons[] = {
+                "LMG_Zafir_F",
+                "hgun_P07_F",
+                "srifle_EBR_F"
+            };
+            launchers[] = {
+                "launch_NLAW_F",
             };
             sights[] = {
-                "cup_optic_pso_1"
+                "optic_Aco",
+                "optic_Aco_smg",
+                "optic_Holosight",
+                "optic_NVS",
+                "optic_tws",
+                "optic_tws_mg",
+                "optic_hamr"
             };
-            attachments[] = {
-                "cup_acc_flashlight",
-                "cup_acc_anpeq_15_black"
+            aceSights[] = {
+                "ACE_optic_Hamr_2D",
+                "ACE_optic_LRPS_2D",
+                "ACE_optic_SOS_2D",
+                "ACE_optic_lrps_pip",
+                "ACE_optic_sos_pip",
+                "ACE_optic_hamr_pip"
             };
-            faceware[] += {
-                "CUP_RUS_Balaclava_blk",
-                "CUP_G_Bandanna_blk"
+            nvg[] = {
+                "NVGoggles_INDEP"
+            };
+            aceNvg[] = {
+                "ACE_NVG_Wide"
             };
             backpacks[] = {
-                "CUP_B_AlicePack_Khaki",
-                "CUP_B_CivPack_WDL",
-                "CUP_B_HikingPack_Civ"
-            };
-            uniforms[] = {
-                "CUP_U_O_CHDKZ_Kam_01",
-                "CUP_U_O_CHDKZ_Kam_02",
-                "CUP_U_O_CHDKZ_Kam_03",
-                "CUP_U_O_CHDKZ_Kam_04",
-                "CUP_U_O_CHDKZ_Kam_05",
-                "CUP_U_O_CHDKZ_Kam_06",
-                "CUP_U_O_CHDKZ_Kam_07",
-                "CUP_U_O_CHDKZ_Kam_08"
-            };
-            headgear[] = {
-                "CUP_H_SLA_Boonie",
-                "CUP_H_PMC_Cap_Tan",
-                "CUP_H_FR_BandanaGreen",
-                "CUP_H_FR_BandanaWdl",
-                "CUP_H_PMC_Beanie_Black",
-                "CUP_H_ChDKZ_Beanie",
-                "CUP_H_ChDKZ_Cap"
+                "B_AssaultPack_dgtl",
+                "I_Fieldpack_oli_Ammo",
+                "B_TacticalPack_oli"
             };
             vests[] = {
-                "CUP_V_O_Ins_Carrier_Rig"
+                "V_PlateCarrierIAGL_dgtl",
+                "V_PlateCarrierIA1_dgtl",
+                "V_PlateCarrierIA2_dgtl"
+            };
+            headgear[] = {
+                "H_HelmetIA"
             };
         };
-        class Winter : Wood {};
+
+        class Arid : SemiArid {};
     };
 
     class Vehicle
     {
-        class Wood
+        class SemiArid
         {
-            heloTransport      = "CUP_O_Mi8_medevac_CHDKZ";
-            heloTransportLarge = "CUP_O_Mi8_medevac_CHDKZ";
-            heloCargo          = "CUP_O_Mi8_medevac_CHDKZ";
-            truckSupplyAmmo    = "CUP_O_Ural_Reammo_CHDKZ";
-            truckSupplyCargo   = "CUP_O_Ural_Repair_CHDKZ";
-            truckSupplyFuel    = "CUP_O_Ural_Refuel_CHDKZ";
+            heloTransport      = "I_Heli_Transport_02_F";
+            heloTransportLarge = "I_Heli_Transport_02_F";
+            heloCargo          = "I_Heli_Transport_02_F";
+            truckSupplyAmmo    = "I_Truck_02_ammo_F";
+            truckSupplyCargo   = "I_Truck_02_box_F";
+            truckSupplyFuel    = "I_Truck_02_fuel_F";
         };
-        class Winter : Wood {};
+        class Arid   : SemiArid {};
     };
+
+#define AAF_NVG "NVGoggles_INDEP"
 
     class Group : Group
     {
@@ -143,115 +162,117 @@ class CupChDkz : Faction
         class Team   : Team {};
         class Triple : Triple {};
 
-        class Wood
+        class SemiArid
         {
             class TruckCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_soldier_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_soldier_F";
                 };
             };
             class HeloPilot : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Pilot";
+                    vehicle = "I_helipilot_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Pilot";
+                    vehicle = "I_helipilot_F";
                 };
             };
             class HeloCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Crew";
+                    vehicle = "I_helicrew_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Crew";
+                    vehicle = "I_helicrew_F";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Pilot";
+                    vehicle = "I_helipilot_F";
                 };
             };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_Soldier_TL_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_soldier_F";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Soldier_GL";
+                    vehicle = "I_Soldier_TL_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Soldier_AR";
+                    vehicle = "I_soldier_AR_F";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_soldier_LAT_F";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_O_INS_Soldier_AT";
+                    vehicle = "I_soldier_F";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_INS_Soldier_GL";
+                    vehicle = "I_Soldier_SL_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Soldier_AR";
+                    vehicle = "I_Soldier_AR_F";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_O_INS_Soldier_AR";
+                    vehicle = "I_Soldier_AR_F";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_O_INS_Soldier_GL";
+                    vehicle = "I_Soldier_AAR_F";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "CUP_O_INS_Soldier_AT";
+                    vehicle = "I_soldier_M_F";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "CUP_O_INS_Soldier_AT";
+                    vehicle = "I_soldier_F";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_Soldier_LAT_F";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "CUP_O_INS_Medic";
+                    vehicle = "I_medic_F";
                 };
             };
             class ReconSquad : AssaultSquad
             {
+                nvg = AAF_NVG;
+
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -263,6 +284,8 @@ class CupChDkz : Faction
             };
             class ReconTeam : FireTeam
             {
+                nvg = AAF_NVG;
+
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -272,26 +295,28 @@ class CupChDkz : Faction
             {
                 class Unit0 : Unit0
                 {
-                     vehicle = "CUP_O_UAZ_MG_CHDKZ";
+                    vehicle = "I_MRAP_03_hmg_F";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_O_UAZ_MG_CHDKZ";
+                    vehicle = "I_MRAP_03_hmg_F";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_soldier_F";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_O_INS_Soldier";
+                    vehicle = "I_soldier_F";
                 };
             };
             class MotorizedAssault : AssaultSquad
             {
+                type = "motorized";
+
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -304,11 +329,11 @@ class CupChDkz : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "CUP_O_UAZ_MG_CHDKZ";
+                    vehicle = "I_MRAP_03_hmg_F";
                 };
             };
         };
-        class Winter : Wood
+        class Arid : SemiArid
         {
             class TruckCrew : TruckCrew
             {
@@ -320,7 +345,7 @@ class CupChDkz : Faction
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
             };
-            class HeloCrew : HeloCrew
+            class HeloCrew  : HeloCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -395,133 +420,147 @@ class CupChDkz : Faction
         };
     };
 
-#define CUP_CHDKZ_AUTORIFLE_PKP_MAG_COUNT   4
-#define CUP_CHDKZ_AUTORIFLE_RPK_MAG_COUNT   8
-#define CUP_CHDKZ_AT_MAG_COUNT              8
-#define CUP_CHDKZ_GRENADIRE_MAG_COUNT      11
-#define CUP_CHDKZ_MARKSMAN_MAG_COUNT       10
-#define CUP_CHDKZ_MEDIC_MAG_COUNT          11
-#define CUP_CHDKZ_RIFLEMAN_MAG_COUNT       11
+#define AAF_AT_MAG_COUNT         11
+#define AAF_AUTORIFLE_MAG_COUNT   4
+#define AAF_GRENADIRE_MAG_COUNT  11
+#define AAF_MARKSMAN_MAG_COUNT   11
+#define AAF_MEDIC_MAG_COUNT      11
+#define AAF_RIFLEMAN_MAG_COUNT   11
 
     class Loadout : Loadout
     {
         class Base : Base
         {
-            handgun    = "CUP_hgun_Duty";
-            binoculars = "Binocular";
-            // random
-            headgear   = "";
+            aceBinoculars = "ACE_Vector";
+            aceNvg        = "ACE_NVG_Wide";
+
+            binoculars = "RangeFinder";
+            handgun    = "hgun_ACPC2_F";
+            headgear   = "H_HelmetIA";
+            nvg        = "NVGoggles_INDEP";
+            primaryMag = "30Rnd_556x45_Stanag";
             rifleLight = "acc_flashlight";
-            primaryMag = "CUP_30Rnd_762x39_AK47_M";
+            rifleSight = "optic_hamr";
 
             class Uniform : Uniform
             {
-                // random
-                type = "";
+                type = "U_I_CombatUniform";
 
-                takiBaseItems[] = {
-                    "16Rnd_9x21_Mag",
-                    "16Rnd_9x21_Mag"
+                natoItems[] = {
+                    "9Rnd_45ACP_Mag",
+                    "9Rnd_45ACP_Mag"
                 };
             };
             class Vest : Vest
             {
-                type = "CUP_V_O_Ins_Carrier_Rig";
+                type = "V_PlateCarrierIA1_dgtl";
             };
             class Backpack : Backpack
             {
-                type = "CUP_B_AlicePack_Khaki";
+                type = "B_AssaultPack_dgtl";
             };
             class LinkedItems : LinkedItems {};
         };
         class RiflemanBase : Base
         {
-            unit            = "CUP_O_INS_Soldier";
-            primaryMagCount = CUP_CHDKZ_RIFLEMAN_MAG_COUNT;
+            unit            = "I_soldier_F";
+            primaryMagCount = AAF_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
-               riflemanItems[] = {
-                   "CUP_HandGrenade_RGD5",
-                   "CUP_HandGrenade_RGD5",
-                   "SmokeShell",
-                   "SmokeShell"
+               riflemanBaseItems[] = {
+                    "HandGrenade",
+                    "HandGrenade",
+                    "SmokeShell",
+                    "SmokeShell"
                 };
             };
             class Backpack : Backpack
             {
-                riflemanItems[] = {
-                   "CUP_HandGrenade_RGD5",
-                   "CUP_HandGrenade_RGD5",
-                   "CUP_HandGrenade_RGD5",
-                   "CUP_HandGrenade_RGD5"
+                riflemanBaseItems[] = {
+                    "HandGrenade",
+                    "HandGrenade",
+                    "HandGrenade",
+                    "HandGrenade"
                 };
             };
             class LinkedItems : LinkedItems {};
         };
         class GrenadierBase : RiflemanBase
         {
-            unit              = "CUP_O_INS_Soldier_GL";
-            primaryMagCount   = CUP_CHDKZ_GRENADIRE_MAG_COUNT;
-            secondaryMag      = "CUP_1Rnd_HE_GP25_M";
-            secondaryMagCount = 10;
+            unit              = "I_Soldier_GL_F";
+            primaryMagCount   = AAF_GRENADIRE_MAG_COUNT;
+            secondaryMag      = "1Rnd_HE_Grenade_shell";
+            secondaryMagCount = 14;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
                grenadierBaseItems[] = {
-                    "CUP_FlareWhite_GP25_M"
+                    "1Rnd_Smoke_Grenade_shell",
                };
             };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class SquadLeaderBase : GrenadierBase
+        {
+            unit = "I_Soldier_SL_F";
+
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
             class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class AutorifleBase : Base
         {
-            unit = "CUP_O_INS_Soldier_AR";
+            unit = "I_Soldier_AR_F";
 
-            class Uniform : Uniform
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
+            class Backpack : Backpack
             {
+                type = "B_TacticalPack_oli";
+
                 arBaseItems[] = {
-                   "CUP_HandGrenade_RGD5",
-                   "SmokeShell"
+                   "HandGrenade",
+                   "HandGrenade",
+                   "SmokeShell",
                 };
             };
-            class Vest : Vest
-            {
-                 arBaseItems[] = {
-                   "CUP_HandGrenade_RGD5"
-                };
-            };
-            class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class MarksmanBase : Base
         {
-            unit            = "CUP_O_INS_Sniper";
-            rifleSight      = "cup_optic_pso_1";
-            primaryMag      = "CUP_10Rnd_762x54_SVD_M";
-            primaryMagCount = CUP_CHDKZ_MARKSMAN_MAG_COUNT;
+            unit            = "I_soldier_M_F";
+            primaryMagCount = AAF_MARKSMAN_MAG_COUNT ;
+            rifleSight      = "optic_sos";
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanBaseItems[] = {
-                 "CUP_HandGrenade_RGD5",
-                 "CUP_HandGrenade_RGD5",
-                 "SmokeShell",
-                 "SmokeShell"
+                marksmanBaseItems[] = {
+                  "HandGrenade",
+                  "HandGrenade",
+                  "SmokeShell",
+                  "SmokeShell"
                };
             };
-            class Backpack    : Backpack {};
+            class Backpack : Backpack
+            {
+                marksmanBaseItems[] = {
+                  "optic_tws",
+                  "optic_Hamr"
+                };
+            };
             class LinkedItems : LinkedItems {};
         };
         class MedicBase : Base
         {
-            unit            = "CUP_O_INS_Medic";
-            primaryMagCount = CUP_CHDKZ_MEDIC_MAG_COUNT;
+            unit            = "I_medic_F";
+            primaryMagCount = AAF_MEDIC_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
@@ -532,59 +571,70 @@ class CupChDkz : Faction
                     "SmokeShell",
                     "SmokeShell",
                     "SmokeShell",
-                    "CUP_HandGrenade_RGD5",
-                    "CUP_HandGrenade_RGD5",
-                    "CUP_HandGrenade_RGD5",
-                    "CUP_HandGrenade_RGD5"
+                    "HandGrenade",
+                    "HandGrenade",
+                    "HandGrenade",
+                    "HandGrenade"
                 };
             };
             class Backpack : MedicBackpack
             {
-                type = "CUP_B_AlicePack_Khaki";
+                type = "B_TacticalPack_oli";
             };
             class LinkedItems : LinkedItems {};
         };
         class AtBase : Base
         {
-            unit            = "CUP_O_INS_Soldier_AT"
-            rifle           = "CUP_arifle_AKM";
-            primaryMagCount = CUP_CHDKZ_AT_MAG_COUNT;
+            unit            = "I_Soldier_LAT_F";
+            rifle           = "arifle_Mk20_F";
+            primaryMagCount = AAF_AT_MAG_COUNT;
 
-            class Uniform     : Uniform {};
-            class Vest        : Vest {};
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               atBaseItems[] = {
+                   "HandGrenade",
+                   "HandGrenade",
+                   "SmokeShell"
+               };
+            };
+            class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class EodBase : Base
         {
-            unit            = "CUP_O_INS_Soldier";
-            primaryMagCount = CUP_CHDKZ_RIFLEMAN_MAG_COUNT;
+            unit            = "I_soldier_exp_F";
+            primaryMagCount = AAF_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                eodBaseItems[] = {
-                    "CUP_HandGrenade_RGD5",
-                    "CUP_HandGrenade_RGD5",
+                    "HandGrenade",
+                    "HandGrenade",
                     "SmokeShell",
                     "SmokeShell"
                 };
             };
             class Backpack : Backpack
             {
+                type = "B_TacticalPack_oli";
+
                 aceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
-                    "ACE_M14",
+                    "DemoCharge_Remote_Mag",
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceEodBaseItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -596,17 +646,18 @@ class CupChDkz : Faction
             };
             class LinkedItems : LinkedItems {};
         };
-        class Wood
+        class SemiArid
         {
             class Rifleman
             {
                 role = "Rifleman";
 
-                class Akm : RiflemanBase
+                class Mk20 : RiflemanBase
                 {
-                    type    = "AKM";
-                    rifle   = "CUP_arifle_AKM";
-                    default = 1;
+                    default    = 1;
+                    aceType    = "F2000";
+                    type       = "MK20";
+                    rifle      = "arifle_Mk20_F";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -618,11 +669,12 @@ class CupChDkz : Faction
             {
                 role = "Grenadier";
 
-                class Akm : GrenadierBase
+                class Mk20 : GrenadierBase
                 {
-                    type    = "AKM (GP-25)";
-                    rifle   = "CUP_arifle_AKM_GL";
-                    default = 1;
+                    default    = 1;
+                    aceType    = "F2000 EGLM";
+                    type       = "MK20 GL";
+                    rifle      = "arifle_Mk20_GL_F";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -634,9 +686,9 @@ class CupChDkz : Faction
             {
                 role = "Squad Leader";
 
-                class Akm : Akm
+                class Mk20 : Mk20
                 {
-                    unit = "CUP_O_TK_Soldier_SL";
+                    unit = "I_Soldier_SL_F";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -648,25 +700,15 @@ class CupChDkz : Faction
             {
                 role = "Autorifleman";
 
-                class Rpk : AutorifleBase
+                class Mk200 : AutorifleBase
                 {
-                    type           = "PPK";
-                    rifle          = "CUP_arifle_RPK74";
-                    primaryMag     = "CUP_75Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M";
-                    primaryMagCount = CUP_CHDKZ_AUTORIFLE_RPK_MAG_COUNT;
-                    default = 1;
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pkm : AutorifleBase
-                {
-                    type            = "PKM";
-                    rifle           = "CUP_lmg_PKM";
-                    primaryMag      = "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M";
-                    primaryMagCount = CUP_CHDKZ_AUTORIFLE_PKP_MAG_COUNT;
+                    default         = 1;
+                    aceType         = "Stoner 99 LMG";
+                    type            = "MK200";
+                    rifle           = "LMG_Mk200_F";
+                    rifleBipod      = "bipod_03_f_blk";
+                    primaryMag      = "200Rnd_65x39_cased_Box_Tracer_Red";
+                    primaryMagCount = AAF_AUTORIFLE_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -678,11 +720,14 @@ class CupChDkz : Faction
             {
                 role = "Marksman";
 
-                class Svds : MarksmanBase
+                class Mk14 : MarksmanBase
                 {
-                    type    = "SVDS";
-                    rifle   = "CUP_srifle_SVD";
-                    default = 1;
+                    default       = 1;
+                    aceType       = "Mk14 Mod 1";
+                    type          = "Mk18 ABR";
+                    rifle         = "srifle_EBR_F";
+                    rifleBipod    = "bipod_01_f_snd";
+                    primaryMag    = "20Rnd_762x51_Mag";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -694,11 +739,12 @@ class CupChDkz : Faction
             {
                 role = "Medic";
 
-                class Akm : MedicBase
+                class Mk20 : MedicBase
                 {
-                    type    = "AKM";
-                    rifle   = "CUP_arifle_AKM";
-                    default = 1;
+                    default    = 1;
+                    aceType    = "F2000";
+                    type       = "MK20";
+                    rifle      = "arifle_Mk20_F";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -710,26 +756,24 @@ class CupChDkz : Faction
             {
                 role = "Anti-Tank";
 
-                class Rpg7 : AtBase
+                class Maaws : AtBase
                 {
-                    type     = "RPG-7";
-                    launcher = "CUP_launch_RPG7V";
-                    default  = 1;
+                    type              = "MAAWS";
+                    launcher          = "launch_MRAWS_olive_rail_F";
+                    secondaryMag      = "MRAWS_HEAT_F";
+                    secondaryMagCount = 2;
 
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack
-                    {
-                        rpg7Items[] = {
-                           "CUP_PG7VM_M"
-                        };
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class Rpg18 : AtBase
+                class Nlaw : AtBase
                 {
-                    type     = "RPG-18";
-                    launcher = "CUP_launch_RPG18";
+                    default  = 1;
+                    aceType  = "NLAW";
+                    type     = "PCML";
+                    launcher = "launch_NLAW_F";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -741,11 +785,12 @@ class CupChDkz : Faction
             {
                 role = "EOD";
 
-                class Akm : EodBase
+                class Mk20 : EodBase
                 {
-                    type    = "AKM";
-                    rifle   = "CUP_arifle_AKM";
-                    default = 1;
+                    default    = 1;
+                    aceType    = "F2000";
+                    type       = "MK20";
+                    rifle      = "arifle_Mk20_F";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -754,11 +799,11 @@ class CupChDkz : Faction
                 };
             };
         };
-        class Winter : Wood
+        class Arid : SemiArid
         {
             class Rifleman : Rifleman
             {
-                class Akm : Akm
+                class Mk20 : Mk20
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -768,7 +813,7 @@ class CupChDkz : Faction
             };
             class Grenadier : Grenadier
             {
-                class Akm : Akm
+                class Mk20 : GrenadierBase
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -778,7 +823,7 @@ class CupChDkz : Faction
             };
             class SquadLeader : SquadLeader
             {
-                class Akm : Akm
+                class Mk20 : Mk20
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -788,14 +833,7 @@ class CupChDkz : Faction
             };
             class Autorifleman : Autorifleman
             {
-                class Rpk : Rpk
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pkm : Pkm
+                class Mk200 : Mk200
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -805,7 +843,7 @@ class CupChDkz : Faction
             };
             class Marksman : Marksman
             {
-                class Svds : Svds
+                class Mk14 : Mk14
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -815,7 +853,7 @@ class CupChDkz : Faction
             };
             class Medic : Medic
             {
-                class Akm : Akm
+                class Mk20 : Mk20
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -825,14 +863,14 @@ class CupChDkz : Faction
             };
             class At : At
             {
-                class Rpg7 : Rpg7
+                class Maaws : Maaws
                 {
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack {};
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class Rpg18 : Rpg18
+                class Nlaw : Nlaw
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -842,7 +880,7 @@ class CupChDkz : Faction
             };
             class Eod : Eod
             {
-                class Akm : Akm
+                class Mk20 : Mk20
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

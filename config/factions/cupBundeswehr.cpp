@@ -16,6 +16,7 @@ class CupBundeswehr : Faction
     cargoBox    = "B_CargoNet_01_ammo_F";
     flagTexture = "ca\ca_e\data\flag_ger_co.paa";
     name        = "Bundeswehr";
+    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : ArsenalCupWest

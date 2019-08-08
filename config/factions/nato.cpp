@@ -15,6 +15,7 @@ class Nato : Faction
     cargoBox    = "B_CargoNet_01_ammo_F";
     flagTexture = "\A3\Data_F\Flags\Flag_nato_CO.paa";
     name        = "NATO";
+    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : Arsenal
@@ -87,6 +88,9 @@ class Nato : Faction
                 "UGL_FlareRed_F",
                 "UGL_FlareWhite_F",
                 "UGL_FlareYellow_F"
+            };
+            noAceMags[] = {
+                "NLAW_F"
             };
             aceNatoMags[] = {
                 "ACE_100Rnd_65x39_caseless_mag_Tracer_Dim",

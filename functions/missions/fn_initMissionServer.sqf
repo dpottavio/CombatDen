@@ -66,19 +66,18 @@ if (_enemyFaction != "") then {
 };
 
 if (_enemyFaction == "") then {
+
     private _enemyFactions = [];
-    switch (_friendlySide) do {
-        case blufor: {
-            _enemyFactions = ([] call den_fnc_resistFactions) + ([] call den_fnc_opforFactions);
+    {
+        private _name = configName _x;
+        private _side = [_name] call den_fnc_factionSide;
+
+        if (_side != _friendlySide) then {
+            _enemyFactions pushBack _name;
         };
-        case opfor: {
-            _enemyFactions = ([] call den_fnc_resistFactions) + ([] call den_fnc_bluforFactions);
-        };
-        default {
-            ERROR("invalid player side type");
-        };
-    };
-    _enemyFaction = configName (selectRandom _enemyFactions);
+    } forEach ([] call den_fnc_factions);
+
+    _enemyFaction = selectRandom _enemyFactions;
 };
 
 private _playerGroup = createGroup [_friendlySide, true];

@@ -16,6 +16,7 @@ class RhsRussia : Faction
     cargoBox    = "CargoNet_01_box_F";
     flagTexture = "rhsafrf\addons\rhs_main\data\flag_rus_co.paa";
     name        = "Russia";
+    playable    = 1;
     side        = SIDE_OPFOR;
 
     class Arsenal : Arsenal
@@ -259,8 +260,7 @@ class RhsRussia : Faction
         {
             heloTransport      = "RHS_Mi8mt_Cargo_vdv";
             heloTransportLarge = "RHS_Mi8mt_Cargo_vdv";
-            // Using vanilla helo because RHS Russia variant cannot sling load the container.
-            heloCargo          = "B_Heli_Transport_03_F";
+            heloCargo          = "RHS_Mi8mt_Cargo_vdv";
             truckSupplyAmmo    = "rhs_gaz66_ammo_vdv";
             truckSupplyCargo   = "RHS_Ural_VDV_01";
             truckSupplyFuel    = "RHS_Ural_Fuel_VDV_01";
@@ -1023,8 +1023,7 @@ class RhsRussia : Faction
         class MarksmanBase : Base
         {
             unit            = "rhs_vdv_marksman";
-            rifleSight      = "rhsusf_acc_acog_mdo";
-            rifleBipod      = "rhsusf_acc_harris_bipod";
+            rifleSight      = "rhs_acc_pso1m2";
             primaryMag      = "rhs_10Rnd_762x54mmR_7N1";
             primaryMagCount = RHS_RUS_MARKSMAN_MAG_COUNT;
 

@@ -58,19 +58,19 @@ if (_enemyFaction == "") exitWith {
 /*
  * max radius for AO objects
  */
-private _zoneRadius     = 400;
-private _minLz          = _zoneRadius + 300;
-private _maxLz          = _zoneRadius + 350;
-private _minReinforce   = _minLz;
-private _maxReinforce   = _maxLz;
-private _maxContainer   = _zoneRadius * 0.25;
-private _maxReact       = _zoneRadius * 0.5;  // reaction force
-private _maxPatrol      = _zoneRadius * 0.75; // patrol force
+private _zoneRadius   = 400;
+private _minLz        = _zoneRadius + 300;
+private _maxLz        = _zoneRadius + 350;
+private _minReinforce = _minLz;
+private _maxReinforce = _maxLz;
+private _maxPallet    = _zoneRadius * 0.25;
+private _maxReact     = _zoneRadius * 0.5;  // reaction force
+private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 
 private _safePosParams = [
     [_minLz,        _maxLz,        15, 0.1], // lz safe position
     [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
-    [0,             _maxContainer, 15, 0.1], // container safe position
+    [0,             _maxPallet,    15, 0.1], // pallet safe position
     [0,             _maxReact,     15, 0.1], // reaction force safe position
     [0,             _maxPatrol,     5,  -1]  // patrol safe position
 ];
@@ -97,7 +97,7 @@ private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
 private _lzPos           = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
-private _containerPos    = _zoneSafePosList select 2;
+private _palletPos    = _zoneSafePosList select 2;
 private _reactPos        = _zoneSafePosList select 3;
 private _patrolPos       = _zoneSafePosList select 4;
 
@@ -105,31 +105,31 @@ private _patrolPos       = _zoneSafePosList select 4;
  * lz
  */
 [_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
-[_lzPos, _playerGroup,  _friendlyFaction, "den_containerExtract", _zoneArea] call den_fnc_extract;
+[_lzPos, _playerGroup,  _friendlyFaction, "den_palletExtract", _zoneArea] call den_fnc_extract;
 
 /*
- * container
+ * pallet
  */
 
-den_container = "B_Slingload_01_Fuel_F" createVehicle _containerPos;
+den_pallet = "CargoNet_01_barrels_F" createVehicle _palletPos;
 
-den_container addEventHandler ["killed", {
-    ["den_containerDead"] call den_fnc_publicBool;
+den_pallet addEventHandler ["killed", {
+    ["den_palletDead"] call den_fnc_publicBool;
 }];
 
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 [
-    _containerPos,
+    _palletPos,
     [10, 10, 0, false, 10],
     [_friendlySideStr, "PRESENT", false],
     nil,
     [],
     {
         params ["", "", "_args"];
-        ["den_containerSecure"] call den_fnc_publicBool;
+        ["den_palletSecure"] call den_fnc_publicBool;
         [(_args select 0), (_args select 1), 3000] call den_fnc_sling;
     },
-    [den_container, _friendlyFaction]
+    [den_pallet, _friendlyFaction]
 ] call den_fnc_createTrigger;
 
 
@@ -141,9 +141,9 @@ private _extractTrigArea = [
     _zoneArea param [5, -1]
 ];
 
-// Detect if the container was captured.
+// Detect if the pallet was captured.
 [
-    _containerPos,
+    _palletPos,
     _extractTrigArea,
     ["LOGIC", "PRESENT", false],
     {
@@ -151,25 +151,25 @@ private _extractTrigArea = [
         private _val = !((_args select 0) inArea _thisTrigger);
         _val;
     },
-    [den_container],
+    [den_pallet],
     {
-        ["den_containerExtract"] call den_fnc_publicBool;
+        ["den_palletExtract"] call den_fnc_publicBool;
     }
 ] call den_fnc_createTrigger;
 
-createMarker ["containerMarker", _containerPos];
-"containerMarker" setMarkerType "mil_objective";
-"containerMarker" setMarkerColor _enemyColor;
-"containerMarker" setMarkerText "container";
-"containerMarker" setMarkerSize [0.75, 0.75];
+createMarker ["palletMarker", _palletPos];
+"palletMarker" setMarkerType "mil_objective";
+"palletMarker" setMarkerColor _enemyColor;
+"palletMarker" setMarkerText "pallet";
+"palletMarker" setMarkerSize [0.75, 0.75];
 
 /*
  * enemy units
  */
-[_zonePos, _zoneRadius, 2, _enemyFaction, [_containerPos]] call den_fnc_spawnRoadblock;
+[_zonePos, _zoneRadius, 2, _enemyFaction, [_palletPos]] call den_fnc_spawnRoadblock;
 
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
-createGuardedPoint [_enemySide, [0,0], -1, den_container];
+createGuardedPoint [_enemySide, [0,0], -1, den_pallet];
 
 private _guard1Type        = "FireTeam";
 private _guard2Type        = "FireTeam";
@@ -190,13 +190,13 @@ switch (_difficulty) do {
     };
 };
 
-private _guard1Group = [_containerPos getPos[10, 0], _enemyFaction, _guard1Type] call den_fnc_spawnGroup;
+private _guard1Group = [_palletPos getPos[10, 0], _enemyFaction, _guard1Type] call den_fnc_spawnGroup;
 
-[_guard1Group, _containerPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+[_guard1Group, _palletPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
-private _guard2Group = [_containerPos getPos[10, 0], _enemyFaction, _guard2Type] call den_fnc_spawnGroup;
+private _guard2Group = [_palletPos getPos[10, 0], _enemyFaction, _guard2Type] call den_fnc_spawnGroup;
 
-[_guard2Group, _containerPos, 0, "HOLD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+[_guard2Group, _palletPos, 0, "HOLD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
 /*
@@ -215,7 +215,7 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
 [
     _patrolGroup,
-    _containerPos,
+    _palletPos,
     300,
     6,
     "MOVE",
@@ -235,8 +235,8 @@ private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spa
 /*
  * markers
  */
-private _infMarkerPos   = _zonePos getPos [100, (_containerPos getDir _lzPos)];
-private _motorMarkerPos = _zonePos getPos [150, (_containerPos getDir _lzPos)];
+private _infMarkerPos   = _zonePos getPos [100, (_palletPos getDir _lzPos)];
+private _motorMarkerPos = _zonePos getPos [150, (_palletPos getDir _lzPos)];
 
 private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));

@@ -15,6 +15,7 @@ class Csat : Faction
     cargoBox    = "O_CargoNet_01_ammo_F";
     flagTexture = "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
     name        = "CSAT";
+    playable    = 1;
     side        = SIDE_OPFOR;
 
     class Arsenal : Arsenal

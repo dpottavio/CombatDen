@@ -14,19 +14,19 @@ class CfgSettings
     class PlayerFaction
     {
         title    = "Player Faction";
-        function = "[[blufor,opfor]] call den_fnc_factionOptions";
+        function = "[true] call den_fnc_factionOptions";
         default  = 0;
     };
     class EnemyFaction
     {
         title    = "Enemy Faction";
-        function = "[[resistance,blufor,opfor]] call den_fnc_factionOptions";
+        function = "[false] call den_fnc_factionOptions";
         default  = 0;
     };
     class Mission
     {
         title    = "Mission";
-        texts[]  = {"Random", "Defend Convoy", "Demolition", "Camp Raid", "Container Extraction", "Clear Bunkers", "Hostage Rescue", "Urban Combat"};
+        texts[]  = {"Random", "Defend Convoy", "Demolition", "Camp Raid", "Chemical Extraction", "Clear Bunkers", "Hostage Rescue", "Urban Combat"};
         values[] = {-1,0,1,2,3,4,5,6};
         default  = 0;
     };

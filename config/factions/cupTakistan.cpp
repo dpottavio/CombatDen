@@ -17,15 +17,13 @@ class CupTakistan : Faction
     flagTexture  = "ca\ca_e\data\flag_tka_co.paa";
     fullMoonOnly = 1;
     name         = "Takistan";
+    playable     = 1;
     side         = SIDE_OPFOR;
 
     class Arsenal : Arsenal
     {
         class Base : Base
         {
-            baseGps[] = {};
-            baseNgv[] = {};
-
             cupTakistanMags[] = {
                 "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
                 "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
@@ -104,8 +102,7 @@ class CupTakistan : Faction
         {
             heloTransport      = "CUP_O_UH1H_TKA";
             heloTransportLarge = "CUP_O_Mi17_TK";
-            // Using vanilla helo because RHS Russia variant cannot sling load the container.
-            heloCargo          = "B_Heli_Transport_03_F";
+            heloCargo          = "CUP_O_Mi17_TK";
             truckSupplyAmmo    = "CUP_O_Ural_Reammo_TKA";
             truckSupplyCargo   = "CUP_O_Ural_TKA";
             truckSupplyFuel    = "CUP_O_Ural_Refuel_TKA";
@@ -287,7 +284,6 @@ class CupTakistan : Faction
         };
     };
 
-
 #define CUP_TAKI_AUTORIFLE_PKP_MAG_COUNT   4
 #define CUP_TAKI_AT_MAG_COUNT              8
 #define CUP_TAKI_GRENADIRE_MAG_COUNT      11
@@ -297,7 +293,6 @@ class CupTakistan : Faction
 
     class Loadout : Loadout
     {
-
         class Base : Base
         {
             handgun    = "CUP_hgun_Duty";

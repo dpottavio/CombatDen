@@ -16,6 +16,7 @@ class CfgFactions
 /*
  * 2035 Factions
  */
+#include "factions\aaf.cpp"
 #include "factions\csat.cpp"
 #include "factions\fia.cpp"
 #include "factions\nato.cpp"
@@ -53,7 +54,6 @@ class CfgFactions
 /*
  * LOP Factions
  */
-#include "factions\lopChDkz.cpp"
 #include "factions\lopGuerrilla.cpp"
 #include "factions\lopInsurgent.cpp"
 #include "factions\lopIsis.cpp"
@@ -62,6 +62,7 @@ class CfgFactions
 /*
  * RHS Factions
  */
+#include "factions\rhsChDkz.cpp"
 #include "factions\rhsRussia.cpp"
 #include "factions\rhsUsmc.cpp"
     /*
@@ -69,6 +70,7 @@ class CfgFactions
      */
     class SemiArid
     {
+        class Aaf           : Aaf {};
         class CfpAlQaeda    : CfpAlQaeda {};
         class CfpHamas      : CfpHamas {};
         class CfpHezbollah  : CfpHezbollah {};
@@ -90,6 +92,7 @@ class CfgFactions
     };
     class Arid
     {
+        class Aaf                : Aaf {};
         class CfpAlQaeda         : CfpAlQaeda {};
         class CfpIsis            : CfpIsis {};
         class Csat               : Csat {};
@@ -141,9 +144,9 @@ class CfgFactions
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
-        class LopChDkz      : LopChDkz {};
         class LopNovo       : LopNovo {};
         class Nato          : Nato {};
+        class RhsChDkz      : RhsChDkz {};
         class RhsRussia     : RhsRussia {};
         class RhsUsmc       : RhsUsmc {};
         class Uk3CbBaf      : Uk3CbBaf {};
@@ -158,8 +161,8 @@ class CfgFactions
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
-        class LopChDkz      : LopChDkz {};
         class LopNovo       : LopNovo {};
+        class RhsChDkz      : RhsChDkz {};
         class RhsRussia     : RhsRussia {};
         class RhsUsmc       : RhsUsmc {};
         class Uk3CbBaf      : Uk3CbBaf {};

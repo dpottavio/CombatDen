@@ -62,7 +62,7 @@ private _heloGroup = _helo select 2;
 
 _heloGroup setGroupIdGlobal ["Eagle"];
 
-[(leader _heloGroup), "Alpha team be advised, helo container transport is en route."] call den_fnc_sideChat;
+[(leader _heloGroup), "Alpha team be advised, helo sling is en route."] call den_fnc_sideChat;
 
 _heloObj addEventHandler ["killed", {
     ["den_slingDead"] call den_fnc_publicBool;

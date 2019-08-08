@@ -113,7 +113,15 @@ private _itemIterate = {
 /*
  * uniform
  */
-_unit forceAddUniform getText (_loadout >> "Uniform" >> "type");
+private _uniform = getText (_loadout >> "Uniform" >> "type");
+if (_uniform == "") then {
+    _uniform = selectRandom (getArray (missionConfigFile >>
+                                           "CfgFactions" >>
+                                                _faction >>
+                                               "Arsenal" >>
+                                                _climate >> "uniforms"));
+};
+_unit forceAddUniform _uniform;
 
 private _uniformItems = configProperties [_loadout >> "Uniform"];
 
@@ -187,7 +195,19 @@ private _linkedItems = configProperties [_loadout >> "LinkedItems"];
     _unit linkItem _item;
 }] call _itemIterate;
 
-_unit addHeadgear getText (_loadout >> "headgear");
+/*
+ * headgear
+ */
+private _headgear = getText (_loadout >> "headgear");
+if (_headgear == "") then {
+    _headgear = selectRandom (getArray (missionConfigFile >>
+                                            "CfgFactions" >>
+                                                 _faction >>
+                                                "Arsenal" >>
+                                                 _climate >> "headgear"));
+};
+
+_unit addHeadgear _headgear;
 
 /*
  * night items
@@ -210,6 +230,14 @@ if (_lowDaylight) then {
     // day time - place items in backpack
     _unit addItemToBackpack _nvg;
     _unit addItemToBackpack _rifleLight;
+};
+
+/*
+ * faceware
+ */
+private _faceware = getText (_loadout >> "faceware");
+if (_faceware != "") then {
+    _unit addGoggles _faceware;
 };
 
 true;

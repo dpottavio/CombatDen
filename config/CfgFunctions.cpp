@@ -18,13 +18,13 @@ class CfgFunctions
             file = "functions\common";
             class arsenal {};
             class attackExtraction {};
-            class bluforFactions {};
             class buildingOccupy {};
             class commandChat {};
             class createPlayerUnit {};
             class createTrigger {};
             class diaryHelp {};
             class extract {};
+            class factions {};
             class factionSide {};
             class fullMoonDate {};
             class hostage {};
@@ -35,11 +35,9 @@ class CfgFunctions
             class lowDaylight {};
             class mpEndMission {};
             class mortarFire {};
-            class opforFactions {};
             class publicBool {};
             class randTime {};
             class randWeather {};
-            class resistFactions {};
             class sideChat {};
             class sling {};
             class spawnGroup {};

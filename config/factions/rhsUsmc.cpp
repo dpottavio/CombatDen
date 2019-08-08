@@ -16,6 +16,7 @@ class RhsUsmc : Faction
     cargoBox    = "B_CargoNet_01_ammo_F";
     flagTexture = "\A3\Data_F\Flags\Flag_us_CO.paa";
     name        = "USMC";
+    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : Arsenal

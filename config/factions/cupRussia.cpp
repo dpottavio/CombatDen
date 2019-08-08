@@ -16,6 +16,7 @@ class CupRussia : Faction
     cargoBox    = "CargoNet_01_box_F";
     flagTexture = "ca\data\flag_rus_co.paa";
     name        = "Russia";
+    playable    = 1;
     side        = SIDE_OPFOR;
 
     class Arsenal : Arsenal
@@ -170,8 +171,7 @@ class CupRussia : Faction
        {
             heloTransport      = "CUP_O_Mi8_medevac_RU";
             heloTransportLarge = "CUP_O_Mi8_medevac_RU";
-            // Using vanilla helo because RHS Russia variant cannot sling load the container.
-            heloCargo          = "B_Heli_Transport_03_F";
+            heloCargo          = "CUP_O_Mi8_medevac_RU";
             truckSupplyAmmo    = "CUP_O_Ural_Reammo_RU";
             truckSupplyCargo   = "CUP_O_Ural_RU";
             truckSupplyFuel    = "CUP_O_Ural_Refuel_RU";

@@ -49,10 +49,10 @@ private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _e
 private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[_side, "boardInsert",     "BoardInsert",     _transport,       "CREATED", 1, true, "getin"],    "den_insert"],
-    [[_side, "containerSecure", "ContainerSecure", "containerMarker","CREATED", 1, true, "move"],     "den_containerSecure"],
-    [[_side, "containerExtract","ContainerExtract","containerMarker","CREATED", 1, true, "container"],"den_containerExtract"],
-    [[_side, "lzExtract",       "LzExtract",       "lzMarker",       "CREATED", 1, true, "move"],     "den_lzExtract"]
+    [[_side, "boardInsert",  "BoardInsert",  _transport,     "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "palletSecure", "PalletSecure", "palletMarker", "CREATED", 1, true, "move"],   "den_palletSecure"],
+    [[_side, "palletExtract","PalletExtract","palletMarker", "CREATED", 1, true, "pallet"], "den_palletExtract"],
+    [[_side, "lzExtract",    "LzExtract",    "lzMarker",     "CREATED", 1, true, "move"],   "den_lzExtract"]
 ];
 
 if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
@@ -64,7 +64,7 @@ private _failQueue = [
     ["HeloDead",        "den_heloDead"],
     ["PlayersDead",     "den_playersDead"],
     ["SlingDead",       "den_slingDead"],
-    ["ContainerDead",   "den_containerDead"],
+    ["PalletDead",      "den_palletDead"],
     ["FobFriendlyFire", "den_fobFriendlyFire"],
     ["CivilianDead",    "den_civDead"]
 ];
@@ -80,19 +80,19 @@ player createDiaryRecord ["Diary", ["Execution",
 "
 1. Reach the <marker name='lzMarker'>LZ</marker>.
 <br/>
-2. Secure chemical weapon <marker name='containerMarker'>container</marker> for extraction.
+2. Secure chemical weapon <marker name='palletMarker'>pallet</marker> for extraction.
 <br/>
 3. Return to the <marker name='lzMarker'>LZ</marker>.
 "
 ]];
 
 player createDiaryRecord ["Diary", ["Mission",
-"Extract chemical weapon <marker name='containerMarker'>container</marker>.
+"Extract chemical weapon <marker name='palletMarker'>pallet</marker>.
 "
 ]];
 
 private _situationText = format["\
-%1 forces have a chemical weapon <marker name='containerMarker'>container</marker> near \
+%1 forces have a chemical weapon <marker name='palletMarker'>pallet</marker> near \
 position <marker name='zoneMarker'>%2</marker>.  \
 %3 forces are to seize and extract this asset via helicopter.", _enemyFactionName, _zone, _friendlyFactionName];
 

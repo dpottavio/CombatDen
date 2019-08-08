@@ -28,15 +28,15 @@ class CfgTaskDescriptions
         title       = "Clear Area";
         description = "Clear the red highlighted area of enemy units.";
     };
-    class ContainerExtract
+    class PalletExtract
     {
-        title       = "Container Extraction";
-        description = "Wait for container extraction.";
+        title       = "Pallet Extraction";
+        description = "Wait for chemical weapon pallet extraction.";
     };
-    class ContainerSecure
+    class PalletSecure
     {
-        title       = "Secure Container";
-        description = "Secure chemical weapon container.";
+        title       = "Secure Pallet";
+        description = "Secure chemical weapon pallet.";
     };
     class DefendConvoy
     {

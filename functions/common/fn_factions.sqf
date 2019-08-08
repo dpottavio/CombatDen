@@ -10,8 +10,7 @@
 
     Description:
 
-    Return the names of the resistance factions.  This is determined
-    based on addon configuration.
+    Return the names of white listed factions.
 
     Returns: ARRAY - resistance faction names
 */
@@ -23,30 +22,26 @@ private _addons = [];
  * CUP
  */
 private _hasCupVehicles = DEN_HAS_ADDON("CUP_Vehicles_Core");
+if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_USMC")) then {
+    _addons pushBack "CupUsmc";
+};
+if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_BAF")) then {
+    _addons pushBack "CupBaf";
+};
+if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_Germany")) then {
+    _addons pushBack "CupBundeswehr";
+};
 if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_TakiInsurgents")) then {
     _addons pushBack "CupTakistanMilitia";
 };
 if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_Chedaki")) then {
     _addons pushBack "CupChDkz";
 };
-
-/*
- * ProjectOpfor
- */
-if (DEN_HAS_ADDON("lop_faction_afr")) then {
-    _addons pushBack "LopGuerrilla";
+if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Russia")) then {
+    _addons pushBack "CupRussia";
 };
-if (DEN_HAS_ADDON("LOP_IRA_Infantry_base")) then {
-    _addons pushBack "LopInsurgent";
-};
-if (DEN_HAS_ADDON("lop_faction_ists")) then {
-    _addons pushBack "LopIsis";
-};
-if (DEN_HAS_ADDON("lop_faction_us")) then {
-    _addons pushBack "LopNovo";
-};
-if (DEN_HAS_ADDON("lop_faction_chdkz")) then {
-    _addons pushBack "LopChDkz";
+if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Taki")) then {
+    _addons pushBack "CupTakistan";
 };
 
 /*
@@ -74,11 +69,52 @@ if (DEN_HAS_ADDON("CFP_O_ALSHABAAB")) then {
     _addons pushBack "CfpAlShabaab";
 };
 
+/*
+ * RHS
+ */
+if (DEN_HAS_ADDON("rhsusf_c_troops")) then {
+    _addons pushBack "RhsUsmc";
+};
+if (DEN_HAS_ADDON("rhs_c_troops")) then {
+    _addons pushBack "RhsRussia";
+};
+if (DEN_HAS_ADDON("rhsgref_c_troops")) then {
+    _addons pushBack "RhsChDkz";
+};
+
+/*
+ * LOP
+ */
+if (DEN_HAS_ADDON("lop_faction_afr")) then {
+    _addons pushBack "LopGuerrilla";
+};
+if (DEN_HAS_ADDON("LOP_IRA_Infantry_base")) then {
+    _addons pushBack "LopInsurgent";
+};
+if (DEN_HAS_ADDON("lop_faction_ists")) then {
+    _addons pushBack "LopIsis";
+};
+if (DEN_HAS_ADDON("lop_faction_us")) then {
+    _addons pushBack "LopNovo";
+};
+
+if (isClass (configfile >> "CfgPatches" >> "lop_faction_tka")) then {
+    _addons pushBack "LopTakistan";
+};
+
+/*
+ * 3CB
+ */
+private _has3cbVehicles = DEN_HAS_ADDON("UK3CB_BAF_Vehicles");
+if (_has3cbVehicles && DEN_HAS_ADDON("UK3CB_BAF_Units_MTP")) then {
+    _addons pushBack "Uk3CbBaf";
+};
+
 if (_addons isEqualTo []) then {
     if (DEN_HAS_ADDON("gm_core")) then {
-        _addons = [];
+        _addons = ["GmWestGermany", "GmDenmark", "GmEastGermany"];
     } else {
-        _addons = ["Fia", "Syndikat"];
+        _addons = ["Nato", "Csat", "Fia", "Syndikat", "Aaf"];
     };
 };
 
