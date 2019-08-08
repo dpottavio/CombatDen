@@ -37,6 +37,9 @@ switch (toLower worldName) do {
     case "gm_weferlingen_summer": {
         _cfgClimate = "Wood";
     };
+    case "enoch": {
+        _cfgClimate = "Wood";
+    };
     case "gm_weferlingen_winter": {
         _cfgClimate = "Winter";
     };

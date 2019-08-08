@@ -20,6 +20,7 @@ class CfgFactions
 #include "factions\csat.cpp"
 #include "factions\fia.cpp"
 #include "factions\nato.cpp"
+#include "factions\ldf.cpp"
 #include "factions\syndikat.cpp"
 /*
  * 3CB Factions
@@ -144,6 +145,7 @@ class CfgFactions
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class Ldf           : Ldf {};
         class LopNovo       : LopNovo {};
         class Nato          : Nato {};
         class RhsChDkz      : RhsChDkz {};

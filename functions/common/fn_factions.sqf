@@ -111,10 +111,13 @@ if (_has3cbVehicles && DEN_HAS_ADDON("UK3CB_BAF_Units_MTP")) then {
 };
 
 if (_addons isEqualTo []) then {
-    if (DEN_HAS_ADDON("gm_core")) then {
+    if (DEN_HAS_ADDON("gm_core")) exitWith {
         _addons = ["GmWestGermany", "GmDenmark", "GmEastGermany"];
-    } else {
-        _addons = ["Nato", "Csat", "Fia", "Syndikat", "Aaf"];
+    };
+    _addons = ["Nato", "Csat", "Fia", "Syndikat", "Aaf"];
+
+    if (DEN_HAS_ADDON("A3_Characters_F_Enoch")) then {
+        _addons pushBack "Ldf";
     };
 };
 

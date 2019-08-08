@@ -22,7 +22,7 @@ class Nato : Faction
     {
         class Base : Base
         {
-            natoGrenades[] = {
+            grenades[] += {
                 "HandGrenade",
                 "SmokeShell",
                 "SmokeShellBlue",
@@ -32,11 +32,11 @@ class Nato : Faction
                 "SmokeShellRed",
                 "SmokeShellYellow"
             };
-            aceNatoGrenades[] = {
+            aceGrenades[] += {
                 "ACE_M84"
             };
 
-            natoMags[] = {
+            mags[] = {
                 "100Rnd_65x39_caseless_mag",
                 "100Rnd_65x39_caseless_mag_Tracer",
                 "130Rnd_338_Mag",
@@ -92,21 +92,21 @@ class Nato : Faction
             noAceMags[] = {
                 "NLAW_F"
             };
-            aceNatoMags[] = {
+            aceMags[] = {
                 "ACE_100Rnd_65x39_caseless_mag_Tracer_Dim",
                 "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim",
                 "ACE_30Rnd_65x39_caseless_mag_Tracer_Dim"
             };
 
-            natoWeapons[] = {
+            weapons[] = {
                 "LMG_Zafir_F",
                 "hgun_P07_F",
                 "srifle_EBR_F"
             };
-            natoLaunchers[] = {
+            launchers[] = {
                 "launch_NLAW_F",
             };
-            natoSights[] = {
+            sights[] = {
                 "optic_Aco",
                 "optic_Aco_smg",
                 "optic_Holosight",
@@ -115,7 +115,7 @@ class Nato : Faction
                 "optic_tws_mg",
                 "optic_hamr"
             };
-            aceNatoSights[] = {
+            aceSights[] = {
                 "ACE_optic_Hamr_2D",
                 "ACE_optic_LRPS_2D",
                 "ACE_optic_SOS_2D",
@@ -123,26 +123,28 @@ class Nato : Faction
                 "ACE_optic_sos_pip",
                 "ACE_optic_hamr_pip"
             };
-
-            natoNvg[] = {
+            nvg[] = {
                 "NVGoggles"
             };
-            aceNatoNvg[] = {
+            natoNvg[] = {
                 "ACE_NVG_Wide"
+            };
+            helmets[] = {
+                "H_HelmetB"
             };
         };
 
         class SemiArid : Base
         {
-            aridNatoSights[] = {
+            sights[] += {
                 "optic_AMS_snd",
                 "optic_Holosight_F",
                 "optic_ERCO_snd_F"
             };
-            aridNatoBipods[] = {
+            bipods[] = {
                 "bipod_01_f_snd"
             };
-            aridNatoWeapons[] = {
+            weapons[] += {
                 "arifle_MX_F",
                 "arifle_MX_GL_F",
                 "arifle_MX_SW_F",
@@ -154,18 +156,18 @@ class Nato : Faction
                 "arifle_SPAR_03_snd_F",
                 "MMG_02_sand_F"
             };
-            aridNatoLaunchers[] = {
+            launchers[] += {
                 "launch_B_Titan_F",
                 "launch_B_Titan_short_F",
                 "launch_MRAWS_sand_F"
             };
-            aridNatoVests[] = {
+            vests[] = {
                 "V_PlateCarrierGL_rgr",
                 "V_PlateCarrier1_rgr",
                 "V_PlateCarrier2_rgr",
                 "V_PlateCarrierSpec_rgr"
             };
-            aridNatoBacpacks[] = {
+            bacpacks[] = {
                 "B_AssaultPack_mcamo",
                 "B_AssaultPack_rgr",
                 "B_Bergen_mpt",
@@ -173,13 +175,10 @@ class Nato : Faction
                 "B_Kitbag_rgr",
                 "B_TacticalPack_mcamo"
             };
-            aridNatoHelmets[] = {
-                "H_HelmetB"
-            };
-            aridNatoUniforms[] = {
+            uniforms[] = {
                 "U_B_CombatUniform_mcam"
             };
-            aridNatoFaceware[] = {
+            faceware[] = {
                 "G_Bandanna_tan",
                 "G_Bandanna_khk"
             };
@@ -187,15 +186,15 @@ class Nato : Faction
 
         class Tropic : Base
         {
-            tropicNatoSights[] = {
+            sights[] += {
                 "optic_AMS",
                 "optic_Holosight_blk_F",
                 "optic_ERCO_blk_F"
             };
-            tropicNatoBipods[] = {
+            bipods[] = {
                 "bipod_01_F_blk"
             };
-            tropicNatoWeapons[] = {
+            weapons[] += {
                 "arifle_MX_Black_F",
                 "arifle_MX_GL_Black_F",
                 "arifle_MX_SW_Black_F",
@@ -207,31 +206,61 @@ class Nato : Faction
                 "arifle_SPAR_03_blk_F",
                 "MMG_02_black_F"
             };
-            tropicNatoMags[] = {
+            mags[] += {
                 "30Rnd_65x39_caseless_black_mag",
                 "30Rnd_556x45_Stanag",
                 "150Rnd_556x45_Drum_Mag_F"
             };
-            tropicNatoLaunchers[] = {
+            launchers[] += {
                 "launch_B_Titan_tna_F",
                 "launch_B_Titan_short_tna_F",
                 "launch_MRAWS_green_F"
             };
-            tropicNatoVests[] = {
+            vests[] = {
                 "V_PlateCarrierGL_tna_F",
                 "V_PlateCarrier1_tna_F",
                 "V_PlateCarrier2_tna_F",
                 "V_PlateCarrierSpec_tna_F"
             };
-            tropicNatoBackpacks[] = {
+            backpacks[] = {
                 "B_AssaultPack_tna_F",
                 "B_Bergen_tna_F",
                 "B_Kitbag_rgr",
                 "B_TacticalPack_rgr"
             };
+            helmets[] = {
+                "H_HelmetB_tna_F"
+            };
+            uniforms[] = {
+                "U_B_T_Soldier_F"
+            };
         };
         class Arid : SemiArid {};
-        class Wood : SemiArid {};
+        class Wood : Tropic
+        {
+            vests[] = {
+                "V_PlateCarrierGL_rgr",
+                "V_PlateCarrier1_rgr",
+                "V_PlateCarrier2_rgr",
+                "V_PlateCarrierSpec_rgr",
+                "V_PlateCarrierGL_wdl",
+                "V_PlateCarrier1_wdl",
+                "V_PlateCarrier2_wdl",
+                "V_PlateCarrierSpec_wdl"
+            };
+            backpacks[] = {
+                "B_AssaultPack_wdl_F",
+                "B_Carryall_wdl_F",
+                "B_Carryall_green_F",
+                "B_Kitbag_rgr"
+            };
+            uniforms[] = {
+                "U_B_CombatUniform_mcam_wdl_f"
+            };
+            helmets[] = {
+                "H_HelmetB"
+            };
+        };
     };
 
     class Vehicle
@@ -765,41 +794,118 @@ class Nato : Faction
                 };
             };
         };
-        class Wood : SemiArid
+        class Wood
         {
-            class TruckCrew : TruckCrew
+            class TruckCrew : Couple
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_Soldier_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_Soldier_F";
+                };
             };
-            class HeloPilot : HeloPilot
+            class HeloPilot : Couple
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_Helipilot_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_Helipilot_F";
+                };
             };
-            class HeloCrew  : HeloCrew
+            class HeloCrew : Couple
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_Helicrew_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_Helicrew_F";
+                };
             };
-            class Pilot : Pilot
+            class Pilot : Single
             {
-                class Unit0 : Unit0 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_Pilot_F";
+                };
             };
-            class Sentry : Sentry
+            class Sentry : Couple
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_Soldier_TL_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_Soldier_F";
+                };
             };
-            class FireTeam : FireTeam
+            class FireTeam : Team
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_Soldier_TL_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_soldier_AR_F";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "B_W_soldier_LAT_F";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "B_W_soldier_F";
+                };
             };
-            class AssaultSquad : AssaultSquad
+            class AssaultSquad : Squad
             {
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_Soldier_SL_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_Soldier_AR_F";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "B_W_Soldier_AR_F";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "B_W_Soldier_AAR_F";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "B_W_soldier_M_F";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "B_W_soldier_F";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "B_W_Soldier_LAT_F";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "B_W_medic_F";
+                };
+            };
+            // No woodland SpecOps at the moment :-/
+            class ReconSquad : AssaultSquad
+            {
+                nvg = NATO_NVG;
+
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -809,8 +915,42 @@ class Nato : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
             };
-            class ReconSquad : ReconSquad
+             // No woodland SpecOps at the moment :-/
+            class ReconTeam : FireTeam
             {
+                nvg = NATO_NVG;
+
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_T_MRAP_01_hmg_F";
+                };
+            };
+            class MotorizedTeam : Triple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "B_W_MRAP_01_hmg_F";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "B_W_soldier_F";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "B_W_soldier_F";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
+            {
+                type = "motorized";
+
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -819,35 +959,12 @@ class Nato : Faction
                 class Unit5 : Unit5 {};
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
-            };
-            class ReconTeam : ReconTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0 {};
-            };
-            class MotorizedTeam : MotorizedTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-            };
-            class MotorizedAssault : MotorizedAssault
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
-                class Unit8 : Unit8 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "B_T_MRAP_01_hmg_F";
+                };
             };
         };
     };
@@ -1880,7 +1997,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -1900,7 +2017,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -1968,7 +2085,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -1988,7 +2105,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -2000,16 +2117,40 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle    = "arifle_SPAR_01_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -2017,16 +2158,40 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle    = "arifle_SPAR_01_GL_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -2034,47 +2199,120 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_SW_Black_F";
+                    rifleBipod = "bipod_01_f_blk";
+                    primaryMag = "100Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_SPAR_02_blk_F";
+                    rifleBipod = "bipod_01_f_blk";
+                    primaryMag = "150Rnd_556x45_Drum_Mag_F";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Ng7 : Ng7
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Lwmmg : Lwmmg
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "MMG_02_black_F";
+                    rifleBipod = "bipod_01_f_blk";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
             class Grenadier : Grenadier
             {
+                role = "Grenadier";
+
                 class Mx : Mx
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_SPAR_01_GL_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -2082,30 +2320,79 @@ class Nato : Faction
             {
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_SPAR_03_blk_F";
+                    rifleBipod = "bipod_01_f_blk";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Mk14 : Mk14
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "srifle_EBR_F";
+                    rifleBipod = "bipod_01_f_blk";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Mxm : Mxm
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MXM_Black_F";
+                    rifleBipod = "bipod_01_f_blk";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Sig : Sig
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "srifle_DMR_03_F";
+                    rifleBipod = "bipod_01_f_blk";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -2113,33 +2400,83 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
             class At : At
             {
+                role = "Anti-Tank";
+
                 class Maaws : Maaws
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Nlaw : Nlaw
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -2147,16 +2484,40 @@ class Nato : Faction
             {
                 class Mx : Mx
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = type = "B_Kitbag_rgr";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
                     class LinkedItems : LinkedItems {};
                 };
             };
