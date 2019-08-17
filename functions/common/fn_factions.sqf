@@ -16,6 +16,10 @@
 */
 #include "..\..\macros.hpp"
 
+params [
+    ["_isPlayable", false, [false]]
+];
+
 private _addons = [];
 
 /*
@@ -123,7 +127,12 @@ if (_addons isEqualTo []) then {
 
 private _climate = [] call den_fnc_worldToClimate;
 
-private _query    = format["(configName _x) in %1", _addons];
+private _query = "";
+if (_isPlayable) then {
+    _query = format["((configName _x) in %1) && ((getNumber (_x >> ""playable"")) == 1)", _addons];
+} else {
+    _query = format["(configName _x) in %1", _addons];
+};
 private _factions = _query configClasses (missionConfigFile >> "CfgFactions" >> _climate);
 
 _factions

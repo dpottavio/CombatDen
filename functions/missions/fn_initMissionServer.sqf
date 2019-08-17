@@ -40,7 +40,7 @@ if (_isDark && _fullMoonOnly) then {
 };
 
 if (_friendlyFaction == "") then {
-    private _friendlyFactions = ([] call den_fnc_opforFactions) + ([] call den_fnc_bluforFactions);
+    private _friendlyFactions = [true] call den_fnc_factions;
     _friendlyFaction = configName (selectRandom _friendlyFactions);
 };
 
