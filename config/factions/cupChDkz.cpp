@@ -546,7 +546,7 @@ class CupChDkz : Faction
         };
         class AtBase : Base
         {
-            unit            = "CUP_O_INS_Soldier_AT"
+            unit            = "CUP_O_INS_Soldier_AT";
             rifle           = "CUP_arifle_AKM";
             primaryMagCount = CUP_CHDKZ_AT_MAG_COUNT;
 
