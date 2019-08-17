@@ -104,15 +104,14 @@ class Aaf : Faction
                 "optic_NVS",
                 "optic_tws",
                 "optic_tws_mg",
-                "optic_hamr"
+                "optic_mrco"
             };
             aceSights[] = {
-                "ACE_optic_Hamr_2D",
                 "ACE_optic_LRPS_2D",
                 "ACE_optic_SOS_2D",
                 "ACE_optic_lrps_pip",
                 "ACE_optic_sos_pip",
-                "ACE_optic_hamr_pip"
+                "ace_optic_mrco_2d"
             };
             nvg[] = {
                 "NVGoggles_INDEP"
@@ -440,7 +439,7 @@ class Aaf : Faction
             nvg        = "NVGoggles_INDEP";
             primaryMag = "30Rnd_556x45_Stanag";
             rifleLight = "acc_flashlight";
-            rifleSight = "optic_hamr";
+            rifleSight = "optic_mrco";
 
             class Uniform : Uniform
             {
@@ -770,10 +769,12 @@ class Aaf : Faction
                 };
                 class Nlaw : AtBase
                 {
-                    default  = 1;
-                    aceType  = "NLAW";
-                    type     = "PCML";
-                    launcher = "launch_NLAW_F";
+                    default                = 1;
+                    aceType                = "NLAW";
+                    type                   = "PCML";
+                    launcher               = "launch_NLAW_F";
+                    noAceSecondaryMag      = "NLAW_F";
+                    noAceSecondaryMagCount = 1;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

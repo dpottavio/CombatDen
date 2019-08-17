@@ -461,8 +461,7 @@ class Ldf : Faction
         class AtBase : Base
         {
             unit            = "I_E_Soldier_LAT_F";
-            rifle           = "arifle_Katiba_F";
-            primaryMag      = "30Rnd_65x39_caseless_green";
+            rifle           = "arifle_MSBS65_F";
             primaryMagCount = LDF_AT_MAG_COUNT;
 
             class Uniform : Uniform {};
@@ -627,19 +626,23 @@ class Ldf : Faction
 
                 class Nlaw : AtBase
                 {
-                    default    = 1;
-                    type       = "NLAW";
-                    launcher   = "launch_NLAW_F";
+                    default                = 1;
+                    type                   = "NLAW";
+                    launcher               = "launch_NLAW_F";
+                    noAceSecondaryMag      = "NLAW_F";
+                    noAceSecondaryMagCount = 1;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class Nraws : AtBase
+                class Maaws : AtBase
                 {
-                    type       = "MRAWS";
-                    launcher   = "launch_MRAWS_green_F";
+                    type              = "MAAWS";
+                    launcher          = "launch_MRAWS_green_F";
+                    secondaryMag      = "MRAWS_HEAT_F";
+                    secondaryMagCount = 2;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

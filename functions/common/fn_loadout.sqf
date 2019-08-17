@@ -79,7 +79,7 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-private _hasAceCommon = isClass(configfile >> "CfgPatches" >> "ace_common");
+private _hasAceCommon = DEN_HAS_ADDON("ace_common");
 
 private _itemIterate = {
     /*
@@ -164,6 +164,18 @@ _unit addMagazines [_primaryMag, _primaryMagCount];
 
 private _secondaryMag      = getText   (_loadout >> "secondaryMag");
 private _secondaryMagCount = getNumber (_loadout >> "secondaryMagCount");
+
+if !(_hasAceCommon) then {
+    private _noAceMag = getText (_loadout >> "noAceSecondaryMag");
+    if (_noAceMag != "") then {
+        _secondaryMag = _noAceMag;
+    };
+
+    private _noAceMagCount = getNumber (_loadout >> "noAceSecondaryMagCount");
+    if (_noAceMagCount > 0) then {
+        _secondaryMagCount = _noAceMagCount;
+    };
+};
 
 _unit addMagazines [_secondaryMag, _secondaryMagCount];
 

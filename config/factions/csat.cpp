@@ -47,7 +47,12 @@ class Csat : Faction
                 "30Rnd_580x42_Mag_F",
                 "30Rnd_580x42_Mag_Tracer_F",
                 "10Rnd_93x64_DMR_05_Mag",
-                "30Rnd_556x45_Stanag"
+                "30Rnd_556x45_Stanag",
+                "Titan_AA",
+                "Vorona_HEAT",
+                "Vorona_HE",
+                "RPG32_F",
+                "RPG32_HE_F"
             };
             csatWeapons[] = {
                 "arifle_Katiba_F",
@@ -1192,19 +1197,11 @@ class Csat : Faction
 
                 class Rpg : AtBase
                 {
-                    default    = 1;
-                    type       = "RPG";
-                    launcher   = "launch_RPG32_F";
-
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack {};
-                    class LinkedItems   : LinkedItems {};
-                };
-                class Titan : AtBase
-                {
-                    type       = "Titan";
-                    launcher   = "launch_O_Titan_F";
+                    default           = 1;
+                    type              = "RPG-42";
+                    launcher          = "launch_RPG32_F";
+                    secondaryMag      = "RPG32_F";
+                    secondaryMagCount = 2;
 
                     class Uniform  : Uniform {};
                     class Vest     : Vest {};
@@ -1285,7 +1282,6 @@ class Csat : Faction
             class At : At
             {
                 class Rpg   : Rpg {};
-                class Titan : Titan {};
             };
             class Eod : Eod
             {
@@ -1555,24 +1551,6 @@ class Csat : Faction
                         type = "B_FieldPack_ghex_F";
                     };
                 };
-                class Titan : Titan
-                {
-                    headgear = "H_HelmetO_ghex_F";
-                    launcher = "launch_O_Titan_ghex_F";
-
-                    class Uniform : Uniform
-                    {
-                        type = "U_O_T_Soldier_F";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "V_HarnessO_ghex_F";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "B_FieldPack_ghex_F";
-                    };
-                };
             };
             class Eod : Eod
             {
@@ -1647,8 +1625,7 @@ class Csat : Faction
             };
             class At : At
             {
-                class Rpg   : Rpg {};
-                class Titan : Titan {};
+                class Rpg : Rpg {};
             };
             class Eod : Eod
             {

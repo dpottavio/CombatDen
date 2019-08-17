@@ -1471,10 +1471,12 @@ class Nato : Faction
                 };
                 class Nlaw : AtBase
                 {
-                    default  = 1;
-                    aceType  = "NLAW";
-                    type     = "PCML";
-                    launcher = "launch_NLAW_F";
+                    default                = 1;
+                    aceType                = "NLAW";
+                    type                   = "PCML";
+                    launcher               = "launch_NLAW_F";
+                    noAceSecondaryMag      = "NLAW_F";
+                    noAceSecondaryMagCount = 1;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
