@@ -93,7 +93,6 @@ class CfgFactions
     };
     class Arid
     {
-        class Aaf                : Aaf {};
         class CfpAlQaeda         : CfpAlQaeda {};
         class CfpIsis            : CfpIsis {};
         class Csat               : Csat {};
