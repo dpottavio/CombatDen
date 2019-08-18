@@ -17,6 +17,7 @@ class GmDenmark : Faction
     flagTexture  = "gm\gm_core\data\flags\gm_flag_dk_co.paa";
     fullMoonOnly = 1;
     name         = "Denmark";
+    playable     = 1;
     side         = SIDE_BLUFOR;
 
     class Arsenal : ArsenalGmWest

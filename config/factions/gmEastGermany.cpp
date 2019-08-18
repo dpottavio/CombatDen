@@ -17,6 +17,7 @@ class GmEastGermany : Faction
     flagTexture  = "gm\gm_core\data\flags\gm_flag_gc_co.paa";
     fullMoonOnly = 1;
     name         = "East Germany";
+    playable     = 1;
     side         = SIDE_OPFOR;
 
     class Arsenal : Arsenal
