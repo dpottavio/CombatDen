@@ -125,7 +125,7 @@ if (_addons isEqualTo []) then {
     };
 };
 
-private _climate = [] call den_fnc_worldToClimate;
+private _climate = DEN_CLIMATE;
 
 private _query = "";
 if (_isPlayable) then {

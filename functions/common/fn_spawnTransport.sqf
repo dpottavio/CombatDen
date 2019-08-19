@@ -40,7 +40,7 @@ if (_faction == "") exitWith {
     objNull;
 };
 
-private _climate  = [] call den_fnc_worldToClimate;
+private _climate  = DEN_CLIMATE;
 private _transportType = getText (missionConfigFile >> "CfgFactions" >> _faction >> "Vehicle" >> _climate >> "heloTransport");
 if (_transportType == "") then {
     _transportType = getText (missionConfigFile >> "CfgFactions" >> _faction >> "Vehicle" >> _climate >> "truckTransport");

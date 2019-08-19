@@ -67,7 +67,7 @@ if (_types isEqualTo []) then {
     _types = _defaultTypes;
 };
 
-private _blacklist = getArray (missionConfigFile >> "CfgBlacklist" >> worldName >> "locations");
+private _blacklist = getArray (missionConfigFile >> "CfgWorlds" >> worldName >> "blacklist");
 
 private _location = configNull;
 

@@ -9,11 +9,13 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 
-class CfgBlacklist
+class CfgWorlds
 {
     class Altis
     {
-        locations[] = {
+        climate = "SemiArid";
+
+        blacklist[] = {
             "Almyra",
             "Athanos",
             "AtsalisIsland",
@@ -28,9 +30,41 @@ class CfgBlacklist
             "SavriIsland"
         };
     };
+    class Chernarus
+    {
+        climate = "Wood";
+
+        blacklist[] = {
+            "Local_Pass_Grozovoy",
+            "hill_Lysina"
+        };
+    };
+    class Enoch
+    {
+        climate = "Wood";
+
+        blacklist[] = {};
+    };
+    class gm_weferlingen_summer
+    {
+        climate = "Wood";
+
+        blacklist[] = {};
+    };
+    class gm_weferlingen_winter : gm_weferlingen_summer {};
+    class lythium
+    {
+        climate = "SemiArid";
+
+        blacklist[] = {
+            "morar"
+        };
+    };
     class Malden
     {
-        locations[] = {
+        climate = "SemiArid";
+
+        blacklist[] = {
             "Malden_L_Harbor",
             "Malden_L_militarybase",
             "Malden_L_Moray",
@@ -46,13 +80,25 @@ class CfgBlacklist
     };
     class Stratis
     {
-        locations[] = {
+        climate = "SemiArid";
+
+        blacklist[] = {
           "Spartan"
+        };
+    };
+    class Takistan
+    {
+        climate = "Arid";
+
+        blacklist[] = {
+            "vill_Landay"
         };
     };
     class Tanoa
     {
-        locations[] = {
+        climate = "Tropic";
+
+        blacklist[] = {
              "IleDouen01",
              "IleSainteMarie01",
              "IleSaintGeorge01",
@@ -66,38 +112,23 @@ class CfgBlacklist
              "Villa01"
         };
     };
-    class Woodland_ACR
-    {
-        locations[] = {
-            "ACityC_Solnychniy",
-            "ACityC_Nizhnoye"
-        };
-    };
-    class Takistan
-    {
-        locations[] = {
-            "vill_Landay"
-        };
-    };
-    class Chernarus
-    {
-        locations[] = {
-            "Local_Pass_Grozovoy",
-            "hill_Lysina"
-        };
-    };
     class sara
     {
-        locations[] = {
+        climate = "SemiArid";
+
+        blacklist[] = {
             "Local_Antigua",
             "Hill_Virgo",
             "Hill_Vieja"
         };
     };
-    class lythium
+    class Woodland_ACR
     {
-        locations[] = {
-            "morar"
+        climate = "Wood";
+
+        blacklist[] = {
+            "ACityC_Solnychniy",
+            "ACityC_Nizhnoye"
         };
     };
 };

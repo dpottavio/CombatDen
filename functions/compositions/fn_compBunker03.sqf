@@ -34,7 +34,7 @@ if (_pos isEqualTo []) exitWith {
 
 private _tower = "Land_BagBunker_Tower_F";
 
-private _climate = [] call den_fnc_worldToClimate;
+private _climate = DEN_CLIMATE;
 if (_climate == "Tropic" || _climate == "Wood") then {
     _tower = "Land_HBarrier_01_tower_green_F";
 };

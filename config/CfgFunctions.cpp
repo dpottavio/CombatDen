@@ -47,7 +47,6 @@ class CfgFunctions
             class taskFsm {};
             class teleport {};
             class wave {};
-            class worldToClimate {};
             class zone {};
         };
         class compositions

@@ -34,7 +34,7 @@ if (_type == "") then {
     _type = "FireTeam";
 };
 
-private _climate = [] call den_fnc_worldToClimate;
+private _climate = DEN_CLIMATE;
 
 private _cfgType = missionConfigFile >> "CfgFactions" >> _faction >> "Group" >> _climate >> _type;
 if (isNil "_cfgType") exitWith {

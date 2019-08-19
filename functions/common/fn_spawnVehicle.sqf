@@ -40,7 +40,7 @@ if (_faction == "") exitWith {
 
 private _side = [_faction] call den_fnc_factionSide;
 
-private _climate = [] call den_fnc_worldToClimate;
+private _climate = DEN_CLIMATE;
 
 private _vehicle = getText (missionConfigFile >> "CfgFactions" >> _faction >> "Vehicle" >> _climate >> _type);
 private _v = [_pos, _dir, _vehicle, _side] call BIS_fnc_spawnVehicle;

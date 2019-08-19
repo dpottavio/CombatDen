@@ -60,7 +60,7 @@ lbSetCurSel [_unitListBoxId, 0];
  * role list box
  */
 private _roleListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "RoleListBox" >> "idc");
-private _climate       = [] call den_fnc_worldToClimate;
+private _climate       = DEN_CLIMATE;
 private _rolesCfg      = "true" configClasses (missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate);
 private _i             = 0;
 {
@@ -90,7 +90,7 @@ lbSort [_roleListBoxId, "ASC"];
     private _loadoutListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "LoadoutListBox" >> "idc");
     lbClear _loadoutListBoxId;
 
-    private _climate = [] call den_fnc_worldToClimate;
+    private _climate = DEN_CLIMATE;
     private _loadoutsCfg =
         "true" configClasses (missionConfigFile >> "CfgFactions" >> den_loadoutMenuFaction >> "Loadout" >> _climate);
 

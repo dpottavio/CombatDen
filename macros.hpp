@@ -16,6 +16,9 @@
 // true if a addon/mod is loaded
 #define DEN_HAS_ADDON(addon) (isClass (configfile >> "CfgPatches" >> addon))
 
+#define DEN_CLIMATE (getText (missionConfigFile >> "CfgWorlds" >> worldName >> "climate"))
+
 // true if a faction has a transport helicopter
 #define DEN_FACTION_HAS_TRANSPORT_HELO(faction)\
-((getText (missionConfigFile >> "CfgFactions" >> faction >> "Vehicle" >> (call den_fnc_worldToClimate) >> "heloTransport")) != "")
+((getText (missionConfigFile >> "CfgFactions" >> faction >> "Vehicle" >> DEN_CLIMATE >> "heloTransport")) != "")
+

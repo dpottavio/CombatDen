@@ -37,7 +37,7 @@ if (isNull _obj) exitWith {
     false;
 };
 
-private _cfgClimate = [] call den_fnc_worldToClimate;
+private _cfgClimate = DEN_CLIMATE;
 
 private _items = [];
 private _arsenalProps = configProperties [missionConfigFile >> "CfgFactions" >> _faction >> "Arsenal" >> _cfgClimate];

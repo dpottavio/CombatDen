@@ -51,7 +51,7 @@ if (_faction == "") exitWith {
     false;
 };
 
-private _climate = [] call den_fnc_worldToClimate;
+private _climate = DEN_CLIMATE;
 
 private _loadout = configNull;
 if (_type != "") then {

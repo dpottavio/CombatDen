@@ -68,7 +68,7 @@ if (_role == "") exitWith {
 };
 
 private _lowDaylight = [] call den_fnc_lowDaylight;
-private _climate     = [] call den_fnc_worldToClimate;
+private _climate     = DEN_CLIMATE;
 private _typeCfg     = configNull;
 private _unitType    = "";
 
