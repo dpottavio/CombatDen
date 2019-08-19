@@ -14,7 +14,6 @@ briefing.  Just play.
 ## Features
 * Single player support.
 * 8 player coop support on a dedicated server or player hosted server.
-* Playable Blufor and Opfor factions.
 * Zeus support.
 * ACE support, but not required.
 * Virtual Arsenal for player and AI units.
