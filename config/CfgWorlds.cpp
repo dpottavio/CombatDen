@@ -51,7 +51,10 @@ class CfgWorlds
 
         blacklist[] = {};
     };
-    class gm_weferlingen_winter : gm_weferlingen_summer {};
+    class gm_weferlingen_winter : gm_weferlingen_summer
+    {
+        climate = "Winter";
+    };
     class lythium
     {
         climate = "SemiArid";
