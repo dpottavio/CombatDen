@@ -48,7 +48,7 @@ class CfgTaskDescriptions
         title = "Destroy Enemy Ordnances";
 
         description = "Search and destroy enemy ordnances.\
- Look around and inside buildings for weapon and ammo boxes.";
+ Check enemy units for any intel on ordnance positions.";
     };
     class FreeHostage
     {

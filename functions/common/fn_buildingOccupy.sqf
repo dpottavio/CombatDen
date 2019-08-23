@@ -22,13 +22,17 @@
 
     3: NUMBER - Max number of 2 unit groups.
 
-    Returns: true
+    4: BOOL - If true a single random unit will contain intel on
+    remaining unit poisitions.
+
+    Returns: unit array
 */
 params [
     ["_pos",     [],     [[]], [2,3]],
     ["_radius",  0,      [0]],
     ["_faction", "CSAT", [""]],
-    ["_max",     5,      [0]]
+    ["_max",     5,      [0]],
+    ["_intel",   true,   [true]]
 ];
 
 private _buildingList = nearestObjects [_pos, ["House"], _radius];
@@ -62,8 +66,8 @@ private _positions = [];
     };
 } forEach _buildingList;
 
-if ((count _positions) > 1) then {
+if (_intel && (count _positions) > 1) then {
     [_units, _positions, _faction] call den_fnc_intelPositions;
 };
 
-true;
+_units;
