@@ -2499,7 +2499,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = type = "B_Kitbag_rgr";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
