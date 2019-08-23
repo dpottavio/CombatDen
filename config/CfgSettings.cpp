@@ -26,8 +26,7 @@ class CfgSettings
     class Mission
     {
         title    = "Mission";
-        texts[]  = {"Random", "Defend Convoy", "Demolition", "Camp Raid", "Chemical Extraction", "Clear Bunkers", "Hostage Rescue", "Urban Combat"};
-        values[] = {-1,0,1,2,3,4,5,6};
+        function = "[] call den_fnc_missionOptions";
         default  = 0;
     };
     class Difficulty

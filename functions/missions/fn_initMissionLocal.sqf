@@ -30,7 +30,7 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_type",            0,       [0]],
+    ["_mission",         "",      [""]],
     ["_zone",            "",      [""]],
     ["_helo",            objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
@@ -38,33 +38,40 @@ params [
     ["_arsenal",         objNull, [objNull]]
 ];
 
-private _success = false;
-private _missionArgs = [_zone, _helo, _friendlyFaction, _enemyFaction, _arsenal];
-switch (_type) do {
-    case 0: {
-        _success = _missionArgs call den_fnc_defendLocal;
-    };
-    case 1: {
-        _success = _missionArgs call den_fnc_demoLocal;
-    };
-    case 2: {
-        _success = _missionArgs call den_fnc_campLocal;
-    };
-    case 3: {
-        _success = _missionArgs call den_fnc_chemLocal;
-    };
-    case 4: {
-       _success = _missionArgs call den_fnc_clearLocal;
-    };
-    case 5: {
-        _success = _missionArgs call den_fnc_hostageLocal;
-    };
-    case 6: {
-        _success = _missionArgs call den_fnc_urbanLocal;
-    };
-    default {
-        ERROR("invalid mission type");
-    };
+if (_mission == "") exitWith {
+    ERROR("mission parameter is empty");
+    false;
 };
+
+if (_zone == "") exitWith {
+    ERROR("zone parameter is empty");
+    false;
+};
+
+if (isNull _helo) exitWith {
+    ERROR("helo parameter is empty");
+    false;
+};
+
+if (_friendlyFaction == "") exitWith {
+    ERROR("friendly faction parameter is empty");
+    false;
+};
+
+if (_enemyFaction == "") exitWith {
+    ERROR("enemyFaction is empty");
+    false;
+};
+
+if (isNull _arsenal) exitWith {
+    ERROR("arsenal parameter is empty");
+    false;
+};
+
+private _missionArgs = "[_zone, _helo, _friendlyFaction, _enemyFaction, _arsenal]";
+private _localLogic = getText (missionConfigFile >> "CfgMissions" >> _mission >> "localLogic");
+private _logic = format["%1 call %2;", _missionArgs, _localLogic];
+
+private _success = call compile _logic;
 
 _success;

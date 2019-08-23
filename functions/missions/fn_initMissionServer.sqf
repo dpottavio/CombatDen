@@ -16,13 +16,8 @@
 
 params [["_playerSlots", grpNull, [grpNull]]];
 
-if (!isServer) exitWith {};
-
-private _mission = den_cba_mission;
-if (_mission < 0) then {
-    private _missionValues = getArray(missionConfigFile >> "CfgSettings" >> "Mission" >> "values");
-    private _missionCount  = (count _missionValues) - 1;
-    _mission = [0, _missionCount - 1] call BIS_fnc_randomInt;
+if (!isServer) exitWith {
+    WARNING("executing server only function on client");
 };
 
 private _friendlyFaction = den_cba_playerFaction;
@@ -153,36 +148,16 @@ if (isMultiPlayer) then {
     [_friendlyFaction] call den_fnc_mpEndMission;
 };
 
-private _missionArgs = [_playerGroup, _transport, _friendlyFaction, _enemyFaction, den_cba_difficulty];
-private _zone        = "";
-
-switch (_mission) do {
-    case 0: {
-        _zone = _missionArgs call den_fnc_defendServer;
-    };
-    case 1: {
-        _zone = _missionArgs call den_fnc_demoServer;
-    };
-    case 2: {
-        _zone = _missionArgs call den_fnc_campServer;
-    };
-    case 3: {
-        _zone = _missionArgs call den_fnc_chemServer;
-    };
-    case 4: {
-        _zone = _missionArgs call den_fnc_clearServer;
-    };
-    case 5: {
-        _zone = _missionArgs call den_fnc_hostageServer;
-    };
-    case 6: {
-        _zone = _missionArgs call den_fnc_urbanServer;
-    };
-    default {
-        ERROR("invalid mission type");
-    };
+private _mission = den_cba_mission;
+if (_mission == "") then {
+    _mission = configName (selectRandom ("true" configClasses (missionConfigFile >> "CfgMissions")));
 };
 
+private _missionArgs = "[_playerGroup, _transport, _friendlyFaction, _enemyFaction, den_cba_difficulty]";
+private _serverLogic = getText (missionConfigFile >> "CfgMissions" >> _mission >> "serverLogic");
+private _logic = format["%1 call %2;", _missionArgs, _serverLogic];
+
+private _zone = call compile _logic;
 if (_zone == "") exitWith {
     [];
 };

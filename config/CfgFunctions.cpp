@@ -86,6 +86,7 @@ class CfgFunctions
         {
             file = "functions\settings";
             class factionOptions {};
+            class missionOptions {};
         };
         class ui
         {
