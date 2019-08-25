@@ -9,7 +9,7 @@
     https://www.bohemia.net/community/licenses/arma-public-license-share-alike
 */
 author        = "ottavio";
-OnLoadMission = "Randomize Missions";
+OnLoadMission = "Randomized Missions";
 loadScreen    = "title.jpg";
 
 respawn            = "BASE";
