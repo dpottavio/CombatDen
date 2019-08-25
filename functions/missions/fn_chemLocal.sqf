@@ -61,12 +61,10 @@ if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
 };
 
 private _failQueue = [
-    ["HeloDead",        "den_heloDead"],
+    ["TransportDead",   "den_transportDead"],
     ["PlayersDead",     "den_playersDead"],
     ["SlingDead",       "den_slingDead"],
-    ["PalletDead",      "den_palletDead"],
-    ["FobFriendlyFire", "den_fobFriendlyFire"],
-    ["CivilianDead",    "den_civDead"]
+    ["PalletDead",      "den_palletDead"]
 ];
 
 [_taskQueue, _failQueue] spawn den_fnc_taskFsm;

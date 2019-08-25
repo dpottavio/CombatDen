@@ -23,11 +23,11 @@ class CfgDebriefing
         subtitle = "All Players Dead";
         description = "";
     };
-    class HeloDead
+    class TransportDead
     {
         title = "Mission Failed";
-        subtitle = "Transport Helicopter Destroyed";
-        description = "The helicopter transport was destroyed.";
+        subtitle = "Transport Vehicle Destroyed";
+        description = "The transport vehicle was destroyed.";
     };
     class SlingDead
     {
@@ -35,11 +35,11 @@ class CfgDebriefing
         subtitle = "Container Extraction Failure";
         description = "The helicopter transport was destroyed before it could extract the container.";
     };
-    class ContainerDead
+    class PalletDead
     {
         title = "Mission Failed";
-        subtitle = "Container Destroyed";
-        description = "The chemical weapon container was destroyed.";
+        subtitle = "Pallet Destroyed";
+        description = "The chemical weapon pallet was destroyed.";
     };
     class FobFriendlyFire
     {

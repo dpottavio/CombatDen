@@ -78,4 +78,8 @@ if (isNull _transportCrew) exitWith {
     _x moveInAny _transport;
 } forEach units _transportCrew;
 
+_transport addEventHandler ["killed", {
+    ["den_transportDead"] call den_fnc_publicBool;
+}];
+
 _transport;

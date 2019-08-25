@@ -61,7 +61,7 @@ if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
 };
 
 private _failQueue = [
-    ["HeloDead",        "den_heloDead"],
+    ["TransportDead",   "den_transportDead"],
     ["PlayersDead",     "den_playersDead"],
     ["IntelDestroyed",  "den_intelDestroyed"]
 ];
