@@ -27,13 +27,21 @@
 
     Returns: unit array
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_pos",     [],     [[]], [2,3]],
     ["_radius",  0,      [0]],
     ["_faction", "CSAT", [""]],
     ["_max",     5,      [0]],
-    ["_intel",   true,   [true]]
+    ["_intel",   true,   [true]],
+    ["_flee",    true,   [true]]
 ];
+
+if (_pos isEqualTo []) exitWith {
+    ERROR("position parameter is empty");
+    [];
+};
 
 private _buildingList = nearestObjects [_pos, ["House"], _radius];
 
@@ -68,6 +76,36 @@ private _positions = [];
 
 if (_intel && (count _positions) > 1) then {
     [_units, _positions, _faction] call den_fnc_intelPositions;
+};
+
+if (_flee && (count _units) > 0) then {
+    /*
+     * Monitor the number of alive units that belong to these units.
+     * If the number is low enough, force these units to flee.
+     */
+    private _side = [_faction] call den_fnc_factionSide;
+
+    [_units, _side, _pos] spawn {
+        params ["_units", "_side", "_pos"];
+
+        private _active = true;
+        private _fleePos = [_pos, 1500] call BIS_fnc_findSafePos;
+        while { _active } do {
+            private _unitCount = { (_side == (side _x)) && alive _x } count allUnits;
+            if (_unitCount <= 3 || !(isNil "den_forceFlee")) then {
+                {
+                    {
+                        deleteWaypoint _x;
+                    } forEach (waypoints _x);
+
+                    _x doMove _fleePos;
+                } forEach _units;
+
+                _active = false;
+            };
+            sleep 5;
+        };
+    };
 };
 
 _units;
