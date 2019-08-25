@@ -135,7 +135,7 @@ if (_area isEqualTo []) then {
         _heloGroup setGroupIdGlobal ["Falcon"];
 
         _heloObj addEventHandler ["killed", {
-            ["den_heloDead"] call den_fnc_publicBool;
+            ["den_transportDead"] call den_fnc_publicBool;
         }];
 
         [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
