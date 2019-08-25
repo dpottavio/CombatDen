@@ -8,7 +8,7 @@ class EditorData
 	toggles=5;
 	class ItemIDProvider
 	{
-		nextID=166;
+		nextID=167;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=74;
+		nextID=75;
 	};
 	class Camera
 	{
@@ -39,13 +39,14 @@ addons[]=
 	"A3_Structures_F_Civ_Lamps",
 	"A3_Structures_F_EPA_Civ_Constructions",
 	"A3_Structures_F_Mil_BagBunker",
-	"A3_Supplies_F_Heli_CargoNets"
+	"A3_Supplies_F_Heli_CargoNets",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=8;
+		items=9;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -101,6 +102,13 @@ class AddonsMetaData
 			name="Arma 3 Helicopters - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item8
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
 		};
 	};
 };
@@ -231,7 +239,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			dataType="Logic";
@@ -1631,6 +1639,17 @@ class Mission
 			};
 			id=125;
 			atlOffset=0.1700573;
+		};
+		class Item5
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={1033.1196,2.3186121,654.1745};
+			};
+			id=166;
+			type="CBA_main_require";
+			atlOffset=1.1920929e-005;
 		};
 	};
 };

@@ -8,11 +8,11 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=237;
+		nextID=238;
 	};
 	class LayerIndexProvider
 	{
-		nextID=30;
+		nextID=31;
 	};
 	class Camera
 	{
@@ -33,13 +33,14 @@ addons[]=
 	"A3_Structures_F_EPA_Civ_Constructions",
 	"A3_Structures_F_Civ_Camping",
 	"A3_Structures_F_Mil_Flags",
-	"A3_Structures_F_Mil_Helipads"
+	"A3_Structures_F_Mil_Helipads",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=7;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -82,6 +83,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item6
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
+		};
 	};
 };
 randomSeed=586097;
@@ -116,7 +124,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			dataType="Logic";
@@ -1612,7 +1620,18 @@ class Mission
 				};
 			};
 			id=231;
-			atlOffset=-0.87506866;
+			atlOffset=-0.87526703;
+		};
+		class Item5
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={2647.9517,64.844994,644.36572};
+			};
+			id=237;
+			type="CBA_main_require";
+			atlOffset=-7.6293945e-006;
 		};
 	};
 };

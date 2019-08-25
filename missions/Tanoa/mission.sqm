@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=628;
+		nextID=629;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=79;
+		nextID=80;
 	};
 	class Camera
 	{
@@ -34,13 +34,14 @@ addons[]=
 	"A3_Characters_F",
 	"A3_Structures_F_Mil_Flags",
 	"A3_Structures_F_Mil_Helipads",
-	"A3_Structures_F_Exp_Military_Fortifications"
+	"A3_Structures_F_Exp_Military_Fortifications",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -75,6 +76,13 @@ class AddonsMetaData
 			name="Arma 3 Apex - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item5
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
 		};
 	};
 };
@@ -208,7 +216,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			dataType="Logic";
@@ -219,7 +227,7 @@ class Mission
 			name="den_gmAdmin";
 			id=597;
 			type="ModuleCurator_F";
-			atlOffset=4.9232249;
+			atlOffset=4.9232521;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1083,7 +1091,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={13257.486,5.1733928,13751.459};
-						angles[]={-0,2.319566,0.034652505};
+						angles[]={0,2.319566,0.034652505};
 					};
 					side="Empty";
 					flags=4;
@@ -1144,6 +1152,17 @@ class Mission
 			};
 			id=618;
 			atlOffset=-0.08861351;
+		};
+		class Item5
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={13282.678,4.6665154,13718.967};
+			};
+			id=628;
+			type="CBA_main_require";
+			atlOffset=1.1444092e-005;
 		};
 	};
 };

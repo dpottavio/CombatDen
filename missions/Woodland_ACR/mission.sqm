@@ -8,7 +8,7 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=469;
+		nextID=470;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=30;
+		nextID=31;
 	};
 	class Camera
 	{
@@ -44,13 +44,14 @@ addons[]=
 	"CUP_Editor_Plants_Config",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Data_F_Curator_Virtual",
-	"A3_Characters_F"
+	"A3_Characters_F",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=8;
+		items=9;
 		class Item0
 		{
 			className="A3_Structures_F_EPA";
@@ -105,6 +106,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item8
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
+		};
 	};
 };
 randomSeed=5976286;
@@ -139,7 +147,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=114;
+		items=115;
 		class Item0
 		{
 			dataType="Layer";
@@ -3727,6 +3735,17 @@ class Mission
 			};
 			id=455;
 			atlOffset=6.1035156e-005;
+		};
+		class Item114
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={7502.3096,160.25139,102.60352};
+			};
+			id=469;
+			type="CBA_main_require";
+			atlOffset=-6.1035156e-005;
 		};
 	};
 };

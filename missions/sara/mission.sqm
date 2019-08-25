@@ -8,11 +8,11 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=236;
+		nextID=237;
 	};
 	class LayerIndexProvider
 	{
-		nextID=13;
+		nextID=14;
 	};
 	class Camera
 	{
@@ -37,13 +37,14 @@ addons[]=
 	"A3_Structures_F_Civ_Constructions",
 	"CUP_Misc_e_Config",
 	"A3_Structures_F_Mil_Flags",
-	"A3_Structures_F_Mil_Helipads"
+	"A3_Structures_F_Mil_Helipads",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -91,6 +92,13 @@ class AddonsMetaData
 			className="CUP_Misc_e_Config";
 			name="CUP_Misc_e_Config";
 		};
+		class Item7
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
+		};
 	};
 };
 randomSeed=11574506;
@@ -124,7 +132,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			dataType="Logic";
@@ -1649,6 +1657,17 @@ class Mission
 			};
 			id=233;
 			atlOffset=0.2431426;
+		};
+		class Item5
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={17954.385,6.0139961,18402.789};
+			};
+			id=236;
+			type="CBA_main_require";
+			atlOffset=1.9073486e-006;
 		};
 	};
 };

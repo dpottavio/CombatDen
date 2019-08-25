@@ -8,11 +8,11 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=177;
+		nextID=178;
 	};
 	class LayerIndexProvider
 	{
-		nextID=7;
+		nextID=8;
 	};
 	class Camera
 	{
@@ -38,13 +38,14 @@ addons[]=
 	"A3_Characters_F",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Data_F_Curator_Virtual",
-	"A3_Structures_F_Mil_Helipads"
+	"A3_Structures_F_Mil_Helipads",
+	"cba_main"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Structures_F";
@@ -94,6 +95,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item7
+		{
+			className="cba_main";
+			name="Community Base Addons - Main Component";
+			author="CBA Team";
+			url="https://www.github.com/CBATeam/CBA_A3";
+		};
 	};
 };
 randomSeed=736247;
@@ -127,7 +135,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			dataType="Layer";
@@ -992,6 +1000,7 @@ class Mission
 					};
 					id=176;
 					type="Land_PortableLight_double_F";
+					atlOffset=7.6293945e-006;
 				};
 			};
 			id=159;
@@ -1738,6 +1747,17 @@ class Mission
 			};
 			id=175;
 			type="Land_HelipadEmpty_F";
+		};
+		class Item7
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={19662.637,103.49914,19783.877};
+			};
+			id=177;
+			type="CBA_main_require";
+			atlOffset=0.0001373291;
 		};
 	};
 };
