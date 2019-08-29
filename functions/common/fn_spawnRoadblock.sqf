@@ -62,11 +62,11 @@ if (_nearRoads isEqualTo []) exitWith {
 private _roadblockCount = 0;
 private _lastPos = [0,0,0];
 {
-    private _pos = getPos _x;
+    private _roadPos = getPos _x;
 
     // Objects that should not be near by.
     private _nearTerrainObjs = nearestTerrainObjects [
-        _pos,
+        _roadPos,
         ["HOUSE", "WALL", "FENCE", "BUILDING"],
         100
     ];
@@ -74,16 +74,16 @@ private _lastPos = [0,0,0];
     // Check if near a black listed position.
     private _nearBlackList = false;
     {
-        if ((_pos distance _x) < 50) exitWith {
+        if ((_roadPos distance _x) < 50) exitWith {
             _nearBlackList = true;
         };
     } forEach _blackList;
 
     // Limit how close roadblocks are to each other.
-    private _nearLastPos = (_pos distance _lastPos) < 200;
+    private _nearLastPos = (_roadPos distance _lastPos) < 200;
 
     if (!_nearLastPos && !_nearBlackList && _nearTerrainObjs isEqualTo []) then {
-        _lastPos = _pos;
+        _lastPos = _roadPos;
 
         private _connections = roadsConnectedTo _x;
         if !(_connections isEqualTo []) then {
@@ -91,20 +91,29 @@ private _lastPos = [0,0,0];
             * Use the direction of a connected road to define
             * the direction of the roadblock.
             */
-            private _dir = _x getDir (_connections select 0);
+            private _connection = _connections select 0;
+            private _zoneDir    = _x getDir _pos;
+            private _dir        = _x getDir _connection;
+            // angle between the direction the road is pointing and the center position
+            private _angle      = abs (_dir - _zoneDir);
+            if (_angle < 95) then {
+                // If the angle is too small, it means the
+                // roadblock is pointing in the wrong direction.
+                _dir = _dir - 180;
+            };
 
             private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Roadblock"]);
-            [_pos, _dir, _faction] call compile (format["_this call %1;", getText _compFunc]);
+            [_roadPos, _dir, _faction] call compile (format["_this call %1;", getText _compFunc]);
 
             if (_faction != "" && _groupType != "") then {
-                private _group = [_pos, _faction, _groupType] call den_fnc_spawnGroup;
-                private _wp = [_group, _pos, 0, "SCRIPTED", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+                private _group = [_roadPos, _faction, _groupType] call den_fnc_spawnGroup;
+                private _wp = [_group, _roadPos, 0, "SCRIPTED", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
                 _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
             };
 
             _roadblockCount = _roadblockCount + 1;
 
-            private _marker = createMarker [format["roadblockMarker-%1", _roadblockCount], _pos];
+            private _marker = createMarker [format["roadblockMarker-%1", _roadblockCount], _roadPos];
             _marker setMarkerType  "loc_Bunker";
             _marker setMarkerColor _color;
             _marker setMarkerText format["%1", _roadblockCount];
