@@ -51,7 +51,7 @@ private _objs = [
 	["Land_CncBarrier_F",[13.4156,0.375488,0],181.326,1,0,[],"","",true,false]
 ];
 
-[_pos, _dir, _objs] call BIS_fnc_objectsMapper;
+[_pos, _dir - 180, _objs] call BIS_fnc_objectsMapper;
 
 if (_faction != "") then {
     private _flagTexture = getText (missionConfigFile >> "CfgFactions" >> _faction >> "flagTexture");
