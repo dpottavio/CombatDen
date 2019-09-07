@@ -16,6 +16,7 @@ class Uk3cbBaf : Faction
     cargoBox    = "B_CargoNet_01_ammo_F";
     flagTexture = "a3\data_f\flags\flag_uk_co.paa";
     name        = "BAF";
+    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : ArsenalCupWest
