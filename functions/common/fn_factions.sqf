@@ -123,6 +123,46 @@ if (_addons isEqualTo []) then {
     if (DEN_HAS_ADDON("A3_Characters_F_Enoch")) then {
         _addons pushBack "Ldf";
     };
+} else {
+    /*
+     * Faction addons exist. Determine if the addons are only for
+     * one side.  If this is the case add vanilla factions to the
+     * other sides.  This is done to prevent player from loading
+     * friendly-only factions.
+     */
+    private _west = [];
+    private _east = [];
+    private _guer = [];
+    {
+        private _side = [_x] call den_fnc_factionSide;
+        switch (_side) do {
+            case blufor: {
+                _west pushBack _x;
+            };
+            case opfor: {
+                _east pushBack _x;
+            };
+            case resistance: {
+                _guer pushBack _x;
+            };
+        };
+    } forEach _addons;
+    if ((count _west) == 0 && (count _east) == 0) exitWith {
+        _addons pushBack "Nato";
+        _addons pushBack "Csat";
+    };
+    if ((count _west) == 0 && (count _guer) == 0) exitWith {
+        _addons pushBack "Nato";
+        _addons pushBack "Fia";
+        _addons pushBack "Aaf";
+        _addons pushBack "Syndikat";
+    };
+    if ((count _east) == 0 && (count _guer) == 0) exitWith {
+        _addons pushBack "Csat";
+        _addons pushBack "Fia";
+        _addons pushBack "Aaf";
+        _addons pushBack "Syndikat";
+    };
 };
 
 private _climate = DEN_CLIMATE;
