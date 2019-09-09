@@ -28,10 +28,11 @@
 
 params [
     ["_playerGroup",     grpNull, [grpNull]],
-    ["_helo",            objNull, [objNull]],
+    ["_transportPos",    [],      [[]], [2,3]],
+    ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",      0,       [0]]
+    ["_difficulty",       0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -39,8 +40,8 @@ if (isNull _playerGroup) exitWith {
     "";
 };
 
-if (isNull _helo) exitWith {
-    ERROR("helo parameter cannot be empty");
+if (_transportPos isEqualTo []) exitWith {
+    ERROR("transport position parameter must not be null");
     "";
 };
 
@@ -53,6 +54,7 @@ if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
     "";
 };
+
 /*
  * max radius for AO objects
  */
@@ -115,7 +117,14 @@ private _reinforcePos = _zoneSafePosList select 6;
     }
 ] call den_fnc_createTrigger;
 
-[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
+private _transport = [
+    _zonePos,
+    _lzPos,
+    _transportPos,
+    _transportDir,
+    _playerGroup,
+    _friendlyFaction
+] call den_fnc_insertHelo;
 
 /*
  * enemy units
@@ -200,4 +209,4 @@ private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
 _marker setMarkerColor _enemyColor;
 
-_zoneName;
+[_zoneName, _transport];

@@ -10,46 +10,52 @@
 
     Description:
 
-    Register a LZ insert.  This creates an LZ and a loading point
-    for a cargo group.  The loading point is assumed to be a helicopter.
-    Once the cargo units enter the helicopter they are "teleported"
-    just outside the LZ.
+    Setup a helicopter insert.
 
     Parameter(s):
 
-    0: ARRAY - LZ position
+    0: ARRAY - zone position
 
-    1: GROUP - Cargo group for transport.
+    1: ARRAY - LZ position
 
-    2: OBJECT - Transport vehicle.  Once all cargo units enter
-    the vehicle, they are transported to the LZ.
+    2: ARRAY - helicopter initial position
 
-    3: AREA - Zone Area. This is the objective area or AO.
+    3: NUMBER - helicopter initial direction
+
+    4: GROUP - Cargo group for transport
+
+    5: STRING - friendly faction name
 
     Returns: true on success, false on error
 */
 #include "..\..\macros.hpp"
 
 params [
+    ["_zonePos",         [],      [[]],      [2,3]],
     ["_lzPos",           [],      [[]],      [2,3]],
+    ["_heloPos",         [],      [[]],      [2,3]],
+    ["_heloDir",         0,       [0]],
     ["_cargoGroup",      grpNull, [grpNull]],
-    ["_transport",       objNull, [objNull]],
-    ["_zoneArea",        [],      [[]],      [5,6]],
     ["_friendlyFaction", "",      [""]]
 ];
 
+if (_zonePos isEqualTo []) exitWith {
+    ERROR("zone position parameter is empty");
+    false;
+};
+
+if (_lzPos isEqualTo []) exitWith {
+    ERROR("lz position parameter is empty");
+    false;
+};
+
+if (_heloPos isEqualTo []) exitWith {
+    ERROR("helo position parameter is empty");
+    false;
+};
+
 if (isNull _cargoGroup) exitWith {
     ERROR("cargo parameter is null");
-    false;
-};
-
-if (isNull _transport) exitWith {
-    ERROR("transport parameter is null");
-    false;
-};
-
-if (_zoneArea isEqualTo []) exitWith {
-    ERROR("zone parameter is empty");
     false;
 };
 
@@ -57,6 +63,8 @@ if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction parameter is empty");
     false;
 };
+
+private _helo = [_heloPos, _heloDir, _friendlyFaction] call den_fnc_spawnHeloTransport;
 
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");
@@ -66,7 +74,6 @@ createMarker ["lzMarker", _lzPos];
 "lzMarker" setMarkerColor _friendlyColor;
 "lzMarker" setMarkerText "LZ";
 
-private _zonePos        = _zoneArea param [0, _lzPos];
 private _markerDir      = _zonePos getDir _lzPos;
 private _alphaMarkerPos = _lzPos getPos [500, _markerDir];
 private _arrowPos       = _lzPos getPos [250, _markerDir];
@@ -83,7 +90,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
  * Trigger to start the transport once players approach it.
  */
 [
-    getPos _transport,
+    _heloPos,
     [10, 10, 0, false],
     ["ANYPLAYER", "PRESENT", false],
     nil,
@@ -92,18 +99,18 @@ createMarker ["alphaArrowMarker", _arrowPos];
         params ["", "", "_args"];
         (_args select 0) engineOn true;
     },
-    [_transport]
+    [_helo]
 ] call den_fnc_createTrigger;
 
-[_lzPos, _cargoGroup, _transport, _zonePos] spawn {
-    params ["_lzPos", "_cargoGroup", "_transport", "_zonePos"];
+[_lzPos, _cargoGroup, _helo, _zonePos] spawn {
+    params ["_lzPos", "_cargoGroup", "_helo", "_zonePos"];
 
-    private _transportType = typeOf _transport;
+    private _heloType = typeOf _helo;
 
     // Wait for the cargo units to enter the transport.
     while {true} do {
         private _total = { (alive _x) && (isPlayer _x) } count units _cargoGroup;
-        private _loaded = {((vehicle _x) == _transport) && (isPlayer _x)} count units _cargoGroup;
+        private _loaded = {((vehicle _x) == _helo) && (isPlayer _x)} count units _cargoGroup;
         if (_total > 0 && _total == _loaded) exitWith {
             ["den_insert"] call den_fnc_publicBool;
         };
@@ -114,8 +121,8 @@ createMarker ["alphaArrowMarker", _arrowPos];
 
     // Move remaining units in the transport.
     {
-        if ((_transport getCargoIndex _x) == -1) then {
-            [_x, _transport] remoteExecCall ["moveInCargo", _x];
+        if ((_helo getCargoIndex _x) == -1) then {
+            [_x, _helo] remoteExecCall ["moveInCargo", _x];
             sleep 0.25;
         };
     } forEach _cargoUnits;
@@ -137,15 +144,19 @@ createMarker ["alphaArrowMarker", _arrowPos];
     [["","BLACK OUT",3]] remoteExec ["cutText"];
     sleep 6;
 
-    private _transportGroup = group leader driver _transport;
-    _transportGroup deleteGroupWhenEmpty true;
+    private _heloGroup = group leader driver _helo;
+    _heloGroup deleteGroupWhenEmpty true;
+    /*
+     * Some factions do not have a helicopter. In this case,
+     * the players are just dropped on the LZ but without
+     * the return helicopter flying overhead.
+     */
+    private _isHeloType = _helo isKindOf "Helicopter";
 
-    private _isHeloType = _transport isKindOf "Helicopter";
-
-    deleteVehicle _transport;
+    deleteVehicle _helo;
     {
         deleteVehicle _x;
-    } forEach units _transportGroup;
+    } forEach units _heloGroup;
 
     private _hpad    = "Land_HelipadEmpty_F" createVehicle _lzPos;
     private _side    = side _cargoGroup;
@@ -192,11 +203,11 @@ createMarker ["alphaArrowMarker", _arrowPos];
         private _cloneDestPos = _lzPos getPos [2000, (_zonePos getDir _lzPos)];
         _cloneDestPos set [2, 250];
 
-        private _transportClonePos     = (_hpad modelToWorld [0,0,75]);
-        private _transportCloneVehicle = [_transportClonePos, _zoneDir, _transportType, _side] call BIS_fnc_spawnVehicle;
-        private _transportClone        = _transportCloneVehicle select 0;
+        private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
+        private _heloCloneVehicle = [_heloClonePos, _zoneDir, _heloType, _side] call BIS_fnc_spawnVehicle;
+        private _heloClone        = _heloCloneVehicle select 0;
 
-        private _cloneCrew  = crew _transportClone;
+        private _cloneCrew  = crew _heloClone;
         private _cloneGroup = group leader (_cloneCrew select 0);
         _cloneGroup deleteGroupWhenEmpty true;
 
@@ -222,4 +233,4 @@ createMarker ["alphaArrowMarker", _arrowPos];
     [["","BLACK IN",3]] remoteExec ["cutText"];
 };
 
-true;
+_helo;

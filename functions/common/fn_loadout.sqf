@@ -81,35 +81,6 @@ removeGoggles _unit;
 
 private _hasAceCommon = DEN_HAS_ADDON("ace_common");
 
-private _itemIterate = {
-    /*
-     * For each item in a list add it to a unit if:
-     *
-     * 1. The item depends on ACE and ACE is loaded.
-     *
-     * 2. The item does not depend on ACE.
-     *
-     * 3. The item should be added only when ACE is not present.
-     */
-    params ["_unit", "_items", "_func"];
-    {
-        private _name        = configName _x;
-        private _isAceProp   = ((_name find "ace") == 0);
-        private _isNoAceProp = false;
-
-        if (!_isAceProp) then {
-            _isNoAceProp = ((_name find "noAce") == 0);
-        };
-
-        if (isArray _x && (_hasAceCommon || !_isAceProp) && !(_hasAceCommon && _isNoAceProp)) then {
-            private _list = getArray _x;
-            {
-                [_unit, _x] call _func;
-            } forEach _list;
-        };
-    } forEach _items;
-};
-
 /*
  * uniform
  */
@@ -121,63 +92,35 @@ if (_uniform == "") then {
                                                "Arsenal" >>
                                                 _climate >> "uniforms"));
 };
+
 _unit forceAddUniform _uniform;
-
-private _uniformItems = configProperties [_loadout >> "Uniform"];
-
-[_unit, _uniformItems, {
-    params ["_unit", "_item"];
-    _unit addItemToUniform _item;
-}] call _itemIterate;
+{
+    _unit addItemToUniform _x;
+} forEach ([_loadout, "Uniform"] call den_fnc_loadoutItems);
 
 /*
  * vest
  */
 _unit addVest getText (_loadout >> "Vest" >> "type");
-
-private _vestItems = configProperties [_loadout >> "Vest"];
-
-[_unit, _vestItems, {
-    params ["_unit", "_item"];
-    _unit addItemToVest _item;
-}] call _itemIterate;
+{
+    _unit addItemToVest _x;
+} forEach ([_loadout, "Vest"] call den_fnc_loadoutItems);
 
 /*
  * backpack
  */
 _unit addBackpack getText (_loadout >> "Backpack" >> "type");
-
-private _backpackItems = configProperties [_loadout >> "Backpack"];
-
-[_unit, _backpackItems, {
-    params ["_unit", "_item"];
-    _unit addItemToBackpack _item;
-}] call _itemIterate;
+{
+    _unit addItemToBackpack _x;
+} forEach ([_loadout, "Backpack"] call den_fnc_loadoutItems);
 
 /*
  * weapons
  */
-private _primaryMag      = getText   (_loadout >> "primaryMag");
-private _primaryMagCount = getNumber (_loadout >> "primaryMagCount");
+private _mags = [_loadout] call den_fnc_loadoutMags;
 
-_unit addMagazines [_primaryMag, _primaryMagCount];
-
-private _secondaryMag      = getText   (_loadout >> "secondaryMag");
-private _secondaryMagCount = getNumber (_loadout >> "secondaryMagCount");
-
-if !(_hasAceCommon) then {
-    private _noAceMag = getText (_loadout >> "noAceSecondaryMag");
-    if (_noAceMag != "") then {
-        _secondaryMag = _noAceMag;
-    };
-
-    private _noAceMagCount = getNumber (_loadout >> "noAceSecondaryMagCount");
-    if (_noAceMagCount > 0) then {
-        _secondaryMagCount = _noAceMagCount;
-    };
-};
-
-_unit addMagazines [_secondaryMag, _secondaryMagCount];
+_unit addMagazines [_mags select 0, _mags select 1];
+_unit addMagazines [_mags select 2, _mags select 3];
 
 _unit addWeapon getText (_loadout >> "rifle");
 _unit addWeapon getText (_loadout >> "handgun");
@@ -200,12 +143,9 @@ _unit addPrimaryWeaponItem getText (_loadout >> "rifleBipod");
 /*
  * linked
  */
-private _linkedItems = configProperties [_loadout >> "LinkedItems"];
-
-[_unit, _linkedItems, {
-    params ["_unit", "_item"];
-    _unit linkItem _item;
-}] call _itemIterate;
+{
+    _unit linkItem _x;
+} forEach ([_loadout, "LinkedItems"] call den_fnc_loadoutItems);
 
 /*
  * headgear
@@ -251,5 +191,8 @@ private _faceware = getText (_loadout >> "faceware");
 if (_faceware != "") then {
     _unit addGoggles _faceware;
 };
+
+// To simplify gameplay, all units can operate a toolbox.
+_unit setUnitTrait ["engineer", true];
 
 true;

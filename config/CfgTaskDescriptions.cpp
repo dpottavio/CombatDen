@@ -21,7 +21,7 @@ class CfgTaskDescriptions
     class BoardInsert
     {
         title = "Board Transport";
-        description = "Board the helicopter transport for LZ insertion when you are ready.";
+        description = "Board transport vehicle for insertion when you are ready.";
     };
     class ClearZone
     {
@@ -82,5 +82,21 @@ class CfgTaskDescriptions
     {
         title = "Search Camp";
         description = "Search camp for intel.";
+    };
+    class SeizeVehicle
+    {
+        title = "Seize Vehicle";
+        description = "Seize enemy <marker name=""vehicleMarker"">vehicle</marker>.";
+    };
+    class ExtractVehicle
+    {
+        title = "Extract Vehicle";
+        description = "Bring the enemy vehicle to <marker name=""wpEchoMarker"">Waypoint Echo</marker>.";
+    };
+    class HoldWpEcho
+    {
+        title = "Hold Waypoint Echo";
+        description = "Hold your position at <marker name=""wpEchoMarker"">Waypoint Echo</marker>. \
+Defend this position from enemy units.";
     };
 };

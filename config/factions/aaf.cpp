@@ -142,6 +142,7 @@ class Aaf : Faction
             heloTransport      = "I_Heli_Transport_02_F";
             heloTransportLarge = "I_Heli_Transport_02_F";
             heloCargo          = "I_Heli_Transport_02_F";
+            truckAssault       = "I_MRAP_03_hmg_F";
             truckSupplyAmmo    = "I_Truck_02_ammo_F";
             truckSupplyCargo   = "I_Truck_02_box_F";
             truckSupplyFuel    = "I_Truck_02_fuel_F";
@@ -557,6 +558,23 @@ class Aaf : Faction
             };
             class LinkedItems : LinkedItems {};
         };
+        class EngineerBase : RiflemanBase
+        {
+            unit            = "I_engineer_F";
+            primaryMagCount = AAF_RIFLEMAN_MAG_COUNT;
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+            class Backpack : Backpack
+            {
+                type = "B_TacticalPack_oli";
+
+                items[] += {
+                    "ToolKit"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
         class SemiArid
         {
             class Rifleman
@@ -699,6 +717,23 @@ class Aaf : Faction
                 role = "EOD";
 
                 class Mk20 : EodBase
+                {
+                    default    = 1;
+                    aceType    = "F2000";
+                    type       = "MK20";
+                    rifle      = "arifle_Mk20_F";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Mk20 : EngineerBase
                 {
                     default    = 1;
                     aceType    = "F2000";

@@ -37,11 +37,11 @@ class GmDenmark : Faction
             heloTransport      = "";
             heloTransportLarge = "";
             heloCargo          = "B_Heli_Transport_03_F";
-
-            truckSupplyAmmo  = "gm_ge_army_kat1_451_reammo";
-            truckSupplyCargo = "gm_ge_army_u1300l_cargo";
-            truckSupplyFuel  = "gm_ge_army_kat1_451_refuel";
-            truckTransport   = "gm_ge_army_u1300l_cargo";
+            truckAssault       = "gm_ge_army_fuchsa0_command";
+            truckSupplyAmmo    = "gm_ge_army_kat1_451_reammo";
+            truckSupplyCargo   = "gm_ge_army_u1300l_cargo";
+            truckSupplyFuel    = "gm_ge_army_kat1_451_refuel";
+            truckTransport     = "gm_ge_army_u1300l_cargo";
         };
         class Tropic : Wood {};
         class Winter : Wood {};
@@ -184,14 +184,14 @@ class GmDenmark : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_u1300l_container";
+                    vehicle = "gm_ge_army_fuchsa0_command";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_u1300l_cargo_wdl";
+                    vehicle = "gm_ge_army_fuchsa0_command";
                 };
                 class Unit1 : Unit1
                 {
@@ -218,7 +218,7 @@ class GmDenmark : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "gm_ge_army_u1300l_cargo_wdl";
+                    vehicle = "gm_ge_army_fuchsa0_command";
                 };
             };
         };
@@ -351,14 +351,14 @@ class GmDenmark : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_u1300l_container";
+                    vehicle = "gm_ge_army_fuchsa0_command";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_u1300l_cargo_wdl";
+                    vehicle = "gm_ge_army_fuchsa0_command";
                 };
                 class Unit1 : Unit1
                 {
@@ -385,7 +385,7 @@ class GmDenmark : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "gm_ge_army_u1300l_cargo_wdl";
+                    vehicle = "gm_ge_army_fuchsa0_command";
                 };
             };
         };
@@ -531,7 +531,7 @@ class GmDenmark : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "gm_handgrenade_frag_dm51a1",
                     "gm_handgrenade_frag_dm51a1",
                     "gm_smokeshell_wht_dm25",
@@ -540,7 +540,7 @@ class GmDenmark : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                    "gm_handgrenade_frag_dm51a1",
                    "gm_handgrenade_frag_dm51a1",
                    "gm_handgrenade_frag_dm51a1",
@@ -558,7 +558,7 @@ class GmDenmark : Faction
             class Vest     : Vest {};
             class Backpack : Backpack
             {
-                grenadierBaseItems[] = {
+                items[] += {
                     "gm_1rnd_67mm_heat_dm22a1_g3",
                     "gm_1rnd_67mm_heat_dm22a1_g3",
                     "gm_1rnd_67mm_heat_dm22a1_g3",
@@ -577,7 +577,7 @@ class GmDenmark : Faction
             class Vest        : Vest {};
             class Backpack : Backpack
             {
-                arBaseItems[] = {
+                items[] += {
                     "gm_handgrenade_frag_dm51a1",
                     "gm_handgrenade_frag_dm51a1",
                     "gm_handgrenade_frag_dm51a1",
@@ -605,7 +605,7 @@ class GmDenmark : Faction
             {
                 type = "gm_ge_army_vest_80_medic";
 
-                medicBaseItems[] = {
+                items[] += {
                     "gm_smokeshell_wht_dm25",
                     "gm_smokeshell_wht_dm25",
                     "gm_smokeshell_wht_dm25",
@@ -634,7 +634,7 @@ class GmDenmark : Faction
 
             class Vest : Vest
             {
-               atBaseItems[] = {
+               items[] += {
                    "gm_smokeshell_wht_dm25",
                    "gm_handgrenade_frag_dm51a1",
                    "gm_handgrenade_frag_dm51a1"
@@ -652,7 +652,7 @@ class GmDenmark : Faction
 
             class Vest : Vest
             {
-                eodBaseItems[] = {
+                items[] += {
                     "gm_handgrenade_frag_dm51a1",
                     "gm_handgrenade_frag_dm51a1",
                     "gm_smokeshell_wht_dm25",
@@ -661,7 +661,7 @@ class GmDenmark : Faction
             };
             class Backpack : Backpack
             {
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -673,7 +673,7 @@ class GmDenmark : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEodBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -681,6 +681,19 @@ class GmDenmark : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -888,6 +901,32 @@ class GmDenmark : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class G3A3 : EngineerBase
+                {
+                    default    = 1;
+                    type       = "G3A3";
+                    rifle      = "gm_g3a3_oli";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : EngineerBase
+                {
+                    type       = "G3A4";
+                    rifle      = "gm_g3a4_oli";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Tropic : Wood
         {
@@ -1004,6 +1043,23 @@ class GmDenmark : Faction
                 };
             };
             class Eod : Eod
+            {
+                class G3A3 : G3A3
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class G3A3 : G3A3
                 {
@@ -1222,6 +1278,23 @@ class GmDenmark : Faction
                     {
                         type = "gm_dk_army_uniform_soldier_84_win";
                     };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class G3A3 : G3A3
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G3A4 : G3A4
+                {
+                    class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};

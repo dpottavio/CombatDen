@@ -24,7 +24,7 @@ class CupTakistan : Faction
     {
         class Base : Base
         {
-            cupTakistanMags[] = {
+            mags[] = {
                 "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
                 "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
                 "CUP_30Rnd_TE1_Yellow_Tracer_762x39_AK47_M",
@@ -50,7 +50,7 @@ class CupTakistan : Faction
                 "CUP_FlareYellow_GP25_M",
                 "CUP_1Rnd_HE_GP25_M"
             };
-             cupTakistanWeapons[] = {
+            weapons[] = {
                 "CUP_arifle_AKM",
                 "CUP_arifle_AKM_top_rail",
                 "CUP_arifle_AKM_GL",
@@ -61,11 +61,11 @@ class CupTakistan : Faction
                 "CUP_lmg_Pecheneg",
                 "CUP_lmg_PKM"
             };
-             cupTakistanLaunchers[] = {
+            launchers[] = {
                 "CUP_launch_RPG7V",
                 "CUP_launch_RPG18"
             };
-             cupTakistanGrenades[] = {
+            grenades[] = {
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
@@ -75,21 +75,21 @@ class CupTakistan : Faction
                 "SmokeShell",
                 "CUP_HandGrenade_RGD5"
             };
-             cupTakistanSights[] = {
+            dights[] = {
                 "cup_optic_pso_1"
             };
-             cupTakistanAttachments[] = {
+            attachments[] = {
                 "cup_acc_flashlight",
                 "cup_acc_anpeq_15_black"
             };
-             cupTakistanFaceware[] = {
+            faceware[] = {
                 "CUP_FR_NeckScarf3",
                 "CUP_FR_NeckScarf",
                 "CUP_FR_NeckScarf2",
                 "CUP_FR_NeckScarf5",
                 "CUP_FR_NeckScarf4"
             };
-             cupTakistanBackpacks[] = {
+            backpacks[] = {
                 "B_Kitbag_rgr"
             };
         };
@@ -103,6 +103,7 @@ class CupTakistan : Faction
             heloTransport      = "CUP_O_UH1H_TKA";
             heloTransportLarge = "CUP_O_Mi17_TK";
             heloCargo          = "CUP_O_Mi17_TK";
+            truckAssault       = "CUP_O_BRDM2_TKA";
             truckSupplyAmmo    = "CUP_O_Ural_Reammo_TKA";
             truckSupplyCargo   = "CUP_O_Ural_TKA";
             truckSupplyFuel    = "CUP_O_Ural_Refuel_TKA";
@@ -307,7 +308,7 @@ class CupTakistan : Faction
             {
                 type = "CUP_U_O_TK_Green";
 
-                takiBaseItems[] = {
+                items[] += {
                     "16Rnd_9x21_Mag",
                     "16Rnd_9x21_Mag"
                 };
@@ -331,7 +332,7 @@ class CupTakistan : Faction
 
             class Vest : Vest
             {
-               riflemanItems[] = {
+               items[] += {
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
                    "SmokeShell",
@@ -340,7 +341,7 @@ class CupTakistan : Faction
             };
             class Backpack : Backpack
             {
-                riflemanItems[] = {
+                items[] += {
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
@@ -359,7 +360,7 @@ class CupTakistan : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               grenadierBaseItems[] = {
+               items[] += {
                     "CUP_FlareWhite_GP25_M"
                };
             };
@@ -374,14 +375,14 @@ class CupTakistan : Faction
 
             class Uniform : Uniform
             {
-                arBaseItems[] = {
+                items[] += {
                    "CUP_HandGrenade_RGD5",
                    "SmokeShell"
                 };
             };
             class Vest : Vest
             {
-                 arBaseItems[] = {
+                 items[] += {
                    "CUP_HandGrenade_RGD5"
                 };
             };
@@ -398,7 +399,7 @@ class CupTakistan : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanBaseItems[] = {
+               items[] += {
                  "CUP_HandGrenade_RGD5",
                  "CUP_HandGrenade_RGD5",
                  "SmokeShell",
@@ -416,7 +417,7 @@ class CupTakistan : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                medicBaseItems[] = {
+                items[] += {
                     "SmokeShell",
                     "SmokeShell",
                     "SmokeShell",
@@ -452,7 +453,7 @@ class CupTakistan : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "CUP_HandGrenade_RGD5",
                     "CUP_HandGrenade_RGD5",
                     "SmokeShell",
@@ -461,7 +462,7 @@ class CupTakistan : Faction
             };
             class Backpack : Backpack
             {
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -473,7 +474,7 @@ class CupTakistan : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceItems[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -485,7 +486,21 @@ class CupTakistan : Faction
             };
             class LinkedItems : LinkedItems {};
         };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "CUP_O_TK_Engineer";
 
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
         class Arid
         {
             class Rifleman
@@ -628,6 +643,22 @@ class CupTakistan : Faction
                 role = "EOD";
 
                 class Akm : EodBase
+                {
+                    type    = "AKM";
+                    rifle   = "CUP_arifle_AKM";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Akm : EngineerBase
                 {
                     type    = "AKM";
                     rifle   = "CUP_arifle_AKM";

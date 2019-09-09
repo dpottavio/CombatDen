@@ -38,11 +38,6 @@ params [
     ["_arsenal",         objNull, [objNull]]
 ];
 
-if (_mission == "") exitWith {
-    ERROR("mission parameter is empty");
-    false;
-};
-
 if (_zone == "") exitWith {
     ERROR("zone parameter is empty");
     false;

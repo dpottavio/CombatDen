@@ -114,6 +114,7 @@ class Ldf : Faction
             heloTransport      = "I_Heli_Transport_02_F";
             heloTransportLarge = "I_Heli_Transport_02_F";
             heloCargo          = "I_Heli_Transport_02_F";
+            truckAssault       = "I_MRAP_03_hmg_F";
             truckSupplyAmmo    = "I_E_Truck_02_Ammo_F";
             truckSupplyCargo   = "I_E_Truck_02_Box_F";
             truckSupplyFuel    = "I_E_Truck_02_fuel_F";
@@ -521,6 +522,23 @@ class Ldf : Faction
             };
             class LinkedItems : LinkedItems {};
         };
+        class EngineerBase : RiflemanBase
+        {
+            unit            = "I_engineer_F";
+            primaryMagCount = AAF_RIFLEMAN_MAG_COUNT;
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+            class Backpack : Backpack
+            {
+                type = "B_Kitbag_rgr";
+
+                items[] += {
+                    "ToolKit"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
         class Wood
         {
             class Rifleman
@@ -655,6 +673,21 @@ class Ldf : Faction
                 role = "EOD";
 
                 class Promet : EodBase
+                {
+                    default = 1;
+                    type    = "Promet";
+                    rifle   = "arifle_MSBS65_F";
+
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Promet : EngineerBase
                 {
                     default = 1;
                     type    = "Promet";

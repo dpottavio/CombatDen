@@ -270,6 +270,7 @@ class Nato : Faction
             heloTransport      = "B_Heli_Transport_01_camo_F";
             heloTransportLarge = "B_Heli_Transport_03_F";
             heloCargo          = "B_Heli_Transport_03_F";
+            truckAssault       = "B_MRAP_01_hmg_F";
             truckSupplyAmmo    = "B_Truck_01_ammo_F";
             truckSupplyCargo   = "B_Truck_01_box_F";
             truckSupplyFuel    = "B_Truck_01_fuel_F";
@@ -277,13 +278,13 @@ class Nato : Faction
         class Arid   : SemiArid {};
         class Tropic : SemiArid
         {
+            truckAssault     = "B_T_MRAP_01_hmg_F";
             truckSupplyAmmo  = "B_T_Truck_01_ammo_F";
             truckSupplyCargo = "B_T_Truck_01_box_F";
             truckSupplyFuel  = "B_T_Truck_01_fuel_F";
         };
         class Wood : Tropic {};
     };
-
 
 #define NATO_NVG  "NVGoggles"
 
@@ -997,7 +998,7 @@ class Nato : Faction
             {
                 type = "U_B_CombatUniform_mcam";
 
-                natoItems[] = {
+                items[] += {
                     "16Rnd_9x21_Mag",
                     "16Rnd_9x21_Mag"
                 };
@@ -1021,7 +1022,7 @@ class Nato : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "SmokeShell",
@@ -1030,7 +1031,7 @@ class Nato : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "HandGrenade",
@@ -1049,7 +1050,7 @@ class Nato : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               grenadierBaseItems[] = {
+               items[] += {
                     "1Rnd_Smoke_Grenade_shell",
                };
             };
@@ -1073,7 +1074,7 @@ class Nato : Faction
             class Vest        : Vest {};
             class Backpack : Backpack
             {
-                arBaseItems[] = {
+                items[] += {
                    "HandGrenade",
                    "HandGrenade",
                    "HandGrenade",
@@ -1093,7 +1094,7 @@ class Nato : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                marksmanBaseItems[] = {
+                items[] += {
                   "HandGrenade",
                   "HandGrenade",
                   "SmokeShell",
@@ -1102,7 +1103,7 @@ class Nato : Faction
             };
             class Backpack : Backpack
             {
-                marksmanBaseItems[] = {
+                items[] += {
                   "optic_tws",
                   "optic_Hamr"
                 };
@@ -1117,7 +1118,7 @@ class Nato : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                medicBaseItems[] = {
+                items[] += {
                     "SmokeShell",
                     "SmokeShell",
                     "SmokeShell",
@@ -1146,7 +1147,7 @@ class Nato : Faction
 
             class Vest : Vest
             {
-               atBaseItems[] = {
+               items[] += {
                    "HandGrenade",
                    "HandGrenade",
                    "SmokeShell"
@@ -1164,7 +1165,7 @@ class Nato : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "SmokeShell",
@@ -1175,7 +1176,7 @@ class Nato : Faction
             {
                 type = "B_Kitbag_mcamo";
 
-                aceEodBaseItems[] = {
+                acetems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1187,7 +1188,7 @@ class Nato : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEodBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1195,6 +1196,23 @@ class Nato : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "B_engineer_F";
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                type = "B_Kitbag_mcamo";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1353,7 +1371,7 @@ class Nato : Faction
 
                     class Uniform : Uniform
                     {
-                        arLwmmgItems[] = {
+                        items[] += {
                             "HandGrenade",
                             "SmokeShell"
                         };
@@ -1501,6 +1519,35 @@ class Nato : Faction
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : EodBase
+                {
+                    aceType    = "HK416 11";
+                    type       = "SPAR-16";
+                    rifle      = "arifle_SPAR_01_snd_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Mx : EngineerBase
+                {
+                    default    = 1;
+                    type       = "MX";
+                    rifle      = "arifle_MX_F";
+                    primaryMag = "30Rnd_65x39_caseless_mag";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : EngineerBase
                 {
                     aceType    = "HK416 11";
                     type       = "SPAR-16";
@@ -1664,6 +1711,23 @@ class Nato : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Mx : Mx
                 {
@@ -2112,6 +2176,49 @@ class Nato : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class Mx : Mx
+                {
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_T_Soldier_F";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_tna_F";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    headgear   = "H_HelmetB_tna_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_T_Soldier_F";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_tna_F";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Wood : SemiArid
         {
@@ -2483,6 +2590,47 @@ class Nato : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Mx : Mx
+                {
+                    rifle      = "arifle_MX_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    rifle      = "arifle_SPAR_01_blk_F";
+                    primaryMag = "30Rnd_556x45_Stanag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_Kitbag_rgr";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Mx : Mx
                 {

@@ -30,10 +30,11 @@
 
 params [
     ["_playerGroup",     grpNull, [grpNull]],
-    ["_helo",            objNull, [objNull]],
+    ["_transportPos",    [],      [[]], [2,3]],
+    ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",      0,       [0]]
+    ["_difficulty",       0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -41,8 +42,8 @@ if (isNull _playerGroup) exitWith {
     "";
 };
 
-if (isNull _helo) exitWith {
-    ERROR("helo parameter must not be null");
+if (_transportPos isEqualTo []) exitWith {
+    ERROR("transport position parameter must not be null");
     "";
 };
 
@@ -55,6 +56,7 @@ if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
     "";
 };
+
 /*
  * max radius for AO objects
  */
@@ -103,16 +105,21 @@ private _lzPos           = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _patrolPos       = _zoneSafePosList select 2;
 
+private _transport = [
+    _zonePos,
+    _lzPos,
+    _transportPos,
+    _transportDir,
+    _playerGroup,
+    _friendlyFaction
+] call den_fnc_insertHelo;
+
+[_lzPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
+
 private _cachePosList = [];
 for "_i" from 1 to den_cacheCount do {
     _cachePosList pushBack (_zoneSafePosList select (2 + _i));
 };
-
-/*
- * lz
- */
-[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
-[_lzPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
 
 /*
  * enemy units
@@ -189,12 +196,12 @@ private _allUnits = _buildingUnits + (units _patrolGroup);
  * Players must have in their possession explosives
  * to advance to the next task
  */
-[_playerGroup, _helo] spawn {
-    params ["_playerGroup", "_helo"];
+[_playerGroup, _transport] spawn {
+    params ["_playerGroup", "_transport"];
     /*
      * Scan player equipment until explosives are found.
      */
-    _helo lock true;
+    _transport lock true;
 
     private _explosiveTypes = ["DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ACE_M14"];
     private _hasExplosive   = false;
@@ -213,7 +220,7 @@ private _allUnits = _buildingUnits + (units _patrolGroup);
         sleep 2;
     };
 
-    _helo lock false;
+    _transport lock false;
     ["den_ordnancePacked"] call den_fnc_publicBool;
 };
 
@@ -225,4 +232,4 @@ private _marker = createMarker ["enemyInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
 _marker setMarkerColor _enemyColor;
 
-_zoneName;
+[_zoneName, _transport];

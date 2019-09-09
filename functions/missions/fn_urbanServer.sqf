@@ -16,13 +16,15 @@
 
     0: GROUP - player group
 
-    1: OBJECT - Transport helicopter to take players to the zone.
+    1: ARRAY - position to spawn transport vehicle
 
-    2: STRING - friendly faction. See CfgFactions.
+    2: NUMBER - direction to spawn transport vehicle
 
-    3: STRING - enemy faction. See CfgFactions.
+    3: STRING - friendly faction. See CfgFactions.
 
-    4: NUMBER - difficulty. See CfgParams.
+    4: STRING - enemy faction. See CfgFactions.
+
+    5: NUMBER - difficulty. See CfgParams.
 
     Returns: STRING - zone location name, empty string on error.
 */
@@ -30,7 +32,8 @@
 
 params [
     ["_playerGroup",     grpNull, [grpNull]],
-    ["_helo",            objNull, [objNull]],
+    ["_transportPos",    [],      [[]], [2,3]],
+    ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
     ["_difficulty",       0,       [0]]
@@ -41,8 +44,8 @@ if (isNull _playerGroup) exitWith {
     "";
 };
 
-if (isNull _helo) exitWith {
-    ERROR("helo parameter must not be null");
+if (_transportPos isEqualTo []) exitWith {
+    ERROR("transport position parameter must not be null");
     "";
 };
 
@@ -98,14 +101,15 @@ private _campPos         = _zoneSafePosList select 1;
 private _reactPos        = _zoneSafePosList select 2;
 private _patrolPos       = _zoneSafePosList select 3;
 
-/*
- * lz
- */
-[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
+private _transport = [
+    _zonePos,
+    _lzPos,
+    _transportPos,
+    _transportDir,
+    _playerGroup,
+    _friendlyFaction
+] call den_fnc_insertHelo;
 
-/*
- * clear trigger
- */
 [
     _zonePos,
     [_zoneRadius, _zoneRadius, 0, false],
@@ -188,4 +192,4 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-_zoneName;
+[_zoneName, _transport];

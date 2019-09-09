@@ -24,7 +24,7 @@ class RhsChDkz : Faction
     {
         class Base : Base
         {
-           grenades[] = {
+           grenades[] += {
                 "rhs_mag_nspd",
                 "rhs_mag_nspn_green",
                 "rhs_mag_nspn_red",
@@ -228,7 +228,7 @@ class RhsChDkz : Faction
             heloTransport      = "rhsgref_ins_g_Mi8amt";
             heloTransportLarge = "rhsgref_ins_g_Mi8amt";
             heloCargo          = "rhsgref_ins_g_Mi8amt";
-
+            truckAssault       = "rhsgref_BRDM2_HQ_ins_g";
             truckSupplyAmmo    = "rhsgref_ins_g_gaz66_ammo";
             truckSupplyCargo   = "rhsgref_ins_g_gaz66_flat";
             truckSupplyFuel    = "rhsgref_ins_g_gaz66_flat";
@@ -522,7 +522,7 @@ class RhsChDkz : Faction
                 // random
                 type = "";
 
-                russiaItems[] = {
+                items[] += {
                     "rhs_mag_9x19_17",
                     "rhs_mag_9x19_17"
                 };
@@ -546,7 +546,7 @@ class RhsChDkz : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
                     "rhs_mag_rdg2_white",
@@ -555,7 +555,7 @@ class RhsChDkz : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
@@ -576,7 +576,7 @@ class RhsChDkz : Faction
             {
                type = "rhs_6b23_digi_6sh92_vog";
 
-               grenadierBaseItems[] = {
+               items[] += {
                     "rhs_VG40MD_White",
                };
             };
@@ -592,13 +592,13 @@ class RhsChDkz : Faction
 
             class Uniform : Uniform
             {
-                autorifleBaseItems[] = {
+                items[] += {
                    "rhs_mag_rgn",
                    "rhs_mag_rdg2_white"
                 };
             };
             class Vest : Vest {
-                 arM27List[] = {
+                 items[] += {
                    "rhs_mag_rgn",
                 };
             };
@@ -619,7 +619,7 @@ class RhsChDkz : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanbaseItems[] = {
+               items[] += {
                   "rhs_mag_rgn",
                   "rhs_mag_rgn",
                   "rhs_mag_rdg2_white",
@@ -628,7 +628,7 @@ class RhsChDkz : Faction
             };
             class Backpack : Backpack
             {
-                marksmanBaseItems[] = {
+                items[] += {
                   "rhs_acc_pkas"
                 };
             };
@@ -644,7 +644,7 @@ class RhsChDkz : Faction
             {
                 type = "rhs_6b23_digi_medic";
 
-                medicBaseItems[] = {
+                items[] += {
                     "rhs_mag_rdg2_white",
                     "rhs_mag_rdg2_white",
                     "rhs_mag_rdg2_white",
@@ -681,7 +681,7 @@ class RhsChDkz : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
                     "rhs_mag_rdg2_white",
@@ -692,7 +692,7 @@ class RhsChDkz : Faction
             {
                 type = "B_Kitbag_sgg";
 
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -704,7 +704,7 @@ class RhsChDkz : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -712,6 +712,20 @@ class RhsChDkz : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+            class Backpack : Backpack
+            {
+                type = "B_Kitbag_sgg";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -873,6 +887,22 @@ class RhsChDkz : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Ak74 : EngineerBase
+                {
+                    type    = "AK-74";
+                    rifle   = "rhs_weap_ak74";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Winter : Wood
         {
@@ -961,6 +991,16 @@ class RhsChDkz : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74 : Ak74
                 {

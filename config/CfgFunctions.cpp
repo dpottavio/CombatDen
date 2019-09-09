@@ -29,9 +29,12 @@ class CfgFunctions
             class fullMoonDate {};
             class hostage {};
             class initPlayer {};
-            class insert {};
+            class insertHelo {};
+            class insertMotorized {};
             class intelPositions {};
             class loadout {};
+            class loadoutItems {};
+            class loadoutMags {};
             class lowDaylight {};
             class mpEndMission {};
             class mortarFire {};
@@ -41,7 +44,8 @@ class CfgFunctions
             class sideChat {};
             class sling {};
             class spawnGroup {};
-            class spawnTransport {};
+            class spawnHeloTransport {};
+            class spawnMotorDeploy {};
             class spawnRoadblock {};
             class spawnVehicle {};
             class taskFsm {};
@@ -79,6 +83,8 @@ class CfgFunctions
             class hostageServer {};
             class initMissionLocal {};
             class initMissionServer {};
+            class stealTruckLocal {};
+            class stealTruckServer {};
             class urbanLocal {};
             class urbanServer{};
         };

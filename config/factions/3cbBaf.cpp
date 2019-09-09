@@ -19,11 +19,11 @@ class Uk3cbBaf : Faction
     playable    = 1;
     side        = SIDE_BLUFOR;
 
-    class Arsenal : ArsenalCupWest
+    class Arsenal : Arsenal
     {
         class Base : Base
         {
-            uk3CbBafGrenades[] = {
+            grenades[] += {
                 "Chemlight_blue",
                 "Chemlight_green",
                 "Chemlight_red",
@@ -37,7 +37,7 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_SmokeShellRed",
                 "UK3CB_BAF_SmokeShellBlue"
             };
-            uk3CbBafMags[] = {
+            mags[] = {
                 "UK3CB_BAF_9_17Rnd",
                 "UK3CB_BAF_556_30Rnd",
                 "UK3CB_BAF_556_30Rnd_T",
@@ -69,7 +69,7 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_UGL_FlareYellow_F",
                 "UK3CB_BAF_1Rnd_SmokeYellow_Grenade_shell"
             };
-            uk3CbBafWeapons[] = {
+            weapons[] = {
                 "UK3CB_BAF_L105A1",
                 "UK3CB_BAF_L105A2",
                 "UK3CB_BAF_L107A1",
@@ -112,20 +112,20 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_L92A1",
                 "UK3CB_BAF_L98A2"
             };
-            uk3CbBafLaunchers[] = {
+            launchers[] = {
                "UK3CB_BAF_AT4_CS_AP_Launcher",
                "UK3CB_BAF_AT4_CS_AT_Launcher",
                "UK3CB_BAF_NLAW_Launcher",
                "UK3CB_BAF_Javelin_Slung_Tube"
             };
-            uk3CbBafNvg[] = {
+            Nvg[] = {
                 "UK3CB_BAF_HMNVS"
             };
-            uk3CbBafBinoculars[] = {
+            binoculars[] += {
                "UK3CB_BAF_Soflam_Laserdesignator",
                "UK3CB_BAF_Javelin_CLU"
             };
-            uk3CbBafSights[] = {
+            sights[] = {
                 "uk3cb_baf_eotech",
                 "uk3cb_baf_kite",
                 "uk3cb_baf_maxikite",
@@ -143,25 +143,25 @@ class Uk3cbBaf : Faction
                 "uk3cb_baf_ta648",
                 "uk3cb_baf_ta648_308"
             };
-            uk3CbBafAttachments[] = {
+            attachments[] = {
                 "uk3cb_baf_llm_flashlight_black",
                 "uk3cb_baf_llm_ir_black",
             };
-            uk3CbBafFaceware[] = {
+            faceware[] += {
                 "UK3CB_BAF_G_Tactical_Black",
                 "UK3CB_BAF_G_Tactical_Clear",
                 "UK3CB_BAF_G_Tactical_Grey",
                 "UK3CB_BAF_G_Tactical_Orange",
                 "UK3CB_BAF_G_Tactical_Yellow"
             };
-            uk3CbBafBackpacks[] = {
+            backpacks[] = {
                 "UK3CB_BAF_B_Bergen_MTP_Medic_L_A",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_A",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_B",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_C",
                 "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_D"
             };
-            uk3CbBafVest[] = {
+            vests[] = {
                 "UK3CB_BAF_V_Osprey_Rifleman_A",
                 "UK3CB_BAF_V_Osprey_Rifleman_B",
                 "UK3CB_BAF_V_Osprey_Rifleman_C",
@@ -180,11 +180,11 @@ class Uk3cbBaf : Faction
         class SemiArid : Base {};
         class Arid     : Base
         {
-            aridWeapons[] = {
+            weapons[] += {
                 "UK3CB_BAF_L115A3_DE",
                 "UK3CB_BAF_L118A1_Covert_DE",
             };
-            aridAttachments[] = {
+            attachments[] += {
                 "rksl_optic_lds_c",
                 "rksl_optic_pmii_312_des",
                 "rksl_optic_pmii_312_sunshade_des",
@@ -213,21 +213,22 @@ class Uk3cbBaf : Faction
         {
             heloTransport      = "UK3CB_BAF_Wildcat_AH1_TRN_8A_MTP_RM";
             heloTransportLarge = "UK3CB_BAF_Merlin_HC4_18_MTP_RM";
-            // Using vanilla helo because 3CB variant cannot sling load the container.
-            heloCargo          = "B_Heli_Transport_03_F";
+            heloCargo          = "UK3CB_BAF_Merlin_HC3_Cargo_MTP_RM";
+            truckAssault       = "UK3CB_BAF_Jackal2_L2A1_W_MTP_RM";
             truckSupplyAmmo    = "UK3CB_BAF_MAN_HX58_Cargo_Green_B_MTP_RM";
             truckSupplyCargo   = "UK3CB_BAF_MAN_HX58_Cargo_Green_B_MTP_RM";
             truckSupplyFuel    = "UK3CB_BAF_MAN_HX60_Fuel_Green_MTP_RM";
         };
         class Arid   : SemiArid
         {
+            truckAssault     = "UK3CB_BAF_Jackal2_L2A1_D_MTP_RM";
             truckSupplyAmmo  = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
             truckSupplyCargo = "UK3CB_BAF_MAN_HX58_Cargo_Sand_B_MTP_RM";
             truckSupplyFuel  = "UK3CB_BAF_MAN_HX60_Fuel_Sand_MTP_RM";
         };
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
-        class Winter  : SemiArid {};
+        class Winter : SemiArid {};
     };
 
 
@@ -949,7 +950,7 @@ class Uk3cbBaf : Faction
             {
                 type = "UK3CB_BAF_U_CombatUniform_MTP_RM";
 
-                uk3cbBase[] = {
+                items[] += {
                     "UK3CB_BAF_9_17Rnd",
                     "UK3CB_BAF_9_17Rnd"
                 };
@@ -973,7 +974,7 @@ class Uk3cbBaf : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "UK3CB_BAF_SmokeShellGreen",
@@ -982,7 +983,7 @@ class Uk3cbBaf : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "HandGrenade",
@@ -1003,7 +1004,7 @@ class Uk3cbBaf : Faction
             {
                 type = "UK3CB_BAF_V_Osprey_Grenadier_A";
 
-                grenadierBaseItems[] = {
+                items[] += {
                     "UK3CB_BAF_1Rnd_Smoke_Grenade_shell",
                 };
             };
@@ -1019,7 +1020,7 @@ class Uk3cbBaf : Faction
 
             class Uniform  : Uniform {};
             class Vest     : Vest {
-                 arBaseItems[] = {
+                 items[] += {
                    "HandGrenade",
                    "HandGrenade",
                    "UK3CB_BAF_SmokeShellGreen",
@@ -1045,7 +1046,7 @@ class Uk3cbBaf : Faction
             {
                 type = "UK3CB_BAF_V_Osprey_Marksman_A";
 
-                marksmanBaseItems[] = {
+                items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "UK3CB_BAF_SmokeShellGreen",
@@ -1065,7 +1066,7 @@ class Uk3cbBaf : Faction
             {
                 type = "UK3CB_BAF_V_Osprey_Medic_A";
 
-                medicBaseItems[] = {
+                items[] += {
                     "UK3CB_BAF_SmokeShellGreen",
                     "UK3CB_BAF_SmokeShellGreen",
                     "UK3CB_BAF_SmokeShellGreen",
@@ -1091,7 +1092,7 @@ class Uk3cbBaf : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                atBaseItems[] = {
+                items[] += {
                    "HandGrenade",
                    "HandGrenade",
                    "HandGrenade"
@@ -1107,7 +1108,7 @@ class Uk3cbBaf : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "UK3CB_BAF_SmokeShellGreen",
@@ -1118,7 +1119,7 @@ class Uk3cbBaf : Faction
             {
                 type = "UK3CB_BAF_B_Bergen_MTP_Sapper_L_A";
 
-                aceEodBaseItems[] = {
+                aceEodItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1130,7 +1131,7 @@ class Uk3cbBaf : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceEdoItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1138,6 +1139,23 @@ class Uk3cbBaf : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "UK3CB_BAF_Engineer_MTP_RM";
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                type = "UK3CB_BAF_B_Bergen_MTP_Sapper_L_A";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1282,6 +1300,22 @@ class Uk3cbBaf : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class L85 : EngineerBase
+                {
+                    type    = "L85A2";
+                    rifle   = "UK3CB_BAF_L85A2_RIS";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -1363,6 +1397,16 @@ class Uk3cbBaf : Faction
                 };
             };
             class Eod : Eod
+            {
+                class L85 : L85
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class L85 : L85
                 {
@@ -1462,6 +1506,16 @@ class Uk3cbBaf : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class L85 : L85
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Wood : SemiArid
         {
@@ -1543,6 +1597,16 @@ class Uk3cbBaf : Faction
                 };
             };
             class Eod : Eod
+            {
+                class L85 : L85
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class L85 : L85
                 {
@@ -1721,6 +1785,27 @@ class Uk3cbBaf : Faction
                 };
             };
             class Eod : Eod
+            {
+                class L85 : L85
+                {
+                    headgear = "UK3CB_BAF_H_Mk7_Win_A";
+
+                    class Uniform : Uniform
+                    {
+                        type = "UK3CB_BAF_U_Smock_Arctic";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "UK3CB_BAF_V_PLCE_Webbing_Plate_Winter";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "UK3CB_BAF_B_Kitbag_Arctic";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class L85 : L85
                 {

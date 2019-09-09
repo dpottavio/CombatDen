@@ -22,7 +22,7 @@ class Csat : Faction
     {
         class Base : Base
         {
-            csatGrenades[] = {
+            grenades[] += {
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
@@ -32,10 +32,10 @@ class Csat : Faction
                 "SmokeShell",
                 "HandGrenade"
             };
-            csatAceGrenades[] = {
+            gceGrenades[] += {
                 "ACE_M84"
             };
-            csatMags[] = {
+            mags[] = {
                 "30Rnd_65x39_caseless_green",
                 "30Rnd_65x39_caseless_green_mag_Tracer",
                 "150Rnd_762x54_Box",
@@ -54,7 +54,7 @@ class Csat : Faction
                 "RPG32_F",
                 "RPG32_HE_F"
             };
-            csatWeapons[] = {
+            weapons[] = {
                 "arifle_Katiba_F",
                 "arifle_Katiba_GL_F",
                 "arifle_Katiba_C_F",
@@ -69,19 +69,19 @@ class Csat : Faction
                 "arifle_CTARS_blk_F",
                 "arifle_ARX_blk_F"
             };
-            csatLaunchers[] = {
+            launchers[] = {
                 "launch_RPG32_F",
                 "launch_O_Titan_F",
                 "launch_O_Vorona_brown_F"
             };
-            csatAceSights[] = {
+            aceSights[] = {
                 "ace_optic_lrps_2d",
                 "ace_optic_lrps_pip",
                 "ace_optic_sos_2d",
                 "ace_optic_sos_pip",
                 "ace_optic_mrco_2d"
             };
-            castSights[] = {
+            sights[] = {
                 "optic_aco_grn",
                 "optic_arco_blk_f",
                 "optic_holosight_blk_f",
@@ -93,7 +93,7 @@ class Csat : Faction
                 "optic_nvs",
                 "optic_dms"
             };
-            csatBipods[] = {
+            bipods[] = {
                 "bipod_02_f_blk",
                 "bipod_02_f_hex"
             };
@@ -172,6 +172,7 @@ class Csat : Faction
             heloTransport      = "O_Heli_Light_02_unarmed_F";
             heloTransportLarge = "O_Heli_Transport_04_covered_F";
             heloCargo          = "O_Heli_Transport_04_box_F";
+            truckAssault       = "O_MRAP_02_hmg_F";
             truckSupplyAmmo    = "O_Truck_03_ammo_F";
             truckSupplyCargo   = "O_Truck_03_repair_F";
             truckSupplyFuel    = "O_Truck_03_fuel_F";
@@ -179,9 +180,7 @@ class Csat : Faction
         class Arid   : SemiArid {};
         class Tropic : SemiArid
         {
-            /*
-             * cars, trucks, and helicopters.
-             */
+            truckAssault     = "O_T_MRAP_02_hmg_ghex_F";
             truckSupplyAmmo  = "O_T_Truck_03_ammo_ghex_F";
             truckSupplyCargo = "O_T_Truck_03_repair_ghex_F";
             truckSupplyFuel  = "O_T_Truck_03_fuel_ghex_F";
@@ -782,6 +781,7 @@ class Csat : Faction
             };
         };
     };
+
 #define CSAT_AT_MAG_COUNT              11
 #define CSAT_AUTORIFLE_NG_MAG_COUNT     4
 #define CSAT_AUTORIFLE_QBZ_MAG_COUNT    6
@@ -973,6 +973,8 @@ class Csat : Faction
             };
             class Backpack : Backpack
             {
+                type =  "B_TacticalPack_ocamo";
+
                 aceEdoBaseList[] = {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -993,6 +995,24 @@ class Csat : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit            = "O_engineer_F";
+            primaryMagCount = CSAT_RIFLEMAN_MAG_COUNT;
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                type = "B_FieldPack_ocamo";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1221,12 +1241,9 @@ class Csat : Faction
                     rifle      = "arifle_Katiba_F";
                     primaryMag = "30Rnd_65x39_caseless_green";
 
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack
-                    {
-                        type =  "B_TacticalPack_ocamo";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Qbz : EodBase
@@ -1236,12 +1253,39 @@ class Csat : Faction
                     rifle      = "arifle_CTAR_blk_F";
                     primaryMag = "30Rnd_580x42_Mag_F";
 
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack
-                    {
-                        type =  "B_TacticalPack_ocamo";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Kh2002 : EngineerBase
+                {
+                    default    = 1;
+                    aceType    = "KH2002";
+                    type       = "Katiba";
+                    rifle      = "arifle_Katiba_F";
+                    primaryMag = "30Rnd_65x39_caseless_green";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Qbz : EngineerBase
+                {
+                    aceType    = "QBZ-95-1";
+                    type       = "CAR-95";
+                    rifle      = "arifle_CTAR_blk_F";
+                    primaryMag = "30Rnd_580x42_Mag_F";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -1284,6 +1328,11 @@ class Csat : Faction
                 class Rpg   : Rpg {};
             };
             class Eod : Eod
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class Engineer : Engineer
             {
                 class Kh2002 : Kh2002 {};
                 class Qbz    : Qbz {};
@@ -1589,6 +1638,43 @@ class Csat : Faction
                     };
                 };
             };
+            class Engineer : Engineer
+            {
+                class Kh2002 : Kh2002
+                {
+                    headgear = "H_HelmetO_ghex_F";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_O_T_Soldier_F";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_HarnessO_ghex_F";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_FieldPack_ghex_F";
+                    };
+                };
+                class Qbz : Qbz
+                {
+                    headgear = "H_HelmetO_ghex_F";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_O_T_Soldier_F";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_HarnessO_ghex_F";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_FieldPack_ghex_F";
+                    };
+                };
+            };
         };
         class Wood : Tropic
         {
@@ -1628,6 +1714,11 @@ class Csat : Faction
                 class Rpg : Rpg {};
             };
             class Eod : Eod
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class Engineer : Engineer
             {
                 class Kh2002 : Kh2002 {};
                 class Qbz    : Qbz {};

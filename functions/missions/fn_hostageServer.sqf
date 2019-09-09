@@ -30,10 +30,11 @@
 
 params [
     ["_playerGroup",     grpNull, [grpNull]],
-    ["_helo",            objNull, [objNull]],
+    ["_transportPos",    [],      [[]], [2,3]],
+    ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",      0,       [0]]
+    ["_difficulty",       0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -41,8 +42,8 @@ if (isNull _playerGroup) exitWith {
     "";
 };
 
-if (isNull _helo) exitWith {
-    ERROR("helo parameter must not be null");
+if (_transportPos isEqualTo []) exitWith {
+    ERROR("transport position parameter must not be null");
     "";
 };
 
@@ -103,10 +104,15 @@ private _hostagePos      = _zoneSafePosList select 2;
 private _reactPos        = _zoneSafePosList select 3;
 private _patrolPos       = _zoneSafePosList select 4;
 
-/*
- * lz
- */
-[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
+private _transport = [
+    _zonePos,
+    _lzPos,
+    _transportPos,
+    _transportDir,
+    _playerGroup,
+    _friendlyFaction
+] call den_fnc_insertHelo;
+
 [_lzPos, _playerGroup, _friendlyFaction, "den_hostageFree", _zoneArea] call den_fnc_extract;
 
 /*
@@ -227,4 +233,4 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-_zoneName;
+[_zoneName, _transport];

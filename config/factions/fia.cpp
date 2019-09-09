@@ -18,8 +18,8 @@ class Fia : Faction
 
     // Faction not playable yet.
     class Arsenal {};
-    class Vehicle {};
     class Loadout {};
+    class Vehicle {};
 
     class Group : Group
     {

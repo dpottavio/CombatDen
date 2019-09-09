@@ -128,6 +128,7 @@ class CupChDkz : Faction
             heloTransport      = "CUP_O_Mi8_medevac_CHDKZ";
             heloTransportLarge = "CUP_O_Mi8_medevac_CHDKZ";
             heloCargo          = "CUP_O_Mi8_medevac_CHDKZ";
+            truckAssault       = "CUP_O_BRDM2_CHDKZ";
             truckSupplyAmmo    = "CUP_O_Ural_Reammo_CHDKZ";
             truckSupplyCargo   = "CUP_O_Ural_Repair_CHDKZ";
             truckSupplyFuel    = "CUP_O_Ural_Refuel_CHDKZ";
@@ -419,7 +420,7 @@ class CupChDkz : Faction
                 // random
                 type = "";
 
-                takiBaseItems[] = {
+                items[] += {
                     "16Rnd_9x21_Mag",
                     "16Rnd_9x21_Mag"
                 };
@@ -443,7 +444,7 @@ class CupChDkz : Faction
 
             class Vest : Vest
             {
-               riflemanItems[] = {
+               items[] += {
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
                    "SmokeShell",
@@ -452,7 +453,7 @@ class CupChDkz : Faction
             };
             class Backpack : Backpack
             {
-                riflemanItems[] = {
+                items[] += {
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
@@ -484,14 +485,14 @@ class CupChDkz : Faction
 
             class Uniform : Uniform
             {
-                arBaseItems[] = {
+                items[] += {
                    "CUP_HandGrenade_RGD5",
                    "SmokeShell"
                 };
             };
             class Vest : Vest
             {
-                 arBaseItems[] = {
+                 items[] += {
                    "CUP_HandGrenade_RGD5"
                 };
             };
@@ -508,7 +509,7 @@ class CupChDkz : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanBaseItems[] = {
+               items[] += {
                  "CUP_HandGrenade_RGD5",
                  "CUP_HandGrenade_RGD5",
                  "SmokeShell",
@@ -526,7 +527,7 @@ class CupChDkz : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                medicBaseItems[] = {
+                items[] += {
                     "SmokeShell",
                     "SmokeShell",
                     "SmokeShell",
@@ -563,7 +564,7 @@ class CupChDkz : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "CUP_HandGrenade_RGD5",
                     "CUP_HandGrenade_RGD5",
                     "SmokeShell",
@@ -572,7 +573,7 @@ class CupChDkz : Faction
             };
             class Backpack : Backpack
             {
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -584,7 +585,7 @@ class CupChDkz : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -592,6 +593,21 @@ class CupChDkz : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "CUP_O_INS_Soldier_Engineer";
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -753,6 +769,22 @@ class CupChDkz : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Akm : EngineerBase
+                {
+                    type    = "AKM";
+                    rifle   = "CUP_arifle_AKM";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Winter : Wood
         {
@@ -841,6 +873,16 @@ class CupChDkz : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Akm : Akm
                 {

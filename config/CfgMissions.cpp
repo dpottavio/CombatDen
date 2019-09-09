@@ -53,4 +53,10 @@ class CfgMissions
         localLogic  = "den_fnc_urbanLocal";
         serverLogic = "den_fnc_urbanServer";
     };
+    class StealTruck
+    {
+        name        = "Steal Truck";
+        localLogic  = "den_fnc_stealTruckLocal";
+        serverLogic = "den_fnc_stealTruckServer";
+    };
 };

@@ -30,10 +30,11 @@
 
 params [
     ["_playerGroup",     grpNull, [grpNull]],
-    ["_helo",            objNull, [objNull]],
+    ["_transportPos",    [],      [[]], [2,3]],
+    ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",      0,       [0]]
+    ["_difficulty",       0,       [0]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -41,8 +42,8 @@ if (isNull _playerGroup) exitWith {
     "";
 };
 
-if (isNull _helo) exitWith {
-    ERROR("helo parameter cannot be empty");
+if (_transportPos isEqualTo []) exitWith {
+    ERROR("transport position parameter must not be null");
     "";
 };
 
@@ -52,7 +53,7 @@ if (_friendlyFaction == "") exitWith {
 };
 
 if (_enemyFaction == "") exitWith {
-    ERROR("enemyFaction faction cannot be empty");
+    ERROR("enemy faction cannot be empty");
     "";
 };
 
@@ -106,7 +107,14 @@ private _assaultPos1 = _zoneSafePosList select 1;
 private _assaultPos2 = _zoneSafePosList select 2;
 private _assaultPos3 = _zoneSafePosList select 3;
 
-[_lzPos, _playerGroup, _helo, _zoneArea, _friendlyFaction] call den_fnc_insert;
+private _transport = [
+    _zonePos,
+    _lzPos,
+    _transportPos,
+    _transportDir,
+    _playerGroup,
+    _friendlyFaction
+] call den_fnc_insertHelo;
 
 /*
  * convoy
@@ -214,10 +222,7 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
         _randomReinforceArgs,
         _enemyFaction,
         _friendlyFaction,
-        {den_spawnDone = true},
-        0.25,                   // spawn threshold
-        60,                     // cooldown
-        false                   // notify
+        {den_spawnDone = true}
     ] call den_fnc_wave;
 
     // wait for the zone to clear before mission complete
@@ -234,4 +239,4 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
     ["den_convoyDefended"] call den_fnc_publicBool;
 };
 
-_zoneName;
+[_zoneName, _transport];

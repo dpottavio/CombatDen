@@ -122,12 +122,6 @@ if !(isNil "den_flagPole") then {
     _marker setMarkerText "COP";
 };
 
-private _transport = [
-    getPosATL den_transportMarker,
-    getDir den_transportMarker,
-    _friendlyFaction
-] call den_fnc_spawnTransport;
-
 /*
  * setup arsenal
  */
@@ -153,13 +147,16 @@ if (_mission == "") then {
     _mission = configName (selectRandom ("true" configClasses (missionConfigFile >> "CfgMissions")));
 };
 
-private _missionArgs = "[_playerGroup, _transport, _friendlyFaction, _enemyFaction, den_cba_difficulty]";
+private _missionArgs = "[_playerGroup,getPos den_transportMarker,getDir den_transportMarker,_friendlyFaction,_enemyFaction,den_cba_difficulty]";
 private _serverLogic = getText (missionConfigFile >> "CfgMissions" >> _mission >> "serverLogic");
 private _logic = format["%1 call %2;", _missionArgs, _serverLogic];
 
-private _zone = call compile _logic;
-if (_zone == "") exitWith {
+private _missionParam = call compile _logic;
+if (_missionParam isEqualTo []) exitWith {
     [];
 };
+
+private _zone      = _missionParam select 0;
+private _transport = _missionParam select 1;
 
 [_mission, _enemyFaction, _zone, _transport, _friendlyFaction, _playerGroup, _arsenal];

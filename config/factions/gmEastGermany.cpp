@@ -73,6 +73,7 @@ class GmEastGermany : Faction
             misc[] = {
                 "ItemMap",
                 "ItemRadio",
+                "ToolKit",
                 "gm_ge_army_medkit_80",
                 "FirstAidKit",
                 "gm_watch_kosei_80",
@@ -126,11 +127,11 @@ class GmEastGermany : Faction
             heloTransport      = "";
             heloTransportLarge = "";
             heloCargo          = "B_Heli_Transport_03_F";
-
-            truckSupplyAmmo  = "gm_gc_army_ural4320_reammo";
-            truckSupplyCargo = "gm_gc_army_ural4320_repair";
-            truckSupplyFuel  = "gm_gc_army_ural375d_refuel";
-            truckTransport   = "gm_gc_army_ural4320_cargo";
+            truckAssault       = "gm_gc_army_brdm2";
+            truckSupplyAmmo    = "gm_gc_army_ural4320_reammo";
+            truckSupplyCargo   = "gm_gc_army_ural4320_repair";
+            truckSupplyFuel    = "gm_gc_army_ural375d_refuel";
+            truckTransport     = "gm_gc_army_ural4320_cargo";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};
@@ -793,7 +794,7 @@ class GmEastGermany : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "gm_handgrenade_frag_rgd5",
                     "gm_handgrenade_frag_rgd5",
                     "gm_smokeshell_wht_gc",
@@ -802,7 +803,7 @@ class GmEastGermany : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                    "gm_handgrenade_frag_rgd5",
                    "gm_handgrenade_frag_rgd5",
                    "gm_handgrenade_frag_rgd5",
@@ -819,7 +820,7 @@ class GmEastGermany : Faction
             class Vest     : Vest {};
             class Backpack : Backpack
             {
-                arBaseItems[] = {
+                items[] += {
                     "gm_handgrenade_frag_rgd5",
                     "gm_handgrenade_frag_rgd5",
                     "gm_handgrenade_frag_rgd5",
@@ -848,7 +849,7 @@ class GmEastGermany : Faction
             {
                 type = "gm_ge_army_vest_80_medic";
 
-                medicBaseItems[] = {
+                items[] += {
                     "gm_smokeshell_wht_gc",
                     "gm_smokeshell_wht_gc",
                     "gm_smokeshell_wht_gc",
@@ -877,7 +878,7 @@ class GmEastGermany : Faction
 
             class Vest : Vest
             {
-               atBaseItems[] = {
+               items[] += {
                    "gm_smokeshell_wht_gc",
                    "gm_handgrenade_frag_rgd5",
                    "gm_handgrenade_frag_rgd5"
@@ -900,7 +901,7 @@ class GmEastGermany : Faction
             {
                 type = "gm_ge_army_vest_80_demolition";
 
-                eodBaseItems[] = {
+                items[] += {
                     "gm_handgrenade_frag_rgd5",
                     "gm_handgrenade_frag_rgd5",
                     "gm_smokeshell_wht_gc",
@@ -909,7 +910,7 @@ class GmEastGermany : Faction
             };
             class Backpack : Backpack
             {
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -921,7 +922,7 @@ class GmEastGermany : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEodBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -929,6 +930,19 @@ class GmEastGermany : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1140,6 +1154,33 @@ class GmEastGermany : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Ak74 : EngineerBase
+                {
+                    default    = 1;
+                    type       = "AK-74";
+                    rifle      = "gm_mpiak74n_brn";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : EngineerBase
+                {
+                    type       = "KM-72";
+                    rifle      = "gm_mpikm72_brn";
+                    primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -1256,6 +1297,23 @@ class GmEastGermany : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74 : Ak74
                 {
@@ -1404,6 +1462,23 @@ class GmEastGermany : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Wood : SemiArid
         {
@@ -1520,6 +1595,23 @@ class GmEastGermany : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74 : Ak74
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74 : Ak74
                 {
@@ -1717,6 +1809,33 @@ class GmEastGermany : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74 : Ak74
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Km72 : Km72
+                {
+                    headgear = "gm_gc_army_headgear_m56_cover_win";
+
+                    class Uniform  : Uniform
+                    {
+                        type = "gm_gc_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74 : Ak74
                 {

@@ -23,7 +23,7 @@ class RhsRussia : Faction
     {
         class Base : Base
         {
-           rhsRussiaGrenades[] = {
+           grenades[] += {
                 "rhs_mag_nspd",
                 "rhs_mag_nspn_green",
                 "rhs_mag_nspn_red",
@@ -38,7 +38,7 @@ class RhsRussia : Faction
                 "rhs_mag_rgo",
                 "rhs_mag_zarya2"
             };
-            rhsRussiaMags[] = {
+            mags[] = {
                 "rhs_100Rnd_762x54mmR",
                 "rhs_100Rnd_762x54mmR_7BZ3",
                 "rhs_100Rnd_762x54mmR_7N13",
@@ -134,7 +134,7 @@ class RhsRussia : Faction
                 "rhs_VOG25",
                 "rhs_VOG25P"
             };
-            rhsRussiaWeapons[] = {
+            weapons[] = {
                 "rhs_weap_ak103",
                 "rhs_weap_ak103_1",
                 "rhs_weap_ak103_1_npz",
@@ -180,18 +180,18 @@ class RhsRussia : Faction
                 "rhs_weap_pya",
                 "rhs_weap_makarov_pm"
             };
-            rhsRussiaLaunchers[] = {
+            launchers[] = {
                 "rhs_weap_rpg26",
                 "rhs_weap_rpg7",
                 "rhs_weap_rshg2"
             };
-            rhsRussiaNvg[] = {
+            nvg[] = {
                 "rhs_1PN138"
             };
-            rhsRussiaBinoculars[] = {
+            binoculars[] = {
                 "rhs_pdu4"
             };
-            rhsRussiaSights[] = {
+            sights[] = {
                "rhs_acc_1p29",
                "rhs_acc_1p63",
                "rhs_acc_1p78",
@@ -207,16 +207,16 @@ class RhsRussia : Faction
                "rhs_acc_pso1m2",
                "rhs_acc_pso1m21"
             };
-            rhsRussiaAttachments[] = {
+            attachments[] = {
                "rhs_acc_2dpzenit",
                "rhs_acc_perst1ik"
             };
-            rhsRussiaFaceware[] = {
+            faceware[] += {
                 "rhs_balaclava",
                 "rhs_balaclava1_olive",
                 "rhs_scarf"
             };
-            rhsRussiaVests[] = {
+            vests[] = {
                 "rhs_6b23_digi",
                 "rhs_6b23_6sh116",
                 "rhs_6b23_6sh116_vog",
@@ -235,14 +235,14 @@ class RhsRussia : Faction
                 "rhs_6b23_digi_rifleman",
                 "rhs_6b23_digi_vydra_3m"
             };
-            rhsRussiaBackpacks[] = {
+            backpacks[] = {
                 "rhs_assault_umbts_engineer_empty",
                 "rhs_assault_umbts",
                 "rhs_sidor",
                 "B_Kitbag_sgg",
                 "rhs_rpg_at"
             };
-            rhsRussiaHelmet[] = {
+            helmet[] = {
                 "rhs_6b28_bala",
                 "rhs_6b28"
             };
@@ -261,11 +261,15 @@ class RhsRussia : Faction
             heloTransport      = "RHS_Mi8mt_Cargo_vdv";
             heloTransportLarge = "RHS_Mi8mt_Cargo_vdv";
             heloCargo          = "RHS_Mi8mt_Cargo_vdv";
+            truckAssault       = "rhs_tigr_sts_vdv";
             truckSupplyAmmo    = "rhs_gaz66_ammo_vdv";
             truckSupplyCargo   = "RHS_Ural_VDV_01";
             truckSupplyFuel    = "RHS_Ural_Fuel_VDV_01";
         };
-        class Arid   : SemiArid {};
+        class Arid   : SemiArid
+        {
+            truckAssault = "rhs_tigr_sts_3camo_vdv";
+        };
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
         class Winter : SemiArid {};
@@ -935,7 +939,7 @@ class RhsRussia : Faction
             {
                 type = "rhs_uniform_vdv_emr";
 
-                russiaItems[] = {
+                items[] += {
                     "rhs_mag_9x19_17",
                     "rhs_mag_9x19_17"
                 };
@@ -959,7 +963,7 @@ class RhsRussia : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
                     "rhs_mag_rdg2_white",
@@ -968,7 +972,7 @@ class RhsRussia : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
@@ -989,7 +993,7 @@ class RhsRussia : Faction
             {
                type = "rhs_6b23_digi_6sh92_vog";
 
-               grenadierBaseItems[] = {
+               items[] += {
                     "rhs_VG40MD_White",
                };
             };
@@ -1004,13 +1008,14 @@ class RhsRussia : Faction
 
             class Uniform : Uniform
             {
-                autorifleBaseItems[] = {
+                items[] += {
                    "rhs_mag_rgn",
                    "rhs_mag_rdg2_white"
                 };
             };
-            class Vest : Vest {
-                 arM27List[] = {
+            class Vest : Vest
+            {
+                items[] += {
                    "rhs_mag_rgn",
                 };
             };
@@ -1031,7 +1036,7 @@ class RhsRussia : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanbaseItems[] = {
+               items[] += {
                   "rhs_mag_rgn",
                   "rhs_mag_rgn",
                   "rhs_mag_rdg2_white",
@@ -1040,7 +1045,7 @@ class RhsRussia : Faction
             };
             class Backpack : Backpack
             {
-                marksmanBaseItems[] = {
+                items[] += {
                   "rhs_acc_pkas"
                 };
             };
@@ -1056,7 +1061,7 @@ class RhsRussia : Faction
             {
                 type = "rhs_6b23_digi_medic";
 
-                medicBaseItems[] = {
+                items[] += {
                     "rhs_mag_rdg2_white",
                     "rhs_mag_rdg2_white",
                     "rhs_mag_rdg2_white",
@@ -1093,7 +1098,7 @@ class RhsRussia : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "rhs_mag_rgn",
                     "rhs_mag_rgn",
                     "rhs_mag_rdg2_white",
@@ -1104,7 +1109,7 @@ class RhsRussia : Faction
             {
                 type = "B_Kitbag_sgg";
 
-                aceEodBaseItems[] = {
+                aceEodItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1116,7 +1121,7 @@ class RhsRussia : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceEdoItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -1124,6 +1129,22 @@ class RhsRussia : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "rhs_vdv_engineer";
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+            class Backpack : Backpack
+            {
+                type = "B_Kitbag_sgg";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1295,6 +1316,22 @@ class RhsRussia : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Ak74m : EngineerBase
+                {
+                    type    = "AK-74M";
+                    rifle   = "rhs_weap_ak74m";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -1432,6 +1469,19 @@ class RhsRussia : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform : Uniform
+                    {
+                        type = "rhs_uniform_vdv_emr_des";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Tropic : SemiArid
         {
@@ -1527,6 +1577,16 @@ class RhsRussia : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74m : Ak74m
                 {
@@ -1640,6 +1700,16 @@ class RhsRussia : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Winter : SemiArid
         {
@@ -1735,6 +1805,16 @@ class RhsRussia : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74m : Ak74m
                 {

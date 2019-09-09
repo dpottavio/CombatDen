@@ -49,7 +49,8 @@ class Faction
                 "ItemRadio",
                 "ItemWatch",
                 "Medikit",
-                "FirstAidKit"
+                "FirstAidKit",
+                "ToolKit"
             };
             aceMisc[] = {
                 "ACE_CableTie",
@@ -150,7 +151,7 @@ class Faction
     {
         class Base : Base
         {
-            cupBluforMags[] = {
+            mags[] = {
                 "CUP_20Rnd_556x45_Stanag",
                 "CUP_20Rnd_556x45_Stanag_Tracer_Green",
                 "CUP_20Rnd_556x45_Stanag_Tracer_Red",
@@ -200,7 +201,7 @@ class Faction
                 "CUP_20Rnd_762x51_HK417",
                 "CUP_20Rnd_TE1_Red_Tracer_762x51_HK417"
             };
-            cupBluforWeapons[] = {
+            weapons[] = {
                 "CUP_hgun_Glock17",
                 "CUP_arifle_HK416_CQB_Black",
                 "CUP_arifle_HK416_CQB_M203_Black",
@@ -234,19 +235,19 @@ class Faction
                 "CUP_srifle_L129A1",
                 "CUP_srifle_L129A1_HG"
             };
-            cupBluforLaunchers[] = {
+            launchers[] = {
                 "CUP_launch_M136",
                 "CUP_launch_M72A6",
                 "CUP_launch_M72A6_Special",
                 "CUP_launch_NLAW"
             };
-            cupBluforNvg[] = {
+            nvg[] = {
                 "CUP_NVG_PVS14",
                 "CUP_NVG_PVS15_black",
                 "CUP_NVG_PVS7",
                 "CUP_NVG_GPNVG_black"
             };
-            cupBluforSights[] = {
+            sights[] = {
                 "cup_optic_compm4",
                 "cup_optic_an_pas_13c1",
                 "cup_optic_elcan",
@@ -264,11 +265,11 @@ class Faction
                 "cup_optic_trijiconrx01_black",
                 "cup_optic_leupoldmk4"
             };
-            cupBluforAttachments[] = {
+            attachments[] = {
                 "cup_acc_anpeq_15",
                 "cup_acc_anpeq_2"
             };
-            cupBluforFaceware[] = {
+            faceware[] += {
                 "CUP_RUS_Balaclava_blk",
                 "CUP_RUS_Balaclava_grn",
                 "CUP_PMC_Facewrap_Black",
@@ -349,6 +350,7 @@ class Faction
             misc[] = {
                 "ItemMap",
                 "ItemRadio",
+                "ToolKit",
                 "gm_ge_army_medkit_80",
                 "gm_ge_army_gauzeBandage",
                 "gm_ge_army_gauzeCompress",

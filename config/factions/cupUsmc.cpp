@@ -23,7 +23,7 @@ class CupUsmc : Faction
     {
         class Base : Base
         {
-            cupUsmcWeapons[] = {
+            weapons[] += {
                 "CUP_arifle_M16A2",
                 "CUP_arifle_M16A2_GL",
                 "CUP_arifle_M16A4_Base",
@@ -45,14 +45,14 @@ class CupUsmc : Faction
                 "CUP_lmg_m249_para",
                 "CUP_arifle_HK_M27"
             };
-            cupUsmcLaunchers[] = {
+            launchers[] += {
                 "CUP_launch_Javelin"
             };
-            cupUsmcBackpacks[] = {
+            backpacks[] = {
                 "B_AssaultPack_cbr",
                 "B_Kitbag_cbr"
             };
-            cupUsmcVests[] = {
+            vests[] = {
                 "CUP_V_B_Eagle_SPC_AT",
                 "CUP_V_B_Eagle_SPC_AR",
                 "CUP_V_B_Eagle_SPC_Corpsman",
@@ -66,7 +66,7 @@ class CupUsmc : Faction
 
         class SemiArid : Base
         {
-            cupUsmcSemiAridWeapons[] = {
+            weapons[] += {
                 "CUP_arifle_M4A1_desert_carryhandle",
                 "CUP_arifle_M4A1_desert",
                 "CUP_arifle_M4A1_BUIS_desert_GL",
@@ -76,7 +76,7 @@ class CupUsmc : Faction
 
         class Tropic : Base
         {
-            cupUsmcTropicWeapons[] = {
+            weapons[] += {
                 "CUP_arifle_M4A1_camo_carryhandle",
                 "CUP_arifle_M4A1_camo",
                 "CUP_arifle_M4A1_BUIS_camo_GL",
@@ -95,11 +95,15 @@ class CupUsmc : Faction
             heloTransport      = "CUP_B_UH1Y_UNA_USMC";
             heloTransportLarge = "CUP_B_UH1Y_UNA_USMC";
             heloCargo          = "CUP_B_CH53E_USMC";
+            truckAssault       = "CUP_B_M1151_M2_USMC";
             truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
             truckSupplyCargo   = "CUP_B_MTVR_USMC";
             truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
         };
-        class Arid   : SemiArid {};
+        class Arid   : SemiArid
+        {
+            truckAssault = "CUP_B_M1151_M2_DSRT_USMC";
+        };
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
         class Winter : SemiArid {};
@@ -831,7 +835,7 @@ class CupUsmc : Faction
             {
                 type = "CUP_U_B_USMC_FROG3_WMARPAT";
 
-                cupUsmcBase[] = {
+                items[] += {
                     "CUP_17Rnd_9x19_glock17",
                     "CUP_17Rnd_9x19_glock17"
                 };
@@ -855,7 +859,7 @@ class CupUsmc : Faction
 
             class Vest : Vest
             {
-               riflemanBaseItems[] = {
+               items[] += {
                     "CUP_HandGrenade_M67",
                     "CUP_HandGrenade_M67",
                     "SmokeShellGreen",
@@ -864,7 +868,7 @@ class CupUsmc : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                     "CUP_HandGrenade_M67",
                     "CUP_HandGrenade_M67",
                     "CUP_HandGrenade_M67",
@@ -885,7 +889,7 @@ class CupUsmc : Faction
             {
                 type = "CUP_V_B_Eagle_SPC_GL";
 
-                grenadierBaseItems[] = {
+                items[] += {
                     "CUP_1Rnd_Smoke_M203",
                 };
             };
@@ -917,7 +921,7 @@ class CupUsmc : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanBaseItems[] = {
+               items[] += {
                   "CUP_HandGrenade_M67",
                   "CUP_HandGrenade_M67",
                   "SmokeShellGreen",
@@ -926,7 +930,7 @@ class CupUsmc : Faction
             };
             class Backpack : Backpack
             {
-                marksmanBaseItems[] = {
+                items[] += {
                   "cup_optic_leupoldmk4"
                 };
             };
@@ -940,7 +944,7 @@ class CupUsmc : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                medicBaseItems[] = {
+                items[] += {
                     "SmokeShellGreen",
                     "SmokeShellGreen",
                     "SmokeShellGreen",
@@ -967,7 +971,7 @@ class CupUsmc : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "SmokeShell",
@@ -978,7 +982,7 @@ class CupUsmc : Faction
             {
                 type = "B_Kitbag_cbr";
 
-                aceEodBaseItems[] = {
+                acetems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -990,7 +994,7 @@ class CupUsmc : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -998,6 +1002,23 @@ class CupUsmc : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "CUP_B_USMC_Engineer_FROG_WDL";
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                type = "B_Kitbag_cbr";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1248,6 +1269,32 @@ class CupUsmc : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class M4 : EngineerBase
+                {
+                    type    = "M4A1";
+                    rifle   = "CUP_arifle_M4A1_black";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M16 : EngineerBase
+                {
+                    type  = "M164A";
+                    rifle = "CUP_arifle_M16A4_Base";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -1479,6 +1526,33 @@ class CupUsmc : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class M4 : M4
+                {
+                    headgear = "CUP_H_USMC_MICH2000_DES";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_USMC_FROG2_DMARPAT";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    headgear = "CUP_H_USMC_MICH2000_DES";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_USMC_FROG2_DMARPAT";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Tropic : SemiArid
         {
@@ -1609,6 +1683,23 @@ class CupUsmc : Faction
                 };
             };
             class Eod : Eod
+            {
+                class M4 : M4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class M4 : M4
                 {
@@ -1771,6 +1862,23 @@ class CupUsmc : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class M4 : M4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Winter : SemiArid
         {
@@ -1901,6 +2009,23 @@ class CupUsmc : Faction
                 };
             };
             class Eod : Eod
+            {
+                class M4 : M4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M16 : M16
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class M4 : M4
                 {

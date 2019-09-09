@@ -172,6 +172,7 @@ class CupRussia : Faction
             heloTransport      = "CUP_O_Mi8_medevac_RU";
             heloTransportLarge = "CUP_O_Mi8_medevac_RU";
             heloCargo          = "CUP_O_Mi8_medevac_RU";
+            truckAssault       = "CUP_O_BRDM2_RUS";
             truckSupplyAmmo    = "CUP_O_Ural_Reammo_RU";
             truckSupplyCargo   = "CUP_O_Ural_RU";
             truckSupplyFuel    = "CUP_O_Ural_Refuel_RU";
@@ -768,7 +769,7 @@ class CupRussia : Faction
             {
                 type = "CUP_U_O_RUS_EMR_1_VDV";
 
-                cupRussiaBaseItems[] = {
+                items[] += {
                     "16Rnd_9x21_Mag",
                     "16Rnd_9x21_Mag"
                 };
@@ -791,7 +792,7 @@ class CupRussia : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               riflemanBaseItems[] = {
+                items[] += {
                     "CUP_HandGrenade_RGD5",
                     "CUP_HandGrenade_RGD5",
                     "SmokeShell",
@@ -800,7 +801,7 @@ class CupRussia : Faction
             };
             class Backpack : Backpack
             {
-                riflemanBaseItems[] = {
+                items[] += {
                     "CUP_HandGrenade_RGD5",
                     "CUP_HandGrenade_RGD5",
                     "CUP_HandGrenade_RGD5",
@@ -819,7 +820,7 @@ class CupRussia : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               grenadierBaseItems[] = {
+               items[] += {
                     "CUP_1Rnd_SMOKE_GP25_M"
                };
             };
@@ -832,13 +833,13 @@ class CupRussia : Faction
 
             class Uniform : Uniform
             {
-                arBaseItems[] = {
+                items[] += {
                     "CUP_HandGrenade_RGD5",
                     "SmokeShell"
                 };
             };
             class Vest : Vest {
-                arBaseItems[] = {
+                items[] += {
                     "CUP_HandGrenade_RGD5"
                 };
             };
@@ -858,7 +859,7 @@ class CupRussia : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanBaseItems[] = {
+               items[] += {
                    "CUP_HandGrenade_RGD5",
                    "CUP_HandGrenade_RGD5",
                    "SmokeShell",
@@ -867,7 +868,7 @@ class CupRussia : Faction
             };
             class Backpack : Backpack
             {
-                marksmanBaseItems[] = {
+                items[] += {
                   "cup_optic_pechenegscope"
                 };
             };
@@ -881,7 +882,7 @@ class CupRussia : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                medicBaseItems[] = {
+                items[] += {
                     "SmokeShell",
                     "SmokeShell",
                     "SmokeShell",
@@ -917,7 +918,7 @@ class CupRussia : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "CUP_HandGrenade_RGD5",
                     "CUP_HandGrenade_RGD5",
                     "SmokeShell",
@@ -928,7 +929,7 @@ class CupRussia : Faction
             {
                 type = "B_Kitbag_sgg";
 
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -940,7 +941,7 @@ class CupRussia : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -948,6 +949,23 @@ class CupRussia : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            unit = "CUP_O_RU_Engineer_VDV_EMR";
+
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                type = "B_Kitbag_sgg";
+
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1109,6 +1127,22 @@ class CupRussia : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Ak74m : EngineerBase
+                {
+                    type    = "AK-74M";
+                    rifle   = "CUP_arifle_AK74M";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Arid : SemiArid
         {
@@ -1197,6 +1231,16 @@ class CupRussia : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74m : Ak74m
                 {
@@ -1303,6 +1347,16 @@ class CupRussia : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Wood : SemiArid
         {
@@ -1400,6 +1454,16 @@ class CupRussia : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Winter : SemiArid
         {
@@ -1488,6 +1552,16 @@ class CupRussia : Faction
                 };
             };
             class Eod : Eod
+            {
+                class Ak74m : Ak74m
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class Ak74m : Ak74m
                 {

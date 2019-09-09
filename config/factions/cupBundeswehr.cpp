@@ -23,17 +23,17 @@ class CupBundeswehr : Faction
     {
         class Base : Base
         {
-            cupBundesWeapons[] = {
+            weapons[] += {
                 "CUP_arifle_G36A",
                 "CUP_arifle_G36C",
                 "CUP_arifle_AG36",
                 "CUP_arifle_G36K",
                 "CUP_arifle_MG36"
             };
-            cupBundesLaunchers[] = {
+            launchers[] += {
                 "CUP_launch_MAAWS"
             };
-            cupBundesBackpacks[] = {
+            backpacks[] = {
                 "CUP_B_GER_Pack_Flecktarn",
                 "CUP_B_GER_Medic_FLecktarn"
             };
@@ -58,6 +58,7 @@ class CupBundeswehr : Faction
             heloTransport      = "CUP_B_UH1D_GER_KSK";
             heloTransportLarge = "CUP_B_CH53E_GER";
             heloCargo          = "CUP_B_CH53E_GER";
+            truckAssault       = "CUP_B_Dingo_GER_Wdl";
             truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
             truckSupplyCargo   = "CUP_B_MTVR_USMC";
             truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
@@ -65,6 +66,7 @@ class CupBundeswehr : Faction
         class Arid : SemiArid
         {
             heloTransport = "CUP_B_UH1D_GER_KSK_Des";
+            truckAssault  = "CUP_B_Dingo_GER_Des";
         };
         class Tropic : SemiArid {};
         class Wood   : SemiArid {};
@@ -787,7 +789,7 @@ class CupBundeswehr : Faction
             {
                 type = "CUP_U_B_GER_Flecktarn_1";
 
-                cupBundeswehrBase[] = {
+                items[] += {
                     "CUP_17Rnd_9x19_glock17",
                     "CUP_17Rnd_9x19_glock17"
                 };
@@ -811,7 +813,7 @@ class CupBundeswehr : Faction
 
             class Vest : Vest
             {
-               riflemanItems[] = {
+               items[] += {
                     "CUP_HandGrenade_M67",
                     "CUP_HandGrenade_M67",
                     "SmokeShellGreen",
@@ -820,7 +822,7 @@ class CupBundeswehr : Faction
             };
             class Backpack : Backpack
             {
-                riflemanItems[] = {
+                items[] += {
                     "CUP_HandGrenade_M67",
                     "CUP_HandGrenade_M67",
                     "CUP_HandGrenade_M67",
@@ -839,7 +841,7 @@ class CupBundeswehr : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               grenadierBaseItems[] = {
+               items[] += {
                     "CUP_1Rnd_Smoke_M203"
                };
             };
@@ -853,7 +855,7 @@ class CupBundeswehr : Faction
 
             class Uniform  : Uniform {};
             class Vest     : Vest {
-                 arBaseItems[] = {
+                 items[] += {
                    "CUP_HandGrenade_M67",
                    "CUP_HandGrenade_M67",
                    "SmokeShellGreen",
@@ -873,7 +875,7 @@ class CupBundeswehr : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               marksmanItems[] = {
+               items[] += {
                   "CUP_HandGrenade_M67",
                   "CUP_HandGrenade_M67",
                   "SmokeShellGreen",
@@ -882,7 +884,7 @@ class CupBundeswehr : Faction
             };
             class Backpack : Backpack
             {
-                marksmanItems[] = {
+                items[] += {
                   "cup_optic_leupoldmk4"
                 };
             };
@@ -897,7 +899,7 @@ class CupBundeswehr : Faction
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                medicBaseItems[] = {
+                items[] += {
                     "SmokeShellGreen",
                     "SmokeShellGreen",
                     "SmokeShellGreen",
@@ -933,7 +935,7 @@ class CupBundeswehr : Faction
 
             class Vest : Vest
             {
-               eodBaseItems[] = {
+               items[] += {
                     "HandGrenade",
                     "HandGrenade",
                     "SmokeShell",
@@ -942,7 +944,7 @@ class CupBundeswehr : Faction
             };
             class Backpack : Backpack
             {
-                aceEodBaseItems[] = {
+                aceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -954,7 +956,7 @@ class CupBundeswehr : Faction
                     "ACE_M14",
                     "ACE_M14"
                 };
-                noAceEdoBaseItems[] = {
+                noAceItems[] += {
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
@@ -962,6 +964,19 @@ class CupBundeswehr : Faction
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag",
                     "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -1157,6 +1172,42 @@ class CupBundeswehr : Faction
                     class LinkedItems : LinkedItems {};
                 };
                 class G36K : EodBase
+                {
+                    type    = "G36K";
+                    rifle   = "CUP_arifle_G36K";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class G36A : EngineerBase
+                {
+                    type    = "G36A";
+                    rifle   = "CUP_arifle_G36A";
+                    default = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36C : EngineerBase
+                {
+                    type    = "G36C";
+                    rifle   = "CUP_arifle_G36C";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36K : EngineerBase
                 {
                     type    = "G36K";
                     rifle   = "CUP_arifle_G36K";
@@ -1466,6 +1517,63 @@ class CupBundeswehr : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class G36A : G36A
+                {
+                    headgear = "CUP_H_RACS_Helmet_tan";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_GER_Tropentarn_1";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "CUP_V_I_RACS_Carrier_Vest";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "CUP_B_GER_Pack_Tropentarn";
+                    };
+                    class LinkedItems   : LinkedItems {};
+                };
+                class G36C : G36C
+                {
+                    headgear = "CUP_H_RACS_Helmet_tan";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_GER_Tropentarn_1";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "CUP_V_I_RACS_Carrier_Vest";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "CUP_B_GER_Pack_Tropentarn";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36K : G36K
+                {
+                    headgear = "CUP_H_RACS_Helmet_tan";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_GER_Tropentarn_1";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "CUP_V_I_RACS_Carrier_Vest";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "CUP_B_GER_Pack_Tropentarn";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Tropic : SemiArid
         {
@@ -1575,6 +1683,30 @@ class CupBundeswehr : Faction
                 };
             };
             class Eod : Eod
+            {
+                class G36A : G36A
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36C : G36C
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36K : G36K
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class G36A : G36A
                 {
@@ -1730,6 +1862,30 @@ class CupBundeswehr : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
+            class Engineer : Engineer
+            {
+                class G36A : G36A
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36C : G36C
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36K : G36K
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
         };
         class Winter : SemiArid
         {
@@ -1839,6 +1995,30 @@ class CupBundeswehr : Faction
                 };
             };
             class Eod : Eod
+            {
+                class G36A : G36A
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36C : G36C
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class G36K : G36K
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
             {
                 class G36A : G36A
                 {

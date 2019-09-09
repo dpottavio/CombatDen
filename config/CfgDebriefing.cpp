@@ -59,4 +59,10 @@ class CfgDebriefing
         subtitle = "Intel Destroyed";
         description = "The enemy intel was destroyed.";
     };
+    class TruckDead
+    {
+        title = "Mission Failed";
+        subtitle = "Truck Destroyed";
+        description = "The enemy truck was destroyed before it could be recovered.";
+    };
 };

@@ -60,7 +60,7 @@ if (_nearRoads isEqualTo []) exitWith {
 };
 
 private _roadblockCount = 0;
-private _lastPos = [0,0,0];
+private _lastPosList = [];
 {
     private _roadPos = getPos _x;
 
@@ -80,10 +80,15 @@ private _lastPos = [0,0,0];
     } forEach _blackList;
 
     // Limit how close roadblocks are to each other.
-    private _nearLastPos = (_roadPos distance _lastPos) < 200;
+    private _nearLastPos = false;
+    {
+        if ((_roadPos distance _x) < 200) exitWith {
+            _nearLastPos = true;
+        };
+    } forEach _lastPosList;
 
     if (!_nearLastPos && !_nearBlackList && _nearTerrainObjs isEqualTo []) then {
-        _lastPos = _roadPos;
+        _lastPosList pushBack _roadPos;
 
         private _connections = roadsConnectedTo _x;
         if !(_connections isEqualTo []) then {
