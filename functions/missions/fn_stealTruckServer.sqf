@@ -265,7 +265,7 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
 ] call den_fnc_createTrigger;
 
 // 4. wave defended
-[
+private _defendTrigger = [
     _insertPos,
     _insertArea,
     [_enemySideStr, "NOT PRESENT", false],
@@ -279,6 +279,8 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
         ["den_wpEchoHeld"] call den_fnc_publicBool;
     }
 ] call den_fnc_createTrigger;
+
+_defendTrigger setTriggerTimeout [45, 45, 45, true];
 
 /*
  * enemy markers

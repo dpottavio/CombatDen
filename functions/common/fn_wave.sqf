@@ -71,6 +71,8 @@ if (_enemyFaction == "") exitWith {
 
 [_area, _spawnList, _enemyFaction, _code, _threshold, _cooldown, _friendlyFaction] spawn {
     params ["_area", "_spawnList", "_enemyFaction", "_code", "_threshold", "_cooldown", "_friendlyFaction"];
+
+    private _spawnCount = count _spawnList;
     {
         private _enemySide  = [_enemyFaction] call den_fnc_factionSide;
         private _total = {((side _x) == _enemySide) && ((getPos _x) inArea _area)} count allUnits;
@@ -108,7 +110,10 @@ if (_enemyFaction == "") exitWith {
             _marker setMarkerColor _enemyColor;
         };
 
-        sleep _cooldown;
+        _spawnCount = _spawnCount - 1;
+        if (_spawnCount > 0) then {
+            sleep _cooldown;
+        };
     } forEach _spawnList;
 
     [] call _code;
