@@ -109,17 +109,23 @@ createMarker ["alphaArrowMarker", _arrowPos];
         };
     } forEach units _playerGroup;
 
-    // Move remaining units in the vehicle
+    /*
+     * Move remaining units into the vehicles in a round-robin fashion.
+     */
     private _vehicleCount = count _vehicles;
-    for "_i" from 0 to ((count _remainingUnits) - 1) do
-    {
+    private _i = 0;
+    while { (count _remainingUnits) > 0 } do {
         private _vehicle = _vehicles select (_i mod _vehicleCount);
-        private _unit    = _remainingUnits select _i;
-
-        if !(_unit moveInAny _vehicle) then {
-            ERROR_1("failed to move %1 unit into vehicle", _unit);
+        private _unit    = _remainingUnits select 0;
+        if (_unit moveInAny _vehicle) then {
+            _remainingUnits deleteAt 0;
+            sleep 0.25;
         };
-        sleep 0.25;
+
+        _i = _i + 1;
+        if (_i == (count units _playerGroup)) exitWith {
+            ERROR("failed to add all units to vehicles");
+        };
     };
 
     sleep 3;
