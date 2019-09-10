@@ -204,9 +204,9 @@ private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spa
  * Attach a search action to a random camp unit to
  * trigger "den_intelFound".
  */
-private _searchItems = nearestObjects [_campPos, ["Thing"], 10];
+private _searchItems = nearestObjects [_campPos, ["Thing"], 5];
 if (_searchItems isEqualTo []) then {
-    _searchItems = ["Land_HelipadEmpty_F" createVehicle _campPos];
+    _searchItems = ["Land_MetalCase_01_medium_F" createVehicle _campPos];
 };
 
 den_searchItem = selectRandom (_searchItems);
