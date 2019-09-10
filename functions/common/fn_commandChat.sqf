@@ -34,6 +34,9 @@ if (isNil "_side") exitWith {
     false;
 };
 
+private _sound = configName (selectRandom ("true" configClasses (missionConfigFile >> "CfgSounds")));
+
 [[_side, _id], _message] remoteExec ["sideChat"];
+[[_sound, true]] remoteExec ["playSound"];
 
 true;
