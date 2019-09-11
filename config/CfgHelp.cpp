@@ -14,8 +14,8 @@ class CfgHelp
     class License
     {
         title = "License";
-        text  = "This work \
-is licensed under Arma Public License Share Alike.  You are free to modify and redistribute \
+        text  = "Copyright (C) 2018-2019 D. Ottavio <br/><br/>\
+This work is licensed under Arma Public License Share Alike.  You are free to modify and redistribute \
 this work under the terms of this license.  You may obtain a copy of the license at:<br/><br/>\
 https://www.bohemia.net/community/licenses/arma-public-license-share-alike";
     };
