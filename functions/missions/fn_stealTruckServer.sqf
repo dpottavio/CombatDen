@@ -181,17 +181,8 @@ private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnG
 [_reactGroup, _reactPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
-[
-    _patrolGroup,
-    _truckPos,
-    200,
-    6,
-    "MOVE",
-    "SAFE",
-    "YELLOW",
-    "LIMITED",
-    "STAG COLUMN"
-] call CBA_fnc_taskPatrol;
+
+[_patrolGroup, _truckPos, 200, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 
 /*
  * mission trigger logic

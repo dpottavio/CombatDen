@@ -146,17 +146,8 @@ switch (_difficulty) do {
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
-[
-    _patrolGroup,
-    _zonePos,
-    _zoneRadius,
-    5,
-    "MOVE",
-    "AWARE",
-    "YELLOW",
-    "LIMITED",
-    "STAG COLUMN"
-] call CBA_fnc_taskPatrol;
+
+[_patrolGroup, _zonePos, _zoneRadius, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 
 /*
  * caches

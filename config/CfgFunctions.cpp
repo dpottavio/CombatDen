@@ -38,6 +38,7 @@ class CfgFunctions
             class lowDaylight {};
             class mpEndMission {};
             class mortarFire {};
+            class patrol {};
             class publicBool {};
             class randTime {};
             class randWeather {};

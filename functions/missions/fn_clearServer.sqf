@@ -184,17 +184,8 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
-[
-    _patrolGroup,
-    _zonePos,
-    300,
-    6,
-    "MOVE",
-    "SAFE",
-    "YELLOW",
-    "LIMITED",
-    "STAG COLUMN"
-] call CBA_fnc_taskPatrol;
+
+[_patrolGroup, _zonePos, 300, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 
 [_zonePos, _zoneRadius * 0.5, _enemyFaction, 4] call den_fnc_buildingOccupy;
 

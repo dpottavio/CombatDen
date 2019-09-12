@@ -183,17 +183,8 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
-[
-    _patrolGroup,
-    _campPos,
-    300,
-    6,
-    "MOVE",
-    "SAFE",
-    "YELLOW",
-    "LIMITED",
-    "STAG COLUMN"
-] call CBA_fnc_taskPatrol;
+
+[_patrolGroup, _campPos, 300, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
