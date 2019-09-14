@@ -545,7 +545,7 @@ class CupChDkz : Faction
             };
             class LinkedItems : LinkedItems {};
         };
-        class AtBase : Base
+        class AtBase : RiflemanBase
         {
             unit            = "CUP_O_INS_Soldier_AT";
             rifle           = "CUP_arifle_AKM";
