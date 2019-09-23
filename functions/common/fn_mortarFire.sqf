@@ -109,13 +109,14 @@ waitUntil { vehicle _gunner != _gunner };
     private _roundCount   = [_gunner] call _countRounds;
     private _numSteps     = _targetRadius / _targetDelta + 1;
     private _roundPerStep = _roundCount / _numSteps;
+    private _heading      = [0, 360] call BIS_fnc_randomInt;
 
     for "_i" from 1 to _numSteps do
     {
         for "_x" from 1 to _roundPerStep do
         {
-            private _heading = [0, 360] call BIS_fnc_randomInt;
-            private _pos     = _targetPos getPos [_targetRadius, _heading];
+            private _headingWithDrift = _heading + (random [-30,0,30]);
+            private _pos = _targetPos getPos [_targetRadius, _headingWithDrift];
 
             _gunner commandArtilleryFire [_pos, _mag, 1];
 
