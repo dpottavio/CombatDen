@@ -152,7 +152,7 @@ private _extractTrigArea = [
 [
     _palletPos,
     _extractTrigArea,
-    ["LOGIC", "PRESENT", false],
+    ["NONE", "PRESENT", false],
     {
         params ["", "_thisTrigger", "", "_args"];
         private _val = !((_args select 0) inArea _thisTrigger);
