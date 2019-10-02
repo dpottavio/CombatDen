@@ -127,7 +127,7 @@ class GmEastGermany : Faction
             heloTransport      = "";
             heloTransportLarge = "";
             heloCargo          = "B_Heli_Transport_03_F";
-            truckAssault       = "gm_gc_army_brdm2";
+            truckAssault       = "gm_gc_army_btr60pb";
             truckSupplyAmmo    = "gm_gc_army_ural4320_reammo";
             truckSupplyCargo   = "gm_gc_army_ural4320_repair";
             truckSupplyFuel    = "gm_gc_army_ural375d_refuel";
