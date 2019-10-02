@@ -170,22 +170,21 @@ if (_role == "SquadLeader") then {
  * player the same gear they had entering the transport vehicle.
  */
 private _aceRespawnGear = missionNamespace getVariable ["ace_respawn_savePreDeathGear", false];
-if (isMultiplayer && !_aceRespawnGear) then {
-    den_transport addEventHandler ["GetIn", {
-        params ["", "", "_unit", ""];
-        if (local _unit) then {
-            _unit setVariable ["den_loadout", (getUnitLoadout _unit)];
+if (isMultiplayer && !_aceRespawnGear && isNil "den_insert") then {
+    [] spawn {
+        while { isNil "den_insert" } do {
+            sleep 1;
         };
-    }];
+        player setVariable ["den_loadout", (getUnitLoadout player)];
 
-    player addEventHandler ["Respawn", {
-        params ["_unit", ""];
-
-        private _loadout = _unit getVariable ["den_loadout", []];
-        if !(_loadout isEqualTo []) then {
-            _unit setUnitLoadout _loadout;
-        };
-    }];
+        player addEventHandler ["Respawn", {
+            params ["_unit", ""];
+            private _loadout = _unit getVariable ["den_loadout", []];
+            if !(_loadout isEqualTo []) then {
+                _unit setUnitLoadout _loadout;
+            };
+        }];
+    };
 };
 
 private _success = [
