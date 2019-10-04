@@ -19,7 +19,8 @@
 
     1: STRING - faction, see CfgFactions.
 
-    2: (Optional) CODE - code that is executed when the mortar fire is complete
+    2: (Optional) CODE - code that is executed when the mortar fire is complete.
+    The mortar group is passed as an argument.
 
     2: (Optional) NUMBER - radius from the target where the fire begins
     defaults to 150.
@@ -27,11 +28,14 @@
     3: (Optional) NUMBER - delta increments from the radius to the target
     position the fire makes, defaults to 50.
 
-    4: (Optional) ARRAY - min radius from the target position
+    4: (Optional) NUMBER - min radius from the target position
     for the mortar team to spawn, defaults to 700
 
-    5: (Optional) ARRAY - max radisu from the target position
+    5: (Optional) NUMBER - max radius from the target position
     for the mortar team to spawn, defaults to 750
+
+    6: (Optional) NUMBER - limit of rounds. The number of rounds is
+    (full_magazine min limit)
 
     Returns: true
 */
@@ -40,11 +44,12 @@
 params [
     ["_targetPos",    [],  [[]], [2,3]],
     ["_faction",      "",  [""]],
-    ["_eventCode",    {},  [{}]],
+    ["_eventCode",    nil, [{}]],
     ["_targetRadius", 100, [0]],
     ["_targetDelta",  50,  [0]],
     ["_minRadius",    700, [0]],
-    ["_maxRadius",    750, [0]]
+    ["_maxRadius",    750, [0]],
+    ["_roundLimit",   100, [0]]
 ];
 
 if (_targetPos isEqualTo []) exitWith {
@@ -88,25 +93,20 @@ _gunner moveInGunner _mortar;
 
 waitUntil { vehicle _gunner != _gunner };
 
-[_targetPos, _targetRadius, _targetDelta, _gunner, _eventCode] spawn {
-    params ["_targetPos", "_targetRadius", "_targetDelta", "_gunner", "_eventCode"];
+[_targetPos, _targetRadius, _targetDelta, _gunner, _eventCode, _group, _roundLimit] spawn {
+    params ["_targetPos", "_targetRadius", "_targetDelta", "_gunner", "_eventCode", "_group", "_roundLimit"];
 
     private _mag = "8Rnd_82mm_Mo_shells";
 
-    private _countRounds = {
-        params ["_gunner"];
-
-        private _roundCount = 0;
-        {
-            if ((_x select 0) isEqualTo _mag) then {
+    private _roundCount = 0;
+    {
+        if ((_x select 0) isEqualTo _mag) then {
                 _roundCount = _roundCount + (_x select 1);
-            };
-        } forEach (magazinesAmmo vehicle _gunner);
+        };
+    } forEach (magazinesAmmo vehicle _gunner);
 
-        _roundCount;
-    };
+    _roundCount = _roundLimit min _roundCount;
 
-    private _roundCount   = [_gunner] call _countRounds;
     private _numSteps     = _targetRadius / _targetDelta + 1;
     private _roundPerStep = _roundCount / _numSteps;
     private _heading      = [0, 360] call BIS_fnc_randomInt;
@@ -128,7 +128,9 @@ waitUntil { vehicle _gunner != _gunner };
 
     sleep 45;
 
-    [] call _eventCode;
+    if (!isNil "_eventCode") then {
+        [_group] call _eventCode;
+    };
 };
 
 true;

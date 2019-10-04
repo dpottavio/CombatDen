@@ -68,7 +68,11 @@ while {_head < _end && _ok}  do {
     while {_ok} do {
         if (!isNil _taskEvent) exitWith {
             private _taskName = _taskArgs select 1;
-            [_taskName, "SUCCEEDED"] call BIS_fnc_taskSetState;
+            if (missionNamespace getVariable _taskEvent) then {
+                [_taskName, "SUCCEEDED"] call BIS_fnc_taskSetState;
+            } else {
+                [_taskName, "FAILED"] call BIS_fnc_taskSetState;
+            };
             _head = _head + 1;
             sleep 4;
         };

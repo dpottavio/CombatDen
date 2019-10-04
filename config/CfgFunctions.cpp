@@ -22,6 +22,7 @@ class CfgFunctions
             class commandChat {};
             class createPlayerUnit {};
             class createTrigger {};
+            class deleteGroup {};
             class diaryHelp {};
             class extract {};
             class factions {};
@@ -29,6 +30,7 @@ class CfgFunctions
             class fullMoonDate {};
             class hostage {};
             class initPlayer {};
+            class insertAmbush {};
             class insertHelo {};
             class insertMotorized {};
             class intelPositions {};
@@ -38,7 +40,9 @@ class CfgFunctions
             class lowDaylight {};
             class mpEndMission {};
             class mortarFire {};
+            class moveIn {};
             class patrol {};
+            class playersInVehicle {};
             class publicBool {};
             class randTime {};
             class randWeather {};
@@ -80,6 +84,8 @@ class CfgFunctions
             class clearServer {};
             class chemLocal {};
             class chemServer {};
+            class escapeLocal {};
+            class escapeServer {};
             class hostageLocal {};
             class hostageServer {};
             class initMissionLocal {};

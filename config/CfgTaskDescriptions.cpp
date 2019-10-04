@@ -57,8 +57,8 @@ class CfgTaskDescriptions
     };
     class LzExtract
     {
-        title       = "Secure the LZ";
-        description = "Go to the LZ for extraction. All units must be at the LZ and no enemy units.";
+        title       = "Go to LZ";
+        description = "Go to the LZ for extraction. All units must be at the LZ.";
     };
     class PackOrdnance
     {
@@ -98,5 +98,15 @@ class CfgTaskDescriptions
         title = "Hold Waypoint Echo";
         description = "Hold your position at <marker name=""wpEchoMarker"">Waypoint Echo</marker>. \
 Defend this position from enemy units.";
+    };
+    class AmbushPatrol
+    {
+        title = "Patrol";
+        description = "Patrol designated <marker name=""zoneMarker"">region</marker> for enemy unit.";
+    };
+    class AmbushEvade
+    {
+        title = "Evade and Resist";
+        description = "Evade and resist enemy units until Base provides extraction coordinates.";
     };
 };

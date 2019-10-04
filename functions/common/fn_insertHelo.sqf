@@ -102,30 +102,15 @@ createMarker ["alphaArrowMarker", _arrowPos];
     [_helo]
 ] call den_fnc_createTrigger;
 
-[_lzPos, _cargoGroup, _helo, _zonePos] spawn {
+// executed when all players enter the vehicle
+private _insertCode = {
     params ["_lzPos", "_cargoGroup", "_helo", "_zonePos"];
 
-    private _heloType = typeOf _helo;
-
-    // Wait for the cargo units to enter the transport.
-    while {true} do {
-        private _total = { (alive _x) && (isPlayer _x) } count units _cargoGroup;
-        private _loaded = {((vehicle _x) == _helo) && (isPlayer _x)} count units _cargoGroup;
-        if (_total > 0 && _total == _loaded) exitWith {
-            ["den_insert"] call den_fnc_publicBool;
-        };
-        sleep 1;
-    };
+    ["den_insert"] call den_fnc_publicBool;
 
     private _cargoUnits = units _cargoGroup;
 
-    // Move remaining units in the transport.
-    {
-        if ((_helo getCargoIndex _x) == -1) then {
-            [_x, _helo] remoteExecCall ["moveInCargo", _x];
-            sleep 0.25;
-        };
-    } forEach _cargoUnits;
+    [_cargoUnits, [_helo]] call den_fnc_moveIn;
 
     /*
      * Teleport to the LZ.
@@ -204,7 +189,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
         _cloneDestPos set [2, 250];
 
         private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
-        private _heloCloneVehicle = [_heloClonePos, _zoneDir, _heloType, _side] call BIS_fnc_spawnVehicle;
+        private _heloCloneVehicle = [_heloClonePos, _zoneDir, typeOf _helo, _side] call BIS_fnc_spawnVehicle;
         private _heloClone        = _heloCloneVehicle select 0;
 
         private _cloneCrew  = crew _heloClone;
@@ -232,5 +217,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
     sleep 2;
     [["","BLACK IN",3]] remoteExec ["cutText"];
 };
+
+[[_helo], _insertCode, [_lzPos, _cargoGroup, _helo, _zonePos]] call den_fnc_playersInVehicle;
 
 _helo;

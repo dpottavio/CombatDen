@@ -13,14 +13,23 @@ class CfgSounds
 {
     class RadioChatter01
     {
+        type     = "radio";
         name     = "radio_chatter_01";
         sound[]  = {"sounds\radio_chatter_01.ogg",  db - 100, 1};
         titles[] = {};
     };
     class RadioChatter02
     {
-        name     = "radio_chatter_01";
+        type     = "radio";
+        name     = "radio_chatter_02";
         sound[]  = {"sounds\radio_chatter_02.ogg",  db - 100, 1};
+        titles[] = {};
+    };
+    class FireFight01
+    {
+        type     = "fight";
+        name     = "fire_fight_01";
+        sound[]  = {"sounds\fire_fight_01.ogg",  db - 100, 1};
         titles[] = {};
     };
 };

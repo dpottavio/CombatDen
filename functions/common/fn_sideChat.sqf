@@ -30,7 +30,8 @@ if (isNull _unit) exitWith {
     false;
 };
 
-private _sound = configName (selectRandom ("true" configClasses (missionConfigFile >> "CfgSounds")));
+private _query = "getText(_x >> ""type"") == ""radio""";
+private _sound = configName (selectRandom (_query configClasses (missionConfigFile >> "CfgSounds")));
 
 [_unit, _message] remoteExec ["sideChat"];
 [[_sound, true]] remoteExec ["playSound"];

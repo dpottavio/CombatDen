@@ -86,18 +86,11 @@ createMarker ["alphaArrowMarker", _arrowPos];
 "alphaArrowMarker" setMarkerDir (_arrowPos getDir _zonePos);
 "alphaArrowMarker" setMarkerColor _friendlyColor;
 
-[_startPos, _playerGroup, _vehicles, _zonePos] spawn {
+// executed when all players enter the vehicle(s)
+private _insertCode = {
     params ["_startPos", "_playerGroup", "_vehicles", "_zonePos"];
 
-    // Wait for the cargo units to enter the transport.
-    while {true} do {
-        private _total = { (alive _x) && (isPlayer _x) } count units _playerGroup;
-        private _loaded = {((vehicle _x) in _vehicles) && (isPlayer _x)} count units _playerGroup;
-        if (_total > 0 && _total == _loaded) exitWith {
-            ["den_insert"] call den_fnc_publicBool;
-        };
-        sleep 1;
-    };
+    ["den_insert"] call den_fnc_publicBool;
 
     // Units not in the vehicle, should be AI.
     private _remainingUnits = [];
@@ -109,24 +102,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
         };
     } forEach units _playerGroup;
 
-    /*
-     * Move remaining units into the vehicles in a round-robin fashion.
-     */
-    private _vehicleCount = count _vehicles;
-    private _i = 0;
-    while { (count _remainingUnits) > 0 } do {
-        private _vehicle = _vehicles select (_i mod _vehicleCount);
-        private _unit    = _remainingUnits select 0;
-        if (_unit moveInAny _vehicle) then {
-            _remainingUnits deleteAt 0;
-            sleep 0.25;
-        };
-
-        _i = _i + 1;
-        if (_i == (count units _playerGroup)) exitWith {
-            ERROR("failed to add all units to vehicles");
-        };
-    };
+    [_remainingUnits, _vehicles] call den_fnc_moveIn;
 
     sleep 3;
     [["","BLACK OUT",3]] remoteExec ["cutText"];
@@ -152,5 +128,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
     sleep 1;
     [["","BLACK IN",3]] remoteExec ["cutText"];
 };
+
+[_vehicles, _insertCode, [_startPos, _playerGroup, _vehicles, _zonePos]] call den_fnc_playersInVehicle;
 
 _vehicles select 0;
