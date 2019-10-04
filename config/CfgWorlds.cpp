@@ -134,4 +134,12 @@ class CfgWorlds
             "ACityC_Nizhnoye"
         };
     };
+    class tem_anizay
+    {
+        climate = "Arid";
+
+        blacklist[] = {
+            "Dehqobad"
+        };
+    };
 };
