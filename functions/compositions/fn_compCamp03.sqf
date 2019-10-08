@@ -33,34 +33,33 @@ if (_pos isEqualTo []) exitWith {
      false;
 };
 
-private _bagFence = "Land_BagFence_Long_F";
-private _tower    = "Land_BagBunker_Tower_F";
-
 private _climate = DEN_CLIMATE;
-if (_climate == "Tropic" || _climate == "Wood") then {
-    _bagFence = "Land_BagFence_01_long_green_F";
-    _tower    = "Land_HBarrier_01_tower_green_F";
-};
+private _objs    = [];
 
-private _objs = [
-	["CamoNet_BLUFOR_open_F",[-1.52283,-0.996338,0],0,1,0,[],"net_2","",true,false],
-	[_bagFence,[2.57629,0.866455,-0.000999928],89.8101,1,0,[],"","",true,false],
-	[_bagFence,[2.65039,-2.56494,-0.000999928],89.8101,1,0,[],"","",true,false],
-	[_bagFence,[0.674683,-4.18188,-0.000999928],2.48134,1,0,[],"","",true,false],
-	["Land_CampingTable_F",[-3.71008,2.13647,-0.00259399],360,1,0,[],"","",true,false],
-	["Land_Map_F",[-4.52966,2.33911,0.816],0.0125091,1,0,[],"","",true,false],
-	[_tower,[-1.64124,5.98047,0],92.4268,1,0,[],"","",true,false],
-	[_bagFence,[-6.61035,1.15454,-0.000999928],89.8101,1,0,[],"","",true,false],
-	[_bagFence,[-5.25049,-4.46045,-0.000999928],2.05307,1,0,[],"","",true,false],
-	[_bagFence,[-6.62158,-2.40674,-0.000999928],89.8101,1,0,[],"","",true,false],
-	["O_HMG_01_high_F",[-3.13477,6.80688,2.78],280.577,1,0,[],"","",true,false]
-];
+if ((_faction find "Gm") != 0) then {
+    /*
+     * non-GM
+     */
+    private _bagFence = "Land_BagFence_Long_F";
+    private _tower    = "Land_BagBunker_Tower_F";
 
-[_pos, _dir, _objs] call BIS_fnc_objectsMapper;
+    if (_climate == "Tropic" || _climate == "Wood") then {
+        _bagFence = "Land_BagFence_01_long_green_F";
+        _tower    = "Land_HBarrier_01_tower_green_F";
+    };
 
-if (_faction == "" || ((_faction find "Gm") != 0)) then {
-    // Create contemporary objects if the faction is not GM related.
-    private _contemporaryObjs = [
+    _objs = [
+        ["CamoNet_BLUFOR_open_F",[-1.52283,-0.996338,0],0,1,0,[],"net_2","",true,false],
+        [_bagFence,[2.57629,0.866455,-0.000999928],89.8101,1,0,[],"","",true,false],
+        [_bagFence,[2.65039,-2.56494,-0.000999928],89.8101,1,0,[],"","",true,false],
+        [_bagFence,[0.674683,-4.18188,-0.000999928],2.48134,1,0,[],"","",true,false],
+        ["Land_CampingTable_F",[-3.71008,2.13647,-0.00259399],360,1,0,[],"","",true,false],
+        ["Land_Map_F",[-4.52966,2.33911,0.816],0.0125091,1,0,[],"","",true,false],
+        [_tower,[-1.64124,5.98047,0],92.4268,1,0,[],"","",true,false],
+        [_bagFence,[-6.61035,1.15454,-0.000999928],89.8101,1,0,[],"","",true,false],
+        [_bagFence,[-5.25049,-4.46045,-0.000999928],2.05307,1,0,[],"","",true,false],
+        [_bagFence,[-6.62158,-2.40674,-0.000999928],89.8101,1,0,[],"","",true,false],
+        ["O_HMG_01_high_F",[-3.13477,6.80688,2.78],280.577,1,0,[],"","",true,false],
         ["Land_SatellitePhone_F",[-3.02698,2.22998,0.816],359.997,1,0,[],"","",true,false],
         ["Land_Tablet_02_F",[-3.44507,2.24438,0.816],359.991,1,0,[],"","",true,false],
         ["Land_SatelliteAntenna_01_F",[0.0656738,5.86108,2.78],0.000418353,1,0,[],"","",true,false],
@@ -68,6 +67,30 @@ if (_faction == "" || ((_faction find "Gm") != 0)) then {
         ["Land_PortableLongRangeRadio_F",[-4.52612,2.13525,0.816],0.00709314,1,0,[],"","",true,false],
         ["Land_Tablet_02_F",[-4.11511,2.28589,0.816],359.993,1,0,[],"","",true,false]
     ];
-
-    [_pos, _dir, _contemporaryObjs] call BIS_fnc_objectsMapper;
+} else {
+    _objs = [
+        ["gm_gc_tent_5x5m",[-0.341553,-0.761719,0],0,1,0,[],"","",true,false],
+        ["land_gm_euro_furniture_mapboard_01",[-2.12671,-0.30127,0],270.614,1,0,[],"","",true,false],
+        ["land_gm_euro_bench_07",[0.858398,-2.4126,0],272.561,1,0,[],"","",true,false],
+        ["gm_AmmoBox_20rnd_265mm_smoke_single_vlt_DM24",[0.482422,-2.53271,-0.00384331],359.999,1,0.0111522,[],"","",true,false],
+        ["gm_AmmoBox_wood_05_empty",[-0.626709,-2.51514,1.43051e-006],359.999,1,0,[],"","",true,false],
+        ["gm_AmmoBox_20rnd_265mm_flare_single_grn_gc",[1.25488,-2.34082,-0.00384569],360,1,0.0118037,[],"","",true,false],
+        ["Land_File1_F",[1.24146,-2.33643,2.0019989],0.000239005,1,0,[],"","",true,false],
+        ["Land_File2_F",[0.99585,-2.47998,2.00199842],0.000148333,1,0,[],"","",true,false],
+        ["gm_AmmoBox_wood_05_empty",[-1.38721,-2.5542,1.43051e-006],359.999,1,0,[],"","",true,false],
+        ["Land_Bandage_F",[1.63257,-2.33545,2.00200176],359.979,1,0,[],"","",true,false],
+        ["Land_Bandage_F",[1.58838,-2.54102,2.00200176],359.979,1,0,[],"","",true,false],
+        ["Land_Bandage_F",[1.80786,-2.52588,2.00200176],359.979,1,0,[],"","",true,false],
+        ["gm_AmmoBox_wood_05_empty",[-2.24976,-2.64404,0],360,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_wall_01",[-0.110352,6.16455,0],0,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_wall_01",[7.03809,-1.04443,0],86.3272,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_wall_01",[-7.36646,-0.673828,0],90.1568,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_round_01",[-6.05225,4.94678,0],322.394,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_round_01",[5.73755,5.35352,0],42.2208,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_wall_01",[-0.117188,-8.14502,0],0,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_round_01",[5.78906,-7.12598,0],136.076,1,0,[],"","",true,false],
+        ["land_gm_sandbags_01_round_01",[-6.31348,-7.34912,0],222.657,1,0,[],"","",true,false]
+    ];
 };
+
+[_pos, _dir, _objs] call BIS_fnc_objectsMapper;
