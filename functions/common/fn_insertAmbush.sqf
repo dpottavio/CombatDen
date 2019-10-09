@@ -72,8 +72,6 @@ private _insertCode = {
     // Units not in the vehicle, should be AI.
     private _remainingUnits = [];
     {
-        [_x, "ALL"] remoteExecCall ["enableAI", _x];
-
         if !((vehicle _x) in _vehicles) then {
             _remainingUnits pushBack _x;
         };
@@ -85,24 +83,44 @@ private _insertCode = {
     [["","BLACK OUT", 3]]   remoteExec ["cutText"];
     sleep 7;
     /*
-     * Move vehicles to ambush position and disable them.
+     * Move players out to avoid taking damage if the
+     * vehicles collide with an object when moved.
+     */
+    {
+        moveOut _x;
+        waitUntil { vehicle _x == _x };
+    } forEach units _playerGroup;
+    /*
+     * Move the vehicles and disable them.
      */
     private _dir = [0, 360] call BIS_fnc_randomInt;
-    private _offset = 3;
+    private _offset = 0;
+    private _vehiclePos = [];
     {
-        _x setPos (_ambushPos getPos [_offset, _dir]);
+        private _pos = _ambushPos getPos [_offset, _dir];
+
+        _x setPos _pos;
         _x setDamage 0.8;
+
         [_x, ["motor", 1]] remoteExec ["setHit", _x];
         [_x, 0] remoteExec ["setFuel", _x];
 
+        _vehiclePos pushBack _pos;
         _offset = _offset + 15;
     } forEach _vehicles;
-
-    // kill AI units
+    /*
+     * Spread the players around the vehicles
+     * and kill the AI units.
+     */
+    _dir = [0, 360] call BIS_fnc_randomInt;
     {
+        _x setPos ((selectRandom _vehiclePos) getPos [5, _dir]);
+
         if !(isPlayer _x) then {
             _x setDamage 1;
         };
+
+        _dir = (_dir + 40) % 361;
     } forEach units _playerGroup;
 
     [["FireFight01", true]] remoteExec ["playSound"];
@@ -116,25 +134,10 @@ private _insertCode = {
         ],
         safeZoneX,
         safeZoneH / 2
-    ] call BIS_fnc_typeText2;
+    ] remoteExec ["BIS_fnc_typeText2"];
     sleep 4;
 
     ["den_ambush", false] call den_fnc_publicBool;
-
-    /*
-     * Move players around the vehicles, kill AI units.
-     */
-    _dir = [0, 360] call BIS_fnc_randomInt;
-    {
-        private _vehicle = selectRandom _vehicles;
-
-        moveOut _x;
-        waitUntil { vehicle _x == _x };
-
-        _x setPos (_vehicle getPos [5, _dir]);
-
-        _dir = (_dir + 40) % 361;
-    } forEach units _playerGroup;
 
     if (isMultiplayer) then {
         private _side = side _playerGroup;
@@ -149,7 +152,7 @@ private _insertCode = {
     "ambushMarker" setMarkerColor _friendlyColor;
     "ambushMarker" setMarkerText "Ambush Site";
 
-    sleep 3;
+    sleep 6;
     [["","BLACK IN",3]] remoteExec ["cutText"];
 
     den_insertUnload = true;
