@@ -69,15 +69,7 @@ private _insertCode = {
 
     ["den_insert"] call den_fnc_publicBool;
 
-    // Units not in the vehicle, should be AI.
-    private _remainingUnits = [];
-    {
-        if !((vehicle _x) in _vehicles) then {
-            _remainingUnits pushBack _x;
-        };
-    } forEach units _playerGroup;
-
-    [_remainingUnits, _vehicles] call den_fnc_moveIn;
+    [_playerGroup, _vehicles] call den_fnc_moveIn;
 
     sleep 3;
     [["","BLACK OUT", 3]]   remoteExec ["cutText"];

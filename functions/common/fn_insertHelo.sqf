@@ -110,7 +110,7 @@ private _insertCode = {
 
     private _cargoUnits = units _cargoGroup;
 
-    [_cargoUnits, [_helo]] call den_fnc_moveIn;
+    [_cargoGroup, [_helo]] call den_fnc_moveIn;
 
     /*
      * Teleport to the LZ.

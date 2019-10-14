@@ -92,17 +92,7 @@ private _insertCode = {
 
     ["den_insert"] call den_fnc_publicBool;
 
-    // Units not in the vehicle, should be AI.
-    private _remainingUnits = [];
-    {
-        [_x, "ALL"] remoteExecCall ["enableAI", _x];
-
-        if !((vehicle _x) in _vehicles) then {
-            _remainingUnits pushBack _x;
-        };
-    } forEach units _playerGroup;
-
-    [_remainingUnits, _vehicles] call den_fnc_moveIn;
+    [_playerGroup, _vehicles] call den_fnc_moveIn;
 
     sleep 3;
     [["","BLACK OUT",3]] remoteExec ["cutText"];
@@ -124,6 +114,35 @@ private _insertCode = {
     };
 
     den_insertUnload = true;
+
+    {
+        [_x, "ALL"] remoteExec ["enableAI", _x];
+        /*
+         * HACK: AI GM units may not enter the vehicle on the
+         * first call to fn_moveIn.  Until this is understood
+         * the following check will move any units left behind
+         * to the start position and try again to move them into
+         * the vehicles.
+         */
+        if (vehicle _x == _x) then {
+            private _pos = [
+                _startPos, // center position
+                0,         // min position
+                8,         // max position
+                2,         // obj distance
+                0,         // water mode
+                0,         // gradient
+                0,         // shore mode
+                [],        // blacklist
+                [[0,0,0]]  // default pos
+            ] call BIS_fnc_findSafePos;
+
+            if !(_pos isEqualTo [0,0,0]) then {
+                _x setPos _pos;
+            };
+            [_playerGroup, _vehicles] call den_fnc_moveIn;
+        };
+    } forEach units _playerGroup;
 
     sleep 1;
     [["","BLACK IN",3]] remoteExec ["cutText"];

@@ -25,12 +25,12 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_units",    [], [[]]],
+    ["_group",    grpNull, [grpNull]],
     ["_vehicles", [], [[]]]
 ];
 
-if (_units isEqualTo []) exitWith {
-    ERROR("units parameter is empty");
+if (isNull _group) exitWith {
+    ERROR("group parameter is empty");
     false;
 };
 
@@ -40,19 +40,19 @@ if (_vehicles isEqualTo []) exitWith {
 };
 
 private _vehicleCount = count _vehicles;
-private _unitCount    = count _units;
-
 private _vehicle_i = 0;
-private _unit_i    = 0;
-
-while { _unit_i < _unitCount && _vehicle_i <= _unitCount} do {
-    private _vehicle = _vehicles select (_vehicle_i mod _vehicleCount);
-    private _unit    = _units select _unit_i;
-    if (_unit moveInAny _vehicle) then {
-        _unit_i = _unit_i + 1;
-        sleep 0.25;
+{
+    private _unit = _x;
+    if !((vehicle _unit) in _vehicles) then {
+        private _try = 0;
+        while {_try < _vehicleCount} do {
+            private _vehicle = _vehicles select (_vehicle_i mod _vehicleCount);
+            if (_unit moveInAny _vehicle) exitWith {};
+            _vehicle_i = _vehicle_i + 1;
+            _try = _try + 1;
+        };
+        sleep 0.25
     };
-    _vehicle_i = _vehicle_i + 1;
-};
+} forEach units _group;
 
 true;
