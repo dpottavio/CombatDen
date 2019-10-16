@@ -11,10 +11,38 @@
 
 class CfgWorlds
 {
-    class Altis
+    class ClimateDefault
+    {
+        rainChance  = 0.125;
+        maxOvercast = 1;
+    };
+    class Arid
+    {
+        climate     = "Arid";
+        rainChance  = 0;
+        maxOvercast = 0.5;
+    };
+    class SemiArid : ClimateDefault
     {
         climate = "SemiArid";
+    };
+    class Tropic : ClimateDefault
+    {
+        climate    = "Tropic";
+        rainChance = 0.25;
+    };
+    class Winter : ClimateDefault
+    {
+        climate = "Winter";
+    };
+    class Wood : ClimateDefault
+    {
+        climate    = "Wood";
+        rainChance = 0.1875;
+    };
 
+    class Altis : SemiArid
+    {
         blacklist[] = {
             "Almyra",
             "Athanos",
@@ -30,43 +58,32 @@ class CfgWorlds
             "SavriIsland"
         };
     };
-    class Chernarus
+    class Chernarus : Wood
     {
-        climate = "Wood";
-
         blacklist[] = {
             "Local_Pass_Grozovoy",
             "hill_Lysina"
         };
     };
-    class Enoch
+    class Enoch : Wood
     {
-        climate = "Wood";
-
         blacklist[] = {};
     };
-    class gm_weferlingen_summer
+    class gm_weferlingen_summer : Wood
     {
-        climate = "Wood";
-
         blacklist[] = {};
     };
-    class gm_weferlingen_winter : gm_weferlingen_summer
+    class gm_weferlingen_winter : Winter
     {
-        climate = "Winter";
     };
-    class lythium
+    class lythium : SemiArid
     {
-        climate = "SemiArid";
-
         blacklist[] = {
             "morar"
         };
     };
-    class Malden
+    class Malden : SemiArid
     {
-        climate = "SemiArid";
-
         blacklist[] = {
             "Malden_L_Harbor",
             "Malden_L_militarybase",
@@ -81,26 +98,20 @@ class CfgWorlds
             "Malden_L_Faro"
         };
     };
-    class Stratis
+    class Stratis : SemiArid
     {
-        climate = "SemiArid";
-
         blacklist[] = {
           "Spartan"
         };
     };
-    class Takistan
+    class Takistan : Arid
     {
-        climate = "Arid";
-
         blacklist[] = {
             "vill_Landay"
         };
     };
-    class Tanoa
+    class Tanoa : Tropic
     {
-        climate = "Tropic";
-
         blacklist[] = {
              "IleDouen01",
              "IleSainteMarie01",
@@ -115,29 +126,23 @@ class CfgWorlds
              "Villa01"
         };
     };
-    class sara
+    class sara : SemiArid
     {
-        climate = "SemiArid";
-
         blacklist[] = {
             "Local_Antigua",
             "Hill_Virgo",
             "Hill_Vieja"
         };
     };
-    class Woodland_ACR
+    class Woodland_ACR : Wood
     {
-        climate = "Wood";
-
         blacklist[] = {
             "ACityC_Solnychniy",
             "ACityC_Nizhnoye"
         };
     };
-    class tem_anizay
+    class tem_anizay : Arid
     {
-        climate = "Arid";
-
         blacklist[] = {
             "Dehqobad"
         };
