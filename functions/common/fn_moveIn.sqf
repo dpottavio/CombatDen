@@ -45,11 +45,17 @@ private _vehicle_i = 0;
     private _unit = _x;
     if !((vehicle _unit) in _vehicles) then {
         private _try = 0;
-        while {_try < _vehicleCount} do {
+        private _success = false;
+        while {!_success && _try < _vehicleCount} do {
             private _vehicle = _vehicles select (_vehicle_i mod _vehicleCount);
-            if (_unit moveInAny _vehicle) exitWith {};
+            if (_unit moveInAny _vehicle) then {
+                _success = true;
+            } else {
+                _try = _try + 1;
+            };
+            // Always advance the vehicle counter to
+            // achieve round-robin.
             _vehicle_i = _vehicle_i + 1;
-            _try = _try + 1;
         };
         sleep 0.25
     };
