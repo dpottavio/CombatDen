@@ -779,7 +779,7 @@ class CupBundeswehr : Faction
 
             handgun    = "CUP_hgun_Glock17_blk";
             binoculars = "CUP_Vector21Nite";
-            headgear   = "CUP_H_RACS_Helmet_olive";
+            headgear   = "CUP_H_Ger_M92_Cover";
             rifleSight = "cup_optic_acog";
             nvg        = "CUP_NVG_PVS15_black";
             rifleLight = "cup_acc_flashlight";
@@ -1225,7 +1225,7 @@ class CupBundeswehr : Faction
             {
                 class G36A : G36A
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1243,7 +1243,7 @@ class CupBundeswehr : Faction
                 };
                 class G36C : G36C
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1261,7 +1261,7 @@ class CupBundeswehr : Faction
                 };
                 class G36K : G36K
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1282,7 +1282,7 @@ class CupBundeswehr : Faction
             {
                 class G36 : G36
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1303,7 +1303,7 @@ class CupBundeswehr : Faction
             {
                 class Mg36 : Mg36
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1324,7 +1324,7 @@ class CupBundeswehr : Faction
             {
                 class G36 : G36
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1345,7 +1345,7 @@ class CupBundeswehr : Faction
             {
                 class L129 : L129
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1366,7 +1366,7 @@ class CupBundeswehr : Faction
             {
                 class G36A : G36A
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1384,7 +1384,7 @@ class CupBundeswehr : Faction
                 };
                 class G36C : G36C
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1402,7 +1402,7 @@ class CupBundeswehr : Faction
                 };
                 class G36K : G36K
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1425,7 +1425,7 @@ class CupBundeswehr : Faction
 
                 class M27a6 : M27a6
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1443,7 +1443,7 @@ class CupBundeswehr : Faction
                 };
                 class M136 : M136
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1464,7 +1464,7 @@ class CupBundeswehr : Faction
             {
                 class G36A : G36A
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1482,7 +1482,7 @@ class CupBundeswehr : Faction
                 };
                 class G36C : G36C
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1500,7 +1500,7 @@ class CupBundeswehr : Faction
                 };
                 class G36K : G36K
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1521,7 +1521,7 @@ class CupBundeswehr : Faction
             {
                 class G36A : G36A
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1539,7 +1539,7 @@ class CupBundeswehr : Faction
                 };
                 class G36C : G36C
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
@@ -1557,7 +1557,7 @@ class CupBundeswehr : Faction
                 };
                 class G36K : G36K
                 {
-                    headgear = "CUP_H_RACS_Helmet_tan";
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
 
                     class Uniform : Uniform
                     {
