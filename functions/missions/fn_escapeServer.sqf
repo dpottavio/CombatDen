@@ -174,7 +174,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                           (isNil "den_evade" || ((_playerPos distance _lzPos) > _attackRadius));
 
         if (_attack) then {
-            if ((random 1) <= 0.33) then {
+            if ((random 1) < 0.33) then {
                 /*
                  * 33% chance of mortar attack.
                  */

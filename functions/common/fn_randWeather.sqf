@@ -20,9 +20,8 @@ private _rainChance  = getNumber (missionConfigFile >> "CfgWorlds" >> worldName 
 private _maxOvercast = getNumber (missionConfigFile >> "CfgWorlds" >> worldName >> "maxOvercast");
 private _overcast    = 0;
 private _rain        = 0;
-private _rainRand    = [0,1] call BIS_fnc_randomNum;
 
-if (_rainRand <= _rainChance) then {
+if ((random 1) < _rainChance) then {
     _rain     = [0.1, 1.0] call BIS_fnc_randomNum;
     _overcast = [0.7, _maxOvercast] call BIS_fnc_randomNum;
 } else {
