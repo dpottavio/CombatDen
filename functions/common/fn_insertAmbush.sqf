@@ -86,7 +86,7 @@ private _insertCode = {
      * Move the vehicles and disable them.
      */
     private _dir = [0, 360] call BIS_fnc_randomInt;
-    private _offset = 0;
+    private _offset = 8;
     private _vehiclePos = [];
     {
         private _pos = _ambushPos getPos [_offset, _dir];
