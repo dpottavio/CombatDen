@@ -131,7 +131,7 @@ private _lzTrigger = [
     [_lzPos, _friendlyColor, ([_friendlyFaction] call den_fnc_factionSide)]
 ] call den_fnc_createTrigger;
 
-_lzTrigger setTriggerTimeout [480, 600, 720, false];
+_lzTrigger setTriggerTimeout [1100, 1200, 1300, false];
 
 private _enemyGroupCount = 1;
 
