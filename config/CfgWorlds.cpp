@@ -11,34 +11,30 @@
 
 class CfgWorlds
 {
-    class ClimateDefault
-    {
-        rainChance  = 0.125;
-        maxOvercast = 1;
-    };
     class Arid
     {
-        climate     = "Arid";
-        rainChance  = 0;
-        maxOvercast = 0.5;
+        climate    = "Arid";
+        rainChance = 0;
     };
-    class SemiArid : ClimateDefault
+    class SemiArid
     {
-        climate = "SemiArid";
+        climate    = "SemiArid";
+        rainChance = 0.13;
     };
-    class Tropic : ClimateDefault
+    class Tropic
     {
         climate    = "Tropic";
-        rainChance = 0.25;
+        rainChance = 0.3;
     };
-    class Winter : ClimateDefault
+    class Winter
     {
-        climate = "Winter";
+        climate    = "Winter";
+        rainChance = 0.2;
     };
-    class Wood : ClimateDefault
+    class Wood
     {
         climate    = "Wood";
-        rainChance = 0.1875;
+        rainChance = 0.2;
     };
 
     class Altis : SemiArid

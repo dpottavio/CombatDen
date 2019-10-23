@@ -16,20 +16,17 @@
 */
 #include "..\..\macros.hpp"
 
-private _rainChance  = getNumber (missionConfigFile >> "CfgWorlds" >> worldName >> "rainChance");
-private _maxOvercast = getNumber (missionConfigFile >> "CfgWorlds" >> worldName >> "maxOvercast");
-private _overcast    = 0;
-private _rain        = 0;
+private _rainChance = getNumber (missionConfigFile >> "CfgWorlds" >> worldName >> "rainChance");
+private _overcast   = 0;
 
 if ((random 1) < _rainChance) then {
-    _rain     = [0.1, 1.0] call BIS_fnc_randomNum;
-    _overcast = [0.7, _maxOvercast] call BIS_fnc_randomNum;
+    0 setRain ([0.1, 1.0] call BIS_fnc_randomNum);
+    _overcast = [0.7, 1.0] call BIS_fnc_randomNum;
 } else {
-    _overcast = [0, _maxOvercast] call BIS_fnc_randomNum;
+    _overcast = [0, 0.3] call BIS_fnc_randomNum;
 };
 
 [0, _overcast] remoteExecCall ["setOvercast", 0, true];
-0 setRain _rain;
 forceWeatherChange;
 
 true;
