@@ -218,7 +218,10 @@ publicVariable "den_searchItem";
         "(_caller distance _target) < 4",                   // Condition for the action to progress
         {},                                                 // Code executed when action starts
         {},                                                 // Code executed on every progress tick
-        { ["den_intelFound"] call den_fnc_publicBool; },    // Code executed on completion
+        {   // Code executed on completion client side
+            den_intelFound = true;
+            publicVariableServer "den_intelFound";
+        },
         {},                                                 // Code executed on interrupted
         [],                                                 // Arguments passed to the scripts as _this select 3
         10,                                                 // Action duration [s]
@@ -244,13 +247,13 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
     [],
     {
         params ["", "", "_args"];
-        ["den_campSeized"] call den_fnc_publicBool;
+        den_campSeized = true;
         [
             getMarkerPos "campMarker",
             _args select 0,
             {
                 if (isNil "den_intelFound") then {
-                    ["den_intelDestroyed"] call den_fnc_publicBool;
+                    den_intelDestroyed = true;
                 };
             }
         ] call den_fnc_mortarFire;
@@ -264,4 +267,29 @@ private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "recon"));
 _marker setMarkerColor _enemyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "boardInsert",  "BoardInsert",  _transport,   "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "raidCamp",     "RaidCamp",     "campMarker", "CREATED", 1, true, "attack"], "den_campSeized"],
+    [[_side, "searchCamp",   "SearchCamp",   objNull,      "CREATED", 1, true, "search"], "den_intelFound"],
+    [[_side, "lzExtract",    "LzExtract",    "lzMarker",   "CREATED", 1, true, "move"],   "den_lzExtract"]
+];
+
+if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+    // If faction has a transport helo, add boarding it the final task.
+    _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
+};
+
+private _failQueue = [
+    ["TransportDead",   "den_transportDead"],
+    ["PlayersDead",     "den_playersDead"],
+    ["IntelDestroyed",  "den_intelDestroyed"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

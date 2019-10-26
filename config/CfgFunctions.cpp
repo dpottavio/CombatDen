@@ -43,7 +43,6 @@ class CfgFunctions
             class moveIn {};
             class patrol {};
             class playersInVehicle {};
-            class publicBool {};
             class randTime {};
             class randWeather {};
             class sideChat {};

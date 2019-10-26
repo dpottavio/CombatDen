@@ -155,7 +155,7 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
     nil,
     [],
     {
-        ["den_convoyReached"] call den_fnc_publicBool;
+        den_convoyReached = true;
     }
 ] call den_fnc_createTrigger;
 
@@ -236,7 +236,25 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
         sleep 1;
     };
 
-    ["den_convoyDefended"] call den_fnc_publicBool;
+    den_convoyDefended = true;
 };
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "boardInsert",  "BoardInsert",  _transport,      "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "reachConvoy",  "ReachConvoy",  "convoyMarker",  "CREATED", 1, true, "move"],   "den_convoyReached"],
+    [[_side, "defendConvoy", "DefendConvoy", "convoyMarker",  "CREATED", 1, true, "defend"], "den_convoyDefended"]
+];
+
+private _failQueue = [
+    ["TransportDead",   "den_transportDead"],
+    ["PlayersDead",     "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

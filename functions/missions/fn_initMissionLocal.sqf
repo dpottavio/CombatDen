@@ -32,7 +32,6 @@
 params [
     ["_mission",         "",      [""]],
     ["_zone",            "",      [""]],
-    ["_helo",            objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
     ["_arsenal",         objNull, [objNull]]
@@ -40,11 +39,6 @@ params [
 
 if (_zone == "") exitWith {
     ERROR("zone parameter is empty");
-    false;
-};
-
-if (isNull _helo) exitWith {
-    ERROR("helo parameter is empty");
     false;
 };
 
@@ -63,7 +57,7 @@ if (isNull _arsenal) exitWith {
     false;
 };
 
-private _missionArgs = "[_zone, _helo, _friendlyFaction, _enemyFaction, _arsenal]";
+private _missionArgs = "[_zone, _friendlyFaction, _enemyFaction, _arsenal]";
 private _localLogic = getText (missionConfigFile >> "CfgMissions" >> _mission >> "localLogic");
 private _logic = format["%1 call %2;", _missionArgs, _localLogic];
 

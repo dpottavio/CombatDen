@@ -28,10 +28,9 @@ if (!isMultiplayer) then {
     den_mission         = _genMissionParams select 0;
     den_enemyFaction    = _genMissionParams select 1;
     den_zone            = _genMissionParams select 2;
-    den_transport       = _genMissionParams select 3;
-    den_friendlyFaction = _genMissionParams select 4;
-    den_playerGroup     = _genMissionParams select 5;
-    den_arsenal         = _genMissionParams select 6;
+    den_friendlyFaction = _genMissionParams select 3;
+    den_playerGroup     = _genMissionParams select 4;
+    den_arsenal         = _genMissionParams select 5;
 } else {
     // Wait until the briefing has been read.
     waitUntil {getClientStateNumber >= 10};
@@ -190,7 +189,6 @@ if (isMultiplayer && !_aceRespawnGear && isNil "den_insert") then {
 private _success = [
     den_mission,
     den_zone,
-    den_transport,
     den_friendlyFaction,
     den_enemyFaction,
     den_arsenal
@@ -200,5 +198,9 @@ if (!_success) exitWith {
     ERROR_MSG("Failed to initialize mission tasks.");
     false;
 };
+
+// Trigger the task FSM to ensure the current state
+// is set for the new player.
+["den_taskFsmNewPlayer"] call CBA_fnc_serverEvent;
 
 true;

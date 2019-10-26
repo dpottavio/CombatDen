@@ -117,7 +117,7 @@ private _transport = [
     nil,
     [],
     {
-        ["den_zoneClear"] call den_fnc_publicBool;
+        den_zoneClear = true;
     }
 ] call den_fnc_createTrigger;
 
@@ -183,4 +183,21 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "boardInsert",   "BoardInsert", _transport, "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "clearZoneTask", "ClearZone",   objNull,    "CREATED", 1, true, "attack"], "den_zoneClear"]
+];
+
+private _failQueue = [
+    ["TransportDead",   "den_transportDead"],
+    ["PlayersDead",     "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

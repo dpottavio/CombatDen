@@ -111,7 +111,7 @@ if (_area isEqualTo []) then {
         } count allUnits;
 
         if (_enemyAtLz == 0) exitWith {
-            ["den_lzExtract"] call den_fnc_publicBool;
+            den_lzExtract = true;
         };
         sleep 1;
     };
@@ -135,7 +135,7 @@ if (_area isEqualTo []) then {
         _heloGroup setGroupIdGlobal ["Falcon"];
 
         _heloObj addEventHandler ["killed", {
-            ["den_transportDead"] call den_fnc_publicBool;
+            den_transportDead = true;
         }];
 
         [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
@@ -175,7 +175,7 @@ if (_area isEqualTo []) then {
         };
 
         sleep 10;
-        ["den_extract"] call den_fnc_publicBool;
+        den_extract = true;
     };
 };
 

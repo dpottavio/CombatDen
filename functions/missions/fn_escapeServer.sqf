@@ -102,6 +102,8 @@ private _transport = [
     _friendlyFaction
 ] call den_fnc_insertAmbush;
 
+private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
+
 // Trigger the LZ location after some timeout.
 private _lzTrigger = [
     _lzPos,
@@ -126,9 +128,9 @@ private _lzTrigger = [
         _marker setMarkerColor _color;
         _marker setMarkerText "LZ";
 
-        ["den_evade"] call den_fnc_publicBool;
+        den_evade = true;
     },
-    [_lzPos, _friendlyColor, ([_friendlyFaction] call den_fnc_factionSide)]
+    [_lzPos, _friendlyColor, _friendlySide]
 ] call den_fnc_createTrigger;
 
 _lzTrigger setTriggerTimeout [1100, 1200, 1300, false];
@@ -241,4 +243,25 @@ private _marker = createMarker ["patrolMarker", _zonePos];
 _marker setMarkerType "mil_marker";
 _marker setMarkerColor _friendlyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _taskQueue = [
+    [[_friendlySide, "boardInsert",  "BoardInsert",  _transport,   "CREATED", 1, true, "getin"], "den_insert"],
+    [[_friendlySide, "ambushPatrol", "AmbushPatrol", "zoneMarker", "CREATED", 1, true, "scout"], "den_ambush"],
+    [[_friendlySide, "ambushEvade",  "AmbushEvade",  objNull,      "CREATED", 1, true, "run"],   "den_evade"],
+    [[_friendlySide, "lzExtract",    "LzExtract",    "lzMarker",   "CREATED", 1, true, "move"],  "den_lzExtract"]
+];
+
+if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+    // If faction has a transport helo, add boarding it the final task.
+    _taskQueue pushBack [[_friendlySide,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
+};
+
+private _failQueue = [
+    ["PlayersDead", "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

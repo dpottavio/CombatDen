@@ -23,8 +23,7 @@
     fails using the debriefing class name that the variable is coupled
     with.
 
-    This function must be called with spawn as it does not return until
-    the end of the mission.
+    This function must be called on the server as it operates globally.
 
     Parameter(s):
 
@@ -47,51 +46,89 @@
         [[blufor,"exfilTask","Exfil","exfilMarker",  "CREATED",1,true,"move"], "hostageExfil"]
     ];
 
-    [_taskQueue] spawn den_fnc_taskFsm;
+    [_taskQueue] call den_fnc_taskFsm;
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_taskQueue", [], [[]]],
     ["_failQueue", [], [[]]]
 ];
 
-private _ok   = true;
-private _head = 0;
-private _end  = (count _taskQueue);
-
-while {_head < _end && _ok}  do {
-    private _task      = _taskQueue select _head;
-    private _taskArgs  = _task select 0;
-    private _taskEvent = _task select 1;
-
-    _taskArgs call BIS_fnc_taskCreate;
-
-    while {_ok} do {
-        if (!isNil _taskEvent) exitWith {
-            private _taskName = _taskArgs select 1;
-            if (missionNamespace getVariable _taskEvent) then {
-                [_taskName, "SUCCEEDED"] call BIS_fnc_taskSetState;
-            } else {
-                [_taskName, "FAILED"] call BIS_fnc_taskSetState;
-            };
-            _head = _head + 1;
-            sleep 4;
-        };
-
+// trick linter - This shadows the argument parameter passed by CBA
+// event handler so the linter doesn't warn _thisArgs is not private.
+private _thisArgs = [];
+/*
+ * Trigger a taskCreate call anytime a new player is initialized.
+ * This is necessary because when a new player joins, they switch
+ * form the player slot unit, into the dynamic one.  This can cause
+ * tasks to go missing.  The root cause for this is not fully understood.
+ * However, it's likely a race between the player switch call and the
+ * coordination of the BI task framework. Forcing a call to
+ * BIS_fnc_taskCreate seems to solve this problem.
+ */
+[
+    "den_taskFsmNewPlayer",
+    {
+        INFO("poop");
         {
-            private _debrief   = _x select 0;
-            private _failEvent = _x select 1;
-            if (!isNil _failEvent) exitWith {
-                _ok = false;
-                [_debrief, false] call BIS_fnc_endMission;
+            private _taskArgs   = +(_x select 0);
+            private _taskName   = _taskArgs select 1;
+            private _taskExists = [_taskName] call BIS_fnc_taskExists;
+
+            if (_taskExists) then {
+                private _state = [_TaskName] call BIS_fnc_taskState;
+                _taskArgs set [4, _state];
+                _taskArgs set [6, false];
+                _taskArgs call BIS_fnc_taskCreate;
             };
-        } forEach _failQueue;
+        } forEach _thisArgs;
+    },
+    _taskQueue
+] call CBA_fnc_addEventHandlerArgs;
 
-        sleep 1;
+[_taskQueue, _failQueue] spawn {
+    params ["_taskQueue", "_failQueue"];
+
+    private _ok   = true;
+    private _head = 0;
+    private _end  = (count _taskQueue);
+
+    while {_head < _end && _ok}  do {
+        private _task      = _taskQueue select _head;
+        private _taskArgs  = _task select 0;
+        private _taskEvent = _task select 1;
+
+        _taskArgs call BIS_fnc_taskCreate;
+
+        while {_ok} do {
+            if (!isNil _taskEvent) exitWith {
+                private _taskName = _taskArgs select 1;
+                if (missionNamespace getVariable _taskEvent) then {
+                    [_taskName, "SUCCEEDED"] call BIS_fnc_taskSetState;
+                } else {
+                    [_taskName, "FAILED"] call BIS_fnc_taskSetState;
+                };
+                _head = _head + 1;
+                sleep 4;
+            };
+
+            {
+                private _debrief   = _x select 0;
+                private _failEvent = _x select 1;
+                if (!isNil _failEvent) exitWith {
+                    _ok = false;
+                    [_debrief, false] remoteExec ["BIS_fnc_endMission", 0, true];
+                };
+            } forEach _failQueue;
+
+            sleep 1;
+        };
     };
-};
 
-if (_ok) then {
-    ["end1"] call BIS_fnc_endMission;
+    if (_ok) then {
+        ["end1"] remoteExec ["BIS_fnc_endMission", 0, true];
+    };
 };
 
 true;

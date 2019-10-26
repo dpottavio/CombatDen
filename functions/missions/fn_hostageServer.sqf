@@ -129,11 +129,14 @@ den_hostageGroup = _playerGroup;
 publicVariable "den_hostageGroup";
 
 den_hostage addEventHandler ["killed", {
-   ["den_hostageDead"] call den_fnc_publicBool;
+    den_hostageDead = true;
 }];
 
 [den_hostage, {
-    ["den_hostageFree"] call den_fnc_publicBool;
+    // This is run on client
+
+    den_hostageFree = true;
+    publicVariableServer "den_hostageFree";
 
     [[den_hostage], den_hostageGroup] remoteExecCall ["join",  groupOwner den_hostageGroup];
 
@@ -224,4 +227,28 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "boardInsert",     "BoardInsert", _transport, "CREATED", 1, true, "getin"], "den_insert"],
+    [[_side, "hostageFreeTask", "FreeHostage", objNull,    "CREATED", 1, true, "help"],  "den_hostageFree"],
+    [[_side, "lzExtract",       "LzExtract",   "lzMarker", "CREATED", 1, true, "move"],  "den_lzExtract"]
+];
+
+if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+    // If faction has a transport helo, add boarding it the final task.
+    _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
+};
+
+private _failQueue = [
+    ["TransportDead",   "den_transportDead"],
+    ["PlayersDead",     "den_playersDead"],
+    ["HostageDead",     "den_hostageDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

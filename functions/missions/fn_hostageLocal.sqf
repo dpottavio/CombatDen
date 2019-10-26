@@ -18,18 +18,12 @@
 
 params [
     ["_zone",            "",      [""]],
-    ["_transport",       objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]]
 ];
 
 if (_zone == "") exitWith {
     ERROR("zone parameter cannot be empty");
-    false;
-};
-
-if (isNull _transport && !didJIP) exitWith {
-    ERROR("helo parameter is  empty");
     false;
 };
 
@@ -45,29 +39,6 @@ if (_enemyFaction == "") exitWith {
 
 private _friendlyFactionName = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "name");
 private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "name");
-
-private _side = [_friendlyFaction] call den_fnc_factionSide;
-
-private _taskQueue = [
-    [[_side, "boardInsert",     "BoardInsert", _transport, "CREATED", 1, true, "getin"], "den_insert"],
-    [[_side, "hostageFreeTask", "FreeHostage", objNull,    "CREATED", 1, true, "help"],  "den_hostageFree"],
-    [[_side, "lzExtract",       "LzExtract",   "lzMarker", "CREATED", 1, true, "move"],  "den_lzExtract"]
-];
-
-if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
-    // If faction has a transport helo, add boarding it the final task.
-    _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
-};
-
-private _failQueue = [
-    ["TransportDead",   "den_transportDead"],
-    ["PlayersDead",     "den_playersDead"],
-    ["HostageDead",     "den_hostageDead"]
-];
-
-[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
-
-if !(hasInterface) exitWith { true };
 
 /*
  * briefing notes

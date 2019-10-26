@@ -106,7 +106,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
 private _insertCode = {
     params ["_lzPos", "_cargoGroup", "_helo", "_zonePos"];
 
-    ["den_insert"] call den_fnc_publicBool;
+    den_insert = true;
 
     private _cargoUnits = units _cargoGroup;
 
@@ -190,7 +190,10 @@ private _insertCode = {
 
         private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
         private _heloCloneVehicle = [_heloClonePos, _zoneDir, typeOf _helo, _side] call BIS_fnc_spawnVehicle;
-        private _heloClone        = _heloCloneVehicle select 0;
+        if (_heloCloneVehicle isEqualTo []) exitWith {
+            WARNING_1("failed to create LZ overhead helicopter: %1", typeOf _helo);
+        };
+        private _heloClone = _heloCloneVehicle select 0;
 
         private _cloneCrew  = crew _heloClone;
         private _cloneGroup = group leader (_cloneCrew select 0);

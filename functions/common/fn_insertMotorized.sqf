@@ -90,7 +90,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
 private _insertCode = {
     params ["_startPos", "_playerGroup", "_vehicles", "_zonePos"];
 
-    ["den_insert"] call den_fnc_publicBool;
+    den_insert = true;
 
     [_playerGroup, _vehicles] call den_fnc_moveIn;
 

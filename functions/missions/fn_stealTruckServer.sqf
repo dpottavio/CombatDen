@@ -131,7 +131,7 @@ private _truck = _truckType createVehicle _truckPos;
 _truck setVehicleLock "UNLOCKED";
 
 _truck addEventHandler ["killed", {
-    ["den_truckDead"] call den_fnc_publicBool;
+    den_truckDead = true;
 }];
 
 createMarker ["vehicleMarker", _truckPos];
@@ -198,7 +198,7 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
     nil,
     [],
     {
-        ["den_vehicleSeized"] call den_fnc_publicBool;
+        den_vehicleSeized = true;
     },
     []
 ] call den_fnc_createTrigger;
@@ -216,7 +216,7 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
     },
     [_truck],
     {
-        ["den_vehicleExtract"] call den_fnc_publicBool;
+        den_vehicleExtract = true;
     },
     []
 ] call den_fnc_createTrigger;
@@ -267,7 +267,7 @@ private _defendTrigger = [
     },
     [],
     {
-        ["den_wpEchoHeld"] call den_fnc_publicBool;
+        den_wpEchoHeld = true;
     }
 ] call den_fnc_createTrigger;
 
@@ -287,4 +287,23 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "boardInsert",   "BoardInsert",   _transport,     "CREATED", 1, true, "getin"], "den_insert"],
+    [[_side, "seizeVehicle",  "SeizeVehicle",  "vehicleMarker","CREATED", 1, true, "truck"], "den_vehicleSeized"],
+    [[_side, "extractVehicle","ExtractVehicle","wpEchoMarker", "CREATED", 1, true, "move"],  "den_vehicleExtract"],
+    [[_side, "holdWpEcho",    "HoldWpEcho",    "wpEchoMarker", "CREATED", 1, true, "defend"],"den_wpEchoHeld"]
+];
+
+private _failQueue = [
+    ["TruckDead",       "den_truckDead"],
+    ["PlayersDead",     "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

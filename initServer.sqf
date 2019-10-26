@@ -36,36 +36,22 @@ if !(_genMissionParams isEqualTo []) then {
     den_mission         = _genMissionParams select 0;
     den_enemyFaction    = _genMissionParams select 1;
     den_zone            = _genMissionParams select 2;
-    den_transport       = _genMissionParams select 3;
-    den_friendlyFaction = _genMissionParams select 4;
-    den_playerGroup     = _genMissionParams select 5;
-    den_arsenal         = _genMissionParams select 6;
+    den_friendlyFaction = _genMissionParams select 3;
+    den_playerGroup     = _genMissionParams select 4;
+    den_arsenal         = _genMissionParams select 5;
 
     publicVariable "den_mission";
     publicVariable "den_enemyFaction";
     publicVariable "den_zone";
-    publicVariable "den_transport";
     publicVariable "den_friendlyFaction";
     publicVariable "den_playerGroup";
     publicVariable "den_arsenal";
 } else {
-    ["den_initServerError"] call den_fnc_publicBool;
+    missionNameSpace setVariable ["den_initServerError", true, true];
 };
 
-["den_initServerDone"] call den_fnc_publicBool;
+missionNameSpace setVariable ["den_initServerDone", true, true];
 
 INFO("global initialization complete");
-
-if (isDedicated && isNil "den_initServerError") then {
-    [
-        den_mission,
-        den_zone,
-        den_transport,
-        den_friendlyFaction,
-        den_enemyFaction,
-        den_arsenal
-    ] call den_fnc_initMissionLocal;
-    INFO("local initialization complete");
-};
 
 true;

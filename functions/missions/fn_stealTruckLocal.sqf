@@ -18,18 +18,12 @@
 
 params [
     ["_zone",            "",      [""]],
-    ["_transport",       objNull, [objNull]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]]
 ];
 
 if (_zone == "") exitWith {
     ERROR("zone parameter cannot be empty");
-    false;
-};
-
-if (isNull _transport && !didJIP) exitWith {
-    ERROR("helo parameter is  empty");
     false;
 };
 
@@ -45,24 +39,6 @@ if (_enemyFaction == "") exitWith {
 
 private _friendlyFactionName = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "name");
 private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "name");
-
-private _side = [_friendlyFaction] call den_fnc_factionSide;
-
-private _taskQueue = [
-    [[_side, "boardInsert",   "BoardInsert",   _transport,     "CREATED", 1, true, "getin"], "den_insert"],
-    [[_side, "seizeVehicle",  "SeizeVehicle",  "vehicleMarker","CREATED", 1, true, "truck"], "den_vehicleSeized"],
-    [[_side, "extractVehicle","ExtractVehicle","wpEchoMarker", "CREATED", 1, true, "move"],  "den_vehicleExtract"],
-    [[_side, "holdWpEcho",    "HoldWpEcho",    "wpEchoMarker", "CREATED", 1, true, "defend"],"den_wpEchoHeld"]
-];
-
-private _failQueue = [
-    ["TruckDead",       "den_truckDead"],
-    ["PlayersDead",     "den_playersDead"]
-];
-
-[_taskQueue, _failQueue] spawn den_fnc_taskFsm;
-
-if !(hasInterface) exitWith { true };
 
 /*
  * briefing notes

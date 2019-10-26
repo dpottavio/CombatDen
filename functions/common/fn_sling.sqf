@@ -65,7 +65,7 @@ _heloGroup setGroupIdGlobal ["Eagle"];
 [(leader _heloGroup), "Alpha team be advised, helo sling is en route."] call den_fnc_sideChat;
 
 _heloObj addEventHandler ["killed", {
-    ["den_slingDead"] call den_fnc_publicBool;
+    den_slingDead = true;
 }];
 
 [_heloGroup, _objPos, 0, "MOVE", "AWARE", "GREEN", "FULL"] call CBA_fnc_addWaypoint;

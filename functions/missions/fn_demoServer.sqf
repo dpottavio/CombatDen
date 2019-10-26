@@ -34,7 +34,8 @@ params [
     ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",       0,       [0]]
+    ["_difficulty",       0,       [0]],
+    ["_arsenal",         objNull, [objNull]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -55,6 +56,11 @@ if (_friendlyFaction == "") exitWith {
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
     "";
+};
+
+if (isNull _arsenal) exitWith {
+    ERROR("arsenal parameter cannot be empty");
+    false;
 };
 
 /*
@@ -164,7 +170,7 @@ den_cacheDestroyCount = 0;
     _cache addEventHandler ["killed", {
         den_cacheDestroyCount = den_cacheDestroyCount + 1;
         if (den_cacheDestroyCount == den_cacheCount) then {
-            ["den_ordnancesDestroyed"] call den_fnc_publicBool;
+            den_ordnancesDestroyed = true;
         };
     }];
 
@@ -212,7 +218,7 @@ private _allUnits = _buildingUnits + (units _patrolGroup);
     };
 
     _transport lock false;
-    ["den_ordnancePacked"] call den_fnc_publicBool;
+    den_ordnancePacked = true;
 };
 
 /*
@@ -223,4 +229,28 @@ private _marker = createMarker ["enemyInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
 _marker setMarkerColor _enemyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "packOrdnance",         "PackOrdnance",     _arsenal,   "CREATED", 1, true, "backpack"], "den_ordnancePacked"],
+    [[_side, "boardInsert",          "BoardInsert",      _transport, "CREATED", 1, true, "getin"],    "den_insert"],
+    [[_side, "destroyOrdnancesTask", "DestroyOrdnances", objNull,    "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
+    [[_side, "lzExtract",            "LzExtract",        "lzMarker", "CREATED", 1, true, "move"],     "den_lzExtract"]
+];
+
+if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+    // If faction has a transport helo, add boarding it the final task.
+    _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
+};
+
+private _failQueue = [
+    ["TransportDead",   "den_transportDead"],
+    ["PlayersDead",     "den_playersDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];

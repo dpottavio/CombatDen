@@ -67,7 +67,7 @@ private _insertCode = {
     private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
     private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");
 
-    ["den_insert"] call den_fnc_publicBool;
+    den_insert = true;
 
     [_playerGroup, _vehicles] call den_fnc_moveIn;
 
@@ -129,7 +129,7 @@ private _insertCode = {
     ] remoteExec ["BIS_fnc_typeText2"];
     sleep 4;
 
-    ["den_ambush", false] call den_fnc_publicBool;
+    den_ambush = false;
 
     if (isMultiplayer) then {
         private _side = side _playerGroup;

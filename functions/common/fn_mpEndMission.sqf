@@ -49,7 +49,7 @@ private _side = [_faction] call den_fnc_factionSide;
         private _alive = { alive _x } count allPlayers;
 
         if ((_tickets == 0) && (_alive == 0)) exitWith {
-            ["den_playersDead"] call den_fnc_publicBool;
+            den_playersDead = true;
         };
         sleep 2;
     };

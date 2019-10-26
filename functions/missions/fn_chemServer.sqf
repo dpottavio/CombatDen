@@ -117,11 +117,10 @@ private _transport = [
 /*
  * pallet
  */
-
 den_pallet = "CargoNet_01_barrels_F" createVehicle _palletPos;
 
 den_pallet addEventHandler ["killed", {
-    ["den_palletDead"] call den_fnc_publicBool;
+    den_palletDead = true;
 }];
 
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
@@ -133,7 +132,7 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
     [],
     {
         params ["", "", "_args"];
-        ["den_palletSecure"] call den_fnc_publicBool;
+        den_palletSecure = true;
         [(_args select 0), (_args select 1), 3000] call den_fnc_sling;
     },
     [den_pallet, _friendlyFaction]
@@ -160,7 +159,7 @@ private _extractTrigArea = [
     },
     [den_pallet],
     {
-        ["den_palletExtract"] call den_fnc_publicBool;
+        den_palletExtract = true;
     }
 ] call den_fnc_createTrigger;
 
@@ -244,4 +243,30 @@ _marker = createMarker ["opforMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-[_zoneName, _transport];
+/*
+ * task state machine logic
+ */
+private _side = [_friendlyFaction] call den_fnc_factionSide;
+
+private _taskQueue = [
+    [[_side, "boardInsert",  "BoardInsert",  _transport,     "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "palletSecure", "PalletSecure", "palletMarker", "CREATED", 1, true, "move"],   "den_palletSecure"],
+    [[_side, "palletExtract","PalletExtract","palletMarker", "CREATED", 1, true, "pallet"], "den_palletExtract"],
+    [[_side, "lzExtract",    "LzExtract",    "lzMarker",     "CREATED", 1, true, "move"],   "den_lzExtract"]
+];
+
+if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+    // If faction has a transport helo, add boarding it the final task.
+    _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
+};
+
+private _failQueue = [
+    ["TransportDead",   "den_transportDead"],
+    ["PlayersDead",     "den_playersDead"],
+    ["SlingDead",       "den_slingDead"],
+    ["PalletDead",      "den_palletDead"]
+];
+
+[_taskQueue, _failQueue] call den_fnc_taskFsm;
+
+[_zoneName];
