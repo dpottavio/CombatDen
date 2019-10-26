@@ -68,7 +68,7 @@ private _maxReact     = _zoneRadius * 0.25; // reaction force
 private _maxPatrol    = _zoneRadius * 0.5;  // patrol force
 
 private _safePosParams = [
-    [_minInsert,    _maxInsert,    20, 0.1], // insert safe pos
+    [_minInsert,    _maxInsert,    30, 0.1], // insert safe pos
     [0,             _maxTruck,     20, 0.1], // hostage safe pos
     [0,             _maxReact,     15, 0.1], // reaction force safe pos
     [0,             _maxPatrol,    15, 0.1]  // patrol force safe pos
@@ -103,9 +103,15 @@ if ((_reactPos distance _truckPos) < 10) then {
     _reactPos = _truckPos getPos [15, 0]
 };
 
+// Bunker marks the insert position
+private _insertDir = 0;
+[_insertPos, _insertDir] call den_fnc_compBunker01;
+
+private _deployPos = [_insertPos select 0, _insertPos select 1, 0] vectorAdd [15, 15, 0];
+
 private _transport = [
     _zonePos,
-    _insertPos,
+    _deployPos,
     _transportPos,
     _transportDir,
     _playerGroup,
