@@ -70,7 +70,6 @@ private _thisArgs = [];
 [
     "den_taskFsmNewPlayer",
     {
-        INFO("poop");
         {
             private _taskArgs   = +(_x select 0);
             private _taskName   = _taskArgs select 1;
