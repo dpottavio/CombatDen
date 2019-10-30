@@ -108,7 +108,7 @@ private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
 private _lzTrigger = [
     _lzPos,
     [0, 0, 0, false, 0],
-    ["NONE", "", false],
+    ["NONE", "PRESENT", false],
     {
         private _cond = !isNil "den_insertUnload";
         _cond

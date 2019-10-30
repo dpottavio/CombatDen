@@ -168,6 +168,15 @@ switch (_difficulty) do {
 
 private _insertArea = [_insertPos, 400, 400, 0, false, -1];
 
+// convert area to trigger area
+private _insertTriggerArea = [
+        _insertArea select 1,
+        _insertArea select 2,
+        _insertArea select 3,
+        _insertArea select 4,
+        _insertArea select 5
+];
+
 private _reinforceArgs = [];
 for "_i" from 1 to _reinforceCount do {
     private _max = _insertArea select 1;
@@ -230,8 +239,8 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
 // 3. defense wave starts
 [
     _insertPos,
-    _insertArea,
-    ["NONE", "", false],
+    _insertTriggerArea,
+    ["NONE", "PRESENT", false],
     {
         private _cond = !(isNil "den_vehicleExtract");
         _cond;
@@ -264,7 +273,7 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
 // 4. wave defended
 private _defendTrigger = [
     _insertPos,
-    _insertArea,
+    _insertTriggerArea,
     [_enemySideStr, "NOT PRESENT", false],
     {
         params ["_this", "", "", ""];

@@ -112,7 +112,7 @@ private _transport = [
 
 [
     _zonePos,
-    [_zoneRadius, _zoneRadius, 0, false],
+    [_zoneRadius, _zoneRadius, 0, false, -1],
     [_enemySideStr, "NOT PRESENT", false],
     nil,
     [],

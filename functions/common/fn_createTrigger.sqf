@@ -43,11 +43,9 @@
 
     Returns: true on success, false on error
 */
-#include "..\..\macros.hpp"
-
 params [
     ["_pos",            [],  [[]], [2,3]],
-    ["_area",           [],  [[]], [4]],
+    ["_area",           [],  [[]], [5]],
     ["_activation",     [],  [[]], [3]],
     ["_condition",      nil, [{}]],
     ["_conditionArgs",  [],  [[]]],

@@ -150,7 +150,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
 [
     _convoyPos,
-    [5, 5, 0, false, 5],
+    [25, 25, 0, false, 10],
     ["ANYPLAYER", "PRESENT", false],
     nil,
     [],

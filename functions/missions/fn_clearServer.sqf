@@ -108,7 +108,7 @@ private _patrolPos    = _zoneSafePosList select 5;
 private _reinforcePos = _zoneSafePosList select 6;
 [
     _zonePos,
-    [_zoneRadius, _zoneRadius, 0, false],
+    [_zoneRadius, _zoneRadius, 0, false, -1],
     [_enemySideStr, "NOT PRESENT", false],
     nil,
     [],

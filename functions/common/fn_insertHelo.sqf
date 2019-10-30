@@ -91,7 +91,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
  */
 [
     _heloPos,
-    [10, 10, 0, false],
+    [10, 10, 0, false, -1],
     ["ANYPLAYER", "PRESENT", false],
     nil,
     [],
