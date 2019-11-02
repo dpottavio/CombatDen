@@ -1,8 +1,6 @@
 # Combat Den
 
-[![Build status](https://ci.appveyor.com/api/projects/status/2lqpbhv71sc97ip9/branch/master?svg=true)](https://ci.appveyor.com/project/dpottavio/combatden/branch/master)
-
-[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![Build status](https://ci.appveyor.com/api/projects/status/2lqpbhv71sc97ip9/branch/master?svg=true)](https://ci.appveyor.com/project/dpottavio/combatden/branch/master) [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
 Combat Den is a work-in-progress project to provide simple randomized
 missions for Arma 3.  A single mission file provides a number of
