@@ -61,6 +61,13 @@ class CfgWorlds
             "hill_Lysina"
         };
     };
+    class Chernarus_Winter : Winter
+    {
+        blacklist[] = {
+            "Local_Pass_Grozovoy",
+            "hill_Lysina"
+        };
+    };
     class Enoch : Wood
     {
         blacklist[] = {};
