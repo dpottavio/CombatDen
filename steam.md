@@ -24,4 +24,4 @@ Please visit the [url=https://github.com/dpottavio/CombatDen/wiki]Wiki[/url] for
 The source code for this mission is available on [url=https://github.com/dpottavio/CombatDen]GitHub[/url].  Here you can browse the source, open an [url=https://github.com/dpottavio/CombatDen/issues]issue[/url], or download a single zip file [url=https://github.com/dpottavio/CombatDen/releases]release[/url].
 
 [h1]License[/h1]
-You are free to adapt (i.e. modify, rework or update) and share (i.e. copy, distribute or transmit) this material under the Arma Public License Share Alike (APL-SA).  See the full [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]license[/url] for details.
+You are free to redistribute and/or modify this material under the terms of the GNU [url=https://www.gnu.org/licenses/lgpl-3.0.en.html]LGPLv3[/url].

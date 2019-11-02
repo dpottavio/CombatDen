@@ -67,11 +67,15 @@ work in progress, it's a good place to get started.
 
 ## License
 
-You are free to adapt (i.e. modify, rework or update) and share
-(i.e. copy, distribute or transmit) this material under the Arma
-Public License Share Alike (APL-SA).  See the
-[LICENSE](https://github.com/dpottavio/CombatDen/blob/master/LICENCE)
-file for the full license.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See LICENCE
+file for more details.
 
 ## Questions
 

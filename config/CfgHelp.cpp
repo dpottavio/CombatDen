@@ -1,12 +1,18 @@
 /*
     Copyright (C) 2019 D. Ottavio
 
-    You are free to adapt (i.e. modify, rework or update)
-    and share (i.e. copy, distribute or transmit) this material
-    under the Arma Public License Share Alike (APL-SA).
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
 
-    You may obtain a copy of the License at:
-    https://www.bohemia.net/community/licenses/arma-public-license-share-alike
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 class CfgHelp
@@ -15,9 +21,17 @@ class CfgHelp
     {
         title = "License";
         text  = "Copyright (C) 2018-2019 D. Ottavio <br/><br/>\
-This work is licensed under Arma Public License Share Alike.  You are free to modify and redistribute \
-this work under the terms of this license.  You may obtain a copy of the license at:<br/><br/>\
-https://www.bohemia.net/community/licenses/arma-public-license-share-alike";
+This program is free software: you can redistribute it and/or modify \
+it under the terms of the GNU Lesser General Public License as \
+published by the Free Software Foundation, either version 3 of the \
+License, or (at your option) any later version. \
+<br/><br/>\
+This program is distributed in the hope that it will be useful, \
+but WITHOUT ANY WARRANTY; without even the implied warranty of \
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \
+GNU General Public License for more details. \
+<br/><br/>\
+You can received a copy of this license at https://www.gnu.org/licenses.";
     };
 
     class Settings
