@@ -79,8 +79,10 @@ file for more details.
 
 ## Questions
 
-If you have any questions, please open an
-[issue](https://github.com/dpottavio/CombatDen/issues) and ask.
+If you have any questions, you can open an
+[issue](https://github.com/dpottavio/CombatDen/issues), or post on the
+[forum](https://forums.bohemia.net/forums/topic/219387-combat-den/)
+page.
 
 ## Links
 
