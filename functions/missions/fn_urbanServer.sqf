@@ -183,6 +183,8 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
+[_lzPos, _zoneArea] call den_fnc_coverMap;
+
 /*
  * task state machine logic
  */

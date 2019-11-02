@@ -267,6 +267,8 @@ private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "recon"));
 _marker setMarkerColor _enemyColor;
 
+[_lzPos, _zoneArea] call den_fnc_coverMap;
+
 /*
  * task state machine logic
  */

@@ -20,6 +20,7 @@ class CfgFunctions
             class attackExtraction {};
             class buildingOccupy {};
             class commandChat {};
+            class coverMap {};
             class createPlayerUnit {};
             class createTrigger {};
             class deleteGroup {};

@@ -243,6 +243,8 @@ private _marker = createMarker ["patrolMarker", _zonePos];
 _marker setMarkerType "mil_marker";
 _marker setMarkerColor _friendlyColor;
 
+[_ambushPos, _zoneArea] call den_fnc_coverMap;
+
 /*
  * task state machine logic
  */

@@ -239,6 +239,8 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
     den_convoyDefended = true;
 };
 
+[_lzPos, _zoneArea] call den_fnc_coverMap;
+
 /*
  * task state machine logic
  */
