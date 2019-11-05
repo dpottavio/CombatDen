@@ -50,8 +50,8 @@ class CfgFunctions
             class moveIn {};
             class patrol {};
             class playersInVehicle {};
-            class randTime {};
             class randWeather {};
+            class randDate {};
             class sideChat {};
             class sling {};
             class spawnGroup {};

@@ -35,10 +35,8 @@ if (_isDark && _fullMoonOnly) then {
     // Some factions only have fullmoon missions due to lack of NVG.
     [den_cba_timeOfDay] call den_fnc_fullMoonDate;
 } else {
-    private _hourMonth = [den_cba_timeOfDay] call den_fnc_randTime;
-    private _month     = _hourMonth select 1;
-
-    [_month] call den_fnc_randWeather;
+    [den_cba_timeOfDay] call den_fnc_randDate;
+    [] call den_fnc_randWeather;
 };
 
 if (_friendlyFaction == "") then {
