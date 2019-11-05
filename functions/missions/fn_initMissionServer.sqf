@@ -23,7 +23,8 @@
 params [["_playerSlots", grpNull, [grpNull]]];
 
 if (!isServer) exitWith {
-    WARNING("executing server only function on client");
+    ERROR("executing server only function on client");
+    [];
 };
 
 private _friendlyFaction = den_cba_playerFaction;
