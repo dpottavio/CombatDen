@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=629;
+		nextID=633;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=80;
+		nextID=82;
 	};
 	class Camera
 	{
-		pos[]={13301.479,16.008297,13717.65};
-		dir[]={-0.88594991,-0.28749469,0.36415491};
-		up[]={-0.26597288,0.95774502,0.1093231};
-		aside[]={0.38021174,-2.4037654e-006,0.92499954};
+		pos[]={13305.265,18.431679,13717.517};
+		dir[]={-0.8840943,-0.37436369,0.28002802};
+		up[]={-0.3569501,0.9272359,0.11305974};
+		aside[]={0.30198884,-1.4735197e-006,0.9534179};
 	};
 };
 binarizationWanted=0;
@@ -35,13 +35,14 @@ addons[]=
 	"A3_Structures_F_Mil_Flags",
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Structures_F_Exp_Military_Fortifications",
-	"cba_main"
+	"cba_main",
+	"A3_Structures_F_Civ_Lamps"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=7;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -83,6 +84,13 @@ class AddonsMetaData
 			name="Community Base Addons - Main Component";
 			author="CBA Team";
 			url="https://www.github.com/CBATeam/CBA_A3";
+		};
+		class Item6
+		{
+			className="A3_Structures_F";
+			name="Arma 3 - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -216,7 +224,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=6;
+		items=9;
 		class Item0
 		{
 			dataType="Logic";
@@ -955,7 +963,7 @@ class Mission
 			name="COP";
 			class Entities
 			{
-				items=12;
+				items=10;
 				class Item0
 				{
 					dataType="Object";
@@ -1010,38 +1018,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={13241.067,4.7871084,13729.053};
-						angles[]={6.2751846,5.1621785,0.031988446};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=619;
-					type="Land_HBarrier_01_line_5_green_F";
-				};
-				class Item4
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={13243.708,4.9272919,13734.077};
-						angles[]={6.2778587,5.1621785,0.039977662};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=620;
-					type="Land_HBarrier_01_line_5_green_F";
-				};
-				class Item5
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={13246.751,5.0569615,13738.859};
 						angles[]={0.0026744273,5.4654431,0.053282689};
 					};
@@ -1053,7 +1029,7 @@ class Mission
 					id=621;
 					type="Land_HBarrier_01_line_5_green_F";
 				};
-				class Item6
+				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1069,7 +1045,7 @@ class Mission
 					id=622;
 					type="Land_HBarrier_01_line_5_green_F";
 				};
-				class Item7
+				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1085,7 +1061,7 @@ class Mission
 					id=623;
 					type="Land_HBarrier_01_line_5_green_F";
 				};
-				class Item8
+				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1101,7 +1077,7 @@ class Mission
 					id=624;
 					type="Land_HBarrier_01_line_5_green_F";
 				};
-				class Item9
+				class Item7
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1117,7 +1093,7 @@ class Mission
 					id=625;
 					type="Land_HBarrier_01_line_5_green_F";
 				};
-				class Item10
+				class Item8
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1133,7 +1109,7 @@ class Mission
 					id=626;
 					type="Land_HBarrier_01_line_5_green_F";
 				};
-				class Item11
+				class Item9
 				{
 					dataType="Object";
 					class PositionInfo
@@ -1163,6 +1139,55 @@ class Mission
 			id=628;
 			type="CBA_main_require";
 			atlOffset=1.1444092e-005;
+		};
+		class Item6
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13317.947,10.57944,13730.044};
+				angles[]={0,6.0931573,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=630;
+			type="Land_LampHalogen_F";
+		};
+		class Item7
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13277.438,10.579094,13758.998};
+				angles[]={0,5.1043229,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=631;
+			type="Land_LampHalogen_F";
+			atlOffset=4.7683716e-007;
+		};
+		class Item8
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13267.282,7.4068708,13750.912};
+				angles[]={0,3.8460104,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=632;
+			type="Land_LampHarbour_F";
 		};
 	};
 };
