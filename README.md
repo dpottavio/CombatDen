@@ -2,11 +2,12 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/2lqpbhv71sc97ip9/branch/master?svg=true)](https://ci.appveyor.com/project/dpottavio/combatden/branch/master) [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-Combat Den is a work-in-progress project to provide simple randomized
-missions for Arma 3.  A single mission file provides a number of
-re-playable missions, no two missions are the same.
+Combat Den is an open source project to provide simple randomized
+missions for single and mulitplayer environments for Arma 3.
+A single mission file provides a number of re-playable missions,
+no two missions are the same.
 
-## How can I play?
+**How can I play?**
 
 It's simple.  A randomized mission will be selected complete with a
 briefing.  Just play.
@@ -25,15 +26,16 @@ briefing.  Just play.
 
 ## Required Mods
 
-The following mods are the minimum required dependencies.  Mission
-files on non-vanilla terrains will require additional dependencies.
+The only addon depencency is [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997).  Mission
+files on non-vanilla terrains may require additional dependencies.
 
-* [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997)
+## Questions
 
-## Documentation
-
-Please visit the [Wiki](https://github.com/dpottavio/CombatDen/wiki)
-for more information about features and development.
+If you have any questions, please Please visit the [Wiki](https://github.com/dpottavio/CombatDen/wiki)
+for more information about features and development.  You may also open an
+[issue](https://github.com/dpottavio/CombatDen/issues), or post on the
+[forum](https://forums.bohemia.net/forums/topic/219387-combat-den/)
+page.
 
 ## Report a Bug
 
@@ -68,21 +70,13 @@ work in progress, it's a good place to get started.
 ## License
 
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as
-published by the Free Software Foundation, either version 3 of the
+it under the terms of the GNU [Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+as published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See LICENSE
-file for more details.
-
-## Questions
-
-If you have any questions, you can open an
-[issue](https://github.com/dpottavio/CombatDen/issues), or post on the
-[forum](https://forums.bohemia.net/forums/topic/219387-combat-den/)
-page.
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ## Links
 
