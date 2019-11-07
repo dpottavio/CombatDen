@@ -114,7 +114,6 @@ private _safePosList = [];
                 _minPos,       // min position
                 _maxPos,       // max position
                 _minObjDist,   // obj distance
-                0,             // water mode
                 _maxGrad       // gradient
             ] call den_fnc_findSafePos;
         };

@@ -95,6 +95,20 @@ while { _tryCount > 0 && !_isSafe } do {
             false;
         };
 
+        private _isOutside = (lineIntersectsSurfaces [
+            AGLtoASL _pos,
+            AGLtoASL _pos vectorAdd [0, 0, 50],
+            objNull,
+            objNull,
+            false,
+            1,
+            "GEOM",
+            "NONE"
+        ] isEqualTo []);
+        if !(_isOutside) exitWith {
+            false;
+        };
+
         private _x = _pos select 0;
         if (_x < 0 || _x > worldSize) exitWith {
             false;
