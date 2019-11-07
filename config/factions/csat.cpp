@@ -167,8 +167,9 @@ class Csat : Faction
             };
         };
 
-        class Arid : SemiArid {};
-        class Wood : Tropic {};
+        class Arid   : SemiArid {};
+        class Wood   : Tropic {};
+        class Winter : Wood {};
     };
 
     class Vehicle
@@ -192,6 +193,7 @@ class Csat : Faction
             truckSupplyFuel  = "O_T_Truck_03_fuel_ghex_F";
         };
         class Wood : Tropic {};
+        class Winter : Wood {};
     };
 
 #define CSAT_NVG  "NVGoggles_OPFOR"
@@ -561,7 +563,7 @@ class Csat : Faction
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "O_Soldier_LAT_F";
+                    vehicle = "O_T_Soldier_LAT_F";
                 };
                 class Unit3 : Unit3
                 {
@@ -702,6 +704,91 @@ class Csat : Faction
             };
         };
         class Wood : Tropic
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Winter : Wood
         {
             class TruckCrew : TruckCrew
             {
@@ -1683,6 +1770,54 @@ class Csat : Faction
             };
         };
         class Wood : Tropic
+        {
+            class Rifleman : Rifleman
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Ng    : Ng {};
+                class Qbz   : Qbz {};
+            };
+            class Grenadier : Grenadier
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class Marksman : Marksman
+            {
+                class Vs      : Vs {};
+                class Cyrus   : Cyrus {};
+                class Type115 : Type115 {};
+            };
+            class Medic : Medic
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class At : At
+            {
+                class Rpg : Rpg {};
+            };
+            class Eod : Eod
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+            class Engineer : Engineer
+            {
+                class Kh2002 : Kh2002 {};
+                class Qbz    : Qbz {};
+            };
+        };
+        class Winter : Wood
         {
             class Rifleman : Rifleman
             {

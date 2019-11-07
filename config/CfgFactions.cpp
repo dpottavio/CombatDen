@@ -160,6 +160,7 @@ class CfgFactions
     };
     class Winter
     {
+        class Csat          : Csat {};
         class CupBaf        : CupBaf {};
         class CupBundeswehr : CupBundeswehr {};
         class CupChDkz      : CupChDkz {};
@@ -168,7 +169,9 @@ class CfgFactions
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class Ldf           : Ldf {};
         class LopNovo       : LopNovo {};
+        class Nato          : Nato {};
         class RhsChDkz      : RhsChDkz {};
         class RhsRussia     : RhsRussia {};
         class RhsUsmc       : RhsUsmc {};

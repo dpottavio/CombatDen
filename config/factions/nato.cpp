@@ -267,6 +267,7 @@ class Nato : Faction
                 "H_HelmetB"
             };
         };
+        class Winter : Wood {};
     };
 
     class Vehicle
@@ -289,7 +290,8 @@ class Nato : Faction
             truckSupplyCargo = "B_T_Truck_01_box_F";
             truckSupplyFuel  = "B_T_Truck_01_fuel_F";
         };
-        class Wood : Tropic {};
+        class Wood   : Tropic {};
+        class Winter : Wood {};
     };
 
 #define NATO_NVG  "NVGoggles"
@@ -972,6 +974,91 @@ class Nato : Faction
                     rank = "LIEUTENANT";
                     vehicle = "B_T_MRAP_01_hmg_F";
                 };
+            };
+        };
+        class Winter : Wood
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};;
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
             };
         };
     };
@@ -2674,6 +2761,190 @@ class Nato : Faction
                     {
                         type = "B_Kitbag_rgr";
                     };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : Wood
+        {
+            class Rifleman : Rifleman
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Ng7 : Ng7
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lwmmg : Lwmmg
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mk14 : Mk14
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mxm : Mxm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sig : Sig
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Maaws : Maaws
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Nlaw : Nlaw
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };

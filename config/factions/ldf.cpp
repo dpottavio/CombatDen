@@ -111,6 +111,7 @@ class Ldf : Faction
                 "H_HelmetHBK_chops_F"
             };
         };
+        class Winter : Wood {};
     };
 
     class Vehicle
@@ -125,6 +126,7 @@ class Ldf : Faction
             truckSupplyCargo   = "I_E_Truck_02_Box_F";
             truckSupplyFuel    = "I_E_Truck_02_fuel_F";
         };
+        class Winter : Wood {};
     };
 
 #define LDF_NVG  "NVGoggles_INDEP"
@@ -306,6 +308,91 @@ class Ldf : Faction
                     rank = "LIEUTENANT";
                     vehicle = "I_MRAP_03_hmg_F";
                 };
+            };
+        };
+        class Winter : Wood
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
             };
         };
     };
@@ -699,6 +786,104 @@ class Ldf : Faction
                     type    = "Promet";
                     rifle   = "arifle_MSBS65_F";
 
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : Wood
+        {
+            class Rifleman : Rifleman
+            {
+                class Promet : Promet
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Promet : Promet
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Promet : Promet
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Mk200 : Mk200
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Promet : Promet
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Promet : Promet
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Nlaw : Nlaw
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Maaws : Maaws
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Promet : Promet
+                {
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Promet : Promet
+                {
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
