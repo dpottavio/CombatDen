@@ -213,31 +213,28 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                 };
                 for "_i" from 1 to _enemyGroupCount do {
                     private _pursueGroupPos = [
-                        _playerPos,    // center
+                        _playerPos,         // center
                         _attackRadius - 25, // min dist
-                        _attackRadius, // max dist
-                        5,             // min dist from objects
-                        0,             // water mode
-                        0.1,           // gradient
-                        0,             // shore mode
-                        [],            // blacklist
-                        [[0,0,0]]      // default pos
-                    ] call BIS_fnc_findSafePos;
+                        _attackRadius,      // max dist
+                        5                   // min dist from objects
+                    ] call den_fnc_findSafePos;
 
-                    private _pursueGroup = [_pursueGroupPos, _enemyFaction, _pursueType] call den_fnc_spawnGroup;
-                    [
-                        _pursueGroup,
-                        _playerPos,
-                        50,
-                        5,
-                        "MOVE",
-                        "AWARE",
-                        "YELLOW",
-                        "LIMITED",
-                        "STAG COLUMN",
-                        "this call CBA_fnc_searchNearby",
-                        [3, 6, 9]
-                    ] call CBA_fnc_taskPatrol;
+                    if !(_pursueGroupPos isEqualTo []) then {
+                        private _pursueGroup = [_pursueGroupPos, _enemyFaction, _pursueType] call den_fnc_spawnGroup;
+                        [
+                            _pursueGroup,
+                            _playerPos,
+                            50,
+                            5,
+                            "MOVE",
+                            "AWARE",
+                            "YELLOW",
+                            "LIMITED",
+                            "STAG COLUMN",
+                            "this call CBA_fnc_searchNearby",
+                            [3, 6, 9]
+                        ] call CBA_fnc_taskPatrol;
+                    };
                 };
             };
         };

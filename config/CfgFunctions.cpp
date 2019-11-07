@@ -34,6 +34,7 @@ class CfgFunctions
             class extract {};
             class factions {};
             class factionSide {};
+            class findSafePos {};
             class fullMoonDate {};
             class hostage {};
             class initPlayer {};

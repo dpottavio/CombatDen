@@ -137,15 +137,10 @@ private _insertCode = {
                 _startPos, // center position
                 0,         // min position
                 8,         // max position
-                2,         // obj distance
-                0,         // water mode
-                0,         // gradient
-                0,         // shore mode
-                [],        // blacklist
-                [[0,0,0]]  // default pos
-            ] call BIS_fnc_findSafePos;
+                2          // obj distance
+            ] call den_fnc_findSafePos;
 
-            if !(_pos isEqualTo [0,0,0]) then {
+            if !(_pos isEqualTo []) then {
                 _x setPos _pos;
             };
             [_playerGroup, _vehicles] call den_fnc_moveIn;

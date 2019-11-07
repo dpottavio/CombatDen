@@ -34,7 +34,7 @@
     If this array is non-empty, a zone location will only be
     selected if it can find a safe position for each of the
     parameters in this list.  Each parameter will serve as
-    parameters to BIS_fnc_findSafePos.  By default this array
+    parameters to den_fnc_findSafePos.  By default this array
     is empty.
 
     If a location cannot be found to have enough safe positions,
@@ -115,12 +115,11 @@ private _safePosList = [];
                 _maxPos,       // max position
                 _minObjDist,   // obj distance
                 0,             // water mode
-                _maxGrad,      // gradient
-                0,             // shore mode
-                [],            // blacklist
-                [[0,0,0]]      // default pos
-            ] call BIS_fnc_findSafePos;
+                _maxGrad       // gradient
+            ] call den_fnc_findSafePos;
         };
+
+        if (_safePos isEqualTo []) exitWith {};
 
         // Determine of the position is blocked by water
         private _distance = (_pos distance2D _safePos);
@@ -133,8 +132,7 @@ private _safePosList = [];
             };
         };
 
-        if (_safePos isEqualTo [])      exitWith {};
-        if (_safePos isEqualTo [0,0,0]) exitWith {};
+        if (_safePos isEqualTo []) exitWith {};
 
         _safePosList pushBack _safePos;
     } forEach _safePosParams;

@@ -187,8 +187,8 @@ private _reinforceArgs = [];
 for "_i" from 1 to _reinforceCount do {
     private _max = _insertArea select 1;
     private _min = _max - 100;
-    private _pos = [_insertPos, _min, _max, 10, 0, 0.1, 0, [], [[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
-    if !(_pos isEqualTo [0,0,0]) then {
+    private _pos = [_insertPos, _min, _max, 10] call den_fnc_findSafePos;
+    if !(_pos isEqualTo []) then {
         _reinforceArgs pushBack [_pos, "MotorizedAssault"];
     };
 };

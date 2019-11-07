@@ -72,15 +72,10 @@ private _groupPos = [
     _targetPos,  // center
     _minRadius,
     _maxRadius,
-    10,          // min dist from objects
-    0,           // water mode
-    0.1,         // gradient
-    0,           // shore mode
-    [],          // blacklist
-    [[0,0,0]]    // default pos
-] call BIS_fnc_findSafePos;
+    10           // min dist from objects
+] call den_fnc_findSafePos;
 
-if (_groupPos isEqualTo [0,0,0]) exitWith {
+if (_groupPos isEqualTo []) exitWith {
     false;
 };
 

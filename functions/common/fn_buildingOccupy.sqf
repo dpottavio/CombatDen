@@ -95,7 +95,11 @@ if (_flee && (count _units) > 0) then {
         params ["_units", "_side", "_pos"];
 
         private _active = true;
-        private _fleePos = [_pos, 1500] call BIS_fnc_findSafePos;
+        private _fleePos = [_pos, 1500] call den_fnc_findSafePos;
+        if (_fleePos isEqualTo []) exitWith {
+            ERROR("failed to find safe pos");
+        };
+
         while { _active } do {
             private _unitCount = { (_side == (side _x)) && alive _x } count allUnits;
             if (_unitCount <= 3 || !(isNil "den_forceFlee")) then {
