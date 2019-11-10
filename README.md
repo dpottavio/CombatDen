@@ -60,7 +60,7 @@ take priority over enhancement requests regardless of size.
 
 ## Contributing
 
-If you would like to make an feature yourself, please open a pull
+If you would like to make a feature yourself, please open a pull
 request to the project.  If you take the time to make a feature
 contribution, it will be reviewed ASAP.  Please read the
 [Wiki](https://github.com/dpottavio/CombatDen/wiki) as it contains
