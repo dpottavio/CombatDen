@@ -123,6 +123,11 @@ private _newPlayerUnit = [
     _role
 ] call den_fnc_createPlayerUnit;
 
+if (isNull _newPlayerUnit) exitWith {
+    ERROR_MSG("Failure to create player unit.");
+    false;
+};
+
 _newPlayerUnit setDir _playerDir;
 
 selectPlayer _newPlayerUnit;

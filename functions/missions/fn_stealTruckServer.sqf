@@ -30,7 +30,7 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -45,22 +45,22 @@ params [
 
 if (isNull _playerGroup) exitWith {
     ERROR("group parameter must not be null");
-    "";
+    [];
 };
 
 if (_transportPos isEqualTo []) exitWith {
     ERROR("transport position parameter must not be null");
-    "";
+    [];
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction cannot be empty");
-    "";
+    [];
 };
 
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
-    "";
+    [];
 };
 
 /*
@@ -91,7 +91,7 @@ private _zone = [
 
 if (_zone isEqualTo []) exitWith {
     ERROR("zone failure");
-    "";
+    [];
 };
 
 private _zoneName        = _zone select 0;
@@ -123,6 +123,11 @@ private _transport = [
     _playerGroup,
     _friendlyFaction
 ] call den_fnc_insertMotorized;
+
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
 
 private _climate = DEN_CLIMATE;
 
@@ -190,18 +195,32 @@ for "_i" from 1 to _reinforceCount do {
     private _pos = [_insertPos, _min, _max, 10] call den_fnc_findSafePos;
     if !(_pos isEqualTo []) then {
         _reinforceArgs pushBack [_pos, "MotorizedAssault"];
+    } else {
+        ERROR("failed to find safe pos");
     };
 };
 
 private _guardGroup  = [_truckPos getPos [10, 0], _enemyFaction, _guardType] call den_fnc_spawnGroup;
+if (isNull _guardGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_guardGroup, _truckPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
+if (isNull _reactGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_reactGroup, _reactPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
+if (isNull _patrolGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_patrolGroup, _truckPos, 200, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 

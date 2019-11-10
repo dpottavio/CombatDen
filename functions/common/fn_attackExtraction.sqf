@@ -30,6 +30,8 @@
 
     Returns: STRING - zone location name, empty string on error.
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_pos",          [], [[]], [2,3]],
     ["_lzPos",        [], [[]], [2,3]],
@@ -45,7 +47,11 @@ params [
     };
 
     private _group = [_pos, _opforFaction, _groupType] call den_fnc_spawnGroup;
-    [_group, _lzPos, 25] call CBA_fnc_taskAttack;
+    if !(isNull _group) then {
+        [_group, _lzPos, 25] call CBA_fnc_taskAttack;
+    } else {
+        ERROR("failed to spawn group");
+    };
 };
 
 true;

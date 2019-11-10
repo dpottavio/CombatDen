@@ -41,7 +41,13 @@ if (_isDark && _fullMoonOnly) then {
 
 if (_friendlyFaction == "") then {
     private _friendlyFactions = [true] call den_fnc_factions;
-    _friendlyFaction = configName (selectRandom _friendlyFactions);
+    if !(_friendlyFactions isEqualTo []) then {
+        _friendlyFaction = configName (selectRandom _friendlyFactions);
+    };
+};
+if (_friendlyFaction == "") exitWith {
+    ERROR("no friendly factions available");
+    [];
 };
 
 private _friendlySide  = [_friendlyFaction] call den_fnc_factionSide;
@@ -66,7 +72,6 @@ if (_enemyFaction != "") then {
 };
 
 if (_enemyFaction == "") then {
-
     private _enemyFactions = [];
     {
         private _name = configName _x;
@@ -78,6 +83,10 @@ if (_enemyFaction == "") then {
     } forEach ([] call den_fnc_factions);
 
     _enemyFaction = selectRandom _enemyFactions;
+};
+if (_enemyFaction == "") exitWith {
+    ERROR("no enemy factions available");
+    [];
 };
 
 private _playerGroup = createGroup [_friendlySide, true];
@@ -110,8 +119,12 @@ _playerGroup setGroupIdGlobal ["Alpha"];
         _role
     ] call den_fnc_createPlayerUnit;
 
-    _playerUnit disableAI "MOVE";
-    _playerUnit setDir getDir _x;
+    if !(isNull _playerUnit) then {
+        _playerUnit disableAI "MOVE";
+        _playerUnit setDir getDir _x;
+    } else {
+        ERROR("failed to create player unit");
+    };
 } forEach units _playerSlots;
 
 private _friendlyFlag = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "flagTexture");

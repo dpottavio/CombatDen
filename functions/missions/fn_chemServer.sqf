@@ -30,7 +30,7 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -45,22 +45,22 @@ params [
 
 if (isNull _playerGroup) exitWith {
     ERROR("group parameter must not be null");
-    "";
+    [];
 };
 
 if (_transportPos isEqualTo []) exitWith {
     ERROR("transport position parameter must not be null");
-    "";
+    [];
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction cannot be empty");
-    "";
+    [];
 };
 
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
-    "";
+    [];
 };
 
 /*
@@ -95,7 +95,7 @@ private _zone = [
 
 if (_zone isEqualTo []) exitWith {
     ERROR("zone failure");
-    "";
+    [];
 };
 
 private _zoneName        = _zone select 0;
@@ -118,7 +118,16 @@ private _transport = [
     _friendlyFaction
 ] call den_fnc_insertHelo;
 
-[_lzPos, _playerGroup,  _friendlyFaction, "den_palletExtract", _zoneArea] call den_fnc_extract;
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
+
+private _success = [_lzPos, _playerGroup,  _friendlyFaction, "den_palletExtract", _zoneArea] call den_fnc_extract;
+if !(_success) exitWith {
+    ERROR("failed to set extraction");
+    [];
+};
 
 /*
  * pallet
@@ -203,14 +212,27 @@ switch (_difficulty) do {
 };
 
 private _guard1Group = [_palletPos getPos[10, 0], _enemyFaction, _guard1Type] call den_fnc_spawnGroup;
+if (isNull _guard1Group) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_guard1Group, _palletPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _guard2Group = [_palletPos getPos[10, 0], _enemyFaction, _guard2Type] call den_fnc_spawnGroup;
+if (isNull _guard2Group) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_guard2Group, _palletPos, 0, "HOLD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
+if (isNull _reactGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
+
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
@@ -225,6 +247,10 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
+if (isNull _patrolGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_patrolGroup, _palletPos, 300, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 

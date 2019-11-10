@@ -32,7 +32,7 @@
 
     5: STRING - friendly faction name
 
-    Returns: true on success, false on error
+    Returns: vehicle on success, objNull on error
 */
 #include "..\..\macros.hpp"
 
@@ -47,30 +47,34 @@ params [
 
 if (_zonePos isEqualTo []) exitWith {
     ERROR("zone position parameter is empty");
-    false;
+    objNull;
 };
 
 if (_lzPos isEqualTo []) exitWith {
     ERROR("lz position parameter is empty");
-    false;
+    objNull;
 };
 
 if (_heloPos isEqualTo []) exitWith {
     ERROR("helo position parameter is empty");
-    false;
+    objNull;
 };
 
 if (isNull _cargoGroup) exitWith {
     ERROR("cargo parameter is null");
-    false;
+    objNull;
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction parameter is empty");
-    false;
+    objNull;
 };
 
 private _helo = [_heloPos, _heloDir, _friendlyFaction] call den_fnc_spawnHeloTransport;
+if (isNull _helo) exitWith {
+    ERROR("failed to spawn helo");
+    objNull;
+};
 
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");

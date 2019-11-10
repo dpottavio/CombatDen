@@ -36,10 +36,6 @@ params [
     ["_type",    "FireTeam", [""]]
 ];
 
-if (_type == "") then {
-    _type = "FireTeam";
-};
-
 private _climate = DEN_CLIMATE;
 
 private _cfgType = missionConfigFile >> "CfgFactions" >> _faction >> "Group" >> _climate >> _type;

@@ -26,7 +26,7 @@
 
     2: STRING - faction name.  See CfgFaction.
 
-    Returns: transport obj on success, objNull on error
+    Returns: array of vehicles on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -39,17 +39,17 @@ params [
 
 if (_pos isEqualTo []) then {
     ERROR("position parameter is empty");
-    objNull;
+    [];
 };
 
 if (isNull _playerGroup) exitWith {
     ERROR("player group parameter is empty");
-    objNull;
+    [];
 };
 
 if (_faction == "") exitWith {
     ERROR("faction parameter is empty");
-    objNull;
+    [];
 };
 
 private _climate     = DEN_CLIMATE;
@@ -57,7 +57,7 @@ private _vehicleType = getText (missionConfigFile >> "CfgFactions" >> _faction >
 
 if (_vehicleType == "") exitWith {
     ERROR_1("faction %1 has no transport vehicle defined", _faction);
-    objNull;
+    [];
 };
 
 private _vehicleCount = 2;
@@ -89,15 +89,32 @@ for "i" from 1 to _vehicleCount do {
     private _defaultMedic     = (_query configClasses _medic) select 0;
 
     private _atLauncher     = getText (_defaultAt >> "launcher");
-    private _atMags         = [_defaultAt] call den_fnc_loadoutMags;
-    private _atPrimaryMag   = _atMags select 0;
-    private _atSecondaryMag = _atMags select 2;
 
-    private _grenadierMags         = [_defaultGrenadier] call den_fnc_loadoutMags;
-    private _grenadierSecondaryMag = _grenadierMags select 2;
+    private _atPrimaryMag   = "";
+    private _atSecondaryMag = "";
 
-    private _arMags       = [_defaultAr] call den_fnc_loadoutMags;
-    private _arPrimaryMag = _arMags select 0;
+    private _atMags = [_defaultAt] call den_fnc_loadoutMags;
+
+    if !(_atMags isEqualTo []) then {
+        _atPrimaryMag   = _atMags select 0;
+        _atSecondaryMag = _atMags select 2;
+    };
+
+    private _grenadierSecondaryMag = "";
+
+    private _grenadierMags = [_defaultGrenadier] call den_fnc_loadoutMags;
+
+    if !(_grenadierMags isEqualTo []) then {
+        _grenadierSecondaryMag = _grenadierMags select 2;
+    };
+
+    private _arPrimaryMag = "";
+
+    private _arMags = [_defaultAr] call den_fnc_loadoutMags;
+
+    if !(_arMags isEqualTo []) then {
+        _arPrimaryMag = _arMags select 0;
+    };
 
     _vehicle addWeaponCargoGlobal [_atLauncher, 2];
     _vehicle addMagazineCargoGlobal [_atPrimaryMag, 20];

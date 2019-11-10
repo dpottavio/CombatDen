@@ -26,7 +26,7 @@
 
     2: STRING - faction name.  See CfgFaction.
 
-    Returns: transport obj on success, objNull on error
+    Returns: transport vehicle on success, objNull on error
 */
 #include "..\..\macros.hpp"
 
@@ -69,10 +69,18 @@ private _transportCrew = grpNull;
 
 if (_transport isKindOf "Helicopter") then {
     _transportCrew = [_pos getPos [10,0], _faction, "HeloPilot"] call den_fnc_spawnGroup;
-    _transportCrew setGroupIdGlobal ["Falcon"];
+    if !(isNull _transportCrew) then {
+        _transportCrew setGroupIdGlobal ["Falcon"];
+    } else {
+        ERROR("failed to spawn group");
+    };
 } else {
     _transportCrew = [_pos getPos [10,0], _faction, "TruckCrew"] call den_fnc_spawnGroup;
-    _transportCrew setGroupIdGlobal ["Roadrunner"];
+    if !(isNull _transportCrew) then {
+        _transportCrew setGroupIdGlobal ["Roadrunner"];
+    } else {
+        ERROR("failed to spawn group");
+    };
 };
 
 if (isNull _transportCrew) exitWith {

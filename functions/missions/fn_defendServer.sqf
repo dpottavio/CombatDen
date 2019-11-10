@@ -30,7 +30,7 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -45,22 +45,22 @@ params [
 
 if (isNull _playerGroup) exitWith {
     ERROR("group parameter must not be null");
-    "";
+    [];
 };
 
 if (_transportPos isEqualTo []) exitWith {
     ERROR("transport position parameter must not be null");
-    "";
+    [];
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction cannot be empty");
-    "";
+    [];
 };
 
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
-    "";
+    [];
 };
 
 private _zoneRadius = 700;
@@ -88,7 +88,7 @@ private _zone = [
 
 if (_zone isEqualTo []) exitWith {
     ERROR("zone failure");
-    "";
+    [];
 };
 
 private _zoneName        = _zone select 0;
@@ -99,7 +99,7 @@ private _lzPos           = _zoneSafePosList select 0;
 private _convoyRoads     = _zonePos nearRoads (_maxConvoy);
 if (_convoyRoads isEqualTo []) exitWith {
     ERROR("failed to find road for convoy");
-    "";
+    [];
 };
 private _convoyDir  = 0;
 private _convoyRoad = (selectRandom _convoyRoads);
@@ -122,6 +122,11 @@ private _transport = [
     _friendlyFaction
 ] call den_fnc_insertHelo;
 
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
+
 /*
  * convoy
  */
@@ -141,6 +146,8 @@ private _i = 0;
     if (!isNull _g) then {
         private _wp = [_g, _vpos, 0, "SCRIPTED", "SAFE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
         _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+    } else {
+        ERROR("failed to spawn group");
     };
 
     _i = _i + 1;

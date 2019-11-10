@@ -93,3 +93,5 @@ if (_friendlyFaction != "" && _enemyFaction != "") then {
         [_group]
     ] call den_fnc_createTrigger;
 };
+
+true;

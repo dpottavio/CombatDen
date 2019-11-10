@@ -44,3 +44,5 @@ for "_x" from 1 to 365 do {
 _maxPhaseDate set [3, _time];
 
 [_maxPhaseDate] remoteExec ["setDate"];
+
+true;

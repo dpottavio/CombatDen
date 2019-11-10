@@ -76,6 +76,7 @@ private _groupPos = [
 ] call den_fnc_findSafePos;
 
 if (_groupPos isEqualTo []) exitWith {
+    ERROR("failed to find safe pos");
     false;
 };
 
@@ -83,6 +84,11 @@ private _mortar = "B_Mortar_01_F" createVehicle _groupPos;
 _mortar setDir (_mortar getDir _targetPos);
 
 private _group = [_groupPos, _faction, "Sentry"] call den_fnc_spawnGroup;
+if (isNull _group) exitWith {
+    ERROR("failed to spawn group");
+    false;
+};
+
 private _gunner = objNull;
 {
     if (leader _x != _x) exitWith {

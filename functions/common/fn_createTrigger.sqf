@@ -47,7 +47,7 @@
 
     9: BOOL - if true, the trigger is global, default is false
 
-    Returns: true on success, false on error
+    Returns: trigger
 */
 params [
     ["_pos",            [],  [[]], [2,3]],

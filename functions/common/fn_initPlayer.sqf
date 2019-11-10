@@ -38,15 +38,15 @@ params [
     ["_slotId", -1,      [0]]
 ];
 
-if (isNull _unit) then {
+if (isNull _unit) exitWith {
     ERROR("unit param is empty");
 };
 
-if (_role == "") then {
+if (_role == "") exitWith {
     ERROR("role param is empty");
 };
 
-if (_slotId < 0) then {
+if (_slotId < 0) exitWith {
     ERROR("slot id is invalid");
 };
 

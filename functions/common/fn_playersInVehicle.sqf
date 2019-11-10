@@ -79,3 +79,5 @@ if (_vehicles isEqualTo []) exitWith {
         };
     }];
 } forEach _vehicles;
+
+true;

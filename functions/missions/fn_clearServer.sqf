@@ -28,7 +28,7 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -43,22 +43,22 @@ params [
 
 if (isNull _playerGroup) exitWith {
     ERROR("group parameter must not be null");
-    "";
+    [];
 };
 
 if (_transportPos isEqualTo []) exitWith {
     ERROR("transport position parameter must not be null");
-    "";
+    [];
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction cannot be empty");
-    "";
+    [];
 };
 
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
-    "";
+    [];
 };
 
 /*
@@ -95,7 +95,7 @@ private _zone = [
 
 if (_zone isEqualTo []) exitWith {
     ERROR("zone failure");
-    "";
+    [];
 };
 
 private _zoneName        = _zone select 0;
@@ -132,6 +132,12 @@ private _transport = [
     _friendlyFaction
 ] call den_fnc_insertHelo;
 
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
+
+
 /*
  * enemy units
  */
@@ -163,6 +169,9 @@ private _i = 1;
     [_x] call compile (format["_this call %1;", getText _compFunc]);
 
     private _group = [_x, _enemyFaction, _guardType] call den_fnc_spawnGroup;
+    if (isNull _group) exitWith {
+        ERROR("failed to spawn group");
+    };
 
     private _wp = [_group, _x, 0, "SCRIPTED", "AWARE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
     _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
@@ -176,6 +185,10 @@ private _i = 1;
 } forEach _bunkerPosList;
 
 private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
+if (isNull _reactGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 /*
  * Select either the current patrol pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
@@ -190,6 +203,10 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
+if (isNull _patrolGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_patrolGroup, _zonePos, 300, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 

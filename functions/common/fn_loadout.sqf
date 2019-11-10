@@ -45,6 +45,7 @@ params [
 
 if !(local _unit) exitWith {
     WARNING_1("setting loadout on non-local unit %1", _unit);
+    false;
 };
 
 if (_role == "") exitWith {
@@ -124,9 +125,10 @@ _unit addBackpack getText (_loadout >> "Backpack" >> "type");
  * weapons
  */
 private _mags = [_loadout] call den_fnc_loadoutMags;
-
-_unit addMagazines [_mags select 0, _mags select 1];
-_unit addMagazines [_mags select 2, _mags select 3];
+if !(_mags isEqualTo []) then {
+    _unit addMagazines [_mags select 0, _mags select 1];
+    _unit addMagazines [_mags select 2, _mags select 3];
+};
 
 _unit addWeapon getText (_loadout >> "rifle");
 _unit addWeapon getText (_loadout >> "handgun");

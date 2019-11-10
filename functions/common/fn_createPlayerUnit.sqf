@@ -35,6 +35,8 @@
     the role type that has "default = 1" defined will be selected.  See CfgLoadtout.
 
     6: (OPTIONAL) SRTRING - Placement type, defaults to NONE.
+
+    Return: unit on success, objNull on error
 */
 #include "..\..\macros.hpp"
 

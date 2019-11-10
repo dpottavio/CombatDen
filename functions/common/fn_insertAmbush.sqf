@@ -32,7 +32,7 @@
 
     5: STRING - friendly faction name
 
-    Returns: true on success, false on error
+    Returns: vehicle on success, objNull on error
 */
 #include "..\..\macros.hpp"
 
@@ -46,25 +46,29 @@ params [
 
 if (_ambushPos isEqualTo []) exitWith {
     ERROR("zone position parameter is empty");
-    false;
+    objNull;
 };
 
 if (_motorPos isEqualTo []) exitWith {
     ERROR("helo position parameter is empty");
-    false;
+    objNull;
 };
 
 if (isNull _playerGroup) exitWith {
     ERROR("cargo parameter is null");
-    false;
+    objNull;
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction parameter is empty");
-    false;
+    objNull;
 };
 
 private _vehicles = [_motorPos, _motorDir, _playerGroup, _friendlyFaction] call den_fnc_spawnMotorDeploy;
+if (_vehicles isEqualTo []) exitWith {
+    ERROR("failed to spawn vehicles");
+    objNull;
+};
 
 // executed when all players enter the vehicle(s)
 private _insertCode = {

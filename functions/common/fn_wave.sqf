@@ -47,7 +47,7 @@
     6: (Optional) NUMBER - Cooldown. The min amount of time in seconds between each
     spawn wave.  Defaults to 60 seconds.
 
-    Returns: BOOL - true
+    Returns: true on success, false on error
 */
 #include "..\..\macros.hpp"
 

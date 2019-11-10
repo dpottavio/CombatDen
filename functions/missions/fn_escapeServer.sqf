@@ -30,7 +30,7 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -98,7 +98,11 @@ private _zoneSafePosList = _zone select 2;
 private _ambushPos       = _zoneSafePosList select 0;
 private _lzPos           = _zoneSafePosList select 1;
 
-[_lzPos, _playerGroup, _friendlyFaction, "den_evade", _zoneArea] call den_fnc_extract;
+private _success = [_lzPos, _playerGroup, _friendlyFaction, "den_evade", _zoneArea] call den_fnc_extract;
+if !(_success) exitWith {
+    ERROR("failed to set extraction");
+    [];
+};
 
 private _transport = [
     _ambushPos,
@@ -107,6 +111,11 @@ private _transport = [
     _playerGroup,
     _friendlyFaction
 ] call den_fnc_insertAmbush;
+
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
 
 private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
 
@@ -221,19 +230,25 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 
                     if !(_pursueGroupPos isEqualTo []) then {
                         private _pursueGroup = [_pursueGroupPos, _enemyFaction, _pursueType] call den_fnc_spawnGroup;
-                        [
-                            _pursueGroup,
-                            _playerPos,
-                            50,
-                            5,
-                            "MOVE",
-                            "AWARE",
-                            "YELLOW",
-                            "LIMITED",
-                            "STAG COLUMN",
-                            "this call CBA_fnc_searchNearby",
-                            [3, 6, 9]
-                        ] call CBA_fnc_taskPatrol;
+                        if !(isNull _pursueGroup) then {
+                            [
+                                _pursueGroup,
+                                _playerPos,
+                                50,
+                                5,
+                                "MOVE",
+                                "AWARE",
+                                "YELLOW",
+                                "LIMITED",
+                                "STAG COLUMN",
+                                "this call CBA_fnc_searchNearby",
+                                [3, 6, 9]
+                            ] call CBA_fnc_taskPatrol;
+                        } else {
+                            ERROR("failed to spawn group");
+                        };
+                    } else {
+                        ERROR("failed to find safe pos");
                     };
                 };
             };

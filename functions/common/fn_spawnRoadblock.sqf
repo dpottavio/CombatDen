@@ -118,8 +118,12 @@ private _lastPosList = [];
 
             if (_faction != "" && _groupType != "") then {
                 private _group = [_roadPos, _faction, _groupType] call den_fnc_spawnGroup;
-                private _wp = [_group, _roadPos, 0, "SCRIPTED", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
-                _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+                if !(isNull _group) then {
+                    private _wp = [_group, _roadPos, 0, "SCRIPTED", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+                    _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+                } else {
+                    ERROR("failed to spawn group");
+                };
             };
 
             _roadblockCount = _roadblockCount + 1;

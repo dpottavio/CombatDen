@@ -61,6 +61,7 @@ if (_center isEqualTo []) exitWith {
 
 if (_terrainType < 0 || _terrainType > 2) exitWith {
     ERROR_1("invalid terrain type: %1", _terrainType);
+    [];
 };
 
 if (_maxRadius < 0) then {

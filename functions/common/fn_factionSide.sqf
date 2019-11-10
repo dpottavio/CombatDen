@@ -31,24 +31,24 @@ params [
 ];
 
 private _sideText = getText(missionConfigFile >> "CfgFactions" >> _faction >> "side");
-if (_sideText == "") then {
+if (_sideText == "") exitWith {
     ERROR_1("faction %1 has no side defined", _faction);
+    sideUnknown;
 };
 
-private _side = sideUnknown;
-
-switch (_sideText) do {
+private _side = switch (_sideText) do {
     case "WEST": {
-        _side = blufor;
+        blufor;
     };
     case "EAST": {
-        _side = opfor;
+        opfor;
     };
     case "GUER": {
-        _side = resistance;
+        resistance;
     };
     default {
         ERROR("side %1 is invalid", _sideText);
+        sideUnknown;
     };
 };
 

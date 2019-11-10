@@ -30,7 +30,7 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -46,27 +46,27 @@ params [
 
 if (isNull _playerGroup) exitWith {
     ERROR("group parameter must not be null");
-    "";
+    [];
 };
 
 if (_transportPos isEqualTo []) exitWith {
     ERROR("transport position parameter must not be null");
-    "";
+    [];
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction cannot be empty");
-    "";
+    [];
 };
 
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
-    "";
+    [];
 };
 
 if (isNull _arsenal) exitWith {
     ERROR("arsenal parameter cannot be empty");
-    false;
+    [];
 };
 
 /*
@@ -105,7 +105,7 @@ private _zone = [
 
 if (_zone isEqualTo []) exitWith {
     ERROR("zone failure");
-    "";
+    [];
 };
 
 private _zoneName        = _zone select 0;
@@ -126,7 +126,16 @@ private _transport = [
     _friendlyFaction
 ] call den_fnc_insertHelo;
 
-[_lzPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
+
+private _success = [_lzPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
+if !(_success) exitWith {
+    ERROR("failed to set extraction");
+    [];
+};
 
 private _cachePosList = [];
 for "_i" from 1 to den_cacheCount do {
@@ -158,6 +167,10 @@ switch (_difficulty) do {
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
+if (isNull _patrolGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_patrolGroup, _zonePos, _zoneRadius, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 

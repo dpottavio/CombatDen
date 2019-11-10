@@ -32,7 +32,7 @@
 
     5: NUMBER - difficulty. See CfgParams.
 
-    Returns: STRING - zone location name, empty string on error.
+    Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
 
@@ -47,22 +47,22 @@ params [
 
 if (isNull _playerGroup) exitWith {
     ERROR("group parameter must not be null");
-    "";
+    [];
 };
 
 if (_transportPos isEqualTo []) exitWith {
     ERROR("transport position parameter must not be null");
-    "";
+    [];
 };
 
 if (_friendlyFaction == "") exitWith {
     ERROR("friendly faction cannot be empty");
-    "";
+    [];
 };
 
 if (_enemyFaction == "") exitWith {
     ERROR("enemy faction cannot be empty");
-    "";
+    [];
 };
 
 private _zoneRadius = 350;
@@ -94,7 +94,7 @@ private _zone = [
 
 if (_zone isEqualTo []) exitWith {
     ERROR("zone failure");
-    "";
+    [];
 };
 
 private _zoneName        = _zone select 0;
@@ -115,6 +115,11 @@ private _transport = [
     _playerGroup,
     _friendlyFaction
 ] call den_fnc_insertHelo;
+
+if (isNull _transport) exitWith {
+    ERROR("failed to create transport");
+    [];
+};
 
 [
     _zonePos,
@@ -152,10 +157,19 @@ switch (_difficulty) do {
 };
 
 private _guardGroup = [_campPos, _enemyFaction, _guardType] call den_fnc_spawnGroup;
+if (isNull _guardGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_guardGroup, _campPos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
 private _reactGroup  = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
+if (isNull _reactGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
+
 /*
  * Select either the current react pos, or the LZ by random.
  * Delay the waypoint until after the players have unloaded
@@ -170,6 +184,10 @@ private _reactWpPos = selectRandom [_reactPos, _lzPos];
 };
 
 private _patrolGroup = [_patrolPos, _enemyFaction, _patrolType] call den_fnc_spawnGroup;
+if (isNull _patrolGroup) exitWith {
+    ERROR("failed to spawn group");
+    [];
+};
 
 [_patrolGroup, _campPos, 300, _enemyFaction, _friendlyFaction] call den_fnc_patrol;
 
