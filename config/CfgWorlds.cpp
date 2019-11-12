@@ -156,4 +156,10 @@ class CfgWorlds
             "Dehqobad"
         };
     };
+    class ruha : Wood
+    {
+        blacklist[] = {
+            "DefaultKeyPoint23"
+        };
+    };
 };
