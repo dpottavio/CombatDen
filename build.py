@@ -13,7 +13,7 @@ import zipfile
 import pbo
 
 srcFiles = ["config", "functions", "Description.ext", "XEH_preInit.sqf",
-            "LICENSE", "initPlayerLocal.sqf", "initServer.sqf", "macros.hpp", "sounds"]
+            "LICENSE", "LICENSE.GPL", "initPlayerLocal.sqf", "initServer.sqf", "macros.hpp", "sounds"]
 
 def ok():
     print("ok")
@@ -76,7 +76,7 @@ def main():
             with open(str(descriptionPath), "a") as cfg:
                 cfg.write(cfgVersion)
         except subprocess.CalledProcessError as e:
-            print("WARNING: failed to set version watermark:" + str(e))
+            abort("failed to set version watermark:" + str(e))
 
         if args.zip or args.pbo:
             # Create PBO
