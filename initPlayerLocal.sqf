@@ -18,11 +18,15 @@
 
 [] call den_fnc_diaryHelp;
 
+private _initMessage = "initializing mission...";
+
 if (!isMultiplayer) then {
     removeSwitchableUnit den_zeus;
 
     // Wait until the briefing has been read.
     waitUntil { !isNull findDisplay 46 };
+
+    cutText [_initMessage, "BLACK OUT", 1];
 
     openMap true;
 
@@ -41,9 +45,13 @@ if (!isMultiplayer) then {
     // Wait until the briefing has been read.
     waitUntil {getClientStateNumber >= 10};
 
-    player setVariable ["den_isReady", true, true];
+    if (didJip) then {
+        _initMessage = "joining mission...";
+    };
 
-    cutText ["waiting for players...", "BLACK OUT", 1];
+    cutText [_initMessage, "BLACK OUT", 1];
+
+    player setVariable ["den_isReady", true, true];
 
     waitUntil { !isNull findDisplay 46 };
 
@@ -52,8 +60,6 @@ if (!isMultiplayer) then {
     sleep 3;
 
     waitUntil {!isNil "den_initServerDone"};
-
-    cutText ["", "BLACK IN", 3];
 
     if (!isNil "den_initServerError") exitWith {
         ERROR_MSG("Failed to initialize mission. Restart is required.");
@@ -206,5 +212,10 @@ if (!_success) exitWith {
 // Trigger the task FSM to ensure the current state
 // is set for the new player.
 ["den_taskFsmNewPlayer"] call CBA_fnc_serverEvent;
+
+// Add the help diary to the new player unit
+[] call den_fnc_diaryHelp;
+
+cutText ["", "BLACK IN", 3];
 
 true;
