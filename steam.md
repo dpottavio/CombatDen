@@ -24,4 +24,6 @@ Please visit the [url=https://github.com/dpottavio/CombatDen/wiki]Wiki[/url] for
 The source code for this mission is available on [url=https://github.com/dpottavio/CombatDen]GitHub[/url].  Here you can browse the source, open an [url=https://github.com/dpottavio/CombatDen/issues]issue[/url], or download a single zip file [url=https://github.com/dpottavio/CombatDen/releases]release[/url].
 
 [h1]License[/h1]
-You are free to redistribute and/or modify this material under the terms of the GNU [url=https://www.gnu.org/licenses/lgpl-3.0.en.html]LGPLv3[/url].
+You can run, redistribute, and/or modify this work under the terms of the GNU  [url=https://www.gnu.org/licenses/lgpl-3.0.en.html]Lesser General Public License[/url] as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+See the [url=https://github.com/dpottavio/CombatDen/wiki#license-summary]License Summary[/url] section of the wiki for a brief description of what is and is not permitted.
