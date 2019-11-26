@@ -33,7 +33,9 @@ if ((random 1) < _rainChance) then {
     _overcast = [0, 0.3] call BIS_fnc_randomNum;
 };
 
-[0, _overcast] remoteExecCall ["setOvercast", 0, true];
+0 setOvercast _overcast;
 forceWeatherChange;
+// just to clients
+[0, _overcast] remoteExecCall ["setOvercast", -2, true];
 
 true;
