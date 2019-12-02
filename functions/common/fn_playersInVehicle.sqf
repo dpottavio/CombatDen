@@ -44,41 +44,28 @@ if (_vehicles isEqualTo []) exitWith {
     false;
 };
 
-{
-    _x setVariable ["den_playerCount", 0];
-    _x setVariable ["den_code", _code];
-    _x setVariable ["den_vehicles", _vehicles];
-    _x setVariable ["den_args", _args];
+[
+    [0,0],
+    [],
+    ["NONE", "PRESENT", false],
+    {
+        params ["", "", "", "_args"];
 
-    // suppress the linter
-    private _thisEventHandler = -1;
+        private _vehicles         = _args select 0;
+        private _alivePlayerCount = { alive _x } count allPlayers;
+        private _inVehicleCount   = { (vehicle _x) in _vehicles } count allPlayers;
+        private _cond             = (_alivePlayerCount == _inVehicleCount);
+        _cond;
+    },
+    [_vehicles],
+    {
+        params ["", "", "_args"];
 
-    _x addEventHandler ["GetIn", {
-        params ["_vehicle", "", "_unit", ""];
-
-        if (isPlayer _unit) then {
-            // A count of players that entered this vehicle.
-            private _count = 1 + (_vehicle getVariable "den_playerCount");
-            _vehicle setVariable ["den_playerCount", _count];
-
-            // A count of players that entered all vehicles.
-            private _total = 0;
-            {
-                _total = _total + (_x getVariable "den_playerCount");
-            } forEach (_vehicle getVariable "den_vehicles");
-
-            private _playerCount = { alive _x } count allPlayers;
-            if (_playerCount == _total) then {
-                // All players have entered the vehicle(s).
-                private _code    = _vehicle getVariable "den_code";
-                private _args    = _vehicle getVariable "den_args";
-
-                _args spawn _code;
-
-                _vehicle removeEventHandler ["GetIn", _thisEventHandler];
-            };
-        };
-    }];
-} forEach _vehicles;
+        private _codeArgs = _args select 0;
+        private _code     = _args select 1;
+        _codeArgs spawn _code;
+    },
+    [_args, _code]
+] call den_fnc_createTrigger;
 
 true;
