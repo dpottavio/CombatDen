@@ -100,8 +100,6 @@ class CfgFunctions
             class initMissionServer {};
             class stealTruckLocal {};
             class stealTruckServer {};
-            class urbanLocal {};
-            class urbanServer{};
         };
         class settings
         {

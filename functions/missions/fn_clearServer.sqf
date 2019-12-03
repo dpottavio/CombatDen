@@ -68,27 +68,23 @@ if (_enemyFaction == "") exitWith {
 private _zoneRadius   = 400;
 private _minLz        = _zoneRadius + 300;
 private _maxLz        = _zoneRadius + 350;
-private _maxBunker    = _zoneRadius * 0.8;
 private _maxReact     = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 private _minReinforce = _zoneRadius + 300;  // reinforcements
 private _maxReinforce = _zoneRadius + 325;
 
 private _safePosParams = [
-    [_minLz,        _maxLz,          15, 0.1], // lz safe position
-    [0,             _maxBunker,      10, 0.1], // bunker 1 safe position
-    [0,             _maxBunker,      10, 0.1], // bunker 2 safe position
-    [0,             _maxBunker,      10, 0.1], // bunker 3 safe position
-    [0,             _maxReact,        5,  -1], // inf patrol safe position
-    [0,             _maxPatrol,       5,  -1], // inf patrol safe position
-    [_minReinforce, _maxReinforce,   15, 0.1]  // reinforce safe position
+    [_minLz,        _maxLz,        15, 0.1], // lz safe position
+    [0,             _maxReact,      5, 0.1], // inf patrol safe position
+    [0,             _maxPatrol,     5, 0.1], // inf patrol safe position
+    [_minReinforce, _maxReinforce, 15, 0.1]  // reinforce safe position
 ];
 
 private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
 private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySideStr >> "color");
 
 private _zone = [
-    ["NameVillage", "NameLocal", "CityCenter"],
+    ["NameVillage", "NameLocal", "CityCenter", "NameCity"],
     _zoneRadius,
     _safePosParams,
     _enemyColor
@@ -104,15 +100,10 @@ private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
-private _lzPos         = _zoneSafePosList select 0;
-private _bunkerPosList = [
-    _zoneSafePosList select 1,
-    _zoneSafePosList select 2,
-    _zoneSafePosList select 3
-];
-private _reactPos     = _zoneSafePosList select 4;
-private _patrolPos    = _zoneSafePosList select 5;
-private _reinforcePos = _zoneSafePosList select 6;
+private _lzPos           = _zoneSafePosList select 0;
+private _reactPos        = _zoneSafePosList select 1;
+private _patrolPos       = _zoneSafePosList select 2;
+private _reinforcePos    = _zoneSafePosList select 3;
 [
     _zonePos,
     [_zoneRadius, _zoneRadius, 0, false, -1],
@@ -138,14 +129,9 @@ if (isNull _transport) exitWith {
     [];
 };
 
-
 /*
  * enemy units
  */
-private _guardPos  = selectRandom _bunkerPosList;
-private _enemySide = [_enemyFaction] call den_fnc_factionSide;
-
-createGuardedPoint [_enemySide, _guardPos, -1, objNull];
 
 private _guardType     = "FireTeam";
 private _reactType     = "FireTeam";
@@ -164,26 +150,45 @@ switch (_difficulty) do {
     };
 };
 
-private _i = 1;
-{
-    private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Bunker"]);
-    [_x] call compile (format["_this call %1;", getText _compFunc]);
+// Keep track where the bunkers are placed and treat
+// the surrounding area as a black area.  This is to
+// keep bunkers apart from each other.
+private _bunkerAreaList = [];
+// min distance to the next bunker
+private _minBunkerDistance = 125;
 
-    private _group = [_x, _enemyFaction, _guardType] call den_fnc_spawnGroup;
+for "_i" from 1 to 3 do {
+    private _pos = [
+        _zonePos,           // center
+        0,                  // min distance
+        _zoneRadius * 0.70, // max distance
+        15,                 // min distance from objects
+        0.1,                // gradient
+        0,                  // terrain type
+        0.33,               // search area
+        _bunkerAreaList     // black list
+    ] call den_fnc_findSafePos;
+    if (_pos isEqualTo []) exitWith {};
+
+    _bunkerAreaList pushBack  [_pos, _minBunkerDistance, _minBunkerDistance, 0, false];
+
+    private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Bunker"]);
+    [_pos] call compile (format["_this call %1;", getText _compFunc]);
+
+    private _group = [_pos, _enemyFaction, _guardType] call den_fnc_spawnGroup;
     if (isNull _group) exitWith {
         ERROR("failed to spawn group");
     };
 
-    private _wp = [_group, _x, 0, "SCRIPTED", "AWARE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
+    private _wp = [_group, _pos, 0, "SCRIPTED", "AWARE", "YELLOW", "FULL", "WEDGE"] call CBA_fnc_addWaypoint;
     _wp setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 
-    private _marker = createMarker [format["bunkerMarker-%1", _i], _x];
+    private _marker = createMarker [format["bunkerMarker-%1", _i], _pos];
     _marker setMarkerType  "loc_Bunker";
     _marker setMarkerColor _enemyColor;
     _marker setMarkerText  format["%1", _i];
     _marker setMarkerSize  [2,2];
-    _i = _i + 1;
-} forEach _bunkerPosList;
+};
 
 private _reactGroup = [_reactPos, _enemyFaction, _reactType] call den_fnc_spawnGroup;
 if (isNull _reactGroup) exitWith {
@@ -237,8 +242,8 @@ private _taskQueue = [
 ];
 
 private _failQueue = [
-    ["TransportDead",   "den_transportDead"],
-    ["PlayersDead",     "den_playersDead"]
+    ["TransportDead", "den_transportDead"],
+    ["PlayersDead",   "den_playersDead"]
 ];
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;

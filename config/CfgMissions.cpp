@@ -42,9 +42,9 @@ class CfgMissions
         localLogic  = "den_fnc_chemLocal";
         serverLogic = "den_fnc_chemServer";
     };
-    class ClearBunker
+    class ClearArea
     {
-        name        = "Clear Bunkers";
+        name        = "Clear Area";
         localLogic  = "den_fnc_clearLocal";
         serverLogic = "den_fnc_clearServer";
     };
@@ -53,12 +53,6 @@ class CfgMissions
         name        = "Hostage Rescue";
         localLogic  = "den_fnc_hostageLocal";
         serverLogic = "den_fnc_hostageServer";
-    };
-    class ClearUrban
-    {
-        name        = "Urban Combat";
-        localLogic  = "den_fnc_urbanLocal";
-        serverLogic = "den_fnc_urbanServer";
     };
     class StealTruck
     {

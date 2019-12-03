@@ -46,13 +46,14 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_center",        [], [[]], [2,3]],
-    ["_minRadius",      0, [0]],
-    ["_maxRadius",     -1, [0]],
-    ["_minObjDist",     0, [0]],
-    ["_maxGrad",      0.1, [0]],
-    ["_terrainType",    0, [0]],
-    ["_searchArea",  0.33, [0]]
+    ["_center",          [], [[]], [2,3]],
+    ["_minRadius",        0, [0]],
+    ["_maxRadius",       -1, [0]],
+    ["_minObjDist",       0, [0]],
+    ["_maxGrad",        0.1, [0]],
+    ["_terrainType",      0, [0]],
+    ["_searchArea",    0.33, [0]],
+    ["_blackAreaList",   [], [[]]]
 ];
 
 if (_center isEqualTo []) exitWith {
@@ -108,6 +109,16 @@ while { _tryCount > 0 && !_isSafe } do {
             "NONE"
         ] isEqualTo []);
         if !(_isOutside) exitWith {
+            false;
+        };
+
+        private _inBlackArea = false;
+        {
+            if (_pos inArea _x) exitWith {
+                _inBlackArea = true;
+            };
+        } forEach _blackAreaList;
+        if (_inBlackArea) exitWith {
             false;
         };
 
