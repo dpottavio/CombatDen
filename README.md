@@ -69,7 +69,7 @@ work in progress, it's a good place to get started.
 
 ## License
 
-You can run, redistribute, and/or modify this work
+You can use, redistribute, and/or modify this work
 under the terms of the GNU [Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 as published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.
