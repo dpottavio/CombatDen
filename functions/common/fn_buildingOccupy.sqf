@@ -98,9 +98,9 @@ if (_flee && (count _units) > 0) then {
         params ["_units", "_side", "_pos"];
 
         private _active = true;
-        private _fleePos = [_pos, 1500] call den_fnc_findSafePos;
+        private _fleePos = [_pos, 1500, 2000] call den_fnc_findSafePos;
         if (_fleePos isEqualTo []) exitWith {
-            ERROR("failed to find safe pos");
+            WARNING("failed to find safe pos");
         };
 
         while { _active } do {
