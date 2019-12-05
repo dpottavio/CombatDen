@@ -52,7 +52,7 @@
 */
 params [
     ["_pos",            [],  [[]], [2,3]],
-    ["_area",           [],  [[]], [5]],
+    ["_area",           [],  [[]], [0,4,5]],
     ["_activation",     [],  [[]], [3]],
     ["_condition",      nil, [{}]],
     ["_conditionArgs",  [],  [[]]],
@@ -102,7 +102,9 @@ private _deactivateCode = thisTrigger getVariable ""den_deactivate"";\
 ";
 };
 
-_trigger setTriggerArea _area;
+if !(_area isEqualTo []) then {
+    _trigger setTriggerArea _area;
+};
 _trigger setTriggerActivation _activation;
 _trigger setTriggerStatements [_conditionStr, _activateStr, _deactivateStr];
 
