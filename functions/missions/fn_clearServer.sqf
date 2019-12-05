@@ -104,16 +104,6 @@ private _lzPos           = _zoneSafePosList select 0;
 private _reactPos        = _zoneSafePosList select 1;
 private _patrolPos       = _zoneSafePosList select 2;
 private _reinforcePos    = _zoneSafePosList select 3;
-[
-    _zonePos,
-    [_zoneRadius, _zoneRadius, 0, false, -1],
-    [_enemySideStr, "NOT PRESENT", false],
-    nil,
-    [],
-    {
-        den_zoneClear = true;
-    }
-] call den_fnc_createTrigger;
 
 private _transport = [
     _zonePos,
@@ -219,6 +209,18 @@ if (isNull _patrolGroup) exitWith {
 [_zonePos, _zoneRadius * 0.5, _enemyFaction, 4] call den_fnc_buildingOccupy;
 
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
+
+private _missionSuccessTrigger = [
+    _zonePos,
+    [_zoneRadius, _zoneRadius, 0, false, -1],
+    [_enemySideStr, "NOT PRESENT", false],
+    nil,
+    [],
+    {
+        den_zoneClear = true;
+    }
+] call den_fnc_createTrigger;
+_missionSuccessTrigger setTriggerTimeout [10, 10, 10, true];
 
 /*
  * enemy unit markers
