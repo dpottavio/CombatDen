@@ -70,21 +70,29 @@ if (!isMultiplayer) then {
 [den_friendlyFaction, den_arsenal] call den_fnc_arsenal;
 
 /*
- * Find the player unit that matches the player's slot id.
+ * Players start as the "player slot" unit, which is an
+ * invisible civilian at the staging area.
  */
-private _playerUnit = objNull;
-
 private _role = player getVariable ["den_role", ""];
 if (_role == "") then {
     _role = "Rifleman";
     WARNING_1("%1 has no role defined, default to rifleman", player);
 };
-
 private _slotId = player getVariable ["den_slotId", -1];
 if (_slotId < 0) exitWith {
     ERROR_MSG("Failure to initialize the mission. Player has invalid slot id.");
     false;
 };
+private _slotPos = getPos player;
+/*
+ * Next the player will switch to a "player unit" which is
+ * dynamically allocated depending on missions settings.
+ */
+private _playerUnit = objNull;
+/*
+ * Determine if player unit is already allocated that matches
+ * the player's slot id.
+ */
 {
     if ((_x getVariable ["den_isPlayerUnit", false])) then {
         private _id = _x getVariable ["den_slotId", -1];
@@ -96,7 +104,9 @@ if (_slotId < 0) exitWith {
 
 private _playerPos = [];
 private _playerDir = 0;
-
+/*
+ * Determine the player unit's position.
+ */
 if !(isNull _playerUnit) then {
     _playerPos = ASLToAGL getPosASL _playerUnit;
     _playerDir = getDir _playerUnit;
@@ -115,7 +125,6 @@ if !(isNull _playerUnit) then {
      _playerPos = _leader modelToWorld [0, -2, 0];
      _playerDir = getDir _leader;
 };
-
 /*
  * Create a new player unit local to the player.
  */
@@ -143,8 +152,11 @@ _newPlayerUnit joinAsSilent [den_playerGroup, _slotId];
 
 waitUntil {(group _newPlayerUnit) == den_playerGroup};
 
+private _stagingAreaRadius   = 75;
+private _playerAtStagingArea = ((_playerPos distance _slotPos) <= _stagingAreaRadius);
+
 if (_role == "SquadLeader") then {
-    if (isMultiplayer && isNil "den_insert") then {
+    if (isMultiplayer && _playerAtStagingArea) then {
         /*
          * Once the Squad Leader player becomes the group leader,
          * the locality of the AI units will change to the player
@@ -175,26 +187,31 @@ if (_role == "SquadLeader") then {
     waitUntil { (leader den_playerGroup) == _newPlayerUnit };
 };
 
-/*
- * If ACE Respawn Gear is not present in MP, then give a respawned
- * player the same gear they had entering the transport vehicle.
- */
 private _aceRespawnGear = missionNamespace getVariable ["ace_respawn_savePreDeathGear", false];
-if (isMultiplayer && !_aceRespawnGear && isNil "den_insert") then {
-    [] spawn {
-        while { isNil "den_insert" } do {
-            sleep 1;
-        };
-        player setVariable ["den_loadout", (getUnitLoadout player)];
-
-        player addEventHandler ["Respawn", {
-            params ["_unit", ""];
-            private _loadout = _unit getVariable ["den_loadout", []];
-            if !(_loadout isEqualTo []) then {
-                _unit setUnitLoadout _loadout;
-            };
-        }];
-    };
+if (isMultiplayer && !_aceRespawnGear && _playerAtStagingArea) then {
+    // If ACE Respawn Gear is not present in MP, then give a respawned
+    // player the same gear they had before leaving staging area.
+    [
+        _slotPos,
+        [_stagingAreaRadius, _stagingAreaRadius, 0, false, -1],
+        ["NONE", "PRESENT", false],
+        {
+            params ["", "_thisTrigger", "", ""];
+            private _cond = !(player inArea _thisTrigger);
+            _cond;
+        },
+        [],
+        {
+            player setVariable ["den_loadout", (getUnitLoadout player)];
+            player addEventHandler ["Respawn", {
+                params ["_unit", ""];
+                private _loadout = _unit getVariable ["den_loadout", []];
+                if !(_loadout isEqualTo []) then {
+                    _unit setUnitLoadout _loadout;
+                };
+            }];
+        }
+    ] call den_fnc_createTrigger;
 };
 
 private _success = [
