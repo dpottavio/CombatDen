@@ -182,13 +182,6 @@ private _insertCode = {
         [_x, "ALL"] remoteExecCall ["enableAI", _x];
     } forEach _cargoUnits;
 
-    if (isMultiplayer) then {
-        [_side, _lzPos getPos [0,0], "LZ"] call BIS_fnc_addRespawnPosition;
-        {
-            [_side, _x] call BIS_fnc_addRespawnPosition;
-        } forEach _cargoUnits;
-    };
-
     den_insertUnload = true;
 
     if (_isHeloType) then {

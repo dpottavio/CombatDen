@@ -51,10 +51,10 @@ if (_vehicles isEqualTo []) exitWith {
     {
         params ["", "", "", "_args"];
 
-        private _vehicles         = _args select 0;
-        private _alivePlayerCount = { alive _x } count allPlayers;
-        private _inVehicleCount   = { (vehicle _x) in _vehicles } count allPlayers;
-        private _cond             = (_alivePlayerCount == _inVehicleCount);
+        private _vehicles       = _args select 0;
+        private _playerCount    = count allPlayers;
+        private _inVehicleCount = { (vehicle _x) in _vehicles } count allPlayers;
+        private _cond           = (_playerCount == _inVehicleCount);
         _cond;
     },
     [_vehicles],

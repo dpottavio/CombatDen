@@ -117,14 +117,6 @@ private _insertCode = {
         _offset = _offset + 15;
     } forEach _vehicles;
 
-    if (isMultiplayer) then {
-        private _side = side _playerGroup;
-        [_side, _startPos getPos [0,0], "WP-Echo"] call BIS_fnc_addRespawnPosition;
-        {
-            [_side, _x] call BIS_fnc_addRespawnPosition;
-        } forEach units _playerGroup;
-    };
-
     den_insertUnload = true;
 
     {

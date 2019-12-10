@@ -19,11 +19,11 @@ author        = "ottavio";
 OnLoadMission = "Randomized Missions";
 loadScreen    = "title.jpg";
 
-respawn            = "BASE";
+respawn            = "INSTANT";
 respawnDelay       = 30;
 respawnDialog      = 0;
 respawnOnStart     = -1;
-respawnTemplates[] = {"MenuPosition", "Tickets", "Spectator"};
+respawnTemplates[] = {"Tickets", "Counter"};
 respawnButton      = 1;
 
 class Header

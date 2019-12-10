@@ -142,14 +142,6 @@ private _insertCode = {
 
     den_ambush = false;
 
-    if (isMultiplayer) then {
-        private _side = side _playerGroup;
-        [_side, _ambushPos getPos [0,0], "Ambush Site"] call BIS_fnc_addRespawnPosition;
-        {
-            [_side, _x] call BIS_fnc_addRespawnPosition;
-        } forEach units _playerGroup;
-    };
-
     createMarker ["ambushMarker", _ambushPos];
     "ambushMarker" setMarkerType "hd_dot";
     "ambushMarker" setMarkerColor _friendlyColor;

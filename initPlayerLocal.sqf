@@ -215,6 +215,17 @@ if (isMultiplayer && !_aceRespawnGear) then {
     ] call den_fnc_createTrigger;
 };
 
+if (isMultiPlayer) then {
+    // Setup spectator camera on death.
+    player addEventHandler ["Killed", {
+        [ "Initialize", [ player, [playerSide], false, false, false] ] call BIS_fnc_EGSpectator;
+    }];
+    // Remove spectator camera on respawn.
+    player addEventHandler ["Respawn", {
+        ["Terminate"] call BIS_fnc_EGSpectator;
+    }];
+};
+
 private _success = [
     den_mission,
     den_zone,
