@@ -204,4 +204,6 @@ if (_faceware != "") then {
 // To simplify gameplay, all units can operate a toolbox.
 _unit setUnitTrait ["engineer", true];
 
+_unit setVariable ["den_loadoutSet", true];
+
 true;

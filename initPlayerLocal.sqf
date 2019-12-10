@@ -188,7 +188,7 @@ if (_role == "SquadLeader") then {
 };
 
 private _aceRespawnGear = missionNamespace getVariable ["ace_respawn_savePreDeathGear", false];
-if (isMultiplayer && !_aceRespawnGear && _playerAtStagingArea) then {
+if (isMultiplayer && !_aceRespawnGear) then {
     // If ACE Respawn Gear is not present in MP, then give a respawned
     // player the same gear they had before leaving staging area.
     [
@@ -197,7 +197,8 @@ if (isMultiplayer && !_aceRespawnGear && _playerAtStagingArea) then {
         ["NONE", "PRESENT", false],
         {
             params ["", "_thisTrigger", "", ""];
-            private _cond = !(player inArea _thisTrigger);
+            // Player is not in the staging area and a unit load has been set.
+            private _cond = (!(player inArea _thisTrigger)) && (player getVariable ["den_loadoutSet", false]);
             _cond;
         },
         [],
