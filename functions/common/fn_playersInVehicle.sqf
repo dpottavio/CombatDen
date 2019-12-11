@@ -54,7 +54,7 @@ if (_vehicles isEqualTo []) exitWith {
         private _vehicles       = _args select 0;
         private _playerCount    = count allPlayers;
         private _inVehicleCount = { (vehicle _x) in _vehicles } count allPlayers;
-        private _cond           = (_playerCount == _inVehicleCount);
+        private _cond           = (_playerCount == _inVehicleCount) && (_playerCount > 0);
         _cond;
     },
     [_vehicles],
