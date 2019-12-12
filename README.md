@@ -26,7 +26,7 @@ briefing.  Just play.
 
 ## Required Mods
 
-The only addon depencency is [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997).  Mission
+The only addon dependency is [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997).  Mission
 files on non-vanilla terrains may require additional dependencies.
 
 ## Questions
