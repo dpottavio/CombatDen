@@ -24,162 +24,81 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_isPlayable", false, [false]]
+    ["_playableOnly", false, [false]]
 ];
-
-private _addons = [];
-
-/*
- * CUP
- */
-private _hasCupVehicles = DEN_HAS_ADDON("CUP_Vehicles_Core");
-if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_USMC")) then {
-    _addons pushBack "CupUsmc";
-};
-if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_BAF")) then {
-    _addons pushBack "CupBaf";
-};
-if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_Germany")) then {
-    _addons pushBack "CupBundeswehr";
-};
-if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_TakiInsurgents")) then {
-    _addons pushBack "CupTakistanMilitia";
-};
-if (_hasCupVehicles && DEN_HAS_ADDON("CUP_Creatures_Military_Chedaki")) then {
-    _addons pushBack "CupChDkz";
-};
-if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Russia")) then {
-    _addons pushBack "CupRussia";
-};
-if (_hasCupVehicles && isClass (configfile >> "CfgPatches" >> "CUP_Creatures_Military_Taki")) then {
-    _addons pushBack "CupTakistan";
-};
-
-/*
- * CFP
- */
-if (DEN_HAS_ADDON("CFP_O_CFRebels")) then {
-    _addons pushBack "CfpGuerrilla";
-};
-if (DEN_HAS_ADDON("CFP_O_HEZBOLLAH")) then {
-    _addons pushBack "CfpHezbollah";
-};
-if (DEN_HAS_ADDON("CFP_O_HAMAS")) then {
-    _addons pushBack "CfpHamas";
-};
-if (DEN_HAS_ADDON("CFP_O_IS")) then {
-    _addons pushBack "CfpIsis";
-};
-if (DEN_HAS_ADDON("CFP_O_ALQAEDA")) then {
-    _addons pushBack "CfpAlQaeda";
-};
-if (DEN_HAS_ADDON("CFP_O_BOKOHARAM")) then {
-    _addons pushBack "CfpBokoHaram";
-};
-if (DEN_HAS_ADDON("CFP_O_ALSHABAAB")) then {
-    _addons pushBack "CfpAlShabaab";
-};
-
-/*
- * RHS
- */
-if (DEN_HAS_ADDON("rhsusf_c_troops")) then {
-    _addons pushBack "RhsUsmc";
-};
-if (DEN_HAS_ADDON("rhs_c_troops")) then {
-    _addons pushBack "RhsRussia";
-};
-if (DEN_HAS_ADDON("rhsgref_c_troops")) then {
-    _addons pushBack "RhsChDkz";
-};
-
-/*
- * LOP
- */
-if (DEN_HAS_ADDON("lop_faction_afr")) then {
-    _addons pushBack "LopGuerrilla";
-};
-if (DEN_HAS_ADDON("LOP_IRA_Infantry_base")) then {
-    _addons pushBack "LopInsurgent";
-};
-if (DEN_HAS_ADDON("lop_faction_ists")) then {
-    _addons pushBack "LopIsis";
-};
-if (DEN_HAS_ADDON("lop_faction_us")) then {
-    _addons pushBack "LopNovo";
-};
-
-if (isClass (configfile >> "CfgPatches" >> "lop_faction_tka")) then {
-    _addons pushBack "LopTakistan";
-};
-
-/*
- * 3CB
- */
-private _has3cbVehicles = DEN_HAS_ADDON("UK3CB_BAF_Vehicles");
-if (_has3cbVehicles && DEN_HAS_ADDON("UK3CB_BAF_Units_MTP")) then {
-    _addons pushBack "Uk3CbBaf";
-};
-
-if (_addons isEqualTo []) then {
-    if (DEN_HAS_ADDON("gm_core")) exitWith {
-        _addons = ["GmWestGermany", "GmDenmark", "GmEastGermany"];
-    };
-    _addons = ["Nato", "Csat", "Fia", "Syndikat", "Aaf"];
-
-    if (DEN_HAS_ADDON("A3_Characters_F_Enoch")) then {
-        _addons pushBack "Ldf";
-    };
-} else {
-    /*
-     * Faction addons exist. Determine if the addons are only for
-     * one side.  If this is the case add vanilla factions to the
-     * other sides.  This is done to prevent player from loading
-     * friendly-only factions.
-     */
-    private _west = [];
-    private _east = [];
-    private _guer = [];
-    {
-        private _side = [_x] call den_fnc_factionSide;
-        switch (_side) do {
-            case blufor: {
-                _west pushBack _x;
-            };
-            case opfor: {
-                _east pushBack _x;
-            };
-            case resistance: {
-                _guer pushBack _x;
-            };
-        };
-    } forEach _addons;
-    if ((count _west) == 0 && (count _east) == 0) exitWith {
-        _addons pushBack "Nato";
-        _addons pushBack "Csat";
-    };
-    if ((count _west) == 0 && (count _guer) == 0) exitWith {
-        _addons pushBack "Nato";
-        _addons pushBack "Fia";
-        _addons pushBack "Aaf";
-        _addons pushBack "Syndikat";
-    };
-    if ((count _east) == 0 && (count _guer) == 0) exitWith {
-        _addons pushBack "Csat";
-        _addons pushBack "Fia";
-        _addons pushBack "Aaf";
-        _addons pushBack "Syndikat";
-    };
-};
 
 private _climate = DEN_CLIMATE;
 
-private _query = "";
-if (_isPlayable) then {
-    _query = format["((configName _x) in %1) && ((getNumber (_x >> ""playable"")) == 1)", _addons];
-} else {
-    _query = format["(configName _x) in %1", _addons];
-};
-private _factions = _query configClasses (missionConfigFile >> "CfgFactions" >> _climate);
+private _allFactions = "true" configClasses (missionConfigFile >> "CfgFactions" >> _climate);
 
-_factions
+private _3rdPartyFactions = [];
+private _vanillaFactions  = [];
+
+private _3rdBluforCount = 0;
+private _3rdOpforCount  = 0;
+private _3rdGuerCount   = 0;
+{
+    /*
+     * - Filter on playable
+     * - Filter factions based on required patches.
+     * - Sort them based on vanilla and non-vanilla.
+     */
+    if (!_playableOnly || (getNumber(_x >> "playable") == 1)) then {
+        private _patches = getArray(_x >> "patches");
+        private _total = count _patches;
+        private _installed = { DEN_HAS_ADDON(_x) } count _patches;
+        if (_total == _installed) then {
+            private _isVanilla = (getText(_x >> "addon") == "");
+            if (_isVanilla) then {
+                _vanillaFactions pushBack _x;
+            } else {
+                _3rdPartyFactions pushBack _x;
+            };
+        };
+        private _side = getText(_x >> "side");
+        switch (_side) do {
+            case SIDE_BLUFOR: {
+                _3rdBluforCount = _3rdBluforCount + 1;
+            };
+            case SIDE_OPFOR: {
+                _3rdOpforCount = _3rdOpforCount + 1;
+            };
+            case SIDE_GUER: {
+                _3rdGuerCount = _3rdGuerCount + 1;
+            };
+            default {
+                WARNING_1("invalid side: %1", _side);
+            };
+        };
+    };
+} forEach _allFactions;
+
+private _factions = _vanillaFactions;
+
+if ((count _3rdPartyFactions) > 0) then {
+    /*
+     * Only return 3rd-party faction if they are available.
+     *
+     * If there are not enough 3rd-party factions to support
+     * at least 2 sides, include vanilla factions.  This is
+     * to prevent a configuration that is not playable, i.e.,
+     * only blufor factions.
+     */
+    private _sideCount = 0;
+    if (_3rdBluforCount > 0) then {
+        _sideCount = _sideCount + 1;
+    };
+    if (_3rdOpforCount > 0) then {
+        _sideCount = _sideCount + 1;
+    };
+    if (_3rdGuerCount > 0) then {
+        _sideCount = _sideCount + 1;
+    };
+    if (_sideCount > 1) then {
+        _factions = _3rdPartyFactions;
+    } else {
+        _factions = _3rdPartyFactions + _vanillaFactions;
+    };
+};
+
+_factions;

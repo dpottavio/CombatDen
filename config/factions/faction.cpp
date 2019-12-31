@@ -16,10 +16,6 @@
     <https://www.gnu.org/licenses/>.
 */
 
-#define SIDE_BLUFOR "WEST"
-#define SIDE_GUER   "GUER"
-#define SIDE_OPFOR  "EAST"
-
 class Faction
 {
     flagTexture  = "a3\data_f\flags\flag_rcrystal_co.paa";
@@ -414,6 +410,32 @@ class Faction
         class Winter : Base {};
     };
 
+    class ArsenalIfa3
+    {
+        class Base
+        {
+            exposives[] = {
+                "LIB_pomzec_MINE_mag",
+                "LIB_Ladung_Small_MINE_mag",
+                "LIB_Ladung_Big_MINE_mag",
+                "LIB_M3_MINE_mag"
+            };
+            weapons[] = {
+                 "LIB_FLARE_PISTOL"
+            };
+            mags[] = {
+                "LIB_1Rnd_flare_white",
+                "LIB_1Rnd_flare_red",
+                "LIB_1Rnd_flare_green",
+                "LIB_1Rnd_flare_yellow"
+            };
+            aceMisc[] = {
+                "ACE_LIB_FireCord",
+                "ACE_LIB_LadungPM"
+            };
+        };
+    };
+
     class Group
     {
         class Base
@@ -700,6 +722,79 @@ class Faction
                   "gm_gc_army_gauzeBandage",
                   "gm_gc_army_gauzeBandage",
                   "gm_gc_army_gauzeBandage"
+                };
+            };
+        };
+    };
+    class LoadoutIfa3
+    {
+        class Base
+        {
+            class Uniform {};
+            class Vest {};
+
+            class Backpack
+            {
+                aceItems[] = {
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                };
+                noAceItems[] = {
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit"
+                };
+            };
+
+            class LinkedItems
+            {
+                items[] = {
+                    "ItemMap",
+                    "ItemCompass",
+                    "ItemWatch",
+                };
+            };
+
+            class MedicBackpack : Backpack
+            {
+                aceMedicItems[] = {
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                    "ACE_elasticBandage",
+                };
+                noAceItems[] = {
+                  "Medikit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit",
+                  "FirstAidKit"
                 };
             };
         };

@@ -23,7 +23,9 @@
 
     0: ARRAY - Position
 
-    0: (Optional) NUMBER - Direction
+    1: NUMBER - Direction
+
+    2: STRING - Faction name
 
     Returns: true
 */
@@ -39,6 +41,10 @@ if (_pos isEqualTo []) exitWith {
      ERROR("pos parameter cannot be empty");
      false;
 };
+if (_faction == "") exitWith {
+    ERROR("faction parameter cannot be empty");
+    false;
+};
 
 private _bunker = "Land_BagBunker_Large_F";
 
@@ -48,22 +54,24 @@ if (_climate == "Tropic" || _climate == "Wood") then {
 };
 
 private _objs = [
-	["Land_CncBarrier_F",[-4.58435,0.125488,0],181.326,1,0,[],"","",true,false],
-	["Land_CncBarrier_F",[5.16565,0.375488,0],181.326,1,0,[],"","",true,false],
 	["FlagPole_F",[-5.43945,1.47925,0],0,1,0,[],"","",true,false],
-	["Land_CncBarrier_F",[-7.33435,0.125488,0],181.326,1,0,[],"","",true,false],
-	["Land_CncBarrier_F",[7.91565,0.375488,0],181.326,1,0,[],"","",true,false],
-	["Land_CncBarrier_F",[10.6656,0.375488,0],181.326,1,0,[],"","",true,false],
-	[_bunker,[8.9093,6.2915,0],0,1,0,[],"","",true,false],
-	["Land_CncBarrier_F",[13.4156,0.375488,0],181.326,1,0,[],"","",true,false]
+	[_bunker,[8.9093,6.2915,0],0,1,0,[],"","",true,false]
 ];
+
+private _era = DEN_ERA(_faction);
+if (_era > ERA_WW2) then {
+    _objs pushBack ["Land_CncBarrier_F",[-4.58435,0.125488,0],181.326,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CncBarrier_F",[5.16565,0.375488,0],181.326,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CncBarrier_F",[-7.33435,0.125488,0],181.326,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CncBarrier_F",[7.91565,0.375488,0],181.326,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CncBarrier_F",[10.6656,0.375488,0],181.326,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CncBarrier_F",[13.4156,0.375488,0],181.326,1,0,[],"","",true,false];
+};
 
 [_pos, _dir - 180, _objs] call BIS_fnc_objectsMapper;
 
-if (_faction != "") then {
-    private _flagTexture = getText (missionConfigFile >> "CfgFactions" >> _faction >> "flagTexture");
-    private _flagPole    = nearestObject [_pos, "FlagPole_F"];
-    _flagPole setFlagTexture _flagTexture;
-};
+private _flagTexture = getText (missionConfigFile >> "CfgFactions" >> _faction >> "flagTexture");
+private _flagPole    = nearestObject [_pos, "FlagPole_F"];
+_flagPole setFlagTexture _flagTexture;
 
 true;

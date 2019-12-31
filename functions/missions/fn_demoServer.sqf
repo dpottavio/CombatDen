@@ -74,10 +74,10 @@ if (isNull _arsenal) exitWith {
  * max radius for AO objects
  */
 private _zoneRadius   = 250;
-private _minLz        = _zoneRadius + 400;
-private _maxLz        = _zoneRadius + 450;
-private _minReinforce = _minLz;
-private _maxReinforce = _maxLz;
+private _minInsert    = _zoneRadius + 400;
+private _maxInsert    = _zoneRadius + 450;
+private _minReinforce = _minInsert;
+private _maxReinforce = _maxInsert;
 private _minPatrol    = 1;
 private _maxPatrol    = _zoneRadius;
 private _minCache     = 0;
@@ -86,7 +86,7 @@ private _maxCache     = _zoneRadius * 0.5;
 den_cacheCount = 5;
 
 private _safePosParams = [
-    [_minLz,        _maxLz,        15, 0.1], // lz safe position
+    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
     [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
     [_minPatrol,    _maxPatrol,    4,  -1]   // patrol safe position
 ];
@@ -114,25 +114,25 @@ private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
-private _lzPos           = _zoneSafePosList select 0;
+private _insertPos       = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _patrolPos       = _zoneSafePosList select 2;
 
 private _transport = [
     _zonePos,
-    _lzPos,
+    _insertPos,
     _transportPos,
     _transportDir,
     _playerGroup,
     _friendlyFaction
-] call den_fnc_insertHelo;
+] call den_fnc_insertInfantry;
 
 if (isNull _transport) exitWith {
     ERROR("failed to create transport");
     [];
 };
 
-private _success = [_lzPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
+private _success = [_insertPos, _playerGroup, _friendlyFaction, "den_ordnancesDestroyed", _zoneArea] call den_fnc_extract;
 if !(_success) exitWith {
     ERROR("failed to set extraction");
     [];
@@ -149,9 +149,8 @@ for "_i" from 1 to den_cacheCount do {
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _zonePos, -1, objNull];
 
-private _patrolType     = "FireTeam";
-private _reinforceArgs  = [[_reinforcePos, "MotorizedTeam"]];
-private _extractGroup   = "FireTeam";
+private _patrolType    = "FireTeam";
+private _reinforceArgs = [[_reinforcePos, "MotorizedTeam"]];
 
 switch (_difficulty) do {
     case 1: {
@@ -207,7 +206,7 @@ private _allUnits = _buildingUnits + (units _patrolGroup);
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _lzPos, _enemyFaction, _extractGroup] call den_fnc_attackExtraction;
+[_reinforcePos, _insertPos, "den_insertExtract", _enemyFaction] call den_fnc_attackOnEvent;
 
 /*
  * Players must have in their possession explosives
@@ -220,8 +219,15 @@ private _allUnits = _buildingUnits + (units _patrolGroup);
      */
     _transport lock true;
 
-    private _explosiveTypes = ["DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ACE_M14"];
-    private _hasExplosive   = false;
+    private _explosiveTypes = [
+        "DemoCharge_Remote_Mag",
+        "SatchelCharge_Remote_Mag",
+        "ACE_M14",
+        "LIB_US_TNT_4pound_mag",
+        "LIB_Ladung_Big_MINE_mag",
+        "LIB_Ladung_Small_MINE_mag"
+    ];
+    private _hasExplosive = false;
 
     while {!_hasExplosive} do {
         {
@@ -244,12 +250,12 @@ private _allUnits = _buildingUnits + (units _patrolGroup);
 /*
  * enemy markers
  */
-private _infMarkerPos = _zonePos getPos [25, (_zonePos getDir _lzPos)];
+private _infMarkerPos = _zonePos getPos [25, (_zonePos getDir _insertPos)];
 private _marker = createMarker ["enemyInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
 _marker setMarkerColor _enemyColor;
 
-[_lzPos, _zoneArea] call den_fnc_coverMap;
+[_insertPos, _zoneArea] call den_fnc_coverMap;
 
 /*
  * task state machine logic
@@ -257,13 +263,13 @@ _marker setMarkerColor _enemyColor;
 private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[_side, "packOrdnance",         "PackOrdnance",     _arsenal,   "CREATED", 1, true, "backpack"], "den_ordnancePacked"],
-    [[_side, "boardInsert",          "BoardInsert",      _transport, "CREATED", 1, true, "getin"],    "den_insert"],
-    [[_side, "destroyOrdnancesTask", "DestroyOrdnances", objNull,    "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
-    [[_side, "lzExtract",            "LzExtract",        "lzMarker", "CREATED", 1, true, "move"],     "den_lzExtract"]
+    [[_side, "packOrdnance",         "PackOrdnance",     _arsenal,      "CREATED", 1, true, "backpack"], "den_ordnancePacked"],
+    [[_side, "boardInsert",          "BoardInsert",      _transport,    "CREATED", 1, true, "getin"],    "den_insert"],
+    [[_side, "destroyOrdnancesTask", "DestroyOrdnances", objNull,       "CREATED", 1, true, "destroy"],  "den_ordnancesDestroyed"],
+    [[_side, "insertExtract",        "InsertExtract",   "insertMarker", "CREATED", 1, true, "move"],     "den_insertExtract"]
 ];
 
-if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+if (DEN_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
     // If faction has a transport helo, add boarding it the final task.
     _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
 };

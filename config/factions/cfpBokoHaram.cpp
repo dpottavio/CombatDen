@@ -20,8 +20,12 @@ class CfpBokoHaram : Faction
 {
     addon       = "CFP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
+    era         = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
     name        = "Boko Haram";
+    patches[]   = {
+        "CFP_O_BOKOHARAM"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

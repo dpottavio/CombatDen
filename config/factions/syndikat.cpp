@@ -20,8 +20,9 @@ class Syndikat : Faction
 {
     ammoBox     = "Box_Syndicate_Ammo_F";
     cargoBox    = "B_CargoNet_01_ammo_F";
+    era         = ERA_2034;
     flagTexture = "a3\data_f_exp\flags\flag_synd_co.paa";
-     name       = "Syndikat";
+    name        = "Syndikat";
     side        = SIDE_GUER;
 
     // Faction not playable yet.

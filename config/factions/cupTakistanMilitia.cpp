@@ -20,8 +20,13 @@ class CupTakistanMilitia : Faction
 {
     addon       = "CUP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
+    era         = ERA_MODERN;
     flagTexture = "ca\ca_e\data\flag_tka_co.paa";
     name        = "Takistan Militia";
+    patches[]   = {
+        "CUP_Vehicles_Core",
+        "CUP_Creatures_Military_TakiInsurgents"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

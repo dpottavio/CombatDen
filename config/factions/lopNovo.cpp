@@ -20,8 +20,12 @@ class LopNovo : Faction
 {
     addon       = "LOP";
     ammoBox     = "rhs_7ya37_1_single";
+    era         = ERA_MODERN;
     flagTexture = "po_main\data\ui\flags\flag_sla_co.paa";
     name        = "Novorossiya";
+    patches[]   = {
+        "lop_faction_us"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

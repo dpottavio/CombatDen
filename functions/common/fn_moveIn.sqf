@@ -46,6 +46,22 @@ if (_vehicles isEqualTo []) exitWith {
     false;
 };
 
+/*
+ * IFA3 HACK - Moving into IFA3 vehicles can cause the player
+ * unit to become unusable.  To work around this, remove
+ * all players from the vehicle first.
+ *
+ * See https://feedback.ww2ina3.com/T2077 for the full details.
+ */
+if (DEN_HAS_ADDON("LIB_core")) then {
+    {
+        if (vehicle _x != _x) then {
+            moveOut _x;
+            waitUntil { vehicle _x == _x };
+        };
+    } forEach units _group;
+};
+
 private _vehicleCount = count _vehicles;
 private _vehicle_i = 0;
 {

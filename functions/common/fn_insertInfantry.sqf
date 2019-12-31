@@ -17,17 +17,17 @@
 
     Description:
 
-    Setup a helicopter insert.
+    Setup an infantry insert.
 
     Parameter(s):
 
     0: ARRAY - zone position
 
-    1: ARRAY - LZ position
+    1: ARRAY - insert position
 
     2: ARRAY - helicopter initial position
 
-    3: NUMBER - helicopter initial direction
+    3: NUMBER - transport vehicle initial direction
 
     4: GROUP - Cargo group for transport
 
@@ -39,10 +39,10 @@
 
 params [
     ["_zonePos",         [],      [[]],      [2,3]],
-    ["_lzPos",           [],      [[]],      [2,3]],
-    ["_heloPos",         [],      [[]],      [2,3]],
-    ["_heloDir",         0,       [0]],
-    ["_cargoGroup",      grpNull, [grpNull]],
+    ["_insertPos",       [],      [[]],      [2,3]],
+    ["_vehiclePos",      [],      [[]],      [2,3]],
+    ["_vehicleDir",       0,       [0]],
+    ["_cargoGroup", grpNull, [grpNull]],
     ["_friendlyFaction", "",      [""]]
 ];
 
@@ -51,13 +51,13 @@ if (_zonePos isEqualTo []) exitWith {
     objNull;
 };
 
-if (_lzPos isEqualTo []) exitWith {
-    ERROR("lz position parameter is empty");
+if (_insertPos isEqualTo []) exitWith {
+    ERROR("insert position parameter is empty");
     objNull;
 };
 
-if (_heloPos isEqualTo []) exitWith {
-    ERROR("helo position parameter is empty");
+if (_vehiclePos isEqualTo []) exitWith {
+    ERROR("vehicle position parameter is empty");
     objNull;
 };
 
@@ -71,23 +71,23 @@ if (_friendlyFaction == "") exitWith {
     objNull;
 };
 
-private _helo = [_heloPos, _heloDir, _friendlyFaction] call den_fnc_spawnHeloTransport;
-if (isNull _helo) exitWith {
-    ERROR("failed to spawn helo");
+private _vehicle = [_vehiclePos, _vehicleDir, _friendlyFaction] call den_fnc_spawnInfantryTransport;
+if (isNull _vehicle) exitWith {
+    ERROR("failed to spawn transport vehicle");
     objNull;
 };
 
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");
 
-createMarker ["lzMarker", _lzPos];
-"lzMarker" setMarkerType "mil_pickup";
-"lzMarker" setMarkerColor _friendlyColor;
-"lzMarker" setMarkerText "LZ";
+createMarker ["insertMarker", _insertPos];
+"insertMarker" setMarkerType "mil_start";
+"insertMarker" setMarkerColor _friendlyColor;
+"insertMarker" setMarkerText "Insert";
 
-private _markerDir      = _zonePos getDir _lzPos;
-private _alphaMarkerPos = _lzPos getPos [500, _markerDir];
-private _arrowPos       = _lzPos getPos [250, _markerDir];
+private _markerDir      = _zonePos getDir _insertPos;
+private _alphaMarkerPos = _insertPos getPos [500, _markerDir];
+private _arrowPos       = _insertPos getPos [250, _markerDir];
 
 createMarker ["alphaMarker", _alphaMarkerPos];
 "alphaMarker" setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _friendlySideStr >> "infantry"));
@@ -101,7 +101,7 @@ createMarker ["alphaArrowMarker", _arrowPos];
  * Trigger to start the transport once players approach it.
  */
 [
-    _heloPos,
+    _vehiclePos,
     [10, 10, 0, false, -1],
     ["ANYPLAYER", "PRESENT", false],
     nil,
@@ -110,27 +110,27 @@ createMarker ["alphaArrowMarker", _arrowPos];
         params ["", "", "_args"];
         (_args select 0) engineOn true;
     },
-    [_helo]
+    [_vehicle]
 ] call den_fnc_createTrigger;
 
 // executed when all players enter the vehicle
 private _insertCode = {
-    params ["_lzPos", "_cargoGroup", "_helo", "_zonePos"];
+    params ["_insertPos", "_cargoGroup", "_vehicle", "_zonePos"];
 
     den_insert = true;
 
     private _cargoUnits = units _cargoGroup;
 
-    [_cargoGroup, [_helo]] call den_fnc_moveIn;
+    [_cargoGroup, [_vehicle]] call den_fnc_moveIn;
 
     /*
-     * Teleport to the LZ.
+     * Teleport to the Insert.
      *
      * This works by the following steps:
      *
      * 1. Delete the transport and crew the players are currently in.
      *
-     * 2. Teleport the players via setPos to the LZ.
+     * 2. Teleport the players via setPos to the Insert.
      *
      * 3. If the transport is a helicopter, create a clone of the transport
      *    above the players heading back to base.
@@ -140,27 +140,27 @@ private _insertCode = {
     [["","BLACK OUT",3]] remoteExec ["cutText"];
     sleep 6;
 
-    private _heloGroup = group leader driver _helo;
-    _heloGroup deleteGroupWhenEmpty true;
+    private _vehicleGroup = group leader driver _vehicle;
+    _vehicleGroup deleteGroupWhenEmpty true;
     /*
      * Some factions do not have a helicopter. In this case,
-     * the players are just dropped on the LZ but without
+     * the players are just dropped on the Insert but without
      * the return helicopter flying overhead.
      */
-    private _isHeloType = _helo isKindOf "Helicopter";
+    private _isHeloType = _vehicle isKindOf "Helicopter";
 
-    deleteVehicle _helo;
+    deleteVehicle _vehicle;
     {
         deleteVehicle _x;
-    } forEach units _heloGroup;
+    } forEach units _vehicleGroup;
 
-    private _hpad    = "Land_HelipadEmpty_F" createVehicle _lzPos;
+    private _hpad    = "Land_HelipadEmpty_F" createVehicle _insertPos;
     private _side    = side _cargoGroup;
     private _delta   = 4;
     private _a       = _delta;
     private _b       = _delta;
     private _i       = 0;
-    private _zoneDir = _lzPos getDir _zonePos;
+    private _zoneDir = _insertPos getDir _zonePos;
     private _leader  = leader _cargoGroup;
 
     {
@@ -186,16 +186,16 @@ private _insertCode = {
 
     if (_isHeloType) then {
         /*
-         * Create the transport clone over the LZ and send it in the opposite
+         * Create the transport clone over the Insert and send it in the opposite
          * direction of the objective.
          */
-        private _cloneDestPos = _lzPos getPos [2000, (_zonePos getDir _lzPos)];
+        private _cloneDestPos = _insertPos getPos [2000, (_zonePos getDir _insertPos)];
         _cloneDestPos set [2, 250];
 
         private _heloClonePos     = (_hpad modelToWorld [0,0,75]);
-        private _heloCloneVehicle = [_heloClonePos, _zoneDir, typeOf _helo, _side] call BIS_fnc_spawnVehicle;
+        private _heloCloneVehicle = [_heloClonePos, _zoneDir, typeOf _vehicle, _side] call BIS_fnc_spawnVehicle;
         if (_heloCloneVehicle isEqualTo []) exitWith {
-            WARNING_1("failed to create LZ overhead helicopter: %1", typeOf _helo);
+            WARNING_1("failed to create Insert overhead helicopter: %1", typeOf _vehicle);
         };
         private _heloClone = _heloCloneVehicle select 0;
 
@@ -225,6 +225,6 @@ private _insertCode = {
     [["","BLACK IN",3]] remoteExec ["cutText"];
 };
 
-[[_helo], _insertCode, [_lzPos, _cargoGroup, _helo, _zonePos]] call den_fnc_playersInVehicle;
+[[_vehicle], _insertCode, [_insertPos, _cargoGroup, _vehicle, _zonePos]] call den_fnc_playersInVehicle;
 
-_helo;
+_vehicle;

@@ -13,7 +13,8 @@ import zipfile
 import pbo
 
 srcFiles = ["config", "functions", "Description.ext", "XEH_preInit.sqf",
-            "LICENSE", "LICENSE.GPL", "initPlayerLocal.sqf", "initServer.sqf", "macros.hpp", "sounds"]
+            "LICENSE", "LICENSE.GPL", "initPlayerLocal.sqf", "initServer.sqf",
+            "cfgMacros.hpp", "macros.hpp", "sounds"]
 
 def ok():
     print("ok")

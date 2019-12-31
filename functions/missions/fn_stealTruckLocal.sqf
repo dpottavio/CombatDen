@@ -69,7 +69,7 @@ player createDiaryRecord ["Diary", ["Mission",
 private _situationText = format["\
 %1 forces have a <marker name='vehicleMarker'>truck</marker> \
 near position <marker name='zoneMarker'>%2</marker> which contains experimental \
-alloys that could be used for making more advanced rocket systems.  This truck \
+alloys that could be used for making more advanced weapon systems.  This truck \
 must be recovered by %3 forces to learn more about their efforts. \
 A motorized assault team will be deployed to capture this vehicle.", _enemyFactionName, _zone, _friendlyFactionName];
 

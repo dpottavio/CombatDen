@@ -73,12 +73,12 @@ private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friend
 private _zoneRadius = 500;
 private _minAmbush  = 0;
 private _maxAmbush  = _zoneRadius * 0.15;
-private _minLz      = _zoneRadius + 200;
-private _maxLz      = _zoneRadius + 300;
+private _minInsert  = _zoneRadius + 200;
+private _maxInsert  = _zoneRadius + 300;
 
 private _safePosParams = [
-    [_minAmbush,    _maxAmbush, 20, 0.1], // insert safe pos
-    [_minLz,        _maxLz,     15, 0.1] // lz safe pos
+    [_minAmbush, _maxAmbush, 20, 0.1],
+    [_minInsert, _maxInsert, 15, 0.1]
 ];
 
 private _zone = [
@@ -97,9 +97,9 @@ private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
 private _zoneSafePosList = _zone select 2;
 private _ambushPos       = _zoneSafePosList select 0;
-private _lzPos           = _zoneSafePosList select 1;
+private _insertPos       = _zoneSafePosList select 1;
 
-private _success = [_lzPos, _playerGroup, _friendlyFaction, "den_evade", _zoneArea] call den_fnc_extract;
+private _success = [_insertPos, _playerGroup, _friendlyFaction, "den_evade", _zoneArea] call den_fnc_extract;
 if !(_success) exitWith {
     ERROR("failed to set extraction");
     [];
@@ -120,9 +120,9 @@ if (isNull _transport) exitWith {
 
 private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
 
-// Trigger the LZ location after some timeout.
-private _lzTrigger = [
-    _lzPos,
+// Trigger the Extraction location after some timeout.
+private _exfilTrigger = [
+    _insertPos,
     [0, 0, 0, false, 0],
     ["NONE", "PRESENT", false],
     {
@@ -132,24 +132,24 @@ private _lzTrigger = [
     [],
     {
         params ["", "", "_args"];
-        private _lzPos = _args select 0;
+        private _insertPos = _args select 0;
         private _color = _args select 1;
         private _side  = _args select 2;
 
-        private _msg = format["Patrol team Alpha, evacuation LZ at grid %1", mapGridPosition _lzPos];
+        private _msg = format["Patrol team Alpha, extraction point at grid %1", mapGridPosition _insertPos];
         [_msg, _side] call den_fnc_commandChat;
 
-        private _marker = createMarker ["lzMarker", _lzPos];
+        private _marker = createMarker ["insertMarker", _insertPos];
         _marker setMarkerType "hd_pickup";
         _marker setMarkerColor _color;
-        _marker setMarkerText "LZ";
+        _marker setMarkerText "Extract";
 
         den_evade = true;
     },
-    [_lzPos, _friendlyColor, _friendlySide]
+    [_insertPos, _friendlyColor, _friendlySide]
 ] call den_fnc_createTrigger;
 
-_lzTrigger setTriggerTimeout [1100, 1200, 1300, false];
+_exfilTrigger setTriggerTimeout [1100, 1200, 1300, false];
 
 private _enemyGroupCount = 1;
 
@@ -165,8 +165,8 @@ switch (_difficulty) do {
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 
 // Continuously spawn units to attack the players.
-[_enemyFaction, _enemySide, _enemyGroupCount, _lzPos] spawn {
-    params ["_enemyFaction", "_enemySide", "_enemyGroupCount", "_lzPos"];
+[_enemyFaction, _enemySide, _enemyGroupCount, _insertPos] spawn {
+    params ["_enemyFaction", "_enemySide", "_enemyGroupCount", "_insertPos"];
 
     waitUntil { !isNil "den_insertUnload" };
 
@@ -189,7 +189,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 
         private _attack = (_nearEnemyCount <= 1) &&
                           !den_mortarActive &&
-                          (isNil "den_evade" || ((_playerPos distance _lzPos) > _attackRadius));
+                          (isNil "den_evade" || ((_playerPos distance _insertPos) > _attackRadius));
 
         if (_attack) then {
             if ((random 1) < 0.33) then {
@@ -268,13 +268,13 @@ _marker setMarkerColor _friendlyColor;
  * task state machine logic
  */
 private _taskQueue = [
-    [[_friendlySide, "boardInsert",  "BoardInsert",  _transport,   "CREATED", 1, true, "getin"], "den_insert"],
-    [[_friendlySide, "ambushPatrol", "AmbushPatrol", "zoneMarker", "CREATED", 1, true, "scout"], "den_ambush"],
-    [[_friendlySide, "ambushEvade",  "AmbushEvade",  objNull,      "CREATED", 1, true, "run"],   "den_evade"],
-    [[_friendlySide, "lzExtract",    "LzExtract",    "lzMarker",   "CREATED", 1, true, "move"],  "den_lzExtract"]
+    [[_friendlySide, "boardInsert",   "BoardInsert",   _transport,     "CREATED", 1, true, "getin"], "den_insert"],
+    [[_friendlySide, "ambushPatrol",  "AmbushPatrol",  "zoneMarker",   "CREATED", 1, true, "scout"], "den_ambush"],
+    [[_friendlySide, "ambushEvade",   "AmbushEvade",   objNull,        "CREATED", 1, true, "run"],   "den_evade"],
+    [[_friendlySide, "insertExtract", "InsertExtract", "insertMarker", "CREATED", 1, true, "move"],  "den_insertExtract"]
 ];
 
-if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+if (DEN_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
     // If faction has a transport helo, add boarding it the final task.
     _taskQueue pushBack [[_friendlySide,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
 };

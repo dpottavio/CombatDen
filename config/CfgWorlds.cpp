@@ -163,4 +163,5 @@ class CfgWorlds
             "DefaultKeyPoint23"
         };
     };
+    class Staszow : Wood {};
 };

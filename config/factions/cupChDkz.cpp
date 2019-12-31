@@ -21,9 +21,14 @@ class CupChDkz : Faction
     addon        = "CUP";
     ammoBox      = "CUP_RUBasicAmmunitionBox";
     cargoBox     = "CargoNet_01_box_F";
+    era          = ERA_MODERN;
     flagTexture  = "ca\data\flag_chdkz_co.paa";
     fullMoonOnly = 1;
     name         = "ChDkz";
+    patches[]    = {
+        "CUP_Vehicles_Core",
+        "CUP_Creatures_Military_Chedaki"
+    };
     playable     = 1;
     side         = SIDE_OPFOR;
 

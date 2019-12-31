@@ -65,14 +65,14 @@ if (_enemyFaction == "") exitWith {
 };
 
 private _zoneRadius = 700;
-private _minLz      = 100;
-private _maxLz      = 250;
+private _minInsert  = 100;
+private _maxInsert  = 250;
 private _maxConvoy  = _zoneRadius * 0.25;
 private _minAssault = _zoneRadius * 0.75;
 private _maxAssault = _zoneRadius;
 
 private _safePosParams = [
-    [_minLz,       _maxLz,     15, 0.1, 0], // insert safe position
+    [_minInsert,  _maxInsert,  15, 0.1, 0], // insert safe position
     [_minAssault, _maxAssault, 15, 0.1, 0], // assault1 safe position
     [_minAssault, _maxAssault, 15, 0.1, 0], // assault2 safe position
     [_minAssault, _maxAssault, 15, 0.1, 0]  // assault3 safe position
@@ -96,7 +96,7 @@ private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
 private _zoneSafePosList = _zone select 2;
-private _lzPos           = _zoneSafePosList select 0;
+private _insertPos       = _zoneSafePosList select 0;
 private _convoyRoads     = _zonePos nearRoads (_maxConvoy);
 if (_convoyRoads isEqualTo []) exitWith {
     ERROR("failed to find road for convoy");
@@ -116,12 +116,12 @@ private _assaultPos3 = _zoneSafePosList select 3;
 
 private _transport = [
     _zonePos,
-    _lzPos,
+    _insertPos,
     _transportPos,
     _transportDir,
     _playerGroup,
     _friendlyFaction
-] call den_fnc_insertHelo;
+] call den_fnc_insertInfantry;
 
 if (isNull _transport) exitWith {
     ERROR("failed to create transport");
@@ -253,7 +253,7 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
     den_convoyDefended = true;
 };
 
-[_lzPos, _zoneArea] call den_fnc_coverMap;
+[_insertPos, _zoneArea] call den_fnc_coverMap;
 
 /*
  * task state machine logic

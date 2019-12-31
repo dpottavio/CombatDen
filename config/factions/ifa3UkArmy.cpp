@@ -16,78 +16,118 @@
     <https://www.gnu.org/licenses/>.
 */
 
-class CupBaf : Faction
+class Ifa3UkArmy : Faction
 {
-    addOn       = "CUP";
-    ammoBox     = "CUP_USBasicAmmunitionBox";
-    cargoBox    = "B_CargoNet_01_ammo_F";
-    era         = ERA_MODERN;
-    flagTexture = "a3\data_f\flags\flag_uk_co.paa";
-    name        = "BAF";
-    patches[]   = {
-        "CUP_Vehicles_Core",
-        "CUP_Creatures_Military_BAF"
+    addon        = "IFA3";
+    allies[]     = {
+        SIDE_OPFOR
     };
-    playable    = 1;
-    side        = SIDE_BLUFOR;
+    ammoBox      = "LIB_AmmoCrate_Arty_SU";
+    cargoBox     = "Land_WoodenCrate_01_stack_x5_F";
+    era          = ERA_WW2;
+    flagTexture  = "a3\data_f\flags\flag_uk_co.paa";
+    fullMoonOnly = 1;
+    name         = "UK Army";
+    patches[]    = {
+        "WW2_Assets_c_Characters_British_c"
+    };
+    playable     = 1;
+    side         = SIDE_GUER;
 
-    class Arsenal : ArsenalCupWest
+    class Arsenal : ArsenalIfa3
     {
         class Base : Base
         {
+            grenades[] = {
+                "LIB_MILLSBOMB",
+                "LIB_NO77",
+                "LIB_US_M18",
+                "LIB_US_M18_Red",
+                "LIB_US_M18_Green",
+                "LIB_US_M18_Yellow"
+            };
+
+            explosives[] += {
+                "LIB_UK_Lee4A1_ATMINE_MAG",
+                "LIB_UK_M3_MINE_MAG"
+            };
+
+            mags[] += {
+                "LIB_6Rnd_455",
+                "LIB_32Rnd_9x19_Sten",
+                "LIB_10Rnd_770x56",
+                "LIB_30Rnd_770x56",
+                "LIB_50Rnd_762x63",
+                "LIB_1Rnd_89m_PIAT",
+                "LIB_1Rnd_89m_G_PIAT"
+            };
+
             weapons[] += {
-                "CUP_arifle_L85A2",
-                "CUP_arifle_L85A2_G",
-                "CUP_arifle_L85A2_NG",
-                "CUP_arifle_L85A2_GL",
-                "CUP_arifle_L86A2",
-                "CUP_lmg_minimi",
-                "CUP_lmg_minimi_railed",
-                "CUP_lmg_minimipara"
+                "LIB_WEBLEY_MK6",
+                "LIB_STEN_MK2",
+                "LIB_Sten_Mk5",
+                "LIB_LEEENFIELD_NO4",
+                "LIB_BREN_MK2",
+                "LIB_Lee4919A4",
+                "LIB_LEEENFIELD_NO4_SCOPED",
+                "LIB_PIAT"
             };
-            backpacks[] = {
-                "CUP_B_Bergen_BAF",
-                "CUP_B_Motherlode_MTP",
-                "CUP_B_Predator_MTP"
+
+            sights[] = {};
+
+            helmets[] = {
+                "H_LIB_UK_HELMET_MK2",
+                "H_LIB_UK_HELMET_MK2_BOWED",
+                "H_LIB_UK_HELMET_MK2_CAMO",
+                "H_LIB_UK_HELMET_MK2_NET",
+                "H_LIB_UK_HELMET_MK2_BEACHGROUP",
+                "H_LIB_UK_BERET_TANKIST",
+                "H_LIB_UK_BERET_HEADSET"
             };
+
             vests[] = {
-                "CUP_V_B_BAF_MTP_Osprey_Mk4_AutomaticRifleman",
-                "CUP_V_B_BAF_MTP_Osprey_Mk4_Grenadier",
-                "CUP_V_B_BAF_MTP_Osprey_Mk4_Medic",
-                "CUP_V_B_BAF_MTP_Osprey_Mk4_Rifleman"
+                "V_LIB_UK_P37_RIFLEMAN",
+                "V_LIB_UK_P37_HEAVY",
+                "V_LIB_UK_P37_HOLSTER",
+                "V_LIB_UK_P37_OFFICER",
+                "V_LIB_UK_P37_GASMASK",
+                "V_LIB_UK_P37_CREW",
+                "V_LIB_UK_P37_STEN"
+            };
+
+            backpacks[] = {
+                "B_LIB_UK_HSACK",
+                "B_LIB_UK_HSACK_AT",
+                "B_LIB_UK_HSACK_TEA",
+                "B_LIB_SD_UK_ARMY_AR",
+                "B_LIB_SD_UK_ARMY_LMG",
+                "B_LIB_UK_HSACK_CAPE"
             };
         };
 
         class SemiArid : Base {};
-        class Arid     : Base {};
         class Tropic   : Base {};
+        class Arid     : Base {};
         class Wood     : Base {};
         class Winter   : Base {};
     };
 
     class Vehicle
     {
-       class SemiArid
-       {
-            heloTransport      = "CUP_B_AW159_Unarmed_GB";
-            heloTransportLarge = "CUP_B_SA330_Puma_HC1_BAF";
-            heloCargo          = "CUP_B_Merlin_HC3A_GB";
-            truckAssault       = "CUP_B_Ridgback_HMG_GB_W";
-            truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
-            truckSupplyCargo   = "CUP_B_MTVR_USMC";
-            truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
-        };
-        class Arid   : SemiArid
+        class Base
         {
-            truckAssault = "CUP_B_Ridgback_HMG_GB_D";
+            truckAssault     = "LIB_UK_M3_Halftrack";
+            truckSupplyAmmo  = "LIB_AustinK5_Ammo";
+            truckSupplyCargo = "LIB_AustinK5_Tent";
+            truckSupplyFuel  = "LIB_AustinK5_Tent";
+            truckTransport   = "LIB_AustinK5_Tent";
         };
-        class Tropic : SemiArid {};
-        class Wood   : SemiArid {};
-        class Winter : SemiArid {};
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
+        class Winter   : Base {};
     };
-
-
-#define CUP_BAF_NVG  "CUP_NVG_PVS14"
 
     class Group : Group
     {
@@ -97,197 +137,126 @@ class CupBaf : Faction
         class Team   : Team {};
         class Triple : Triple {};
 
-        class SemiArid
+        class Base
         {
             class TruckCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
+                    vehicle = "LIB_UK_Tank_Crew";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
-                };
-            };
-            class HeloPilot : Couple
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Pilot_MTP";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Pilot_MTP";
-                };
-            };
-            class HeloCrew : Couple
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Crew_MTP";
+                    vehicle = "LIB_UK_Tank_Crew";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Pilot_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
             };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_BAF_Soldier_TeamLeader_MTP";
+                    vehicle = "LIB_UK_Sergeant";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_BAF_Soldier_AutoRifleman_MTP";
+                    vehicle = "LIB_UK_LanceCorporal";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_BAF_Soldier_RiflemanLAT_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_BAF_Soldier_SquadLeader_MTP";
+                    vehicle = "LIB_UK_Sergeant";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_BAF_Soldier_AutoRifleman_MTP";
+                    vehicle = "LIB_UK_LanceCorporal";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_BAF_Soldier_AutoRifleman_MTP";
+                    vehicle = "LIB_UK_Corporal";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Grenadier_MTP";
+                    vehicle = "	LIB_UK_Corporal";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
+                    vehicle = "LIB_UK_Grenadier";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "CUP_B_BAF_Soldier_RiflemanLAT_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "CUP_B_BAF_Soldier_RiflemanLAT_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Medic_MTP";
+                    vehicle = "LIB_UK_Medic";
                 };
             };
-            class ReconSquad : Squad
+            class ReconSquad : AssaultSquad
             {
-                nvg = CUP_BAF_NVG;
-
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_BAF_Soldier_SquadLeader_MTP";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_BAF_Soldier_AutoRifleman_MTP";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Grenadier_MTP";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "CUP_B_BAF_Soldier_RiflemanLAT_MTP";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
-                };
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
-                nvg = CUP_BAF_NVG;
-
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_BAF_Soldier_TeamLeader_MTP";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_BAF_Soldier_AutoRifleman_MTP";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
-                };
-            };
-            class MotorizedHmg : Single
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_Ridgback_LMG_GB_W";
-                };
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_Ridgback_LMG_GB_W";
+                    vehicle = "LIB_UK_M3_Halftrack";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_BAF_Soldier_Rifleman_MTP";
+                    vehicle = "LIB_UK_Rifleman";
                 };
             };
             class MotorizedAssault : AssaultSquad
             {
-                type = "motorized";
-
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -300,121 +269,17 @@ class CupBaf : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "CUP_B_Ridgback_LMG_GB_W";
+                    vehicle = "LIB_UK_M3_Halftrack";
                 };
             };
         };
-        class Arid : SemiArid
-        {
-           class TruckCrew : TruckCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloCrew : HeloCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class Pilot : Pilot
-            {
-                class Unit0 : Unit0 {};
-            };
-            class Sentry : Sentry
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class FireTeam : FireTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-            };
-            class AssaultSquad : AssaultSquad
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
-            };
-            class ReconSquad : ReconSquad
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
-            };
-            class ReconTeam : ReconTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_Ridgback_LMG_GB_D";
-                };
-            };
-            class MotorizedTeam : MotorizedTeam
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_Ridgback_LMG_GB_D";
-                };
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-            };
-            class MotorizedAssault : MotorizedAssault
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
-                class Unit8 : Unit8
-                {
-                    vehicle = "CUP_B_Ridgback_LMG_GB_D";
-                };
-            };
-        };
-        class Tropic : SemiArid
+        class SemiArid : Base
         {
             class TruckCrew : TruckCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
             };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloCrew  : HeloCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
             class Pilot : Pilot
             {
                 class Unit0 : Unit0 {};
@@ -459,10 +324,6 @@ class CupBaf : Faction
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
                 class Unit3 : Unit3 {};
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
@@ -483,19 +344,9 @@ class CupBaf : Faction
                 class Unit8 : Unit8 {};
             };
         };
-        class Wood : SemiArid
+        class Arid : Base
         {
             class TruckCrew : TruckCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloCrew  : HeloCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -544,10 +395,6 @@ class CupBaf : Faction
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
                 class Unit3 : Unit3 {};
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
@@ -568,19 +415,9 @@ class CupBaf : Faction
                 class Unit8 : Unit8 {};
             };
         };
-        class Winter : SemiArid
+      class Tropic : Base
         {
             class TruckCrew : TruckCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloCrew  : HeloCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -630,9 +467,147 @@ class CupBaf : Faction
                 class Unit2 : Unit2 {};
                 class Unit3 : Unit3 {};
             };
-            class MotorizedHmg : MotorizedHmg
+            class MotorizedTeam : MotorizedTeam
             {
                 class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Wood : Base
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Winter : Base
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};;
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
@@ -655,235 +630,220 @@ class CupBaf : Faction
         };
     };
 
-#define CUP_BAF_AUTORIFLE_MG36_MAG_COUNT   6
-#define CUP_BAF_AUTORIFLE_M249_MAG_COUNT   4
-#define CUP_BAF_AT_MAG_COUNT              11
-#define CUP_BAF_GRENADIRE_MAG_COUNT       11
-#define CUP_BAF_MARKSMAN_MAG_COUNT        10
-#define CUP_BAF_MEDIC_MAG_COUNT           11
-#define CUP_BAF_RIFLEMAN_MAG_COUNT        11
+#define IFA3_UK_AT_MAG_COUNT            11
+#define IFA3_UK_AUTORIFLE_MAG_COUNT     10
+#define IFA3_UK_AUTORIFLE_B_MAG_COUNT    5
+#define IFA3_UK_GRENADIRE_MAG_COUNT     11
+#define IFA3_UK_MARKSMAN_MAG_COUNT      11
+#define IFA3_UK_MEDIC_MAG_COUNT         11
+#define IFA3_UK_RIFLEMAN_MAG_COUNT      11
+#define IFA3_UK_RIFLEMAN_S_MAG_COUNT     5
 
-    class Loadout : Loadout
+    class Loadout : LoadoutIfa3
     {
         class Base : Base
         {
-            aceBinoculars = "ACE_Vector";
-            aceNvg        = "ACE_NVG_Wide";
-
-            handgun    = "CUP_hgun_Glock17_blk";
-            binoculars = "CUP_Vector21Nite";
-            headgear   = "CUP_H_BAF_MTP_Mk7";
-            rifleSight = "cup_optic_acog";
-            nvg        = "CUP_NVG_PVS15_black";
-            rifleLight = "cup_acc_flashlight";
-            primaryMag = "CUP_30Rnd_556x45_Stanag";
+            binoculars = "LIB_BINOCULAR_UK";
+            headgear   = "H_LIB_UK_Helmet_Mk2";
+            primaryMag = "LIB_10RND_770X56";
 
             class Uniform : Uniform
             {
-                type = "CUP_U_B_BAF_MTP_UBACSLONGKNEE";
-
-                items[] += {
-                    "CUP_17Rnd_9x19_glock17",
-                    "CUP_17Rnd_9x19_glock17"
-                };
+                type = "U_LIB_UK_P37";
             };
             class Vest : Vest
             {
-                type = "CUP_V_B_BAF_MTP_Osprey_Mk4_Rifleman";
+                type = "V_LIB_UK_P37_Rifleman";
             };
             class Backpack : Backpack
             {
-                type = "CUP_B_Bergen_BAF";
+                type = "B_LIB_UK_HSack";
             };
             class LinkedItems : LinkedItems {};
         };
         class RiflemanBase : Base
         {
-            unit            = "CUP_B_BAF_Soldier_Crew_MTP";
-            primaryMagCount = CUP_BAF_RIFLEMAN_MAG_COUNT;
+            unit            = "LIB_UK_Rifleman";
+            primaryMagCount = IFA3_UK_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
-                items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen"
+               items[] += {
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
+                    "LIB_US_M18",
+                    "LIB_US_M18"
                 };
             };
             class Backpack : Backpack
             {
                 items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67"
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
                 };
             };
             class LinkedItems : LinkedItems {};
         };
         class GrenadierBase : RiflemanBase
         {
-            unit              = "CUP_B_BAF_Soldier_Grenadier_MTP";
-            primaryMagCount   = CUP_BAF_GRENADIRE_MAG_COUNT;
-            secondaryMag      = "CUP_1Rnd_HE_M203";
-            secondaryMagCount = 10;
+            unit              = "LIB_UK_Grenadier";
+            primaryMagCount   = IFA3_UK_GRENADIRE_MAG_COUNT;
 
             class Uniform : Uniform {};
-            class Vest    : Vest
+            class Vest    : Vest {};
+            class Backpack : Backpack
             {
-                type = "CUP_V_B_BAF_MTP_Osprey_Mk4_Grenadier";
-
                 items[] += {
-                    "CUP_1Rnd_Smoke_M203"
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB"
                 };
             };
+            class LinkedItems : LinkedItems {};
+        };
+        class SquadLeaderBase : GrenadierBase
+        {
+            unit = "LIB_UK_Sergeant";
+
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
             class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class AutorifleBase : Base
         {
-            unit            = "CUP_B_BAF_Soldier_AutoRifleman_MTP";
-            rifleBipod      = "";
-            primaryMag      = "CUP_200Rnd_TE4_Red_Tracer_556x45_M249";
-            primaryMagCount = CUP_BAF_AUTORIFLE_M249_MAG_COUNT;
+            unit = "LIB_UK_Rifleman";
 
-            class Uniform  : Uniform {};
-            class Vest     : Vest {
-
-                type = "CUP_V_B_BAF_MTP_Osprey_Mk4_AutomaticRifleman";
-
-                items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen"
-                };
-            };
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
             class Backpack : Backpack
             {
-                type = "CUP_B_Motherlode_MTP";
+                items[] += {
+                   "LIB_MILLSBOMB",
+                   "LIB_MILLSBOMB",
+                   "LIB_MILLSBOMB",
+                   "LIB_MILLSBOMB",
+                   "LIB_US_M18",
+                   "LIB_US_M18"
+                };
             };
             class LinkedItems : LinkedItems {};
         };
         class MarksmanBase : Base
         {
-            unit            = "CUP_B_BAF_Soldier_Marksman_MTP";
-            rifleSight      = "cup_optic_rco";
-            rifleBipod      = "cup_bipod_harris_1a2_l";
-            primaryMagCount = CUP_BAF_MARKSMAN_MAG_COUNT;
+            unit            = "LIB_UK_Sniper";
+            primaryMagCount = IFA3_UK_MARKSMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               items[] += {
-                  "CUP_HandGrenade_M67",
-                  "CUP_HandGrenade_M67",
-                  "SmokeShellGreen",
-                  "SmokeShellGreen"
+                items[] += {
+                  "LIB_MILLSBOMB",
+                  "LIB_MILLSBOMB",
+                  "LIB_US_M18",
+                  "LIB_US_M18"
                };
             };
-            class Backpack : Backpack
-            {
-                items[] += {
-                  "cup_optic_leupoldmk4"
-                };
-            };
+            class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class MedicBase : Base
         {
-            unit            = "CUP_B_BAF_Soldier_Medic_MTP";
-            primaryMagCount = CUP_BAF_MEDIC_MAG_COUNT;
+            unit            = "LIB_UK_medic";
+            primaryMagCount = IFA3_UK_MEDIC_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
                 items[] += {
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67"
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB"
                 };
             };
             class Backpack : MedicBackpack
             {
-                type = "CUP_B_Bergen_BAF";
+                type = "B_LIB_UK_HSack";
             };
             class LinkedItems : LinkedItems {};
         };
-        class AtBase : RiflemanBase
+        class AtBase : Base
         {
-            unit            = "CUP_B_BAF_Soldier_RiflemanAT_MTP";
-            rifle           = "CUP_arifle_L85A2_G";
-            primaryMagCount = CUP_BAF_AT_MAG_COUNT;
-
-            class Uniform     : Uniform {};
-            class Vest        : Vest {};
-            class LinkedItems : LinkedItems {};
-        };
-        class EodBase : Base
-        {
-            unit            = "CUP_B_BAF_Soldier_Explosive_MTP";
-            primaryMagCount = CUP_BAF_RIFLEMAN_MAG_COUNT;
+            unit            = "LIB_UK_AT_Soldier";
+            rifle           = "LIB_LEEENFIELD_NO4";
+            primaryMag      = "LIB_10RND_770X56";
+            primaryMagCount = IFA3_UK_AT_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                items[] += {
-                    "HandGrenade",
-                    "HandGrenade",
-                    "SmokeShell",
-                    "SmokeShell"
+                   "LIB_MILLSBOMB",
+                   "LIB_MILLSBOMB",
+                   "LIB_US_M18"
+               };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class EodBase : Base
+        {
+            unit            = "LIB_UK_Rifleman";
+            primaryMagCount = IFA3_UK_RIFLEMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               items[] += {
+                    "LIB_MILLSBOMB",
+                    "LIB_MILLSBOMB",
+                    "LIB_US_M18",
+                    "LIB_US_M18"
                 };
             };
             class Backpack : Backpack
             {
-                type = "CUP_B_Motherlode_MTP";
-
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
+                items[] += {
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag"
                 };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
+                aceItems[] += {
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord"
                 };
             };
             class LinkedItems : LinkedItems {};
         };
         class EngineerBase : RiflemanBase
         {
-            unit = "CUP_B_BAF_Soldier_Engineer_MTP";
+            unit = "LIB_UK_Engineer";
 
             class Uniform  : Uniform {};
             class Vest     : Vest {};
 
             class Backpack : Backpack
             {
-                type = "CUP_B_Motherlode_MTP";
-
                 items[] += {
                     "ToolKit"
                 };
@@ -896,43 +856,33 @@ class CupBaf : Faction
             {
                 role = "Rifleman";
 
-                class L85 : RiflemanBase
+                class Lee4 : RiflemanBase
                 {
-                    type    = "L85A2";
-                    rifle   = "CUP_arifle_L85A2_G";
                     default = 1;
+                    type    = "Lee-Enfield No.4 Mk I";
+                    rifle   = "LIB_LEEENFIELD_NO4";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader
-            {
-                role = "Squad Leader";
-
-                class L85 : GrenadierBase
+                class Lee1 : RiflemanBase
                 {
-                    type    = "L85A2 GL";
-                    rifle   = "CUP_arifle_L85A2_GL";
-                    default = 1;
+                    type  = "Lee-Enfield No.1 Mk III";
+                    rifle = "LIB_LeeEnfield_No1";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class Autorifleman
-            {
-                role = "Autorifleman";
-
-                class LnMini : AutorifleBase
+                class Sten : RiflemanBase
                 {
-                    type    = "LN Minimi";
-                    rifle   = "CUP_lmg_minimipara";
-                    default = 1;
+                    type            = "Sten Mk V";
+                    rifle           = "LIB_Sten_Mk5";
+                    primaryMag      = "LIB_32Rnd_9x19_Sten";
+                    primaryMagCount = IFA3_UK_RIFLEMAN_S_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -944,11 +894,70 @@ class CupBaf : Faction
             {
                 role = "Grenadier";
 
-                class L85 : GrenadierBase
+                class Lee4 : GrenadierBase
                 {
-                    type    = "L85A2 GL";
-                    rifle   = "CUP_arifle_L85A2_GL";
                     default = 1;
+                    type    = "Lee-Enfield No.4 Mk I";
+                    rifle   = "LIB_LEEENFIELD_NO4";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : GrenadierBase
+                {
+                    type  = "Lee-Enfield No.1 Mk III";
+                    rifle = "LIB_LeeEnfield_No1";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : Grenadier
+            {
+                role = "Squad Leader";
+
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman
+            {
+                role = "Autorifleman";
+
+                class Bren : AutorifleBase
+                {
+                    default         = 1;
+                    type            = "Bren Mk II";
+                    rifle           = "LIB_BREN_MK2";
+                    primaryMag      = "LIB_30Rnd_770x56";
+                    primaryMagCount = IFA3_UK_AUTORIFLE_MAG_COUNT;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M1919A4 : AutorifleBase
+                {
+                    type            = "M1919A4 Browning";
+                    rifle           = "LIB_Lee4919A4";
+                    primaryMag      = "LIB_50Rnd_762x63";
+                    primaryMagCount = IFA3_UK_AUTORIFLE_B_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -960,12 +969,11 @@ class CupBaf : Faction
             {
                 role = "Marksman";
 
-                class L129 : MarksmanBase
+                class Lee : MarksmanBase
                 {
-                    type       = "L129A1";
-                    rifle      = "CUP_srifle_L129A1_HG";
-                    primaryMag = "20Rnd_762x51_Mag";
-                    default    = 1;
+                    default = 1;
+                    type       = "Lee-Enfield No.4 Mk I";
+                    rifle      = "LIB_LEEENFIELD_NO4_SCOPED";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -977,11 +985,33 @@ class CupBaf : Faction
             {
                 role = "Medic";
 
-                class L85 : MedicBase
+                class Lee4 : MedicBase
                 {
-                    type  = "L85A2";
-                    rifle = "CUP_arifle_L85A2_G";
                     default = 1;
+                    type    = "Lee-Enfield No.4 Mk I";
+                    rifle   = "LIB_LEEENFIELD_NO4";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : MedicBase
+                {
+                    type  = "Lee-Enfield No.1 Mk III";
+                    rifle = "LIB_LeeEnfield_No1";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : MedicBase
+                {
+                    type            = "Sten Mk V";
+                    rifle           = "LIB_Sten_Mk5";
+                    primaryMag      = "LIB_32Rnd_9x19_Sten";
+                    primaryMagCount = IFA3_UK_RIFLEMAN_S_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -993,47 +1023,51 @@ class CupBaf : Faction
             {
                 role = "Anti-Tank";
 
-                class M27a6 : AtBase
+                class Piat : AtBase
                 {
-                    type     = "M27A6";
-                    launcher = "CUP_launch_M72A6";
+                    default           = 1;
+                    type              = "PIAT";
+                    launcher          = "LIB_PIAT";
+                    secondaryMag      = "LIB_1Rnd_89m_PIAT";
+                    secondaryMagCount = 2;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : AtBase
-                {
-                    type     = "M136";
-                    launcher = "CUP_launch_M136";
-                    default  = 1;
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : AtBase
-                {
-                    type     = "NLAW";
-                    launcher = "CUP_launch_NLAW";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                }
             };
             class Eod
             {
                 role = "EOD";
 
-                class L85 : EodBase
+                class Lee4 : EodBase
                 {
-                    type    = "L85A2";
-                    rifle   = "CUP_arifle_L85A2_G";
                     default = 1;
+                    type    = "Lee-Enfield No.4 Mk I";
+                    rifle   = "LIB_LEEENFIELD_NO4";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : EodBase
+                {
+                    type  = "Lee-Enfield No.1 Mk III";
+                    rifle = "LIB_LeeEnfield_No1";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : EodBase
+                {
+                    type            = "Sten Mk V";
+                    rifle           = "LIB_Sten_Mk5";
+                    primaryMag      = "LIB_32Rnd_9x19_Sten";
+                    primaryMagCount = IFA3_UK_RIFLEMAN_S_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1045,11 +1079,33 @@ class CupBaf : Faction
             {
                 role = "Engineer";
 
-                class L85 : EngineerBase
+                class Lee4 : EngineerBase
                 {
-                    type    = "L85A2";
-                    rifle   = "CUP_arifle_L85A2_G";
                     default = 1;
+                    type    = "Lee-Enfield No.4 Mk I";
+                    rifle   = "LIB_LEEENFIELD_NO4";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : EngineerBase
+                {
+                    type  = "Lee-Enfield No.1 Mk III";
+                    rifle = "LIB_LeeEnfield_No1";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : EngineerBase
+                {
+                    type            = "Sten Mk V";
+                    rifle           = "LIB_Sten_Mk5";
+                    primaryMag      = "LIB_32Rnd_9x19_Sten";
+                    primaryMagCount = IFA3_UK_RIFLEMAN_S_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1062,27 +1118,21 @@ class CupBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Lee4 : Lee4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
+                class Lee1 : Lee1
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1092,7 +1142,34 @@ class CupBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Lee4 : Lee4
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Bren : Bren
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M1919A4 : M1919A4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1102,7 +1179,7 @@ class CupBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Lee : Lee
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1112,7 +1189,21 @@ class CupBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1122,21 +1213,7 @@ class CupBaf : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class M136 : M136
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Piat : Piat
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1146,7 +1223,21 @@ class CupBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1156,7 +1247,21 @@ class CupBaf : Faction
             };
             class Engineer : Engineer
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1169,27 +1274,21 @@ class CupBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Lee4 : Lee4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
+                class Lee1 : Lee1
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1199,7 +1298,34 @@ class CupBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Lee4 : Lee4
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Bren : Bren
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M1919A4 : M1919A4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1209,7 +1335,7 @@ class CupBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Lee : Lee
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1219,7 +1345,21 @@ class CupBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1229,21 +1369,7 @@ class CupBaf : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class M136 : M136
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Piat : Piat
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1253,7 +1379,21 @@ class CupBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1263,7 +1403,21 @@ class CupBaf : Faction
             };
             class Engineer : Engineer
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1276,27 +1430,21 @@ class CupBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Lee4 : Lee4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
+                class Lee1 : Lee1
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1306,7 +1454,34 @@ class CupBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Lee4 : Lee4
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Bren : Bren
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M1919A4 : M1919A4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1316,7 +1491,7 @@ class CupBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Lee : Lee
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1326,7 +1501,21 @@ class CupBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1336,21 +1525,7 @@ class CupBaf : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class M136 : M136
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Piat : Piat
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1360,7 +1535,21 @@ class CupBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1370,7 +1559,21 @@ class CupBaf : Faction
             };
             class Engineer : Engineer
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1383,27 +1586,21 @@ class CupBaf : Faction
         {
             class Rifleman : Rifleman
             {
-                class L85 : L85
+                class Lee4 : Lee4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class L85 : L85
+                class Lee1 : Lee1
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class LnMini : LnMini
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1413,7 +1610,34 @@ class CupBaf : Faction
             };
             class Grenadier : Grenadier
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Lee4 : Lee4
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Bren : Bren
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M1919A4 : M1919A4
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1423,7 +1647,7 @@ class CupBaf : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class Lee : Lee
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1433,7 +1657,21 @@ class CupBaf : Faction
             };
             class Medic : Medic
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1443,21 +1681,7 @@ class CupBaf : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class M136 : M136
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Nlaw : Nlaw
+                class Piat : Piat
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1467,7 +1691,21 @@ class CupBaf : Faction
             };
             class Eod : Eod
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1477,7 +1715,21 @@ class CupBaf : Faction
             };
             class Engineer : Engineer
             {
-                class L85 : L85
+                class Lee4 : Lee4
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Lee1 : Lee1
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Sten : Sten
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

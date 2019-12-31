@@ -19,6 +19,7 @@
 class Fia : Faction
 {
     ammoBox     = "Box_IND_Ammo_F";
+    era         = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_FIA_CO.paa";
     name        = "FIA";
     side        = SIDE_GUER;

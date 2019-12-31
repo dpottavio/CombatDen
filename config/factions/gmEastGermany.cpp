@@ -21,9 +21,13 @@ class GmEastGermany : Faction
     addon        = "GM";
     ammoBox      = "gm_AmmoBox_1000Rnd_762x51mm_b_DM41_g3";
     cargoBox     = "CargoNet_01_box_F";
+    era          = ERA_COLD_WAR;
     flagTexture  = "gm\gm_core\data\flags\gm_flag_gc_co.paa";
     fullMoonOnly = 1;
     name         = "East Germany";
+    patches[]    = {
+        "gm_core"
+    };
     playable     = 1;
     side         = SIDE_OPFOR;
 

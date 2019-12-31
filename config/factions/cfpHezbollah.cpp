@@ -20,8 +20,12 @@ class CfpHezbollah : Faction
 {
     addon       = "CFP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
+    era         = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\hezbollah\cfp_flag_hezbollah.paa";
     name        = "Hezbollah";
+    patches[]   = {
+        "CFP_O_HEZBOLLAH"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

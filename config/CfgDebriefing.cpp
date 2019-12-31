@@ -72,4 +72,10 @@ class CfgDebriefing
         subtitle = "Truck Destroyed";
         description = "The enemy truck was destroyed before it could be recovered.";
     };
+    class CargoTruckDead
+    {
+        title = "Mission Failed";
+        subtitle = "Cargo Truck Destroyed";
+        description = "Without a cargo transport the mission cannot succeed.";
+    };
 };

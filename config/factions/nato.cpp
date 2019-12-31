@@ -20,6 +20,7 @@ class Nato : Faction
 {
     ammoBox     = "Box_NATO_Ammo_F";
     cargoBox    = "B_CargoNet_01_ammo_F";
+    era         = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_nato_CO.paa";
     name        = "NATO";
     playable    = 1;

@@ -52,7 +52,7 @@ if (_zonePos isEqualTo []) exitWith {
 };
 
 if (_startPos isEqualTo []) exitWith {
-    ERROR("lz position parameter is empty");
+    ERROR("insert position parameter is empty");
     objNull;
 };
 

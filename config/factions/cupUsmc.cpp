@@ -21,8 +21,13 @@ class CupUsmc : Faction
     addOn       = "CUP";
     ammoBox     = "CUP_USBasicAmmunitionBox";
     cargoBox    = "B_CargoNet_01_ammo_F";
+    era         = ERA_MODERN;
     flagTexture = "\A3\Data_F\Flags\Flag_us_CO.paa";
     name        = "USMC";
+    patches[]   = {
+        "CUP_Vehicles_Core",
+        "CUP_Creatures_Military_USMC"
+    };
     playable    = 1;
     side        = SIDE_BLUFOR;
 

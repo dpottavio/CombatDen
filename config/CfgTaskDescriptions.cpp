@@ -40,10 +40,26 @@ class CfgTaskDescriptions
         title       = "Pallet Extraction";
         description = "Wait for chemical weapon pallet extraction.";
     };
+    class PalletExtract2
+    {
+        title       = "Pallet Extraction";
+        description = "Take the pallet to the insert for extraction.";
+    };
+    class PalletLoad
+    {
+        title       = "Load the Pallet";
+        description = "Load the pallet into the truck.<br/><br/>\
+To load the pallet, approach the pallet and engage the hold-action.";
+    };
     class PalletSecure
     {
         title       = "Secure Pallet";
         description = "Secure chemical weapon pallet.";
+    };
+    class PalletSecure2
+    {
+        title       = "Move Cargo Truck to Pallet";
+        description = "Move the cargo truck close to the pallet so it can be loaded.";
     };
     class DefendConvoy
     {
@@ -62,10 +78,10 @@ class CfgTaskDescriptions
         title       = "Rescue Hostage";
         description = "Find and free the hostage.";
     };
-    class LzExtract
+    class InsertExtract
     {
-        title       = "Go to LZ";
-        description = "Go to the LZ for extraction. All units must be at the LZ.";
+        title       = "Go to Insert";
+        description = "Go to the Insert for extraction. All units must be at the Insert.";
     };
     class PackOrdnance
     {

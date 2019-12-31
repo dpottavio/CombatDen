@@ -41,12 +41,10 @@ if (_pos isEqualTo []) exitWith {
 };
 
 private _climate = DEN_CLIMATE;
+private _era     = DEN_ERA(_faction);
 private _objs    = [];
 
-if ((_faction find "Gm") != 0) then {
-    /*
-     * non-GM
-     */
+if (_era >= ERA_MODERN) then {
     private _tower = "Land_BagBunker_Tower_F";
 
     if (_climate == "Tropic" || _climate == "Wood") then {

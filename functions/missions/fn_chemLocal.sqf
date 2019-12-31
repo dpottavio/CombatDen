@@ -50,26 +50,54 @@ private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _e
 /*
  * briefing notes
  */
-player createDiaryRecord ["Diary", ["Execution",
+
+private _hasCargoHelo = DEN_HAS_CARGO_HELO(_friendlyFaction);
+
+if (_hasCargoHelo) then {
+    player createDiaryRecord ["Diary", ["Execution",
 "
-1. Reach the <marker name='lzMarker'>LZ</marker>.
+1. Reach the <marker name='insertMarker'>Insert</marker>.
 <br/>
 2. Secure chemical weapon <marker name='palletMarker'>pallet</marker> for extraction.
 <br/>
-3. Return to the <marker name='lzMarker'>LZ</marker>.
+3. Return to the <marker name='insertMarker'>Insert</marker>.
 "
-]];
+    ]];
 
-player createDiaryRecord ["Diary", ["Mission",
+    player createDiaryRecord ["Diary", ["Mission",
 "Extract chemical weapon <marker name='palletMarker'>pallet</marker>.
 "
-]];
+    ]];
 
-private _situationText = format["\
+    private _situationText = format["\
 %1 forces have a chemical weapon <marker name='palletMarker'>pallet</marker> near \
 position <marker name='zoneMarker'>%2</marker>.  \
 %3 forces are to seize and extract this asset via helicopter.", _enemyFactionName, _zone, _friendlyFactionName];
 
-player createDiaryRecord ["Diary", ["Situation", _situationText]];
+    player createDiaryRecord ["Diary", ["Situation", _situationText]];
+} else {
+    player createDiaryRecord ["Diary", ["Execution",
+"
+1. Reach the <marker name='insertMarker'>Insert</marker>.
+<br/>
+2. Move the cargo truck to the chemical <marker name='palletMarker'>pallet</marker>.
+<br/>
+3. Load the <marker name='palletMarker'>pallet</marker> into the cargo truck.
+<br/>
+4. Bring the pallet to the <marker name='insertMarker'>Insert</marker>.
+"
+    ]];
 
+    player createDiaryRecord ["Diary", ["Mission",
+"Extract chemical weapon <marker name='palletMarker'>pallet</marker>.
+"
+    ]];
+
+    private _situationText = format["\
+%1 forces have a chemical weapon <marker name='palletMarker'>pallet</marker> near \
+position <marker name='zoneMarker'>%2</marker>.  \
+%3 forces are to seize and extract this asset via cargo truck.", _enemyFactionName, _zone, _friendlyFactionName];
+
+    player createDiaryRecord ["Diary", ["Situation", _situationText]];
+};
 true;

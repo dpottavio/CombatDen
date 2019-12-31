@@ -20,6 +20,7 @@ class Csat : Faction
 {
     ammoBox     = "Box_East_Ammo_F";
     cargoBox    = "O_CargoNet_01_ammo_F";
+    era         = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
     name        = "CSAT";
     playable    = 1;

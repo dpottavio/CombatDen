@@ -23,7 +23,9 @@
 
     0: ARRAY - Position
 
-    0: (Optional) NUMBER - Direction
+    1: NUMBER - Direction
+
+    2: STRING - faction
 
     Returns: true
 */
@@ -36,8 +38,12 @@ params [
 ];
 
 if (_pos isEqualTo []) exitWith {
-     ERROR("pos parameter cannot be empty");
-     false;
+    ERROR("pos parameter cannot be empty");
+    false;
+};
+if (_faction == "") exitWith {
+    ERROR("faction parameter cannot be empty");
+    false;
 };
 
 private _bagFenceRound = "Land_BagFence_Round_F";
@@ -51,17 +57,13 @@ private _objs = [
 	["CamoNet_BLUFOR_open_F",[-0.736328,-0.354492,0],0,1,0,[],"net_1","",true,false],
 	["Land_CampingTable_small_F",[0.363037,2.01782,0.00259924],0.00417018,1,0,[],"","",true,false],
 	["Land_Map_blank_F",[0.236938,2.06641,0.813],359.998,1,0,[],"","",true,false],
-	["Land_FMradio_F",[0.695068,2.21753,0.813],0.0186814,1,0,[],"","",true,false],
 	["BloodPool_01_Large_New_F",[-2.005,-1.48389,0],0,1,0,[],"","",true,false],
-	["Land_CampingChair_V2_F",[2.16345,1.68433,9.05991e-006],0.00596005,1,0,[],"","",true,false],
-	["Land_CampingChair_V2_F",[2.87024,-1.69214,5.24521e-006],113.268,1,0,[],"","",true,false],
 	["MedicalGarbage_01_FirstAidKit_F",[-2.94604,1.72314,0.813],0,1,0,[],"","",true,false],
 	["Land_CampingTable_small_F",[-3.18835,1.52881,0.00260258],0.000636725,1,0,[],"","",true,false],
 	["MedicalGarbage_01_Bandage_F",[-3.26074,1.33423,0.813],0,1,0,[],"","",true,false],
 	["Land_Bandage_F",[-3.29333,1.60254,0.813],359.914,1,0,[],"","",true,false],
 	["Land_Bandage_F",[-3.2688,1.7605,0.813],359.918,1,0,[],"","",true,false],
 	["MedicalGarbage_01_Bandage_F",[-3.53369,1.27979,0.813],0,1,0,[],"","",true,false],
-	["MedicalGarbage_01_Gloves_F",[-3.49146,1.64087,0.813],0,1,0,[],"","",true,false],
 	["Land_Razorwire_F",[-1.79236,6.23291,-2.38419e-006],358.489,1,0,[],"","",true,false],
 	["Land_Razorwire_F",[-2.38623,-6.27271,-2.38419e-006],1.26291,1,0,[],"","",true,false],
 	[_bagFenceRound,[8.43384,2.3313,-0.00130129],297.741,1,0,[],"","",true,false],
@@ -70,14 +72,20 @@ private _objs = [
 	[_bagFenceRound,[-8.69055,-4.33398,-0.00130129],35.8032,1,0,[],"","",true,false]
 ];
 
+private _era = DEN_ERA(_faction);
+
+if (_era > ERA_WW2) then {
+    _objs pushBack ["Land_FMradio_F",[0.695068,2.21753,0.813],0.0186814,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CampingChair_V2_F",[2.16345,1.68433,9.05991e-006],0.00596005,1,0,[],"","",true,false];
+    _objs pushBack ["Land_CampingChair_V2_F",[2.87024,-1.69214,5.24521e-006],113.268,1,0,[],"","",true,false];
+    _objs pushBack ["MedicalGarbage_01_Gloves_F",[-3.49146,1.64087,0.813],0,1,0,[],"","",true,false];
+};
+
+if (_era >= ERA_MODERN) then {
+    _objs pushBack ["Land_PortableLongRangeRadio_F",[0.620361,1.86938,0.813],359.978,1,0,[],"","",true,false];
+    _objs pushBack ["Land_PortableLongRangeRadio_F",[0.66748,2.09155,0.813],359.985,1,0,[],"","",true,false];
+};
+
 [_pos, _dir, _objs] call BIS_fnc_objectsMapper;
 
-if (_faction == "" || ((_faction find "Gm") != 0)) then {
-    // Create contemporary objects if the faction is not GM related.
-    private _contemporaryObjs = [
-        ["Land_PortableLongRangeRadio_F",[0.620361,1.86938,0.813],359.978,1,0,[],"","",true,false],
-        ["Land_PortableLongRangeRadio_F",[0.66748,2.09155,0.813],359.985,1,0,[],"","",true,false]
-    ];
-
-    [_pos, _dir, _contemporaryObjs] call BIS_fnc_objectsMapper;
-};
+true;

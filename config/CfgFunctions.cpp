@@ -24,7 +24,7 @@ class CfgFunctions
         {
             file = "functions\common";
             class arsenal {};
-            class attackExtraction {};
+            class attackOnEvent {};
             class buildingOccupy {};
             class commandChat {};
             class coverMap {};
@@ -40,7 +40,7 @@ class CfgFunctions
             class hostage {};
             class initPlayer {};
             class insertAmbush {};
-            class insertHelo {};
+            class insertInfantry {};
             class insertMotorized {};
             class intelPositions {};
             class loadout {};
@@ -57,7 +57,7 @@ class CfgFunctions
             class sideChat {};
             class sling {};
             class spawnGroup {};
-            class spawnHeloTransport {};
+            class spawnInfantryTransport {};
             class spawnMotorDeploy {};
             class spawnRoadblock {};
             class spawnVehicle {};

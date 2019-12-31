@@ -23,9 +23,9 @@
 
     0: ARRAY - Position
 
-    1: (Optional) NUMBER - Direction
+    1: NUMBER - Direction
 
-    2: (Optional) STRING - faction
+    2: STRING - faction name
 
     Returns: true
 */
@@ -41,7 +41,10 @@ if (_pos isEqualTo []) exitWith {
      ERROR("pos parameter cannot be empty");
      false;
 };
-
+if (_faction == "") exitWith {
+    ERROR("faction parameter cannot be empty");
+    false;
+};
 private _fence = "Land_BagFence_Long_F";
 
 private _climate = DEN_CLIMATE;
@@ -70,8 +73,9 @@ private _objs = [
 
 [_pos, _dir, _objs] call BIS_fnc_objectsMapper;
 
-if (_faction == "" || ((_faction find "Gm") != 0)) then {
-    // Create contemporary objects if the faction is not GM related.
+private _era = DEN_ERA(_faction);
+if (_era >= ERA_MODERN) then {
+    // Create contemporary objects
     private _contemporaryObjs = [
         ["Land_PortableGenerator_01_F",[0.525391,2.08984,0],0.000137065,1,0,[],"","",true,false],
         ["Land_BottlePlastic_V2_F",[-1.76855,1.75928,0.847],0.0342765,1,0,[],"","",true,false],
@@ -84,4 +88,4 @@ if (_faction == "" || ((_faction find "Gm") != 0)) then {
     [_pos, _dir, _contemporaryObjs] call BIS_fnc_objectsMapper;
 };
 
-
+true;

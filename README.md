@@ -23,6 +23,7 @@ briefing.  Just play.
 * Multi terrain support.
 * Optional third party factions from RHS, CUP, 3CB, and more.
 * GM support.
+* IFA3 support.
 
 ## Required Mods
 

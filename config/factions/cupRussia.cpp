@@ -21,8 +21,13 @@ class CupRussia : Faction
     addOn       = "CUP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
     cargoBox    = "CargoNet_01_box_F";
+    era         = ERA_MODERN;
     flagTexture = "ca\data\flag_rus_co.paa";
     name        = "Russia";
+    patches[]   = {
+        "CUP_Vehicles_Core",
+        "CUP_Creatures_Military_Russia"
+    };
     playable    = 1;
     side        = SIDE_OPFOR;
 

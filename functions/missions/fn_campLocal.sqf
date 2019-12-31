@@ -52,11 +52,11 @@ private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _e
  */
 player createDiaryRecord ["Diary", ["Execution",
 "
-1. Reach the <marker name='lzMarker'>LZ</marker>.
+1. Reach the <marker name='insertMarker'>Insert</marker>.
 <br/>
 2. Raid enemy <marker name='campMarker'>camp</marker> for intel.
 <br/>
-3. Return to the <marker name='lzMarker'>LZ</marker>.
+3. Return to the <marker name='insertMarker'>Insert</marker>.
 "
 ]];
 

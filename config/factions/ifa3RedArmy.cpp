@@ -16,76 +16,142 @@
     <https://www.gnu.org/licenses/>.
 */
 
-class CupBundeswehr : Faction
+class Ifa3RedArmy : Faction
 {
-    addOn       = "CUP";
-    ammoBox     = "CUP_USBasicAmmunitionBox";
-    cargoBox    = "B_CargoNet_01_ammo_F";
-    era         = ERA_MODERN;
-    flagTexture = "ca\ca_e\data\flag_ger_co.paa";
-    name        = "Bundeswehr";
-    patches[]   = {
-        "CUP_Vehicles_Core",
-        "CUP_Creatures_Military_Germany"
+    addon        = "IFA3";
+    allies[]     = {
+        SIDE_GUER
     };
-    playable    = 1;
-    side        = SIDE_BLUFOR;
+    ammoBox      = "LIB_BasicAmmunitionBox_SU";
+    cargoBox     = "Land_WoodenCrate_01_stack_x5_F";
+    era          = ERA_WW2;
+    flagTexture  = "ww2\core_t\if_decals_t\ussr\flag_su_co.paa";
+    fullMoonOnly = 1;
+    name         = "Red Army";
+    patches[]    = {
+        "WW2_Assets_c_Characters_Soviets_c"
+    };
+    playable     = 1;
+    side         = SIDE_OPFOR;
 
-    class Arsenal : ArsenalCupWest
+    class Arsenal : ArsenalIfa3
     {
         class Base : Base
         {
+            grenades[] = {
+                "LIB_F1",
+                "LIB_RG42",
+                "LIB_US_M18"
+            };
+            explosives[] += {
+                "LIB_POMZEC_MINE_MAG",
+                "LIB_M3_MINE_MAG",
+                "LIB_TM44_MINE_MAG"
+            };
+            mags[] += {
+                "LIB_8Rnd_762x25",
+                "LIB_35Rnd_762x25",
+                "LIB_35Rnd_762x25_t",
+                "LIB_35Rnd_762x25_t2",
+                "LIB_35Rnd_762x25_ap",
+                "LIB_71Rnd_762x25",
+                "LIB_71Rnd_762x25_t",
+                "LIB_71Rnd_762x25_t2",
+                "LIB_71Rnd_762x25_ap",
+                "LIB_5Rnd_762x54",
+                "LIB_5Rnd_762x54_t46",
+                "LIB_5Rnd_762x54_t30",
+                "LIB_5Rnd_762x54_D",
+                "LIB_5Rnd_762x54_b30",
+                "LIB_10Rnd_762x54_t46",
+                "LIB_10Rnd_762x54_t30",
+                "LIB_10Rnd_762x54_t462",
+                "LIB_10Rnd_762x54_t302",
+                "LIB_10Rnd_762x54_d",
+                "LIB_10Rnd_762x54_b30",
+                "LIB_1Rnd_145x114",
+                "LIB_47Rnd_762x54",
+                "LIB_47Rnd_762x54d",
+                "LIB_1Rnd_RPzB",
+                "LIB_1Rnd_60mm_M6",
+                "LIB_1RND_G_DYAKONOV"
+            };
+
             weapons[] += {
-                "CUP_arifle_G36A",
-                "CUP_arifle_G36C",
-                "CUP_arifle_AG36",
-                "CUP_arifle_G36K",
-                "CUP_arifle_MG36"
+                "LIB_TT33",
+                "LIB_PPSH41_D",
+                "LIB_PPSH41_M",
+                "LIB_M9130",
+                "LIB_M9130_DYAKONOV",
+                "LIB_SVT_40",
+                "LIB_M38",
+                "LIB_PTRD",
+                "LIB_DP28",
+                "LIB_M9130PU",
+                "LIB_RPZB",
+                "LIB_PzFaust_30m"
             };
-            launchers[] += {
-                "CUP_launch_MAAWS"
+
+            sights[] = {};
+
+            helmets[] = {
+                "H_LIB_SOV_RA_HELMET",
+                "H_LIB_SOV_RA_PRIVATECAP"
             };
+
+            vests[] = {
+                "V_LIB_SOV_RA_MOSINBELT",
+                "V_LIB_SOV_RA_PPSHBELT",
+                "V_LIB_SOV_RA_MGBELT",
+                "V_LIB_SOV_RAZV_PPSHBELT",
+                "V_LIB_SOV_RA_SVTBELT",
+                "V_LIB_SOV_RAZV_SVTBELT",
+                "V_LIB_SOV_RAZV_MGBELT",
+                "V_LIB_SOV_RA_SNIPERVEST",
+                "V_LIB_SOV_ISHBRVESTPPSHDISC",
+                "V_LIB_SOV_ISHBRVESTMG",
+                "V_LIB_SOV_ISHBRVESTPPSHMAG"
+            };
+
             backpacks[] = {
-                "CUP_B_GER_Pack_Flecktarn",
-                "CUP_B_GER_Medic_FLecktarn"
+                "B_LIB_SOV_RA_GASBAG",
+                "B_LIB_SOV_RA_MGAMMOBAG",
+                "B_LIB_SOV_RA_MEDICALBAG",
+                "B_LIB_GER_PANZER",
+                "B_LIB_US_BACKPACK_ROCKETBAG",
+                "B_LIB_SOV_RA_RUCKSACKMINES",
+                "B_LIB_SOV_RA_PTRDAMMO",
+                "B_LIB_SOV_RA_RUCKSACK",
+                "B_LIB_SOV_RA_RUCKSACKMINES2",
+                "B_LIB_SOV_RA_SHINEL",
+                "B_LIB_SOV_RA_RUCKSACK2",
+                "B_LIB_SD_RKKA_LMG"
             };
         };
+
         class SemiArid : Base {};
         class Tropic   : Base {};
-        class Arid     : Base
-        {
-            cupBundesAridBackpacks[] = {
-                "CUP_B_GER_Pack_Tropentarn",
-                "CUP_B_GER_Medic_Tropentarn"
-            };
-        };
-        class Wood   : Base {};
-        class Winter : Base {};
+        class Arid     : Base {};
+        class Wood     : Base {};
+        class Winter   : Base {};
     };
 
     class Vehicle
     {
-        class SemiArid
+        class Base
         {
-            heloTransport      = "CUP_B_UH1D_GER_KSK";
-            heloTransportLarge = "CUP_B_CH53E_GER";
-            heloCargo          = "CUP_B_CH53E_GER";
-            truckAssault       = "CUP_B_Dingo_GER_Wdl";
-            truckSupplyAmmo    = "CUP_B_MTVR_Ammo_USMC";
-            truckSupplyCargo   = "CUP_B_MTVR_USMC";
-            truckSupplyFuel    = "CUP_B_MTVR_Refuel_USMC";
+            truckAssault     = "LIB_SdKfz251_captured_FFV";
+            truckSupplyAmmo  = "LIB_US6_Ammo";
+            truckSupplyCargo = "LIB_US6_Tent_Cargo";
+            truckSupplyFuel  = "LIB_US6_Open_Cargo";
+            truckTransport   = "LIB_US6_Tent";
         };
-        class Arid : SemiArid
-        {
-            heloTransport = "CUP_B_UH1D_GER_KSK_Des";
-            truckAssault  = "CUP_B_Dingo_GER_Des";
-        };
-        class Tropic : SemiArid {};
-        class Wood   : SemiArid {};
-        class Winter : SemiArid {};
+        class SemiArid : Base {};
+        class Arid     : Base {};
+        class Tropic   : Base {};
+        class Wood     : Base {};
+        class Winter   : Base {};
     };
-
-#define CUP_GER_NVG  "CUP_NVG_PVS14"
 
     class Group : Group
     {
@@ -95,193 +161,162 @@ class CupBundeswehr : Faction
         class Team   : Team {};
         class Triple : Triple {};
 
-        class SemiArid
+        class Base
         {
             class TruckCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_unequip";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
-                };
-            };
-            class HeloPilot : Couple
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
-                };
-            };
-            class HeloCrew : Couple
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_unequip";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_pilot";
                 };
             };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_rifleman";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_rifleman";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_TL";
+                    vehicle = "LIB_SOV_sergeant";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_MG";
+                    vehicle = "LIB_SOV_mgunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_AT";
+                    vehicle = "LIB_SOV_LAT_Soldier";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_rifleman";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_TL";
+                    vehicle = "LIB_SOV_sergeant";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_MG";
+                    vehicle = "LIB_SOV_mgunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_MG";
+                    vehicle = "LIB_SOV_mgunner";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_GL";
+                    vehicle = "LIB_SOV_grenadier";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_LAT_Soldier";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_AT";
+                    vehicle = "LIB_SOV_LAT_Soldier";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_AT";
+                    vehicle = "LIB_SOV_rifleman";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "CUP_B_GER_Fleck_Medic";
+                    vehicle = "LIB_SOV_medic";
                 };
             };
             class ReconSquad : Squad
             {
-                nvg = CUP_GER_NVG;
-
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_TL";
+                    vehicle = "LIB_SOV_scout_sergeant";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_MG";
+                    vehicle = "LIB_SOV_scout_mgunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_scout_smgunner";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_scout_rifleman";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_scout_rifleman";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_AT";
+                    vehicle = "LIB_SOV_scout_rifleman";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_scout_rifleman";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_scout_sniper";
                 };
             };
             class ReconTeam : Team
             {
-                nvg = CUP_GER_NVG;
-
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_TL";
+                    vehicle = "LIB_SOV_scout_sergeant";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier_MG";
+                    vehicle = "LIB_SOV_scout_mgunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_scout_rifleman";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
-                };
-            };
-            class MotorizedHmg : Single
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_Dingo_GER_Wdl";
+                    vehicle = "LIB_SOV_scout_rifleman";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CUP_B_Dingo_GER_Wdl";
+                    vehicle = "LIB_SdKfz251_captured_FFV";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_rifleman";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "CUP_B_GER_Fleck_Soldier";
+                    vehicle = "LIB_SOV_rifleman";
                 };
             };
             class MotorizedAssault : AssaultSquad
             {
-                type = "motorized";
-
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
@@ -294,247 +329,17 @@ class CupBundeswehr : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "CUP_B_Dingo_GER_Wdl";
+                    vehicle = "LIB_SdKfz251_captured_FFV";
                 };
             };
         };
-        class Arid : SemiArid
-        {
-           class TruckCrew : TruckCrew
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class HeloCrew : HeloCrew
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class Pilot : Pilot
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class Sentry : Sentry
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class FireTeam : FireTeam
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier_TL";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_GER_Soldier_AT";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class AssaultSquad : AssaultSquad
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier_TL";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_GER_Soldier_GL";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "CUP_B_GER_Soldier_AT";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "CUP_B_GER_Soldier_AT";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "CUP_B_GER_Medic";
-                };
-            };
-            class ReconSquad : ReconSquad
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier_TL";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "CUP_B_GER_Soldier_AT";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class ReconTeam : ReconTeam
-            {
-                nvg = CUP_GER_NVG;
-
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier_TL";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_Dingo_GER_Des";
-                };
-            };
-            class MotorizedTeam : MotorizedTeam
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_Dingo_GER_Des";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-            };
-            class MotorizedAssault : MotorizedAssault
-            {
-                class Unit0 : Unit0
-                {
-                    vehicle = "CUP_B_GER_Soldier_TL";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "CUP_B_GER_Soldier_MG";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "CUP_B_GER_Soldier_GL";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "CUP_B_GER_Soldier";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "CUP_B_GER_Soldier_AT";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "CUP_B_GER_Soldier_AT";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "CUP_B_GER_Medic";
-                };
-                class Unit8 : Unit8
-                {
-                    vehicle = "CUP_B_Dingo_GER_Des";
-                };
-            };
-        };
-        class Tropic : SemiArid
+        class SemiArid : Base
         {
             class TruckCrew : TruckCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
             };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-            };
-            class HeloCrew  : HeloCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
             class Pilot : Pilot
             {
                 class Unit0 : Unit0 {};
@@ -579,10 +384,6 @@ class CupBundeswehr : Faction
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
                 class Unit3 : Unit3 {};
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
@@ -603,19 +404,9 @@ class CupBundeswehr : Faction
                 class Unit8 : Unit8 {};
             };
         };
-        class Wood : SemiArid
+        class Arid : Base
         {
             class TruckCrew : TruckCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloCrew  : HeloCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -664,10 +455,6 @@ class CupBundeswehr : Faction
                 class Unit1 : Unit1 {};
                 class Unit2 : Unit2 {};
                 class Unit3 : Unit3 {};
-            };
-            class MotorizedHmg : MotorizedHmg
-            {
-                class Unit0 : Unit0 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
@@ -688,18 +475,9 @@ class CupBundeswehr : Faction
                 class Unit8 : Unit8 {};
             };
         };
-        class Winter : SemiArid
+      class Tropic : Base
         {
             class TruckCrew : TruckCrew
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-            };
-            class HeloPilot : HeloPilot
-            {
-                class Unit0 : Unit0 {};
-            };
-            class HeloCrew  : HeloCrew
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -749,9 +527,147 @@ class CupBundeswehr : Faction
                 class Unit2 : Unit2 {};
                 class Unit3 : Unit3 {};
             };
-            class MotorizedHmg : MotorizedHmg
+            class MotorizedTeam : MotorizedTeam
             {
                 class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Wood : Base
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+        class Winter : Base
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};;
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
             };
             class MotorizedTeam : MotorizedTeam
             {
@@ -774,208 +690,209 @@ class CupBundeswehr : Faction
         };
     };
 
-#define CUP_GER_AUTORIFLE_MG36_MAG_COUNT   6
-#define CUP_GER_AUTORIFLE_M249_MAG_COUNT   4
-#define CUP_GER_AT_MAG_COUNT              11
-#define CUP_GER_GRENADIRE_MAG_COUNT       11
-#define CUP_GER_MARKSMAN_MAG_COUNT        10
-#define CUP_GER_MEDIC_MAG_COUNT           11
-#define CUP_GER_RIFLEMAN_MAG_COUNT        11
+#define IFA3_RED_AT_MAG_COUNT            11
+#define IFA3_RED_AUTORIFLE_MAG_COUNT     10
+#define IFA3_RED_GRENADIRE_MAG_COUNT     11
+#define IFA3_RED_MARKSMAN_MAG_COUNT      11
+#define IFA3_RED_MEDIC_MAG_COUNT         11
+#define IFA3_RED_RIFLEMAN_MAG_COUNT      11
+#define IFA3_RED_RIFLEMAN_PPSH_MAG_COUNT  5
 
-    class Loadout : Loadout
+    class Loadout : LoadoutIfa3
     {
         class Base : Base
         {
-            aceBinoculars = "ACE_Vector";
-            aceNvg        = "ACE_NVG_Wide";
-
-            handgun    = "CUP_hgun_Glock17_blk";
-            binoculars = "CUP_Vector21Nite";
-            headgear   = "CUP_H_Ger_M92_Cover";
-            rifleSight = "cup_optic_acog";
-            nvg        = "CUP_NVG_PVS15_black";
-            rifleLight = "cup_acc_flashlight";
-            primaryMag = "CUP_30Rnd_556x45_G36";
+            binoculars = "LIB_Binocular_SU";
+            headgear   = "H_LIB_SOV_RA_Helmet";
+            primaryMag = "LIB_5RND_762X54";
 
             class Uniform : Uniform
             {
-                type = "CUP_U_B_GER_Flecktarn_1";
-
-                items[] += {
-                    "CUP_17Rnd_9x19_glock17",
-                    "CUP_17Rnd_9x19_glock17"
-                };
+                type = "U_LIB_SOV_Strelok_summer";
             };
             class Vest : Vest
             {
-                type = "CUP_V_B_GER_Carrier_Vest_3";
+                type = "V_LIB_SOV_RA_MosinBelt";
             };
             class Backpack : Backpack
             {
-                type = "CUP_B_GER_Pack_Flecktarn";
+                type = "B_LIB_SOV_RA_Rucksack";
             };
-            class LinkedItems : LinkedItems {}
+            class LinkedItems : LinkedItems {};
         };
         class RiflemanBase : Base
         {
-            unit            = "CUP_B_GER_Fleck_Soldier";
-            primaryMagCount = CUP_GER_RIFLEMAN_MAG_COUNT;
+            unit            = "LIB_SOV_rifleman";
+            primaryMagCount = IFA3_RED_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen"
+                    "LIB_F1",
+                    "LIB_F1",
+                    "LIB_US_M18",
+                    "LIB_US_M18"
                 };
             };
             class Backpack : Backpack
             {
                 items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67"
+                    "LIB_F1",
+                    "LIB_F1",
+                    "LIB_F1",
+                    "LIB_F1"
                 };
             };
             class LinkedItems : LinkedItems {};
         };
         class GrenadierBase : RiflemanBase
         {
-            unit              = "CUP_B_GER_Fleck_Soldier_GL";
-            primaryMagCount   = CUP_GER_GRENADIRE_MAG_COUNT;
-            secondaryMag      = "CUP_1Rnd_HE_M203";
-            secondaryMagCount = 10;
+            unit              = "LIB_SOV_grenadier";
+            primaryMagCount   = IFA3_RED_GRENADIRE_MAG_COUNT;
+            secondaryMag      = "LIB_1Rnd_G_DYAKONOV";
+            secondaryMagCount = 5;
 
-            class Uniform : Uniform {};
-            class Vest    : Vest
-            {
-               items[] += {
-                    "CUP_1Rnd_Smoke_M203"
-               };
-            };
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class SquadLeaderBase : GrenadierBase
+        {
+            unit = "LIB_SOV_sergeant";
+
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
             class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class AutorifleBase : Base
         {
-            unit        = "CUP_B_GER_Fleck_Soldier_MG";
-            rifleBipod  = "";
+            unit = "LIB_SOV_mgunner";
 
-            class Uniform  : Uniform {};
-            class Vest     : Vest {
-                 items[] += {
-                   "CUP_HandGrenade_M67",
-                   "CUP_HandGrenade_M67",
-                   "SmokeShellGreen",
-                   "SmokeShellGreen"
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
+            class Backpack : Backpack
+            {
+                type = "B_LIB_SOV_RA_Rucksack2_Gas_Kit_Shinel";
+
+                items[] += {
+                   "LIB_F1",
+                   "LIB_F1",
+                   "LIB_F1",
+                   "LIB_F1",
+                   "LIB_US_M18",
+                   "LIB_US_M18"
                 };
             };
-            class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class MarksmanBase : Base
         {
-            unit            = "CUP_B_GER_Fleck_Soldier";
-            rifleSight      = "cup_optic_rco";
-            rifleBipod      = "cup_bipod_harris_1a2_l";
-            primaryMagCount = CUP_GER_MARKSMAN_MAG_COUNT;
+            unit            = "LIB_SOV_scout_sniper";
+            primaryMagCount = IFA3_RED_MARKSMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-               items[] += {
-                  "CUP_HandGrenade_M67",
-                  "CUP_HandGrenade_M67",
-                  "SmokeShellGreen",
-                  "SmokeShellGreen"
+                items[] += {
+                  "LIB_F1",
+                  "LIB_F1",
+                  "LIB_US_M18",
+                  "LIB_US_M18"
                };
             };
-            class Backpack : Backpack
-            {
-                items[] += {
-                  "cup_optic_leupoldmk4"
-                };
-            };
+            class Backpack    : Backpack {};
             class LinkedItems : LinkedItems {};
         };
         class MedicBase : Base
         {
-            unit            = "CUP_B_GER_Fleck_Medic";
-            primaryMagCount = CUP_GER_MEDIC_MAG_COUNT;
-
+            unit            = "LIB_SOV_medic";
+            primaryMagCount = IFA3_RED_MEDIC_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
                 items[] += {
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "SmokeShellGreen",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67"
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_US_M18",
+                    "LIB_F1",
+                    "LIB_F1",
+                    "LIB_F1",
+                    "LIB_F1"
                 };
             };
             class Backpack : MedicBackpack
             {
-                type = "CUP_B_GER_Medic_FLecktarn";
+                type = "B_LIB_SOV_RA_MedicalBag_Empty";
             };
             class LinkedItems : LinkedItems {};
         };
-        class AtBase : RiflemanBase
+        class AtBase : Base
         {
-            rifle           = "CUP_arifle_G36A";
-            primaryMagCount = CUP_GER_AT_MAG_COUNT;
-
-            class Uniform     : Uniform {};
-            class Vest        : Vest {};
-            class LinkedItems : LinkedItems {};
-        };
-        class EodBase : Base
-        {
-            unit            = "CUP_B_GER_Fleck_Soldier";
-            primaryMagCount = CUP_GER_RIFLEMAN_MAG_COUNT;
+            unit            = "LIB_SOV_LAT_Soldier";
+            rifle           = "LIB_PPSh41_d";
+            primaryMag      = "LIB_35Rnd_762x25";
+            primaryMagCount = IFA3_RED_AT_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                items[] += {
-                    "HandGrenade",
-                    "HandGrenade",
-                    "SmokeShell",
-                    "SmokeShell"
+                   "LIB_F1",
+                   "LIB_F1",
+                   "LIB_US_M18"
+               };
+            };
+            class Backpack : Backpack
+            {
+                type = "B_LIB_SOV_RA_Rucksack2_Gas_Kit_Shinel";
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EodBase : Base
+        {
+            unit            = "LIB_SOV_sapper";
+            primaryMagCount = IFA3_RED_RIFLEMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               items[] += {
+                    "LIB_F1",
+                    "LIB_F1",
+                    "LIB_US_M18",
+                    "LIB_US_M18"
                 };
             };
             class Backpack : Backpack
             {
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
+                type = "B_LIB_SOV_RA_Rucksack2_Gas_Kit_Shinel";
+
+                items[] += {
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag"
                 };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
+                aceItems[] += {
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -987,6 +904,8 @@ class CupBundeswehr : Faction
 
             class Backpack : Backpack
             {
+                type = "B_LIB_SOV_RA_Rucksack2_Gas_Kit_Shinel";
+
                 items[] += {
                     "ToolKit"
                 };
@@ -999,31 +918,44 @@ class CupBundeswehr : Faction
             {
                 role = "Rifleman";
 
-                class G36A : RiflemanBase
+                class M9130 : RiflemanBase
                 {
-                    type    = "G36A";
-                    rifle   = "CUP_arifle_G36A";
-                    default = 1;
+                    default    = 1;
+                    type       = "Mosin Nagant";
+                    rifle      = "LIB_M9130";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : RiflemanBase
+                class M38 : RiflemanBase
                 {
-                    type    = "G36C";
-                    rifle   = "CUP_arifle_G36C";
+                    type       = "Mosin Nagant M38";
+                    rifle      = "LIB_M38";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : RiflemanBase
+                class Svt : RiflemanBase
                 {
-                    type    = "G36K";
-                    rifle   = "CUP_arifle_G36K";
+                    type       = "SVT-40";
+                    rifle      = "LIB_SVT_40";
+                    primaryMag = "LIB_10Rnd_762x54";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : RiflemanBase
+                {
+                    type       = "PPSh-41";
+                    rifle      = "LIB_PPSH41_D";
+                    primaryMag = "LIB_35Rnd_762x25";
+                    primaryMagCount = IFA3_RED_RIFLEMAN_PPSH_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1035,11 +967,11 @@ class CupBundeswehr : Faction
             {
                 role = "Grenadier";
 
-                class G36 : GrenadierBase
+                class M9130 : GrenadierBase
                 {
-                    type    = "G36 GL";
-                    rifle   = "CUP_arifle_AG36";
-                    default = 1;
+                    default    = 1;
+                    type       = "Mosin Nagant";
+                    rifle      = "LIB_M9130_DYAKONOV";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1051,9 +983,10 @@ class CupBundeswehr : Faction
             {
                 role = "Squad Leader";
 
-                class G36 : G36
+                class M9130 : M9130
                 {
-                    unit = "CUP_B_GER_Fleck_Soldier_TL";
+                    default = 1;
+                    unit    = "LIB_SOV_sergeant";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1065,13 +998,13 @@ class CupBundeswehr : Faction
             {
                 role = "Autorifleman";
 
-                class Mg36 : AutorifleBase
+                class Dp : AutorifleBase
                 {
-                    type            = "MG36";
-                    rifle           = "CUP_arifle_MG36";
-                    primaryMag      = "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag";
-                    primaryMagCount = CUP_GER_AUTORIFLE_MG36_MAG_COUNT;
-                    default = 1;
+                    default         = 1;
+                    type            = "DP";
+                    rifle           = "LIB_DP28";
+                    primaryMag      = "LIB_47Rnd_762x54";
+                    primaryMagCount = IFA3_RED_AUTORIFLE_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1083,12 +1016,11 @@ class CupBundeswehr : Faction
             {
                 role = "Marksman";
 
-                class L129 : MarksmanBase
+                class M9130PU : MarksmanBase
                 {
-                    type       = "L129A1";
-                    rifle      = "CUP_srifle_L129A1_HG";
-                    primaryMag = "20Rnd_762x51_Mag";
-                    default    = 1;
+                    default = 1;
+                    type    = "Mosin Nagant PU";
+                    rifle   = "LIB_M9130PU";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1100,31 +1032,44 @@ class CupBundeswehr : Faction
             {
                 role = "Medic";
 
-                class G36A : MedicBase
+                class M9130 : MedicBase
                 {
-                    type    = "G36A";
-                    rifle   = "CUP_arifle_G36A";
-                    default = 1;
+                    default    = 1;
+                    type       = "Mosin Nagant";
+                    rifle      = "LIB_M9130";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : MedicBase
+                class M38 : MedicBase
                 {
-                    type    = "G36C";
-                    rifle   = "CUP_arifle_G36C";
+                    type       = "Mosin Nagant M38";
+                    rifle      = "LIB_M38";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : MedicBase
+                class Svt : MedicBase
                 {
-                    type    = "G36K";
-                    rifle   = "CUP_arifle_G36K";
+                    type       = "SVT-40";
+                    rifle      = "LIB_SVT_40";
+                    primaryMag = "LIB_10Rnd_762x54";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : MedicBase
+                {
+                    type       = "PPSh-41";
+                    rifle      = "LIB_PPSH41_D";
+                    primaryMag = "LIB_35Rnd_762x25";
+                    primaryMagCount = IFA3_RED_RIFLEMAN_PPSH_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1136,57 +1081,87 @@ class CupBundeswehr : Faction
             {
                 role = "Anti-Tank";
 
-                class M27a6 : AtBase
+                class PzFaust60 : AtBase
                 {
-                    type     = "M27A6";
-                    launcher = "CUP_launch_M72A6";
+                    default           = 1;
+                    type              = "PanzerFaust 60";
+                    launcher          = "LIB_PzFaust_60m";
+                    secondaryMag      = "LIB_1Rnd_PzFaust_60m";
+                    secondaryMagCount = 3;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : AtBase
+                class PzFaust30 : AtBase
                 {
-                    type     = "M136";
-                    launcher = "CUP_launch_M136";
-                    default  = 1;
+                    type              = "PanzerFaust 30";
+                    launcher          = "LIB_PzFaust_30m";
+                    secondaryMag      = "LIB_1Rnd_PzFaust_30m";
+                    secondaryMagCount = 3;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Rpzb : AtBase
+                {
+                    type              = "RPZB";
+                    launcher          = "LIB_RPzB";
+                    secondaryMag      = "LIB_1Rnd_RPzB";
+                    secondaryMagCount = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+
             };
             class Eod
             {
                 role = "EOD";
 
-                class G36A : EodBase
+                class M9130 : EodBase
                 {
-                    type    = "G36A";
-                    rifle   = "CUP_arifle_G36A";
-                    default = 1;
+                    default    = 1;
+                    type       = "Mosin Nagant";
+                    rifle      = "LIB_M9130";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : EodBase
+                class M38 : EodBase
                 {
-                    type    = "G36C";
-                    rifle   = "CUP_arifle_G36C";
+                    type       = "Mosin Nagant M38";
+                    rifle      = "LIB_M38";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : EodBase
+                class Svt : EodBase
                 {
-                    type    = "G36K";
-                    rifle   = "CUP_arifle_G36K";
+                    type       = "SVT-40";
+                    rifle      = "LIB_SVT_40";
+                    primaryMag = "LIB_10Rnd_762x54";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : EodBase
+                {
+                    type       = "PPSh-41";
+                    rifle      = "LIB_PPSH41_D";
+                    primaryMag = "LIB_35Rnd_762x25";
+                    primaryMagCount = IFA3_RED_RIFLEMAN_PPSH_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1198,31 +1173,44 @@ class CupBundeswehr : Faction
             {
                 role = "Engineer";
 
-                class G36A : EngineerBase
+                class M9130 : EodBase
                 {
-                    type    = "G36A";
-                    rifle   = "CUP_arifle_G36A";
-                    default = 1;
+                    default    = 1;
+                    type       = "Mosin Nagant";
+                    rifle      = "LIB_M9130";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : EngineerBase
+                class M38 : EodBase
                 {
-                    type    = "G36C";
-                    rifle   = "CUP_arifle_G36C";
+                    type       = "Mosin Nagant M38";
+                    rifle      = "LIB_M38";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : EngineerBase
+                class Svt : EodBase
                 {
-                    type    = "G36K";
-                    rifle   = "CUP_arifle_G36K";
+                    type       = "SVT-40";
+                    rifle      = "LIB_SVT_40";
+                    primaryMag = "LIB_10Rnd_762x54";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : EodBase
+                {
+                    type       = "PPSh-41";
+                    rifle      = "LIB_PPSH41_D";
+                    primaryMag = "LIB_35Rnd_762x25";
+                    primaryMagCount = IFA3_RED_RIFLEMAN_PPSH_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1235,354 +1223,190 @@ class CupBundeswehr : Faction
         {
             class Rifleman : Rifleman
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G36 : G36
+                class PPSh41 : PPSh41
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg36 : Mg36
-                {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
             class Grenadier : Grenadier
             {
-                class G36 : G36
+                class M9130 : M9130
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class M9130 : M9130
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Dp :  Dp
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class M9130PU : M9130PU
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
             class Medic : Medic
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Medic_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Medic_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Medic_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
             class At : At
             {
-                role = "Anti-Tank";
-
-                class M27a6 : M27a6
+                class PzFaust60 : PzFaust60
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : M136
+                class PzFaust30 : PzFaust30
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Rpzb : Rpzb
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+
             };
             class Eod : Eod
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
-                    class LinkedItems   : LinkedItems {};
-                };
-                class G36C : G36C
-                {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class M38 : M38
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
             class Engineer : Engineer
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
-                    class LinkedItems   : LinkedItems {};
-                };
-                class G36C : G36C
-                {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class M38 : M38
                 {
-                    headgear = "CUP_H_Ger_M92_Cover_Trop";
-
-                    class Uniform : Uniform
-                    {
-                        type = "CUP_U_B_GER_Tropentarn_1";
-                    };
-                    class Vest : Vest
-                    {
-                        type = "CUP_V_I_RACS_Carrier_Vest";
-                    };
-                    class Backpack : Backpack
-                    {
-                        type = "CUP_B_GER_Pack_Tropentarn";
-                    };
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
@@ -1591,41 +1415,28 @@ class CupBundeswehr : Faction
         {
             class Rifleman : Rifleman
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G36 : G36
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg36 : Mg36
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1635,7 +1446,27 @@ class CupBundeswehr : Faction
             };
             class Grenadier : Grenadier
             {
-                class G36 : G36
+                class M9130 : M9130
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class M9130 : M9130
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Dp :  Dp
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1645,7 +1476,7 @@ class CupBundeswehr : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class M9130PU : M9130PU
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1655,21 +1486,28 @@ class CupBundeswehr : Faction
             };
             class Medic : Medic
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1679,38 +1517,53 @@ class CupBundeswehr : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
+                class PzFaust60 : PzFaust60
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : M136
+                class PzFaust30 : PzFaust30
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Rpzb : Rpzb
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+
             };
             class Eod : Eod
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1720,21 +1573,28 @@ class CupBundeswehr : Faction
             };
             class Engineer : Engineer
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1747,41 +1607,28 @@ class CupBundeswehr : Faction
         {
             class Rifleman : Rifleman
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G36 : G36
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg36 : Mg36
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1791,7 +1638,27 @@ class CupBundeswehr : Faction
             };
             class Grenadier : Grenadier
             {
-                class G36 : G36
+                class M9130 : M9130
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class M9130 : M9130
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Dp :  Dp
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1801,7 +1668,7 @@ class CupBundeswehr : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class M9130PU : M9130PU
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1811,21 +1678,28 @@ class CupBundeswehr : Faction
             };
             class Medic : Medic
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1835,38 +1709,53 @@ class CupBundeswehr : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
+                class PzFaust60 : PzFaust60
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : M136
+                class PzFaust30 : PzFaust30
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Rpzb : Rpzb
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+
             };
             class Eod : Eod
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1876,21 +1765,28 @@ class CupBundeswehr : Faction
             };
             class Engineer : Engineer
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1903,41 +1799,28 @@ class CupBundeswehr : Faction
         {
             class Rifleman : Rifleman
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G36 : G36
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg36 : Mg36
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1947,7 +1830,27 @@ class CupBundeswehr : Faction
             };
             class Grenadier : Grenadier
             {
-                class G36 : G36
+                class M9130 : M9130
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class M9130 : M9130
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems   : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Dp :  Dp
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1957,7 +1860,7 @@ class CupBundeswehr : Faction
             };
             class Marksman : Marksman
             {
-                class L129 : L129
+                class M9130PU : M9130PU
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1967,21 +1870,28 @@ class CupBundeswehr : Faction
             };
             class Medic : Medic
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1991,38 +1901,53 @@ class CupBundeswehr : Faction
             };
             class At : At
             {
-                class M27a6 : M27a6
+                class PzFaust60 : PzFaust60
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : M136
+                class PzFaust30 : PzFaust30
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Rpzb : Rpzb
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+
             };
             class Eod : Eod
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -2032,21 +1957,28 @@ class CupBundeswehr : Faction
             };
             class Engineer : Engineer
             {
-                class G36A : G36A
+                class M9130 : M9130
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36C : G36C
+                class M38 : M38
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G36K : G36K
+                class Svt : Svt
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class PPSh41 : PPSh41
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

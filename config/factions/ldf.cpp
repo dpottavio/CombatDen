@@ -20,8 +20,12 @@ class Ldf : Faction
 {
     ammoBox     = "Box_EAF_Ammo_F";
     cargoBox    = "I_E_CargoNet_01_ammo_F";
+    era         = ERA_2034;
     flagTexture = "a3\data_f_enoch\flags\flag_eaf_co.paa";
     name        = "LDF";
+    patches[]    = {
+        "A3_Characters_F_Enoch"
+    };
     playable    = 1;
     side        = SIDE_GUER;
 

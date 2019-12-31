@@ -33,6 +33,7 @@ class Header
 	maxPlayers = 9;
 };
 
+#include "cfgMacros.hpp"
 #include "config\CfgCompositions.cpp"
 #include "config\CfgDebriefing.cpp"
 #include "config\CfgFactions.cpp"

@@ -21,8 +21,12 @@ class RhsRussia : Faction
     addon       = "RHS";
     ammoBox     = "rhs_7ya37_1_single";
     cargoBox    = "CargoNet_01_box_F";
+    era         = ERA_MODERN;
     flagTexture = "rhsafrf\addons\rhs_main\data\flag_rus_co.paa";
     name        = "Russia";
+    patches[]    = {
+        "rhs_c_troops"
+    };
     playable    = 1;
     side        = SIDE_OPFOR;
 

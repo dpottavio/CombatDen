@@ -118,12 +118,12 @@ if (_area isEqualTo []) then {
         } count allUnits;
 
         if (_enemyAtLz == 0) exitWith {
-            den_lzExtract = true;
+            den_insertExtract = true;
         };
         sleep 1;
     };
 
-    if (DEN_FACTION_HAS_TRANSPORT_HELO(_faction)) then {
+    if (DEN_HAS_TRANSPORT_HELO(_faction)) then {
         /*
          * If the faction has one, send a transport helicopter.
          */

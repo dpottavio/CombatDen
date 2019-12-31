@@ -68,16 +68,16 @@ if (_enemyFaction == "") exitWith {
  * max radius for AO objects
  */
 private _zoneRadius   = 400;
-private _minLz        = _zoneRadius + 300;
-private _maxLz        = _zoneRadius + 350;
-private _minReinforce = _minLz;
-private _maxReinforce = _maxLz;
+private _minInsert    = _zoneRadius + 300;
+private _maxInsert    = _zoneRadius + 350;
+private _minReinforce = _minInsert;
+private _maxReinforce = _maxInsert;
 private _maxHostage   = _zoneRadius * 0.25;
 private _maxReact     = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 
 private _safePosParams = [
-    [_minLz,        _maxLz,        15, 0.1], // lz safe pos
+    [_minInsert,    _maxInsert,    15, 0.1], // insert safe pos
     [_minReinforce, _maxReinforce, 15, 0.1], // reinforcements safe pos
     [0,             _maxHostage,   15, 0.1], // hostage safe pos
     [0,             _maxReact,     15, 0.1], // reaction force safe pos
@@ -105,7 +105,7 @@ private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
-private _lzPos           = _zoneSafePosList select 0;
+private _insertPos       = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _hostagePos      = _zoneSafePosList select 2;
 private _reactPos        = _zoneSafePosList select 3;
@@ -113,19 +113,19 @@ private _patrolPos       = _zoneSafePosList select 4;
 
 private _transport = [
     _zonePos,
-    _lzPos,
+    _insertPos,
     _transportPos,
     _transportDir,
     _playerGroup,
     _friendlyFaction
-] call den_fnc_insertHelo;
+] call den_fnc_insertInfantry;
 
 if (isNull _transport) exitWith {
     ERROR("failed to create transport");
     [];
 };
 
-private _success = [_lzPos, _playerGroup, _friendlyFaction, "den_hostageFree", _zoneArea] call den_fnc_extract;
+private _success = [_insertPos, _playerGroup, _friendlyFaction, "den_hostageFree", _zoneArea] call den_fnc_extract;
 if !(_success) exitWith {
     ERROR("failed to set extraction");
     [];
@@ -181,12 +181,11 @@ createGuardedPoint [_enemySide, _hostagePos, -1, objNull];
  */
 [_zonePos, _zoneRadius, 2, _enemyFaction, [_hostagePos]] call den_fnc_spawnRoadblock;
 
-private _guard1Type        = "FireTeam";
-private _guard2Type        = "FireTeam";
-private _reactType         = "MotorizedTeam";
-private _patrolType        = "Sentry";
-private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
-private _extractAttackType = "FireTeam";
+private _guard1Type    = "FireTeam";
+private _guard2Type    = "FireTeam";
+private _reactType     = "MotorizedTeam";
+private _patrolType    = "Sentry";
+private _reinforceArgs = [[_reinforcePos, "AssaultSquad"]];
 
 switch (_difficulty) do {
     case 1: {
@@ -224,11 +223,11 @@ if (isNull _reactGroup) exitWith {
 };
 
 /*
- * Select either the current patrol pos, or the LZ by random.
+ * Select either the current patrol pos, or the Insert by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _reactWpPos = selectRandom [_reactPos, _lzPos];
+private _reactWpPos = selectRandom [_reactPos, _insertPos];
 [_reactGroup, _reactWpPos] spawn {
     params ["_group", "_pos"];
 
@@ -249,13 +248,13 @@ if (isNull _patrolGroup) exitWith {
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _lzPos, _enemyFaction, _extractAttackType] call den_fnc_attackExtraction;
+[_reinforcePos, _insertPos, "den_insertExtract", _enemyFaction] call den_fnc_attackOnEvent;
 
 /*
  * enemy markers
  */
-private _infMarkerPos   = _hostagePos getPos [100, (_hostagePos getDir _lzPos)];
-private _motorMarkerPos = _hostagePos getPos [150, (_hostagePos getDir _lzPos)];
+private _infMarkerPos   = _hostagePos getPos [100, (_hostagePos getDir _insertPos)];
+private _motorMarkerPos = _hostagePos getPos [150, (_hostagePos getDir _insertPos)];
 
 private _marker = createMarker ["enemyInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
@@ -265,7 +264,7 @@ _marker = createMarker ["enemyMotorMarker", _motorMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "motorized"));
 _marker setMarkerColor _enemyColor;
 
-[_lzPos, _zoneArea] call den_fnc_coverMap;
+[_insertPos, _zoneArea] call den_fnc_coverMap;
 
 /*
  * task state machine logic
@@ -273,12 +272,12 @@ _marker setMarkerColor _enemyColor;
 private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[_side, "boardInsert",     "BoardInsert", _transport, "CREATED", 1, true, "getin"], "den_insert"],
-    [[_side, "hostageFreeTask", "FreeHostage", objNull,    "CREATED", 1, true, "help"],  "den_hostageFree"],
-    [[_side, "lzExtract",       "LzExtract",   "lzMarker", "CREATED", 1, true, "move"],  "den_lzExtract"]
+    [[_side, "boardInsert",     "BoardInsert",   _transport,     "CREATED", 1, true, "getin"], "den_insert"],
+    [[_side, "hostageFreeTask", "FreeHostage",   objNull,        "CREATED", 1, true, "help"],  "den_hostageFree"],
+    [[_side, "insertExtract",   "InsertExtract", "insertMarker", "CREATED", 1, true, "move"],  "den_insertExtract"]
 ];
 
-if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+if (DEN_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
     // If faction has a transport helo, add boarding it the final task.
     _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
 };

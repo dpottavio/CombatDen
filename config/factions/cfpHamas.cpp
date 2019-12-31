@@ -20,8 +20,12 @@ class CfpHamas : Faction
 {
     addon       = "CFP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
+    era         = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\hamas.paa";
     name        = "Hamas";
+    patches[]   = {
+        "CFP_O_HAMAS"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

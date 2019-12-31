@@ -68,16 +68,16 @@ if (_enemyFaction == "") exitWith {
  * max radius for AO objects
  */
 private _zoneRadius   = 400;
-private _minLz        = _zoneRadius + 300;
-private _maxLz        = _zoneRadius + 350;
-private _minReinforce = _minLz;
-private _maxReinforce = _maxLz;
+private _minInsert    = _zoneRadius + 300;
+private _maxInsert    = _zoneRadius + 350;
+private _minReinforce = _minInsert;
+private _maxReinforce = _maxInsert;
 private _maxCamp      = _zoneRadius * 0.25;
 private _maxReact     = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol    = _zoneRadius * 0.75; // patrol
 
 private _safePosParams = [
-    [_minLz,        _maxLz,        15, 0.1], // lz safe position
+    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
     [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
     [0,             _maxCamp,      20, 0.1], // camp safe position
     [0,             _maxReact,      5,  -1], // patrol safe position
@@ -103,7 +103,7 @@ private _zoneArea        = _zone select 1;
 private _zoneSafePosList = _zone select 2;
 private _zoneRadius      = _zoneArea select 1;
 private _zonePos         = _zoneArea select 0;
-private _lzPos           = _zoneSafePosList select 0;
+private _insertPos       = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _campPos         = _zoneSafePosList select 2;
 private _reactPos        = _zoneSafePosList select 3;
@@ -111,19 +111,19 @@ private _patrolPos       = _zoneSafePosList select 4;
 
 private _transport = [
     _zonePos,
-    _lzPos,
+    _insertPos,
     _transportPos,
     _transportDir,
     _playerGroup,
     _friendlyFaction
-] call den_fnc_insertHelo;
+] call den_fnc_insertInfantry;
 
 if (isNull _transport) exitWith {
     ERROR("failed to create transport");
     [];
 };
 
-private _success = [_lzPos, _playerGroup, _friendlyFaction, "den_intelFound", _zoneArea] call den_fnc_extract;
+private _success = [_insertPos, _playerGroup, _friendlyFaction, "den_intelFound", _zoneArea] call den_fnc_extract;
 if !(_success) exitWith {
     ERROR("failed to set extraction");
     [];
@@ -149,11 +149,10 @@ createMarker ["campMarker", _campPos];
 private _enemySide = [_enemyFaction] call den_fnc_factionSide;
 createGuardedPoint [_enemySide, _campPos, -1, objNull];
 
-private _guardType         = "ReconSquad";
-private _reactType         = "ReconTeam";
-private _patrolType        = "Sentry";
-private _reinforceArgs     = [[_reinforcePos, "AssaultSquad"]];
-private _extractAttackType = "FireTeam";
+private _guardType     = "ReconSquad";
+private _reactType     = "ReconTeam";
+private _patrolType    = "Sentry";
+private _reinforceArgs = [[_reinforcePos, "AssaultSquad"]];
 
 switch (_difficulty) do {
     case 1: {
@@ -195,11 +194,11 @@ if (isNull _reactGroup) exitWith {
 };
 
 /*
- * Select either the current patrol pos, or the LZ by random.
+ * Select either the current patrol pos, or the Insert by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _reactWpPos = selectRandom [_reactPos, _lzPos];
+private _reactWpPos = selectRandom [_reactPos, _insertPos];
 [_reactGroup, _reactWpPos] spawn {
     params ["_group", "_pos"];
 
@@ -218,7 +217,7 @@ if (isNull _patrolGroup) exitWith {
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _lzPos, _enemyFaction, _extractAttackType] call den_fnc_attackExtraction;
+[_reinforcePos, _insertPos, "den_insertExtract", _enemyFaction] call den_fnc_attackOnEvent;
 
 /*
  * Attach a search action to a random camp unit to
@@ -232,8 +231,8 @@ if (_searchItems isEqualTo []) then {
 den_searchItem = selectRandom (_searchItems);
 publicVariable "den_searchItem";
 
-[_lzPos, _enemyFaction] spawn {
-    params ["_lzPos", "_enemyFaction"];
+[_insertPos, _enemyFaction] spawn {
+    params ["_insertPos", "_enemyFaction"];
 
     while {isNil "den_campSeized"} do {
         sleep 1;
@@ -243,8 +242,8 @@ publicVariable "den_searchItem";
         "Search Intel",                                     // Title of the action
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",  // Idle icon shown on screen
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",  // Progress icon shown on screen
-        "(_this distance _target) < 4",                     // Condition for the action to be shown
-        "(_caller distance _target) < 4",                   // Condition for the action to progress
+        "(_this distance _target) < 15",                    // Condition for the action to be shown
+        "(_caller distance _target) < 15",                  // Condition for the action to progress
         {},                                                 // Code executed when action starts
         {},                                                 // Code executed on every progress tick
         {   // Code executed on completion client side
@@ -254,12 +253,12 @@ publicVariable "den_searchItem";
         {},                                                 // Code executed on interrupted
         [],                                                 // Arguments passed to the scripts as _this select 3
         10,                                                 // Action duration [s]
-        999,                                                // Priority
+        9999,                                               // Priority
         true,                                               // Remove on completion
         false                                               // Show in unconscious state
     ] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
-    private _group = [_lzPos, _enemyFaction, "ReconTeam"] call den_fnc_spawnGroup;
+    private _group = [_insertPos, _enemyFaction, "ReconTeam"] call den_fnc_spawnGroup;
     if (isNull _group) then {
         ERROR("failed to spawn group");
     };
@@ -293,13 +292,13 @@ private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _frien
     [_enemyFaction]
 ] call den_fnc_createTrigger;
 
-private _infMarkerPos = _campPos getPos [100, (_campPos getDir _lzPos)];
+private _infMarkerPos = _campPos getPos [100, (_campPos getDir _insertPos)];
 
 private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "recon"));
 _marker setMarkerColor _enemyColor;
 
-[_lzPos, _zoneArea] call den_fnc_coverMap;
+[_insertPos, _zoneArea] call den_fnc_coverMap;
 
 /*
  * task state machine logic
@@ -307,13 +306,13 @@ _marker setMarkerColor _enemyColor;
 private _side = [_friendlyFaction] call den_fnc_factionSide;
 
 private _taskQueue = [
-    [[_side, "boardInsert",  "BoardInsert",  _transport,   "CREATED", 1, true, "getin"],  "den_insert"],
-    [[_side, "raidCamp",     "RaidCamp",     "campMarker", "CREATED", 1, true, "attack"], "den_campSeized"],
-    [[_side, "searchCamp",   "SearchCamp",   objNull,      "CREATED", 1, true, "search"], "den_intelFound"],
-    [[_side, "lzExtract",    "LzExtract",    "lzMarker",   "CREATED", 1, true, "move"],   "den_lzExtract"]
+    [[_side, "boardInsert",   "BoardInsert",   _transport,     "CREATED", 1, true, "getin"],  "den_insert"],
+    [[_side, "raidCamp",      "RaidCamp",      "campMarker",   "CREATED", 1, true, "attack"], "den_campSeized"],
+    [[_side, "searchCamp",    "SearchCamp",    objNull,        "CREATED", 1, true, "search"], "den_intelFound"],
+    [[_side, "insertExtract", "InsertExtract", "insertMarker", "CREATED", 1, true, "move"],   "den_insertExtract"]
 ];
 
-if (DEN_FACTION_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
+if (DEN_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
     // If faction has a transport helo, add boarding it the final task.
     _taskQueue pushBack [[_side,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
 };

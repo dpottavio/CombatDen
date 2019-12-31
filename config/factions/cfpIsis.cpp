@@ -19,8 +19,12 @@ class CfpIsis : Faction
 {
     addon       = "CFP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
+    era         = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\islamicstateiraqlevantisil.paa";
     name        = "ISIS";
+    patches[]   = {
+        "CFP_O_IS"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

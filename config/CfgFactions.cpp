@@ -60,6 +60,13 @@ class CfgFactions
 #include "factions\gmEastGermany.cpp"
 #include "factions\gmWestGermany.cpp"
 /*
+ * IFA3
+ */
+#include "factions\ifa3RedArmy.cpp"
+#include "factions\ifa3Wehrmacht.cpp"
+#include "factions\ifa3UkArmy.cpp"
+#include "factions\ifa3UsArmy.cpp"
+/*
  * LOP Factions
  */
 #include "factions\lopGuerrilla.cpp"
@@ -91,6 +98,10 @@ class CfgFactions
         class Fia           : Fia {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class Ifa3RedArmy   : Ifa3RedArmy {};
+        class Ifa3Wehrmacht : Ifa3Wehrmacht {};
+        class Ifa3UkArmy    : Ifa3UkArmy {};
+        class Ifa3UsArmy    : Ifa3UsArmy {};
         class LopGuerrilla  : LopGuerrilla {};
         class LopInsurgent  : LopInsurgent {};
         class Nato          : Nato {};
@@ -112,6 +123,10 @@ class CfgFactions
         class Fia                : Fia {};
         class GmEastGermany      : GmEastGermany {};
         class GmWestGermany      : GmWestGermany {};
+        class Ifa3RedArmy        : Ifa3RedArmy {};
+        class Ifa3Wehrmacht      : Ifa3Wehrmacht {};
+        class Ifa3UkArmy         : Ifa3UkArmy {};
+        class Ifa3UsArmy         : Ifa3UsArmy {};
         class LopIsis            : LopIsis {};
         class LopTakistan        : LopTakistan {};
         class Nato               : Nato {};
@@ -132,6 +147,10 @@ class CfgFactions
         class GmDenmark     : GmDenMark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class Ifa3RedArmy   : Ifa3RedArmy {};
+        class Ifa3Wehrmacht : Ifa3Wehrmacht {};
+        class Ifa3UkArmy    : Ifa3UkArmy {};
+        class Ifa3UsArmy    : Ifa3UsArmy {};
         class LopGuerrilla  : LopGuerrilla {};
         class LopInsurgent  : LopInsurgent {};
         class Nato          : Nato {};
@@ -151,6 +170,10 @@ class CfgFactions
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class Ifa3RedArmy   : Ifa3RedArmy {};
+        class Ifa3Wehrmacht : Ifa3Wehrmacht {};
+        class Ifa3UkArmy    : Ifa3UkArmy {};
+        class Ifa3UsArmy    : Ifa3UsArmy {};
         class Ldf           : Ldf {};
         class LopNovo       : LopNovo {};
         class Nato          : Nato {};
@@ -170,6 +193,10 @@ class CfgFactions
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
         class GmWestGermany : GmWestGermany {};
+        class Ifa3RedArmy   : Ifa3RedArmy {};
+        class Ifa3Wehrmacht : Ifa3Wehrmacht {};
+        class Ifa3UkArmy    : Ifa3UkArmy {};
+        class Ifa3UsArmy    : Ifa3UsArmy {};
         class Ldf           : Ldf {};
         class LopNovo       : LopNovo {};
         class Nato          : Nato {};

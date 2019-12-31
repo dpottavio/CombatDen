@@ -20,8 +20,12 @@ class LopInsurgent: Faction
 {
     addon       = "LOP";
     ammoBox     = "rhs_7ya37_1_single";
+    era         = ERA_MODERN;
     flagTexture = "";
     name        = "Insurgent";
+    patches[]   = {
+        "lop_faction_ia"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

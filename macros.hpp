@@ -20,12 +20,19 @@
 
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
+#include "cfgMacros.hpp"
+
 // true if a addon/mod is loaded
 #define DEN_HAS_ADDON(addon) (isClass (configfile >> "CfgPatches" >> addon))
 
 #define DEN_CLIMATE (getText (missionConfigFile >> "CfgWorlds" >> worldName >> "climate"))
 
+#define DEN_ERA(faction) (getNumber(missionConfigFile >> "CfgFactions" >> _faction >> "era"))
+
 // true if a faction has a transport helicopter
-#define DEN_FACTION_HAS_TRANSPORT_HELO(faction)\
+#define DEN_HAS_TRANSPORT_HELO(faction)\
 ((getText (missionConfigFile >> "CfgFactions" >> faction >> "Vehicle" >> DEN_CLIMATE >> "heloTransport")) != "")
 
+// true if a faction has a cargo helicopter
+#define DEN_HAS_CARGO_HELO(faction)\
+((getText (missionConfigFile >> "CfgFactions" >> faction >> "Vehicle" >> DEN_CLIMATE >> "heloCargo")) != "")

@@ -20,8 +20,12 @@ class CfpGuerrilla : Faction
 {
     addon       = "CFP";
     ammoBox     = "CUP_RUBasicAmmunitionBox";
+    era         = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\centralafricanrepublic\centralafricanrepublic.paa";
     name        = "Guerrilla";
+    patches[]   = {
+        "CFP_O_CFRebels"
+    };
     side        = SIDE_GUER;
 
     // Faction not playable yet.

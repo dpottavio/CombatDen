@@ -51,8 +51,7 @@ if (_friendlyFaction == "") exitWith {
     [];
 };
 
-private _friendlySide  = [_friendlyFaction] call den_fnc_factionSide;
-private _enemySide     = sideUnknown;
+private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 
 /*
  * Validate that the player and enemy sides are not the same.
@@ -65,21 +64,21 @@ private _enemySide     = sideUnknown;
  */
 private _enemyFaction = den_cba_enemyFaction;
 if (_enemyFaction != "") then {
-    _enemySide = [_enemyFaction] call den_fnc_factionSide;
-    if (_enemySide == _friendlySide) then {
+    private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
+    if (_enemySideStr == _friendlySideStr) then {
         _enemyFaction = "";
         ["Warning: Enemy and Player factions of the same side are not supported."] remoteExec ["hint"];
     };
 };
 
 if (_enemyFaction == "") then {
+    private _allies  = getArray (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "allies");
     private _enemyFactions = [];
     {
-        private _name = configName _x;
-        private _side = [_name] call den_fnc_factionSide;
-
-        if (_side != _friendlySide) then {
-            _enemyFactions pushBack _name;
+        private _sideStr = getText(_x >> "side");
+        private _isAlly = _sideStr in _allies;
+        if (_sideStr != _friendlySideStr && !_isAlly) then {
+            _enemyFactions pushBack (configName _x);
         };
     } forEach ([] call den_fnc_factions);
 
@@ -90,7 +89,8 @@ if (_enemyFaction == "") exitWith {
     [];
 };
 
-private _playerGroup = createGroup [_friendlySide, true];
+private _friendlySide = [_friendlyFaction] call den_fnc_factionSide;
+private _playerGroup  = createGroup [_friendlySide, true];
 _playerGroup setGroupIdGlobal ["Alpha"];
 /*
  * For each player slot, create a player unit and link
@@ -137,7 +137,7 @@ if !(isNil "den_flagPole") then {
     den_flagPole setFlagTexture _friendlyFlag;
 
     private _marker = createMarker ["copMarker", getPos den_flagPole];
-    _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> str(_friendlySide) >> "installation"));
+    _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _friendlySideStr >> "installation"));
     _marker setMarkerText "COP";
 };
 

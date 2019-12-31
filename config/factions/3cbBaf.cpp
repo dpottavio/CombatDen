@@ -21,8 +21,13 @@ class Uk3cbBaf : Faction
     addOn       = "3CB";
     ammoBox     = "CUK3CB_BAF_Box_556_Ammo";
     cargoBox    = "B_CargoNet_01_ammo_F";
+    era         = ERA_MODERN;
     flagTexture = "a3\data_f\flags\flag_uk_co.paa";
     name        = "BAF";
+    patches[]   = {
+        "UK3CB_BAF_Vehicles",
+        "UK3CB_BAF_Units_MTP"
+    };
     playable    = 1;
     side        = SIDE_BLUFOR;
 

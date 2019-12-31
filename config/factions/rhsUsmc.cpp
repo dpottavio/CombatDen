@@ -21,8 +21,12 @@ class RhsUsmc : Faction
     addon       = "RHS";
     ammoBox     = "Box_NATO_Ammo_F";
     cargoBox    = "B_CargoNet_01_ammo_F";
+    era         = ERA_MODERN;
     flagTexture = "\A3\Data_F\Flags\Flag_us_CO.paa";
     name        = "USMC";
+    patches[]    = {
+        "rhsusf_c_troops"
+    };
     playable    = 1;
     side        = SIDE_BLUFOR;
 

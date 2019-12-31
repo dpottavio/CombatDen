@@ -66,15 +66,15 @@ if (_enemyFaction == "") exitWith {
  * max radius for AO objects
  */
 private _zoneRadius   = 400;
-private _minLz        = _zoneRadius + 300;
-private _maxLz        = _zoneRadius + 350;
+private _minInsert    = _zoneRadius + 300;
+private _maxInsert    = _zoneRadius + 350;
 private _maxReact     = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 private _minReinforce = _zoneRadius + 300;  // reinforcements
 private _maxReinforce = _zoneRadius + 325;
 
 private _safePosParams = [
-    [_minLz,        _maxLz,        15, 0.1], // lz safe position
+    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
     [0,             _maxReact,      5, 0.1], // inf patrol safe position
     [0,             _maxPatrol,     5, 0.1], // inf patrol safe position
     [_minReinforce, _maxReinforce, 15, 0.1]  // reinforce safe position
@@ -100,19 +100,19 @@ private _zoneArea        = _zone select 1;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
 private _zoneSafePosList = _zone select 2;
-private _lzPos           = _zoneSafePosList select 0;
+private _insertPos       = _zoneSafePosList select 0;
 private _reactPos        = _zoneSafePosList select 1;
 private _patrolPos       = _zoneSafePosList select 2;
 private _reinforcePos    = _zoneSafePosList select 3;
 
 private _transport = [
     _zonePos,
-    _lzPos,
+    _insertPos,
     _transportPos,
     _transportDir,
     _playerGroup,
     _friendlyFaction
-] call den_fnc_insertHelo;
+] call den_fnc_insertInfantry;
 
 if (isNull _transport) exitWith {
     ERROR("failed to create transport");
@@ -186,11 +186,11 @@ if (isNull _reactGroup) exitWith {
     [];
 };
 /*
- * Select either the current patrol pos, or the LZ by random.
+ * Select either the current patrol pos, or the Insert by random.
  * Delay the waypoint until after the players have unloaded
  * from the transport.
  */
-private _reactWpPos = selectRandom [_reactPos, _lzPos];
+private _reactWpPos = selectRandom [_reactPos, _insertPos];
 [_reactGroup, _reactWpPos] spawn {
     params ["_group", "_pos"];
 
@@ -225,13 +225,13 @@ _missionSuccessTrigger setTriggerTimeout [10, 10, 10, true];
 /*
  * enemy unit markers
  */
-private _infMarkerPos = _zonePos getPos [100, (_zonePos getDir _lzPos)];
+private _infMarkerPos = _zonePos getPos [100, (_zonePos getDir _insertPos)];
 
 private _marker = createMarker ["opforInfMarker", _infMarkerPos];
 _marker setMarkerType (getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "infantry"));
 _marker setMarkerColor _enemyColor;
 
-[_lzPos, _zoneArea] call den_fnc_coverMap;
+[_insertPos, _zoneArea] call den_fnc_coverMap;
 
 /*
  * task state machine logic

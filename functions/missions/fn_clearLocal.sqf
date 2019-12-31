@@ -52,7 +52,7 @@ private _enemyFactionName    = getText (missionConfigFile >> "CfgFactions" >> _e
  */
 player createDiaryRecord ["Diary", ["Execution",
 "
-1. Reach the <marker name='lzMarker'>LZ</marker>.
+1. Reach the <marker name='insertMarker'>Insert</marker>.
 <br/>
 2. Search and clear the <marker name='zoneMarker'>area</marker> of enemy forces.
 "
