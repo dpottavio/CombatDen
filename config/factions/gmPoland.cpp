@@ -16,39 +16,110 @@
     <https://www.gnu.org/licenses/>.
 */
 
-class GmWestGermany : Faction
+class GmPoland : Faction
 {
     addon        = "GM";
     ammoBox      = "gm_AmmoBox_1000Rnd_762x51mm_b_DM41_g3";
     cargoBox     = "CargoNet_01_box_F";
     era          = ERA_COLD_WAR;
-    flagTexture  = "gm\gm_core\data\flags\gm_flag_ge_co.paa";
+    flagTexture  = "gm\gm_core\data\flags\gm_flag_pl_co.paa";
     fullMoonOnly = 1;
-    name         = "West Germany";
+    name         = "Poland";
     patches[]    = {
         "gm_core"
     };
     playable     = 1;
-    side         = SIDE_BLUFOR;
+    side         = SIDE_OPFOR;
 
-    class Arsenal : ArsenalGmWest
+    class Arsenal : Arsenal
     {
-        class SemiArid : SemiArid {};
-        class Tropic   : Tropic {};
-        class Arid     : Arid {};
-        class Wood     : Wood {};
-        class Winter   : Winter {};
+        class Base : Base
+        {
+            aceAttachments[] = {};
+            aceBinoculars[]  = {};
+            aceGrenades[]    = {};
+            aceGps[]         = {};
+            aceMisc[]        = {};
+            aceNvg[]         = {};
+
+            attachments[] = {};
+            nvg[]         = {};
+            gps[]         = {};
+            faceware[]    = {};
+
+            binoculars[] = {
+                "gm_ferod16_oli"
+            };
+
+            grenades[] = {
+                "gm_handgrenade_frag_rgd5",
+                "gm_smokeshell_blk_gc",
+                "gm_smokeshell_blu_gc",
+                "gm_smokeshell_grn_gc",
+                "gm_smokeshell_org_gc",
+                "gm_smokeshell_red_gc",
+                "gm_smokeshell_wht_gc",
+                "gm_smokeshell_yel_gc"
+            };
+
+            mags[] = {
+                "gm_30Rnd_762x39mm_B_M43_ak47_blk",
+                "gm_75Rnd_762x39mm_B_T_M43_ak47_blk",
+                "gm_100Rnd_762x54mm_B_T_T46_pk_grn",
+                "gm_10Rnd_762x54mmR_AP_7N1_svd_blk"
+            };
+
+            misc[] = {
+                "ItemMap",
+                "ItemRadio",
+                "ToolKit",
+                "gm_ge_army_medkit_80",
+                "FirstAidKit",
+                "gm_watch_kosei_80",
+                "gm_gc_compass_f73"
+            };
+
+            sights[] = {
+                "gm_pso1_gry"
+            };
+
+            weapons[] = {
+                "gm_akm_wud",
+                "gm_rpk_wud",
+                "gm_hmgpkm_prp",
+                "gm_svd_wud"
+            };
+
+            vests[] = {
+                "gm_pl_army_vest_80_rig_gry",
+                "gm_pl_army_vest_80_at_gry",
+                "gm_pl_army_vest_80_leader_gry",
+                "gm_pl_army_vest_80_mg_gry",
+                "gm_pl_army_vest_80_marksman_gry",
+                "gm_pl_army_vest_80_rifleman_gry"
+            };
+            backpacks[] = {
+                "gm_pl_army_backpack_at_80_gry",
+                "gm_pl_army_backpack_80_oli"
+            };
+        };
+
+        class SemiArid : Base {};
+        class Tropic   : Base {};
+        class Arid     : Base {};
+        class Wood     : Base {};
+        class Winter   : Base {};
     };
 
     class Vehicle
     {
         class SemiArid
         {
-            truckAssault       = "gm_ge_army_fuchsa0_command";
-            truckSupplyAmmo    = "gm_ge_army_kat1_451_reammo";
-            truckSupplyCargo   = "gm_ge_army_u1300l_cargo";
-            truckSupplyFuel    = "gm_ge_army_kat1_451_refuel";
-            truckTransport     = "gm_ge_army_u1300l_cargo";
+            truckAssault     = "gm_pl_army_ot64a";
+            truckSupplyAmmo  = "gm_pl_army_ural4320_reammo";
+            truckSupplyCargo = "gm_pl_army_ural4320_cargo";
+            truckSupplyFuel  = "gm_pl_army_ural375d_refuel";
+            truckTransport   = "gm_pl_army_ural4320_cargo";
         };
         class Arid   : SemiArid {};
         class Tropic : SemiArid {};
@@ -70,105 +141,105 @@ class GmWestGermany : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class HeloPilot : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class HeloCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_grenadier_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_machinegunner_mg3_80_ols";
+                    vehicle = "gm_pl_army_machinegunner_rpk_80_moro";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "gm_ge_army_antitank_g3a3_pzf44_80_ols";
+                    vehicle = "gm_pl_army_antitank_akm_rpg7_80_moro";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_squadleader_g3a3_p2a1_80_ols";
+                    vehicle = "gm_pl_army_squadleader_akm_80_moro";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_machinegunner_mg3_80_ols";
+                    vehicle = "gm_pl_army_machinegunner_rpk_80_moro";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "gm_ge_army_machinegunner_assistant_g3a3_mg3_80_ols";
+                    vehicle = "gm_pl_army_machinegunner_rpk_80_moro";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "gm_ge_army_grenadier_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "gm_ge_army_antitank_g3a3_pzf44_80_ols";
+                    vehicle = "gm_pl_army_antitank_akm_rpg7_80_moro";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "gm_ge_army_antitank_assistant_g3a3_pzf44_80_ols";
+                    vehicle = "gm_pl_army_antitank_akm_rpg7_80_moro";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "gm_ge_army_medic_g3a3_80_ols";
+                    vehicle = "gm_pl_army_medic_akm_80_moro";
                 };
             };
             class ReconSquad : AssaultSquad
@@ -193,22 +264,22 @@ class GmWestGermany : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_fuchsa0_command";
+                    vehicle = "gm_pl_army_brdm2";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_fuchsa0_command";
+                    vehicle = "gm_pl_army_brdm2";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_80_ols";
+                    vehicle = "gm_pl_army_rifleman_akm_80_moro";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -227,7 +298,7 @@ class GmWestGermany : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "gm_ge_army_fuchsa0_command";
+                    vehicle = "gm_pl_army_brdm2";
                 };
             };
         };
@@ -492,105 +563,105 @@ class GmWestGermany : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class HeloPilot : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class HeloCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_grenadier_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_machinegunner_mg3_parka_80_win";
+                    vehicle = "gm_pl_army_machinegunner_rpk_80_win";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "gm_ge_army_antitank_g3a3_pzf44_parka_80_win";
+                    vehicle = "gm_pl_army_antitank_akm_rpg7_80_win";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_squadleader_g3a3_p2a1_parka_80_win";
+                    vehicle = "gm_pl_army_squadleader_akm_80_win";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_machinegunner_mg3_parka_80_win";
+                    vehicle = "gm_pl_army_machinegunner_rpk_80_win";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "gm_ge_army_machinegunner_assistant_g3a3_mg3_parka_80_win";
+                    vehicle = "gm_pl_army_machinegunner_rpk_80_win";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "gm_ge_army_grenadier_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "gm_ge_army_antitank_g3a3_pzf44_parka_80_win";
+                    vehicle = "gm_pl_army_antitank_akm_rpg7_80_win";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "gm_ge_army_antitank_assistant_g3a3_pzf44_parka_80_win";
+                    vehicle = "gm_pl_army_antitank_akm_rpg7_80_win";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "gm_ge_army_medic_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_medic_akm_80_win";
                 };
             };
             class ReconSquad : AssaultSquad
@@ -615,22 +686,22 @@ class GmWestGermany : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_fuchsa0_command";
+                    vehicle = "gm_pl_army_brdm2";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "gm_ge_army_fuchsa0_command";
+                    vehicle = "gm_pl_army_brdm2";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "gm_ge_army_rifleman_g3a3_parka_80_win";
+                    vehicle = "gm_pl_army_rifleman_akm_80_win";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -649,53 +720,54 @@ class GmWestGermany : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "gm_ge_army_fuchsa0_command";
+                    vehicle = "gm_pl_army_brdm2";
                 };
             };
         };
     };
 
-#define GM_GE_AT_MAG_COUNT         11
-#define GM_GE_AUTORIFLE_MAG_COUNT  7
-#define GM_GE_GRENADIRE_MAG_COUNT  11
-#define GM_GE_MARKSMAN_MAG_COUNT   12
-#define GM_GE_MEDIC_MAG_COUNT      12
-#define GM_GE_RIFLEMAN_MAG_COUNT   12
+#define GM_PL_AT_MAG_COUNT             11
+#define GM_PL_AUTORIFLE_RPK_MAG_COUNT  12
+#define GM_PL_AUTORIFLE_PKM_MAG_COUNT   8
+#define GM_PL_GRENADIRE_MAG_COUNT      15
+#define GM_PL_MARKSMAN_MAG_COUNT       15
+#define GM_PL_MEDIC_MAG_COUNT          15
+#define GM_PL_RIFLEMAN_MAG_COUNT       15
 
     class Loadout : Loadout
     {
         class Base : Base
         {
             binoculars = "gm_ferod16_oli";
-            handgun    = "gm_p1_blk";
-            headgear   = "gm_ge_headgear_m62_net";
+            handgun    = "gm_pm_blk";
+            headgear   = "gm_pl_army_headgear_wz67_net_oli";
             rifleLight = "";
             rifleSight = "";
-            primaryMag = "gm_20Rnd_762x51mm_B_DM41_g3_blk";
+            primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
 
             class Uniform : Uniform
             {
-                type = "gm_ge_army_uniform_soldier_80_ols";
+                type = "gm_pl_army_uniform_soldier_80_moro";
 
                 items[] = {
-                    "gm_8Rnd_9x19mm_B_DM11_p1_blk",
-                    "gm_8Rnd_9x19mm_B_DM11_p1_blk"
+                    "gm_8Rnd_9x18mm_B_pst_pm_blk",
+                    "gm_8Rnd_9x18mm_B_pst_pm_blk"
                 };
             };
             class Vest : Vest
             {
-                type = "gm_ge_army_vest_80_rifleman";
+                type = "gm_pl_army_vest_80_rifleman_gry";
             };
-            class Backpack : GmWestBackpack
+            class Backpack : GmEastBackpack
             {
-                type = "gm_ge_army_backpack_80_oli";
+                type = "gm_pl_army_backpack_80_oli";
             };
             class LinkedItems : LinkedItems
             {
                 items[] = {
                     "ItemMap",
                     "gm_watch_kosei_80",
-                    "gm_ge_army_conat2",
+                    "gm_gc_compass_f73",
                     "ItemRadio"
                 };
                 noAceItems[] = {};
@@ -703,71 +775,53 @@ class GmWestGermany : Faction
         };
         class RiflemanBase : Base
         {
-            unit            = "gm_ge_army_rifleman_g3a3_80_ols";
-            primaryMagCount = GM_GE_RIFLEMAN_MAG_COUNT;
+            unit            = "gm_pl_army_rifleman_akm_80_moro";
+            primaryMagCount = GM_PL_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                items[] += {
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_smokeshell_wht_dm25",
-                    "gm_smokeshell_wht_dm25"
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc"
                 };
             };
             class Backpack : Backpack
             {
                 items[] += {
-                   "gm_handgrenade_frag_dm51a1",
-                   "gm_handgrenade_frag_dm51a1",
-                   "gm_handgrenade_frag_dm51a1",
-                   "gm_handgrenade_frag_dm51a1"
-                };
-            };
-            class LinkedItems : LinkedItems {};
-        };
-        class GrenadierBase : RiflemanBase
-        {
-            unit              = "gm_ge_army_grenadier_g3a3_80_ols";
-            primaryMagCount   = GM_GE_GRENADIRE_MAG_COUNT;
-
-            class Uniform  : Uniform {};
-            class Vest     : Vest {};
-            class Backpack : Backpack
-            {
-                items[] += {
-                    "gm_1rnd_67mm_heat_dm22a1_g3",
-                    "gm_1rnd_67mm_heat_dm22a1_g3",
-                    "gm_1rnd_67mm_heat_dm22a1_g3",
-                    "gm_1rnd_67mm_heat_dm22a1_g3",
-                    "gm_1rnd_67mm_heat_dm22a1_g3",
-                    "gm_1rnd_67mm_heat_dm22a1_g3"
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5"
                 };
             };
             class LinkedItems : LinkedItems {};
         };
         class AutorifleBase : Base
         {
-            unit = "gm_ge_army_machinegunner_mg3_80_ols";
+            unit = "gm_pl_army_machinegunner_rpk_80_moro";
 
-            class Uniform     : Uniform {};
-            class Vest        : Vest {};
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
             class Backpack : Backpack
             {
                 items[] += {
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_smokeshell_wht_dm25",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc"
                 };
             };
             class LinkedItems : LinkedItems {};
         };
         class MarksmanBase : RiflemanBase
         {
-            rifleSight = "gm_feroz24_blk";
+            unit       = "gm_pl_army_marksman_svd_80_moro";
+            rifleSight = "gm_pso1_gry";
 
             class Uniform     : Uniform {};
             class Vest        : Vest {};
@@ -776,68 +830,66 @@ class GmWestGermany : Faction
         };
         class MedicBase : Base
         {
-            unit            = "gm_ge_army_medic_g3a3_80_ols";
-            primaryMagCount = GM_GE_MEDIC_MAG_COUNT;
+            unit            = "gm_pl_army_medic_akm_80_moro";
+            primaryMagCount = GM_PL_MEDIC_MAG_COUNT;
 
             class Uniform : Uniform {};
             class Vest    : Vest
             {
-                type = "gm_ge_army_vest_80_medic";
-
                 items[] += {
-                    "gm_smokeshell_wht_dm25",
-                    "gm_smokeshell_wht_dm25",
-                    "gm_smokeshell_wht_dm25",
-                    "gm_smokeshell_wht_dm25",
-                    "gm_smokeshell_wht_dm25",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1"
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5"
                 };
             };
-            class Backpack : GmWestMedicBackpack
+            class Backpack : GmEastMedicBackpack
             {
-                type = "gm_ge_army_backpack_80_oli";
+                type = "gm_pl_army_backpack_80_oli";
             };
             class LinkedItems : LinkedItems {};
         };
         class AtBase : Base
         {
-            unit            = "gm_ge_army_antitank_g3a3_pzf44_80_ols";
-            rifle           = "gm_g3a3_oli";
-            primaryMagCount = GM_GE_AT_MAG_COUNT;
-            primaryMag      = "gm_20Rnd_762x51mm_B_DM41_g3_blk";
+            unit            = "gm_pl_army_antitank_akm_rpg7_80_moro";
+            rifle           = "gm_akm_wud"
+            primaryMagCount = GM_PL_AT_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
                items[] += {
-                   "gm_smokeshell_wht_dm25",
-                   "gm_handgrenade_frag_dm51a1",
-                   "gm_handgrenade_frag_dm51a1"
+                   "gm_smokeshell_wht_gc",
+                   "gm_handgrenade_frag_rgd5",
+                   "gm_handgrenade_frag_rgd5"
                };
             };
-            class Backpack    : Backpack {};
+            class Backpack : Backpack
+            {
+                type = "gm_pl_army_backpack_at_80_gry";
+            };
             class LinkedItems : LinkedItems {};
         };
         class EodBase : Base
         {
-            unit            = "gm_ge_army_demolition_g3a4_80_ols";
-            primaryMagCount = GM_GE_RIFLEMAN_MAG_COUNT;
+            unit            = "gm_pl_army_demolition_akm_80_moro";
+            primaryMagCount = GM_PL_RIFLEMAN_MAG_COUNT;
 
             class Uniform : Uniform {};
 
             class Vest : Vest
             {
-                type = "gm_ge_army_vest_80_demolition";
-
                 items[] += {
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_handgrenade_frag_dm51a1",
-                    "gm_smokeshell_wht_dm25",
-                    "gm_smokeshell_wht_dm25"
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_handgrenade_frag_rgd5",
+                    "gm_smokeshell_wht_gc",
+                    "gm_smokeshell_wht_gc"
                 };
             };
             class Backpack : Backpack
@@ -885,21 +937,11 @@ class GmWestGermany : Faction
             {
                 role = "Rifleman";
 
-                class G3A3 : RiflemanBase
+                class Akm : RiflemanBase
                 {
-                    default    = 1;
-                    type       = "G3A3";
-                    rifle      = "gm_g3a3_oli";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : RiflemanBase
-                {
-                    type       = "G3A4";
-                    rifle      = "gm_g3a4_oli";
+                    default = 1;
+                    type    = "AKM";
+                    rifle   = "gm_akm_wud";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -907,26 +949,12 @@ class GmWestGermany : Faction
                     class LinkedItems : LinkedItems {};
                 };
             };
-            class Grenadier
+            class Grenadier : Rifleman
             {
                 role = "Grenadier";
 
-                class G3A3 : GrenadierBase
+                class Akm : Akm
                 {
-                    default    = 1;
-                    type       = "G3A3";
-                    rifle      = "gm_g3a3_oli";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : GrenadierBase
-                {
-                    type       = "G3A4";
-                    rifle      = "gm_g3a4_oli";
-
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -937,62 +965,57 @@ class GmWestGermany : Faction
             {
                 role = "Squad Leader";
 
-                class G3A3 : G3A3
+                class Akm : Akm
                 {
-                    unit = "gm_ge_army_squadleader_g3a3_p2a1_80_ols";
+                    unit = "gm_pl_army_squadleader_akm_80_moro";
 
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack {};
-                    class LinkedItems   : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    unit = "gm_ge_army_squadleader_g3a3_p2a1_80_ols";
-
-                    class Uniform  : Uniform {};
-                    class Vest     : Vest {};
-                    class Backpack : Backpack {};
-                    class LinkedItems   : LinkedItems {};
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
                 };
             };
             class Autorifleman
             {
                 role = "Autorifleman";
 
-                class Mg3 : AutorifleBase
+                class Rpk : AutorifleBase
                 {
                     default         = 1;
-                    type            = "MG3";
-                    rifle           = "gm_mg3_blk";
-                    primaryMag      = "gm_120Rnd_762x51mm_B_T_DM21A1_mg3_grn";
-                    primaryMagCount = GM_GE_AUTORIFLE_MAG_COUNT;
+                    type            = "RPK";
+                    rifle           = "gm_rpk_wud";
+                    primaryMag      = "gm_75Rnd_762x39mm_B_T_M43_ak47_blk";
+                    primaryMagCount = GM_PL_AUTORIFLE_RPK_MAG_COUNT;
 
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : AutorifleBase
+                {
+                    type            = "PKM";
+                    rifle           = "gm_hmgpkm_prp";
+                    primaryMag      = "gm_100Rnd_762x54mm_B_T_T46_pk_grn";
+                    primaryMagCount = GM_PL_AUTORIFLE_PKM_MAG_COUNT;
+
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
             };
-            class Marksman
+            class Marksman : Rifleman
             {
                 role = "Marksman";
 
-                class G3A3 : MarksmanBase
+                class Svd : MarksmanBase
                 {
                     default    = 1;
-                    type       = "G3A3";
-                    rifle      = "gm_g3a3_oli";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : MarksmanBase
-                {
-                    type       = "G3A4";
-                    rifle      = "gm_g3a4_oli";
+                    type       = "SVD";
+                    rifle      = "gm_svd_wud";
+                    primaryMag = "gm_10Rnd_762x54mmR_AP_7N1_svd_blk";
+                    primaryMagCount = GM_PL_MARKSMAN_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1004,21 +1027,11 @@ class GmWestGermany : Faction
             {
                 role = "Medic";
 
-                class G3A3 : MedicBase
+                class Akm : MedicBase
                 {
-                    default    = 1;
-                    type       = "G3A3";
-                    rifle      = "gm_g3a3_oli";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : MedicBase
-                {
-                    type       = "G3A4";
-                    rifle      = "gm_g3a4_oli";
+                    default = 1;
+                    type    = "AKM";
+                    rifle   = "gm_akm_wud";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1030,25 +1043,14 @@ class GmWestGermany : Faction
             {
                 role = "Anti-Tank";
 
-                class Pzf44 : AtBase
-                {
-                    type              = "PZF44";
-                    launcher          = "gm_pzf44_2_oli";
-                    secondaryMag      = "gm_1Rnd_44x537mm_heat_dm32_pzf44_2";
-                    secondaryMagCount = 1;
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pzf84 : AtBase
+                class Rpg7 : AtBase
                 {
                     default           = 1;
-                    type              = "PZF84";
-                    launcher          = "gm_pzf84_oli";
-                    secondaryMag      = "gm_1Rnd_84x245mm_heat_t_DM12_carlgustaf";
-                    secondaryMagCount = 1;
+                    type              = "RPG-7";
+                    launcher          = "gm_rpg7_wud";
+                    secondaryMag      = "gm_1Rnd_40mm_heat_pg7v_rpg7";
+                    // The AT backpack loads 3 RPG rounds by default.
+                    secondaryMagCount = 0;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1060,21 +1062,11 @@ class GmWestGermany : Faction
             {
                 role = "EOD";
 
-                class G3A3 : EodBase
+                class Akm : EodBase
                 {
                     default    = 1;
-                    type       = "G3A3";
-                    rifle      = "gm_g3a3_oli";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : EodBase
-                {
-                    type       = "G3A4";
-                    rifle      = "gm_g3a4_oli";
+                    type    = "AKM";
+                    rifle   = "gm_akm_wud";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1086,21 +1078,11 @@ class GmWestGermany : Faction
             {
                 role = "Engineer";
 
-                class G3A3 : EngineerBase
+                class Akm : EngineerBase
                 {
-                    default    = 1;
-                    type       = "G3A3";
-                    rifle      = "gm_g3a3_oli";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : EngineerBase
-                {
-                    type       = "G3A4";
-                    rifle      = "gm_g3a4_oli";
+                    default = 1;
+                    type    = "AKM";
+                    rifle   = "gm_akm_wud";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1113,41 +1095,7 @@ class GmWestGermany : Faction
         {
             class Rifleman : Rifleman
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg3 : Mg3
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1157,14 +1105,34 @@ class GmWestGermany : Faction
             };
             class Grenadier : Grenadier
             {
-                class G3A3 : G3A3
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G3A4 : G3A4
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1174,14 +1142,7 @@ class GmWestGermany : Faction
             };
             class Marksman : Marksman
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Svd : Svd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1191,14 +1152,7 @@ class GmWestGermany : Faction
             };
             class Medic : Medic
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1208,14 +1162,7 @@ class GmWestGermany : Faction
             };
             class At : At
             {
-                class Pzf44 : Pzf44
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pzf84 : Pzf84
+                class Rpg7 : Rpg7
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1225,14 +1172,7 @@ class GmWestGermany : Faction
             };
             class Eod : Eod
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1242,14 +1182,7 @@ class GmWestGermany : Faction
             };
             class Engineer : Engineer
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1262,41 +1195,7 @@ class GmWestGermany : Faction
         {
             class Rifleman : Rifleman
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg3 : Mg3
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1306,14 +1205,34 @@ class GmWestGermany : Faction
             };
             class Grenadier : Grenadier
             {
-                class G3A3 : G3A3
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G3A4 : G3A4
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1323,14 +1242,7 @@ class GmWestGermany : Faction
             };
             class Marksman : Marksman
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Svd : Svd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1340,14 +1252,7 @@ class GmWestGermany : Faction
             };
             class Medic : Medic
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1357,14 +1262,7 @@ class GmWestGermany : Faction
             };
             class At : At
             {
-                class Pzf44 : Pzf44
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pzf84 : Pzf84
+                class Rpg7 : Rpg7
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1374,14 +1272,7 @@ class GmWestGermany : Faction
             };
             class Eod : Eod
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1391,14 +1282,7 @@ class GmWestGermany : Faction
             };
             class Engineer : Engineer
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1411,41 +1295,7 @@ class GmWestGermany : Faction
         {
             class Rifleman : Rifleman
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg3 : Mg3
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1455,14 +1305,34 @@ class GmWestGermany : Faction
             };
             class Grenadier : Grenadier
             {
-                class G3A3 : G3A3
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G3A4 : G3A4
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1472,14 +1342,7 @@ class GmWestGermany : Faction
             };
             class Marksman : Marksman
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Svd : Svd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1489,14 +1352,7 @@ class GmWestGermany : Faction
             };
             class Medic : Medic
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1506,14 +1362,7 @@ class GmWestGermany : Faction
             };
             class At : At
             {
-                class Pzf44 : Pzf44
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pzf84 : Pzf84
+                class Rpg7 : Rpg7
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1523,14 +1372,7 @@ class GmWestGermany : Faction
             };
             class Eod : Eod
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1540,14 +1382,7 @@ class GmWestGermany : Faction
             };
             class Engineer : Engineer
             {
-                class G3A3 : G3A3
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
+                class Akm : Akm
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1560,67 +1395,13 @@ class GmWestGermany : Faction
         {
             class Rifleman : Rifleman
             {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Akm : Akm
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class SquadLeader : SquadLeader
-            {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-            };
-            class Autorifleman : Autorifleman
-            {
-                class Mg3 : Mg3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -1629,25 +1410,53 @@ class GmWestGermany : Faction
             };
             class Grenadier : Grenadier
             {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Akm : Akm
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+            };
+            class SquadLeader : SquadLeader
+            {
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Akm : Akm
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                headgear = "gm_pl_headgear_wz67_cover_win";
+
+                class Rpk : Rpk
+                {
+                    class Uniform : Uniform
+                    {
+                        type = "gm_pl_army_uniform_soldier_80_win";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    class Uniform : Uniform
+                    {
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -1656,25 +1465,13 @@ class GmWestGermany : Faction
             };
             class Marksman : Marksman
             {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Svd : Svd
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -1683,25 +1480,13 @@ class GmWestGermany : Faction
             };
             class Medic : Medic
             {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Akm : Akm
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -1710,25 +1495,13 @@ class GmWestGermany : Faction
             };
             class At : At
             {
-                class Pzf44 : Pzf44
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Rpg7 : Rpg7
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Pzf84 : Pzf84
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -1737,25 +1510,13 @@ class GmWestGermany : Faction
             };
             class Eod : Eod
             {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Akm : Akm
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
@@ -1764,25 +1525,13 @@ class GmWestGermany : Faction
             };
             class Engineer : Engineer
             {
-                class G3A3 : G3A3
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
+                headgear = "gm_pl_headgear_wz67_cover_win";
 
+                class Akm : Akm
+                {
                     class Uniform : Uniform
                     {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class G3A4 : G3A4
-                {
-                    headgear = "gm_ge_headgear_m62_cover_win";
-
-                    class Uniform : Uniform
-                    {
-                        type = "gm_ge_army_uniform_soldier_parka_80_win";
+                        type = "gm_pl_army_uniform_soldier_80_win";
                     };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};

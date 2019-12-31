@@ -42,12 +42,6 @@ class GmDenmark : Faction
     {
         class Wood
         {
-            /*
-             * GM does not yet have helicopters.
-             */
-            heloTransport      = "";
-            heloTransportLarge = "";
-            heloCargo          = "B_Heli_Transport_03_F";
             truckAssault       = "gm_ge_army_fuchsa0_command";
             truckSupplyAmmo    = "gm_ge_army_kat1_451_reammo";
             truckSupplyCargo   = "gm_ge_army_u1300l_cargo";

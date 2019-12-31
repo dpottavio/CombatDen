@@ -58,6 +58,7 @@ class CfgFactions
  */
 #include "factions\gmDenmark.cpp"
 #include "factions\gmEastGermany.cpp"
+#include "factions\gmPoland.cpp"
 #include "factions\gmWestGermany.cpp"
 /*
  * IFA3
@@ -97,6 +98,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class Fia           : Fia {};
         class GmEastGermany : GmEastGermany {};
+        class GmPoland      : GmPoland {};
         class GmWestGermany : GmWestGermany {};
         class Ifa3RedArmy   : Ifa3RedArmy {};
         class Ifa3Wehrmacht : Ifa3Wehrmacht {};
@@ -122,6 +124,7 @@ class CfgFactions
         class CupUsmc            : CupUsmc {};
         class Fia                : Fia {};
         class GmEastGermany      : GmEastGermany {};
+        class GmPoland           : GmPoland {};
         class GmWestGermany      : GmWestGermany {};
         class Ifa3RedArmy        : Ifa3RedArmy {};
         class Ifa3Wehrmacht      : Ifa3Wehrmacht {};
@@ -146,6 +149,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class GmDenmark     : GmDenMark {};
         class GmEastGermany : GmEastGermany {};
+        class GmPoland      : GmPoland {};
         class GmWestGermany : GmWestGermany {};
         class Ifa3RedArmy   : Ifa3RedArmy {};
         class Ifa3Wehrmacht : Ifa3Wehrmacht {};
@@ -169,6 +173,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
+        class GmPoland      : GmPoland {};
         class GmWestGermany : GmWestGermany {};
         class Ifa3RedArmy   : Ifa3RedArmy {};
         class Ifa3Wehrmacht : Ifa3Wehrmacht {};
@@ -192,6 +197,7 @@ class CfgFactions
         class CupUsmc       : CupUsmc {};
         class GmDenmark     : GmDenmark {};
         class GmEastGermany : GmEastGermany {};
+        class GmPoland      : GmPoland {};
         class GmWestGermany : GmWestGermany {};
         class Ifa3RedArmy   : Ifa3RedArmy {};
         class Ifa3Wehrmacht : Ifa3Wehrmacht {};

@@ -132,15 +132,9 @@ class GmEastGermany : Faction
     {
         class SemiArid
         {
-            /*
-             * GM does not yet have helicopters.
-             */
-            heloTransport      = "";
-            heloTransportLarge = "";
-            heloCargo          = "B_Heli_Transport_03_F";
             truckAssault       = "gm_gc_army_btr60pb";
             truckSupplyAmmo    = "gm_gc_army_ural4320_reammo";
-            truckSupplyCargo   = "gm_gc_army_ural4320_repair";
+            truckSupplyCargo   = "gm_gc_army_ural4320_cargo";
             truckSupplyFuel    = "gm_gc_army_ural375d_refuel";
             truckTransport     = "gm_gc_army_ural4320_cargo";
         };
@@ -843,7 +837,8 @@ class GmEastGermany : Faction
         };
         class MarksmanBase : RiflemanBase
         {
-            rifleSight = "gm_pgo7v_blk";
+            unit       = "gm_gc_army_marksman_svd_80_str";
+            rifleSight = "gm_pso1_gry";
 
             class Uniform     : Uniform {};
             class Vest        : Vest {};
@@ -1069,22 +1064,13 @@ class GmEastGermany : Faction
             {
                 role = "Marksman";
 
-                class Ak74 : MarksmanBase
+                class Svd : MarksmanBase
                 {
                     default    = 1;
-                    type       = "AK-74";
-                    rifle      = "gm_mpiak74n_brn";
-
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Km72 : MarksmanBase
-                {
-                    type       = "KM-72";
-                    rifle      = "gm_mpikm72_brn";
-                    primaryMag = "gm_30Rnd_762x39mm_B_M43_ak47_blk";
+                    type       = "SVD";
+                    rifle      = "gm_svd_wud";
+                    primaryMag = "gm_10Rnd_762x54mmR_AP_7N1_svd_blk";
+                    primaryMagCount = GM_GC_MARKSMAN_MAG_COUNT;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1265,14 +1251,7 @@ class GmEastGermany : Faction
             };
             class Marksman : Marksman
             {
-                class Ak74 : Ak74
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Km72 : Km72
+                class Svd : Svd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1414,14 +1393,7 @@ class GmEastGermany : Faction
             };
             class Marksman : Marksman
             {
-                class Ak74 : Ak74
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Km72 : Km72
+                class Svd : Svd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1563,14 +1535,7 @@ class GmEastGermany : Faction
             };
             class Marksman : Marksman
             {
-                class Ak74 : Ak74
-                {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Km72 : Km72
+                class Svd : Svd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1752,19 +1717,7 @@ class GmEastGermany : Faction
             };
             class Marksman : Marksman
             {
-                class Ak74 : Ak74
-                {
-                    headgear = "gm_gc_army_headgear_m56_cover_win";
-
-                    class Uniform  : Uniform
-                    {
-                        type = "gm_gc_army_uniform_soldier_80_win";
-                    };
-                    class Vest        : Vest {};
-                    class Backpack    : Backpack {};
-                    class LinkedItems : LinkedItems {};
-                };
-                class Km72 : Km72
+                class Svd : Svd
                 {
                     headgear = "gm_gc_army_headgear_m56_cover_win";
 
