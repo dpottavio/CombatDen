@@ -15,6 +15,7 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [*] Multi terrain support.  See Combat Den Steam collection for full list.
 [*] Optional third party factions found in RHS, CUP, 3CB, and more.  See the [url=https://github.com/dpottavio/CombatDen/wiki/Factions]Wiki[/url] for a complete list.
 [*] GM support.
+[*] IFA3 support.
 [/list]
 
 [h1]Documentation[/h1]
