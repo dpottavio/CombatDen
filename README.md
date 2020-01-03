@@ -13,17 +13,18 @@ It's simple.  A randomized mission will be selected complete with a
 briefing.  Just play.
 
 ## Features
+
 * Single player support.
 * 8 player coop support on a dedicated server or player hosted server.
 * Zeus support.
-* ACE support, but not required.
 * Virtual Arsenal for player and AI units.
-* Configurable mission settings.
+* Configurable CBA mission settings.
 * Multiple distinct mission types complete with briefing.
-* Multi terrain support.
-* Optional third party factions from RHS, CUP, 3CB, and more.
-* GM support.
-* IFA3 support.
+* Multi terrain support. See Combat Den Steam collection for full list.
+* Optional ACE support.
+* Optional factions from RHS, CUP, 3CB, and more. See the Wiki[github.com] for a complete list.
+* Optional Global Mobilization support.
+* Optional IFA3 support
 
 ## Required Mods
 
