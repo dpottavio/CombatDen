@@ -21,6 +21,9 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [h1]Documentation[/h1]
 Please visit the [url=https://github.com/dpottavio/CombatDen/wiki]Wiki[/url] for more information regarding features and game play.  If you have questions, this is a good place to start.
 
+[h1]Bugs[/h1]
+If you find a bug, please report it!  You can do this by opening an [url=https://github.com/dpottavio/CombatDen/issues]issue[/url], or posting on this workshop page.
+
 [h1]GitHub[/h1]
 The source code for this mission is available on [url=https://github.com/dpottavio/CombatDen]GitHub[/url].
 

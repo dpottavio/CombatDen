@@ -74,9 +74,9 @@ work in progress, it's a good place to get started.
 You can use, redistribute, and/or modify this work
 under the terms of the GNU [Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 as published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-See the [License Summary](https://github.com/dpottavio/CombatDen/wiki#license-summary) section of the wiki for a brief description of what is and is not permitted.
+License, or (at your option) any later version.  See the
+[License Summary](https://github.com/dpottavio/CombatDen/wiki#license-summary)
+section of the wiki for a brief description of what is and is not permitted.
 
 ## Links
 
