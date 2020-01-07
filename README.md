@@ -22,7 +22,7 @@ briefing.  Just play.
 * Multiple distinct mission types complete with briefing.
 * Multi terrain support. See Combat Den Steam collection for full list.
 * Optional ACE support.
-* Optional factions from RHS, CUP, 3CB, and more. See the Wiki[github.com] for a complete list.
+* Optional factions from RHS, CUP, 3CB, and more. See the [Wiki](https://github.com/dpottavio/CombatDen/wiki/Factions) for a complete list.
 * Optional Global Mobilization support.
 * Optional IFA3 support
 
@@ -72,7 +72,7 @@ work in progress, it's a good place to get started.
 ## License
 
 You can use, redistribute, and/or modify this work
-under the terms of the GNU [Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+under the terms of the [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 as published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.  See the
 [License Summary](https://github.com/dpottavio/CombatDen/wiki#license-summary)
