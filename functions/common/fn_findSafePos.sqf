@@ -37,8 +37,12 @@
         1: water
         2: land or water
 
-    5: (Optional) NUMBER - search area expressed as 0..1.  This is the amount
-    of area to search before giving up.  Defaults to 0.33.
+    5: (Optional) NUMBER - The number of seconds of elaps time this call will
+    take before returning an empty result.  The purpose of this is to prevent
+    large search areas from causing a hang for the callers.  Defaults to 5
+    seconds.
+
+    6: (Optional) ARRAY - list of areas to black list from the search.
 
     Returns:
         position on success, empty array on error
@@ -52,7 +56,7 @@ params [
     ["_minObjDist",       0, [0]],
     ["_maxGrad",        0.1, [0]],
     ["_terrainType",      0, [0]],
-    ["_searchArea",    0.33, [0]],
+    ["_timeLimit",        5, [0]],
     ["_blackAreaList",   [], [[]]]
 ];
 
@@ -70,6 +74,11 @@ if (_maxRadius < 0) then {
     _maxRadius = getNumber(configFile >> "CfgWorlds" >> worldName >> "safePositionRadius");
 };
 
+if (_timeLimit < 0) exitWith {
+    ERROR("timeLimit parameter cannot be negative");
+    [];
+};
+
 // water mode parameter for isFlatEmpty
 private _waterMode = switch (_terrainType) do {
     case 0: {  0  };
@@ -78,12 +87,11 @@ private _waterMode = switch (_terrainType) do {
     default {  0  };
 };
 
-private _area     = (pi * _maxRadius^2) - (pi * _minRadius^2);
-private _tryCount = floor(_area * _searchArea);
-private _pos      = [];
-private _isSafe   = false;
+private _pos    = [];
+private _isSafe = false;
+private _t0     = time;
 
-while { _tryCount > 0 && !_isSafe } do {
+while { !_isSafe && ((time - _t0) <= _timeLimit) } do {
     _pos = _center getPos [_minRadius + random (_maxRadius - _minRadius), random  360];
 
     _isSafe = call {
@@ -133,7 +141,6 @@ while { _tryCount > 0 && !_isSafe } do {
 
         true;
     };
-    _tryCount = _tryCount - 1;
 };
 
 if !(_isSafe) exitWith {

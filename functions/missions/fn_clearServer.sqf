@@ -155,7 +155,7 @@ for "_i" from 1 to 3 do {
         15,                 // min distance from objects
         0.1,                // gradient
         0,                  // terrain type
-        0.33,               // search area
+        5,                  // search time
         _bunkerAreaList     // black list
     ] call den_fnc_findSafePos;
     if (_pos isEqualTo []) exitWith {};
