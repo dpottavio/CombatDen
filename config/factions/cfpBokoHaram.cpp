@@ -18,15 +18,22 @@
 
 class CfpBokoHaram : Faction
 {
-    addon       = "CFP";
-    ammoBox     = "CUP_RUBasicAmmunitionBox";
-    era         = ERA_MODERN;
+    addon = "CFP";
+    ammoBox = "CUP_RUBasicAmmunitionBox";
+    climateBlacklist[] = {
+        "SemiArid",
+        "Arid",
+        "Winter",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
-    name        = "Boko Haram";
-    patches[]   = {
+    name = "Boko Haram";
+    patches[] = {
         "CFP_O_BOKOHARAM"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

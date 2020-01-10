@@ -18,15 +18,20 @@
 
 class LopGuerrilla : Faction
 {
-    addon       = "LOP";
-    ammoBox     = "rhs_7ya37_1_single";
-    era         = ERA_MODERN;
+    addon = "LOP";
+    ammoBox = "rhs_7ya37_1_single";
+    climateBlacklist[] = {
+        "Arid",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_MODERN;
     flagTexture = "rhsafrf\addons\rhs_c_cti_indep\flag_insurgents_co.paa";
-    name        = "Guerrilla";
-    patches[]   = {
+    name = "Guerrilla";
+    patches[] = {
         "lop_faction_afr"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

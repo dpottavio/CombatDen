@@ -17,15 +17,21 @@
 
 class CfpIsis : Faction
 {
-    addon       = "CFP";
-    ammoBox     = "CUP_RUBasicAmmunitionBox";
-    era         = ERA_MODERN;
+    addon = "CFP";
+    ammoBox = "CUP_RUBasicAmmunitionBox";
+    climateBlacklist[] = {
+        "Winter",
+        "Wood",
+        "Winter",
+        "Tropic"
+    };
+    era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\islamicstateiraqlevantisil.paa";
-    name        = "ISIS";
-    patches[]   = {
+    name = "ISIS";
+    patches[] = {
         "CFP_O_IS"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

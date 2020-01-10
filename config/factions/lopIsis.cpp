@@ -18,15 +18,21 @@
 
 class LopIsis : Faction
 {
-    addon       = "LOP";
-    ammoBox     = "rhs_7ya37_1_single";
-    era         = ERA_MODERN;
+    addon = "LOP";
+    ammoBox = "rhs_7ya37_1_single";
+    climateBlacklist[] = {
+        "SemiArid",
+        "Tropic",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_MODERN;
     flagTexture = "";
-    name        = "ISIS";
-    patches[]   = {
+    name = "ISIS";
+    patches[] = {
         "lop_faction_ists"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

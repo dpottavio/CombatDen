@@ -18,18 +18,23 @@
 
 class RhsChDkz : Faction
 {
-    addon        = "RHS";
-    ammoBox      = "rhs_7ya37_1_single";
-    cargoBox     = "CargoNet_01_box_F";
-    era          = ERA_MODERN;
+    addon = "RHS";
+    ammoBox = "rhs_7ya37_1_single";
+    cargoBox = "CargoNet_01_box_F";
+    climateBlacklist[] = {
+        "Arid",
+        "Tropic",
+        "SemiArid"
+    };
+    era = ERA_MODERN;
     flagTexture  = "rhsafrf\addons\rhs_c_cti_indep\flag_chdkz_co.paa";
     fullMoonOnly = 1;
-    name         = "ChDkz";
-    patches[]    = {
+    name = "ChDkz";
+    patches[] = {
         "rhsgref_c_troops"
     };
-    playable     = 1;
-    side         = SIDE_GUER;
+    playable = 1;
+    side = SIDE_GUER;
 
     class Arsenal : Arsenal
     {

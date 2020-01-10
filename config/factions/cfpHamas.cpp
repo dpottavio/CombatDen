@@ -18,15 +18,22 @@
 
 class CfpHamas : Faction
 {
-    addon       = "CFP";
-    ammoBox     = "CUP_RUBasicAmmunitionBox";
-    era         = ERA_MODERN;
+    addon = "CFP";
+    ammoBox = "CUP_RUBasicAmmunitionBox";
+    climateBlacklist[] = {
+        "Arid",
+        "Winter",
+        "Wood",
+        "Winter",
+        "Tropic"
+    };
+    era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\hamas.paa";
-    name        = "Hamas";
-    patches[]   = {
+    name = "Hamas";
+    patches[] = {
         "CFP_O_HAMAS"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

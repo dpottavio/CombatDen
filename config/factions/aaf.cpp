@@ -18,13 +18,19 @@
 
 class Aaf : Faction
 {
-    ammoBox     = "Box_IND_Ammo_F";
-    cargoBox    = "I_CargoNet_01_ammo_F";
-    era         = ERA_2034;
+    ammoBox = "Box_IND_Ammo_F";
+    cargoBox = "I_CargoNet_01_ammo_F";
+    climateBlacklist[] = {
+        "Arid",
+        "Tropic",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_AAF_CO.paa";
-    name        = "AAF";
-    playable    = 1;
-    side        = SIDE_GUER;
+    name = "AAF";
+    playable = 1;
+    side = SIDE_GUER;
 
     class Arsenal : Arsenal
     {

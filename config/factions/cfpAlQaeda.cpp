@@ -18,15 +18,20 @@
 
 class CfpAlQaeda : Faction
 {
-    addon       = "CFP";
-    ammoBox     = "CUP_RUBasicAmmunitionBox";
-    era         = ERA_MODERN;
+    addon = "CFP";
+    ammoBox = "CUP_RUBasicAmmunitionBox";
+    climateBlacklist[] = {
+        "Tropic",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
-    name        = "Al Qaeda";
-    patches[]   = {
+    name = "Al Qaeda";
+    patches[] = {
         "CFP_O_ALQAEDA"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

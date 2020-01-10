@@ -18,15 +18,22 @@
 
 class CfpGuerrilla : Faction
 {
-    addon       = "CFP";
-    ammoBox     = "CUP_RUBasicAmmunitionBox";
-    era         = ERA_MODERN;
+    addon = "CFP";
+    ammoBox = "CUP_RUBasicAmmunitionBox";
+    climateBlacklist[] = {
+        "SemiArid",
+        "Arid",
+        "Winter",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\centralafricanrepublic\centralafricanrepublic.paa";
-    name        = "Guerrilla";
-    patches[]   = {
+    name = "Guerrilla";
+    patches[] = {
         "CFP_O_CFRebels"
     };
-    side        = SIDE_GUER;
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

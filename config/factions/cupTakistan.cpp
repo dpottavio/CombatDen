@@ -18,19 +18,25 @@
 
 class CupTakistan : Faction
 {
-    addOn        = "CUP";
-    ammoBox      = "CUP_RUBasicAmmunitionBox";
-    cargoBox     = "CargoNet_01_box_F";
-    era          = ERA_MODERN;
-    flagTexture  = "ca\ca_e\data\flag_tka_co.paa";
+    addOn = "CUP";
+    ammoBox = "CUP_RUBasicAmmunitionBox";
+    cargoBox = "CargoNet_01_box_F";
+    climateBlacklist[] = {
+        "SemiArid",
+        "Wood",
+        "Winter",
+        "Tropic"
+    };
+    era = ERA_MODERN;
+    flagTexture = "ca\ca_e\data\flag_tka_co.paa";
     fullMoonOnly = 1;
-    name         = "Takistan";
-    patches[]    = {
+    name = "Takistan";
+    patches[] = {
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_Taki"
     };
-    playable     = 1;
-    side         = SIDE_OPFOR;
+    playable = 1;
+    side = SIDE_OPFOR;
 
     class Arsenal : Arsenal
     {

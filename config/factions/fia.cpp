@@ -18,11 +18,16 @@
 
 class Fia : Faction
 {
-    ammoBox     = "Box_IND_Ammo_F";
-    era         = ERA_2034;
+    ammoBox  = "Box_IND_Ammo_F";
+    climateBlacklist[] = {
+        "Tropic",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_FIA_CO.paa";
-    name        = "FIA";
-    side        = SIDE_GUER;
+    name = "FIA";
+    side = SIDE_GUER;
 
     // Faction not playable yet.
     class Arsenal {};

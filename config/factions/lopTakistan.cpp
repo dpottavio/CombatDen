@@ -18,17 +18,23 @@
 
 class LopTakistan : Faction
 {
-    addOn        = "LOP";
-    ammoBox      = "rhs_7ya37_1_single";
-    cargoBox     = "CargoNet_01_box_F";
-    era          = ERA_MODERN;
-    flagTexture  = "po_main\data\ui\flags\flag_tak_co.paa";
+    addOn = "LOP";
+    ammoBox = "rhs_7ya37_1_single";
+    cargoBox = "CargoNet_01_box_F";
+    climateBlacklist[] = {
+        "SemiArid",
+        "Tropic",
+        "Wood",
+        "Winter"
+    };
+    era = ERA_MODERN;
+    flagTexture = "po_main\data\ui\flags\flag_tak_co.paa";
     fullMoonOnly = 1;
-    name         = "Takistan";
-    patches[]    = {
+    name = "Takistan";
+    patches[] = {
         "lop_faction_tka"
     };
-    side         = SIDE_OPFOR;
+    side = SIDE_OPFOR;
 
     class Arsenal : Arsenal
     {
