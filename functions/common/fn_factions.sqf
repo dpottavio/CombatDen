@@ -28,8 +28,13 @@ params [
 ];
 
 private _climate = DEN_CLIMATE;
-
-private _allFactions = "true" configClasses (missionConfigFile >> "CfgFactions" >> _climate);
+// Filter based on factions climate blacklist
+// and remove the Faction baseclass from this list.
+private _filter = format[
+    "!(""%1"" in (getArray(_x >> ""climateBlacklist""))) && ((configName _x) != ""Faction"")",
+    _climate
+];
+private _allFactions = _filter configClasses (missionConfigFile >> "CfgFactions");
 
 private _3rdPartyFactions = [];
 private _vanillaFactions  = [];
@@ -53,21 +58,22 @@ private _3rdGuerCount   = 0;
                 _vanillaFactions pushBack _x;
             } else {
                 _3rdPartyFactions pushBack _x;
-            };
-        };
-        private _side = getText(_x >> "side");
-        switch (_side) do {
-            case SIDE_BLUFOR: {
-                _3rdBluforCount = _3rdBluforCount + 1;
-            };
-            case SIDE_OPFOR: {
-                _3rdOpforCount = _3rdOpforCount + 1;
-            };
-            case SIDE_GUER: {
-                _3rdGuerCount = _3rdGuerCount + 1;
-            };
-            default {
-                WARNING_1("invalid side: %1", _side);
+
+                private _side = getText(_x >> "side");
+                switch (_side) do {
+                    case SIDE_BLUFOR: {
+                        _3rdBluforCount = _3rdBluforCount + 1;
+                    };
+                    case SIDE_OPFOR: {
+                        _3rdOpforCount = _3rdOpforCount + 1;
+                    };
+                    case SIDE_GUER: {
+                        _3rdGuerCount = _3rdGuerCount + 1;
+                    };
+                    default {
+                        WARNING_1("invalid side: %1", _side);
+                    };
+                };
             };
         };
     };
