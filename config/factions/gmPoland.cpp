@@ -857,7 +857,7 @@ class GmPoland : Faction
         class AtBase : Base
         {
             unit            = "gm_pl_army_antitank_akm_rpg7_80_moro";
-            rifle           = "gm_akm_wud"
+            rifle           = "gm_akm_wud";
             primaryMagCount = GM_PL_AT_MAG_COUNT;
 
             class Uniform : Uniform {};
