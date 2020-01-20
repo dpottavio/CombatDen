@@ -30,19 +30,24 @@
     2: (Optional) NUMBER - maximum radius from the center position to search,
     defaults to safePositionRadius from (configFile >> CfgWorld).
 
-    3: (Optional) NUMBER - maximum gradient, defaults to 0.1
+    3: (Optional) NUMBER - minimum object distance.
 
-    4: (Optional) NUMBER - terrain type, defaults to 0.
+    4: (Optional) NUMBER - maximum gradient, defaults to 0.1
+
+    5: (Optional) NUMBER - terrain type, defaults to 0.
         0: land
         1: water
         2: land or water
 
-    5: (Optional) NUMBER - The number of seconds of elaps time this call will
+    6: (Optional) ARRAY - list of areas to black list from the search.
+
+    7: (Optional) NUMBER - search area limit expressed as 0..1.  This is the amount
+    of area to search before giving up.  Defaults to 0.33.
+
+    8: (Optional) NUMBER - The number of seconds of elaps time this call will
     take before returning an empty result.  The purpose of this is to prevent
     large search areas from causing a hang for the callers.  Defaults to 5
     seconds.
-
-    6: (Optional) ARRAY - list of areas to black list from the search.
 
     Returns:
         position on success, empty array on error
@@ -56,8 +61,9 @@ params [
     ["_minObjDist",       0, [0]],
     ["_maxGrad",        0.1, [0]],
     ["_terrainType",      0, [0]],
-    ["_timeLimit",        5, [0]],
-    ["_blackAreaList",   [], [[]]]
+    ["_blackAreaList",   [], [[]]],
+    ["_areaLimit",     0.33, [0]],
+    ["_timeLimit",        5, [0]]
 ];
 
 if (_center isEqualTo []) exitWith {
@@ -87,11 +93,17 @@ private _waterMode = switch (_terrainType) do {
     default {  0  };
 };
 
-private _pos    = [];
-private _isSafe = false;
-private _t0     = time;
+private _worldRadius    = worldSize / 2;
+private _worldCenterPos = [_worldRadius, _worldRadius, 0];
+private _worldArea      = [_worldCenterPos, _worldRadius, _worldRadius, 0, false, -1];
 
-while { !_isSafe && ((time - _t0) <= _timeLimit) } do {
+private _area     = (pi * _maxRadius^2) - (pi * _minRadius^2);
+private _tryCount = ceil(_area * _areaLimit);
+private _pos      = [];
+private _isSafe   = false;
+private _t0       = time;
+
+while { !_isSafe && _tryCount > 0 && ((time - _t0) <= _timeLimit) } do {
     _pos = _center getPos [_minRadius + random (_maxRadius - _minRadius), random  360];
 
     _isSafe = call {
@@ -130,17 +142,13 @@ while { !_isSafe && ((time - _t0) <= _timeLimit) } do {
             false;
         };
 
-        private _x = _pos select 0;
-        if (_x < 0 || _x > worldSize) exitWith {
-            false;
-        };
-        private _y = _pos select 1;
-        if (_y < 0 || _y > worldSize) exitWith {
+        if !(_pos inArea _worldArea) exitWith {
             false;
         };
 
         true;
     };
+    _tryCount = _tryCount - 1;
 };
 
 if !(_isSafe) exitWith {
