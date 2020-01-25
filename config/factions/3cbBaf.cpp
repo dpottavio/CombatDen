@@ -28,7 +28,6 @@ class Uk3cbBaf : Faction
         "UK3CB_BAF_Vehicles",
         "UK3CB_BAF_Units_MTP"
     };
-    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : Arsenal

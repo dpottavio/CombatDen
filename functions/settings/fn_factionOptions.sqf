@@ -20,41 +20,29 @@
     Return faction options for use in defining parameters in
     CfgSettings at runtime.
 
-    Parameters:
-
-    0: (Optional) ARRAY - List of sides the returned faction
-    list should match.
-
     Returns: ARRAY
         0: ARRAY - faction titles
         1: ARRAY - faction values
 */
 #include "..\..\macros.hpp"
 
-params [
-    ["_onlyPlayable", false, [false]]
-];
-
 private _titles   = [];
 private _values   = [];
 private _data     = [];
 
 {
-    private _playable = getNumber (_x >> "playable");
-    if (!_onlyPlayable || _playable > 0) then {
-        private _addon = getText (_x >> "addon");
-        private _name  = getText (_x >> "name");
-        private _side  = getText (_x >> "side");
-        private _value = configName _x;
+    private _addon = getText (_x >> "addon");
+    private _name  = getText (_x >> "name");
+    private _side  = getText (_x >> "side");
+    private _value = configName _x;
 
-        if (_addon != "") then {
-            _name = format["%1 %2 (%3)", _side, _name, _addon];
-        } else {
-            _name = format["%1 %2", _side, _name];
-        };
-
-        _data pushBack [_name, _value];
+    if (_addon != "") then {
+        _name = format["%1 %2 (%3)", _side, _name, _addon];
+    } else {
+        _name = format["%1 %2", _side, _name];
     };
+
+    _data pushBack [_name, _value];
 } forEach ([] call den_fnc_factions);
 
 _data sort true;

@@ -20,6 +20,7 @@ class CfpGuerrilla : Faction
 {
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
+    cargoBox = "CFP_O_ALQAEDA_SupportBox";
     climateBlacklist[] = {
         "SemiArid",
         "Arid",
@@ -29,16 +30,53 @@ class CfpGuerrilla : Faction
     };
     era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\centralafricanrepublic\centralafricanrepublic.paa";
+    fullMoonOnly = 1;
     name = "Guerrilla";
     patches[] = {
         "CFP_O_CFRebels"
     };
-    side = SIDE_GUER;
+    side = SIDE_OPFOR;
 
-    // Faction not playable yet.
-    class Arsenal {};
-    class Vehicle {};
-    class Loadout {};
+    class Arsenal : ArsenalCupMilitia
+    {
+        class Tropic : Base
+        {
+            backpacks[] = {
+               "CFP_Kitbag_M81"
+            };
+            uniforms[] = {
+                "CFP_GUER_M81",
+                "CFP_GUER_MCampants",
+                "CFP_GUER_Khk_Wdl",
+                "CFP_GUER_Tigerpants",
+                "CFP_GUER_ERDLpants",
+            };
+            headgear[] = {
+                "SP_Bandana_ATacsFG",
+                "SP_Bandana_Black",
+                "SP_Bandana_Green",
+                "SP_Bandana_Hunter2",
+                "SP_BoonieHat_Green",
+                "CFP_BoonieHat_M81",
+                "CFP_BoonieHat_PolygonWoodland"
+            };
+            vests[] = {
+                "CFP_AK_VEST_Tan"
+            };
+        };
+    };
+
+    class Vehicle
+    {
+        class Tropic
+        {
+            truckAssault     = "CFP_O_CFRebels_Offroad_50_Cal_01";
+            truckSupplyAmmo  = "I_G_Van_02_vehicle_F";
+            truckSupplyCargo = "CFP_O_CFRebels_Truck_01";
+            truckSupplyFuel  = "C_Van_01_fuel_F";
+            truckTransport   = "CFP_O_CFRebels_Truck_01";
+        };
+    };
 
     class Group : Group
     {
@@ -50,6 +88,46 @@ class CfpGuerrilla : Faction
 
         class Tropic
         {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_CFRebels_Rifleman_01";
+                };
+            };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
@@ -137,14 +215,14 @@ class CfpGuerrilla : Faction
             {
                 class Unit0 : Unit0
                 {
-                     vehicle = "CFP_O_CFRebels_Technical_PK_01";
+                     vehicle = "CFP_O_CFRebels_Offroad_50_Cal_01";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "CFP_O_CFRebels_Technical_PK_01";
+                    vehicle = "CFP_O_CFRebels_Offroad_50_Cal_01";
                 };
                 class Unit1 : Unit1
                 {
@@ -169,7 +247,139 @@ class CfpGuerrilla : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "CFP_O_CFRebels_Technical_PK_01";
+                    vehicle = "CFP_O_CFRebels_Offroad_50_Cal_01";
+                };
+            };
+        };
+    };
+    class Loadout : LoadoutCupMilitia
+    {
+        class Tropic : ClimateBase
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_CFRebels_Rifleman_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_CFRebels_Grenadier_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_CFRebels_Squad_Leader_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    unit = "CFP_O_CFRebels_Machinegunner_PKM_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    unit = "CFP_O_CFRebels_Machinegunner_PKM_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    unit = "CFP_O_CFRebels_Sharpshooter_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_CFRebels_Surgeon_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    unit = "CFP_O_CFRebels_RPG_Gunner_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    unit = "CFP_O_CFRebels_RPG_Gunner_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_CFRebels_Demo_Specialist_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_CFRebels_Rifleman_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
                 };
             };
         };

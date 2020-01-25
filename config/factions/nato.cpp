@@ -23,7 +23,6 @@ class Nato : Faction
     era         = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_nato_CO.paa";
     name        = "NATO";
-    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : Arsenal

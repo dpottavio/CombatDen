@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=58;
+		nextID=59;
 	};
 	class Camera
 	{
-		pos[]={2058.5781,371.03992,278.02417};
-		dir[]={0.21036682,-0.20922844,0.9550336};
-		up[]={0.045016874,0.97785276,0.20436408};
-		aside[]={0.97665417,-1.3299796e-006,-0.21513221};
+		pos[]={2050.7881,371.03992,275.35672};
+		dir[]={0.26882148,-0.12716322,0.95482725};
+		up[]={0.034474395,0.99186981,0.12244482};
+		aside[]={0.96264935,-1.6072954e-006,-0.27102727};
 	};
 };
 binarizationWanted=0;
@@ -146,7 +146,7 @@ class Mission
 			name="COP";
 			class Entities
 			{
-				items=18;
+				items=15;
 				class Item0
 				{
 					dataType="Object";
@@ -353,54 +353,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2054.1294,363.56168,294.59204};
-						angles[]={6.2384152,3.5959716,6.1795592};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=478;
-					type="Land_HBarrierWall6_F";
-				};
-				class Item13
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2046.7031,364.4816,297.88705};
-						angles[]={6.2384152,3.5565627,6.1795592};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=479;
-					type="Land_HBarrierWall6_F";
-				};
-				class Item14
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2039.1522,365.33139,300.94299};
-						angles[]={6.2527947,3.5448942,6.1922359};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=480;
-					type="Land_HBarrierWall6_F";
-				};
-				class Item15
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={2085.9941,361.19421,290.63324};
 						angles[]={6.278389,2.0821786,6.2527947};
 					};
@@ -412,7 +364,7 @@ class Mission
 					id=481;
 					type="Land_HBarrierWall6_F";
 				};
-				class Item16
+				class Item13
 				{
 					dataType="Object";
 					class PositionInfo
@@ -429,7 +381,7 @@ class Mission
 					type="FlagPole_F";
 					atlOffset=-3.0517578e-005;
 				};
-				class Item17
+				class Item14
 				{
 					dataType="Object";
 					class PositionInfo

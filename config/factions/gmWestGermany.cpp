@@ -28,7 +28,6 @@ class GmWestGermany : Faction
     patches[]    = {
         "gm_core"
     };
-    playable     = 1;
     side         = SIDE_BLUFOR;
 
     class Arsenal : ArsenalGmWest

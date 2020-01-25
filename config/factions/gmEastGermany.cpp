@@ -28,7 +28,6 @@ class GmEastGermany : Faction
     patches[]    = {
         "gm_core"
     };
-    playable     = 1;
     side         = SIDE_OPFOR;
 
     class Arsenal : Arsenal

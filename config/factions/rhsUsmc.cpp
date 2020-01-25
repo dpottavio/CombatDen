@@ -27,7 +27,6 @@ class RhsUsmc : Faction
     patches[]    = {
         "rhsusf_c_troops"
     };
-    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : Arsenal

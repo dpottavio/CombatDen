@@ -31,7 +31,6 @@ class Ifa3RedArmy : Faction
     patches[]    = {
         "WW2_Assets_c_Characters_Soviets_c"
     };
-    playable     = 1;
     side         = SIDE_OPFOR;
 
     class Arsenal : ArsenalIfa3

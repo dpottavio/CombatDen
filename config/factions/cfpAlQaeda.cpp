@@ -20,6 +20,7 @@ class CfpAlQaeda : Faction
 {
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
+    cargoBox = "CFP_O_ALQAEDA_SupportBox";
     climateBlacklist[] = {
         "Tropic",
         "Wood",
@@ -27,16 +28,62 @@ class CfpAlQaeda : Faction
     };
     era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\alqaeda.paa";
+    fullMoonOnly = 1;
     name = "Al Qaeda";
     patches[] = {
         "CFP_O_ALQAEDA"
     };
-    side = SIDE_GUER;
+    side = SIDE_OPFOR;
 
-    // Faction not playable yet.
-    class Arsenal {};
-    class Vehicle {};
-    class Loadout {};
+    class Arsenal : ArsenalCupMilitia
+    {
+        class SemiArid : Base
+        {
+            backpacks[] = {
+                "CFP_Kitbag_Drab",
+            };
+            uniforms[] = {
+                "SP_0000_Standard_FieldUniform_Black",
+                "CFP_U_FieldUniform_ChocChip",
+                "CFP_U_FieldUniform_DDPM",
+                "CFP_FieldUniform_blackacu_SS",
+                "CFP_FieldUniform_fleckacr_SS",
+                "CFP_U_FieldUniform_acr_desert_SS",
+                "CFP_FieldUniform_dcum81_SS"
+            };
+            headgear[] = {
+                "CFP_Shemagh_Full_White",
+                "CFP_Shemagh_Full_Tan",
+                "CFP_Shemagh_Full_Red",
+                "CFP_Shemagh_Full_M81",
+                "CFP_Shemagh_Full_Green",
+                "CFP_Shemagh_Full_Gold",
+                "CFP_Shemagh_Full_Creme",
+                "CFP_Shemagh_Full_Black",
+                "SP_Shemagh_Black",
+                "SP_Shemagh_CheckBlack",
+                "SP_Shemagh_CheckTan",
+            };
+            vests[] = {
+                "CFP_AK_VEST_Tan"
+            };
+        };
+
+        class Arid : SemiArid {};
+    };
+
+    class Vehicle
+    {
+        class SemiArid
+        {
+            truckAssault     = "I_G_Offroad_01_armed_F";
+            truckSupplyAmmo  = "I_G_Van_02_vehicle_F";
+            truckSupplyCargo = "I_G_Van_01_transport_F";
+            truckSupplyFuel  = "C_Van_01_fuel_F";
+            truckTransport   = "I_G_Van_01_transport_F";
+        };
+        class Arid : SemiArid {};
+    };
 
     class Group : Group
     {
@@ -48,6 +95,46 @@ class CfpAlQaeda : Faction
 
         class SemiArid
         {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CFP_O_ALQAEDA_Rifleman_01";
+                };
+            };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
@@ -173,6 +260,25 @@ class CfpAlQaeda : Faction
         };
         class Arid : SemiArid
         {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
             class Sentry : Sentry
             {
                 class Unit0 : Unit0 {};
@@ -235,6 +341,246 @@ class CfpAlQaeda : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
                 class Unit8 : Unit8 {};
+            };
+        };
+    };
+
+    class Loadout : LoadoutCupMilitia
+    {
+        class SemiArid : ClimateBase
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_ALQAEDA_Rifleman_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_ALQAEDA_Grenadier_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_ALQAEDA_Team_Leader_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    unit = "CFP_O_ALQAEDA_Machine_Gunner_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    unit = "CFP_O_ALQAEDA_Machine_Gunner_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    unit = "CFP_O_ALQAEDA_Sniper_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_ALQAEDA_Medic_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    unit = "CFP_O_ALQAEDA_Rifleman_AT_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    unit = "CFP_O_ALQAEDA_Rifleman_AT_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_ALQAEDA_Explosive_Specialist_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    unit = "CFP_O_ALQAEDA_Rifleman_01";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
         };
     };

@@ -23,10 +23,6 @@
 */
 #include "..\..\macros.hpp"
 
-params [
-    ["_playableOnly", false, [false]]
-];
-
 private _climate = DEN_CLIMATE;
 // Filter based on factions climate blacklist
 // and remove the Faction baseclass from this list.
@@ -44,35 +40,32 @@ private _3rdOpforCount  = 0;
 private _3rdGuerCount   = 0;
 {
     /*
-     * - Filter on playable
      * - Filter factions based on required patches.
      * - Sort them based on vanilla and non-vanilla.
      */
-    if (!_playableOnly || (getNumber(_x >> "playable") == 1)) then {
-        private _patches = getArray(_x >> "patches");
-        private _total = count _patches;
-        private _installed = { DEN_HAS_ADDON(_x) } count _patches;
-        if (_total == _installed) then {
-            private _isVanilla = (getText(_x >> "addon") == "");
-            if (_isVanilla) then {
-                _vanillaFactions pushBack _x;
-            } else {
-                _3rdPartyFactions pushBack _x;
+    private _patches = getArray(_x >> "patches");
+    private _total = count _patches;
+    private _installed = { DEN_HAS_ADDON(_x) } count _patches;
+    if (_total == _installed) then {
+        private _isVanilla = (getText(_x >> "addon") == "");
+        if (_isVanilla) then {
+            _vanillaFactions pushBack _x;
+        } else {
+            _3rdPartyFactions pushBack _x;
 
-                private _side = getText(_x >> "side");
-                switch (_side) do {
-                    case SIDE_BLUFOR: {
-                        _3rdBluforCount = _3rdBluforCount + 1;
-                    };
-                    case SIDE_OPFOR: {
-                        _3rdOpforCount = _3rdOpforCount + 1;
-                    };
-                    case SIDE_GUER: {
-                        _3rdGuerCount = _3rdGuerCount + 1;
-                    };
-                    default {
-                        WARNING_1("invalid side: %1", _side);
-                    };
+            private _side = getText(_x >> "side");
+            switch (_side) do {
+                case SIDE_BLUFOR: {
+                    _3rdBluforCount = _3rdBluforCount + 1;
+                };
+                case SIDE_OPFOR: {
+                    _3rdOpforCount = _3rdOpforCount + 1;
+                };
+                case SIDE_GUER: {
+                    _3rdGuerCount = _3rdGuerCount + 1;
+                };
+                default {
+                    WARNING_1("invalid side: %1", _side);
                 };
             };
         };

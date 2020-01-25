@@ -28,7 +28,6 @@ class CupBundeswehr : Faction
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_Germany"
     };
-    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : ArsenalCupWest

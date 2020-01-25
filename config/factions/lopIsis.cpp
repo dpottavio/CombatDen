@@ -20,37 +20,113 @@ class LopIsis : Faction
 {
     addon = "LOP";
     ammoBox = "rhs_7ya37_1_single";
+    cargoBox = "CargoNet_01_box_F";
     climateBlacklist[] = {
-        "SemiArid",
         "Tropic",
         "Wood",
         "Winter"
     };
     era = ERA_MODERN;
-    flagTexture = "";
+    flagTexture = "po_main\data\ui\flags\flag_isis_co.paa";
+    fullMoonOnly = 1;
     name = "ISIS";
     patches[] = {
         "lop_faction_ists"
     };
-    side = SIDE_GUER;
+    side = SIDE_OPFOR;
 
-    // Faction not playable yet.
-    class Arsenal {};
-    class Vehicle {};
-    class Loadout {};
+    class Arsenal : ArsenalRhsMilitia
+    {
+        class SemiArid : Base
+        {
+            backpacks[] = {
+               "B_Kitbag_sgg"
+            };
+            headgear[] = {
+                "LOP_H_Shemag_BLK",
+                "LOP_H_Shemag_BLU",
+                "LOP_H_Shemag_GRE",
+                "LOP_H_Shemag_OLV",
+                "LOP_H_Shemag_TAN"
+            };
+            uniforms[] = {
+                "LOP_U_ISTS_Fatigue_25",
+                "LOP_U_UVF_Fatigue_BL_OSW",
+                "LOP_U_UVF_Fatigue_COY_OSW",
+                "LOP_U_ISTS_Fatigue_21"
+            };
+            vests[] = {
+                "LOP_V_CarrierLite_TAN"
+            };
+        };
+
+        class Arid : SemiArid {};
+    };
+
+    class Vehicle
+    {
+        class SemiArid
+        {
+            truckAssault     = "LOP_ISTS_OPF_M1025_W_M2";
+            truckSupplyAmmo  = "I_G_Van_02_vehicle_F";
+            truckSupplyCargo = "LOP_ISTS_OPF_Truck";
+            truckSupplyFuel  = "C_Van_01_fuel_F";
+            truckTransport   = "LOP_ISTS_OPF_Truck";
+        };
+
+        class Arid : SemiArid {};
+    };
 
     class Group : Group
     {
-        accLight = "rhs_acc_2dpzenit";
-
         class Couple : Couple {};
         class Single : Single {};
         class Squad  : Squad {};
         class Team   : Team {};
         class Triple : Triple {};
 
-        class Arid
+        class SemiArid
         {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_ISTS_OPF_Infantry_Rifleman";
+                };
+            };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
@@ -171,6 +247,298 @@ class LopIsis : Faction
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
                     vehicle =  "LOP_ISTS_OPF_M1025_W_M2";
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class Loadout : LoadoutRhsMilitia
+    {
+        class SemiArid : ClimateBase
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_Rifleman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_GL";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_SL";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Pkm : Pkm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_AR";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_Marksman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_Corpsman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    unit = "LOP_AFR_OPF_Infantry_AT";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_Engineer";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_ISTS_OPF_Infantry_Rifleman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Pkm : Pkm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
                 };
             };
         };

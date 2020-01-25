@@ -29,7 +29,6 @@ class Aaf : Faction
     era = ERA_2034;
     flagTexture = "\A3\Data_F\Flags\Flag_AAF_CO.paa";
     name = "AAF";
-    playable = 1;
     side = SIDE_GUER;
 
     class Arsenal : Arsenal

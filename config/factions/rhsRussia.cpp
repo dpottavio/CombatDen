@@ -27,7 +27,6 @@ class RhsRussia : Faction
     patches[]    = {
         "rhs_c_troops"
     };
-    playable    = 1;
     side        = SIDE_OPFOR;
 
     class Arsenal : Arsenal

@@ -28,7 +28,6 @@ class CupBaf : Faction
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_BAF"
     };
-    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : ArsenalCupWest

@@ -44,6 +44,7 @@ class CfgFunctions
             class insertMotorized {};
             class intelPositions {};
             class loadout {};
+            class loadoutDefault {};
             class loadoutItems {};
             class loadoutMags {};
             class lowDaylight {};

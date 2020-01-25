@@ -82,13 +82,14 @@ private _typeCfg     = configNull;
 private _unitType    = "";
 
 if (_roleType == "") then {
-    private _condition = "getNumber(_x >> ""default"") == 1";
-    private _cfgList = _condition configClasses
-			(missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role);
-
-    _typeCfg  = _cfgList select 0;
+    _typeCfg = [_faction, _role] call den_fnc_loadoutDefault;
 } else {
     _typeCfg = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role >> _roleType;
+};
+
+if (isNil "_typeCfg" || isNull _typeCfg) exitWith {
+    ERROR_3("faction %1 is missing role type: %2 %3", _faction, _role, _roleType);
+    objNull;
 };
 
 _unitType = getText(_typeCfg >> "unit");

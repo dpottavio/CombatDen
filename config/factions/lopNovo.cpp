@@ -20,6 +20,7 @@ class LopNovo : Faction
 {
     addon = "LOP";
     ammoBox = "rhs_7ya37_1_single";
+    cargoBox = "CargoNet_01_box_F";
     climateBlacklist[] = {
         "Arid",
         "Tropic",
@@ -27,21 +28,49 @@ class LopNovo : Faction
     };
     era = ERA_MODERN;
     flagTexture = "po_main\data\ui\flags\flag_sla_co.paa";
+    fullMoonOnly = 1;
     name = "Novorossiya";
     patches[] = {
         "lop_faction_us"
     };
-    side = SIDE_GUER;
+    side = SIDE_OPFOR;
 
-    // Faction not playable yet.
-    class Arsenal {};
-    class Vehicle {};
-    class Loadout {};
+    class Arsenal : ArsenalRhsMilitia
+    {
+        class Wood : Base
+        {
+            backpacks[] = {
+                "B_Kitbag_sgg"
+            };
+            headgear[] = {
+                "rhs_6b28_green"
+            };
+            uniforms[] = {
+                "LOP_U_US_Fatigue_03",
+                "LOP_U_US_Fatigue_04"
+            };
+            vests[] = {
+                "rhs_6sh92"
+            };
+        };
+
+        class Winter : Wood {};
+    };
+    class Vehicle
+    {
+        class Wood
+        {
+            truckAssault     = "LOP_US_UAZ_DshKM";
+            truckSupplyAmmo  = "I_G_Van_02_vehicle_F";
+            truckSupplyCargo = "LOP_US_Ural_open";
+            truckSupplyFuel  = "C_Van_01_fuel_F";
+            truckTransport   = "LOP_US_Ural_open";
+        };
+        class Winter : Wood {};
+    };
 
     class Group : Group
     {
-        accLight = "rhs_acc_2dpzenit";
-
         class Couple : Couple {};
         class Single : Single {};
         class Squad  : Squad {};
@@ -50,6 +79,46 @@ class LopNovo : Faction
 
         class Wood
         {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LOP_US_Infantry_Rifleman_2";
+                };
+            };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
@@ -175,6 +244,25 @@ class LopNovo : Faction
         };
         class Winter : Wood
         {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
             class Sentry : Sentry
             {
                 class Unit0 : Unit0 {};
@@ -237,6 +325,213 @@ class LopNovo : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
                 class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class Loadout : LoadoutRhsMilitia
+    {
+        class Wood : ClimateBase
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_US_Infantry_Rifleman_2";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_US_Infantry_GL_2";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_US_Infantry_TL";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Pkm : Pkm
+                {
+                    unit = "LOP_US_Infantry_MG";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    unit = "LOP_US_Infantry_Marksman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_US_Infantry_Corpsman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    unit = "LOP_US_Infantry_AT";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_US_Infantry_Rifleman_2";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    unit = "LOP_US_Infantry_Engineer";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : Wood
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Pkm : Pkm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
         };
     };

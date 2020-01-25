@@ -27,7 +27,7 @@ class CfgSettings
     class EnemyFaction
     {
         title    = "Enemy Faction";
-        function = "[false] call den_fnc_factionOptions";
+        function = "[] call den_fnc_factionOptions";
         default  = 0;
     };
     class Mission

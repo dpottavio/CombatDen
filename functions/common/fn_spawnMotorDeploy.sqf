@@ -61,9 +61,11 @@ if (_vehicleType == "") exitWith {
     [];
 };
 
-private _vehicleCount = 2;
+private _seatCount    = [_vehicleType, true] call BIS_fnc_crewCount;
+private _vehicleCount = 2 max (ceil ((count units _playerGroup) / _seatCount));
 private _offset       = 0;
 private _vehicles     = [];
+private _posGap       = (sizeOf _vehicleType) + 7;
 
 for "i" from 1 to _vehicleCount do {
     private _vehiclePos = _pos getPos [_offset, _dir - 180];
@@ -79,17 +81,12 @@ for "i" from 1 to _vehicleCount do {
     /*
      * Add basic cargo by getting default items from unit loadouts.
      */
-    private _query            = "(getNumber (_x >> ""default"")) == 1";
-    private _at               = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> "At";
-    private _defaultAt        = (_query configClasses _at) select 0;
-    private _grenadier        = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> "Grenadier";
-    private _defaultGrenadier = (_query configClasses _grenadier) select 0;
-    private _ar               = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> "Autorifleman";
-    private _defaultAr        = (_query configClasses _ar) select 0;
-    private _medic            = missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> "Medic";
-    private _defaultMedic     = (_query configClasses _medic) select 0;
+    private _defaultAt        = [_faction, "At"] call den_fnc_loadoutDefault;
+    private _defaultGrenadier = [_faction, "Grenadier"] call den_fnc_loadoutDefault;
+    private _defaultAr        = [_faction, "Autorifleman"] call den_fnc_loadoutDefault;
+    private _defaultMedic     = [_faction, "Medic"] call den_fnc_loadoutDefault;
 
-    private _atLauncher     = getText (_defaultAt >> "launcher");
+    private _atLauncher = getText (_defaultAt >> "launcher");
 
     private _atPrimaryMag   = "";
     private _atSecondaryMag = "";
@@ -130,7 +127,7 @@ for "i" from 1 to _vehicleCount do {
 
     _vehicle addItemCargoGlobal ["ToolKit", 1];
 
-    _offset = _offset + 10;
+    _offset = _offset + _posGap;
 };
 
 _vehicles;

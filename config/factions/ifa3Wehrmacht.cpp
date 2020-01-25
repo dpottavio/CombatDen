@@ -28,7 +28,6 @@ class Ifa3Wehrmacht : Faction
     patches[]    = {
         "WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht"
     };
-    playable     = 1;
     side         = SIDE_BLUFOR;
 
     class Arsenal : ArsenalIfa3

@@ -31,7 +31,6 @@ class Ifa3UkArmy : Faction
     patches[]    = {
         "WW2_Assets_c_Characters_British_c"
     };
-    playable     = 1;
     side         = SIDE_GUER;
 
     class Arsenal : ArsenalIfa3

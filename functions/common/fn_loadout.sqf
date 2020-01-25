@@ -69,13 +69,7 @@ if (_type != "") then {
         false;
     };
 } else {
-    private _configCondition = "getNumber(_x >> ""default"") == 1";
-    private _loadouts = _configCondition configClasses (missionConfigFile >> "CfgFactions" >> _faction >> "Loadout" >> _climate >> _role);
-    if (_loadouts isEqualTo []) exitWith {
-        ERROR_1("no default loadouts for faction %1", _faction);
-        false;
-    };
-   _loadout = _loadouts select 0;
+   _loadout = [_faction, _role] call den_fnc_loadoutDefault;
 };
 
 removeAllWeapons _unit;
@@ -109,7 +103,16 @@ _unit forceAddUniform _uniform;
 /*
  * vest
  */
-_unit addVest getText (_loadout >> "Vest" >> "type");
+private _vest = getText (_loadout >> "Vest" >> "type");
+if (_vest == "") then {
+    _vest = selectRandom (getArray (missionConfigFile >>
+                                        "CfgFactions" >>
+                                             _faction >>
+                                            "Arsenal" >>
+                                             _climate >> "vests"));
+};
+
+_unit addVest _vest;
 {
     _unit addItemToVest _x;
 } forEach ([_loadout, "Vest"] call den_fnc_loadoutItems);
@@ -117,7 +120,16 @@ _unit addVest getText (_loadout >> "Vest" >> "type");
 /*
  * backpack
  */
-_unit addBackpack getText (_loadout >> "Backpack" >> "type");
+private _backpack = getText (_loadout >> "Backpack" >> "type");
+if (_backpack == "") then {
+    _backpack = selectRandom (getArray (missionConfigFile >>
+                                            "CfgFactions" >>
+                                                 _faction >>
+                                                "Arsenal" >>
+                                                 _climate >> "backpacks"));
+};
+
+_unit addBackpack _backpack;
 {
     _unit addItemToBackpack _x;
 } forEach ([_loadout, "Backpack"] call den_fnc_loadoutItems);

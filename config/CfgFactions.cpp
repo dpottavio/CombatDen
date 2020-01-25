@@ -37,7 +37,6 @@ class CfgFactions
  * CFP Factions
  */
 #include "factions\cfpAlQaeda.cpp"
-#include "factions\cfpAlShabaab.cpp"
 #include "factions\cfpBokoHaram.cpp"
 #include "factions\cfpGuerrilla.cpp"
 #include "factions\cfpHamas.cpp"

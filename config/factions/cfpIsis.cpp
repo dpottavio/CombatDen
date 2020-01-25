@@ -19,6 +19,7 @@ class CfpIsis : Faction
 {
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
+    cargoBox = "CFP_O_IS_SupportBox";
     climateBlacklist[] = {
         "Winter",
         "Wood",
@@ -27,16 +28,51 @@ class CfpIsis : Faction
     };
     era = ERA_MODERN;
     flagTexture = "x\cfp\addons\flags\others\islamicstateiraqlevantisil.paa";
+    fullMoonOnly = 1;
     name = "ISIS";
     patches[] = {
         "CFP_O_IS"
     };
-    side = SIDE_GUER;
+    side = SIDE_OPFOR;
 
-    // Faction not playable yet.
-    class Arsenal {};
-    class Vehicle {};
-    class Loadout {};
+    class Arsenal : ArsenalCupMilitia
+    {
+        class SemiArid : Base
+        {
+            backpacks[] = {
+               "CFP_Kitbag_M81"
+            };
+            faceware[] = {
+                "G_Balaclava_blk"
+            };
+            uniforms[] = {
+                "CFP_U_FieldUniform_3ColorDesert",
+                "CFP_U_FieldUniform_ChocChip",
+                "SP_0000_Standard_FieldUniform_Tan",
+                "CFP_U_FieldUniform_3ColorDesert_SS"
+            };
+
+            vests[] = {
+                "SP_Tactical1_Tan",
+                "SP_Tactical1_Green"
+            };
+        };
+
+        class Arid : SemiArid {};
+    };
+
+    class Vehicle
+    {
+        class SemiArid
+        {
+            truckAssault     = "cfp_o_is_LR_M2";
+            truckSupplyAmmo  = "I_G_Van_02_vehicle_F";
+            truckSupplyCargo = "cfp_o_is_Ural";
+            truckSupplyFuel  = "C_Van_01_fuel_F";
+            truckTransport   = "cfp_o_is_Ural";
+        };
+        class Arid : SemiArid {};
+    };
 
     class Group : Group
     {
@@ -48,6 +84,46 @@ class CfpIsis : Faction
 
         class SemiArid
         {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "cfp_o_is_rifleman";
+                };
+            };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
@@ -135,14 +211,14 @@ class CfpIsis : Faction
             {
                 class Unit0 : Unit0
                 {
-                     vehicle = "cfp_o_is_hmmwv_dshkm";
+                     vehicle = "cfp_o_is_LR_M2";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "cfp_o_is_hmmwv_dshkm";
+                    vehicle = "cfp_o_is_LR_M2";
                 };
                 class Unit1 : Unit1
                 {
@@ -167,12 +243,31 @@ class CfpIsis : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "cfp_o_is_hmmwv_dshkm";
+                    vehicle = "cfp_o_is_LR_M2";
                 };
             };
         };
         class Arid : SemiArid
         {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
             class Sentry : Sentry
             {
                 class Unit0 : Unit0 {};
@@ -235,6 +330,256 @@ class CfpIsis : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
                 class Unit8 : Unit8 {};
+            };
+        };
+    };
+    class Loadout : LoadoutCupMilitia
+    {
+        class SemiArid : ClimateBase
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_rifleman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_grenadier";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_squad_leader";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_machinegunner";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_machinegunner";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_sniper";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_medic";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_at";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_at";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_sapper";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    faceware = "G_Balaclava_blk";
+                    unit = "cfp_o_is_rifleman";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
         };
     };

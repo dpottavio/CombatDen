@@ -31,7 +31,6 @@ class Ldf : Faction
     patches[] = {
         "A3_Characters_F_Enoch"
     };
-    playable = 1;
     side = SIDE_GUER;
 
     class Arsenal : Arsenal

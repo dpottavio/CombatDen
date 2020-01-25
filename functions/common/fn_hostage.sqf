@@ -47,12 +47,18 @@ if (!local _hostage) exitWith {
 _hostage setCaptive true;
 _hostage disableAI "ALL";
 
-removeAllWeapons       _hostage;
-removeBackpack         _hostage;
-removeVest             _hostage;
-removeAllAssignedItems _hostage;
-removeHeadgear         _hostage;
-removeGoggles          _hostage;
+[_hostage] spawn {
+    params ["_hostage"];
+    // HACK - Delay this to avoid the race with unit scripts
+    // that add equipment.
+    sleep 4;
+    removeAllWeapons       _hostage;
+    removeBackpack         _hostage;
+    removeVest             _hostage;
+    removeAllAssignedItems _hostage;
+    removeHeadgear         _hostage;
+    removeGoggles          _hostage;
+};
 
 private _animation = selectRandom [
     ["Acts_ExecutionVictim_Loop",          "Acts_ExecutionVictim_Unbow"],

@@ -28,7 +28,6 @@ class CupUsmc : Faction
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_USMC"
     };
-    playable    = 1;
     side        = SIDE_BLUFOR;
 
     class Arsenal : ArsenalCupWest

@@ -21,7 +21,7 @@ class CfgHelp
     class License
     {
         title = "License";
-        text  = "Copyright (C) 2018-2019 D. Ottavio <br/><br/>\
+        text  = "Copyright (C) 2018-2020 D. Ottavio <br/><br/>\
 Combat Den is free software: you can redistribute it and/or modify \
 it under the terms of the GNU Lesser General Public License as \
 published by the Free Software Foundation, either version 3 of the \

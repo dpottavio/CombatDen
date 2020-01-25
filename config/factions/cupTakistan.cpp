@@ -35,7 +35,6 @@ class CupTakistan : Faction
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_Taki"
     };
-    playable = 1;
     side = SIDE_OPFOR;
 
     class Arsenal : Arsenal

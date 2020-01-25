@@ -33,7 +33,6 @@ class RhsChDkz : Faction
     patches[] = {
         "rhsgref_c_troops"
     };
-    playable = 1;
     side = SIDE_GUER;
 
     class Arsenal : Arsenal

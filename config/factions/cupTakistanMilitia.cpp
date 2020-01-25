@@ -20,6 +20,7 @@ class CupTakistanMilitia : Faction
 {
     addon = "CUP";
     ammoBox  = "CUP_RUBasicAmmunitionBox";
+    cargoBox = "CargoNet_01_box_F";
     climateBlacklist[] = {
         "SemiArid",
         "Tropic",
@@ -28,17 +29,58 @@ class CupTakistanMilitia : Faction
     };
     era = ERA_MODERN;
     flagTexture = "ca\ca_e\data\flag_tka_co.paa";
+    fullMoonOnly = 1;
     name = "Takistan Militia";
     patches[] = {
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_TakiInsurgents"
     };
-    side = SIDE_GUER;
+    side = SIDE_OPFOR;
 
-    // Faction not playable yet.
-    class Arsenal {};
-    class Vehicle {};
-    class Loadout {};
+    class Arsenal : ArsenalCupMilitia
+    {
+        class Arid : Base
+        {
+            backpacks[] = {
+               "B_TacticalPack_oli"
+            };
+            headgear[] = {
+                "CUP_H_TK_Lungee",
+                "CUP_H_TKI_Lungee_Open_01",
+                "CUP_H_TKI_Lungee_05",
+                "CUP_H_TKI_Lungee_01",
+                "CUP_H_TKI_Pakol_1_01",
+                "CUP_H_TKI_Pakol_2_04"
+            };
+            uniforms[] = {
+                "CUP_O_TKI_Khet_Partug_01",
+                "CUP_O_TKI_Khet_Partug_02",
+                "CUP_O_TKI_Khet_Partug_06",
+                "CUP_U_B_BDUv2_OD",
+                "CUP_U_B_BDUv2_M81",
+                "CUP_U_B_BDUv2_dirty_desert"
+            };
+            vests[] = {
+                "CUP_V_OI_TKI_Jacket1_03",
+                "CUP_V_OI_TKI_Jacket4_04",
+                "CUP_V_OI_TKI_Jacket4_05",
+                "CUP_V_OI_TKI_Jacket1_01",
+                "CUP_V_OI_TKI_Jacket1_06"
+            };
+        };
+    };
+
+    class Vehicle
+    {
+        class Arid
+        {
+            truckAssault     = "CUP_O_BTR40_MG_TKM";
+            truckSupplyAmmo  = "CUP_O_V3S_Rearm_TKM";
+            truckSupplyCargo = "CUP_O_V3S_Open_TKM";
+            truckSupplyFuel  = "CUP_O_V3S_Refuel_TKM";
+            truckTransport   = "CUP_O_V3S_Covered_TKM";
+        };
+    };
 
     class Group : Group
     {
@@ -50,6 +92,46 @@ class CupTakistanMilitia : Faction
 
         class Arid
         {
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+            };
+            class HeloPilot : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+            };
+            class HeloCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+            };
+            class Pilot : Single
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "CUP_O_TK_INS_Soldier";
+                };
+            };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
@@ -170,6 +252,138 @@ class CupTakistanMilitia : Faction
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
                     vehicle = "CUP_O_LR_MG_TKM";
+                };
+            };
+        };
+    };
+    class Loadout : LoadoutCupMilitia
+    {
+        class Arid : ClimateBase
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    unit = "CUP_O_TK_INS_Soldier";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    unit = "CUP_O_TK_INS_Soldier_GL";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    unit = "CUP_O_TK_INS_Soldier_TL";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    unit = "CUP_O_TK_INS_Soldier_AR";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    unit = "CUP_O_TK_INS_Soldier_AR";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    unit = "CUP_O_TK_INS_Sniper";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    unit = "CUP_O_TK_INS_Guerilla_Medic";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    unit = "CUP_O_TK_INS_Soldier_AT";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    unit = "CUP_O_TK_INS_Soldier_AT";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    unit = "CUP_O_TK_INS_Bomber";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    unit = "CUP_O_TK_INS_Mechanic";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
                 };
             };
         };

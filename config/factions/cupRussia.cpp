@@ -28,7 +28,6 @@ class CupRussia : Faction
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_Russia"
     };
-    playable    = 1;
     side        = SIDE_OPFOR;
 
     class Arsenal : Arsenal

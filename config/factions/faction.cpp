@@ -413,6 +413,132 @@ class Faction
         class Wood   : Base {};
         class Winter : Base {};
     };
+    class ArsenalCupMilitia : Arsenal
+    {
+        class Base : Base
+        {
+            mags[] = {
+                "CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Red_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_TE1_Yellow_Tracer_762x39_AK47_M",
+                "CUP_30Rnd_762x39_AK47_M",
+                "CUP_30Rnd_545x39_AK_M",
+                "CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M",
+                "CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M",
+                "CUP_75Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M",
+                "CUP_40Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M",
+                "CUP_45Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M",
+                "CUP_OG7_M",
+                "CUP_PG7V_M",
+                "CUP_PG7VL_M",
+                "CUP_PG7VM_M",
+                "CUP_AT13_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Red_M",
+                "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Yellow_M",
+                "CUP_1Rnd_SmokeGreen_GP25_M",
+                "CUP_1Rnd_SmokeRed_GP25_M",
+                "CUP_1Rnd_SmokeYellow_GP25_M",
+                "CUP_1Rnd_SMOKE_GP25_M",
+                "CUP_IlumFlareGreen_GP25_M",
+                "CUP_IlumFlareRed_GP25_M",
+                "CUP_IlumFlareWhite_GP25_M",
+                "CUP_FlareGreen_GP25_M",
+                "CUP_FlareRed_GP25_M",
+                "CUP_FlareWhite_GP25_M",
+                "CUP_FlareYellow_GP25_M",
+                "CUP_1Rnd_HE_GP25_M"
+            };
+            weapons[] = {
+                "CUP_arifle_AKM",
+                "CUP_arifle_AKM_GL",
+                "CUP_arifle_AK74_Early",
+                "CUP_arifle_AK74_GL_Early",
+                "CUP_arifle_RPK74",
+                "CUP_arifle_RPK74_45",
+                "CUP_lmg_PKM"
+            };
+            launchers[] = {
+                "CUP_launch_RPG7V",
+                "CUP_launch_RPG18"
+            };
+            grenades[] = {
+                "SmokeShellBlue",
+                "SmokeShellGreen",
+                "SmokeShellOrange",
+                "SmokeShellPurple",
+                "SmokeShellRed",
+                "SmokeShellYellow",
+                "SmokeShell",
+                "CUP_HandGrenade_RGD5"
+            };
+            sights[] = {
+                "cup_optic_pso_1"
+            };
+            attachments[] = {
+                "cup_acc_flashlight",
+                "cup_acc_anpeq_15_black"
+            };
+            aceBinoculars[] = {};
+            aceGps[] = {};
+            aceSights[] = {};
+            aceNvg[] = {};
+            gps[] = {};
+            nvg[] = {};
+        };
+    };
+
+    class ArsenalRhsMilitia : Arsenal
+    {
+        class Base : Base
+        {
+            mags[] = {
+                "rhs_30Rnd_762x39mm",
+                "rhs_30Rnd_762x39mm_89",
+                "rhs_30Rnd_762x39mm_tracer",
+                "rhs_10Rnd_762x54mmR_7N1",
+                "rhs_10Rnd_762x54mmR_7N14",
+                "rhs_100Rnd_762x54mmR",
+                "rhs_100Rnd_762x54mmR_7BZ3",
+                "rhs_100Rnd_762x54mmR_green",
+                "rhs_mag_9x19_17",
+                "rhs_rpg7_PG7V_mag",
+                "rhs_rpg7_PG7VL_mag",
+                "rhs_rpg7_OG7V_mag"
+            };
+            weapons[] = {
+                "rhs_weap_pkm",
+                "rhs_weap_akm",
+                "rhs_weap_svds"
+            };
+            launchers[] = {
+                "rhs_weap_rpg7"
+            };
+            grenades[] = {
+                "SmokeShellBlue",
+                "SmokeShellGreen",
+                "SmokeShellOrange",
+                "SmokeShellPurple",
+                "SmokeShellRed",
+                "SmokeShellYellow",
+                "SmokeShell",
+                "rhs_mag_rgn",
+                "rhs_mag_rgo"
+            };
+            sights[] = {
+                "rhs_acc_pso1m2"
+            };
+            attachments[] = {
+                "rhs_acc_2dpzenit"
+            };
+            aceBinoculars[] = {};
+            aceGps[] = {};
+            aceSights[] = {};
+            aceNvg[] = {};
+            gps[] = {};
+            nvg[] = {};
+        };
+    };
 
     class ArsenalIfa3
     {
@@ -730,6 +856,732 @@ class Faction
             };
         };
     };
+
+#define CUP_MIL_AUTORIFLE_PKP_MAG_COUNT   4
+#define CUP_MIL_AUTORIFLE_RPK_MAG_COUNT   8
+#define CUP_MIL_AT_MAG_COUNT              8
+#define CUP_MIL_GRENADIRE_MAG_COUNT      11
+#define CUP_MIL_MARKSMAN_MAG_COUNT       10
+#define CUP_MIL_MEDIC_MAG_COUNT          11
+#define CUP_MIL_RIFLEMAN_MAG_COUNT       11
+
+    class LoadoutCupMilitia : Loadout
+    {
+        class Base : Base
+        {
+            handgun    = "CUP_hgun_Duty";
+            binoculars = "Binocular";
+            // random
+            headgear   = "";
+            rifleLight = "acc_flashlight";
+            primaryMag = "CUP_30Rnd_762x39_AK47_M";
+
+            class Uniform : Uniform
+            {
+                // random
+                type = "";
+
+                items[] += {
+                    "16Rnd_9x21_Mag",
+                    "16Rnd_9x21_Mag"
+                };
+            };
+            class Vest : Vest
+            {
+                // random
+                type = "";
+                aceItems[] = {};
+            };
+            class Backpack : Backpack
+            {
+                type = "";
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class RiflemanBase : Base
+        {
+            primaryMagCount = CUP_MIL_RIFLEMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               items[] += {
+                   "CUP_HandGrenade_RGD5",
+                   "CUP_HandGrenade_RGD5",
+                   "SmokeShell",
+                   "SmokeShell"
+                };
+            };
+            class Backpack : Backpack
+            {
+                items[] += {
+                   "CUP_HandGrenade_RGD5",
+                   "CUP_HandGrenade_RGD5",
+                   "CUP_HandGrenade_RGD5",
+                   "CUP_HandGrenade_RGD5"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class GrenadierBase : RiflemanBase
+        {
+            primaryMagCount   = CUP_MIL_GRENADIRE_MAG_COUNT;
+            secondaryMag      = "CUP_1Rnd_HE_GP25_M";
+            secondaryMagCount = 10;
+
+            class Uniform : Uniform {};
+            class Vest    : Vest
+            {
+               items[] += {
+                    "CUP_FlareWhite_GP25_M"
+               };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class AutorifleBase : Base
+        {
+            class Uniform : Uniform
+            {
+                items[] += {
+                   "CUP_HandGrenade_RGD5",
+                   "SmokeShell"
+                };
+            };
+            class Vest : Vest
+            {
+                 items[] += {
+                   "CUP_HandGrenade_RGD5"
+                };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class MarksmanBase : Base
+        {
+            rifleSight      = "cup_optic_pso_1";
+            primaryMag      = "CUP_10Rnd_762x54_SVD_M";
+            primaryMagCount = CUP_MIL_MARKSMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+            class Vest    : Vest
+            {
+               items[] += {
+                 "CUP_HandGrenade_RGD5",
+                 "CUP_HandGrenade_RGD5",
+                 "SmokeShell",
+                 "SmokeShell"
+               };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class MedicBase : Base
+        {
+            primaryMagCount = CUP_MIL_MEDIC_MAG_COUNT;
+
+            class Uniform : Uniform {};
+            class Vest    : Vest
+            {
+                items[] += {
+                    "SmokeShell",
+                    "SmokeShell",
+                    "SmokeShell",
+                    "SmokeShell",
+                    "SmokeShell",
+                    "CUP_HandGrenade_RGD5",
+                    "CUP_HandGrenade_RGD5",
+                    "CUP_HandGrenade_RGD5",
+                    "CUP_HandGrenade_RGD5"
+                };
+            };
+            class Backpack : MedicBackpack
+            {
+                type = "CUP_B_AlicePack_Khaki";
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class AtBase : RiflemanBase
+        {
+            rifle           = "CUP_arifle_AKM";
+            primaryMagCount = CUP_MIL_AT_MAG_COUNT;
+
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
+            class LinkedItems : LinkedItems {};
+        };
+        class EodBase : Base
+        {
+            primaryMagCount = CUP_MIL_RIFLEMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               items[] += {
+                    "CUP_HandGrenade_RGD5",
+                    "CUP_HandGrenade_RGD5",
+                    "SmokeShell",
+                    "SmokeShell"
+                };
+            };
+            class Backpack : Backpack
+            {
+                aceItems[] += {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14"
+                };
+                noAceItems[] += {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class ClimateBase
+        {
+            class Rifleman
+            {
+                role = "Rifleman";
+
+                class Akm : RiflemanBase
+                {
+                    type  = "AKM";
+                    rifle = "CUP_arifle_AKM";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier
+            {
+                role = "Grenadier";
+
+                class Akm : GrenadierBase
+                {
+                    type  = "AKM (GP-25)";
+                    rifle = "CUP_arifle_AKM_GL";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : Grenadier
+            {
+                role = "Squad Leader";
+
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman
+            {
+                role = "Autorifleman";
+
+                class Rpk : AutorifleBase
+                {
+                    type            = "PPK";
+                    rifle           = "CUP_arifle_RPK74";
+                    primaryMag      = "CUP_75Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M";
+                    primaryMagCount = CUP_MIL_AUTORIFLE_RPK_MAG_COUNT;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : AutorifleBase
+                {
+                    type            = "PKM";
+                    rifle           = "CUP_lmg_PKM";
+                    primaryMag      = "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M";
+                    primaryMagCount = CUP_MIL_AUTORIFLE_PKP_MAG_COUNT;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman
+            {
+                role = "Marksman";
+
+                class Svds : MarksmanBase
+                {
+                    type  = "SVDS";
+                    rifle = "CUP_srifle_SVD";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic
+            {
+                role = "Medic";
+
+                class Akm : MedicBase
+                {
+                    type  = "AKM";
+                    rifle = "CUP_arifle_AKM";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At
+            {
+                role = "Anti-Tank";
+
+                class Rpg7 : AtBase
+                {
+                    type     = "RPG-7";
+                    launcher = "CUP_launch_RPG7V";
+
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack
+                    {
+                        rpg7Items[] = {
+                           "CUP_PG7VM_M"
+                        };
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : AtBase
+                {
+                    type     = "RPG-18";
+                    launcher = "CUP_launch_RPG18";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod
+            {
+                role = "EOD";
+
+                class Akm : EodBase
+                {
+                    type  = "AKM";
+                    rifle = "CUP_arifle_AKM";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Akm : EngineerBase
+                {
+                    type  = "AKM";
+                    rifle = "CUP_arifle_AKM";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+    };
+
+#define RHS_MIL_AUTORIFLE_PKP_MAG_COUNT   5
+#define RHS_MIL_AT_MAG_COUNT              8
+#define RHS_MIL_GRENADIRE_MAG_COUNT      11
+#define RHS_MIL_MARKSMAN_MAG_COUNT       10
+#define RHS_MIL_MEDIC_MAG_COUNT          11
+#define RHS_MIL_RIFLEMAN_MAG_COUNT       11
+
+    class LoadoutRhsMilitia : Loadout
+    {
+        class Base : Base
+        {
+            handgun    = "rhs_weap_pya";
+            binoculars = "Binocular";
+            // random
+            headgear   = "";
+            rifleLight = "rhs_acc_2dpzenit";
+            primaryMag = "rhs_30Rnd_762x39mm";
+
+            class Uniform : Uniform
+            {
+                // random
+                type = "";
+
+                items[] += {
+                    "rhs_mag_9x19_17",
+                    "rhs_mag_9x19_17"
+                };
+            };
+            class Vest : Vest
+            {
+                // random
+                type = "";
+                aceItems[] = {};
+            };
+            class Backpack : Backpack
+            {
+                type = "";
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class RiflemanBase : Base
+        {
+            primaryMagCount = RHS_MIL_RIFLEMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               items[] += {
+                   "rhs_mag_rgn",
+                   "rhs_mag_rgn",
+                   "SmokeShell",
+                   "SmokeShell"
+                };
+            };
+            class Backpack : Backpack
+            {
+                items[] += {
+                   "rhs_mag_rgn",
+                   "rhs_mag_rgn",
+                   "rhs_mag_rgn",
+                   "rhs_mag_rgn"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class GrenadierBase : RiflemanBase
+        {
+            primaryMagCount   = RHS_MIL_GRENADIRE_MAG_COUNT;
+            secondaryMag      = "rhs_VOG25";
+            secondaryMagCount = 10;
+
+            class Uniform : Uniform {};
+            class Vest    : Vest
+            {
+               items[] += {
+                    "rhs_GRD40_White"
+               };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class AutorifleBase : Base
+        {
+            class Uniform : Uniform
+            {
+                items[] += {
+                   "rhs_mag_rgn",
+                   "SmokeShell"
+                };
+            };
+            class Vest : Vest
+            {
+                 items[] += {
+                   "rhs_mag_rgn"
+                };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class MarksmanBase : Base
+        {
+            rifleSight      = "rhs_acc_pso1m2";
+            primaryMag      = "rhs_10Rnd_762x54mmR_7N1";
+            primaryMagCount = RHS_MIL_MARKSMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+            class Vest    : Vest
+            {
+               items[] += {
+                 "rhs_mag_rgn",
+                 "rhs_mag_rgn",
+                 "SmokeShell",
+                 "SmokeShell"
+               };
+            };
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
+        class MedicBase : Base
+        {
+            primaryMagCount = RHS_MIL_MEDIC_MAG_COUNT;
+
+            class Uniform : Uniform {};
+            class Vest    : Vest
+            {
+                items[] += {
+                    "SmokeShell",
+                    "SmokeShell",
+                    "SmokeShell",
+                    "SmokeShell",
+                    "SmokeShell",
+                    "rhs_mag_rgn",
+                    "rhs_mag_rgn",
+                    "rhs_mag_rgn",
+                    "rhs_mag_rgn"
+                };
+            };
+            class Backpack : MedicBackpack
+            {
+                type = "B_Kitbag_rgr";
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class AtBase : RiflemanBase
+        {
+            rifle           = "rhs_weap_akm";
+            primaryMagCount = RHS_MIL_AT_MAG_COUNT;
+
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
+            class LinkedItems : LinkedItems {};
+        };
+        class EodBase : Base
+        {
+            primaryMagCount = RHS_MIL_RIFLEMAN_MAG_COUNT;
+
+            class Uniform : Uniform {};
+
+            class Vest : Vest
+            {
+               items[] += {
+                    "rhs_mag_rgn",
+                    "rhs_mag_rgn",
+                    "SmokeShell",
+                    "SmokeShell"
+                };
+            };
+            class Backpack : Backpack
+            {
+                aceItems[] += {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14",
+                    "ACE_M14"
+                };
+                noAceItems[] += {
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag",
+                    "DemoCharge_Remote_Mag"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class EngineerBase : RiflemanBase
+        {
+            class Uniform  : Uniform {};
+            class Vest     : Vest {};
+
+            class Backpack : Backpack
+            {
+                items[] += {
+                    "ToolKit"
+                };
+            };
+            class LinkedItems : LinkedItems {};
+        };
+        class ClimateBase
+        {
+            class Rifleman
+            {
+                role = "Rifleman";
+
+                class Akm : RiflemanBase
+                {
+                    type  = "AKM";
+                    rifle = "rhs_weap_akm";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier
+            {
+                role = "Grenadier";
+
+                class Akm : GrenadierBase
+                {
+                    type  = "AKM (GP-25)";
+                    rifle = "rhs_weap_akm_gp25";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : Grenadier
+            {
+                role = "Squad Leader";
+
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman
+            {
+                role = "Autorifleman";
+
+                class Pkm : AutorifleBase
+                {
+                    type            = "PKM";
+                    rifle           = "rhs_weap_pkm";
+                    primaryMag      = "rhs_100Rnd_762x54mmR";
+                    primaryMagCount = RHS_MIL_AUTORIFLE_PKP_MAG_COUNT;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman
+            {
+                role = "Marksman";
+
+                class Svds : MarksmanBase
+                {
+                    type  = "SVDS";
+                    rifle = "rhs_weap_svdp";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic
+            {
+                role = "Medic";
+
+                class Akm : MedicBase
+                {
+                    type  = "AKM";
+                    rifle = "rhs_weap_akm";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At
+            {
+                role = "Anti-Tank";
+
+                class Rpg7 : AtBase
+                {
+                    type     = "RPG-7";
+                    launcher = "rhs_weap_rpg7";
+
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack
+                    {
+                        items[] += {
+                           "rhs_rpg7_PG7VL_mag"
+                        };
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod
+            {
+                role = "EOD";
+
+                class Akm : EodBase
+                {
+                    type  = "AKM";
+                    rifle = "rhs_weap_akm";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer
+            {
+                role = "Engineer";
+
+                class Akm : EngineerBase
+                {
+                    type  = "AKM";
+                    rifle = "rhs_weap_akm";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+    };
+
     class LoadoutIfa3
     {
         class Base
