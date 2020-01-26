@@ -65,7 +65,7 @@ private _seatCount    = [_vehicleType, true] call BIS_fnc_crewCount;
 private _vehicleCount = 2 max (ceil ((count units _playerGroup) / _seatCount));
 private _offset       = 0;
 private _vehicles     = [];
-private _posGap       = (sizeOf _vehicleType) + 7;
+private _posGap       = (sizeOf _vehicleType) + 10;
 
 for "i" from 1 to _vehicleCount do {
     private _vehiclePos = _pos getPos [_offset, _dir - 180];
