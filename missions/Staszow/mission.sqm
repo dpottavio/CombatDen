@@ -12,7 +12,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=20;
+		nextID=21;
 	};
 	class Camera
 	{
@@ -30,11 +30,11 @@ addons[]=
 	"CUP_CAMisc",
 	"WW2_Objects_c_Misc_WW2_SimpleObjects_c_CUP",
 	"CUP_Misc_e_Config",
+	"A3_Structures_F_Enoch_Military_Training",
 	"A3_Characters_F",
 	"A3_Modules_F_Curator_Curator",
 	"cba_main",
-	"A3_Data_F_Curator_Virtual",
-	"A3_Structures_F_Enoch_Military_Training"
+	"A3_Data_F_Curator_Virtual"
 };
 class AddonsMetaData
 {
@@ -72,36 +72,36 @@ class AddonsMetaData
 		};
 		class Item5
 		{
+			className="A3_Structures_F_Enoch_Military";
+			name="Arma 3 Enoch - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item6
+		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item6
+		class Item7
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item8
 		{
 			className="cba_main";
 			name="Community Base Addons - Main Component";
 			author="CBA Team";
 			url="https://www.github.com/CBATeam/CBA_A3";
 		};
-		class Item8
+		class Item9
 		{
 			className="A3_Data_F_Curator";
 			name="Arma 3 Zeus Update - Main Configuration";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item9
-		{
-			className="A3_Structures_F_Enoch_Military";
-			name="Arma 3 Enoch - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -116,7 +116,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Combat Den: WW2 Staszow";
+		briefingName="Combat Den: Staszow";
 		timeOfChanges=1800.0002;
 		startWeather=0;
 		startWind=0.1;
@@ -135,14 +135,14 @@ class Mission
 	};
 	class Entities
 	{
-		items=18;
+		items=6;
 		class Item0
 		{
 			dataType="Layer";
 			name="COP";
 			class Entities
 			{
-				items=70;
+				items=82;
 				class Item0
 				{
 					dataType="Object";
@@ -1277,9 +1277,212 @@ class Mission
 					type="Land_SandbagBarricade_01_half_F";
 					atlOffset=-1.9073486e-006;
 				};
+				class Item70
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1130.7639,26.007687,960.24615};
+						angles[]={0,0,6.278194};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=306;
+					type="Land_ShellCrater_02_extralarge_F";
+					atlOffset=-1.9073486e-006;
+				};
+				class Item71
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1035.9684,25.921427,932.36005};
+						angles[]={0.00119604,0,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=308;
+					type="Land_ShellCrater_02_large_F";
+					atlOffset=-1.9073486e-006;
+				};
+				class Item72
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1057.7732,23.34798,870.09869};
+						angles[]={6.1686883,0,0.31310084};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=309;
+					type="Land_ShellCrater_02_large_F";
+					atlOffset=-0.09431839;
+				};
+				class Item73
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1087.4916,26.623812,875.71692};
+						angles[]={6.2719393,0,6.2694397};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=310;
+					type="Land_ShellCrater_02_small_F";
+					atlOffset=-0.00011444092;
+				};
+				class Item74
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1079.5258,26.342096,901.86511};
+						angles[]={0.014998405,0,6.2506976};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=311;
+					type="Land_ShellCrater_02_small_F";
+					atlOffset=-0.00045967102;
+				};
+				class Item75
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1092.3331,26.592554,917.52679};
+						angles[]={6.255693,0,0.017500184};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=313;
+					type="Land_ShellCrater_02_small_F";
+					atlOffset=-0.00038146973;
+				};
+				class Item76
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1054.3198,26.969477,970.46619};
+						angles[]={0.008748306,0,0.019996032};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=351;
+					type="Land_ShellCrater_02_small_F";
+					atlOffset=-0.00045967102;
+				};
+				class Item77
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1126.7509,26.758915,900.2406};
+						angles[]={6.2694397,0,0.011246439};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=352;
+					type="Land_ShellCrater_02_small_F";
+					atlOffset=-0.00045967102;
+				};
+				class Item78
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1065.9388,27.343988,917.52893};
+						angles[]={0.010000871,0,6.2806959};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=304;
+					type="Land_ShellCrater_01_F";
+					atlOffset=-1.9073486e-006;
+				};
+				class Item79
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1091.4069,27.753893,941.03143};
+						angles[]={6.274437,0,6.2819405};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=312;
+					type="Land_ShellCrater_01_F";
+				};
+				class Item80
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1075.5004,27.333767,932.81342};
+						angles[]={6.2234182,0,6.2279787};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=332;
+					type="Land_ShellCrater_01_F";
+					atlOffset=0.057878494;
+				};
+				class Item81
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1066.7206,27.882097,946.70172};
+						angles[]={6.2234182,0,6.2279787};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=333;
+					type="Land_ShellCrater_01_F";
+					atlOffset=0.05787468;
+				};
 			};
 			id=28;
-			atlOffset=0.022415161;
+			atlOffset=0.12220383;
 		};
 		class Item1
 		{
@@ -2021,209 +2224,6 @@ class Mission
 			isPlayable=1;
 			id=125;
 			type="VirtualCurator_F";
-		};
-		class Item6
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1065.9388,27.343988,917.52893};
-				angles[]={0.010000871,0,6.2806959};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=304;
-			type="Land_ShellCrater_01_F";
-			atlOffset=-1.9073486e-006;
-		};
-		class Item7
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1130.7639,26.007687,960.24615};
-				angles[]={0,0,6.278194};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=306;
-			type="Land_ShellCrater_02_extralarge_F";
-			atlOffset=-1.9073486e-006;
-		};
-		class Item8
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1035.9684,25.921427,932.36005};
-				angles[]={0.00119604,0,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=308;
-			type="Land_ShellCrater_02_large_F";
-			atlOffset=-1.9073486e-006;
-		};
-		class Item9
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1057.7732,23.34798,870.09869};
-				angles[]={6.1686883,0,0.31310084};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=309;
-			type="Land_ShellCrater_02_large_F";
-			atlOffset=-0.09431839;
-		};
-		class Item10
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1087.4916,26.623812,875.71692};
-				angles[]={6.2719393,0,6.2694397};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=310;
-			type="Land_ShellCrater_02_small_F";
-			atlOffset=-0.00011444092;
-		};
-		class Item11
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1079.5258,26.342096,901.86511};
-				angles[]={0.014998405,0,6.2506976};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=311;
-			type="Land_ShellCrater_02_small_F";
-			atlOffset=-0.00045967102;
-		};
-		class Item12
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1091.4069,27.753893,941.03143};
-				angles[]={6.274437,0,6.2819405};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=312;
-			type="Land_ShellCrater_01_F";
-		};
-		class Item13
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1092.3331,26.592554,917.52679};
-				angles[]={6.255693,0,0.017500184};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=313;
-			type="Land_ShellCrater_02_small_F";
-			atlOffset=-0.00038146973;
-		};
-		class Item14
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1075.5004,27.333767,932.81342};
-				angles[]={6.2234182,0,6.2279787};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=332;
-			type="Land_ShellCrater_01_F";
-			atlOffset=0.057878494;
-		};
-		class Item15
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1066.7206,27.882097,946.70172};
-				angles[]={6.2234182,0,6.2279787};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=333;
-			type="Land_ShellCrater_01_F";
-			atlOffset=0.05787468;
-		};
-		class Item16
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1054.3198,26.969477,970.46619};
-				angles[]={0.008748306,0,0.019996032};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=351;
-			type="Land_ShellCrater_02_small_F";
-			atlOffset=-0.00045967102;
-		};
-		class Item17
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1126.7509,26.758915,900.2406};
-				angles[]={6.2694397,0,0.011246439};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=352;
-			type="Land_ShellCrater_02_small_F";
-			atlOffset=-0.00045967102;
 		};
 	};
 };
