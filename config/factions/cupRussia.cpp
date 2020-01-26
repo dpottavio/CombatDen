@@ -157,7 +157,9 @@ class CupRussia : Faction
             };
             cupRussiaAttachments[] = {
                 "cup_acc_flashlight",
-                "cup_acc_anpeq_15_black"
+                "cup_acc_anpeq_15_black",
+                "cup_muzzle_snds_kzrzp_ak545",
+                "cup_muzzle_snds_kzrzp_pk"
             };
             cupRussiaFaceware[] = {
                 "CUP_RUS_Balaclava_blk",

@@ -157,6 +157,9 @@ class Uk3cbBaf : Faction
             attachments[] = {
                 "uk3cb_baf_llm_flashlight_black",
                 "uk3cb_baf_llm_ir_black",
+                "uk3cb_baf_silencer_l85",
+                "uk3cb_baf_silencer_l115a3",
+                "uk3cb_baf_silencer_l110"
             };
             faceware[] += {
                 "UK3CB_BAF_G_Tactical_Black",

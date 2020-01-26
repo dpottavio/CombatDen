@@ -55,6 +55,9 @@ class CupBaf : Faction
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Medic",
                 "CUP_V_B_BAF_MTP_Osprey_Mk4_Rifleman"
             };
+            attachments[] += {
+                "cup_muzzle_snds_l85"
+            };
         };
 
         class SemiArid : Base {};

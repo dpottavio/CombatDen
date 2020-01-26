@@ -104,6 +104,11 @@ class Csat : Faction
                 "bipod_02_f_blk",
                 "bipod_02_f_hex"
             };
+            attachments[] += {
+                "muzzle_snds_H",
+                "muzzle_snds_M",
+                "muzzle_snds_M"
+            };
         };
         class SemiArid : Base
         {

@@ -139,6 +139,11 @@ class Nato : Faction
             helmets[] = {
                 "H_HelmetB"
             };
+            attachments[] += {
+                "muzzle_snds_H",
+                "muzzle_snds_M",
+                "muzzle_snds_b"
+            };
         };
 
         class SemiArid : Base

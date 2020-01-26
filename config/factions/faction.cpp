@@ -270,7 +270,9 @@ class Faction
             };
             attachments[] = {
                 "cup_acc_anpeq_15",
-                "cup_acc_anpeq_2"
+                "cup_acc_anpeq_2",
+                "muzzle_snds_m",
+                "muzzle_snds_b"
             };
             faceware[] += {
                 "CUP_RUS_Balaclava_blk",

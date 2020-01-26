@@ -219,7 +219,9 @@ class RhsRussia : Faction
             };
             attachments[] = {
                "rhs_acc_2dpzenit",
-               "rhs_acc_perst1ik"
+               "rhs_acc_perst1ik",
+               "rhs_acc_tgpa",
+               "rhs_acc_tgpv2"
             };
             faceware[] += {
                 "rhs_balaclava",

@@ -283,7 +283,9 @@ class RhsUsmc : Faction
                 "rhsusf_acc_anpeq16a_light_top",
                 "rhsusf_acc_m952v",
                 "rhsusf_acc_wmx",
-                "rhsusf_acc_wmx_bk"
+                "rhsusf_acc_wmx_bk",
+                "rhsusf_acc_nt4_black",
+                "rhsusf_acc_sr25s"
             };
             faceware[] += {
                 "rhs_googles_black",
