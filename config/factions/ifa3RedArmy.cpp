@@ -140,16 +140,23 @@ class Ifa3RedArmy : Faction
         class Base
         {
             truckAssault     = "LIB_SdKfz251_captured_FFV";
-            truckSupplyAmmo  = "LIB_US6_Ammo";
-            truckSupplyCargo = "LIB_US6_Tent_Cargo";
-            truckSupplyFuel  = "LIB_US6_Open_Cargo";
-            truckTransport   = "LIB_US6_Tent";
+            truckSupplyAmmo  = "LIB_Zis5v";
+            truckSupplyCargo = "LIB_Zis5v";
+            truckSupplyFuel  = "LIB_Zis5v_Fuel";
+            truckTransport   = "LIB_Zis5v";
         };
         class SemiArid : Base {};
         class Arid     : Base {};
         class Tropic   : Base {};
         class Wood     : Base {};
-        class Winter   : Base {};
+        class Winter   : Base
+        {
+            truckAssault     = "LIB_SdKfz251_captured_FFV_w";
+            truckSupplyAmmo  = "LIB_Zis5v_w";
+            truckSupplyCargo = "LIB_Zis5v_w";
+            truckSupplyFuel  = "LIB_Zis5v_Fuel_w";
+            truckTransport   = "LIB_Zis5v_w";
+        };
     };
 
     class Group : Group
@@ -616,41 +623,161 @@ class Ifa3RedArmy : Faction
                 class Unit8 : Unit8 {};
             };
         };
-        class Winter : Base
+        class Winter
         {
-            class TruckCrew : TruckCrew
+            class TruckCrew : Couple
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_unequip_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_unequip_w";
+                };
             };
-            class Pilot : Pilot
+            class Pilot : Single
             {
-                class Unit0 : Unit0 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_pilot_w";
+                };
             };
-            class Sentry : Sentry
+            class Sentry : Couple
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_rifleman_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_rifleman_w";
+                };
             };
-            class FireTeam : FireTeam
+            class FireTeam : Team
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_sergeant_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_SOV_LAT_Soldier_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_SOV_rifleman_w";
+                };
             };
-            class AssaultSquad : AssaultSquad
+            class AssaultSquad : Squad
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};;
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_sergeant_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_SOV_mgunner_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_SOV_grenadier_w";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "LIB_SOV_LAT_Soldier_w";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "LIB_SOV_LAT_Soldier_w";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "LIB_SOV_rifleman_w";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "LIB_SOV_medic_w";
+                };
             };
-            class ReconSquad : ReconSquad
+            class ReconSquad : Squad
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_scout_sergeant_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_scout_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_SOV_scout_smgunner_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_SOV_scout_rifleman_w";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "LIB_SOV_scout_rifleman_w";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "LIB_SOV_scout_rifleman_w";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "LIB_SOV_scout_rifleman_w";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "LIB_SOV_scout_sniper_w";
+                };
+            };
+            class ReconTeam : Team
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SOV_scout_sergeant_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_scout_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_SOV_scout_rifleman_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_SOV_scout_rifleman_w";
+                };
+            };
+            class MotorizedTeam : Triple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_SdKfz251_captured_FFV_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_SOV_rifleman_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_SOV_rifleman_w";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -660,31 +787,12 @@ class Ifa3RedArmy : Faction
                 class Unit5 : Unit5 {};
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
-            };
-            class ReconTeam : ReconTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-            };
-            class MotorizedTeam : MotorizedTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-            };
-            class MotorizedAssault : MotorizedAssault
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
-                class Unit8 : Unit8 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "LIB_SdKfz251_captured_FFV_w";
+                };
             };
         };
     };
@@ -1800,28 +1908,48 @@ class Ifa3RedArmy : Faction
             {
                 class M9130 : M9130
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class M38 : M38
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Svt : Svt
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class PPSh41 : PPSh41
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1831,7 +1959,12 @@ class Ifa3RedArmy : Faction
             {
                 class M9130 : M9130
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1841,7 +1974,12 @@ class Ifa3RedArmy : Faction
             {
                 class M9130 : M9130
                 {
-                    class Uniform  : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest     : Vest {};
                     class Backpack : Backpack {};
                     class LinkedItems   : LinkedItems {};
@@ -1851,7 +1989,12 @@ class Ifa3RedArmy : Faction
             {
                 class Dp :  Dp
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1861,7 +2004,12 @@ class Ifa3RedArmy : Faction
             {
                 class M9130PU : M9130PU
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1871,28 +2019,48 @@ class Ifa3RedArmy : Faction
             {
                 class M9130 : M9130
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class M38 : M38
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Svt : Svt
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class PPSh41 : PPSh41
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1902,21 +2070,36 @@ class Ifa3RedArmy : Faction
             {
                 class PzFaust60 : PzFaust60
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class PzFaust30 : PzFaust30
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Rpzb : Rpzb
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1927,28 +2110,48 @@ class Ifa3RedArmy : Faction
             {
                 class M9130 : M9130
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class M38 : M38
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Svt : Svt
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class PPSh41 : PPSh41
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1958,28 +2161,48 @@ class Ifa3RedArmy : Faction
             {
                 class M9130 : M9130
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class M38 : M38
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Svt : Svt
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class PPSh41 : PPSh41
                 {
-                    class Uniform     : Uniform {};
+                    headgear = "H_LIB_SOV_RA_Helmet_w";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_SOV_Strelok_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};

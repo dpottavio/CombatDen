@@ -134,7 +134,14 @@ class Ifa3UsArmy : Faction
         class Arid     : Base {};
         class Tropic   : Base {};
         class Wood     : Base {};
-        class Winter   : Base {};
+        class Winter   : Base
+        {
+            truckAssault     = "LIB_US_M3_Halftrack_w";
+            truckSupplyAmmo  = "LIB_US_GMC_Ammo_w";
+            truckSupplyCargo = "LIB_US_GMC_Tent_w";
+            truckSupplyFuel  = "LIB_US_GMC_Fuel_w";
+            truckTransport   = "LIB_US_GMC_Tent_w";
+        };
     };
 
     class Group : Group

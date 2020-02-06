@@ -162,7 +162,14 @@ class Ifa3Wehrmacht : Faction
         class Arid     : Base {};
         class Tropic   : Base {};
         class Wood     : Base {};
-        class Winter   : Base {};
+        class Winter
+        {
+            truckAssault     = "LIB_Sdkfz251_w";
+            truckSupplyAmmo  = "LIB_OpelBlitz_Ammo_w";
+            truckSupplyCargo = "LIB_OpelBlitz_Open_Y_Camo_w";
+            truckSupplyFuel  = "LIB_OpelBlitz_Fuel_w";
+            truckTransport   = "LIB_OpelBlitz_Tent_Y_Camo_w";
+        };
     };
 
     class Group : Group
@@ -631,39 +638,156 @@ class Ifa3Wehrmacht : Faction
         };
         class Winter : Base
         {
-            class TruckCrew : TruckCrew
+            class TruckCrew : Couple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_GER_unequip_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_unequip_w";
+                };
+            };
+            class Pilot : Single
             {
                 class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
             };
-            class Pilot : Pilot
+            class Sentry : Couple
             {
-                class Unit0 : Unit0 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_GER_Rifleman_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_rifleman_w";
+                };
             };
-            class Sentry : Sentry
+            class FireTeam : Team
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_GER_unterofficer_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_GER_AT_soldier_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_GER_rifleman_w";
+                };
             };
-            class FireTeam : FireTeam
+            class AssaultSquad : Squad
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_GER_Unterofficer_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_GER_mgunner_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_GER_ober_grenadier_w";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "LIB_GER_AT_grenadier_w";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "LIB_GER_AT_soldier_w";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "LIB_GER_rifleman_w";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "LIB_GER_medic_w";
+                };
             };
-            class AssaultSquad : AssaultSquad
+            class ReconSquad : Squad
             {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};;
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_GER_scout_unterofficer_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_scout_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_GER_scout_smgunner_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_GER_scout_ober_grenadier_w";
+                };
+                class Unit4 : Unit4
+                {
+                    vehicle = "LIB_GER_scout_ober_grenadier_w";
+                };
+                class Unit5 : Unit5
+                {
+                    vehicle = "LIB_GER_scout_rifleman_w";
+                };
+                class Unit6 : Unit6
+                {
+                    vehicle = "LIB_GER_scout_rifleman_w";
+                };
+                class Unit7 : Unit7
+                {
+                    vehicle = "LIB_GER_scout_sniper_w";
+                };
             };
-            class ReconSquad : ReconSquad
+            class ReconTeam : Team
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_GER_scout_unterofficer_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_scout_mgunner_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_GER_scout_ober_grenadier_w";
+                };
+                class Unit3 : Unit3
+                {
+                    vehicle = "LIB_GER_scout_rifleman_w";
+                };
+            };
+            class MotorizedTeam : Triple
+            {
+                class Unit0 : Unit0
+                {
+                    vehicle = "LIB_Sdkfz251_w";
+                };
+                class Unit1 : Unit1
+                {
+                    vehicle = "LIB_GER_rifleman_w";
+                };
+                class Unit2 : Unit2
+                {
+                    vehicle = "LIB_GER_rifleman_w";
+                };
+            };
+            class MotorizedAssault : AssaultSquad
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -673,31 +797,12 @@ class Ifa3Wehrmacht : Faction
                 class Unit5 : Unit5 {};
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
-            };
-            class ReconTeam : ReconTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-            };
-            class MotorizedTeam : MotorizedTeam
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-            };
-            class MotorizedAssault : MotorizedAssault
-            {
-                class Unit0 : Unit0 {};
-                class Unit1 : Unit1 {};
-                class Unit2 : Unit2 {};
-                class Unit3 : Unit3 {};
-                class Unit4 : Unit4 {};
-                class Unit5 : Unit5 {};
-                class Unit6 : Unit6 {};
-                class Unit7 : Unit7 {};
-                class Unit8 : Unit8 {};
+                class Unit8
+                {
+                    position[] = {-20,-20,0};
+                    rank = "LIEUTENANT";
+                    vehicle = "LIB_Sdkfz251_w";
+                };
             };
         };
     };
@@ -1889,28 +1994,40 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98 : K98
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G41 : G41
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G43 : G43
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Mp44 : Mp44
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1920,7 +2037,10 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98 : K98
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1930,7 +2050,10 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98 : K98
                 {
-                    class Uniform  : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest     : Vest {};
                     class Backpack : Backpack {};
                     class LinkedItems   : LinkedItems {};
@@ -1940,21 +2063,30 @@ class Ifa3Wehrmacht : Faction
             {
                 class Mg42 :  Mg42
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Mg34 : Mg34
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
+                   class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Mg34Pt : Mg34Pt
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -1964,8 +2096,11 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98Zf39 : K98Zf39
                 {
-                    class Uniform     : Uniform {};
-                    class Vest        : Vest {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
+                   class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
@@ -1974,28 +2109,40 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98 : K98
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Medic_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G41 : G41
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Medic_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G43 : G43
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Medic_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Mp44 : Mp44
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Medic_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -2005,21 +2152,30 @@ class Ifa3Wehrmacht : Faction
             {
                 class PzFaust60 : PzFaust60
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class PzFaust30 : PzFaust30
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Rpzb : Rpzb
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -2030,28 +2186,40 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98 : K98
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G41 : G41
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G43 : G43
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Mp44 : Mp44
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
@@ -2061,28 +2229,40 @@ class Ifa3Wehrmacht : Faction
             {
                 class K98 : K98
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G41 : G41
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class G43 : G43
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
                 class Mp44 : Mp44
                 {
-                    class Uniform     : Uniform {};
+                    class Uniform : Uniform
+                    {
+                        type = "U_LIB_GER_Soldier_camo_w";
+                    };
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
