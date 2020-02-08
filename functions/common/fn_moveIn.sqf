@@ -46,18 +46,6 @@ if (_vehicles isEqualTo []) exitWith {
     false;
 };
 
-/*
- * HACK - Moving into some IFA3 and CUP vehicles can cause
- * the player unit to become unusable.  To work around this,
- * remove all players from the vehicle first.
- */
-{
-    if (vehicle _x != _x) then {
-        moveOut _x;
-        waitUntil { vehicle _x == _x };
-    };
-} forEach units _group;
-
 private _vehicleCount = count _vehicles;
 private _vehicle_i = 0;
 {
@@ -67,9 +55,45 @@ private _vehicle_i = 0;
         private _success = false;
         while {!_success && _try < _vehicleCount} do {
             private _vehicle = _vehicles select (_vehicle_i mod _vehicleCount);
-            if (_unit moveInAny _vehicle) then {
-                _success = true;
-            } else {
+            private _turretPath = [];
+            /*
+             * The following loop implements moveInAny.  The actual
+             * moveInAny function is  not reliable - See
+             * https://feedback.ww2ina3.com/T2077 for more details.
+             */
+            {
+                private _crew = fullCrew [_vehicle, _x, true];
+                if !(_crew isEqualTo []) then {
+                    {
+                        if (isNull (_x select 0)) exitWith {
+                            _turretPath = _x select 3;
+                            _success = true;
+                        };
+                    } forEach _crew;
+
+                    if (_success) exitWith {
+                        switch (_x) do {
+                            case "driver": {
+                                [_unit, _vehicle] remoteExecCall ["moveInDriver", _unit];
+                            };
+                            case "commander": {
+                                [_unit, _vehicle] remoteExecCall  ["moveInCommander", _unit];
+                            };
+                            case "gunner": {
+                                [_unit, _vehicle] remoteExecCall ["moveInGunner", _unit];
+                            };
+                            case "turret": {
+                                [_unit, [_vehicle, _turretPath]] remoteExecCall ["moveInTurret", _unit];
+                            };
+                            case "cargo": {
+                                [_unit, _vehicle] remoteExecCall ["moveInCargo", _unit];
+                            };
+                        };
+                    };
+                };
+            } forEach ["driver", "commander", "gunner", "turret", "cargo"];
+
+            if !(_success) then {
                 _try = _try + 1;
             };
             // Always advance the vehicle counter to
