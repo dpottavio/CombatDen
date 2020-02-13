@@ -82,7 +82,6 @@ private _safePosParams = [
 ];
 
 private _zone = [
-     ["NameCity", "NameVillage", "CityCenter"],
     _zoneRadius,
     _safePosParams
 ] call den_fnc_zone;

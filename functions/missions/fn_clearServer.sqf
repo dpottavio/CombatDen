@@ -84,7 +84,6 @@ private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFact
 private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySideStr >> "color");
 
 private _zone = [
-    ["NameVillage", "NameLocal", "CityCenter", "NameCity"],
     _zoneRadius,
     _safePosParams,
     _enemyColor

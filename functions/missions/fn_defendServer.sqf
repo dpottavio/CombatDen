@@ -82,7 +82,6 @@ private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friend
 private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");
 
 private _zone = [
-    ["NameCity", "NameVillage", "NameLocal", "CityCenter"],
     _zoneRadius,
     _safePosParams
 ] call den_fnc_zone;

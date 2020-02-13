@@ -25,13 +25,9 @@
 
     Parameter(s):
 
-    0: (Optional) ARRAY - An array of strings that are location
-    types.  If this parameter is empty all types are used by
-    default.
+    0: (Optional) NUMBER - Zone radius. Defaults to 500.
 
-    1: (Optional) NUMBER - Zone radius. Defaults to 500.
-
-    2: (Optional) ARRAY - A list of safe position parameters.
+    1: (Optional) ARRAY - A list of safe position parameters.
     If this array is non-empty, a zone location will only be
     selected if it can find a safe position for each of the
     parameters in this list.  Each parameter will serve as
@@ -52,7 +48,11 @@
             0 - anywhere  (default)
             1 - on a rode
 
-    3: (Optional) STRING - Area marker color.
+    2: (Optional) STRING - Area marker color.
+
+    3: (Optional) ARRAY - An array of strings that are location
+    types.  If this parameter is empty all types are used by
+    default.
 
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
@@ -63,21 +63,16 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_types",         [],    [[]]],
     ["_radius",        500,   [0]],
     ["_safePosParams", [],    [[]]],
-    ["_markerColor",   "",    [""]]
+    ["_markerColor",   "",    [""]],
+    ["_types", ["Airport", "CityCenter", "NameCity", "NameCityCapital", "NameLocal", "NameVillage"],[[]]]
 ];
-
-private _defaultTypes = ["NameCity", "NameCityCapital", "NameMarine", "NameVillage", "NameLocal", "Hill", "Mount", "Airport"];
-if (_types isEqualTo []) then {
-    _types = _defaultTypes;
-};
+// trick the linter
+{_types};
 
 private _blacklist = getArray (missionConfigFile >> "CfgWorlds" >> worldName >> "blacklist");
-
 private _location = configNull;
-
 private _select = format["((getText (_x >> 'type') in _types) && !((configName _x)  in %1))", _blacklist];
 private _locationList = _select configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
 [_locationList ,true] call CBA_fnc_shuffle;
