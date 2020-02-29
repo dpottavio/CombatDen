@@ -224,6 +224,11 @@ if (isMultiPlayer) then {
     player addEventHandler ["Respawn", {
         ["Terminate"] call BIS_fnc_EGSpectator;
     }];
+} else {
+    addMissionEventHandler ["TeamSwitch", {
+        params ["", "_newUnit"];
+        group _newUnit selectLeader _newUnit;
+    }];
 };
 
 private _success = [
