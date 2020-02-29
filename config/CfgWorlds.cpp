@@ -165,4 +165,5 @@ class CfgWorlds
     };
     class Staszow : Wood {};
     class StaszowWinter : Winter {};
+    class vt7 : Wood {};
 };
