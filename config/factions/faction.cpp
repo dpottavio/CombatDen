@@ -51,8 +51,6 @@ class Faction
                 "ItemMap",
                 "ItemRadio",
                 "ItemWatch",
-                "Medikit",
-                "FirstAidKit",
                 "ToolKit"
             };
             aceMisc[] = {
@@ -67,7 +65,10 @@ class Faction
                 "ACE_SpraypaintBlack",
                 "ACE_SpraypaintBlue",
                 "ACE_SpraypaintGreen",
-                "ACE_SpraypaintRed",
+                "ACE_SpraypaintRed"
+            };
+
+            aceMedical[] = {
                 "ACE_adenosine",
                 "ACE_atropine",
                 "ACE_bloodIV",
@@ -87,6 +88,10 @@ class Faction
                 "ACE_salineIV_500",
                 "ACE_surgicalKit",
                 "ACE_tourniquet"
+            };
+            noAceMedical[] = {
+                "Medikit",
+                "FirstAidKit"
             };
 
             gps[] = {
@@ -709,7 +714,7 @@ class Faction
 
             class Backpack
             {
-                aceItems[] = {
+                aceMedicalItems[] = {
                     "ACE_Flashlight_XL50",
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
@@ -728,7 +733,7 @@ class Faction
                     "ACE_morphine",
                     "ACE_morphine"
                 };
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                     "FirstAidKit",
                     "FirstAidKit",
                     "FirstAidKit",
@@ -751,7 +756,7 @@ class Faction
 
             class MedicBackpack : Backpack
             {
-                aceMedicItems[] = {
+                aceMedicalItems[] = {
                     "ACE_bloodIV_500",
                     "ACE_bloodIV_500",
                     "ACE_bloodIV_500",
@@ -788,7 +793,7 @@ class Faction
                     "ACE_morphine",
                     "ACE_morphine"
                 };
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                   "Medikit",
                   "FirstAidKit",
                   "FirstAidKit",
@@ -1593,7 +1598,7 @@ class Faction
 
             class Backpack
             {
-                aceItems[] = {
+                aceMedicalItems[] = {
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
@@ -1605,7 +1610,7 @@ class Faction
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
                 };
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                     "FirstAidKit",
                     "FirstAidKit",
                     "FirstAidKit",
@@ -1624,7 +1629,7 @@ class Faction
 
             class MedicBackpack : Backpack
             {
-                aceMedicItems[] = {
+                aceMedicalItems[] = {
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
@@ -1641,18 +1646,18 @@ class Faction
                     "ACE_elasticBandage",
                     "ACE_elasticBandage",
                 };
-                noAceItems[] = {
-                  "Medikit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit",
-                  "FirstAidKit"
+                noAceMedicalItems[] = {
+                    "Medikit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit",
+                    "FirstAidKit"
                 };
             };
         };

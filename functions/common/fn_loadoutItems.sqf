@@ -49,23 +49,53 @@ if (_type == "") exitWith {
     [];
 };
 
-private _hasAceCommon = DEN_HAS_ADDON("ace_common");
-private _allItems     = configProperties [_loadout >> _type];
-private _items        = [];
+private _hasAceCommon  = DEN_HAS_ADDON("ace_common");
+private _hasAceMedical = DEN_HAS_ADDON("ace_medical");
+private _allItems      = configProperties [_loadout >> _type];
+private _items         = [];
+private _itemArray     = [];
 {
-    private _name        = configName _x;
-    private _isAceProp   = ((_name find "ace") == 0);
-    private _isNoAceProp = false;
+    _itemArray = [_x] call {
+        params ["_configItem"];
+        private _name = configName _configItem;
 
-    if (!_isAceProp) then {
-        _isNoAceProp = ((_name find "noAce") == 0);
+        if !(isArray _configItem) exitWith {
+            [];
+        };
+
+        private _isAceMedicalProp = ((_name find "aceMedical") == 0);
+        if (_isAceMedicalProp && !_hasAceMedical) exitWith {
+            [];
+        };
+        if (_isAceMedicalProp && _hasAceMedical) exitWith {
+             getArray _configItem;
+        };
+
+        private _isNoAceMedicalProp = ((_name find "noAceMedical") == 0);
+        if (_isNoAceMedicalProp && _hasAceMedical) exitWith {
+            [];
+        };
+        if (_isNoAceMedicalProp && !_hasAceMedical) exitWith {
+            getArray _configItem;
+        };
+
+        private _isAceProp = ((_name find "ace") == 0);
+        if (_isAceProp && !_hasAceCommon) exitWith {
+            [];
+        };
+        if (_isAceProp && _hasAceCommon) exitWith {
+            getArray _configItem;
+        };
+
+        private _isNoAceProp = ((_name find "noAce") == 0);
+        if (_isNoAceProp && _hasAceCommon) exitWith {
+           []
+        };
+
+        getArray _configItem;
     };
-
-    if (isArray _x && (_hasAceCommon || !_isAceProp) && !(_hasAceCommon && _isNoAceProp)) then {
-        private _list = getArray _x;
-        {
-            _items pushBack _x;
-        } forEach _list;
+    if !(_itemArray isEqualTo []) then {
+        _items append _itemArray;
     };
 } forEach _allItems;
 
