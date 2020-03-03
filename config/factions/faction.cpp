@@ -363,12 +363,14 @@ class Faction
                 "ItemMap",
                 "ItemRadio",
                 "ToolKit",
+                "gm_watch_kosei_80",
+                "gm_ge_army_conat2"
+            };
+            noAceMedical[] = {
                 "gm_ge_army_medkit_80",
                 "gm_ge_army_gauzeBandage",
                 "gm_ge_army_gauzeCompress",
                 "gm_ge_army_burnBandage",
-                "gm_watch_kosei_80",
-                "gm_ge_army_conat2"
             };
 
             sights[] = {
@@ -810,7 +812,7 @@ class Faction
 
             class GmWestBackpack : BackPack
             {
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                     "gm_ge_army_gauzeBandage",
                     "gm_ge_army_gauzeBandage",
                     "gm_ge_army_gauzeBandage",
@@ -820,7 +822,7 @@ class Faction
 
             class GmWestMedicBackpack : MedicBackpack
             {
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                   "gm_ge_army_medkit_80",
                   "gm_ge_army_gauzeBandage",
                   "gm_ge_army_gauzeBandage",
@@ -837,7 +839,7 @@ class Faction
 
             class GmEastBackpack : BackPack
             {
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                     "gm_gc_army_gauzeBandage",
                     "gm_gc_army_gauzeBandage",
                     "gm_gc_army_gauzeBandage",
@@ -847,7 +849,7 @@ class Faction
 
             class GmEastMedicBackpack : MedicBackpack
             {
-                noAceItems[] = {
+                noAceMedicalItems[] = {
                   "gm_gc_army_medkit",
                   "gm_gc_army_gauzeBandage",
                   "gm_gc_army_gauzeBandage",
