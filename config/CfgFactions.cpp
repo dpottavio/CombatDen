@@ -61,12 +61,22 @@ class CfgFactions
 #include "factions\gmPoland.cpp"
 #include "factions\gmWestGermany.cpp"
 /*
- * IFA3
+ * IFA3 Factions
  */
 #include "factions\ifa3RedArmy.cpp"
 #include "factions\ifa3Wehrmacht.cpp"
 #include "factions\ifa3UkArmy.cpp"
 #include "factions\ifa3UsArmy.cpp"
+/*
+ * ISC Factions
+ */
+#include "factions\iscAlNusra.cpp"
+#include "factions\iscIraqiArmy.cpp"
+#include "factions\iscIraqiPolice.cpp"
+#include "factions\iscIslamicState.cpp"
+#include "factions\iscSyrianArabArmy.cpp"
+#include "factions\iscPeshmerga.cpp"
+#include "factions\iscYpg.cpp"
 /*
  * LOP Factions
  */
