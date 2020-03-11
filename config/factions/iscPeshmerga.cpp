@@ -162,23 +162,23 @@ class IscPeshmerga : Faction
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_pesh_grenadier_b";
+                    vehicle = "isc_pesh_machinegunner_b";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_pesh_at_b";
+                    vehicle = "isc_pesh_grenadier_b";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_pesh_sniper_b";
+                    vehicle = "isc_pesh_at_b";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "isc_pesh_rifleman_b";
+                    vehicle = "isc_pesh_at_b";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_pesh_rifleman_b";
+                    vehicle = "isc_pesh_sniper_b";
                 };
                 class Unit7 : Unit7
                 {
@@ -193,11 +193,11 @@ class IscPeshmerga : Faction
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_pesh_sniper_b";
+                    vehicle = "isc_pesh_machinegunner_b";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_pesh_medic_b";
+                    vehicle = "isc_pesh_grenadier_b";
                 };
                 class Unit3 : Unit3
                 {
@@ -209,18 +209,18 @@ class IscPeshmerga : Faction
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "isc_pesh_rifleman_b";
+                    vehicle = "isc_pesh_at_b";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_pesh_rifleman_b";
+                    vehicle = "isc_pesh_sniper_b";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "isc_pesh_rifleman_b";
+                    vehicle = "isc_pesh_medic_b";
                 };
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};

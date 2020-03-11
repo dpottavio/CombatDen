@@ -164,23 +164,23 @@ class IscIslamicState : Faction
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_is_rifleman_o";
+                    vehicle = "isc_is_autorifleman_o";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_is_at_o";
+                    vehicle = "isc_is_grenadier_o";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_is_sniper_o";
+                    vehicle = "isc_is_at_o";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "isc_is_rifleman_o";
+                    vehicle = "isc_is_at_o";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_is_rifleman_o";
+                    vehicle = "isc_is_sniper_o";
                 };
                 class Unit7 : Unit7
                 {
@@ -195,19 +195,19 @@ class IscIslamicState : Faction
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_is_sniper_o";
+                    vehicle = "isc_is_autorifleman_o";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_is_medic_o";
+                    vehicle = "isc_is_grenadier_o";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_is_autorifleman_o";
+                    vehicle = "isc_is_rifleman_o";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_is_autorifleman_o";
+                    vehicle = "isc_is_rifleman_o";
                 };
                 class Unit5 : Unit5
                 {
@@ -215,14 +215,14 @@ class IscIslamicState : Faction
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_is_rifleman_o";
+                    vehicle = "isc_is_sniper_o";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "isc_is_rifleman_o";
+                    vehicle = "isc_is_medic_o";
                 };
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};

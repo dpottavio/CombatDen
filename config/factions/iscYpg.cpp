@@ -162,7 +162,7 @@ class IscYpg : Faction
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_ypg_rifleman_b";
+                    vehicle = "isc_ypg_machinegunner_b";
                 };
                 class Unit3 : Unit3
                 {
@@ -170,7 +170,7 @@ class IscYpg : Faction
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_ypg_sniper_b";
+                    vehicle = "isc_ypg_at_b";
                 };
                 class Unit5 : Unit5
                 {
@@ -178,7 +178,7 @@ class IscYpg : Faction
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_ypg_rifleman_b";
+                    vehicle = "isc_ypg_sniper_b";
                 };
                 class Unit7 : Unit7
                 {
@@ -193,11 +193,11 @@ class IscYpg : Faction
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_ypg_sniper_b";
+                    vehicle = "isc_ypg_machinegunner_b";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_ypg_medic_b";
+                    vehicle = "isc_ypg_rifleman_b";
                 };
                 class Unit3 : Unit3
                 {
@@ -209,18 +209,18 @@ class IscYpg : Faction
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "isc_ypg_rifleman_b";
+                    vehicle = "isc_ypg_at_b";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_ypg_rifleman_b";
+                    vehicle = "isc_ypg_sniper_b";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "isc_ypg_rifleman_b";
+                    vehicle = "isc_ypg_medic_b";
                 };
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};

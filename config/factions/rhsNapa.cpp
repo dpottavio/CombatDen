@@ -16,60 +16,62 @@
     <https://www.gnu.org/licenses/>.
 */
 
-class IscSyrianArabArmy : Faction
+class RhsNapa : Faction
 {
-    addon = "ISC";
+    addon = "RHS";
     ammoBox = "rhs_7ya37_1_single";
     cargoBox = "CargoNet_01_box_F";
     climateBlacklist[] = {
+        "Arid",
         "Tropic",
-        "Wood",
-        "Winter"
+        "SemiArid"
     };
     era = ERA_MODERN;
-    flagTexture = "a3\data_f\flags\flag_red_co.paa";
+    flagTexture = "rhsgref\addons\rhsgref_main\data\flag_insurgents_co.paa";
     fullMoonOnly = 1;
-    name = "Syrian Arab Army";
-    patches[] = {
-        "Iraqi_Syrian_Conflict"
+    name = "NAPA";
+    patches[]    = {
+        "rhsgref_c_troops"
     };
-    side = SIDE_OPFOR;
+    side = SIDE_GUER;
 
     class Arsenal : ArsenalRhsMilitia
     {
-        class SemiArid : Base
+        class Wood: Base
         {
             backpacks[] = {
-                "rhs_assault_umbts"
+                "B_Kitbag_sgg"
             };
             headgear[] = {
-                "rhs_ssh68"
+                "rhsgref_Booniehat_alpen",
+                "H_Watchcap_blk"
             };
             uniforms[] = {
-                "rhsgref_uniform_woodland"
+                "rhsgref_uniform_alpenflage",
             };
             vests[] = {
-                "V_TacChestrig_oli_F"
+                "V_TacVest_oli"
+            };
+            faceware[] = {
+                "G_Bandanna_blk",
             };
         };
 
-        class Arid : SemiArid {};
+        class Winter : Wood {};
     };
 
     class Vehicle
     {
-        class SemiArid
+        class Wood
         {
-            heloTransport      = "isc_saa_mi8mt_cargo_o";
-            heloTransportLarge = "isc_saa_mi8mt_cargo_o";
-            heloCargo          = "isc_saa_mi8mt_cargo_o";
-            truckAssault       = "isc_saa_tigr_m_3camo_o";
-            truckSupplyAmmo    = "isc_saa_ural_o";
-            truckSupplyCargo   = "isc_saa_ural_open_o";
-            truckSupplyFuel    = "isc_saa_ural_fuel_o";
+            truckAssault     = "rhsgref_nat_btr70";
+            truckSupplyAmmo  = "rhsgref_nat_ural_work";
+            truckSupplyCargo = "rhsgref_nat_ural_open";
+            truckSupplyFuel  = "rhsgref_nat_van_fuel";
+            truckTransport   = "rhsgref_nat_ural_open";
         };
 
-        class Arid : SemiArid {};
+        class Winter : Wood {};
     };
 
     class Group : Group
@@ -80,146 +82,146 @@ class IscSyrianArabArmy : Faction
         class Team   : Team {};
         class Triple : Triple {};
 
-        class SemiArid
+        class Wood
         {
             class TruckCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class HeloPilot : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class HeloCrew : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class Pilot : Single
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class Sentry : Couple
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_officer_o";
+                    vehicle = "rhsgref_nat_pmil_commander";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class FireTeam : Team
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_officer_o";
+                    vehicle = "rhsgref_nat_pmil_commander";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_machinegunner_o";
+                    vehicle = "rhsgref_nat_pmil_machinegunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_saa_at_o";
+                    vehicle = "rhsgref_nat_pmil_grenadier_rpg";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class AssaultSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_officer_o";
+                    vehicle = "rhsgref_nat_pmil_commander";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_machinegunner_o";
+                    vehicle = "rhsgref_nat_pmil_machinegunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_saa_machinegunner_o";
+                    vehicle = "rhsgref_nat_pmil_machinegunner";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_saa_grenadier_o";
+                    vehicle = "rhsgref_nat_pmil_grenadier";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_saa_at_o";
+                    vehicle = "rhsgref_nat_pmil_grenadier_rpg";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "isc_saa_at_o";
+                    vehicle = "rhsgref_nat_pmil_grenadier_rpg";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_saa_sniper_o";
+                    vehicle = "rhsgref_nat_pmil_hunter";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "isc_saa_medic_o";
+                    vehicle = "rhsgref_nat_pmil_medic";
                 };
             };
             class ReconSquad : Squad
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_officer_o";
+                    vehicle = "rhsgref_nat_pmil_commander";
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_saa_machinegunner_o";
+                    vehicle = "rhsgref_nat_pmil_machinegunner";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_saa_grenadier_o";
+                    vehicle = "rhsgref_nat_pmil_grenadier";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_saa_rifleman_o";
+                    vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
                 class Unit5 : Unit5
                 {
-                     vehicle = "isc_saa_at_o";
+                    vehicle = "rhsgref_nat_pmil_grenadier_rpg";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_saa_sniper_o";
+                    vehicle = "rhsgref_nat_pmil_hunter";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "isc_saa_medic_o";
+                    vehicle = "rhsgref_nat_pmil_medic";
                 };
             };
             class ReconTeam : FireTeam
@@ -233,22 +235,22 @@ class IscSyrianArabArmy : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "isc_saa_tigr_m_3camo_o";
+                    vehicle = "rhsgref_nat_uaz_dshkm";
                 };
             };
             class MotorizedTeam : Triple
             {
                 class Unit0 : Unit0
                 {
-                     vehicle = "isc_saa_tigr_m_3camo_o";
+                     vehicle = "rhsgref_nat_uaz_dshkm";
                 };
                 class Unit1 : Unit1
                 {
-                     vehicle = "isc_saa_rifleman_o";
+                     vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
                 class Unit2 : Unit2
                 {
-                     vehicle = "isc_saa_rifleman_o";
+                     vehicle = "rhsgref_nat_pmil_rifleman_akm";
                 };
             };
             class MotorizedAssault : AssaultSquad
@@ -265,11 +267,11 @@ class IscSyrianArabArmy : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "isc_saa_tigr_m_3camo_o";
+                    vehicle = "rhsgref_nat_uaz_dshkm";
                 };
             };
         };
-        class Arid : SemiArid
+        class Winter : Wood
         {
             class TruckCrew : TruckCrew
             {
@@ -358,13 +360,14 @@ class IscSyrianArabArmy : Faction
 
  class Loadout : LoadoutRhsMilitia
     {
-        class SemiArid : ClimateBase
+        class Wood : ClimateBase
         {
             class Rifleman : Rifleman
             {
                 class Akm : Akm
                 {
-                    unit = "isc_saa_rifleman_o";
+                    unit = "rhsgref_nat_pmil_rifleman_akm";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -376,7 +379,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Akm : Akm
                 {
-                    unit = "isc_saa_rifleman_o";
+                    unit = "rhsgref_nat_pmil_grenadier";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -388,7 +392,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Akm : Akm
                 {
-                    unit = "isc_saa_officer_o";
+                    unit = "rhsgref_nat_pmil_commander";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -400,7 +405,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Pkm : Pkm
                 {
-                    unit = "isc_saa_machinegunner_o";
+                    unit = "rhsgref_nat_pmil_machinegunner";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -412,7 +418,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Svds : Svds
                 {
-                    unit = "isc_saa_sniper_o";
+                    unit = "rhsgref_nat_pmil_hunter";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -424,7 +431,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Akm : Akm
                 {
-                    unit = "isc_saa_medic_o";
+                    unit = "rhsgref_nat_pmil_medic";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -436,7 +444,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Rpg7 : Rpg7
                 {
-                    unit = "isc_saa_at_o";
+                    unit = "rhsgref_nat_pmil_grenadier_rpg";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -448,7 +457,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Akm : Akm
                 {
-                    unit = "isc_saa_sapper_o";
+                    unit = "rhsgref_nat_pmil_saboteur";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -460,7 +470,8 @@ class IscSyrianArabArmy : Faction
             {
                 class Akm : Akm
                 {
-                    unit = "isc_saa_rifleman_o";
+                    unit = "rhsgref_nat_pmil_rifleman_akm";
+                    faceware = "G_Bandanna_blk";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -469,7 +480,7 @@ class IscSyrianArabArmy : Faction
                 };
             };
         };
-        class Arid : SemiArid
+        class Winter : Wood
         {
             class Rifleman : Rifleman
             {

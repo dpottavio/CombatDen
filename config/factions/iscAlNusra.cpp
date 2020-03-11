@@ -164,23 +164,23 @@ class IscAlNusra : Faction
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_alNusra_rifleman_i";
+                    vehicle = "isc_alNusra_machinegunner_i";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_alNusra_at_i";
+                    vehicle = "isc_alNusra_grenadier_i";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_alNusra_sniper_i";
+                    vehicle = "isc_alNusra_at_i";
                 };
                 class Unit5 : Unit5
                 {
-                    vehicle = "isc_alNusra_rifleman_i";
+                    vehicle = "isc_alNusra_at_i";
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_alNusra_rifleman_i";
+                    vehicle = "isc_alNusra_sniper_i";
                 };
                 class Unit7 : Unit7
                 {
@@ -195,19 +195,19 @@ class IscAlNusra : Faction
                 };
                 class Unit1 : Unit1
                 {
-                    vehicle = "isc_alNusra_sniper_i";
+                    vehicle = "isc_alNusra_machinegunner_i";
                 };
                 class Unit2 : Unit2
                 {
-                    vehicle = "isc_alNusra_medic_i";
+                    vehicle = "isc_alNusra_grenadier_i";
                 };
                 class Unit3 : Unit3
                 {
-                    vehicle = "isc_alNusra_machinegunner_i";
+                    vehicle = "isc_alNusra_rifleman_i";
                 };
                 class Unit4 : Unit4
                 {
-                    vehicle = "isc_alNusra_machinegunner_i";
+                    vehicle = "isc_alNusra_rifleman_i";
                 };
                 class Unit5 : Unit5
                 {
@@ -215,14 +215,14 @@ class IscAlNusra : Faction
                 };
                 class Unit6 : Unit6
                 {
-                    vehicle = "isc_alNusra_rifleman_i";
+                    vehicle = "isc_alNusra_sniper_i";
                 };
                 class Unit7 : Unit7
                 {
-                    vehicle = "isc_alNusra_rifleman_i";
+                    vehicle = "isc_alNusra_medic_i";
                 };
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};

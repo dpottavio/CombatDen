@@ -185,42 +185,18 @@ class IscIraqiPolice : Faction
                     vehicle = "isc_ip_policeman_b";
                 };
             };
-            class ReconSquad : Squad
+            class ReconSquad : AssaultSquad
             {
-                class Unit0 : Unit0
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "isc_ip_policeman_b";
-                };
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {}
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
