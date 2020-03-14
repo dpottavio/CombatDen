@@ -64,7 +64,7 @@ class IscYpg : Faction
             truckSupplyAmmo  = "C_Truck_02_covered_F";
             truckSupplyCargo = "C_Truck_02_transport_F";
             truckSupplyFuel  = "C_Van_01_fuel_F";
-            truckTransport   = "C_Truck_02_transport_F"
+            truckTransport   = "C_Truck_02_transport_F";
         };
 
         class Arid : SemiArid {};

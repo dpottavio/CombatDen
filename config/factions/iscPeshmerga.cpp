@@ -64,7 +64,7 @@ class IscPeshmerga : Faction
             truckSupplyAmmo  = "isc_pesh_ural_b";
             truckSupplyCargo = "isc_pesh_ural_open_b";
             truckSupplyFuel  = "isc_pesh_ural_fuel_b";
-            truckTransport   = "isc_pesh_ural_open_b"
+            truckTransport   = "isc_pesh_ural_open_b";
         };
 
         class Arid : SemiArid {};
