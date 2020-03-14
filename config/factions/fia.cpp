@@ -805,7 +805,7 @@ class Fia : Faction
             };
             class Grenadier : Grenadier
             {
-                class Trg : GrenadierBase
+                class Trg : Trg
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
