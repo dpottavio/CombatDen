@@ -174,4 +174,5 @@ class CfgWorlds
             "Hanholmi"
         };
     };
+    class Kunduz : Arid {};
 };
