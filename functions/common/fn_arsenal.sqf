@@ -62,6 +62,18 @@ private _hasAceCommon = DEN_HAS_ADDON("ace_common");
     };
 } forEach _arsenalProps;
 
+/*
+ * HACK - The following ACRE check should be driven by
+ * config rather than this explicit check.  However,
+ * adding this logic will require non-trivial refactoring.
+ * Therefore, add this hack for now, and remove once the
+ * config logic can better enable generic testing of ADDON
+ * dependencies for equipment.
+ */
+if (DEN_HAS_ADDON("acre_main")) then {
+    _items = _items + ["ACRE_PRC117F", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC343", "ACRE_PRC77"];
+};
+
 if (DEN_HAS_ADDON("ace_arsenal")) then {
     [_obj, _items] call ace_arsenal_fnc_initBox;
 
