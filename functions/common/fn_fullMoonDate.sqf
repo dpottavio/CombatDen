@@ -46,10 +46,4 @@ _maxPhaseDate set [3, _time];
 
 [_maxPhaseDate] remoteExec ["setDate"];
 
-// force clear sky
-0 setOvercast 0;
-forceWeatherChange;
-// just to clients
-[0, 0] remoteExecCall ["setOvercast", -2, true];
-
 true;

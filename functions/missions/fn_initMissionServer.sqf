@@ -30,13 +30,25 @@ if (!isServer) exitWith {
 
 private _friendlyFaction = den_cba_playerFaction;
 
-private _isDark       = (den_cba_timeOfDay >= 18 || den_cba_timeOfDay < 6);
+private _timeOfDay = den_cba_timeOfDay;
+if (_timeOfDay == -1) then {
+    private _timeOptions = getArray (missionCOnfigFile >> "CfgSettings" >> "TimeOfDay" >> "values");
+    _timeOptions deleteAt (_timeOptions find -1);
+    _timeOfDay = selectRandom _timeOptions;
+};
+
+private _isDark = (_timeOfDay >= 18 || _timeOfDay < 6);
 private _fullMoonOnly = ((getNumber (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "fullMoonOnly")) == 1);
 if (_isDark && _fullMoonOnly) then {
     // Some factions only have fullmoon missions due to lack of NVG.
-    [den_cba_timeOfDay] call den_fnc_fullMoonDate;
+    [_timeOfDay] call den_fnc_fullMoonDate;
+    // force clear sky
+    0 setOvercast 0;
+    forceWeatherChange;
+    // just to clients
+    [0, 0] remoteExecCall ["setOvercast", -2, true];
 } else {
-    [den_cba_timeOfDay] call den_fnc_randDate;
+    [_timeOfDay] call den_fnc_randDate;
     [] call den_fnc_randWeather;
 };
 
