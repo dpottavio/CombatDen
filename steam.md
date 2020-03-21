@@ -15,7 +15,8 @@ It's simple.  A randomized mission will be selected complete with a briefing.  J
 [*] Optional ACE support.
 [*] Optional factions from RHS, CUP, 3CB, and more.  See the [url=https://github.com/dpottavio/CombatDen/wiki/Factions]Wiki[/url] for a complete list.
 [*] Optional Global Mobilization support.
-[*] Optional IFA3 support
+[*] Optional IFA3 support.
+[*] Optional ACRE and﻿﻿﻿﻿﻿ TFR radio﻿s. 
 [/list]
 
 [h1]Documentation[/h1]
