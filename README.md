@@ -25,6 +25,7 @@ briefing.  Just play.
 * Optional factions from RHS, CUP, 3CB, and more. See the [Wiki](https://github.com/dpottavio/CombatDen/wiki/Factions) for a complete list.
 * Optional Global Mobilization support.
 * Optional IFA3 support
+* Optional ACRE and﻿﻿﻿﻿﻿ TFR radio﻿s. 
 
 ## Required Mods
 
