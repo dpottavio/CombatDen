@@ -73,12 +73,12 @@ private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friend
 private _zoneRadius = 500;
 private _minAmbush  = 0;
 private _maxAmbush  = _zoneRadius * 0.15;
-private _minInsert  = _zoneRadius + 200;
-private _maxInsert  = _zoneRadius + 300;
+private _minExtract = _zoneRadius + 200;
+private _maxExtract = _zoneRadius + 300;
 
 private _safePosParams = [
     [_minAmbush, _maxAmbush, 20, 0.1],
-    [_minInsert, _maxInsert, 15, 0.1]
+    [_minExtract, _maxExtract, 15, 0.1]
 ];
 
 private _zone = [
@@ -173,7 +173,8 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
     sleep random [30, 60, 120];
 
     den_mortarActive = false;
-    private _attackRadius = 200;
+    private _minAttackRadius = 200;
+    private _maxAttackRadius = _minAttackRadius + 75;
 
     while { true } do {
         private _players = allPlayers select { alive _x };
@@ -183,12 +184,12 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
         private _playerPos = getPos _player;
 
         private _nearEnemyCount =  {
-            ((side _x) == _enemySide) && ((_x distance _playerPos) < _attackRadius)
+            ((side _x) == _enemySide) && ((_x distance _playerPos) <= _maxAttackRadius)
         } count allUnits;
 
         private _attack = (_nearEnemyCount <= 1) &&
                           !den_mortarActive &&
-                          (isNil "den_evade" || ((_playerPos distance _insertPos) > _attackRadius));
+                          (isNil "den_evade" || ((_playerPos distance _insertPos) > _maxAttackRadius));
 
         if (_attack) then {
             if ((random 1) < 0.33) then {
@@ -220,12 +221,21 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                 if ((count _players) >= 4) then {
                     _pursueType = "AssaultSquad";
                 };
+
+                private _playerAreas = [];
+                {
+                    _playerAreas pushBack [getPos _x, _minAttackRadius, _minAttackRadius, 0, false, -1];
+                } forEach _players;
+
                 for "_i" from 1 to _enemyGroupCount do {
                     private _pursueGroupPos = [
-                        _playerPos,         // center
-                        _attackRadius - 25, // min dist
-                        _attackRadius,      // max dist
-                        5                   // min dist from objects
+                        _playerPos,             // center
+                        _minAttackRadius,       // min dist
+                        _maxAttackRadius,       // max dist
+                        5,                      // min dist from objects
+                        0.1,                    // max gradient
+                        0,                      // terrain type
+                        _playerAreas            // blacklist areas
                     ] call den_fnc_findSafePos;
 
                     if !(_pursueGroupPos isEqualTo []) then {
@@ -247,8 +257,6 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                         } else {
                             ERROR("failed to spawn group");
                         };
-                    } else {
-                        ERROR("failed to find safe pos");
                     };
                 };
             };
