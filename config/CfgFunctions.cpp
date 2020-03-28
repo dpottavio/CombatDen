@@ -47,6 +47,8 @@ class CfgFunctions
             class loadoutDefault {};
             class loadoutItems {};
             class loadoutMags {};
+            class locations {};
+            class locationBlacklist {};
             class lowDaylight {};
             class mpEndMission {};
             class mortarFire {};

@@ -31,6 +31,8 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
+    5: ARRAY - location list
+
     Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
@@ -41,7 +43,8 @@ params [
     ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",       0,       [0]]
+    ["_difficulty",       0,       [0]],
+    ["_locations",       [],      [[]]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -73,9 +76,9 @@ private _maxAssault = _zoneRadius;
 
 private _safePosParams = [
     [_minInsert,  _maxInsert,  15, 0.1, 0], // insert safe position
-    [_minAssault, _maxAssault, 15, 0.1, 0], // assault1 safe position
-    [_minAssault, _maxAssault, 15, 0.1, 0], // assault2 safe position
-    [_minAssault, _maxAssault, 15, 0.1, 0]  // assault3 safe position
+    [_minAssault, _maxAssault, 10, 0.1, 0], // assault1 safe position
+    [_minAssault, _maxAssault, 10, 0.1, 0], // assault2 safe position
+    [_minAssault, _maxAssault, 10, 0.1, 0]  // assault3 safe position
 ];
 
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
@@ -83,7 +86,8 @@ private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friend
 
 private _zone = [
     _zoneRadius,
-    _safePosParams
+    _safePosParams,
+    _locations
 ] call den_fnc_zone;
 
 if (_zone isEqualTo []) exitWith {
@@ -93,8 +97,9 @@ if (_zone isEqualTo []) exitWith {
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
-private _zonePos         = _zoneArea select 0;
 private _zoneSafePosList = _zone select 2;
+private _zoneLocation    = _zone select 3;
+private _zonePos         = _zoneArea select 0;
 private _insertPos       = _zoneSafePosList select 0;
 private _convoyRoads     = _zonePos nearRoads (_maxConvoy);
 if (_convoyRoads isEqualTo []) exitWith {
@@ -272,4 +277,4 @@ private _failQueue = [
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;
 
-[_zoneName];
+[_zoneName, _zoneLocation];

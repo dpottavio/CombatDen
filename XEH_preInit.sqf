@@ -50,3 +50,76 @@ private _settings = "true" configClasses (missionConfigFile >> "CfgSettings");
         ] call CBA_settings_fnc_init;
     };
 } forEach _settings;
+
+/*
+ * Setup location markers for location selection.
+ */
+den_locationSelection = [];
+if (hasInterface && (!isMultiPlayer || ((call BIS_fnc_admin) > 0))) then {
+    private _locationGroups = [];
+    {
+        private _pos = getArray (configFile >> "CfgWorlds" >> worldName >> "Names" >> _x >> "position");
+        private _group = [_pos, civilian, ["C_man_polo_1_F"]] call BIS_fnc_spawnGroup;
+        _group addGroupIcon ["selector_selectable", [0,0]];
+        _group setGroupIconParams [[0,0,1,1], "", 2, TRUE];
+        _group setVariable ["den_location", _x];
+        _locationGroups pushBack _group;
+    } forEach ([] call den_fnc_locations);
+
+    setGroupIconsVisible [true, false];
+    setGroupIconsSelectable true;
+
+    private _hoverEh = addMissionEventHandler ["GroupIconOverEnter", {
+        params ["", "_group"];
+        private _isOver = _group getVariable ["den_isOver", false];
+        private _isSelected = _group getVariable ["den_isSelected", false];
+        if (!_isOver && !_isSelected) then {
+            _group setGroupIconParams [[1,1,1,1], "", 2, TRUE];
+            _group setVariable ["den_isOver", true];
+        };
+    }];
+
+    private _leaveEh = addMissionEventHandler ["GroupIconOverLeave", {
+        params ["", "_group"];
+        private _isSelected = _group getVariable ["den_isSelected", false];
+        if !(_isSelected) then {
+            _group setGroupIconParams [[0,0,1,1], "", 2, TRUE];
+        };
+        _group setVariable ["den_isOver", false];
+    }];
+
+    private _clickEh = addMissionEventHandler ["GroupIconClick", {
+        params ["", "_group"];
+
+        private _isSelected = _group getVariable ["den_isSelected", false];
+        if !(_isSelected) then {
+            den_locationSelection pushBack (_group getVariable "den_location");
+            _group setGroupIconParams [[0,1,0,1], "", 2.5, TRUE];
+            _group setVariable ["den_isSelected", true];
+        } else {
+            den_locationSelection deleteAt (den_locationSelection find (_group getVariable "den_location"));
+            _group setGroupIconParams [[0,0,1,1], "", 2, TRUE];
+            _group setVariable ["den_isSelected", false];
+        };
+    }];
+
+    /*
+     * Cleanup
+     */
+    [_locationGroups, _hoverEh, _leaveEh, _clickEh] spawn {
+        params ["_groups", "_hoverEh", "_leaveEh", "_clickEh"];
+
+        // Wait until the briefing has been read.
+        waitUntil { !isNull findDisplay 46 };
+
+        {
+            {
+                deleteVehicle _x
+            } forEach units _x;
+            deleteGroup _x;
+        } forEach _groups;
+        removeMissionEventHandler ["GroupIconOverEnter", _hoverEh];
+        removeMissionEventHandler ["GroupIconOverLeave", _leaveEh];
+        removeMissionEventHandler ["GroupIconClick",     _clickEh];
+    };
+};

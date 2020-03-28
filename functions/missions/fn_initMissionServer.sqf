@@ -178,7 +178,35 @@ if (_mission == "") then {
     _mission = configName (selectRandom ("true" configClasses (missionConfigFile >> "CfgMissions")));
 };
 
-private _missionArgs = "[_playerGroup,getPos den_transportMarker,getDir den_transportMarker,_friendlyFaction,_enemyFaction,den_cba_difficulty,_arsenal]";
+private _locations = [] call den_fnc_locations;
+[_locations, true] call CBA_fnc_shuffle;
+
+private _playerMadeSelection = !(den_locationSelection isEqualTo []);
+if (_playerMadeSelection) then {
+    /*
+     * If player has selected locations, move them to the
+     * front of the location list.  This makes the selected
+     * locations a priority while also allowing the remaining
+     * non-selected locations as a backup if the mission could
+     * not initialize in any of the selected locations.
+     */
+    [den_locationSelection, true] call CBA_fnc_shuffle;
+    {
+        _locations deleteAt (_locations find _x);
+    } forEach den_locationSelection;
+     _locations = den_locationSelection + _locations;
+};
+
+private _missionArgs =
+"[_playerGroup,\
+getPos den_transportMarker,\
+getDir den_transportMarker,\
+_friendlyFaction,\
+_enemyFaction,\
+den_cba_difficulty,\
+_locations,\
+_arsenal]";
+
 private _serverLogic = getText (missionConfigFile >> "CfgMissions" >> _mission >> "serverLogic");
 private _logic = format["%1 call %2;", _missionArgs, _serverLogic];
 
@@ -187,6 +215,11 @@ if (_missionParam isEqualTo []) exitWith {
     [];
 };
 
-private _zone = _missionParam select 0;
+private _locationName = _missionParam select 0;
+private _location = _missionParam select 1;
 
-[_mission, _enemyFaction, _zone, _friendlyFaction, _playerGroup, _arsenal];
+if (_playerMadeSelection && !(_location in den_locationSelection)) then {
+    ["Unable to initialize mission at selected location(s)"] remoteExecCall ["hint"];
+};
+
+[_mission, _enemyFaction, _locationName, _friendlyFaction, _playerGroup, _arsenal];

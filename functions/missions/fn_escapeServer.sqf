@@ -31,6 +31,8 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
+    5: ARRAY - location list
+
     Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
@@ -41,7 +43,8 @@ params [
     ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",       0,       [0]]
+    ["_difficulty",       0,       [0]],
+    ["_locations",       [],      [[]]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -77,13 +80,14 @@ private _minExtract = _zoneRadius + 200;
 private _maxExtract = _zoneRadius + 300;
 
 private _safePosParams = [
-    [_minAmbush, _maxAmbush, 20, 0.1],
-    [_minExtract, _maxExtract, 15, 0.1]
+    [_minAmbush,  _maxAmbush,  10],
+    [_minExtract, _maxExtract, 10]
 ];
 
 private _zone = [
     _zoneRadius,
-    _safePosParams
+    _safePosParams,
+    _locations
 ] call den_fnc_zone;
 
 if (_zone isEqualTo []) exitWith {
@@ -93,8 +97,9 @@ if (_zone isEqualTo []) exitWith {
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
-private _zonePos         = _zoneArea select 0;
 private _zoneSafePosList = _zone select 2;
+private _zoneLocation    = _zone select 3;
+private _zonePos         = _zoneArea select 0;
 private _ambushPos       = _zoneSafePosList select 0;
 private _insertPos       = _zoneSafePosList select 1;
 
@@ -292,4 +297,4 @@ private _failQueue = [
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;
 
-[_zoneName];
+[_zoneName, _zoneLocation];

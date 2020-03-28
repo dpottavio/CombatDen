@@ -48,11 +48,9 @@
             0 - anywhere  (default)
             1 - on a rode
 
-    2: (Optional) STRING - Area marker color.
+    2: (Optional) ARRAY - Location class names
 
-    3: (Optional) ARRAY - An array of strings that are location
-    types.  If this parameter is empty all types are used by
-    default.
+    3: (Optional) STRING - Area marker color.
 
     Returns: ARRAY - [STRING, ARRAY, AREA, ARRAY]
 
@@ -63,21 +61,13 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_radius",        500,   [0]],
-    ["_safePosParams", [],    [[]]],
-    ["_markerColor",   "",    [""]],
-    ["_types", ["Airport", "CityCenter", "NameCity", "NameCityCapital", "NameLocal", "NameVillage"],[[]]]
+    ["_radius",         500,   [0]],
+    ["_safePosParams",  [],    [[]]],
+    ["_locations",      [],    [[]]],
+    ["_markerColor",    "",    [""]]
 ];
-// trick the linter
-{_types};
 
-private _blacklist = getArray (missionConfigFile >> "CfgWorlds" >> worldName >> "blacklist");
-private _location = configNull;
-private _select = format["((getText (_x >> 'type') in _types) && !((configName _x)  in %1))", _blacklist];
-private _locationList = _select configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
-[_locationList ,true] call CBA_fnc_shuffle;
-
-private _location = configNull;
+private _locationCfg = configNull;
 private _pos = [];
 private _name = "";
 private _safePosList = [];
@@ -87,16 +77,19 @@ private _safePosList = [];
  * safe positions for each _safePosParams.
  */
 {
-    _location = _x;
-    _pos = getArray (_location >> "position");
-    _name = getText (_location >> "name");
+    _locationCfg = configFile >> "CfgWorlds" >> worldName >> "Names" >> _x;
+    _pos = getArray (_locationCfg >> "position");
+    _name = getText (_locationCfg >> "name");
+    if (_name == "") then {
+        _name = configName _locationCfg;
+    };
     _safePosList = [];
     {
-        private _minPos     = _x param [0, 0,  [0]];
-        private _maxPos     = _x param [1, 0,  [0]];
-        private _minObjDist = _x param [2, 1,  [0]];
-        private _maxGrad    = _x param [3, -1, [0]];
-        private _road       = _x param [4, 0,  [0]];
+        private _minPos     = _x param [0, 0,   [0]];
+        private _maxPos     = _x param [1, 0,   [0]];
+        private _minObjDist = _x param [2, 1,   [0]];
+        private _maxGrad    = _x param [3, 0.1, [0]];
+        private _road       = _x param [4, 0,   [0]];
         private _safePos    = [];
 
         if  (_road == 1) then {
@@ -133,15 +126,11 @@ private _safePosList = [];
     } forEach _safePosParams;
 
     if ((count _safePosList) == (count _safePosParams)) exitWith {};
-} forEach _locationList;
+} forEach _locations;
 
 if ((count _safePosList) != (count _safePosParams)) exitWith {
     ERROR("failed to find a safe location");
     [];
-};
-
-if (_name == "") then {
-    _name = "Sector X";
 };
 
 private _area = [
@@ -165,6 +154,6 @@ if (_markerColor != "") then {
     "zoneMarker" setMarkerAlpha 0;
 };
 
-private _zone = [_name, _area, _safePosList];
+private _zone = [_name, _area, _safePosList, configName _locationCfg];
 
 _zone;

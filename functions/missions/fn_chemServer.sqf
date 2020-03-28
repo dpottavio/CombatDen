@@ -31,6 +31,8 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
+    5: ARRAY - location list
+
     Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
@@ -41,7 +43,8 @@ params [
     ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",       0,       [0]]
+    ["_difficulty",       0,       [0]],
+    ["_locations",       [],      [[]]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -77,11 +80,11 @@ private _maxReact     = _zoneRadius * 0.5;  // reaction force
 private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 
 private _safePosParams = [
-    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
-    [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
-    [0,             _maxPallet,    15, 0.1], // pallet safe position
-    [0,             _maxReact,     15, 0.1], // reaction force safe position
-    [0,             _maxPatrol,     5,  -1]  // patrol safe position
+    [_minInsert,    _maxInsert,    15], // insert safe position
+    [_minReinforce, _maxReinforce, 10], // reinforce safe position
+    [0,             _maxPallet,    10], // pallet safe position
+    [0,             _maxReact,     10], // reaction force safe position
+    [0,             _maxPatrol,     5]  // patrol safe position
 ];
 
 private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
@@ -89,7 +92,8 @@ private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySide
 
 private _zone = [
     _zoneRadius,
-    _safePosParams
+    _safePosParams,
+    _locations
 ] call den_fnc_zone;
 
 
@@ -100,9 +104,10 @@ if (_zone isEqualTo []) exitWith {
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
+private _zoneSafePosList = _zone select 2;
+private _zoneLocation    = _zone select 3;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
-private _zoneSafePosList = _zone select 2;
 private _insertPos       = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _palletPos       = _zoneSafePosList select 2;
@@ -412,4 +417,5 @@ private _success = switch (_hasCargoHelo) do {
 if !(_success) exitWith {
     [];
 };
-[_zoneName];
+
+[_zoneName, _zoneLocation];

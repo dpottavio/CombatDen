@@ -62,8 +62,8 @@ params [
     ["_maxGrad",        0.1, [0]],
     ["_terrainType",      0, [0]],
     ["_blackAreaList",   [], [[]]],
-    ["_areaLimit",     0.33, [0]],
-    ["_timeLimit",        5, [0]]
+    ["_areaLimit",      0.5, [0]],
+    ["_timeLimit",       10, [0]]
 ];
 
 if (_center isEqualTo []) exitWith {

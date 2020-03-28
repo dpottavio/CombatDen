@@ -31,6 +31,8 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
+    5: ARRAY - location list
+
     Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
@@ -42,6 +44,7 @@ params [
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
     ["_difficulty",       0,       [0]],
+    ["_locations",       [],      [[]]],
     ["_arsenal",         objNull, [objNull]]
 ];
 
@@ -86,9 +89,9 @@ private _maxCache     = _zoneRadius * 0.5;
 den_cacheCount = 5;
 
 private _safePosParams = [
-    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
-    [_minReinforce, _maxReinforce, 15, 0.1], // reinforce safe position
-    [_minPatrol,    _maxPatrol,    4,  -1]   // patrol safe position
+    [_minInsert,    _maxInsert,    15], // insert safe position
+    [_minReinforce, _maxReinforce, 10], // reinforce safe position
+    [_minPatrol,    _maxPatrol,    5]   // patrol safe position
 ];
 for "_i" from 1 to den_cacheCount do {
     _safePosParams pushBack [_minCache, _maxCache, 5, 0.1]  // cache safe position
@@ -100,6 +103,7 @@ private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySide
 private _zone = [
     _zoneRadius,
     _safePosParams,
+    _locations,
     _enemyColor
 ] call den_fnc_zone;
 
@@ -110,9 +114,10 @@ if (_zone isEqualTo []) exitWith {
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
+private _zoneSafePosList = _zone select 2;
+private _zoneLocation    = _zone select 3;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
-private _zoneSafePosList = _zone select 2;
 private _insertPos       = _zoneSafePosList select 0;
 private _reinforcePos    = _zoneSafePosList select 1;
 private _patrolPos       = _zoneSafePosList select 2;
@@ -280,4 +285,4 @@ private _failQueue = [
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;
 
-[_zoneName];
+[_zoneName, _zoneLocation];

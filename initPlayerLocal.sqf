@@ -35,6 +35,7 @@ if (!isMultiplayer) then {
 
     if (_genMissionParams isEqualTo []) exitWith {
         ERROR_MSG("Failed to initialize mission. Restart is required.");
+        false;
     };
     den_mission         = _genMissionParams select 0;
     den_enemyFaction    = _genMissionParams select 1;
@@ -65,6 +66,12 @@ if (!isMultiplayer) then {
     if (!isNil "den_initServerError") exitWith {
         ERROR_MSG("Failed to initialize mission. Restart is required.");
     };
+};
+
+[] spawn {
+    waitUntil { visibleMap };
+    mapAnimAdd [0, .33, getMarkerPos "zoneMarker"];
+    mapAnimCommit;
 };
 
 [den_friendlyFaction, den_arsenal] call den_fnc_arsenal;

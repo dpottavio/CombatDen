@@ -29,6 +29,8 @@
 
     4: NUMBER - difficulty. See CfgParams.
 
+    5: ARRAY - location list
+
     Returns: array of zone parameters on success, empty array on error
 */
 #include "..\..\macros.hpp"
@@ -39,7 +41,8 @@ params [
     ["_transportDir",    0,       [0]],
     ["_friendlyFaction", "",      [""]],
     ["_enemyFaction",    "",      [""]],
-    ["_difficulty",       0,       [0]]
+    ["_difficulty",       0,       [0]],
+    ["_locations",       [],      [[]]]
 ];
 
 if (isNull _playerGroup) exitWith {
@@ -74,10 +77,10 @@ private _minReinforce = _zoneRadius + 300;  // reinforcements
 private _maxReinforce = _zoneRadius + 325;
 
 private _safePosParams = [
-    [_minInsert,    _maxInsert,    15, 0.1], // insert safe position
-    [0,             _maxReact,      5, 0.1], // inf patrol safe position
-    [0,             _maxPatrol,     5, 0.1], // inf patrol safe position
-    [_minReinforce, _maxReinforce, 15, 0.1]  // reinforce safe position
+    [_minInsert,    _maxInsert,    15], // insert safe position
+    [0,             _maxReact,      5], // inf patrol safe position
+    [0,             _maxPatrol,     5], // inf patrol safe position
+    [_minReinforce, _maxReinforce, 10]  // reinforce safe position
 ];
 
 private _enemySideStr = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
@@ -86,6 +89,7 @@ private _enemyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _enemySide
 private _zone = [
     _zoneRadius,
     _safePosParams,
+    _locations,
     _enemyColor
 ] call den_fnc_zone;
 
@@ -96,9 +100,10 @@ if (_zone isEqualTo []) exitWith {
 
 private _zoneName        = _zone select 0;
 private _zoneArea        = _zone select 1;
+private _zoneSafePosList = _zone select 2;
+private _zoneLocation    = _zone select 3;
 private _zonePos         = _zoneArea select 0;
 private _zoneRadius      = _zoneArea select 1;
-private _zoneSafePosList = _zone select 2;
 private _insertPos       = _zoneSafePosList select 0;
 private _reactPos        = _zoneSafePosList select 1;
 private _patrolPos       = _zoneSafePosList select 2;
@@ -248,4 +253,4 @@ private _failQueue = [
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;
 
-[_zoneName];
+[_zoneName, _zoneLocation];
