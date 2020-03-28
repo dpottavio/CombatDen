@@ -245,42 +245,18 @@ class Fia : Faction
                     vehicle = "I_G_medic_F";
                 };
             };
-            class ReconSquad : Squad
+            class ReconSquad : AssaultSquad
             {
-                class Unit0 : Unit0
-                {
-                    vehicle = "I_G_soldier_TL_F";
-                };
-                class Unit1 : Unit1
-                {
-                    vehicle = "I_G_soldier_M_F";
-                };
-                class Unit2 : Unit2
-                {
-                    vehicle = "I_G_medic_F";
-                };
-                class Unit3 : Unit3
-                {
-                    vehicle = "I_G_soldier_F";
-                };
-                class Unit4 : Unit4
-                {
-                    vehicle = "I_G_soldier_F";
-                };
-                class Unit5 : Unit5
-                {
-                    vehicle = "I_G_soldier_F";
-                };
-                class Unit6 : Unit6
-                {
-                    vehicle = "I_G_soldier_F";
-                };
-                class Unit7 : Unit7
-                {
-                    vehicle = "I_G_soldier_F";
-                };
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
             };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
