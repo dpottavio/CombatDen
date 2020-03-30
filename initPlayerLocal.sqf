@@ -17,6 +17,20 @@
 */
 #include "macros.hpp"
 
+if (DEN_IS_ADMIN) then {
+    player createDiaryRecord ["Diary", ["Welcome to Combat Den!",
+"
+<font=""EtelkaMonospacePro"" color=""#96D3EE"">
+You may choose one or more locations on the map, otherwise a location will
+be randomly selected.
+<br/><br/>
+Mission settings are available from the 'Configure
+Addons' menu below under Server -> Addons -> Combat Den.
+</font>
+"
+    ]];
+};
+
 [] call den_fnc_diaryHelp;
 
 private _initMessage = "initializing mission...";

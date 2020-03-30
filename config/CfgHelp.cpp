@@ -21,7 +21,8 @@ class CfgHelp
     class License
     {
         title = "License";
-        text  = "Copyright (C) 2018-2020 D. Ottavio <br/><br/>\
+        text  = "\
+<font=""EtelkaMonospacePro"" color=""#96D3EE"">Copyright (C) 2018-2020 D. Ottavio <br/><br/>\
 This mission is free software: you can redistribute it and/or modify \
 it under the terms of the GNU Lesser General Public License as \
 published by the Free Software Foundation, either version 3 of the \
@@ -32,14 +33,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of \
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \
 GNU Lesser General Public License for more details. \
 <br/><br/>\
-You can received a copy of this license at https://www.gnu.org/licenses.";
-    };
-
-    class Settings
-    {
-        title = "Settings";
-        text  = "Mission settings are located in CBA settings menu.  \
-CBA settings menu is available from the 'Configure Addons' button.  \
-The full menu path is:<br/><br/> Configure Addons -> Server -> Addons -> Combat Den";
+You can received a copy of this license at https://www.gnu.org/licenses.\
+</font>";
     };
 };

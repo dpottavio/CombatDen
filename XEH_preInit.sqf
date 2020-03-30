@@ -15,6 +15,7 @@
     License along with this program.  If not, see
     <https://www.gnu.org/licenses/>.
 */
+#include "macros.hpp"
 
 /*
  * initialize CBA settings
@@ -55,7 +56,7 @@ private _settings = "true" configClasses (missionConfigFile >> "CfgSettings");
  * Setup location markers for location selection.
  */
 den_locationSelection = [];
-if (hasInterface && (!isMultiPlayer || ((call BIS_fnc_admin) > 0))) then {
+if (DEN_IS_ADMIN) then {
     private _locationGroups = [];
     {
         private _pos = getArray (configFile >> "CfgWorlds" >> worldName >> "Names" >> _x >> "position");
