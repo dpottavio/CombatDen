@@ -182,8 +182,11 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
     private _maxAttackRadius = _minAttackRadius + 75;
 
     while { true } do {
-        private _players = allPlayers select { alive _x };
-        if (_players isEqualTo []) exitWith {};
+        private _players = DEN_ALIVE_PLAYERS;
+        while { (_players isEqualTo []) } do {
+            sleep 5;
+            _players = DEN_ALIVE_PLAYERS;
+        };
 
         private _player    = selectRandom _players;
         private _playerPos = getPos _player;
@@ -266,7 +269,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                 };
             };
         };
-        sleep 10;
+        sleep 5;
     };
 };
 
