@@ -31,6 +31,8 @@ Addons' menu below under Server -> Addons -> Combat Den.
     ]];
 };
 
+[] call den_fnc_locationSelection;
+
 [] call den_fnc_diaryHelp;
 
 private _initMessage = "initializing mission...";

@@ -22,6 +22,10 @@ resistance setFriend [opfor, 0];
 
 if (!isMultiplayer) exitWith {};
 
+// This may be populated by the admin by selecting location(s)
+// during the briefing.
+den_locationSelection = [];
+
 INFO("waiting for players...");
 
 while {true} do {

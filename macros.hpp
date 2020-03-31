@@ -38,4 +38,4 @@
 ((getText (missionConfigFile >> "CfgFactions" >> faction >> "Vehicle" >> DEN_CLIMATE >> "heloCargo")) != "")
 
 // true if player is in single player or mp admin
-#define DEN_IS_ADMIN (!isMultiplayer || ((call BIS_fnc_admin) > 0))
+#define DEN_IS_ADMIN (!isMultiplayer || ((call BIS_fnc_admin) > 0) || (isServer && hasInterface))
