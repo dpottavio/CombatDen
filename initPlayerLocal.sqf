@@ -70,6 +70,8 @@ if (!isMultiplayer) then {
     if (!isNil "den_initServerError") exitWith {
         ERROR_MSG("Failed to initialize mission. Restart is required.");
     };
+
+    [] call BIS_fnc_showMissionStatus
 };
 
 [] spawn {
@@ -226,16 +228,7 @@ if (isMultiplayer && !_aceRespawnGear) then {
     ] call den_fnc_createTrigger;
 };
 
-if (isMultiPlayer) then {
-    // Setup spectator camera on death.
-    player addEventHandler ["Killed", {
-        [ "Initialize", [ player, [playerSide], false, false, false] ] call BIS_fnc_EGSpectator;
-    }];
-    // Remove spectator camera on respawn.
-    player addEventHandler ["Respawn", {
-        ["Terminate"] call BIS_fnc_EGSpectator;
-    }];
-} else {
+if (!isMultiPlayer) then {
     addMissionEventHandler ["TeamSwitch", {
         params ["", "_newUnit"];
         group _newUnit selectLeader _newUnit;

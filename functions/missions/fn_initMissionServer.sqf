@@ -170,7 +170,6 @@ clearBackpackCargoGlobal _arsenal;
 
 if (isMultiPlayer) then {
     [_friendlySide, den_cba_respawnTickets] call BIS_fnc_respawnTickets;
-    [_friendlyFaction] call den_fnc_mpEndMission;
 };
 
 private _mission = den_cba_mission;

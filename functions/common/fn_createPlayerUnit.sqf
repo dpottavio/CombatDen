@@ -101,6 +101,8 @@ waitUntil {!isNil "_unit"};
 _unit setVariable ["den_slotId", _slotId, true];
 _unit setVariable ["den_role", _role, true];
 _unit setVariable ["den_isPlayerUnit", true, true];
+// to obtain the side when the player is dead
+_unit setVariable ["den_side", [_faction] call den_fnc_factionSide];
 
 addSwitchableUnit _unit;
 

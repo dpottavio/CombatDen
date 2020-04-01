@@ -347,8 +347,7 @@ private _taskQueue = [
 ];
 
 private _failQueue = [
-    ["TruckDead",       "den_truckDead"],
-    ["PlayersDead",     "den_playersDead"]
+    ["TruckDead", "den_truckDead"]
 ];
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;

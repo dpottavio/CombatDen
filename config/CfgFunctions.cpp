@@ -51,7 +51,6 @@ class CfgFunctions
             class locationBlacklist {};
             class locationSelection {};
             class lowDaylight {};
-            class mpEndMission {};
             class mortarFire {};
             class moveIn {};
             class patrol {};
@@ -105,6 +104,13 @@ class CfgFunctions
             class initMissionServer {};
             class stealTruckLocal {};
             class stealTruckServer {};
+        };
+        class mp
+        {
+            file = "functions\mp";
+            class checkEndMission {};
+            class spectatorKill {};
+            class spectatorRespawn {};
         };
         class settings
         {

@@ -393,9 +393,8 @@ private _cargoTruckLogic = {
     ];
 
     private _failQueue = [
-        ["PlayersDead",     "den_playersDead"],
-        ["PalletDead",      "den_palletDead"],
-        ["CargoTruckDead",  "den_cargoTruckDead"]
+        ["PalletDead",     "den_palletDead"],
+        ["CargoTruckDead", "den_cargoTruckDead"]
     ];
 
     [_taskQueue, _failQueue] call den_fnc_taskFsm;

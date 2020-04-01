@@ -294,9 +294,7 @@ if (DEN_HAS_TRANSPORT_HELO(_friendlyFaction)) then {
     _taskQueue pushBack [[_friendlySide,"boardExtract","BoardExtract",objNull,"CREATED",1,true,"getin"],"den_extract"];
 };
 
-private _failQueue = [
-    ["PlayersDead", "den_playersDead"]
-];
+private _failQueue = [];
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;
 
