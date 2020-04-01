@@ -31,7 +31,7 @@
 */
 #include "..\..\macros.hpp"
 
-if !(DEN_IS_ADMIN) exitWith {};
+if (!DEN_IS_ADMIN || didJIP) exitWith {};
 
 den_locationSelection = [];
 
