@@ -68,6 +68,7 @@ class CfgFunctions
             class taskFsm {};
             class teleport {};
             class wave {};
+            class welcome {};
             class zone {};
         };
         class compositions
