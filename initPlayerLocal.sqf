@@ -47,6 +47,12 @@ if (!isMultiplayer) then {
     den_friendlyFaction = _genMissionParams select 3;
     den_playerGroup     = _genMissionParams select 4;
     den_arsenal         = _genMissionParams select 5;
+
+    // group leader follows any unit switch
+    addMissionEventHandler ["TeamSwitch", {
+        params ["", "_newUnit"];
+        group _newUnit selectLeader _newUnit;
+    }];
 } else {
     // Wait until the briefing has been read.
     waitUntil {getClientStateNumber >= 10};
@@ -226,13 +232,6 @@ if (isMultiplayer && !_aceRespawnGear) then {
             }];
         }
     ] call den_fnc_createTrigger;
-};
-
-if (!isMultiPlayer) then {
-    addMissionEventHandler ["TeamSwitch", {
-        params ["", "_newUnit"];
-        group _newUnit selectLeader _newUnit;
-    }];
 };
 
 private _success = [
