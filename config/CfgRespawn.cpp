@@ -18,13 +18,13 @@
 
 class CfgRespawnTemplates
 {
-	class DenEndMission
-	{
-		onPlayerKilled = "functions\mp\fn_checkEndMission.sqf";
-	};
+    class DenEndMission
+    {
+        onPlayerKilled = "functions\mp\fn_checkEndMission.sqf";
+    };
     class DenSpectator
-	{
-		onPlayerKilled  = "functions\mp\fn_spectatorKill.sqf";
-		onPlayerRespawn = "functions\mp\fn_spectatorRespawn.sqf";
-	};
+    {
+        onPlayerKilled  = "functions\mp\fn_spectatorKill.sqf";
+        onPlayerRespawn = "functions\mp\fn_spectatorRespawn.sqf";
+    };
 };
