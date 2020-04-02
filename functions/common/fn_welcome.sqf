@@ -31,15 +31,15 @@ private _selectionMsg = switch (isMultiplayer) do {
 
 private _msg = format["\
 <font=""EtelkaMonospacePro"" color=""#96D3EE"">\
-Combat Den is a randomized mission designed to provide a unique experience \
+- Combat Den is a randomized mission designed to provide a unique experience \
 each play through.\
 <br/><br/>
-%1, otherwise a location will \
+- %1, otherwise a location will \
 be randomly selected.\
 <br/><br/>\
-A new mission complete with a briefing will be generated once you continue. \
+- A new mission complete with a briefing will be generated once you continue. \
 <br/><br/>\
-Mission settings are available from the 'Configure \
+- Mission settings are available from the 'Configure \
 Addons' menu below under Server -> Addons -> Combat Den. \
 </font>\
 ", _selectionMsg];
