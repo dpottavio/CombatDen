@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=223;
+		nextID=231;
 	};
 	class LayerIndexProvider
 	{
-		nextID=13;
+		nextID=15;
 	};
 	class Camera
 	{
-		pos[]={1738.484,104.64706,1319.5015};
-		dir[]={0.96448976,-0.16641323,-0.20566748};
-		up[]={0.16279832,0.98600698,-0.03471702};
-		aside[]={-0.20857626,-1.2819473e-006,-0.97813433};
+		pos[]={1740.0007,104.39973,1325.2676};
+		dir[]={0.94357467,-0.24167134,-0.2269437};
+		up[]={0.23500434,0.97030115,-0.056523688};
+		aside[]={-0.23387718,-1.5151309e-006,-0.97240031};
 	};
 };
 binarizationWanted=0;
@@ -31,7 +31,7 @@ addons[]=
 	"gm_objects_barrel",
 	"gm_objects_canister",
 	"gm_objects_pallet",
-	"A3_Structures_F_EPA_Civ_Constructions",
+	"gm_structures_euro_80",
 	"A3_Characters_F",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Data_F_Curator_Virtual",
@@ -79,10 +79,10 @@ class AddonsMetaData
 		};
 		class Item5
 		{
-			className="A3_Structures_F_EPA";
-			name="Arma 3 Survive Episode - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
+			className="gm_structures_euro_80";
+			name="gm_structures_euro_80";
+			author="Global Mobilization";
+			url="global-mobilization.com";
 		};
 		class Item6
 		{
@@ -154,7 +154,7 @@ class Mission
 			name="FOB";
 			class Entities
 			{
-				items=22;
+				items=27;
 				class Item0
 				{
 					dataType="Object";
@@ -501,20 +501,98 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1744.2162,102.31513,1311.6118};
-						angles[]={0,2.7319293,0};
+						position[]={1744.0264,106.22926,1297.9458};
+						angles[]={0,3.5829067,0};
 					};
 					side="Empty";
 					flags=5;
 					class Attributes
 					{
 					};
-					id=221;
-					type="Land_PortableLight_single_F";
+					id=225;
+					type="land_gm_gc_lamp_01_01";
+				};
+				class Item22
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1769.2096,106.12399,1288.7188};
+						angles[]={0,3.5829067,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=226;
+					type="land_gm_gc_lamp_01_01";
+				};
+				class Item23
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1783.0957,103.51524,1300.8654};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=227;
+					type="land_gm_ge_lamp_02_01";
+				};
+				class Item24
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1787.2258,103.32447,1309.7688};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=228;
+					type="land_gm_ge_lamp_02_01";
+				};
+				class Item25
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1755.6593,103.0993,1326.6948};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=229;
+					type="land_gm_ge_lamp_02_01";
+					atlOffset=-7.6293945e-006;
+				};
+				class Item26
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1750.9735,103.31969,1315.0781};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=230;
+					type="land_gm_ge_lamp_02_01";
+					atlOffset=-7.6293945e-006;
 				};
 			};
 			id=51;
-			atlOffset=0.0038833618;
+			atlOffset=-0.030853271;
 		};
 		class Item1
 		{
@@ -1259,7 +1337,7 @@ class Mission
 			};
 			id=222;
 			type="CBA_main_require";
-			atlOffset=7.6293945e-006;
+			atlOffset=1.5258789e-005;
 		};
 	};
 };

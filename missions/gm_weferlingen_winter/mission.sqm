@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=36;
+		nextID=42;
 	};
 	class LayerIndexProvider
 	{
-		nextID=5;
+		nextID=7;
 	};
 	class Camera
 	{
-		pos[]={1739.5024,104.60519,1323.5476};
-		dir[]={0.90886301,-0.32945269,-0.25599512};
-		up[]={0.31712732,0.94415438,-0.089324474};
-		aside[]={-0.27113357,2.2083987e-007,-0.96260053};
+		pos[]={1741.0115,103.52758,1321.9204};
+		dir[]={0.98355454,-0.1508905,-0.099886522};
+		up[]={0.15014669,0.98853308,-0.01524925};
+		aside[]={-0.10104571,-5.1718234e-007,-0.99494928};
 	};
 };
 binarizationWanted=0;
@@ -32,6 +32,7 @@ addons[]=
 	"gm_objects_canister",
 	"gm_objects_pallet",
 	"A3_Structures_F_EPA_Civ_Constructions",
+	"gm_structures_euro_80",
 	"A3_Characters_F",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Data_F_Curator_Virtual",
@@ -41,7 +42,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=10;
+		items=11;
 		class Item0
 		{
 			className="A3_Structures_F_Mil";
@@ -86,26 +87,33 @@ class AddonsMetaData
 		};
 		class Item6
 		{
+			className="gm_structures_euro_80";
+			name="gm_structures_euro_80";
+			author="Global Mobilization";
+			url="global-mobilization.com";
+		};
+		class Item7
+		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item8
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item8
+		class Item9
 		{
 			className="A3_Data_F_Curator";
 			name="Arma 3 Zeus Update - Main Configuration";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item9
+		class Item10
 		{
 			className="cba_main";
 			name="Community Base Addons - Main Component";
@@ -158,7 +166,7 @@ class Mission
 			name="FOB";
 			class Entities
 			{
-				items=22;
+				items=28;
 				class Item0
 				{
 					dataType="Object";
@@ -532,9 +540,102 @@ class Mission
 					type="Land_PortableLight_single_F";
 					atlOffset=7.6293945e-006;
 				};
+				class Item22
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1743.1768,106.23031,1297.6171};
+						angles[]={0,3.5829067,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=36;
+					type="land_gm_gc_lamp_01_01";
+				};
+				class Item23
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1768.36,106.12465,1288.39};
+						angles[]={0,3.5829067,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=37;
+					type="land_gm_gc_lamp_01_01";
+				};
+				class Item24
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1782.2461,103.52456,1300.5366};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=38;
+					type="land_gm_ge_lamp_02_01";
+				};
+				class Item25
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1786.3762,103.33615,1309.4401};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=39;
+					type="land_gm_ge_lamp_02_01";
+					atlOffset=7.6293945e-006;
+				};
+				class Item26
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1754.8097,103.1055,1326.3661};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=40;
+					type="land_gm_ge_lamp_02_01";
+				};
+				class Item27
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1750.1239,103.32797,1314.7494};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=41;
+					type="land_gm_ge_lamp_02_01";
+				};
 			};
 			id=0;
-			atlOffset=0.0019378662;
+			atlOffset=-0.027267456;
 		};
 		class Item1
 		{
@@ -1283,6 +1384,7 @@ class Mission
 			};
 			id=35;
 			type="CBA_main_require";
+			atlOffset=7.6293945e-006;
 		};
 	};
 };
