@@ -999,10 +999,11 @@ class Csat : Faction
                   "SmokeShell"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_FieldPack_ocamo";
+
                 marksmanBaseItems[] = {
-                  "optic_tws",
                   "optic_mrco"
                 };
             };

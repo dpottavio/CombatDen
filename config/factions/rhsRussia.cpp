@@ -1055,8 +1055,10 @@ class RhsRussia : Faction
                   "rhs_mag_rdg2_white"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_Kitbag_sgg";
+
                 items[] += {
                   "rhs_acc_pkas"
                 };

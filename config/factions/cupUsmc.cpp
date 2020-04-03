@@ -939,8 +939,10 @@ class CupUsmc : Faction
                   "SmokeShellGreen"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_Kitbag_cbr";
+
                 items[] += {
                   "cup_optic_leupoldmk4"
                 };

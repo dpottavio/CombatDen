@@ -526,10 +526,11 @@ class Ldf : Faction
                   "SmokeShell"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_Kitbag_rgr";
+
                 items[] += {
-                  "optic_tws",
                   "optic_mrco"
                 };
             };

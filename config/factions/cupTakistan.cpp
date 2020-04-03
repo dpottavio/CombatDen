@@ -109,6 +109,8 @@ class CupTakistan : Faction
             backpacks[] = {
                 "B_Kitbag_rgr"
             };
+
+            aceAdvancedMisc[] = {};
         };
         class Arid : Base {};
     };

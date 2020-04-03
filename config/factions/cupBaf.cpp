@@ -787,8 +787,10 @@ class CupBaf : Faction
                   "SmokeShellGreen"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "CUP_B_Bergen_BAF";
+
                 items[] += {
                   "cup_optic_leupoldmk4"
                 };

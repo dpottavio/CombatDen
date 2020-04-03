@@ -60,12 +60,20 @@ class Faction
                 "ACE_Flashlight_KSF1",
                 "ACE_Flashlight_MX991",
                 "ACE_Flashlight_XL50",
-                "ACE_HuntIR_monitor",
                 "ACE_MapTools",
                 "ACE_SpraypaintBlack",
                 "ACE_SpraypaintBlue",
                 "ACE_SpraypaintGreen",
                 "ACE_SpraypaintRed"
+            };
+
+            aceAdvancedMisc[] = {
+                "ACE_ATragMX",
+                "ACE_HuntIR_monitor",
+                "ACE_Kestrel4500",
+                "ACE_RangeCard",
+                "ACE_SpottingScope",
+                "ACE_Tripod"
             };
 
             aceMedical[] = {
@@ -294,6 +302,7 @@ class Faction
     {
        class Base : Base
        {
+            aceAdvancedMisc[] = {};
             aceAttachments[] = {};
             aceBinoculars[]  = {};
             aceGrenades[]    = {};
@@ -488,6 +497,7 @@ class Faction
                 "cup_acc_flashlight",
                 "cup_acc_anpeq_15_black"
             };
+            aceAdvancedMisc[] = {};
             aceBinoculars[] = {};
             aceGps[] = {};
             aceSights[] = {};
@@ -540,6 +550,7 @@ class Faction
             attachments[] = {
                 "rhs_acc_2dpzenit"
             };
+            aceAdvancedMisc[] = {};
             aceBinoculars[] = {};
             aceGps[] = {};
             aceSights[] = {};
@@ -807,6 +818,16 @@ class Faction
                   "FirstAidKit",
                   "FirstAidKit",
                   "FirstAidKit"
+                };
+            };
+
+            class MarksmanBackpack : BackPack
+            {
+                aceItems[] += {
+                    "ACE_RangeCard",
+                    "ACE_Kestrel4500",
+                    "ACE_ATragMX",
+                    "ACE_Tripod"
                 };
             };
 

@@ -1200,10 +1200,11 @@ class Nato : Faction
                   "SmokeShell"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_Kitbag_mcamo";
+
                 items[] += {
-                  "optic_tws",
                   "optic_Hamr"
                 };
             };
@@ -2078,7 +2079,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -2098,7 +2099,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -2119,7 +2120,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };
@@ -2139,7 +2140,7 @@ class Nato : Faction
                     };
                     class Backpack : Backpack
                     {
-                        type = "B_AssaultPack_tna_F";
+                        type = "B_Kitbag_rgr";
                     };
                     class LinkedItems : LinkedItems {};
                 };

@@ -110,6 +110,7 @@ class Fia : Faction
                 "U_BG_leader"
             };
 
+            aceAdvancedMisc[] = {};
             aceSights[] = {};
             aceNvg[] = {};
             sights[] = {};

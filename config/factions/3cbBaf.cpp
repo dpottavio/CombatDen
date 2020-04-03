@@ -1067,7 +1067,10 @@ class Uk3cbBaf : Faction
                     "UK3CB_BAF_SmokeShellGreen"
                 };
             };
-            class Backpack    : Backpack {};
+            class Backpack : MarksmanBackpack
+            {
+                type = "UK3CB_BAF_B_Bergen_MTP_Rifleman_L_A";
+            };
             class LinkedItems : LinkedItems {};
         };
         class MedicBase : Base

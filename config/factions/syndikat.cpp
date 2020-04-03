@@ -102,6 +102,7 @@ class Syndikat : Faction
                 "U_I_C_Soldier_Para_4_F",
                 "U_I_C_Soldier_Para_1_F"
             };
+            aceAdvancedMisc[] = {};
             aceSights[] = {};
             aceNvg[] = {};
             sights[] = {};

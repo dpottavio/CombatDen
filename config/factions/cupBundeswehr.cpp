@@ -893,8 +893,10 @@ class CupBundeswehr : Faction
                   "SmokeShellGreen"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "CUP_B_GER_Pack_Flecktarn";
+
                 items[] += {
                   "cup_optic_leupoldmk4"
                 };

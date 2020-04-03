@@ -879,8 +879,10 @@ class CupRussia : Faction
                    "SmokeShell"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_TacticalPack_oli";
+
                 items[] += {
                   "cup_optic_pechenegscope"
                 };

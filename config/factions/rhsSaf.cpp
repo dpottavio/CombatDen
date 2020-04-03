@@ -123,6 +123,7 @@ class RhsSaf : Faction
             attachments[] = {
                 "rhs_acc_2dpzenit"
             };
+            aceAdvancedMisc[] = {};
             aceBinoculars[] = {};
             aceSights[] = {};
             aceNvg[] = {};

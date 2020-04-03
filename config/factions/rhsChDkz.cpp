@@ -231,6 +231,8 @@ class RhsChDkz : Faction
                 "rhsgref_uniform_ERDL",
                 "rhsgref_uniform_dpm"
             };
+
+            aceAdvancedMisc[] = {};
         };
 
         class Wood   : Base {};

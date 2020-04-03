@@ -473,10 +473,11 @@ class Aaf : Faction
                   "SmokeShell"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_Kitbag_rgr";
+
                 marksmanBaseItems[] = {
-                  "optic_tws",
                   "optic_Hamr"
                 };
             };

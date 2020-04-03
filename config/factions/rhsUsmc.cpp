@@ -1155,8 +1155,10 @@ class RhsUsmc : Faction
                   "rhs_mag_m18_green"
                };
             };
-            class Backpack : Backpack
+            class Backpack : MarksmanBackpack
             {
+                type = "B_Kitbag_cbr";
+
                 items[] += {
                   "rhsusf_acc_su230a"
                 };
