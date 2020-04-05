@@ -104,7 +104,8 @@ To load the pallet, approach the pallet and engage the hold-action.";
     class SearchCamp
     {
         title = "Search Camp";
-        description = "Search camp for intel.";
+        description = "Search camp for intel. \
+Look for any reinforced containers that might contain information.";
     };
     class SeizeVehicle
     {

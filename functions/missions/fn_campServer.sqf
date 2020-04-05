@@ -223,16 +223,8 @@ if (isNull _patrolGroup) exitWith {
 // extraction attack
 [_reinforcePos, _insertPos, "den_insertExtract", _enemyFaction] call den_fnc_attackOnEvent;
 
-/*
- * Attach a search action to a random camp unit to
- * trigger "den_intelFound".
- */
-private _searchItems = nearestObjects [_campPos, ["Thing"], 5];
-if (_searchItems isEqualTo []) then {
-    _searchItems = ["Land_MetalCase_01_medium_F" createVehicle _campPos];
-};
+den_searchItem = "Land_MetalCase_01_small_F" createVehicle _campPos;
 
-den_searchItem = selectRandom (_searchItems);
 publicVariable "den_searchItem";
 
 [_insertPos, _enemyFaction] spawn {
