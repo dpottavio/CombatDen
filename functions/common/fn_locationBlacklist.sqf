@@ -34,11 +34,15 @@ private _safePosParams = [
     [0,   100, 10]
 ];
 
+private _copPos = getPos den_flagPole;
 private _blacklist = [];
 {
-    private _zone = [400, _safePosParams, [_x]] call den_fnc_zone;
-    if (_zone isEqualTo []) then {
-        _blacklist pushBack _x;
+    private _pos = getArray (configFile >> "CfgWorlds" >> worldName >> "Names" >> _x >> "position");
+    if ((_pos distance _copPos) >= 2000) then {
+        private _zone = [400, _safePosParams, [_x]] call den_fnc_zone;
+        if (_zone isEqualTo []) then {
+            _blacklist pushBack _x;
+        };
     };
 } forEach ([] call den_fnc_locations);
 

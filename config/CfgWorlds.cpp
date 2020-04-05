@@ -523,4 +523,10 @@ class CfgWorlds
             "39"
         };
     };
+    class Fallujah : Arid
+    {
+        blacklist[] = {
+            "fal_a7"
+        };
+    };
 };
