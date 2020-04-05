@@ -12,7 +12,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=5;
+		nextID=6;
 	};
 	class Camera
 	{
@@ -144,6 +144,7 @@ class Mission
 {
 	class Intel
 	{
+		briefingName="Combat Den: Fallujah";
 		timeOfChanges=1800.0002;
 		startWeather=0;
 		startWind=0.1;
