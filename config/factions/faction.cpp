@@ -94,6 +94,7 @@ class Faction
                 "ACE_salineIV",
                 "ACE_salineIV_250",
                 "ACE_salineIV_500",
+                "ACE_splint",
                 "ACE_surgicalKit",
                 "ACE_tourniquet"
             };
@@ -744,7 +745,8 @@ class Faction
                     "ACE_epinephrine",
                     "ACE_morphine",
                     "ACE_morphine",
-                    "ACE_morphine"
+                    "ACE_morphine",
+                    "ACE_splint"
                 };
                 noAceMedicalItems[] = {
                     "FirstAidKit",
@@ -804,7 +806,12 @@ class Faction
                     "ACE_morphine",
                     "ACE_morphine",
                     "ACE_morphine",
-                    "ACE_morphine"
+                    "ACE_morphine",
+                    "ACE_splint",
+                    "ACE_splint",
+                    "ACE_splint",
+                    "ACE_splint",
+                    "ACE_splint"
                 };
                 noAceMedicalItems[] = {
                   "Medikit",
