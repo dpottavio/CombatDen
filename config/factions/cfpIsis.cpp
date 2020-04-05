@@ -56,6 +56,7 @@ class CfpIsis : Faction
                 "SP_Tactical1_Tan",
                 "SP_Tactical1_Green"
             };
+            headgear[] = {};
         };
 
         class Arid : SemiArid {};

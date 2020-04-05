@@ -180,7 +180,9 @@ if (_headgear == "") then {
                                                  _climate >> "headgear"));
 };
 
-_unit addHeadgear _headgear;
+if (!isNil "_headgear" && {_headgear != ""}) then {
+    _unit addHeadgear _headgear;
+};
 
 /*
  * night items
