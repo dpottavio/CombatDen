@@ -19,12 +19,20 @@ author        = "ottavio";
 OnLoadMission = "Randomized Missions";
 loadScreen    = "title.jpg";
 
-respawn            = "INSTANT";
-respawnDelay       = 30;
-respawnDialog      = 0;
-respawnOnStart     = -1;
-respawnTemplates[] = {"DenEndMission", "DenSpectator", "Tickets", "Counter"};
-respawnButton      = 1;
+respawn        = "INSTANT";
+respawnDelay   = 30;
+respawnDialog  = 0;
+respawnOnStart = -1;
+
+respawnTemplates[] = {
+    "DenEndMission",
+    "DenRemoveBody",
+    "DenSpectator",
+    "Tickets",
+    "Counter"
+};
+
+respawnButton = 1;
 
 class Header
 {

@@ -15,20 +15,14 @@
     License along with this program.  If not, see
     <https://www.gnu.org/licenses/>.
 */
+#include "..\..\macros.hpp"
 
-class CfgRespawnTemplates
+params ["_player", ""];
+
+private _slot = _player getVariable "den_slotId";
 {
-    class DenEndMission
-    {
-        onPlayerKilled = "functions\mp\fn_checkEndMission.sqf";
+    private _deadSlot = _x getVariable ["den_slotId", "NA"];
+    if (_deadSlot == _slot) exitWith {
+        deleteVehicle _x
     };
-    class DenRemoveBody
-    {
-        onPlayerRespawn = "functions\mp\fn_removeBodyRespawn.sqf";
-    };
-    class DenSpectator
-    {
-        onPlayerKilled  = "functions\mp\fn_spectatorKill.sqf";
-        onPlayerRespawn = "functions\mp\fn_spectatorRespawn.sqf";
-    };
-};
+} forEach allDeadMen;
