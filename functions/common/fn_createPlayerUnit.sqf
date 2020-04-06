@@ -122,13 +122,4 @@ addSwitchableUnit _unit;
     [_unit, _role, _roleType, _lowDaylight, _faction] remoteExecCall ["den_fnc_loadout", _unit];
 };
 
-if (isMultiplayer) then {
-    _unit addMPEventHandler ["MPRespawn", {
-        params ["_unit", ""];
-        if !(isPlayer _unit) then {
-            deleteVehicle _unit;
-        };
-    }];
-};
-
 _unit;
