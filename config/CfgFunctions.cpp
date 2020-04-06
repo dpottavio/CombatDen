@@ -109,6 +109,7 @@ class CfgFunctions
         {
             file = "functions\mp";
             class checkEndMission {};
+            class removeBodyRespawn {};
             class spectatorKill {};
             class spectatorRespawn {};
         };
