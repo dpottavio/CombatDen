@@ -178,8 +178,8 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
     sleep random [30, 60, 120];
 
     den_mortarActive = false;
-    private _minAttackRadius = 200;
-    private _maxAttackRadius = _minAttackRadius + 75;
+    private _minAttackRadius = 150;
+    private _maxAttackRadius = 175;
 
     while { true } do {
         private _players = DEN_ALIVE_PLAYERS;
@@ -192,7 +192,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
         private _playerPos = getPos _player;
 
         private _nearEnemyCount =  {
-            ((side _x) == _enemySide) && ((_x distance _playerPos) <= _maxAttackRadius)
+            ((side _x) == _enemySide) && ((_x distance _playerPos) <= _minAttackRadius)
         } count allUnits;
 
         private _attack = (_nearEnemyCount <= 1) &&
