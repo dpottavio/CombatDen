@@ -192,7 +192,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
         private _playerPos = getPos _player;
 
         private _nearEnemyCount =  {
-            ((side _x) == _enemySide) && ((_x distance _playerPos) <= _minAttackRadius)
+            ((side _x) == _enemySide) && ((_x distance _playerPos) <= _maxAttackRadius)
         } count allUnits;
 
         private _attack = (_nearEnemyCount <= 1) &&
@@ -262,6 +262,8 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                                 "this call CBA_fnc_searchNearby",
                                 [3, 6, 9]
                             ] call CBA_fnc_taskPatrol;
+                            // cool down -- prevent too may spawn groups at once
+                            sleep 20;
                         } else {
                             ERROR("failed to spawn group");
                         };
@@ -269,7 +271,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                 };
             };
         };
-        sleep 5;
+        sleep 2;
     };
 };
 
