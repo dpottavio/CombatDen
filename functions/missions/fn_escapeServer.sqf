@@ -204,8 +204,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                 /*
                  * 33% chance of mortar attack.
                  */
-                den_mortarActive = true;
-                [
+                den_mortarActive = [
                     _playerPos,
                     _enemyFaction,
                     {
