@@ -18,7 +18,10 @@
 #include "macros.hpp"
 
 resistance setFriend [blufor, 0];
+blufor setFriend [resistance, 0];
+
 resistance setFriend [opfor, 0];
+opfor setFriend [resistance, 0];
 
 if (!isMultiplayer) exitWith {};
 
