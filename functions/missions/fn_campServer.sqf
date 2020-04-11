@@ -221,7 +221,7 @@ if (isNull _patrolGroup) exitWith {
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _insertPos, "den_insertExtract", _enemyFaction] call den_fnc_attackOnEvent;
+[_reinforcePos, _insertPos, "den_campSeized", _enemyFaction] call den_fnc_attackOnEvent;
 
 den_searchItem = "Land_MetalCase_01_small_F" createVehicle _campPos;
 

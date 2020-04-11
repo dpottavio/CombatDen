@@ -252,7 +252,7 @@ if (isNull _patrolGroup) exitWith {
 [_zoneArea, _reinforceArgs, _enemyFaction, _friendlyFaction] call den_fnc_wave;
 
 // extraction attack
-[_reinforcePos, _insertPos, "den_insertExtract", _enemyFaction] call den_fnc_attackOnEvent;
+[_reinforcePos, _insertPos, "den_hostageFree", _enemyFaction] call den_fnc_attackOnEvent;
 
 /*
  * enemy markers
