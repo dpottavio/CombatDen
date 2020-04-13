@@ -75,10 +75,11 @@ private _minAssault = _zoneRadius * 0.75;
 private _maxAssault = _zoneRadius;
 
 private _safePosParams = [
-    [_minInsert,  _maxInsert,  15, 0.1, 0], // insert safe position
-    [_minAssault, _maxAssault, 10, 0.1, 0], // assault1 safe position
-    [_minAssault, _maxAssault, 10, 0.1, 0], // assault2 safe position
-    [_minAssault, _maxAssault, 10, 0.1, 0]  // assault3 safe position
+    [_minInsert,  _maxInsert,  15],          // insert safe position
+    [0,           _maxConvoy,  5,   0.1, 1], // convoy safe position
+    [_minAssault, _maxAssault, 10],          // assault1 safe position
+    [_minAssault, _maxAssault, 10],          // assault2 safe position
+    [_minAssault, _maxAssault, 10]           // assault3 safe position
 ];
 
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
@@ -100,7 +101,8 @@ private _zoneArea        = _zone select 1;
 private _zoneSafePosList = _zone select 2;
 private _zonePos         = _zoneArea select 0;
 private _insertPos       = _zoneSafePosList select 0;
-private _convoyRoads     = _zonePos nearRoads (_maxConvoy);
+private _convoyPos       = _zoneSafePosList select 1;
+private _convoyRoads     = _convoyPos nearRoads (_maxConvoy);
 if (_convoyRoads isEqualTo []) exitWith {
     ERROR("failed to find road for convoy");
     [];
@@ -113,9 +115,9 @@ if !(_convoyConnList isEqualTo []) then {
     _convoyDir  = _convoyRoad getDir _convoyConnRoad;
 };
 private _convoyPos  = getPos _convoyRoad;
-private _assaultPos1 = _zoneSafePosList select 1;
-private _assaultPos2 = _zoneSafePosList select 2;
-private _assaultPos3 = _zoneSafePosList select 3;
+private _assaultPos1 = _zoneSafePosList select 2;
+private _assaultPos2 = _zoneSafePosList select 3;
+private _assaultPos3 = _zoneSafePosList select 4;
 
 private _transport = [
     _zonePos,
