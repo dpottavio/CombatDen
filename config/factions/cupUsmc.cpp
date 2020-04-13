@@ -819,7 +819,7 @@ class CupUsmc : Faction
         };
     };
 
-#define CUP_USMC_AUTORIFLE_MG36_MAG_COUNT   6
+#define CUP_USMC_AUTORIFLE_M27_MAG_COUNT    6
 #define CUP_USMC_AUTORIFLE_M249_MAG_COUNT   4
 #define CUP_USMC_AT_MAG_COUNT              11
 #define CUP_USMC_GRENADIRE_MAG_COUNT       11
