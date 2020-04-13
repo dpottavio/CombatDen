@@ -63,8 +63,8 @@ To load the pallet, approach the pallet and engage the hold-action.";
     };
     class DefendConvoy
     {
-        title = "Defend the Convoy";
-        description = "Defend the convoy from enemy assault.";
+        title = "Defend and Hold";
+        description = "Defend and hold the convoy <marker name='convoyMarker'>position</marker> from enemy assault.";
     };
     class DestroyOrdnances
     {

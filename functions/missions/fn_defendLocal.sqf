@@ -54,13 +54,13 @@ player createDiaryRecord ["Diary", ["Execution",
 "
 1. Reach the <marker name='insertMarker'>Insert</marker>.
 <br/>
-2. Defend <marker name='convoyMarker'>convoy</marker> from enemy forces.
+2. Prevent enemy forces from seizing the <marker name='convoyMarker'>convoy</marker> position.
 <br/>
 "
 ]];
 
 player createDiaryRecord ["Diary", ["Mission",
-"Defend the <marker name='convoyMarker'>convoy</marker>.
+"Defend and hold the <marker name='convoyMarker'>convoy</marker> position.
 "
 ]];
 
@@ -68,7 +68,7 @@ private _situationText = format["\
 A %1 <marker name='convoyMarker'>convoy</marker> \
 was ambushed and is currently disabled near position <marker name='zoneMarker'>%2</marker>.  \
 %3 forces are expected to launched a second attack to seize the convoy. Additional forces are \
-needed to defend the convoy assets.", _friendlyFactionName, _zone, _enemyFactionName];
+needed to defend the this position.", _friendlyFactionName, _zone, _enemyFactionName];
 
 player createDiaryRecord ["Diary", ["Situation", _situationText]];
 
