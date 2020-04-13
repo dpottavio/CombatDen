@@ -178,10 +178,17 @@ if (_mission == "") then {
 };
 
 private _locations = [] call den_fnc_locations;
-[_locations, true] call CBA_fnc_shuffle;
 
 private _playerMadeSelection = !(den_locationSelection isEqualTo []);
 if (_playerMadeSelection) then {
+    /*
+     * Remove the selected locations from the main list so we
+     * don't have duplicates when we put the selected locations
+     * at the front of the list.
+     */
+    _locations sort true;
+    den_locationSelection sort true;
+    _locations = _locations - den_locationSelection;
     /*
      * If player has selected locations, move them to the
      * front of the location list.  This makes the selected
@@ -189,11 +196,11 @@ if (_playerMadeSelection) then {
      * non-selected locations as a backup if the mission could
      * not initialize in any of the selected locations.
      */
+    [_locations, true] call CBA_fnc_shuffle;
     [den_locationSelection, true] call CBA_fnc_shuffle;
-    {
-        _locations deleteAt (_locations find _x);
-    } forEach den_locationSelection;
-     _locations = den_locationSelection + _locations;
+   _locations = den_locationSelection + _locations;
+} else {
+    [_locations, true] call CBA_fnc_shuffle;
 };
 
 private _missionArgs =
@@ -214,10 +221,10 @@ if (_missionParam isEqualTo []) exitWith {
     [];
 };
 
-private _locationName = _missionParam select 0;
-private _location = _missionParam select 1;
+private _missionLocation = _missionParam select 0;
+private _locationName = _missionLocation select 0;
 
-if (_playerMadeSelection && !(_location in den_locationSelection)) then {
+if (_playerMadeSelection && !(_missionLocation in den_locationSelection)) then {
     ["Unable to initialize mission at selected location(s)"] remoteExecCall ["hint"];
 };
 

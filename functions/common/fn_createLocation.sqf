@@ -17,35 +17,34 @@
 
     Description:
 
-    Generate a list of locations in current world that consistantly
-    fail mission generation and should be included in the world
-    blacklist.
+    Create a location.
 
-    Returns:
+    Parameter(s):
 
+    0: (Optional) ARRAY - list of location types to filter on
+
+    Returns: true on success, false on error
 */
 #include "..\..\macros.hpp"
 
-private _safePosParams = [
-    [700, 750, 15],
-    [700, 750, 15],
-    [300, 400, 10],
-    [0,   200, 10],
-    [0,   100, 10]
+params [
+    ["_pos",  [], [[]], [2,3]],
+    ["_name", "", [""]]
 ];
 
-private _copPos = getPos den_flagPole;
-private _blacklist = [];
-{
-    private _id  = _x select 0;
-    private _pos = _x select 2;
+if !(isServer) exitWith {};
 
-    if ((_pos distance _copPos) >= 2000) then {
-        private _zone = [400, _safePosParams, [_x]] call den_fnc_zone;
-        if (_zone isEqualTo []) then {
-            _blacklist pushBack _id;
-        };
-    };
-} forEach ([] call den_fnc_locations);
+if (_pos isEqualTo []) exitWith {
+    ERROR("position parameter is empty");
+    false;
+};
 
-(str _blacklist);
+if (isNil "den_locationList") then {
+    missionNamespace setVariable ["den_locationList", []];
+};
+
+// Location internally consists of ID, NAME, and POS.
+// In this case reuse the name as the ID.
+den_locationList pushBack [_name, _name, _pos];
+
+true;

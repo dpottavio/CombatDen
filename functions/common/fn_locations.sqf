@@ -38,7 +38,18 @@ private _select = format["((getText (_x >> 'type') in _types) && !((configName _
 private _configList = _select configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
 private _locationList = [];
 {
-    _locationList pushBack (configName _x);
+    private _id = configName _x;
+    private _name  = getText (_x >> "name");
+    if (_name == "") then {
+        _name = _id;
+    };
+    private _pos = getArray (_x >> "position");
+
+    _locationList pushBack [_id, _name, _pos];
 } forEach _configList;
+
+if !(isNil "den_locationList") then {
+    _locationList = _locationList + den_locationList;
+};
 
 _locationList;

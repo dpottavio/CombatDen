@@ -95,10 +95,9 @@ if (_zone isEqualTo []) exitWith {
     [];
 };
 
-private _zoneName        = _zone select 0;
+private _zoneLocation    = _zone select 0;
 private _zoneArea        = _zone select 1;
 private _zoneSafePosList = _zone select 2;
-private _zoneLocation    = _zone select 3;
 private _zonePos         = _zoneArea select 0;
 private _ambushPos       = _zoneSafePosList select 0;
 private _insertPos       = _zoneSafePosList select 1;
@@ -299,4 +298,4 @@ private _failQueue = [];
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;
 
-[_zoneName, _zoneLocation];
+[_zoneLocation];

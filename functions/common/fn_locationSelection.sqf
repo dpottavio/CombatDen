@@ -37,7 +37,8 @@ den_locationSelection = [];
 
 private _locationGroups = [];
 {
-    private _pos = getArray (configFile >> "CfgWorlds" >> worldName >> "Names" >> _x >> "position");
+    private _pos = _x select 2;
+
     private _group = [_pos, civilian, ["C_man_polo_1_F"]] call BIS_fnc_spawnGroup;
     _group addGroupIcon ["selector_selectable", [0,0]];
     _group setGroupIconParams [[0,0,1,1], "", 2, TRUE];

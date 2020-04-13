@@ -28,6 +28,7 @@ class CfgFunctions
             class buildingOccupy {};
             class commandChat {};
             class coverMap {};
+            class createLocation {};
             class createPlayerUnit {};
             class createTrigger {};
             class deleteGroup {};

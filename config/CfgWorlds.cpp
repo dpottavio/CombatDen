@@ -529,4 +529,20 @@ class CfgWorlds
             "fal_a7"
         };
     };
+    class Rhspkl : Tropic
+    {
+        blacklist[] = {
+            "DefaultKeyPoint4",
+            "DefaultKeyPoint32",
+            "DefaultKeyPoint34",
+            "DefaultKeyPoint36",
+            "DefaultKeyPoint37",
+            "DefaultKeyPoint42",
+            "DefaultKeyPoint43",
+            "DefaultKeyPoint49",
+            "DefaultKeyPoint5",
+            "DefaultKeyPoint7",
+            "DefaultKeyPoint8"
+        };
+    };
 };

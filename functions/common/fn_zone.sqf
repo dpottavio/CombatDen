@@ -25,9 +25,9 @@
 
     Parameter(s):
 
-    0: (Optional) NUMBER - Zone radius. Defaults to 500.
+    0: NUMBER - Zone radius.
 
-    1: (Optional) ARRAY - A list of safe position parameters.
+    1: ARRAY - A list of safe position parameters.
     If this array is non-empty, a zone location will only be
     selected if it can find a safe position for each of the
     parameters in this list.  Each parameter will serve as
@@ -48,7 +48,11 @@
             0 - anywhere  (default)
             1 - on a rode
 
-    2: (Optional) ARRAY - Location class names
+    2: ARRAY - location list of the format
+
+        0: STRING - unique ID
+        1: STRING - name
+        2: ARRAY - position
 
     3: (Optional) STRING - Area marker color.
 
@@ -61,15 +65,29 @@
 #include "..\..\macros.hpp"
 
 params [
-    ["_radius",         500,   [0]],
-    ["_safePosParams",  [],    [[]]],
-    ["_locations",      [],    [[]]],
-    ["_markerColor",    "",    [""]]
+    ["_radius",        0,  [0]],
+    ["_safePosParams", [], [[]]],
+    ["_locations",     [], [[]]],
+    ["_markerColor",   "", [""]]
 ];
 
-private _locationCfg = configNull;
-private _pos = [];
-private _name = "";
+if (_radius == 0) exitWith {
+    ERROR("radius parameter cannot be zero");
+    [];
+};
+
+if (_safePosParams isEqualTo []) exitWith {
+    ERROR("safe position parameter cannot be empty");
+    [];
+};
+
+if (_locations isEqualTo []) exitWith {
+    ERROR("location parameter cannot be empty");
+    [];
+};
+
+private _location = [];
+private _locationPos = [];
 private _safePosList = [];
 
 /*
@@ -77,12 +95,9 @@ private _safePosList = [];
  * safe positions for each _safePosParams.
  */
 {
-    _locationCfg = configFile >> "CfgWorlds" >> worldName >> "Names" >> _x;
-    _pos = getArray (_locationCfg >> "position");
-    _name = getText (_locationCfg >> "name");
-    if (_name == "") then {
-        _name = configName _locationCfg;
-    };
+    _location = _x;
+    _locationPos = _location select 2;
+
     _safePosList = [];
     {
         private _minPos     = _x param [0, 0,   [0]];
@@ -93,13 +108,13 @@ private _safePosList = [];
         private _safePos    = [];
 
         if  (_road == 1) then {
-            private _roads = _pos nearRoads _maxPos;
+            private _roads = _locationPos nearRoads _maxPos;
             if ((count _roads) > 0) then {
                 _safePos = getPos (_roads select 0);
             };
         } else {
             _safePos = [
-                _pos,          // center position
+                _locationPos,  // center position
                 _minPos,       // min position
                 _maxPos,       // max position
                 _minObjDist,   // obj distance
@@ -110,10 +125,10 @@ private _safePosList = [];
         if (_safePos isEqualTo []) exitWith {};
 
         // Determine of the position is blocked by water
-        private _distance = (_pos distance2D _safePos);
+        private _distance = (_locationPos distance2D _safePos);
         private _interval = _distance / 200;
         for [{_x = _interval}, {_x < _distance}, {_x = _x + _interval}] do {
-            private _posI = _safePos getPos [_x, _safePos getDir _pos];
+            private _posI = _safePos getPos [_x, _safePos getDir _locationPos];
             if (surfaceIsWater _posI) exitWith {
                 // Reset the position if it is blocked by water.
                 _safePos = [];
@@ -134,7 +149,7 @@ if ((count _safePosList) != (count _safePosParams)) exitWith {
 };
 
 private _area = [
-    _pos,
+    _locationPos,
     _radius,
     _radius,
     0,      // rotation
@@ -142,7 +157,7 @@ private _area = [
     -1      // c
 ];
 
-createMarker ["zoneMarker", _pos];
+createMarker ["zoneMarker", _locationPos];
 "zoneMarker" setMarkerShape "ELLIPSE";
 "zoneMarker" setMarkerSize  [_radius, _radius];
 "zoneMarker" setMarkerBrush "SolidBorder";
@@ -154,6 +169,6 @@ if (_markerColor != "") then {
     "zoneMarker" setMarkerAlpha 0;
 };
 
-private _zone = [_name, _area, _safePosList, configName _locationCfg];
+private _zone = [_location, _area, _safePosList];
 
 _zone;
