@@ -117,7 +117,11 @@ if ((_reactPos distance _truckPos) < 10) then {
 private _insertDir = 0;
 [_insertPos, _insertDir] call den_fnc_compBunker01;
 
-private _deployPos = [_insertPos select 0, _insertPos select 1, 0] vectorAdd [15, 15, 0];
+private _deployPos = [_insertPos, 5, 15, 5] call den_fnc_findSafePos;
+if (_deployPos isEqualTo []) exitWith {
+    ERROR("failed to find safe deploy position");
+    [];
+};
 
 private _transport = [
     _zonePos,
