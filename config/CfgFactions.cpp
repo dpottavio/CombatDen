@@ -50,6 +50,7 @@ class CfgFactions
 #include "factions\cupChDkz.cpp"
 #include "factions\cupIon.cpp"
 #include "factions\cupRussia.cpp"
+#include "factions\cupSla.cpp"
 #include "factions\cupTakistan.cpp"
 #include "factions\cupTakistanMilitia.cpp"
 #include "factions\cupUsmc.cpp"
