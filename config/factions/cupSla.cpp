@@ -27,7 +27,7 @@ class CupSla : Faction
     era = ERA_MODERN;
     flagTexture = "ca\misc\data\sever_vlajka.paa";
     fullMoonOnly = 1;
-    name = "Sharani Liberation Army";
+    name = "Sahrani Liberation Army";
     patches[] = {
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_SLA"
