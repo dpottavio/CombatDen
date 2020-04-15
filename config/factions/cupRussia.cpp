@@ -477,7 +477,7 @@ class CupRussia : Faction
             {
                 class Unit0 : Unit0 {};
             };
-            class MotorizedTeam : Triple
+            class MotorizedTeam : MotorizedTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -564,7 +564,7 @@ class CupRussia : Faction
             {
                 class Unit0 : Unit0 {};
             };
-            class MotorizedTeam : Triple
+            class MotorizedTeam : MotorizedTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -649,7 +649,7 @@ class CupRussia : Faction
             {
                 class Unit0 : Unit0 {};
             };
-            class MotorizedTeam : Triple
+            class MotorizedTeam : MotorizedTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
@@ -734,7 +734,7 @@ class CupRussia : Faction
             {
                 class Unit0 : Unit0 {};
             };
-            class MotorizedTeam : Triple
+            class MotorizedTeam : MotorizedTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
