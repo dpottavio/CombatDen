@@ -164,6 +164,20 @@ class Faction
         };
     };
 
+    class ArsenalLowTech : Arsenal
+    {
+        class Base : Base
+        {
+            aceAdvancedMisc[] = {};
+            aceAttachments[] = {};
+            aceBinoculars[] = {};
+            aceGps[] = {};
+            aceNvg[] = {};
+            gps[] = {};
+            nvg[] = {};
+        };
+    }
+
     class ArsenalCupWest : Arsenal
     {
         class Base : Base
@@ -726,6 +740,8 @@ class Faction
                 };
             };
 
+            class VestLowTech {};
+
             class Backpack
             {
                 aceMedicalItems[] = {
@@ -767,6 +783,11 @@ class Faction
                 noAceItems[] = {
                     "ItemGps"
                 };
+            };
+
+            class LinkedItemsLowTech : LinkedItems
+            {
+                noAceItems[] = {};
             };
 
             class MedicBackpack : Backpack
