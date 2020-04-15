@@ -28,7 +28,7 @@ class CupUsmc : Faction
         "CUP_Vehicles_Core",
         "CUP_Creatures_Military_USMC"
     };
-    side        = SIDE_BLUFOR;
+    side = SIDE_BLUFOR;
 
     class Arsenal : ArsenalCupWest
     {
@@ -1055,7 +1055,7 @@ class CupUsmc : Faction
                 };
                 class M16 : RiflemanBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "CUP_arifle_M16A4_Base";
 
                     class Uniform     : Uniform {};
@@ -1081,7 +1081,7 @@ class CupUsmc : Faction
                 };
                 class M16 : GrenadierBase
                 {
-                    type  = "M164A M203";
+                    type  = "M16A4 M203";
                     rifle = "CUP_arifle_M16A4_GL";
 
                     class Uniform     : Uniform {};
@@ -1219,7 +1219,7 @@ class CupUsmc : Faction
                 };
                 class M16 : MedicBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "CUP_arifle_M16A4_Base";
 
                     class Uniform     : Uniform {};
@@ -1273,7 +1273,7 @@ class CupUsmc : Faction
                 };
                 class M16 : EodBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "CUP_arifle_M16A4_Base";
 
                     class Uniform     : Uniform {};
@@ -1299,7 +1299,7 @@ class CupUsmc : Faction
                 };
                 class M16 : EngineerBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "CUP_arifle_M16A4_Base";
 
                     class Uniform     : Uniform {};
