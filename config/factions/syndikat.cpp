@@ -247,7 +247,7 @@ class Syndikat : Faction
                 class Unit6 : Unit6 {};
                 class Unit7 : Unit7 {};
              };
-            class ReconTeam : Team
+            class ReconTeam : FireTeam
             {
                 class Unit0 : Unit0 {};
                 class Unit1 : Unit1 {};
