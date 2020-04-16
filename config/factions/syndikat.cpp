@@ -32,7 +32,7 @@ class Syndikat : Faction
     name = "Syndikat";
     side = SIDE_GUER;
 
-    class Arsenal : Arsenal
+    class Arsenal : ArsenalLowTech
     {
         class Tropic : Base
         {
@@ -102,10 +102,6 @@ class Syndikat : Faction
                 "U_I_C_Soldier_Para_4_F",
                 "U_I_C_Soldier_Para_1_F"
             };
-            aceAdvancedMisc[] = {};
-            aceSights[] = {};
-            aceNvg[] = {};
-            sights[] = {};
         };
     };
 
@@ -325,7 +321,7 @@ class Syndikat : Faction
                     "10Rnd_9x21_Mag"
                 };
             };
-            class Vest : Vest
+            class Vest : VestLowTech
             {
                 type = "V_Chestrig_rgr";
             };
@@ -333,7 +329,7 @@ class Syndikat : Faction
             {
                 type = "B_TacticalPack_oli";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItemsLowTech {};
         };
         class RiflemanBase : Base
         {

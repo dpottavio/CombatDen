@@ -446,7 +446,7 @@ class Faction
         class Wood   : Base {};
         class Winter : Base {};
     };
-    class ArsenalCupMilitia : Arsenal
+    class ArsenalCupMilitia : ArsenalLowTech
     {
         class Base : Base
         {
@@ -512,17 +512,10 @@ class Faction
                 "cup_acc_flashlight",
                 "cup_acc_anpeq_15_black"
             };
-            aceAdvancedMisc[] = {};
-            aceBinoculars[] = {};
-            aceGps[] = {};
-            aceSights[] = {};
-            aceNvg[] = {};
-            gps[] = {};
-            nvg[] = {};
         };
     };
 
-    class ArsenalRhsMilitia : Arsenal
+    class ArsenalRhsMilitia : ArsenalLowTech
     {
         class Base : Base
         {
@@ -565,13 +558,6 @@ class Faction
             attachments[] = {
                 "rhs_acc_2dpzenit"
             };
-            aceAdvancedMisc[] = {};
-            aceBinoculars[] = {};
-            aceGps[] = {};
-            aceSights[] = {};
-            aceNvg[] = {};
-            gps[] = {};
-            nvg[] = {};
         };
     };
 
@@ -944,17 +930,16 @@ class Faction
                     "16Rnd_9x21_Mag"
                 };
             };
-            class Vest : Vest
+            class Vest : VestLowTech
             {
                 // random
                 type = "";
-                aceItems[] = {};
             };
             class Backpack : Backpack
             {
                 type = "";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItemsLowTech {};
         };
         class RiflemanBase : Base
         {
@@ -1317,17 +1302,16 @@ class Faction
                     "rhs_mag_9x19_17"
                 };
             };
-            class Vest : Vest
+            class Vest : VestLowTech
             {
                 // random
                 type = "";
-                aceItems[] = {};
             };
             class Backpack : Backpack
             {
                 type = "";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItemsLowTech {};
         };
         class RiflemanBase : Base
         {

@@ -35,7 +35,7 @@ class RhsChDkz : Faction
     };
     side = SIDE_GUER;
 
-    class Arsenal : Arsenal
+    class Arsenal : ArsenalLowTech
     {
         class Base : Base
         {
@@ -231,8 +231,6 @@ class RhsChDkz : Faction
                 "rhsgref_uniform_ERDL",
                 "rhsgref_uniform_dpm"
             };
-
-            aceAdvancedMisc[] = {};
         };
 
         class Wood   : Base {};
@@ -544,7 +542,7 @@ class RhsChDkz : Faction
                     "rhs_mag_9x19_17"
                 };
             };
-            class Vest : Vest
+            class Vest : VestLowTech
             {
                 type = "rhs_6sh92";
             };
@@ -552,7 +550,7 @@ class RhsChDkz : Faction
             {
                 type = "rhs_assault_umbts";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItemsLowTech {};
         };
         class RiflemanBase : Base
         {

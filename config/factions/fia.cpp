@@ -31,7 +31,7 @@ class Fia : Faction
     name = "FIA";
     side = SIDE_GUER;
 
-    class Arsenal : Arsenal
+    class Arsenal : ArsenalLowTech
     {
         class SemiArid : Base
         {
@@ -109,11 +109,6 @@ class Fia : Faction
                 "U_BG_Guerilla3_1",
                 "U_BG_leader"
             };
-
-            aceAdvancedMisc[] = {};
-            aceSights[] = {};
-            aceNvg[] = {};
-            sights[] = {};
         };
         class Arid : SemiArid {};
     };
@@ -418,7 +413,7 @@ class Fia : Faction
                     "9Rnd_45ACP_Mag"
                 };
             };
-            class Vest : Vest
+            class Vest : VestLowTech
             {
                 type = "V_TacVest_oli";
             };
@@ -426,7 +421,7 @@ class Fia : Faction
             {
                 type = "B_TacticalPack_oli";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItemsLowTech {};
         };
         class RiflemanBase : Base
         {

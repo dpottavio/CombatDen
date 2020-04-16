@@ -37,7 +37,7 @@ class CupTakistan : Faction
     };
     side = SIDE_OPFOR;
 
-    class Arsenal : Arsenal
+    class Arsenal : ArsenalLowTech
     {
         class Base : Base
         {
@@ -92,7 +92,7 @@ class CupTakistan : Faction
                 "SmokeShell",
                 "CUP_HandGrenade_RGD5"
             };
-            dights[] = {
+            sights[] = {
                 "cup_optic_pso_1"
             };
             attachments[] = {
@@ -332,7 +332,7 @@ class CupTakistan : Faction
                     "16Rnd_9x21_Mag"
                 };
             };
-            class Vest : Vest
+            class Vest : VestLowTech
             {
                 type = "CUP_V_O_TK_Vest_1";
             };
@@ -340,7 +340,7 @@ class CupTakistan : Faction
             {
                 type = "B_Kitbag_rgr";
             };
-            class LinkedItems : LinkedItems {};
+            class LinkedItems : LinkedItemsLowTech {};
         };
         class RiflemanBase : Base
         {
