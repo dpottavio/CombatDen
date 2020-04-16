@@ -21,9 +21,6 @@ class CupSla : Faction
     addon = "CUP";
     ammoBox  = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CargoNet_01_box_F";
-    climateBlacklist[] = {
-        "Winter"
-    };
     era = ERA_MODERN;
     flagTexture = "ca\misc\data\sever_vlajka.paa";
     fullMoonOnly = 1;
@@ -51,8 +48,9 @@ class CupSla : Faction
                 "CUP_V_O_SLA_6B3_1_WDL"
             };
         };
-        class Tropic : Wood {};
+        class Tropic   : Wood {};
         class SemiArid : Wood {};
+        class Winter   : Wood {};
 
         class Arid : Base {
             backpacks[] = {
@@ -86,6 +84,7 @@ class CupSla : Faction
         class Wood : Base {};
         class Tropic : Base {};
         class SemiArid : Base {};
+        class Winter : Base {};
     };
 
     class Group : Group
@@ -511,6 +510,91 @@ class CupSla : Faction
                 class Unit8 : Unit8 {};
             };
         };
+        class Winter : Wood
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
+            };
+        };
         class Tropic : Wood
         {
             class TruckCrew : TruckCrew
@@ -729,6 +813,113 @@ class CupSla : Faction
             };
         };
         class Arid : Wood
+        {
+            class Rifleman : Rifleman
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Rpk : Rpk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Pkm : Pkm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Svds : Svds
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Rpg7 : Rpg7
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Rpg18 : Rpg18
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Akm : Akm
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Winter : Wood
         {
             class Rifleman : Rifleman
             {
