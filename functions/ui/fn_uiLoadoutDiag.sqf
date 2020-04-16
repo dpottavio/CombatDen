@@ -51,6 +51,7 @@ private _unitListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "Uni
 
 private _unitNumber = 1;
 private _lb_i = 0;
+private _playerNumber = 1;
 {
     private _nameUi = format["%1 %2", _unitNumber, name _x];
     if (((!isPlayer _x) && (isFormationLeader player)) || (_x == player)) then {
@@ -58,10 +59,13 @@ private _lb_i = 0;
         lbSetData [_unitListBoxId, _lb_i, format["%1", _unitNumber]];
         _lb_i = _lb_i + 1;
     };
+    if (player == _x) then {
+        _playerNumber = _unitNumber;
+    };
     _unitNumber = _unitNumber + 1;
 } forEach units group player;
 
-lbSetCurSel [_unitListBoxId, 0];
+lbSetCurSel [_unitListBoxId, _playerNumber - 1];
 
 /*
  * role list box
