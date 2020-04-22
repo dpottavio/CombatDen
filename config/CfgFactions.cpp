@@ -94,5 +94,6 @@ class CfgFactions
 #include "factions\rhsNapa.cpp"
 #include "factions\rhsRussia.cpp"
 #include "factions\rhsSaf.cpp"
+#include "factions\rhsTla.cpp"
 #include "factions\rhsUsmc.cpp"
 };
