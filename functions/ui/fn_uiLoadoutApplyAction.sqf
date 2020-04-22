@@ -15,6 +15,7 @@
     License along with this program.  If not, see
     <https://www.gnu.org/licenses/>.
 */
+#include "..\..\macros.hpp"
 
 private _unitListBoxId    = getNumber (missionConfigFile >> "LoadoutDialog" >> "UnitListBox"    >> "idc");
 private _roleListBoxId    = getNumber (missionConfigFile >> "LoadoutDialog" >> "RoleListBox"    >> "idc");
@@ -32,7 +33,8 @@ if ((_unitName == "") || (_role == "") || (_loadout == "")) exitWith {};
 private _unit = [] call den_fnc_uiLoadoutGetUnit;
 
 if (isNull _unit) exitWith {
-    ["unit in list box is not playable"] call BIS_fnc_error;
+    ERROR("unit in list box is not playable");
+    false;
 };
 
 private _lowDaylight = [] call den_fnc_lowDaylight;

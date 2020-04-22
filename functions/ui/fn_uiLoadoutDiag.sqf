@@ -32,7 +32,7 @@ params [
 ];
 
 if (_faction == "") exitWith {
-    ["faction parameter is empty"] call BIS_fnc_error;
+    ERROR("faction parameter is empty");
     false;
 };
 

@@ -20,7 +20,8 @@
 private _unit = [] call den_fnc_uiLoadoutGetUnit;
 
 if (isNull _unit) exitWith {
-    ["unit in list box is not playable"] call BIS_fnc_error;
+    ERROR("unit in list box is not playable");
+    false;
 };
 
 if (DEN_HAS_ADDON("ace_arsenal")) then {

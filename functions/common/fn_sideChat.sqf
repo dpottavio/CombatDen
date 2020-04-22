@@ -27,13 +27,15 @@
 
     Returns: true on success, false on error
 */
+#include "..\..\macros.hpp"
+
 params [
     ["_unit",    objNull, [objNull]],
     ["_message", "",      [""]]
 ];
 
 if (isNull _unit) exitWith {
-    ["unit parameter is null"] call BIS_fnc_error;
+    ERROR("unit parameter is null");
     false;
 };
 
