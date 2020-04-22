@@ -232,6 +232,7 @@ INFO_1("version: %1", getText (missionConfigFile >> "CfgVersion" >> "version"));
 INFO_1("mission: %1", _mission);
 INFO_1("playerFaction: %1", _friendlyFaction);
 INFO_1("enemyFaction: %1", _enemyFaction);
+INFO_1("terrain: %1", worldName);
 INFO_1("location: %1", _locationName);
 
 [_mission, _enemyFaction, _locationName, _friendlyFaction, _playerGroup, _arsenal];
