@@ -21,7 +21,6 @@ class Aaf : Faction
     ammoBox = "Box_IND_Ammo_F";
     cargoBox = "I_CargoNet_01_ammo_F";
     climateBlacklist[] = {
-        "Arid",
         "Tropic",
         "Wood",
         "Winter"
@@ -146,6 +145,7 @@ class Aaf : Faction
                 "H_HelmetIA"
             };
         };
+        class Arid : SemiArid {};
     };
 
     class Vehicle
@@ -160,6 +160,7 @@ class Aaf : Faction
             truckSupplyCargo   = "I_Truck_02_box_F";
             truckSupplyFuel    = "I_Truck_02_fuel_F";
         };
+        class Arid : SemiArid {};
     };
 
 #define AAF_NVG "NVGoggles_INDEP"
@@ -341,6 +342,91 @@ class Aaf : Faction
                     rank = "LIEUTENANT";
                     vehicle = "I_MRAP_03_hmg_F";
                 };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class TruckCrew : TruckCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloPilot : HeloPilot
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class HeloCrew  : HeloCrew
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class Pilot : Pilot
+            {
+                class Unit0 : Unit0 {};
+            };
+            class Sentry : Sentry
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+            };
+            class FireTeam : FireTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class AssaultSquad : AssaultSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconSquad : ReconSquad
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+            };
+            class ReconTeam : ReconTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+            };
+            class MotorizedHmg : MotorizedHmg
+            {
+                class Unit0 : Unit0 {};
+            };
+            class MotorizedTeam : MotorizedTeam
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+            };
+            class MotorizedAssault : MotorizedAssault
+            {
+                class Unit0 : Unit0 {};
+                class Unit1 : Unit1 {};
+                class Unit2 : Unit2 {};
+                class Unit3 : Unit3 {};
+                class Unit4 : Unit4 {};
+                class Unit5 : Unit5 {};
+                class Unit6 : Unit6 {};
+                class Unit7 : Unit7 {};
+                class Unit8 : Unit8 {};
             };
         };
     };
@@ -754,6 +840,106 @@ class Aaf : Faction
                     type       = "MK20";
                     rifle      = "arifle_Mk20_F";
 
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+        };
+        class Arid : SemiArid
+        {
+            class Rifleman : Rifleman
+            {
+                class Mk20 : Mk20
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Grenadier : Grenadier
+            {
+                class Mk20 : Mk20
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class SquadLeader : SquadLeader
+            {
+                class Mk20 : Mk20
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Autorifleman : Autorifleman
+            {
+                class Mk200 : Mk200
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Marksman : Marksman
+            {
+                class Mk14 : Mk14
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Medic : Medic
+            {
+                class Mk20 : Mk20
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class At : At
+            {
+                class Maaws : Maaws
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Nlaw : Nlaw
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Eod : Eod
+            {
+                class Mk20 : Mk20
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+            };
+            class Engineer : Engineer
+            {
+                class Mk20 : Mk20
+                {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
                     class Backpack    : Backpack {};
