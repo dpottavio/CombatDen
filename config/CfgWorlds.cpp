@@ -139,6 +139,31 @@ class CfgWorlds
             "vill_Myshkino"
         };
     };
+    class cup_chernarus_a3 : Wood
+    {
+        blacklist[] = {
+            "ACityC_Kamenka",
+            "Local_Black_Forest",
+            "Local_Blunt_Rocks",
+            "Local_Cap_Golova",
+            "Local_Cement_Factory",
+            "Local_Drakon",
+            "Local_Factory1",
+            "Local_Kopyto",
+            "Local_Lumber_Mill",
+            "Local_Otmel",
+            "Local_Pass_Grozovoy",
+            "Local_Pass_Sosnovy",
+            "Local_Quarry",
+            "Local_Skalisty_Island",
+            "Local_Skalka",
+            "vill_Bor",
+            "vill_Kamenka",
+            "vill_Orlovets",
+            "vill_Prigorodki",
+            "vill_Tulga"
+        };
+    };
     class Enoch : Wood
     {
         blacklist[] = {
