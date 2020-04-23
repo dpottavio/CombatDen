@@ -36,9 +36,9 @@ respawnButton = 1;
 
 class Header
 {
-	gameType   = COOP;
-	minPlayers = 1;
-	maxPlayers = 9;
+    gameType   = COOP;
+    minPlayers = 1;
+    maxPlayers = 9;
 };
 
 #include "cfgMacros.hpp"

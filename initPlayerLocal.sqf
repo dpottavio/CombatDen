@@ -171,10 +171,10 @@ _newPlayerUnit joinAsSilent [den_playerGroup, _slotId];
 
 waitUntil {(group _newPlayerUnit) == den_playerGroup};
 
-private _stagingAreaRadius   = 75;
-private _playerAtStagingArea = ((_playerPos distance _slotPos) <= _stagingAreaRadius);
+private _stagingAreaRadius = 75;
 
 if (_role == "SquadLeader") then {
+    private _playerAtStagingArea = ((_playerPos distance _slotPos) <= 75);
     if (isMultiplayer && _playerAtStagingArea) then {
         /*
          * Once the Squad Leader player becomes the group leader,
