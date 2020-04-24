@@ -33,7 +33,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of \
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \
 GNU Lesser General Public License for more details. \
 <br/><br/>\
-You can received a copy of this license at https://www.gnu.org/licenses.\
+You can receive a copy of this license at https://www.gnu.org/licenses.\
 </font>";
     };
 };
