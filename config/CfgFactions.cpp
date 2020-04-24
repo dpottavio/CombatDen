@@ -91,6 +91,7 @@ class CfgFactions
  * RHS Factions
  */
 #include "factions\rhsChDkz.cpp"
+#include "factions\rhsHidf.cpp"
 #include "factions\rhsNapa.cpp"
 #include "factions\rhsRussia.cpp"
 #include "factions\rhsSaf.cpp"
