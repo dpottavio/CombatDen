@@ -1278,7 +1278,7 @@ class RhsUsmc : Faction
                 };
                 class M16 : RiflemanBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "rhs_weap_m16a4_carryhandle";
 
                     class Uniform     : Uniform {};
@@ -1368,7 +1368,7 @@ class RhsUsmc : Faction
                 };
                 class M16 : GrenadierBase
                 {
-                    type  = "M164A M203";
+                    type  = "M16A4 M203";
                     rifle = "rhs_weap_m16a4_carryhandle_M203";
 
                     class Uniform     : Uniform {};
@@ -1486,7 +1486,7 @@ class RhsUsmc : Faction
                 };
                 class M16 : RiflemanBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "rhs_weap_m16a4_carryhandle";
 
                     class Uniform     : Uniform {};
@@ -1554,7 +1554,7 @@ class RhsUsmc : Faction
                 };
                 class M16 : EodBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "rhs_weap_m16a4_carryhandle";
 
                     class Uniform     : Uniform {};
@@ -1590,7 +1590,7 @@ class RhsUsmc : Faction
                 };
                 class M16 : EngineerBase
                 {
-                    type  = "M164A";
+                    type  = "M16A4";
                     rifle = "rhs_weap_m16a4_carryhandle";
 
                     class Uniform     : Uniform {};
