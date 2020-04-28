@@ -90,6 +90,7 @@ class CfgFactions
 /*
  * RHS Factions
  */
+#include "factions\rhsCdf.cpp"
 #include "factions\rhsChDkz.cpp"
 #include "factions\rhsHidf.cpp"
 #include "factions\rhsNapa.cpp"
