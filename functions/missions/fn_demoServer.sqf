@@ -196,6 +196,13 @@ den_cacheDestroyCount = 0;
         };
     }];
 
+    // Cache guard
+    private _cacheGroup = [_x, _enemyFaction, "Sentry"] call den_fnc_spawnGroup;
+    if !(isNull _cacheGroup) then {
+        [_cacheGroup, _x, 0, "HOLD"] call CBA_fnc_addWaypoint;
+    } else {
+        ERROR("failed to spawn group");
+    };
 } forEach _cachePosList;
 
 private _buildingUnits = [_zonePos, _zoneRadius, _enemyFaction, 4, false] call den_fnc_buildingOccupy;
