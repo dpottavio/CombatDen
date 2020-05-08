@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=858;
+		nextID=860;
 	};
 	class LayerIndexProvider
 	{
-		nextID=21;
+		nextID=22;
 	};
 	class Camera
 	{
-		pos[]={1828.4506,261.32852,12023.08};
-		dir[]={0.50327933,-0.16209112,-0.84883887};
-		up[]={0.082678974,0.98676485,-0.13944721};
-		aside[]={-0.86021429,-7.7195e-007,-0.51002175};
+		pos[]={1836.4048,261.32852,12020.33};
+		dir[]={0.3121438,-0.31150949,-0.89756399};
+		up[]={0.10232724,0.95023078,-0.29423937};
+		aside[]={-0.94455874,-4.7113281e-007,-0.3284848};
 	};
 };
 binarizationWanted=0;
@@ -889,7 +889,7 @@ class Mission
 			name="COP";
 			class Entities
 			{
-				items=48;
+				items=50;
 				class Item0
 				{
 					dataType="Object";
@@ -1730,9 +1730,45 @@ class Mission
 					type="Land_ToiletBox_F";
 					atlOffset=-0.0011444092;
 				};
+				class Item48
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1868.717,246.24995,11978.67};
+						angles[]={0,5.9174528,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+						skill=0.2;
+					};
+					id=858;
+					type="Land_PortableLight_double_F";
+					atlOffset=0.0024108887;
+				};
+				class Item49
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1850.3907,246.75627,11971.481};
+						angles[]={0,5.3898511,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+						skill=0.2;
+					};
+					id=859;
+					type="Land_PortableLight_double_F";
+					atlOffset=0.0024108887;
+				};
 			};
 			id=854;
-			atlOffset=-0.06451416;
+			atlOffset=0.028686523;
 		};
 	};
 };
