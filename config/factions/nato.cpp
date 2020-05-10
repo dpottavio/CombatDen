@@ -1364,6 +1364,20 @@ class Nato : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Mx3rd : GrenadierBase
+                {
+                    default    = 1;
+                    type       = "MX 3GL (3-round)";
+                    rifle      = "arifle_MX_GL_F";
+                    primaryMag = "30Rnd_65x39_caseless_mag";
+                    secondaryMag = "3Rnd_HE_Grenade_shell";
+                    secondaryMagCount = 5;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
                 class Hk : GrenadierBase
                 {
                     aceType    = "HK416 11GL";
@@ -1388,7 +1402,16 @@ class Nato : Faction
                     class Uniform  : Uniform {};
                     class Vest     : Vest {};
                     class Backpack : Backpack {};
-                    class LinkedItems   : LinkedItems {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mx3rd : Mx3rd
+                {
+                    unit = "B_Soldier_SL_F";
+
+                    class Uniform  : Uniform {};
+                    class Vest     : Vest {};
+                    class Backpack : Backpack {};
+                    class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
                 {
@@ -1397,7 +1420,7 @@ class Nato : Faction
                     class Uniform  : Uniform {};
                     class Vest     : Vest {};
                     class Backpack : Backpack {};
-                    class LinkedItems   : LinkedItems {};
+                    class LinkedItems : LinkedItems {};
                 };
             };
             class Autorifleman
@@ -1689,6 +1712,13 @@ class Nato : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Mx3rd : Mx3rd
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
                 class Hk : Hk
                 {
                     class Uniform     : Uniform {};
@@ -1731,6 +1761,13 @@ class Nato : Faction
             class Grenadier : Grenadier
             {
                 class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mx3rd : Mx3rd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1912,6 +1949,26 @@ class Nato : Faction
                     };
                     class LinkedItems : LinkedItems {};
                 };
+                class Mx3rd : Mx3rd
+                {
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_T_Soldier_F";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_tna_F";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_tna_F";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
                 class Hk : Hk
                 {
                     headgear = "H_HelmetB_tna_F";
@@ -2021,6 +2078,26 @@ class Nato : Faction
                 role = "Grenadier";
 
                 class Mx : Mx
+                {
+                    headgear   = "H_HelmetB_tna_F";
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_T_Soldier_F";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_tna_F";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_tna_F";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mx3rd : Mx3rd
                 {
                     headgear   = "H_HelmetB_tna_F";
                     rifle      = "arifle_MX_GL_Black_F";
@@ -2384,6 +2461,25 @@ class Nato : Faction
                     };
                     class LinkedItems : LinkedItems {};
                 };
+                class Mx3rd : Mx3rd
+                {
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
                 class Hk : Hk
                 {
                     rifle    = "arifle_SPAR_01_GL_blk_F";
@@ -2487,6 +2583,25 @@ class Nato : Faction
                 role = "Grenadier";
 
                 class Mx : Mx
+                {
+                    rifle      = "arifle_MX_GL_Black_F";
+                    primaryMag = "30Rnd_65x39_caseless_black_mag";
+
+                    class Uniform : Uniform
+                    {
+                        type = "U_B_CombatUniform_mcam_wdl_f";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "V_PlateCarrier1_wdl";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "B_AssaultPack_wdl_F";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mx3rd : Mx3rd
                 {
                     rifle      = "arifle_MX_GL_Black_F";
                     primaryMag = "30Rnd_65x39_caseless_black_mag";
@@ -2800,6 +2915,13 @@ class Nato : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Mx3rd : Mx3rd
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
                 class Hk : Hk
                 {
                     class Uniform     : Uniform {};
@@ -2842,6 +2964,13 @@ class Nato : Faction
             class Grenadier : Grenadier
             {
                 class Mx : Mx
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Mx3rd : Mx3rd
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
