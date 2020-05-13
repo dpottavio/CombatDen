@@ -267,7 +267,7 @@ publicVariable "den_searchItem";
 private _friendlySideStr = getText (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 [
     _campPos,
-    [25, 25, 0, false, 10],
+    [15, 15, 0, false, 10],
     [_friendlySideStr, "PRESENT", false],
     nil,
     [],
