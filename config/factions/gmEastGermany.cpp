@@ -913,29 +913,9 @@ class GmEastGermany : Faction
                     "gm_smokeshell_wht_gc"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
+                type = "gm_gc_army_backpack_80_at_str";
             };
             class LinkedItems : LinkedItems {};
         };

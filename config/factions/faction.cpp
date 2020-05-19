@@ -910,17 +910,17 @@ class Faction
             class GmEastMedicBackpack : MedicBackpack
             {
                 noAceMedicalItems[] = {
-                  "gm_gc_army_medkit",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage",
-                  "gm_gc_army_gauzeBandage"
+                    "gm_gc_army_medkit",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage",
+                    "gm_gc_army_gauzeBandage"
                 };
             };
         };
@@ -1094,29 +1094,9 @@ class Faction
                     "SmokeShell"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
+                type = "CUP_B_AlicePack_Khaki";
             };
             class LinkedItems : LinkedItems {};
         };
@@ -1466,29 +1446,9 @@ class Faction
                     "SmokeShell"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
+                type = "B_Kitbag_rgr";
             };
             class LinkedItems : LinkedItems {};
         };
@@ -1718,6 +1678,28 @@ class Faction
                     "FirstAidKit",
                     "FirstAidKit",
                     "FirstAidKit"
+                };
+            };
+
+            class EodBackpack : Backpack
+            {
+                items[] += {
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag",
+                    "LIB_Ladung_Small_MINE_mag"
+                };
+                aceItems[] += {
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord",
+                    "ACE_LIB_FireCord"
                 };
             };
         };

@@ -979,28 +979,9 @@ class Ifa3RedArmy : Faction
                     "LIB_US_M18"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
                 type = "B_LIB_SOV_RA_Rucksack2_Gas_Kit_Shinel";
-
-                items[] += {
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag"
-                };
-                aceItems[] += {
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord"
-                };
             };
             class LinkedItems : LinkedItems {};
         };

@@ -630,31 +630,9 @@ class Aaf : Faction
                     "SmokeShell"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
                 type = "B_TacticalPack_oli";
-
-                aceEodBaseItems[] = {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceEodBaseItems[] = {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
             };
             class LinkedItems : LinkedItems {};
         };

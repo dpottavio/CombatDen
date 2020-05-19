@@ -811,26 +811,9 @@ class Ifa3UkArmy : Faction
                     "LIB_US_M18"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                items[] += {
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag",
-                    "LIB_Ladung_Small_MINE_mag"
-                };
-                aceItems[] += {
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord",
-                    "ACE_LIB_FireCord"
-                };
+                type = "B_LIB_UK_HSack";
             };
             class LinkedItems : LinkedItems {};
         };

@@ -955,29 +955,9 @@ class CupBundeswehr : Faction
                     "SmokeShell"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
+                type = "CUP_B_GER_Pack_Flecktarn";
             };
             class LinkedItems : LinkedItems {};
         };

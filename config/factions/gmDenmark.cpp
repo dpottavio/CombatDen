@@ -667,29 +667,9 @@ class GmDenmark : Faction
                     "gm_smokeshell_wht_dm25"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
+                type = "gm_dk_army_backpack_73_oli";
             };
             class LinkedItems : LinkedItems {};
         };

@@ -1071,31 +1071,9 @@ class Csat : Faction
                     "SmokeShell"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
-                type =  "B_TacticalPack_ocamo";
-
-                aceEdoBaseList[] = {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceEdoBaseList[] = {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
+                type = "B_TacticalPack_ocamo";
             };
             class LinkedItems : LinkedItems {};
         };

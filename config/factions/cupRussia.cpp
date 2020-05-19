@@ -941,31 +941,9 @@ class CupRussia : Faction
                     "SmokeShell"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
                 type = "B_Kitbag_sgg";
-
-                aceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
             };
             class LinkedItems : LinkedItems {};
         };

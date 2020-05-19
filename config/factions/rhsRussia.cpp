@@ -1119,31 +1119,9 @@ class RhsRussia : Faction
                     "rhs_mag_rdg2_white"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
                 type = "B_Kitbag_sgg";
-
-                aceEodItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceEdoItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
             };
             class LinkedItems : LinkedItems {};
         };

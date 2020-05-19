@@ -1132,31 +1132,9 @@ class Uk3cbBaf : Faction
                     "UK3CB_BAF_SmokeShellGreen"
                 };
             };
-            class Backpack : Backpack
+            class Backpack : EodBackpack
             {
                 type = "UK3CB_BAF_B_Bergen_MTP_Sapper_L_A";
-
-                aceEodItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14",
-                    "ACE_M14"
-                };
-                noAceEdoItems[] += {
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag",
-                    "DemoCharge_Remote_Mag"
-                };
             };
             class LinkedItems : LinkedItems {};
         };
