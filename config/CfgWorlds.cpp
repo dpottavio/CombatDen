@@ -84,6 +84,22 @@ class CfgWorlds
             "castle"
         };
 
+        civilians[] = {
+            "C_man_polo_1_F",
+            "C_man_polo_2_F",
+            "C_man_polo_3_F",
+            "C_man_polo_4_F",
+            "C_man_polo_5_F",
+            "C_man_1_1_F",
+            "C_man_1_2_F",
+            "C_man_1_2_F",
+            "C_man_p_fugitive_F",
+            "C_man_shorts_1_F",
+            "C_man_shorts_2_F",
+            "C_man_shorts_3_F",
+            "C_man_shorts_4_F",
+            "C_journalist_F"
+        };
     };
     class Chernarus : Wood
     {

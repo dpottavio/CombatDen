@@ -26,6 +26,7 @@ class CfgFunctions
             class arsenal {};
             class attackOnEvent {};
             class buildingOccupy {};
+            class civilians {};
             class commandChat {};
             class coverMap {};
             class createLocation {};
