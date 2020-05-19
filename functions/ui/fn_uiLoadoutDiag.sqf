@@ -51,21 +51,21 @@ private _unitListBoxId = getNumber (missionConfigFile >> "LoadoutDialog" >> "Uni
 
 private _unitNumber = 1;
 private _lb_i = 0;
-private _playerNumber = 1;
+private _playerIndex = 0;
 {
-    private _nameUi = format["%1 %2", _unitNumber, name _x];
-    if (((!isPlayer _x) && (isFormationLeader player)) || (_x == player)) then {
+    if ((isFormationLeader player) || (_x == player)) then {
+        private _nameUi = format["%1 %2", _unitNumber, name _x];
         lbAdd [_unitListBoxId, _nameUi];
         lbSetData [_unitListBoxId, _lb_i, format["%1", _unitNumber]];
+        if (_x == player) then {
+            _playerIndex = _lb_i;
+        };
         _lb_i = _lb_i + 1;
-    };
-    if (player == _x) then {
-        _playerNumber = _unitNumber;
     };
     _unitNumber = _unitNumber + 1;
 } forEach units group player;
 
-lbSetCurSel [_unitListBoxId, _playerNumber - 1];
+lbSetCurSel [_unitListBoxId, _playerIndex];
 
 /*
  * role list box
@@ -106,10 +106,10 @@ lbSort [_roleListBoxId, "ASC"];
         "true" configClasses (missionConfigFile >> "CfgFactions" >> den_loadoutMenuFaction >> "Loadout" >> _climate);
 
     private _hasAceArsenal = DEN_HAS_ADDON("ace_arsenal");
+    // Search for the select Role in the list of faction loadouts.
     {
-        if (getText (_x >> "role") == _roleSelect) then {
+        if (getText (_x >> "role") == _roleSelect) exitWith {
             private _typesCfg = "true" configClasses (_x);
-
             private _i = 0;
             {
                 private _nameUi = getText (_x >> "type");
@@ -119,7 +119,6 @@ lbSort [_roleListBoxId, "ASC"];
                         _nameUi = _aceNameUi;
                     };
                 };
-
                 private _nameCfg = configName _x;
 
                 lbAdd     [_loadoutListBoxId, _nameUi];
@@ -131,6 +130,7 @@ lbSort [_roleListBoxId, "ASC"];
     } forEach _loadoutsCfg;
 
     lbSort [_loadoutListBoxId, "ASC"];
+    lbSetCurSel [_loadoutListBoxId, 0];
 }];
 
 true;
