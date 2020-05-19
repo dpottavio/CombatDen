@@ -34,7 +34,7 @@ class CupRussia : Faction
     {
         class Base : Base
         {
-           cupRussiaMags[] = {
+           mags[] = {
                 "CUP_30Rnd_545x39_AK74M_M",
                 "CUP_30Rnd_Subsonic_545x39_AK74M_M",
                 "CUP_30Rnd_TE1_Green_Tracer_545x39_AK74_plum_M",
@@ -82,7 +82,7 @@ class CupRussia : Faction
                 "CUP_FlareYellow_GP25_M",
                 "CUP_1Rnd_HE_GP25_M"
             };
-            cupRussiaWeapons[] = {
+            weapons[] = {
                 "CUP_arifle_AK74M",
                 "CUP_arifle_AK74M_top_rail",
                 "CUP_arifle_AK74M_railed",
@@ -121,14 +121,15 @@ class CupRussia : Faction
                 "CUP_arifle_AK109_GL_railed",
                 "CUP_lmg_Pecheneg",
                 "CUP_lmg_PKM",
-                "CUP_arifle_RPK74M"
+                "CUP_arifle_RPK74M",
+                "CUP_srifle_SVD"
             };
-            cupRussiaLaunchers[] = {
+            launchers[] = {
                 "CUP_launch_Metis",
                 "CUP_launch_RPG7V",
                 "CUP_launch_RPG18"
             };
-            cupRussiaGrenades[] = {
+            grenades[] += {
                 "SmokeShellBlue",
                 "SmokeShellGreen",
                 "SmokeShellOrange",
@@ -138,10 +139,10 @@ class CupRussia : Faction
                 "SmokeShell",
                 "CUP_HandGrenade_RGD5"
             };
-            cupRussiaNvg[] = {
+            nvg[] = {
                 "CUP_NVG_HMNVS"
             };
-            cupRussiaSights[] = {
+            sights[] = {
                 "cup_optic_ekp_8_02",
                 "cup_optic_goshawk",
                 "cup_optic_kobra",
@@ -155,17 +156,17 @@ class CupRussia : Faction
                 "cup_optic_pso_3",
                 "cup_optic_pso_3_open"
             };
-            cupRussiaAttachments[] = {
+            attachments[] = {
                 "cup_acc_flashlight",
                 "cup_acc_anpeq_15_black",
                 "cup_muzzle_snds_kzrzp_ak545",
                 "cup_muzzle_snds_kzrzp_pk"
             };
-            cupRussiaFaceware[] = {
+            faceware[] += {
                 "CUP_RUS_Balaclava_blk",
                 "CUP_RUS_Balaclava_grn"
             };
-            cupRussiaBackpacks[] = {
+            backpacks[] = {
                 "B_Kitbag_sgg",
                 "B_TacticalPack_oli"
             };
