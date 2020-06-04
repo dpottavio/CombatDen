@@ -570,4 +570,17 @@ class CfgWorlds
             "DefaultKeyPoint8"
         };
     };
+	class Tem_Kujari : Arid
+	{
+		blacklist[] = {
+			"place1",
+			"place71",
+			"place84",
+			"Tsakuwa",
+			"Gano",
+			"Turawa",
+			"Karaye",
+			"Bora"
+		};
+	};
 };
