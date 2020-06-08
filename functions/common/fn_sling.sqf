@@ -69,6 +69,13 @@ private _heloGroup = _helo select 2;
 
 _heloGroup setGroupIdGlobal ["Eagle"];
 
+// Setting captive because if the helo is engaged by the
+// enemy, it could get stuck.  Ideally, the enemy should
+// able to engage, but this has not been reliable.
+{
+    _x setCaptive true;
+} forEach units _heloGroup;
+
 [(leader _heloGroup), "Alpha team be advised, helo sling is en route."] call den_fnc_sideChat;
 
 _heloObj addEventHandler ["killed", {

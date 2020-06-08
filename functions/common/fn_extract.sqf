@@ -141,6 +141,13 @@ if (_area isEqualTo []) then {
 
 	_heloGroup setGroupIdGlobal ["Falcon"];
 
+    // Setting captive because if the helo is engaged by the
+    // enemy, it could get stuck.  Ideally, the enemy should
+    // able to engage, but this has not been reliable.
+    {
+        _x setCaptive true;
+    } forEach units _heloGroup;
+
 	_heloObj addEventHandler ["killed", {
 	    den_transportDead = true;
 	}];
