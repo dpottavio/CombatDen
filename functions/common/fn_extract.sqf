@@ -96,100 +96,100 @@ if (_area isEqualTo []) then {
      * Wait for the bool to start the extraction sequence.
      */
     while {true} do {
-	if (!isNil _bool) exitWith {};
-	sleep 1;
+        if (!isNil _bool) exitWith {};
+        sleep 1;
     };
     /*
      * Wait for all group members to reach the LZ.
      */
     while {true} do {
-	private _count     = { alive _x } count units _cargoGroup;
-	private _atLzCount = { (alive _x) && ((getPos _x) inArea _area) } count units _cargoGroup;
-	if (_count == _atLzCount) exitWith {};
-	sleep 1;
+        private _count     = { alive _x } count units _cargoGroup;
+        private _atLzCount = { (alive _x) && ((getPos _x) inArea _area) } count units _cargoGroup;
+        if (_count == _atLzCount) exitWith {};
+        sleep 1;
     };
     /*
      * Wait until the LZ is free of enemies.
      */
     private _friendlySide = side (leader _cargoGroup);
     while {true} do {
-	private _enemyAtLz = {
-	    (alive _x) && ((getPos _x) inArea _area) && ([_friendlySide, side _x] call BIS_fnc_sideIsEnemy)
-	} count allUnits;
+        private _enemyAtLz = {
+            (alive _x) && ((getPos _x) inArea _area) && ([_friendlySide, side _x] call BIS_fnc_sideIsEnemy)
+        } count allUnits;
 
-	if (_enemyAtLz == 0) exitWith {
-	    den_insertExtract = true;
-	};
-	sleep 1;
+        if (_enemyAtLz == 0) exitWith {
+            den_insertExtract = true;
+        };
+        sleep 1;
     };
 
     if (DEN_HAS_TRANSPORT_HELO(_faction)) then {
-	/*
-	 * If the faction has one, send a transport helicopter.
-	 */
-	private _heloType = "heloTransport";
-	if (({alive _x} count units _cargoGroup) > 8) then {
-	    _heloType = "heloTransportLarge";
-	};
-	private _helo = [_deployPos, _deployDir, _heloType, _faction] call den_fnc_spawnvehicle;
-	private _heloObj   = _helo select 0;
-	private _heloGroup = _helo select 2;
-	clearMagazineCargoGlobal _heloObj;
-	clearWeaponCargoGlobal   _heloObj;
-	clearItemCargoGlobal     _heloObj;
-	clearBackpackCargoGlobal _heloObj;
+        /*
+        * If the faction has one, send a transport helicopter.
+        */
+        private _heloType = "heloTransport";
+        if (({alive _x} count units _cargoGroup) > 8) then {
+            _heloType = "heloTransportLarge";
+        };
+        private _helo = [_deployPos, _deployDir, _heloType, _faction] call den_fnc_spawnvehicle;
+        private _heloObj   = _helo select 0;
+        private _heloGroup = _helo select 2;
+        clearMagazineCargoGlobal _heloObj;
+        clearWeaponCargoGlobal   _heloObj;
+        clearItemCargoGlobal     _heloObj;
+        clearBackpackCargoGlobal _heloObj;
 
-	_heloGroup setGroupIdGlobal ["Falcon"];
+        _heloGroup setGroupIdGlobal ["Falcon"];
 
-    // Setting captive because if the helo is engaged by the
-    // enemy, it could get stuck.  Ideally, the enemy should
-    // able to engage, but this has not been reliable.
-    {
-        _x setCaptive true;
-    } forEach units _heloGroup;
+        // Setting captive because if the helo is engaged by the
+        // enemy, it could get stuck.  Ideally, the enemy should
+        // able to engage, but this has not been reliable.
+        {
+            _x setCaptive true;
+        } forEach units _heloGroup;
 
-	_heloObj addEventHandler ["killed", {
-	    den_transportDead = true;
-	}];
+        _heloObj addEventHandler ["killed", {
+            den_transportDead = true;
+        }];
 
-	[(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
+        [(leader _heloGroup), "Alpha team be advised, helo transport is en route to LZ."] call den_fnc_sideChat;
 
-	[
-	    _heloGroup,
-	    _lzPos,
-	    0,
-	    "MOVE",
-	    "AWARE",
-	    "GREEN",
-	    "FULL",
-	    "COLUMN",
-	    "(vehicle this) land ""GET IN"""
-	] call CBA_fnc_addWaypoint;
+        [
+            _heloGroup,
+            _lzPos,
+            0,
+            "MOVE",
+            "AWARE",
+            "GREEN",
+            "FULL",
+            "COLUMN",
+            "(vehicle this) land ""GET IN"""
+        ] call CBA_fnc_addWaypoint;
 
-	// Wait for the cargo units to enter.
-	while {true} do {
-	    private _total = { alive _x } count units _cargoGroup;
-	    private _loaded = {((vehicle _x) == _heloObj)} count units _cargoGroup;
-	    if (_total == _loaded) exitWith {
-		[
-		    _heloGroup,
-		    _deployPos,
-		    0,
-		    "MOVE",
-		    "AWARE",
-		    "GREEN",
-		    "FULL",
-		    "COLUMN",
-		    ""
-		] call CBA_fnc_addWaypoint;
+        // Wait for the cargo units to enter.
+        while {true} do {
+            private _total = { alive _x } count units _cargoGroup;
+            private _loaded = {((vehicle _x) == _heloObj)} count units _cargoGroup;
+            if (_total == _loaded) exitWith {
+                [
+                    _heloGroup,
+                    _deployPos,
+                    0,
+                    "MOVE",
+                    "AWARE",
+                    "GREEN",
+                    "FULL",
+                    "COLUMN",
+                    ""
+                ] call CBA_fnc_addWaypoint;
 
-		[(leader _heloGroup), "Alpha team is on board. Returning to base."] call den_fnc_sideChat;
-	    };
-	    sleep 1;
-	};
+                [(leader _heloGroup), "Alpha team is on board. Returning to base."] call den_fnc_sideChat;
+            };
+            sleep 1;
+        };
 
-	sleep 10;
-	den_extract = true;
+        sleep 10;
+        den_extract = true;
     };
 };
 
