@@ -136,9 +136,11 @@ if !(_success) exitWith {
 
 /*
  * hostage
- */
-private _compFunc = selectRandom (configProperties [missionConfigFile >> "CfgCompositions" >> "Camp"]);
-[_hostagePos, 0, _enemyFaction] call compile (format["_this call %1;", getText _compFunc]);
+*/
+
+// Choosing a composition that the hostage AI will not get stuck in.
+[_hostagePos, 0, _enemyFaction] call den_fnc_compCamp02;
+
 
 private _hostageGroup = [_hostagePos, _friendlyFaction, "Pilot"] call den_fnc_spawnGroup;
 if (isNull _hostageGroup) exitWith {
