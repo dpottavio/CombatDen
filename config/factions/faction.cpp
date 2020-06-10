@@ -310,6 +310,11 @@ class Faction
                 "CUP_PMC_Facewrap_Tan",
                 "CUP_PMC_Facewrap_Tropical"
             };
+
+            bipods[] = {
+                "cup_bipod_vltor_modpod_black",
+                "cup_bipod_harris_1a2_l_blk"
+            };
         };
     };
 

@@ -144,6 +144,10 @@ class Aaf : Faction
             headgear[] = {
                 "H_HelmetIA"
             };
+            bipods[] = {
+                "bipod_03_f_blk",
+                "bipod_01_f_snd"
+            };
         };
         class Arid : SemiArid {};
     };

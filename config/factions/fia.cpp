@@ -109,6 +109,10 @@ class Fia : Faction
                 "U_BG_Guerilla3_1",
                 "U_BG_leader"
             };
+            bipods[] = {
+                "bipod_01_f_snd",
+                "bipod_03_f_blk"
+            };
         };
         class Arid : SemiArid {};
     };

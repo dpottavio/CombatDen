@@ -102,6 +102,9 @@ class Syndikat : Faction
                 "U_I_C_Soldier_Para_4_F",
                 "U_I_C_Soldier_Para_1_F"
             };
+            bipods[] = {
+                "bipod_01_f_snd"
+            };
         };
     };
 

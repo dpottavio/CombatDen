@@ -59,8 +59,10 @@ class CupSahraniArmy : Faction
             sights[] = {
                 "cup_optic_leupoldm3lr"
             };
+            bipods[] = {
+                "cup_bipod_vltor_modpod_black"
+            };
         };
-
         class SemiArid : Base
         {
             backpacks[] = {

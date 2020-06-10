@@ -308,6 +308,9 @@ class RhsUsmc : Faction
                 "rhsusf_falconii_coy",
                 "B_Kitbag_cbr"
             };
+            bipods[] = {
+                "rhsusf_acc_harris_bipod"
+            };
         };
 
         class SemiArid : Base {};

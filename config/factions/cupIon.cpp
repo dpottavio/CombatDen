@@ -111,6 +111,11 @@ class CupIon : Faction
                 "cup_optic_eotech553_black",
                 "cup_optic_eotech553_coyote"
             };
+            bipods[] = {
+                "cup_bipod_vltor_modpod",
+                "cup_bipod_vltor_modpod_black",
+                "cup_bipod_harris_1a2_l"
+            };
         };
 
         class Winter : Base

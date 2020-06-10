@@ -84,6 +84,9 @@ class RhsHidf : Faction
             backpacks[] = {
                 "B_Kitbag_rgr"
             };
+            bipods[] = {
+                "rhsusf_acc_saw_bipod"
+            };
         };
     };
 
