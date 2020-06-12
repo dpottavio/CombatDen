@@ -80,7 +80,8 @@ class CupRussia : Faction
                 "CUP_FlareRed_GP25_M",
                 "CUP_FlareWhite_GP25_M",
                 "CUP_FlareYellow_GP25_M",
-                "CUP_1Rnd_HE_GP25_M"
+                "CUP_1Rnd_HE_GP25_M",
+                "CUP_8Rnd_9x18_Makarov_M"
             };
             weapons[] = {
                 "CUP_arifle_AK74M",
@@ -122,7 +123,8 @@ class CupRussia : Faction
                 "CUP_lmg_Pecheneg",
                 "CUP_lmg_PKM",
                 "CUP_arifle_RPK74M",
-                "CUP_srifle_SVD"
+                "CUP_srifle_SVD",
+                "CUP_hgun_Makarov"
             };
             launchers[] = {
                 "CUP_launch_Metis",
@@ -771,7 +773,7 @@ class CupRussia : Faction
             aceBinoculars = "ACE_Vector";
             aceNvg        = "ACE_NVG_Wide";
 
-            handgun    = "CUP_hgun_Duty";
+            handgun    = "CUP_hgun_Makarov";
             binoculars = "CUP_Vector21Nite";
             headgear   = "CUP_H_RUS_6B47";
             rifleSight = "cup_optic_ekp_8_02";
@@ -784,8 +786,8 @@ class CupRussia : Faction
                 type = "CUP_U_O_RUS_EMR_1_VDV";
 
                 items[] += {
-                    "16Rnd_9x21_Mag",
-                    "16Rnd_9x21_Mag"
+                    "CUP_8Rnd_9x18_Makarov_M",
+                    "CUP_8Rnd_9x18_Makarov_M"
                 };
             };
             class Vest : Vest
