@@ -1069,7 +1069,18 @@ class CupBundeswehr : Faction
                     type       = "L129A1";
                     rifle      = "CUP_srifle_L129A1_HG";
                     primaryMag = "20Rnd_762x51_Mag";
-                    default    = 1;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : MarksmanBase
+                {
+                    type  = "HK417 D20";
+                    rifle = "CUP_arifle_HK417_20";
+                    primaryMag = "CUP_20Rnd_762x51_HK417";
+                    default = 1;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1337,6 +1348,24 @@ class CupBundeswehr : Faction
             class Marksman : Marksman
             {
                 class L129 : L129
+                {
+                    headgear = "CUP_H_Ger_M92_Cover_Trop";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_GER_Tropentarn_1";
+                    };
+                    class Vest : Vest
+                    {
+                        type = "CUP_V_I_RACS_Carrier_Vest";
+                    };
+                    class Backpack : Backpack
+                    {
+                        type = "CUP_B_GER_Pack_Tropentarn";
+                    };
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
                 {
                     headgear = "CUP_H_Ger_M92_Cover_Trop";
 
@@ -1633,6 +1662,13 @@ class CupBundeswehr : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Medic : Medic
             {
@@ -1789,6 +1825,13 @@ class CupBundeswehr : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Medic : Medic
             {
@@ -1939,6 +1982,13 @@ class CupBundeswehr : Faction
             class Marksman : Marksman
             {
                 class L129 : L129
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class Hk : Hk
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
