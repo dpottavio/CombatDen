@@ -64,16 +64,16 @@ class Faction
                 "ACE_SpraypaintBlack",
                 "ACE_SpraypaintBlue",
                 "ACE_SpraypaintGreen",
-                "ACE_SpraypaintRed"
+                "ACE_SpraypaintRed",
+                "ACE_RangeCard",
+                "ACE_Tripod",
+                "ACE_SpottingScope"
             };
 
             aceAdvancedMisc[] = {
                 "ACE_ATragMX",
                 "ACE_HuntIR_monitor",
-                "ACE_Kestrel4500",
-                "ACE_RangeCard",
-                "ACE_SpottingScope",
-                "ACE_Tripod"
+                "ACE_Kestrel4500"
             };
 
             aceMedical[] = {
@@ -846,6 +846,14 @@ class Faction
                     "ACE_RangeCard",
                     "ACE_Kestrel4500",
                     "ACE_ATragMX",
+                    "ACE_Tripod"
+                };
+            };
+
+            class MarksmanBackpackLowTech : BackPack
+            {
+                aceItems[] += {
+                    "ACE_RangeCard",
                     "ACE_Tripod"
                 };
             };
