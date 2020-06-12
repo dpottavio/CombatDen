@@ -67,7 +67,9 @@ class Faction
                 "ACE_SpraypaintRed",
                 "ACE_RangeCard",
                 "ACE_Tripod",
-                "ACE_SpottingScope"
+                "ACE_SpottingScope",
+                "ACE_Clacker",
+                "ACE_M26_Clacker"
             };
 
             aceAdvancedMisc[] = {
@@ -870,7 +872,8 @@ class Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14",
-                    "ACE_M14"
+                    "ACE_M14",
+                    "ACE_Clacker"
                 };
                 noAceItems[] += {
                     "DemoCharge_Remote_Mag",
