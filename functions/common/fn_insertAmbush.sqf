@@ -33,6 +33,8 @@
 
     5: STRING - friendly faction name
 
+    6: STRING - enemy faction name
+
     Returns: vehicle on success, objNull on error
 */
 #include "..\..\macros.hpp"
@@ -42,7 +44,8 @@ params [
     ["_motorPos",         [],      [[]],      [2,3]],
     ["_motorDir",         0,       [0]],
     ["_playerGroup",      grpNull, [grpNull]],
-    ["_friendlyFaction", "",      [""]]
+    ["_friendlyFaction",  "",      [""]],
+    ["_enemyFaction",     "",      [""]]
 ];
 
 if (_ambushPos isEqualTo []) exitWith {
@@ -65,6 +68,11 @@ if (_friendlyFaction == "") exitWith {
     objNull;
 };
 
+if (_enemyFaction == "") exitWith {
+    ERROR("enemy faction parameter is empty");
+    objNull;
+};
+
 private _vehicles = [_motorPos, _motorDir, _playerGroup, _friendlyFaction] call den_fnc_spawnMotorDeploy;
 if (_vehicles isEqualTo []) exitWith {
     ERROR("failed to spawn vehicles");
@@ -73,7 +81,7 @@ if (_vehicles isEqualTo []) exitWith {
 
 // executed when all players enter the vehicle(s)
 private _insertCode = {
-    params ["_ambushPos", "_playerGroup", "_vehicles", "_friendlyFaction"];
+    params ["_ambushPos", "_playerGroup", "_vehicles", "_friendlyFaction", "_enemyFaction"];
 
     private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
     private _friendlyColor   = getText(missionConfigFile >> "CfgMarkers"  >> _friendlySideStr >> "color");
@@ -128,10 +136,12 @@ private _insertCode = {
 
     [["FireFight01", true]] remoteExec ["playSound"];
     sleep 4;
+
+    private _enemy = getText (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "name");
     [
         [
             [
-                "SITREP: Patrol ambushed by enemy forces.",
+                format["SITREP: Patrol ambushed by %1 forces.", _enemy],
                 "align = 'center' shadow = '1' size = '0.95'"
             ]
         ],
@@ -156,7 +166,7 @@ private _insertCode = {
 [
     _vehicles,
     _insertCode,
-    [_ambushPos, _playerGroup, _vehicles, _friendlyFaction]
+    [_ambushPos, _playerGroup, _vehicles, _friendlyFaction, _enemyFaction]
 ] call den_fnc_playersInVehicle;
 
 _vehicles select 0;

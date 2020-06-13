@@ -113,7 +113,8 @@ private _transport = [
     _transportPos,
     _transportDir,
     _playerGroup,
-    _friendlyFaction
+    _friendlyFaction,
+    _enemyFaction
 ] call den_fnc_insertAmbush;
 
 if (isNull _transport) exitWith {
