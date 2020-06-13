@@ -125,8 +125,8 @@ if (_area isEqualTo []) then {
 
     if (DEN_HAS_TRANSPORT_HELO(_faction)) then {
         /*
-         * If the faction has one, send a transport helicopter.
-         */
+        * If the faction has one, send a transport helicopter.
+        */
         private _heloType = "heloTransport";
         if (({alive _x} count units _cargoGroup) > 8) then {
             _heloType = "heloTransportLarge";
@@ -140,6 +140,13 @@ if (_area isEqualTo []) then {
         clearBackpackCargoGlobal _heloObj;
 
         _heloGroup setGroupIdGlobal ["Falcon"];
+
+        // Setting captive because if the helo is engaged by the
+        // enemy, it could get stuck.  Ideally, the enemy should
+        // able to engage, but this has not been reliable.
+        {
+            _x setCaptive true;
+        } forEach units _heloGroup;
 
         _heloObj addEventHandler ["killed", {
             den_transportDead = true;

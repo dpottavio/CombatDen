@@ -64,16 +64,18 @@ class Faction
                 "ACE_SpraypaintBlack",
                 "ACE_SpraypaintBlue",
                 "ACE_SpraypaintGreen",
-                "ACE_SpraypaintRed"
+                "ACE_SpraypaintRed",
+                "ACE_RangeCard",
+                "ACE_Tripod",
+                "ACE_SpottingScope",
+                "ACE_Clacker",
+                "ACE_M26_Clacker"
             };
 
             aceAdvancedMisc[] = {
                 "ACE_ATragMX",
                 "ACE_HuntIR_monitor",
-                "ACE_Kestrel4500",
-                "ACE_RangeCard",
-                "ACE_SpottingScope",
-                "ACE_Tripod"
+                "ACE_Kestrel4500"
             };
 
             aceMedical[] = {
@@ -309,6 +311,11 @@ class Faction
                 "CUP_PMC_Facewrap_Ranger",
                 "CUP_PMC_Facewrap_Tan",
                 "CUP_PMC_Facewrap_Tropical"
+            };
+
+            bipods[] = {
+                "cup_bipod_vltor_modpod_black",
+                "cup_bipod_harris_1a2_l_blk"
             };
         };
     };
@@ -845,6 +852,14 @@ class Faction
                 };
             };
 
+            class MarksmanBackpackLowTech : BackPack
+            {
+                aceItems[] += {
+                    "ACE_RangeCard",
+                    "ACE_Tripod"
+                };
+            };
+
             class EodBackpack : BackPack
             {
                 aceItems[] += {
@@ -857,7 +872,8 @@ class Faction
                     "ACE_M14",
                     "ACE_M14",
                     "ACE_M14",
-                    "ACE_M14"
+                    "ACE_M14",
+                    "ACE_Clacker"
                 };
                 noAceItems[] += {
                     "DemoCharge_Remote_Mag",

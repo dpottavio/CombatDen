@@ -54,7 +54,17 @@ class CupUsmc : Faction
                 "CUP_lmg_m249_pip2",
                 "CUP_lmg_m249_para_gl",
                 "CUP_lmg_m249_para",
-                "CUP_arifle_HK_M27"
+                "CUP_arifle_HK_M27",
+                "CUP_srifle_M40A3",
+                "CUP_srifle_M110_black",
+                "CUP_hgun_M9"
+            };
+            mags[] += {
+                "CUP_5Rnd_762x51_M24",
+                "CUP_1Rnd_762x51_CZ584",
+                "CUP_20Rnd_762x51_B_M110",
+                "CUP_20Rnd_762x51_L129_M",
+                "CUP_15Rnd_9x19_M9"
             };
             launchers[] += {
                 "CUP_launch_Javelin"
@@ -824,6 +834,7 @@ class CupUsmc : Faction
 #define CUP_USMC_AT_MAG_COUNT              11
 #define CUP_USMC_GRENADIRE_MAG_COUNT       11
 #define CUP_USMC_MARKSMAN_MAG_COUNT        10
+#define CUP_USMC_MARKSMAN_M40A3_MAG_COUNT  20
 #define CUP_USMC_MEDIC_MAG_COUNT           11
 #define CUP_USMC_RIFLEMAN_MAG_COUNT        11
 
@@ -834,7 +845,7 @@ class CupUsmc : Faction
             aceBinoculars = "ACE_Vector";
             aceNvg        = "ACE_NVG_Wide";
 
-            handgun    = "CUP_hgun_Glock17_blk";
+            handgun    = "CUP_hgun_M9";
             binoculars = "CUP_Vector21Nite";
             headgear   = "CUP_H_USMC_MICH2000_WDL";
             rifleSight = "cup_optic_acog";
@@ -847,8 +858,8 @@ class CupUsmc : Faction
                 type = "CUP_U_B_USMC_FROG3_WMARPAT";
 
                 items[] += {
-                    "CUP_17Rnd_9x19_glock17",
-                    "CUP_17Rnd_9x19_glock17"
+                    "CUP_15Rnd_9x19_M9",
+                    "CUP_15Rnd_9x19_M9"
                 };
             };
             class Vest : Vest
@@ -1150,7 +1161,6 @@ class CupUsmc : Faction
                     type       = "M14";
                     rifle      = "CUP_srifle_M14_DMR";
                     primaryMag = "20Rnd_762x51_Mag";
-                    default    = 1;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1173,6 +1183,30 @@ class CupUsmc : Faction
                     type  = "HK417 D20";
                     rifle = "CUP_arifle_HK417_20";
                     primaryMag = "CUP_20Rnd_762x51_HK417";
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M40A3 : MarksmanBase
+                {
+                    type  = "M40A3";
+                    rifle = "CUP_srifle_M40A3";
+                    primaryMag = "CUP_5Rnd_762x51_M24";
+                    primaryMagCount = CUP_USMC_MARKSMAN_M40A3_MAG_COUNT;
+
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M110 : MarksmanBase
+                {
+                    type  = "M110";
+                    rifle = "CUP_srifle_M110_black";
+                    primaryMag = "CUP_20Rnd_762x51_B_M110";
+                    default = 1;
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1435,6 +1469,30 @@ class CupUsmc : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class M40A3 : M40A3
+                {
+                    headgear = "CUP_H_USMC_MICH2000_DES";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_USMC_FROG2_DMARPAT";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M110 : M110
+                {
+                    headgear = "CUP_H_USMC_MICH2000_DES";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_USMC_FROG2_DMARPAT";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Medic : Medic
             {
@@ -1638,6 +1696,20 @@ class CupUsmc : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class M40A3 : M40A3
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M110 : M110
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Medic : Medic
             {
@@ -1801,6 +1873,20 @@ class CupUsmc : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class M40A3 : M40A3
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M110 : M110
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Medic : Medic
             {
@@ -1958,6 +2044,20 @@ class CupUsmc : Faction
                     class LinkedItems : LinkedItems {};
                 };
                 class Hk : Hk
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M40A3 : M40A3
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M110 : M110
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};

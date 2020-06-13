@@ -190,6 +190,9 @@ class Uk3cbBaf : Faction
                 "UK3CB_BAF_V_Osprey_Medic_C",
                 "UK3CB_BAF_V_Osprey_Medic_D",
             };
+            bipods[] = {
+                "uk3cb_underbarrel_acc_fgrip_bipod"
+            };
         };
         class SemiArid : Base {};
         class Arid     : Base
