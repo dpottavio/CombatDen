@@ -104,34 +104,26 @@ private _insertCode = {
     /*
      * Move the vehicles and disable them.
      */
-    private _dir = [0, 360] call BIS_fnc_randomInt;
-    private _offset = 8;
-    private _vehiclePos = [];
     {
-        private _pos = _ambushPos getPos [_offset, _dir];
+        private _pos = [_ambushPos, 0, 25, 5] call den_fnc_findSafePos;
 
         _x setPos _pos;
         _x setDamage 0.8;
 
         [_x, ["motor", 1]] remoteExec ["setHit", _x];
         [_x, 0] remoteExec ["setFuel", _x];
-
-        _vehiclePos pushBack _pos;
-        _offset = _offset + 15;
     } forEach _vehicles;
     /*
      * Spread the players around the vehicles
      * and kill the AI units.
      */
-    _dir = [0, 360] call BIS_fnc_randomInt;
     {
-        _x setPos ((selectRandom _vehiclePos) getPos [5, _dir]);
+        private _unitPos = [_ambushPos, 0, 25, 5] call den_fnc_findSafePos;
+        _x setPos _unitPos;
 
         if !(isPlayer _x) then {
             _x setDamage 1;
         };
-
-        _dir = (_dir + 40) % 361;
     } forEach units _playerGroup;
 
     [["FireFight01", true]] remoteExec ["playSound"];
