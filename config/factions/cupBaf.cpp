@@ -58,6 +58,10 @@ class CupBaf : Faction
             attachments[] += {
                 "cup_muzzle_snds_l85"
             };
+            grenade[] += {
+                "CUP_HandGrenade_L109A1_HE",
+                "CUP_HandGrenade_L109A2_HE"
+            };
         };
 
         class SemiArid : Base {};
@@ -709,8 +713,8 @@ class CupBaf : Faction
             class Vest : Vest
             {
                 items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE",
                     "SmokeShellGreen",
                     "SmokeShellGreen"
                 };
@@ -718,10 +722,10 @@ class CupBaf : Faction
             class Backpack : Backpack
             {
                 items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67"
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE"
                 };
             };
             class LinkedItems : LinkedItems {};
@@ -758,8 +762,8 @@ class CupBaf : Faction
                 type = "CUP_V_B_BAF_MTP_Osprey_Mk4_AutomaticRifleman";
 
                 items[] += {
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE",
                     "SmokeShellGreen",
                     "SmokeShellGreen"
                 };
@@ -781,8 +785,8 @@ class CupBaf : Faction
             class Vest    : Vest
             {
                items[] += {
-                  "CUP_HandGrenade_M67",
-                  "CUP_HandGrenade_M67",
+                  "CUP_HandGrenade_L109A1_HE",
+                  "CUP_HandGrenade_L109A1_HE",
                   "SmokeShellGreen",
                   "SmokeShellGreen"
                };
@@ -811,10 +815,10 @@ class CupBaf : Faction
                     "SmokeShellGreen",
                     "SmokeShellGreen",
                     "SmokeShellGreen",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67",
-                    "CUP_HandGrenade_M67"
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE",
+                    "CUP_HandGrenade_L109A1_HE"
                 };
             };
             class Backpack : MedicBackpack
