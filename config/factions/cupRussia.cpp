@@ -162,7 +162,19 @@ class CupRussia : Faction
                 "cup_acc_flashlight",
                 "cup_acc_anpeq_15_black",
                 "cup_muzzle_snds_kzrzp_ak545",
-                "cup_muzzle_snds_kzrzp_pk"
+                "cup_muzzle_snds_kzrzp_pk",
+                "cup_acc_anpeq_15",
+                "cup_acc_anpeq_2",
+                "cup_acc_anpeq_15_black",
+                "cup_acc_anpeq_15_black_top",
+                "cup_acc_anpeq_15_flashlight_black_l",
+                "cup_acc_anpeq_15_top_flashlight_black_l",
+                "cup_acc_anpeq_2_grey",
+                "cup_acc_anpeq_2_black_top",
+                "cup_acc_anpeq_2_flashlight_black_l",
+                "cup_acc_flashlight",
+                "cup_acc_llm01_l",
+                "cup_acc_llm_black"
             };
             faceware[] += {
                 "CUP_RUS_Balaclava_blk",
