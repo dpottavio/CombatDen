@@ -57,14 +57,17 @@ class CupUsmc : Faction
                 "CUP_arifle_HK_M27",
                 "CUP_srifle_M40A3",
                 "CUP_srifle_M110_black",
-                "CUP_hgun_M9"
+                "CUP_hgun_M9",
+                "CUP_lmg_M240",
             };
             mags[] += {
                 "CUP_5Rnd_762x51_M24",
                 "CUP_1Rnd_762x51_CZ584",
                 "CUP_20Rnd_762x51_B_M110",
                 "CUP_20Rnd_762x51_L129_M",
-                "CUP_15Rnd_9x19_M9"
+                "CUP_15Rnd_9x19_M9",
+                "CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M",
+                "150Rnd_762x51_Box"
             };
             launchers[] += {
                 "CUP_launch_Javelin"
@@ -831,6 +834,7 @@ class CupUsmc : Faction
 
 #define CUP_USMC_AUTORIFLE_M27_MAG_COUNT    6
 #define CUP_USMC_AUTORIFLE_M249_MAG_COUNT   4
+#define CUP_USMC_AUTORIFLE_M240_MAG_COUNT   3
 #define CUP_USMC_AT_MAG_COUNT              11
 #define CUP_USMC_GRENADIRE_MAG_COUNT       11
 #define CUP_USMC_MARKSMAN_MAG_COUNT        10
@@ -1116,14 +1120,14 @@ class CupUsmc : Faction
 
                     class Uniform : Uniform
                     {
-                        m27Items[] = {
+                        items[] += {
                             "CUP_HandGrenade_M67",
                             "SmokeShellGreen"
                         };
                     };
                     class Vest : Vest
                     {
-                        m27Items[] = {
+                        items[] += {
                             "CUP_HandGrenade_M67",
                         };
                     };
@@ -1141,7 +1145,7 @@ class CupUsmc : Faction
                     class Uniform  : Uniform {};
                     class Vest     : Vest
                     {
-                        m249Items[] = {
+                        items[] += {
                             "CUP_HandGrenade_M67",
                             "CUP_HandGrenade_M67",
                             "SmokeShellGreen",
@@ -1151,6 +1155,29 @@ class CupUsmc : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class M240 : AutorifleBase
+                {
+                    type            = "M240";
+                    rifle           = "CUP_lmg_M240";
+                    primaryMag      = "CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M";
+                    primaryMagCount = CUP_USMC_AUTORIFLE_M240_MAG_COUNT;
+
+                    class Uniform : Uniform
+                    {
+                        items[] += {
+                            "CUP_HandGrenade_M67",
+                            "SmokeShellGreen"
+                        };
+                    };
+                    class Vest : Vest
+                    {
+                        items[] += {
+                            "CUP_HandGrenade_M67",
+                        };
+                    };
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                }
             };
             class Marksman
             {
@@ -1392,6 +1419,18 @@ class CupUsmc : Faction
                     class LinkedItems : LinkedItems {};
                 };
                 class M249 : M249
+                {
+                    headgear = "CUP_H_USMC_MICH2000_DES";
+
+                    class Uniform : Uniform
+                    {
+                        type = "CUP_U_B_USMC_FROG2_DMARPAT";
+                    };
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M240 : M240
                 {
                     headgear = "CUP_H_USMC_MICH2000_DES";
 
@@ -1655,6 +1694,13 @@ class CupUsmc : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class M240 : M240
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Grenadier : Grenadier
             {
@@ -1832,6 +1878,13 @@ class CupUsmc : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
+                class M240 : M240
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
             };
             class Grenadier : Grenadier
             {
@@ -2003,6 +2056,13 @@ class CupUsmc : Faction
                     class LinkedItems : LinkedItems {};
                 };
                 class M249 : M249
+                {
+                    class Uniform     : Uniform {};
+                    class Vest        : Vest {};
+                    class Backpack    : Backpack {};
+                    class LinkedItems : LinkedItems {};
+                };
+                class M240 : M240
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
