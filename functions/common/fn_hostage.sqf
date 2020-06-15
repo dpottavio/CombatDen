@@ -80,7 +80,7 @@ _hostage switchMove _enableAnimation;
     {},                                                 // Code executed when action starts
     {},                                                 // Code executed on every progress tick
     {
-        params ["_target", "", "", "_arguments"];
+        params ["_target", "", "_id", "_arguments"];
 
         private _code      = _arguments select 0;
         private _animation = _arguments select 1;
@@ -88,6 +88,7 @@ _hostage switchMove _enableAnimation;
         [_target, false]      remoteExecCall ["setCaptive", _target];
         [_target, _animation] remoteExecCall ["playMove",   _target];
         [_target, "ALL"]      remoteExecCall ["enableAI",   _target];
+        [_target, _id]        remoteExecCall ["BIS_fnc_holdActionRemove", _target];
 
         [] call _code;
     },                                                  // Code executed on completion
