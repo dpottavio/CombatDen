@@ -99,4 +99,8 @@ class CfgFactions
 #include "factions\rhsSaf.cpp"
 #include "factions\rhsTla.cpp"
 #include "factions\rhsUsmc.cpp"
+/*
+ * TFC
+ */
+#include "factions\tfcCanada.cpp"
 };
