@@ -43,7 +43,8 @@ class Faction
                 "ACE_HandFlare_Red",
                 "ACE_HandFlare_White",
                 "ACE_HandFlare_Yellow",
-                "ACE_M14"
+                "ACE_M14",
+                "ACE_M84"
             };
 
             misc[] = {
@@ -124,7 +125,13 @@ class Faction
                 "ACE_30Rnd_556x45_Stanag_M995_AP_mag",
                 "ACE_30Rnd_556x45_Stanag_Mk262_mag",
                 "ACE_30Rnd_556x45_Stanag_Mk318_mag",
-                "ACE_30Rnd_556x45_Stanag_Tracer_Dim"
+                "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
+                "ACE_30Rnd_556x45_Stanag_Tracer_Dim",
+                "ACE_10Rnd_338_300gr_HPBT_Mag",
+                "ACE_10Rnd_338_API526_Mag",
+                "ACE_5Rnd_127x99_Mag",
+                "ACE_5Rnd_127x99_AMAX_Mag",
+                "ACE_5Rnd_127x99_API_Mag"
             };
             explosives[] = {
                 "DemoCharge_Remote_Mag",
