@@ -27,7 +27,9 @@ class TfcCanada : Faction
     flagTexture = "\tfc_data\data\flags\flag_canada_co";
     name        = "CAF";
     patches[]   = {
-        "tfc_characters"
+        "tfc_characters",
+        // TFC-CAF contains RHS weapons.
+        "rhsusf_main"
     };
     side = SIDE_BLUFOR;
 
@@ -46,6 +48,7 @@ class TfcCanada : Faction
                 "SmokeShellYellow"
             };
             mags[] = {
+                "30Rnd_556x45_Stanag",
                 "30Rnd_556x45_Stanag_Tracer_Red",
                 "30Rnd_556x45_Stanag_red",
                 "200Rnd_556x45_Box_Red_F",
@@ -67,10 +70,10 @@ class TfcCanada : Faction
                 "UGL_FlareGreen_F",
                 "UGL_FlareRed_F",
                 "UGL_FlareWhite_F",
-                "UGL_FlareYellow_F"
-            };
-            noAceMags[] = {
-                "NLAW_F"
+                "UGL_FlareYellow_F",
+                "10Rnd_338_Mag",
+                "rhsusf_mag_10Rnd_STD_50BMG_M33",
+                "rhsusf_mag_10Rnd_STD_50BMG_mk211"
             };
             weapons[] = {
                 "tfc_c7a2",
@@ -84,7 +87,12 @@ class TfcCanada : Faction
                 "tfc_sof_tac50",
                 "tfc_bhp",
                 "tfc_p226",
-                "tfc_p226_railed"
+                "tfc_p226_railed",
+                "tfc_mrr_carbine",
+                "tfc_mrr_carbine_Black",
+                "tfc_mrr_carbine_Painted",
+                "tfc_mrr_rifle",
+                "tfc_mrr_rifle_black"
             };
             nvg[] = {
                 "NVGoggles"
@@ -121,7 +129,7 @@ class TfcCanada : Faction
                 "tfc_v_sord_03",
             };
             launchers[] = {
-                "launch_NLAW_F"
+                "rhs_weap_m72a7"
             };
         };
         class SemiArid : Base
@@ -1170,7 +1178,7 @@ class TfcCanada : Faction
             nvg        = "NVGoggles";
             rifleSight = "tfc_c79_elcan";
             rifleLight = "acc_flashlight";
-            primaryMag = "30Rnd_556x45_Stanag_red";
+            primaryMag = "30Rnd_556x45_Stanag";
 
             class Uniform : Uniform
             {
@@ -1490,7 +1498,7 @@ class TfcCanada : Faction
                 {
                     type       = "C15";
                     rifle      = "tfc_sof_tac50";
-                    primaryMag = "ACE_5Rnd_127x99_Mag";
+                    primaryMag = "rhsusf_mag_10Rnd_STD_50BMG_mk211";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1539,13 +1547,10 @@ class TfcCanada : Faction
             {
                 role = "Anti-Tank";
 
-                class Nlaw : AtBase
+                class M72 : AtBase
                 {
-                    aceType                = "NLAW";
-                    type                   = "PCML";
-                    launcher               = "launch_NLAW_F";
-                    noAceSecondaryMag      = "NLAW_F";
-                    noAceSecondaryMagCount = 1;
+                    type      = "M72A7";
+                    launcher  = "rhs_weap_m72a7";
 
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -1823,7 +1828,7 @@ class TfcCanada : Faction
             };
             class At : At
             {
-                class Nlaw : Nlaw
+                class M72 : M72
                 {
                     headgear = "TFC_H_Helmet_CG634_CADPAT_NG_AR";
 
@@ -2162,7 +2167,7 @@ class TfcCanada : Faction
             };
             class At : At
             {
-                class Nlaw : Nlaw
+                class M72 : M72
                 {
                     headgear = "TFC_H_Helmet_CG634_CADPAT_NG_TW";
 
@@ -2373,7 +2378,7 @@ class TfcCanada : Faction
             };
             class At : At
             {
-                class Nlaw : Nlaw
+                class M72 : M72
                 {
                     class Uniform     : Uniform {};
                     class Vest        : Vest {};
@@ -2594,7 +2599,7 @@ class TfcCanada : Faction
             };
             class At : At
             {
-                class Nlaw : Nlaw
+                class M72 : M72
                 {
                     headgear = "TFC_H_Helmet_CG634_CADPAT_NG_WI";
 
