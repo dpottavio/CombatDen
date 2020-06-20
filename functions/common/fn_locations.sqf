@@ -33,8 +33,8 @@ params [
 // trick the linter
 {_types};
 
-private _blacklist = getArray (missionConfigFile >> "CfgWorlds" >> worldName >> "blacklist");
-private _select = format["((getText (_x >> 'type') in _types) && !((configName _x)  in %1))", _blacklist];
+private _denyList = getArray (missionConfigFile >> "CfgWorlds" >> worldName >> "denyList");
+private _select = format["((getText (_x >> 'type') in _types) && !((configName _x)  in %1))", _denyList];
 private _configList = _select configClasses (configFile >> "CfgWorlds" >> worldName >> "Names");
 private _locationList = [];
 {

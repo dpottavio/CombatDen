@@ -242,7 +242,7 @@ private _enemySide = [_enemyFaction] call den_fnc_factionSide;
                         5,                      // min dist from objects
                         0.1,                    // max gradient
                         0,                      // terrain type
-                        _playerAreas            // blacklist areas
+                        _playerAreas            // denyList areas
                     ] call den_fnc_findSafePos;
 
                     if !(_pursueGroupPos isEqualTo []) then {

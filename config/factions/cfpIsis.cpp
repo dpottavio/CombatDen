@@ -20,7 +20,7 @@ class CfpIsis : Faction
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CFP_O_IS_SupportBox";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Winter",
         "Wood",
         "Winter",

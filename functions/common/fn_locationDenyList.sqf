@@ -19,7 +19,7 @@
 
     Generate a list of locations in current world that consistantly
     fail mission generation and should be included in the world
-    blacklist.
+    denyList.
 
     Returns:
 
@@ -35,7 +35,7 @@ private _safePosParams = [
 ];
 
 private _copPos = getPos den_flagPole;
-private _blacklist = [];
+private _denyList = [];
 {
     private _id  = _x select 0;
     private _pos = _x select 2;
@@ -43,9 +43,9 @@ private _blacklist = [];
     if ((_pos distance _copPos) >= 2000) then {
         private _zone = [400, _safePosParams, [_x]] call den_fnc_zone;
         if (_zone isEqualTo []) then {
-            _blacklist pushBack _id;
+            _denyList pushBack _id;
         };
     };
 } forEach ([] call den_fnc_locations);
 
-(str _blacklist);
+(str _denyList);

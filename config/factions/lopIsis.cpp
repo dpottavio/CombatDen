@@ -21,7 +21,7 @@ class LopIsis : Faction
     addon = "LOP";
     ammoBox = "rhs_7ya37_1_single";
     cargoBox = "CargoNet_01_box_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Tropic",
         "Wood",
         "Winter"

@@ -21,7 +21,7 @@ class RhsSaf : Faction
     addon = "RHS";
     ammoBox = "rhs_7ya37_1_single";
     cargoBox = "CargoNet_01_box_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Arid",
     };
     era = ERA_MODERN;

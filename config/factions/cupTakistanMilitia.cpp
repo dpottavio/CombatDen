@@ -21,7 +21,7 @@ class CupTakistanMilitia : Faction
     addon = "CUP";
     ammoBox  = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CargoNet_01_box_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Tropic",
         "Wood",
         "Winter"

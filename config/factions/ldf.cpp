@@ -20,7 +20,7 @@ class Ldf : Faction
 {
     ammoBox = "Box_EAF_Ammo_F";
     cargoBox = "I_E_CargoNet_01_ammo_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Arid",
         "SemiArid",
         "Tropic"

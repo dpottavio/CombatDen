@@ -20,7 +20,7 @@ class Aaf : Faction
 {
     ammoBox = "Box_IND_Ammo_F";
     cargoBox = "I_CargoNet_01_ammo_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Tropic",
         "Wood",
         "Winter"

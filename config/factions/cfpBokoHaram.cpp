@@ -21,7 +21,7 @@ class CfpBokoHaram : Faction
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CFP_O_ALQAEDA_SupportBox";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "SemiArid",
         "Arid",
         "Winter",

@@ -20,7 +20,7 @@ class Syndikat : Faction
 {
     ammoBox = "Box_Syndicate_Ammo_F";
     cargoBox = "Land_WoodenCrate_01_stack_x5_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Arid",
         "SemiArid",
         "Wood",

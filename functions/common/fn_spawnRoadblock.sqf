@@ -29,7 +29,7 @@
 
     3: (Optional) NUMBER - max number of roadblocks, defaults to 2
 
-    4: (Optional) ARRAY - blacklist of positions
+    4: (Optional) ARRAY - denyList of positions
 
     5: (Optional) STRING - Group type.  If this and a faction name
     is provided, this group type will spawn and garrison the roadblock.
@@ -43,7 +43,7 @@ params [
     ["_radius",    100, [0]],
     ["_max",       2,   [0]],
     ["_faction",   "", [""]],
-    ["_blackList", [],  [[]]],
+    ["_denyList", [],  [[]]],
     ["_groupType", "FireTeam", [""]]
 ];
 
@@ -79,12 +79,12 @@ private _lastPosList = [];
     ];
 
     // Check if near a black listed position.
-    private _nearBlackList = false;
+    private _neardenyList = false;
     {
         if ((_roadPos distance _x) < 50) exitWith {
-            _nearBlackList = true;
+            _neardenyList = true;
         };
-    } forEach _blackList;
+    } forEach _denyList;
 
     // Limit how close roadblocks are to each other.
     private _nearLastPos = false;
@@ -94,7 +94,7 @@ private _lastPosList = [];
         };
     } forEach _lastPosList;
 
-    if (!_nearLastPos && !_nearBlackList && _nearTerrainObjs isEqualTo []) then {
+    if (!_nearLastPos && !_neardenyList && _nearTerrainObjs isEqualTo []) then {
         _lastPosList pushBack _roadPos;
 
         private _connections = roadsConnectedTo _x;

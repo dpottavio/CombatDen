@@ -20,7 +20,7 @@
     Generate and return an enemy zone.  This function creates a marker
     defined as "zoneMarker".
 
-    A location blacklist is defined in CfgBlacklist for each world.
+    A location denyList is defined in CfgWorld for each world.
     Locations from this list are not used.
 
     Parameter(s):

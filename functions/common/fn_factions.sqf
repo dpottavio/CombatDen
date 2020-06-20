@@ -24,10 +24,10 @@
 #include "..\..\macros.hpp"
 
 private _climate = DEN_CLIMATE;
-// Filter based on factions climate blacklist
+// Filter based on factions climate denyList
 // and remove the Faction baseclass from this list.
 private _filter = format[
-    "!(""%1"" in (getArray(_x >> ""climateBlacklist""))) && ((configName _x) != ""Faction"")",
+    "!(""%1"" in (getArray(_x >> ""climateDenyList""))) && ((configName _x) != ""Faction"")",
     _climate
 ];
 private _allFactions = _filter configClasses (missionConfigFile >> "CfgFactions");

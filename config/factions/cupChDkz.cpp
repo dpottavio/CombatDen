@@ -21,7 +21,7 @@ class CupChDkz : Faction
     addon = "CUP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CargoNet_01_box_F";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Arid",
         "SemiArid",
         "Tropic"

@@ -21,7 +21,7 @@ class CfpHezbollah : Faction
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CFP_O_HEZBOLLAH_SupportBox";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Winter",
         "Wood",
         "Winter",

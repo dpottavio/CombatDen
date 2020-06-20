@@ -21,7 +21,7 @@ class CfpHamas : Faction
     addon = "CFP";
     ammoBox = "CUP_RUBasicAmmunitionBox";
     cargoBox = "CFP_O_HAMAS_SupportBox";
-    climateBlacklist[] = {
+    climateDenyList[] = {
         "Winter",
         "Wood",
         "Winter",

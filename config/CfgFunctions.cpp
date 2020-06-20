@@ -49,7 +49,7 @@ class CfgFunctions
             class loadoutItems {};
             class loadoutMags {};
             class locations {};
-            class locationBlacklist {};
+            class locationDenyList {};
             class locationSelection {};
             class lowDaylight {};
             class mortarFire {};

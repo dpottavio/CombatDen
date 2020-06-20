@@ -46,7 +46,7 @@ class CfgWorlds
 
     class Altis : SemiArid
     {
-        blacklist[] = {
+        denyList[] = {
             "AgiosKosmas",
             "AgiosPanagiotis",
             "Almyra",
@@ -87,7 +87,7 @@ class CfgWorlds
     };
     class Chernarus : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "ACityC_Kamenka",
             "ACityC_Myshkino",
             "ACityC_Nizhnoye",
@@ -111,7 +111,7 @@ class CfgWorlds
     };
     class Chernarus_Winter : Winter
     {
-        blacklist[] = {
+        denyList[] = {
             "ACityC_Kamenka",
             "ACityC_Kamyshovo",
             "ACityC_Myshkino",
@@ -141,7 +141,7 @@ class CfgWorlds
     };
     class cup_chernarus_a3 : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "ACityC_Kamenka",
             "Local_Black_Forest",
             "Local_Blunt_Rocks",
@@ -166,7 +166,7 @@ class CfgWorlds
     };
     class Enoch : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "Bagno",
             "Branzow_castle",
             "Brena",
@@ -185,7 +185,7 @@ class CfgWorlds
     };
     class gm_weferlingen_summer : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "DefaultKeyPoint158",
             "DefaultKeyPoint161",
             "DefaultKeyPoint162",
@@ -205,7 +205,7 @@ class CfgWorlds
     };
     class gm_weferlingen_winter : Winter
     {
-        blacklist[] = {
+        denyList[] = {
             "DefaultKeyPoint158",
             "DefaultKeyPoint161",
             "DefaultKeyPoint162",
@@ -225,7 +225,7 @@ class CfgWorlds
     };
     class lythium : SemiArid
     {
-        blacklist[] = {
+        denyList[] = {
             "abivalley",
             "afarat",
             "kamir",
@@ -241,7 +241,7 @@ class CfgWorlds
     };
     class Malden : SemiArid
     {
-        blacklist[] = {
+        denyList[] = {
             "Malden_L_Blanches",
             "Malden_L_CanconHarbor",
             "Malden_L_Corton",
@@ -265,7 +265,7 @@ class CfgWorlds
     };
     class Stratis : SemiArid
     {
-        blacklist[] = {
+        denyList[] = {
             "Agia_Marina",
             "Girna",
             "MilRange",
@@ -277,7 +277,7 @@ class CfgWorlds
     };
     class Takistan : Arid
     {
-        blacklist[] = {
+        denyList[] = {
             "ACityC_Nur",
             "city_Chaman",
             "city_Nur",
@@ -291,7 +291,7 @@ class CfgWorlds
     };
     class Tanoa : Tropic
     {
-        blacklist[] = {
+        denyList[] = {
             "Airstrip04",
             "Balavu01",
             "Belfort01",
@@ -355,7 +355,7 @@ class CfgWorlds
     };
     class sara : SemiArid
     {
-        blacklist[] = {
+        denyList[] = {
             "Hill_Vieja",
             "Hill_Virgo",
             "Local_Antigua",
@@ -410,7 +410,7 @@ class CfgWorlds
     };
     class Woodland_ACR : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "ACityC_Elektrozavodsk",
             "ACityC_Kamyshovo",
             "ACityC_Nizhnoye",
@@ -420,7 +420,7 @@ class CfgWorlds
     };
     class tem_anizay : Arid
     {
-        blacklist[] = {
+        denyList[] = {
             "Dehqobad",
             "Herati",
             "Janur",
@@ -432,7 +432,7 @@ class CfgWorlds
     };
     class ruha : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "DefaultKeyPoint1",
             "DefaultKeyPoint10",
             "DefaultKeyPoint11",
@@ -452,7 +452,7 @@ class CfgWorlds
     };
     class Staszow : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "Brzeziny",
             "Osowka",
             "OsowkaNowa",
@@ -466,7 +466,7 @@ class CfgWorlds
     };
     class StaszowWinter : Winter
     {
-        blacklist[] = {
+        denyList[] = {
             "Brzeziny",
             "Osowka",
             "OsowkaNowa",
@@ -480,7 +480,7 @@ class CfgWorlds
     };
     class vt7 : Wood
     {
-        blacklist[] = {
+        denyList[] = {
             "Haapasari",
             "Hailiniemi",
             "Hanholmi",
@@ -534,7 +534,7 @@ class CfgWorlds
     };
     class Kunduz : Arid
     {
-        blacklist[] = {
+        denyList[] = {
             "1",
             "6",
             "15",
@@ -550,13 +550,13 @@ class CfgWorlds
     };
     class Fallujah : Arid
     {
-        blacklist[] = {
+        denyList[] = {
             "fal_a7"
         };
     };
     class Rhspkl : Tropic
     {
-        blacklist[] = {
+        denyList[] = {
             "DefaultKeyPoint4",
             "DefaultKeyPoint32",
             "DefaultKeyPoint34",
@@ -572,7 +572,7 @@ class CfgWorlds
     };
 	class Tem_Kujari : Arid
 	{
-		blacklist[] = {
+		denyList[] = {
 			"place1",
 			"place71",
 			"place84",
