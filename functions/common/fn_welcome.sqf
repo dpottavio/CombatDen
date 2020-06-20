@@ -30,7 +30,7 @@ private _selectionMsg = switch (isMultiplayer) do {
 };
 
 private _msg = format["\
-<font=""EtelkaMonospacePro"" color=""#96D3EE"">\
+<font color=""#96D3EE"">\
 - Combat Den is a randomized mission designed to provide a unique experience \
 each play through.\
 <br/><br/>

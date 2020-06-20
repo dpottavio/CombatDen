@@ -22,7 +22,7 @@ class CfgHelp
     {
         title = "License";
         text  = "\
-<font=""EtelkaMonospacePro"" color=""#96D3EE"">\
+<font face=""EtelkaMonospacePro"" color=""#96D3EE"" size=""10"">\
 This mission is free software: you can redistribute it and/or modify \
 it under the terms of the GNU Lesser General Public License as \
 published by the Free Software Foundation, either version 3 of the \
@@ -40,10 +40,11 @@ You can receive a copy of this license at https://www.gnu.org/licenses.\
     {
         title = "Contributors";
         text = "\
- <font=""EtelkaMonospacePro"" color=""#96D3EE"">\
- - ottavio<br/>\
- - Dahlgren<br/>\
- - TheIdiot900<br/>\
+ <font face=""EtelkaMonospacePro"" color=""#96D3EE"" size=""10"">\
+<br/>\
+ottavio<br/>\
+Dahlgren<br/>\
+TheIdiot900<br/>\
  </font>";
     };
 };

@@ -32,7 +32,7 @@ private _items = "true" configClasses (missionConfigFile >> "CfgHelp");
     player createDiaryRecord ["CombatDenSubject", [_title, _text]];
 } forEach _items;
 
-private _version = format["<font=""EtelkaMonospacePro"" color=""#96D3EE"">%1</font>",
+private _version = format["<font face=""EtelkaMonospacePro"" color=""#96D3EE"" size=""10"">%1</font>",
     getText (missionConfigFile >> "CfgVersion" >> "version")];
 if (_version != "") then {
     player createDiaryRecord ["CombatDenSubject", ["Version", _version]];
