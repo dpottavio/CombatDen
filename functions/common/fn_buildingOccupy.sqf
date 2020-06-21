@@ -56,7 +56,7 @@ if (_buildingList isEqualTo []) exitWith {
     [];
 };
 
-_buildingList call BIS_fnc_arrayShuffle;
+[_buildingList, true] call CBA_fnc_shuffle;
 
 private _units     = [];
 private _positions = [];
