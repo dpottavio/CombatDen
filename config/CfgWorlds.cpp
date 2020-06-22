@@ -583,4 +583,27 @@ class CfgWorlds
 			"Bora"
 		};
 	};
+    class WL_Rosche : Wood
+    {
+        denyList[] = {
+            "town_oetzen",
+            "vill_masendorf",
+            "town_molzen",
+            "vill_bruchwedel",
+            "vill_hagen",
+            "vill_torwe",
+            "vill_gross_malchau",
+            "town_rosche",
+            "vill_neumuhle",
+            "klein_hesebeck",
+            "teyendorf",
+            "gross_ellenberg",
+            "pieperhofen",
+            "halligdorf",
+            "nestau1",
+            "ripdorf",
+            "emmendorf",
+            "klein_bunstorf"
+        };
+    };
 };
