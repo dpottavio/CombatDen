@@ -46,6 +46,7 @@ class CfgFactions
 /*
  * CUP Factions
  */
+#include "factions\cupAcr.cpp"
 #include "factions\cupBaf.cpp"
 #include "factions\cupBundeswehr.cpp"
 #include "factions\cupCdf.cpp"
