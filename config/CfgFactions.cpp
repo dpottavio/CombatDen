@@ -42,6 +42,7 @@ class CfgFactions
 #include "factions\cfpHamas.cpp"
 #include "factions\cfpHezbollah.cpp"
 #include "factions\cfpIsis.cpp"
+#include "factions\cfpUsArmy1991.cpp"
 /*
  * CUP Factions
  */
