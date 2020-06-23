@@ -1000,8 +1000,8 @@ class CupUsmc : Faction
             class Vest : Vest
             {
                items[] += {
-                    "HandGrenade",
-                    "HandGrenade",
+                    "CUP_HandGrenade_M67",
+                    "CUP_HandGrenade_M67",
                     "SmokeShell",
                     "SmokeShell"
                 };
