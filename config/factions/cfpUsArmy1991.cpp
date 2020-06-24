@@ -981,6 +981,16 @@ class CupArmy1991 : Faction
             };
             class LinkedItems : LinkedItems {};
         };
+        class AtBase : RiflemanBase
+        {
+            unit  = "CFP_B_USARMY_1991_Rifleman_AT_WDL_01";
+            rifle = "CUP_arifle_M16A2";
+
+            class Uniform     : Uniform {};
+            class Vest        : Vest {};
+            class Backpack    : Backpack {};
+            class LinkedItems : LinkedItems {};
+        };
         class EodBase : Base
         {
             unit            = "CFP_B_USARMY_1991_EOD_Engineer_WDL_01";
@@ -1148,10 +1158,9 @@ class CupArmy1991 : Faction
             {
                 role = "Anti-Tank";
 
-                class M27a6 : RiflemanBase
+                class M27a6 : AtBase
                 {
                     type     = "M27A6";
-                    rifle    = "CUP_arifle_M16A2";
                     launcher = "CUP_launch_M72A6";
 
                     class Uniform     : Uniform {};
@@ -1159,10 +1168,9 @@ class CupArmy1991 : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class M136 : RiflemanBase
+                class M136 : AtBase
                 {
                     type     = "M136";
-                    rifle    = "CUP_arifle_M16A2";
                     launcher = "CUP_launch_M136";
                     default  = 1;
 
