@@ -122,6 +122,7 @@ class RhsUsmc : Faction
                 "rhsusf_20Rnd_762x51_SR25_m993_Mag",
                 "rhsusf_20Rnd_762x51_m118_special_Mag",
                 "rhsusf_20Rnd_762x51_m62_Mag",
+                "rhsusf_20Rnd_762x51_m80_Mag",
                 "rhsusf_20Rnd_762x51_m993_Mag",
                 "rhsusf_50Rnd_762x51",
                 "rhsusf_50Rnd_762x51_m61_ap",
@@ -164,6 +165,8 @@ class RhsUsmc : Faction
                 "rhsusf_mag_7x45acp_MHP"
             };
             weapons[] = {
+                "rhs_weap_m40a5",
+                "rhs_weap_M107",
                 "rhs_weap_M320",
                 "rhs_weap_M590_5RD",
                 "rhs_weap_M590_8RD",
@@ -172,6 +175,7 @@ class RhsUsmc : Faction
                 "rhs_weap_hk416d10_m320",
                 "rhs_weap_hk416d145",
                 "rhs_weap_hk416d145_m320",
+                "rhs_weap_m14ebrri",
                 "rhs_weap_m16a4",
                 "rhs_weap_m16a4_carryhandle",
                 "rhs_weap_m16a4_carryhandle_M203",
@@ -247,8 +251,11 @@ class RhsUsmc : Faction
                 "rhsusf_acc_g33_t1",
                 "rhsusf_acc_g33_xps3",
                 "rhsusf_acc_m2a1",
+                "rhsusf_acc_m8541",
+                "rhsusf_acc_m8541_low",
                 "rhsusf_acc_mrds",
                 "rhsusf_acc_mrds_c",
+                "rhsusf_acc_premier",
                 "rhsusf_acc_rm05",
                 "rhsusf_acc_rx01",
                 "rhsusf_acc_rx01_nofilter",

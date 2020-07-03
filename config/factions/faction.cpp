@@ -76,7 +76,8 @@ class Faction
             aceAdvancedMisc[] = {
                 "ACE_ATragMX",
                 "ACE_HuntIR_monitor",
-                "ACE_Kestrel4500"
+                "ACE_Kestrel4500",
+                "ACE_MX2A"
             };
 
             aceMedical[] = {
@@ -131,7 +132,8 @@ class Faction
                 "ACE_10Rnd_338_API526_Mag",
                 "ACE_5Rnd_127x99_Mag",
                 "ACE_5Rnd_127x99_AMAX_Mag",
-                "ACE_5Rnd_127x99_API_Mag"
+                "ACE_5Rnd_127x99_API_Mag",
+                "ACE_SpareBarrel"
             };
             explosives[] = {
                 "DemoCharge_Remote_Mag",
