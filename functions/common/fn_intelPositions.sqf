@@ -69,7 +69,7 @@ private _intelObj = selectRandom _objects;
         {},                                                 // Code executed when action starts
         {},                                                 // Code executed on every progress tick
         {
-            params ["", "_caller", "", "_args"];
+            params ["_target", "_caller", "_id", "_args"];
 
             private _positions = _args select 0;
             private _faction   = _args select 1;
@@ -86,6 +86,8 @@ private _intelObj = selectRandom _objects;
             } forEach _positions;
 
             [_caller, "Enemy intel recovered. Marking map with positions of interest."] call den_fnc_sideChat;
+
+            [_target, _id] remoteExecCall ["BIS_fnc_holdActionRemove", _target];
         },
         {},                                                 // Code executed on interrupted
         [_positions, _faction],                             // Arguments passed to the scripts as _this select 3
