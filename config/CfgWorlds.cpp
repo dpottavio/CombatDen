@@ -83,7 +83,6 @@ class CfgWorlds
             "Sideras",
             "castle"
         };
-
     };
     class Chernarus : Wood
     {

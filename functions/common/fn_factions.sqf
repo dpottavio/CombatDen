@@ -17,7 +17,7 @@
 
     Description:
 
-    Return the names of white listed factions.
+    Return the names of supported factions.
 
     Returns: ARRAY - resistance faction names
 */

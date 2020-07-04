@@ -30,6 +30,12 @@ class CfgSettings
         function = "[] call den_fnc_factionOptions";
         default  = 0;
     };
+    class Civilians
+    {
+        title = "Civilians";
+        function = "[] call den_fnc_civilianOptions";
+        default = 0;
+    };
     class Mission
     {
         title    = "Mission";

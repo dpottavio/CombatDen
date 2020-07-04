@@ -26,6 +26,7 @@ class CfgFunctions
             class arsenal {};
             class attackOnEvent {};
             class buildingOccupy {};
+            class civilians {};
             class commandChat {};
             class coverMap {};
             class createLocation {};
@@ -56,10 +57,12 @@ class CfgFunctions
             class moveIn {};
             class patrol {};
             class playersInVehicle {};
+            class playerWarning {};
             class randWeather {};
             class randDate {};
             class sideChat {};
             class sling {};
+            class spawnCivilians {};
             class spawnGroup {};
             class spawnInfantryTransport {};
             class spawnMotorDeploy {};
@@ -117,6 +120,7 @@ class CfgFunctions
         class settings
         {
             file = "functions\settings";
+            class civilianOptions {};
             class factionOptions {};
             class missionOptions {};
         };

@@ -228,10 +228,35 @@ if (_playerMadeSelection && !(_missionLocation in den_locationSelection)) then {
     ["Unable to initialize mission at selected location(s)"] remoteExecCall ["hint"];
 };
 
+/*
+ * Civilians
+ */
+private _civilians = switch (den_cba_civilians) do {
+    case "Random": {
+        private _civ = "";
+        private _civList = [] call den_fnc_civilians;
+        if !(_civList isEqualTo []) then {
+            _civ = configName (selectRandom _civList);
+        };
+        _civ;
+    };
+    case "None": {
+        "";
+    };
+    default {
+        den_cba_civilians;
+    };
+};
+if (_civilians != "") then {
+    private _pos = _missionLocation select 2;
+    [_civilians, _pos] call den_fnc_spawnCivilians;
+};
+
 INFO_1("version: %1", getText (missionConfigFile >> "CfgVersion" >> "version"));
 INFO_1("mission: %1", _mission);
 INFO_1("playerFaction: %1", _friendlyFaction);
 INFO_1("enemyFaction: %1", _enemyFaction);
+INFO_1("civilians: %1", _civilians);
 INFO_1("terrain: %1", worldName);
 INFO_1("location: %1", _locationName);
 
