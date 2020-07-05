@@ -305,4 +305,40 @@ class CfgCivilians
             "LOP_Tak_Civ_Man_16"
         };
     };
+    class Ifa40s
+    {
+        addon = "IFA3";
+
+        name = "1940s";
+
+        climateDenyList[] = {
+            "Arid",
+            "SemiArid",
+            "Tropic"
+        };
+
+        patches[] = {
+            "WW2_Assets_t_Characters_Civilians_t"
+        };
+
+        types[] = {
+            "LIB_CIV_Citizen_1",
+            "LIB_CIV_Citizen_2",
+            "LIB_CIV_Citizen_3",
+            "LIB_CIV_Citizen_4",
+            "LIB_CIV_Citizen_5",
+            "LIB_CIV_Citizen_6",
+            "LIB_CIV_Citizen_7",
+            "LIB_CIV_Citizen_8",
+            "LIB_CIV_Priest",
+            "LIB_CIV_Villager_1",
+            "LIB_CIV_Villager_2",
+            "LIB_CIV_Villager_3",
+            "LIB_CIV_Villager_4",
+            "LIB_CIV_Worker_1",
+            "LIB_CIV_Worker_2",
+            "LIB_CIV_Worker_3",
+            "LIB_CIV_Worker_4"
+        };
+    };
 };
