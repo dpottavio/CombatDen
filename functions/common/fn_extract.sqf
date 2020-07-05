@@ -166,12 +166,14 @@ if (_area isEqualTo []) then {
             "(vehicle this) land ""GET IN"""
         ] call CBA_fnc_addWaypoint;
 
+        [_heloGroup, _lzPos, 0, "HOLD"] call CBA_fnc_addWaypoint;
+
         // Wait for the cargo units to enter.
         while {true} do {
             private _total = { alive _x } count units _cargoGroup;
             private _loaded = {((vehicle _x) == _heloObj)} count units _cargoGroup;
             if (_total == _loaded) exitWith {
-                [
+                private _wp = [
                     _heloGroup,
                     _deployPos,
                     0,
@@ -182,6 +184,8 @@ if (_area isEqualTo []) then {
                     "COLUMN",
                     ""
                 ] call CBA_fnc_addWaypoint;
+
+                [_heloGroup, _wp] remoteExec ["setCurrentWaypoint", groupOwner _heloGroup];
 
                 [(leader _heloGroup), "Alpha team is on board. Returning to base."] call den_fnc_sideChat;
             };
