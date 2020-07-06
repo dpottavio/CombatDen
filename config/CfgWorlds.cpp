@@ -569,19 +569,19 @@ class CfgWorlds
             "DefaultKeyPoint8"
         };
     };
-	class Tem_Kujari : Arid
-	{
-		denyList[] = {
-			"place1",
-			"place71",
-			"place84",
-			"Tsakuwa",
-			"Gano",
-			"Turawa",
-			"Karaye",
-			"Bora"
-		};
-	};
+    class Tem_Kujari : Arid
+    {
+        denyList[] = {
+            "place1",
+            "place71",
+            "place84",
+            "Tsakuwa",
+            "Gano",
+            "Turawa",
+            "Karaye",
+            "Bora"
+        };
+    };
     class WL_Rosche : Wood
     {
         denyList[] = {
@@ -603,6 +603,25 @@ class CfgWorlds
             "ripdorf",
             "emmendorf",
             "klein_bunstorf"
+        };
+    };
+    class Pulau : Tropic
+    {
+        denyList[] = {
+            "DefaultKeyPoint10",
+            "DefaultKeyPoint11",
+            "DefaultKeyPoint12",
+            "DefaultKeyPoint13",
+            "DefaultKeyPoint14",
+            "DefaultKeyPoint15",
+            "DefaultKeyPoint16",
+            "DefaultKeyPoint17",
+            "DefaultKeyPoint18",
+            "DefaultKeyPoint19",
+            "DefaultKeyPoint20",
+            "DefaultKeyPoint22",
+            "DefaultKeyPoint26",
+            "DefaultKeyPoint9"
         };
     };
 };
