@@ -29,6 +29,16 @@ if (!isServer) exitWith {
 };
 
 private _friendlyFaction = den_cba_playerFaction;
+if (_friendlyFaction == "") then {
+    private _friendlyFactions = [] call den_fnc_factions;
+    if !(_friendlyFactions isEqualTo []) then {
+        _friendlyFaction = configName (selectRandom _friendlyFactions);
+    };
+};
+if (_friendlyFaction == "") exitWith {
+    ERROR("no friendly factions available");
+    [];
+};
 
 private _timeOfDay = den_cba_timeOfDay;
 if (_timeOfDay == -1) then {
@@ -52,17 +62,6 @@ if (_isDark && _fullMoonOnly) then {
     [] call den_fnc_randWeather;
 };
 
-if (_friendlyFaction == "") then {
-    private _friendlyFactions = [] call den_fnc_factions;
-    if !(_friendlyFactions isEqualTo []) then {
-        _friendlyFaction = configName (selectRandom _friendlyFactions);
-    };
-};
-if (_friendlyFaction == "") exitWith {
-    ERROR("no friendly factions available");
-    [];
-};
-
 private _friendlySideStr = getText(missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "side");
 
 /*
@@ -84,7 +83,8 @@ if (_enemyFaction != "") then {
 };
 
 if (_enemyFaction == "") then {
-    private _allies  = getArray (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "allies");
+    private _allies  = getArray (missionConfigFile >> "CfgFactions" >> _friendlyFaction >> "allies") +
+        getArray (missionConfigFile >> "CfgFactions" >> _enemyFaction >> "allies");
     private _enemyFactions = [];
     {
         private _sideStr = getText(_x >> "side");
