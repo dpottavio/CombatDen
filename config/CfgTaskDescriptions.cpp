@@ -131,6 +131,7 @@ Defend this position from enemy units.";
     class AmbushEvade
     {
         title = "Evade and Resist";
-        description = "Evade and resist enemy units until Base provides extraction coordinates.";
+        description = "Evade and resist until Base can provide extraction. \
+Extraction coordinates are expected in approximately 20 miniutes.";
     };
 };
