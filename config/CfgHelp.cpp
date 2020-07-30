@@ -40,8 +40,9 @@ You can receive a copy of this license at https://www.gnu.org/licenses.\
     {
         title = "Contributors";
         text = "\
- <font face=""EtelkaMonospacePro"" color=""#96D3EE"" size=""10"">\
-<br/>\
+<font face=""EtelkaMonospacePro"" color=""#96D3EE"" size=""10"">\
+The follow people have made contributions to the project. Thank you.\
+<br/><br/>\
 ottavio<br/>\
 Dahlgren<br/>\
 TheIdiot900<br/>\
