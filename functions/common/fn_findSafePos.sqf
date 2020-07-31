@@ -107,9 +107,22 @@ while { !_isSafe && _tryCount > 0 && ((time - _t0) <= _timeLimit) } do {
     _pos = _center getPos [_minRadius + random (_maxRadius - _minRadius), random  360];
 
     _isSafe = call {
-        private _isEmpty = !((_pos findEmptyPosition [0, _minObjDist]) isEqualTo []) &&
-                            ((nearestTerrainObjects [_pos, [], _minObjDist, false]) isEqualTo []);
-        if !(_isEmpty) exitWith {
+        // Using nearObjects makes this algorithm sensive to many
+        // object types including Triggers. While a bit overkill,
+        // this algorithm must be able to detect any object that
+        // might cause a collision. Using only nearestTerrainObjects
+        // does not detect things like dynamiclly placed bunkers.
+        private _nearObjs = _pos nearObjects _minObjDist;
+        // Find and objects that are not Triggers
+        private _objIsNear = false;
+        {
+            if (typeOf _x != "EmptyDetector") exitWith {
+                _objIsNear = true;
+            };
+        } forEach _nearObjs;
+
+        if (_objIsNear ||
+            {!(nearestTerrainObjects [_pos, [], _minObjDist, false, true] isEqualTo [])}) exitWith {
             false;
         };
 

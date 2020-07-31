@@ -82,7 +82,7 @@ private _maxPatrol    = _zoneRadius * 0.75; // patrol force
 private _safePosParams = [
     [_minInsert,    _maxInsert,    15], // insert safe position
     [_minReinforce, _maxReinforce, 10], // reinforce safe position
-    [0,             _maxPallet,    10], // pallet safe position
+    [0,             _maxPallet,    15], // pallet safe position
     [0,             _maxReact,     10], // reaction force safe position
     [0,             _maxPatrol,     5]  // patrol safe position
 ];
