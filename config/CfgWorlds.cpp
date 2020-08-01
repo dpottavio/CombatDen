@@ -624,4 +624,13 @@ class CfgWorlds
             "DefaultKeyPoint9"
         };
     };
+    class Zargabad : Arid
+    {
+        denyList[] = {
+            "ACityC_HazarBagh",
+            "local_Hazar_Bagh",
+            "local_The_Villa",
+            "local_military_base"
+        };
+    };
 };
