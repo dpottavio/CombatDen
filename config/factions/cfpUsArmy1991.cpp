@@ -55,7 +55,7 @@ class CupArmy1991 : Faction
                 "CUP_Dragon_EP1_M"
             };
             launchers[] = {
-                "CUP_arifle_M16A2",
+                "CUP_launch_M136",
                 "CUP_launch_M72A6",
                 "CUP_launch_M47"
             };
