@@ -45,6 +45,8 @@ private _denyList = [];
         if (_zone isEqualTo []) then {
             _denyList pushBack _id;
         };
+    } else {
+        _denyList pushBack _id;
     };
 } forEach ([] call den_fnc_locations);
 
