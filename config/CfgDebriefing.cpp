@@ -78,4 +78,10 @@ class CfgDebriefing
         subtitle = "Cargo Truck Destroyed";
         description = "Without a cargo transport the mission cannot succeed.";
     };
+    class ConvoySeized
+    {
+        title = "Mission Failed";
+        subtitle = "Convoy Position Lost";
+        description = "The convoy position was seized by the enemy.";
+    };
 };

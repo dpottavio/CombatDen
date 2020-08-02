@@ -164,18 +164,13 @@ createMarker ["convoyMarker", _convoyPos];
 "convoyMarker" setMarkerColor _friendlyColor;
 "convoyMarker" setMarkerText "convoy";
 "convoyMarker" setMarkerSize [0.75, 0.75];
-
-private _enemySide = [_enemyFaction] call den_fnc_factionSide;
-createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
 [
     _convoyPos,
-    [25, 25, 0, false, 10],
+    [20, 20, 0, false],
     ["ANYPLAYER", "PRESENT", false],
     nil,
     [],
-    {
-        den_convoyReached = true;
-    }
+    { den_convoyReached = true }
 ] call den_fnc_createTrigger;
 
 /*
@@ -185,7 +180,7 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
     _assaultPos1,
     _assaultPos2,
     _assaultPos3,
-    _zoneArea,
+    _convoyPos,
     _enemyFaction,
     _friendlyFaction,
     _difficulty] spawn {
@@ -194,19 +189,11 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
         "_assaultPos1",
         "_assaultPos2",
         "_assaultPos3",
-        "_zoneArea",
+        "_convoyPos",
         "_enemyFaction",
         "_friendlyFaction",
         "_difficulty"
     ];
-
-    // wait for player insert before staring wave attacks
-    while {true} do {
-        if (!isNil "den_convoyReached") exitWith {
-            sleep (random [10, 15, 20]);
-        };
-        sleep 1;
-    };
 
     private _reinforceArgs = [
         [_assaultPos1, "MotorizedAssault"],
@@ -234,26 +221,46 @@ createGuardedPoint [_enemySide, _convoyPos, -1, objNull];
         };
     };
 
-    private _randomReinforceArgs = _reinforceArgs call BIS_fnc_arrayShuffle;
+    [_reinforceArgs, true] call CBA_fnc_shuffle;
 
+    private _enemySide  = [_enemyFaction] call den_fnc_factionSide;
+
+    // Signal if the convoy position is seized. This should fail the mission.
     [
-        _zoneArea,
-        _randomReinforceArgs,
-        _enemyFaction,
-        _friendlyFaction,
-        {den_spawnDone = true}
-    ] call den_fnc_wave;
+        _convoyPos,
+        [25, 25, 0, false, 20],
+        [format ["%1 SEIZED", _enemySide], "PRESENT"],
+        {},
+        [],
+        { den_convoySeized = true }
+    ] call den_fnc_createTrigger;
 
-    // wait for the zone to clear before mission complete
-    private _enemyCount = -1;
-    private _enemySide = [_enemyFaction] call den_fnc_factionSide;
+    // wait for player insert before staring wave attacks
     while {true} do {
-        if (!isNil "den_spawnDone") then {
-            _enemyCount = {((side _x) == _enemySide) && (!fleeing _x)} count allUnits;
+        if (!isNil "den_convoyReached") exitWith {
+            sleep (random [10, 15, 20]);
         };
-        if (_enemyCount == 0) exitWith {};
         sleep 1;
     };
+
+    /*
+     * Spawn loop logic:
+     * - Spawn a group from the reinforce list one at a time.
+     * - Wait for either time to expire or most of the enemy units are dead.
+     */
+    {
+        private _pos = _x select 0;
+        private _groupType = _x select 1;
+
+        private _group = [_pos, _enemyFaction, _groupType] call den_fnc_spawnGroup;
+        [_group, _convoyPos, 0, "SAD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
+        [_pos, _friendlyFaction, _enemyFaction] call den_fnc_commandChatEnemyReinforce;
+
+        private _t0 = time;
+        while { (({((side _x) == _enemySide)} count allUnits) > 3) && (time - _t0) < 600 } do {
+            sleep 2;
+        };
+    } forEach _reinforceArgs;
 
     den_convoyDefended = true;
 };
@@ -272,7 +279,8 @@ private _taskQueue = [
 ];
 
 private _failQueue = [
-    ["TransportDead", "den_transportDead"]
+    ["TransportDead", "den_transportDead"],
+    ["ConvoySeized",  "den_convoySeized"]
 ];
 
 [_taskQueue, _failQueue] call den_fnc_taskFsm;

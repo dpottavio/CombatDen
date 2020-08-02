@@ -105,16 +105,7 @@ if (_enemyFaction == "") exitWith {
         [_group, _pos, 0, "GUARD", "AWARE", "YELLOW"] call CBA_fnc_addWaypoint;
 
         if (_friendlyFaction != "") then {
-            private _friendlySide  = [_friendlyFaction] call den_fnc_factionSide;
-            private _enemySideStr  = getText(missionConfigFile >> "CfgFactions" >> _enemyFaction >> "side");
-            private _enemyColor    = getText(missionConfigFile >> "CfgMarkers" >> _enemySideStr >> "color");
-            private _msg = format["Alpha be advised, enemy reinforcements at grid %1.", mapGridPosition _pos];
-
-            [_msg, _friendlySide] call den_fnc_commandChat;
-
-            private _marker = createMarker [format["waveMarker-%1", time], _pos];
-            _marker setMarkerType  "hd_warning";
-            _marker setMarkerColor _enemyColor;
+            [_pos, _friendlyFaction, _enemyFaction] call den_fnc_commandChatEnemyReinforce;
         };
 
         _spawnCount = _spawnCount - 1;

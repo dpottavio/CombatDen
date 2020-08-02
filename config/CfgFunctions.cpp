@@ -28,6 +28,7 @@ class CfgFunctions
             class buildingOccupy {};
             class civilians {};
             class commandChat {};
+            class commandChatEnemyReinforce {};
             class coverMap {};
             class createLocation {};
             class createPlayerUnit {};
