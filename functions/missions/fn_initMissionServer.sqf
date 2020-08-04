@@ -203,6 +203,8 @@ if (_playerMadeSelection) then {
     [_locations, true] call CBA_fnc_shuffle;
 };
 
+[] call den_fnc_initRevive;
+
 private _missionArgs =
 "[_playerGroup,\
 getPos den_transportMarker,\

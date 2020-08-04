@@ -234,6 +234,8 @@ if (isMultiplayer && !_aceRespawnGear) then {
     ] call den_fnc_createTrigger;
 };
 
+[] call den_fnc_initRevive;
+
 private _success = [
     den_mission,
     den_zone,

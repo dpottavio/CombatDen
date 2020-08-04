@@ -58,6 +58,15 @@ class CfgSettings
         isGlobal = 0;
         mpOnly   = 1;
     };
+    class Revive
+    {
+        title    = "Revive";
+        texts[]  = {"Disabled", "Enabled"};
+        values[] = {0,1};
+        default  = 0;
+        isGlobal = 0;
+        mpOnly   = 1;
+    };
     class TimeOfDay
     {
         title    = "Time of Day";
