@@ -141,26 +141,20 @@ class CfgWorlds
     class cup_chernarus_a3 : Wood
     {
         denyList[] = {
-            "ACityC_Kamenka",
-            "Local_Black_Forest",
-            "Local_Blunt_Rocks",
-            "Local_Cap_Golova",
-            "Local_Cement_Factory",
-            "Local_Drakon",
-            "Local_Factory1",
-            "Local_Kopyto",
-            "Local_Lumber_Mill",
-            "Local_Otmel",
-            "Local_Pass_Grozovoy",
-            "Local_Pass_Sosnovy",
-            "Local_Quarry",
-            "Local_Skalisty_Island",
-            "Local_Skalka",
-            "vill_Bor",
-            "vill_Kamenka",
-            "vill_Orlovets",
-            "vill_Prigorodki",
-            "vill_Tulga"
+            "Local_Devils_Castle",
+            "Local_Zub",
+            "ACityC_Bor",
+            "ACityC_Prigorodki",
+            "ACityC_Pusta",
+            "ACityC_Dolina",
+            "ACityC_Orlovets",
+            "ACityC_Nizhnoye",
+            "Local_Vysota",
+            "Local_Cap_Krutnoy",
+            "Local_Old_Fields",
+            "Loc_Vidy",
+            "Vil_Tisy",
+            "Loc_Grozovypereval"
         };
     };
     class Enoch : Wood
