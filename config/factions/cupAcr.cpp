@@ -1047,7 +1047,7 @@ class CupAcr : Faction
             {
                 role = "Grenadier";
 
-                class Cz805 : RiflemanBase
+                class Cz805 : GrenadierBase
                 {
                     type    = "CZ 805";
                     rifle   = "CUP_arifle_CZ805_GL";
@@ -1058,7 +1058,7 @@ class CupAcr : Faction
                     class Backpack    : Backpack {};
                     class LinkedItems : LinkedItems {};
                 };
-                class Cz807 : RiflemanBase
+                class Cz807 : GrenadierBase
                 {
                     type  = "CZ 807";
                     rifle = "CUP_CZ_BREN2_762_14_GL";
