@@ -58,6 +58,7 @@ class CfgFactions
 #include "factions\cupSla.cpp"
 #include "factions\cupTakistan.cpp"
 #include "factions\cupTakistanMilitia.cpp"
+#include "factions\cupUsArmy.cpp"
 #include "factions\cupUsmc.cpp"
 /*
  * GM Factions
