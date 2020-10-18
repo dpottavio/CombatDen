@@ -12,11 +12,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=6;
+		nextID=7;
 	};
 	class Camera
 	{
-		pos[]={5935.6006,38.127796,9694.6123};
+		pos[]={5995.0767,38.127796,9743.8867};
 		dir[]={-0.69891357,-0.41990063,-0.5789994};
 		up[]={-0.3233608,0.90756476,-0.26788074};
 		aside[]={-0.63796383,2.8236536e-007,0.77009249};
@@ -38,7 +38,6 @@ addons[]=
 	"A3_Structures_F_Mil_Flags",
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Characters_F",
-	"cfp_uniforms",
 	"A3_Modules_F_Curator_Curator",
 	"cba_main",
 	"A3_Data_F_Curator_Virtual"
@@ -47,7 +46,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=10;
+		items=9;
 		class Item0
 		{
 			className="A3_Structures_F_Mil";
@@ -92,25 +91,19 @@ class AddonsMetaData
 		};
 		class Item6
 		{
-			className="cfp_uniforms";
-			name="cfp_uniforms";
-			author="CFP Team";
-		};
-		class Item7
-		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item8
+		class Item7
 		{
 			className="cba_main";
 			name="Community Base Addons - Main Component";
 			author="CBA Team";
 			url="https://www.github.com/CBATeam/CBA_A3";
 		};
-		class Item9
+		class Item8
 		{
 			className="A3_Data_F_Curator";
 			name="Arma 3 Zeus Update - Main Configuration";
@@ -128,6 +121,7 @@ class Mission
 {
 	class Intel
 	{
+		briefingName="Combat Den: Isla Duala";
 		timeOfChanges=1800.0002;
 		startWeather=0.34999999;
 		startFog=0.029999999;
