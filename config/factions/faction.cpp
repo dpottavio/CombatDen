@@ -160,9 +160,13 @@ class Faction
                 "ACE_acc_pointer_green_IR"
             };
             faceware[] = {
+                "G_Aviator",
                 "G_Bandanna_beast",
                 "G_Bandanna_blk",
                 "G_Bandanna_oli",
+                "G_Bandanna_shades",
+                "G_Bandanna_sport",
+                "G_Bandanna_tan",
                 "G_Combat",
                 "G_Lowprofile",
                 "G_Shades_Black",
