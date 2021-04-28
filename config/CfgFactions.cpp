@@ -67,6 +67,7 @@ class CfgFactions
 #include "factions\gmEastGermany.cpp"
 #include "factions\gmPoland.cpp"
 #include "factions\gmWestGermany.cpp"
+#include "factions\gmxChDkz.cpp"
 /*
  * IFA3 Factions
  */
