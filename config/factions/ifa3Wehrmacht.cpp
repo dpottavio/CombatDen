@@ -152,7 +152,7 @@ class Ifa3Wehrmacht : Faction
     {
         class Base
         {
-            truckAssault     = "LIB_SdKfz234_1";
+            truckAssault     = "LIB_SdKfz251";
             truckSupplyAmmo  = "LIB_OpelBlitz_Ammo";
             truckSupplyCargo = "LIB_OpelBlitz_Open_Y_Camo";
             truckSupplyFuel  = "LIB_OpelBlitz_Fuel";
@@ -323,7 +323,7 @@ class Ifa3Wehrmacht : Faction
             {
                 class Unit0 : Unit0
                 {
-                    vehicle = "LIB_SdKfz234_1";
+                    vehicle = "LIB_SdKfz251";
                 };
                 class Unit1 : Unit1
                 {
@@ -348,7 +348,7 @@ class Ifa3Wehrmacht : Faction
                 {
                     position[] = {-20,-20,0};
                     rank = "LIEUTENANT";
-                    vehicle = "LIB_SdKfz234_1";
+                    vehicle = "LIB_SdKfz251";
                 };
             };
         };
