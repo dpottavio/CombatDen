@@ -174,7 +174,7 @@ class GmxChDkz : Faction
                 "gmx_chdkz_army_backpack_73_rpk_oli",
                 "gmx_gc_backpack_r105m_brn",
                 "gm_pl_army_backpack_at_80_gry",
-                "gm_dk_army_backpack_73_oli";
+                "gm_dk_army_backpack_73_oli"
             };
             headgear[] = {
                 "gmx_chdkz_army_headgear_cap_blk",
