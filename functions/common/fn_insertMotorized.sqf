@@ -109,12 +109,15 @@ private _insertCode = {
     sleep 5;
 
     private _dir = _startPos getDir _zonePos;
-    private _offset = 0;
     {
-        private _pos = _startPos vectorAdd [0, _offset, 0];
+        private _pos = [
+            _startPos, // center position
+            0,         // min position
+            20,        // max position
+            8          // obj distance
+        ] call den_fnc_findSafePos;
         _x setPos _pos;
         _x setDir _dir;
-        _offset = _offset + 15;
     } forEach _vehicles;
 
     den_insertUnload = true;
