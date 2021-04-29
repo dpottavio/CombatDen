@@ -75,6 +75,12 @@ class RhsUsmc : Faction
                 "rhs_mag_30Rnd_556x45_Mk318_PMAG",
                 "rhs_mag_30Rnd_556x45_Mk318_PMAG_Tan",
                 "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+                "rhs_mag_20Rnd_SCAR_762x51_M118_special",
+                "rhs_mag_20Rnd_SCAR_762x51_m61_ap",
+                "rhs_mag_20Rnd_SCAR_762x51_m62_tracer",
+                "rhs_mag_20Rnd_SCAR_762x51_m80_ball",
+                "rhs_mag_20Rnd_SCAR_762x51_m80a1_epr",
+                "rhs_mag_20Rnd_SCAR_762x51_mk316_special",
                 "rhs_mag_M397_HET",
                 "rhs_mag_M433_HEDP",
                 "rhs_mag_M441_HE",
@@ -120,6 +126,7 @@ class RhsUsmc : Faction
                 "rhsusf_20Rnd_762x51_SR25_m118_special_Mag",
                 "rhsusf_20Rnd_762x51_SR25_m62_Mag",
                 "rhsusf_20Rnd_762x51_SR25_m993_Mag",
+                "rhsusf_20Rnd_762x51_SR25_mk316_special_Mag",
                 "rhsusf_20Rnd_762x51_m118_special_Mag",
                 "rhsusf_20Rnd_762x51_m62_Mag",
                 "rhsusf_20Rnd_762x51_m80_Mag",
@@ -192,6 +199,15 @@ class RhsUsmc : Faction
                 "rhs_weap_m27iar",
                 "rhs_weap_m27iar_grip",
                 "rhs_weap_m32",
+                "rhs_weap_m4",
+                "rhs_weap_m4_carryhandle",
+                "rhs_weap_m4_carryhandle_M203",
+                "rhs_weap_m4_carryhandle_M203S",
+                "rhs_weap_m4_carryhandle_mstock",
+                "rhs_weap_m4_M203",
+                "rhs_weap_m4_M203S",
+                "rhs_weap_m4_M320",
+                "rhs_weap_m4_mstock",
                 "rhs_weap_m4a1",
                 "rhs_weap_m4a1_blockII_KAC_bk",
                 "rhs_weap_m4a1_blockII_M203_bk",
@@ -208,6 +224,9 @@ class RhsUsmc : Faction
                 "rhs_weap_mk18_m320",
                 "rhs_weap_sr25",
                 "rhs_weap_sr25_ec",
+                "rhs_weap_mk17_cqc",
+                "rhs_weap_mk17_lb",
+                "rhs_weap_mk17_std",
                 "rhsusf_weap_glock17g4",
                 "rhsusf_weap_m1911a1",
                 "rhsusf_weap_m9"
@@ -299,14 +318,39 @@ class RhsUsmc : Faction
                 "rhs_googles_black",
                 "rhs_googles_clear",
                 "rhs_googles_orange",
-                "rhs_googles_yellow"
+                "rhs_googles_yellow",
+                "rhs_shemagh_grn",
+                "rhs_shemagh2_grn",
+                "rhs_shemagh_od",
+                "rhs_shemagh2_od",
+                "rhs_shemagh_tan",
+                "rhs_shemagh2_tan",
+                "rhs_shemagh_white",
+                "rhs_shemagh2_white",
+                "rhs_shemagh_gogg_grn",
+                "rhs_shemagh2_gogg_grn",
+                "rhs_shemagh_gogg_od",
+                "rhs_shemagh2_gogg_od",
+                "rhs_shemagh_gogg_tan",
+                "rhs_shemagh2_gogg_tan",
+                "rhs_shemagh_gogg_white",
+                "rhs_shemagh2_gogg_white",
+                "rhs_oakley_goggles_blk",
+                "rhs_oakley_goggles_clr",
+                "rhs_oakley_goggles_ylw"
             };
             vests[] = {
+                "rhsusf_spc",
+                "rhsusf_spc_corpsman",
+                "rhsusf_spc_crewman",
                 "rhsusf_spc_iar",
                 "rhsusf_spc_light",
-                "rhsusf_spc_marksman",
                 "rhsusf_spc_mg",
+                "rhsusf_spc_marksman",
+                "rhsusf_spc_patchless",
+                "rhsusf_spc_patchless_radio",
                 "rhsusf_spc_rifleman",
+                "rhsusf_spc_sniper",
                 "rhsusf_spc_squadleader",
                 "rhsusf_spc_teamleader"
             };
@@ -320,11 +364,62 @@ class RhsUsmc : Faction
             };
         };
 
-        class SemiArid : Base {};
-        class Arid     : Base {};
-        class Tropic   : Base {};
-        class Wood     : Base {};
-        class Winter   : Base {};
+        class SemiArid : Base
+        {
+            headgear[] += {
+                "rhsusf_booniehat2_marpatwd",
+                "rhsusf_lwh_helmet_marpatwd_blk_ess",
+                "rhsusf_lwh_helmet_marpatwd_headset_blk2",
+                "rhsusf_lwh_helmet_marpatwd_headset_blk",
+                "rhsusf_lwh_helmet_marpatwd_headset",
+                "rhsusf_lwh_helmet_marpatwd_ess",
+                "rhsusf_lwh_helmet_marpatwd",
+                "rhsusf_mich_helmet_warpatwd",
+                "rhsusf_mich_helmet_warpatwd_alt",
+                "rhsusf_mich_helmet_warpatwd_alt_headset",
+                "rhsusf_mich_helmet_warpatwd_headset",
+                "rhsusf_mich_helmet_warpatwd_norotos",
+                "rhsusf_mich_helmet_warpatwd_norotos_arc",
+                "rhsusf_mich_helmet_warpatwd_norotos_arc_headset",
+                "rhsusf_mich_helmet_warpatwd_norotos_headset",
+                "rhsusf_8point_marpatwd"
+            };
+            weapons[] += {
+                "rhs_weap_m4a1_wd",
+                "rhs_weap_m4a1_m203s_wd",
+                "rhs_weap_m4a1_wd_mstock",
+                "rhs_weap_sr25_ec_wd",
+                "rhs_weap_sr25_wd"
+            };
+        };
+        class Arid : Base
+        {
+            headgear[] += {
+                "rhsusf_booniehat2_marpatd",
+                "rhsusf_lwh_helmet_marpatd_headset",
+                "rhsusf_lwh_helmet_marpatd_ess",
+                "rhsusf_lwh_helmet_marpatd",
+                "rhsusf_mich_helmet_warpatd",
+                "rhsusf_mich_helmet_warpatd_alt",
+                "rhsusf_mich_helmet_warpatd_alt_headset",
+                "rhsusf_mich_helmet_warpatd_headset",
+                "rhsusf_mich_helmet_warpatd_norotos",
+                "rhsusf_mich_helmet_warpatd_norotos_arc",
+                "rhsusf_mich_helmet_warpatd_norotos_arc_headset",
+                "rhsusf_mich_helmet_warpatd_norotos_headset",
+                "rhsusf_8point_marpatd"
+            };
+            weapons[] += {
+                "rhs_weap_m4a1_d",
+                "rhs_weap_m4a1_m203s_d",
+                "rhs_weap_m4a1_d_mstock",
+                "rhs_weap_sr25_d",
+                "rhs_weap_sr25_ec_d"
+            };
+        };
+        class Tropic : SemiArid {};
+        class Wood : SemiArid {};
+        class Winter : Base {};
     };
 
     class Vehicle
