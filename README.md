@@ -32,43 +32,9 @@ briefing.  Just play.
 The only addon dependency is [CBA](https://steamcommunity.com/workshop/filedetails/?id=450814997).  Mission
 files on non-vanilla terrains may require additional dependencies.
 
-## Questions
+## Project Status
 
-If you have any questions, please Please visit the [Wiki](https://github.com/dpottavio/CombatDen/wiki)
-for more information about features and development.  You may also open an
-[issue](https://github.com/dpottavio/CombatDen/issues), or post on the
-[forum](https://forums.bohemia.net/forums/topic/219387-combat-den/)
-page.
-
-## Report a Bug
-
-If you found a bug, please open an
-[issue](https://github.com/dpottavio/CombatDen/issues).  Provide in
-full detail the symptom you're seeing and include which mods you have
-loaded.
-
-## Feature Requests
-
-If there is a faction, terrain, or general improvement you would like
-to see, please open an
-[issue](https://github.com/dpottavio/CombatDen/issues) and describe in
-detail what it is you would like.  The only general guideline is that
-the feature should "make sense" in the context of the mission.  Use
-your best judgment.
-
-Depending on the amount of work, feature requests may take some time
-to complete.  The best way to expedite this process is to make the
-change yourself and make a Pull-Request to the project.  Pull-Requests
-take priority over enhancement requests regardless of size.
-
-## Contributing
-
-If you would like to make a feature yourself, please open a pull
-request to the project.  If you take the time to make a feature
-contribution, it will be reviewed ASAP.  Please read the
-[Wiki](https://github.com/dpottavio/CombatDen/wiki) as it contains
-some information regarding development.  While the Wiki is still a
-work in progress, it's a good place to get started.
+This project is not under active development. Bug, Feature, and Pull requests are unlikely to be addressed in a timely manner. 
 
 ## License
 
